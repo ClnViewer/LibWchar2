@@ -28,10 +28,10 @@ char libinfo[] __attribute__ ((section ("LIBINFO"))) = "libwchar2 v.0.0.1 " __DA
 #define __WCHAR_INTERNAL_LIB 1
 #include "libwchar.h"
 
-#define C(x) ( x<2 ? -1 : ( R(0x80,0xc0) | x ) )
-#define D(x) C((x+16))
-#define E(x) ( ( x==0 ? R(0xa0,0xc0) : \
-                 x==0xd ? R(0x80,0xa0) : \
+#define C(x) ( x < 2 ? -1 : ( R(0x80,0xc0) | x ) )
+#define D(x) C((x + 16))
+#define E(x) ( ( x == 0 ? R(0xa0,0xc0) : \
+                 x == 0xd ? R(0x80,0xa0) : \
                  R(0x80,0xc0) ) \
              | ( R(0x80,0xc0) >> 6 ) \
              | x )
