@@ -434,6 +434,26 @@ int       u8wmkdir(const wchar_t*, mode_t);
 
 /** Redefined 'symbols' libc functions */
 
+/* for osx Darwin
+ * macro redefined: /usr/include/secure/_stdio.h
+ */
+
+#if defined(vsnprintf)
+#   undef vsnprintf
+#endif
+
+#if defined(snprintf)
+#   undef snprintf
+#endif
+
+#if defined(vsnprintf)
+#   undef vsnprintf
+#endif
+
+#if defined(snprintf)
+#   undef snprintf
+#endif
+
 #define wmkdir _wmkdir_macro
 #define wmkdir_w _wmkdir
 #define wmkdir_s _wmkdir_s

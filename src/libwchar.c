@@ -24,6 +24,7 @@
   */
 
 char libinfo[] __attribute__ ((section ("LIBINFO"))) = "libwchar2 v.0.0.1 " __DATE__ " " __TIME__;
+// to OSX char libinfo[]  __attribute__((section("__SEGMENT,__LIBINFO"))) = "";
 
 #define __WCHAR_INTERNAL_LIB 1
 #include "libwchar.h"
