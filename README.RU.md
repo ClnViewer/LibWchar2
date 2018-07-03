@@ -1,11 +1,12 @@
-[![Generic badge](https://img.shields.io/badge/README-ENG-green.svg)](https://github.com/ClnViewer/LibWchar2/blob/master/README.md)
-[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/ClnViewer/LibWchar2/blob/master/LICENSE)
+
+[![Readme ENG](https://img.shields.io/badge/Readme-ENG-brightgreen.svg?style=flat)](https://github.com/ClnViewer/LibWchar2/blob/master/README.md)
+[![License MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=flat)](https://github.com/ClnViewer/LibWchar2/blob/master/LICENSE)
 
 # LibWchar2
 ----------
  
 Библиотека обертка для совместимости с проектами написанными для `Windows API`, где `wchar_t size` == `2 байта` на ***nix** платформах.  
-Заменяет `libc, glibc` функции с использованием типа `wchar_t`.
+Заменяет `libc`, `glibc` функции с использованием типа `wchar_t`.
 
 ### Для чего это:
 ----------
@@ -19,10 +20,12 @@
 
 Включить сборку с типом `wchar_t` равному 2 байтам.
 
+
 CC | key
-___ | ___
+--- | ---
 GCC | -fshort-wchar
 clang | -fwchar-type=short -fno-signed-wchar
+
 
 ### Особенности библиотеки:
 
@@ -123,4 +126,4 @@ clang | -fwchar-type=short -fno-signed-wchar
 
 ## License
 
-MIT
+_MIT_
