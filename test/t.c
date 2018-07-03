@@ -78,10 +78,10 @@ int main(int argc, char *argv[])
 
     printf( "\t[");
     printf_w(t);
-    printf( "]\n\t -> [%d/%d]\n", strlen_w(t), _wcslen(t));
+    printf( "]\n\t -> [%d/%u]\n", strlen_w(t), _wcslen(t));
     printf("\t(%d) strerror: [%s]\n", __LINE__, strerror(errno)); errno = 0;
 
-    int sz2, sz1 = _wcslen(wcs1);
+    int sz2, sz1 = (int)_wcslen(wcs1);
     printf("\t(%d) strerror: [%s]\n", __LINE__, strerror(errno)); errno = 0;
 
 //    char b0[((sz1 + 1) * 2)];
@@ -89,7 +89,7 @@ int main(int argc, char *argv[])
 //    printf( "\t[%s] [%d/%d]\n", b0, sz1, sz2);
 
     sz1 = strlen(c);
-    sz2 = _wcslen(wcs1);
+    sz2 = (int)_wcslen(wcs1);
     printf("\t(%d) strerror: [%s]\n", __LINE__, strerror(errno)); errno = 0;
 
     printf( "\t[%d/%d]\n", sz1, sz2);
@@ -121,7 +121,7 @@ int main(int argc, char *argv[])
     }
 
     //char dest[256] = {0};
-    //sz1 = _wcslen(wcs1);
+    //sz1 = (int)_wcslen(wcs1);
     //sz2 = _wcsrtombs(dest, &(const wchar_t *){wcs1}, (sz1 * 2 + 1), 0);
     //sz2 = _wcrtomb(dest, (const wchar_t)wcs1[0], 0);
     //printf( "\t[%d/%d] [%s]\n", sz1, sz2, dest);
