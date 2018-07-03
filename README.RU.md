@@ -23,8 +23,8 @@
 
 CC | key
 --- | ---
-GCC | -fshort-wchar
-clang | -fwchar-type=short -fno-signed-wchar
+`GCC` | `-fshort-wchar`
+`clang` | `-fwchar-type=short` `-fno-signed-wchar`
 
 
 ### Особенности библиотеки:
@@ -91,7 +91,7 @@ clang | -fwchar-type=short -fno-signed-wchar
 
 ### API
 
-Файл заголовков: [wchar2.h](https://github.com/ClnViewer/LibWchar2/include/wchar2.h)  
+Файл заголовков: [wchar2.h](https://github.com/ClnViewer/LibWchar2/blob/master/include/wchar2.h)  
 Для использования библиотеки в проекте подключите заголовок последним, после всех системных заголовков, при этом `wchar.h` и `wctype.h` можно не указывать, они уже включены.
 
     #include <stdio.h>
