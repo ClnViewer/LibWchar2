@@ -1,3 +1,19 @@
+Makefile
+commit.sh
+bootstrap.sh
+logfile.out
+config.log
+configure.orig
+config.h
+stamp-h1
+.libs
+.deps
+autom4te.cache
+/autom4te.cache
+gmon.out
+libwchar2.pc
+*~
+
 # Prerequisites
 *.d
 

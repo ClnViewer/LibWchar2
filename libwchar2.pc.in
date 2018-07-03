@@ -1,0 +1,12 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+datadir=@datadir@
+
+Name: @PACKAGE_NAME@
+Description: Library design to use wchar_t == 2, Windows API software compatible, for *nix portable.
+Version: @PACKAGE_VERSION@
+Requires:
+Libs: -L@libdir@ -lwchar2
+Cflags: -I@includedir@
