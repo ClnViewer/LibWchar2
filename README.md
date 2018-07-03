@@ -1,2 +1,4 @@
 # LibWchar2
-Wrapper compatible Windows API wchar_t size == 2 byte for *nix systems, replace libc, glibc functions using wchar_t type.
+
+The wrapper library for compatibility with projects written for the Windows API, where wchar_t size == 2 bytes on * nix platforms, replaces libc, glibc functions using the wchar_t type.
+
