@@ -184,22 +184,24 @@ wchar_t *  wcsregexp(wchar_t *restrict, wchar_t *restrict, int*);
 
  /**
   *  @brief Covert utf-8 char* to wchar_t*
-  *  wchar_t* - output
-  *  char*    - input
+  *  wchar_t*          - output
+  *  const char*       - input
+  *  return size_t     - size
   */
 size_t     u8stowcs(wchar_t*, const char*);
 
  /**
   *  @brief Convert wchar_t* to utf-8 char*
-  *  char*    - output
-  *  wchar_t* - input
+  *  char*             - output
+  *  const wchar_t*    - input
+  *  return size_t     - size
   */
 size_t     wcstou8s(char*, const wchar_t*);
 
  /**
   *  @brief Verify char* to utf-8 valid string
-  *  char*    - output
-  *  wchar_t* - input
+  *  const char* - input
+  *  int (bool)  - output
   */
 int        u8sverify(const char*);
 

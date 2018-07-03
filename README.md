@@ -54,11 +54,11 @@ A short free translation of the essence of what is stated in the standards conce
 
 
 > Library **LibWchar2** removes these restrictions, and does not require reassembly of all libraries, while allowing you to create applications with two byte type `wchar_t`.
->
+        
 > In the library **LibWchar2** the variable with the type `mbstate_t` is ignored, and even if you do not set this variable, it removes the intermediate states that are stored and prevent the mutual execution of ` input/output` in one thread.
 >
 > Also, work with the orientation of the stream is deleted in the `input/output` functions, its necessity is a very controversial issue, but this also affects the stability of the functions associated with the `input/ output` operations.
->
+        
 > In the library **LibWchar2** the problem of types is solved, all functions that work in one way or another with wide characters are reduced to a single type `wchar_t`.
 
 ### Assembly and Installation:
@@ -101,7 +101,8 @@ The library itself is connected in the standard way:
 
 `Makefile:`
 
-    CFLAGS = -I.
+    CFLAGS = -I. -fshort-wchar /* GCC */
+    CFLAGS = -I. -fwchar-type=short -fno-signed-wchar /* clang */
     LDFLAGS = -L. -lwchar2
 
 ### Test & Testing

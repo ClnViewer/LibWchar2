@@ -1,0 +1,25 @@
+language: c
+sudo: false
+os:
+    - linux
+    - osx
+compiler:
+    - gcc
+    - clang
+script:
+  - mkdir ./libout
+  - ./configure
+  - make
+  - make check
+matrix:
+    exclude:
+        - os:       osx
+          compiler: gcc
+deploy:
+    provider:     releases
+    file:         libwchar2
+    skip_cleanup: true
+    overwrite:    true
+    github_token: $GH_REPO_TOKEN
+    on:
+      tags:     true
