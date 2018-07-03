@@ -75,6 +75,7 @@ AS_IF([test "$BUILD_WC2" == "0"],[
 ])
 
 AX_CHECK_COMPILE_FLAG([-Wall],[AX_APPEND_FLAG([-Wall])])
+#AX_CHECK_COMPILE_FLAG([-Wextra],[AX_APPEND_FLAG([-Wextra])])
 AX_CHECK_COMPILE_FLAG([-pedantic],[AX_APPEND_FLAG([-pedantic])])
 
 AC_ARG_ENABLE([werror],

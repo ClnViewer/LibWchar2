@@ -15136,6 +15136,7 @@ else
 fi
 
 
+#AX_CHECK_COMPILE_FLAG([-Wextra],[AX_APPEND_FLAG([-Wextra])])
 { $as_echo "$as_me:$LINENO: checking whether C compiler accepts -pedantic" >&5
 $as_echo_n "checking whether C compiler accepts -pedantic... " >&6; }
 if test "${ax_cv_check_cflags___pedantic+set}" = set; then
@@ -15224,6 +15225,7 @@ fi
 if test "${enable_werror+set}" = set; then
   enableval=$enable_werror;
 fi
+
 
 if test "x$enable_werror" == "xyes"; then
 
