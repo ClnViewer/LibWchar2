@@ -1,5 +1,6 @@
-[![Generic badge](https://img.shields.io/badge/README-RU-green.svg)](https://github.com/ClnViewer/LibWchar2/blob/master/README.RU.md)
-[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/ClnViewer/LibWchar2/blob/master/LICENSE)
+
+[![Readme RU](https://img.shields.io/badge/Readme-RU-brightgreen.svg?style=flat)](https://github.com/ClnViewer/LibWchar2/blob/master/README.RU.md)
+[![License MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=flat)](https://github.com/ClnViewer/LibWchar2/blob/master/LICENSE)
 
 # LibWchar2
 ----------
@@ -19,8 +20,8 @@ To ensure the efficiency of these collected programs, it is necessary that libc 
 
 Enable assembly with `wchar_t` type equal to 2 bytes.
 
-CC | key
-___ | ___
+CC  | key
+--- | --- |
 `GCC` | `-fshort-wchar`
 `clang` | `-fwchar-type=short` `-fno-signed-wchar`
 
