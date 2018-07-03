@@ -1,6 +1,7 @@
 
 [![Readme ENG](https://img.shields.io/badge/Readme-ENG-brightgreen.svg?style=flat)](https://github.com/ClnViewer/LibWchar2/blob/master/README.md)
 [![License MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=flat)](https://github.com/ClnViewer/LibWchar2/blob/master/LICENSE)
+[![Build Status](https://travis-ci.org/ClnViewer/LibWchar2.svg)](https://travis-ci.org/ClnViewer/LibWchar2)
 
 # LibWchar2
 ----------
