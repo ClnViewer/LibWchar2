@@ -1,6 +1,6 @@
 Makefile
-commit.sh
-bootstrap.sh
+/commit.sh
+/bootstrap.sh
 logfile.out
 config.log
 configure.orig
