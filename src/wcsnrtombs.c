@@ -18,7 +18,7 @@ size_t _wcsnrtombs(char *restrict dst, const wchar_t **restrict wcs, size_t wn, 
 	while ((ws) && (n) && (((n2 = wn) >= n) || (n2 > 32))) {
 		if (n2 >= n) n2 = n;
 		wn -= n2;
-		if ((l = _wcsrtombs(s, &ws, n2, 0)) < 0) {
+		if (!(l = _wcsrtombs(s, &ws, n2, 0))) {
 			cnt = l;
 			n = 0;
 			break;
@@ -30,7 +30,7 @@ size_t _wcsnrtombs(char *restrict dst, const wchar_t **restrict wcs, size_t wn, 
 		cnt += l;
 	}
 	if (ws) while (n && wn) {
-		if ((l = _wcrtomb(s, *ws, 0)) < 0) {
+		if (!(l = _wcrtomb(s, *ws, 0))) {
 			if (!l) ws = 0;
 			else cnt = l;
 			break;

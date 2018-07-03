@@ -78,7 +78,7 @@ int main(int argc, char *argv[])
 
     printf( "\t[");
     printf_w(t);
-    printf( "]\n\t -> [%d/%u]\n", strlen_w(t), _wcslen(t));
+    printf( "]\n\t -> [%d/%zu]\n", strlen_w(t), _wcslen(t));
     printf("\t(%d) strerror: [%s]\n", __LINE__, strerror(errno)); errno = 0;
 
     int sz2, sz1 = (int)_wcslen(wcs1);

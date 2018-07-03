@@ -5,7 +5,6 @@ static const char _u8cmaxlen = 4;
 static const char _u8bit = '\x80';
 static const char _u8bits[] = {'\x0', '\xc0', '\xe0', '\xf0', '\xf8', '\xfc'};
 static const wchar_t _wcsrange[] = { L'\x0', L'\x80', L'\x800', L'\xfffe' };
-static const char _u8fvallen[] = {7, 5, 4, 3, 2, 1};
 static const char _u8vallen = 6;
 
 size_t u8stowcs(wchar_t *wcs, const char *u8s) {
