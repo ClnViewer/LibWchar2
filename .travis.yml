@@ -2,7 +2,7 @@ language: c
 sudo: reguired
 os:
     - linux
-    - osx
+#    - osx
 compiler:
     - gcc
     - clang
@@ -13,8 +13,9 @@ script:
   - test/wchar2test
 before_script:
   - if [ "$(uname)" = "Linux" ]; then sudo apt-get update; sudo apt-get install -y autotools-dev autoconf check; fi
-  - if [ "$(uname)" = "Darwin" ]; then brew update; brew install check; fi
-matrix:
-    exclude:
-        - os:       osx
-          compiler: gcc
+#  - if [ "$(uname)" = "Darwin" ]; then brew update; brew install check; fi
+#matrix:
+#    exclude:
+#        - os:       osx
+#          compiler: gcc
+#
