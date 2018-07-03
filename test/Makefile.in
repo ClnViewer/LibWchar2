@@ -62,16 +62,17 @@ am_check_wchar2_OBJECTS = check_wchar2-check_wchar2.$(OBJEXT)
 check_wchar2_OBJECTS = $(am_check_wchar2_OBJECTS)
 am__DEPENDENCIES_1 =
 check_wchar2_DEPENDENCIES = $(top_srcdir)/src/.libs/libwchar2.a \
-	$(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
+	$(am__DEPENDENCIES_1)
 AM_V_lt = $(am__v_lt_$(V))
 am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))
 am__v_lt_0 = --silent
 check_wchar2_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(check_wchar2_CFLAGS) \
-	$(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
+	$(CFLAGS) $(check_wchar2_LDFLAGS) $(LDFLAGS) -o $@
 am_wchar2test_OBJECTS = wchar2test-t.$(OBJEXT)
 wchar2test_OBJECTS = $(am_wchar2test_OBJECTS)
-wchar2test_DEPENDENCIES = $(top_srcdir)/src/.libs/libwchar2.a
+wchar2test_DEPENDENCIES = $(top_srcdir)/src/.libs/libwchar2.a \
+	$(am__DEPENDENCIES_1)
 wchar2test_LINK = $(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) \
 	$(LIBTOOLFLAGS) --mode=link $(CCLD) $(wchar2test_CFLAGS) \
 	$(CFLAGS) $(wchar2test_LDFLAGS) $(LDFLAGS) -o $@
@@ -230,13 +231,14 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 wchar2test_SOURCES = t.c $(top_srcdir)/include/wchar2.h
-wchar2test_CFLAGS = $(AM_CFLAGS)
+wchar2test_CFLAGS = $(AM_CFLAGS) $(CHECK_CFLAGS)
 wchar2test_CPPFLAGS = -I$(top_srcdir)/include
-wchar2test_LDFLAGS = -L$(top_srcdir)/src/.libs/
-wchar2test_LDADD = $(top_srcdir)/src/.libs/libwchar2.a
+wchar2test_LDFLAGS = -L$(top_srcdir)/src/.libs/ $(LDFLAGS)
+wchar2test_LDADD = $(top_srcdir)/src/.libs/libwchar2.a $(CHECK_LIBS)
 check_wchar2_SOURCES = check_wchar2.c $(top_srcdir)/include/wchar2.h
 check_wchar2_CFLAGS = $(CFLAGS) $(CHECK_CFLAGS)
-check_wchar2_LDADD = $(top_srcdir)/src/.libs/libwchar2.a $(LDFLAGS) $(CHECK_LIBS)
+check_wchar2_LDFLAGS = -L$(top_srcdir)/src/.libs/ $(LDFLAGS)
+check_wchar2_LDADD = $(top_srcdir)/src/.libs/libwchar2.a $(CHECK_LIBS)
 all: all-am
 
 .SUFFIXES:

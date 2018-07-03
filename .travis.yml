@@ -1,5 +1,5 @@
 language: c
-sudo: false
+sudo: reguired
 os:
     - linux
     - osx
@@ -7,19 +7,13 @@ compiler:
     - gcc
     - clang
 script:
-  - mkdir ./libout
   - ./configure
   - make
   - make check
+before_script:
+  - if [ "$(uname)" = "Linux" ]; then sudo apt-get update; sudo apt-get install -y autotools-dev autoconf check; fi
+  - if [ "$(uname)" = "Darwin" ]; then brew update; brew cask install autotools-dev autoconf check; fi
 matrix:
     exclude:
         - os:       osx
           compiler: gcc
-deploy:
-    provider:     releases
-    file:         libwchar2
-    skip_cleanup: true
-    overwrite:    true
-    github_token: $GH_REPO_TOKEN
-    on:
-      tags:     true

@@ -79,15 +79,25 @@ AX_CHECK_COMPILE_FLAG([-pedantic],[AX_APPEND_FLAG([-pedantic])])
 
 AC_ARG_ENABLE([werror],
     [AS_HELP_STRING([--enable-werror], [enable -Werror in all Makefiles])])
+
 AS_IF([test "x$enable_werror" == "xyes"],[
     AX_CHECK_COMPILE_FLAG([-Werror],[AX_APPEND_FLAG([-Werror])])
 ])
 
 AC_ARG_ENABLE([testlib],
     [AS_HELP_STRING([--disable-testlib], [disable compile all library test])])
-AM_CONDITIONAL([COND_BUILD_TEST], [test "x$enable_testlib" != "xno"])
 
-# AC_MSG_NOTICE(["Build: $ax_cv_c_compiler_vendor"])
+PKG_CHECK_MODULES([CHECK], [check >= 0.9.4],[
+        enable_testlib="yes"
+    ],[
+        enable_testlib="no"
+])
+AM_CONDITIONAL([COND_BUILD_TEST], [test "x$enable_testlib" != "xno"])
+AC_SUBST([CHECK_CFLAGS])
+AC_SUBST([CHECK_LIBS])
+
+AC_MSG_NOTICE(["Build tests: $enable_testlib"])
+AC_MSG_NOTICE(["Build vendor: $ax_cv_c_compiler_vendor"])
 
 mkdir -p build/obj
 
