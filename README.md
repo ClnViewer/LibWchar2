@@ -131,7 +131,7 @@ This way you will take part in the testing.
 
 See: [wchar2.h](https://github.com/ClnViewer/LibWchar2/blob/f884fcf232e483759b827a53cc2333332d2cda27/include/wchar2.h#L342) macro `__wchar_type_id(..)`
 
-Type |||
+Type | a | b | c
 --- | --- | --- | --- |
 char* | const char* | char[] | const char[]
 wchar_t* | const wchar_t* | wchar_t[] | const wchar_t[]
