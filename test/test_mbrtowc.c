@@ -36,20 +36,20 @@ START_TEST(test_mbrtowc)
     ck_assert(errno != EILSEQ);
     ck_assert_int_eq(ret, 1);
 
-    // 2-byte UTF-8. BAD
+    // 2-byte UTF-8. GOOD!! Fix (table offset change to 0xffffffff)
     ret = _mbrtowc(out, "\xc2\xa2" "cdef", 6, 0);
-    ck_assert(errno == EILSEQ);
-    ck_assert_int_eq(ret, -1);
+    ck_assert(errno != EILSEQ);
+    ck_assert_int_eq(ret, 2);
 
-    // 3-byte UTF-8. BAD
+    // 3-byte UTF-8. GOOD!! Fix
     ret = _mbrtowc(out, "\xe2\x82\xac" "def", 6, 0);
-    ck_assert(errno == EILSEQ);
-    ck_assert_int_eq(ret, -1);
+    ck_assert(errno != EILSEQ);
+    ck_assert_int_eq(ret, 3);
 
-    // 4-byte UTF-8. BAD
+    // 4-byte UTF-8. GOOD!! Fix
     ret = _mbrtowc(out, "\xf0\xa4\xad\xa2" "ef", 6, 0);
-    ck_assert(errno == EILSEQ);
-    ck_assert_int_eq(ret, -1);
+    ck_assert(errno != EILSEQ);
+    ck_assert_int_eq(ret, 4);
 
     // Illegal 5-byte UTF-8.
     ret = _mbrtowc(out, "\xf8\xa1\xa2\xa3\xa4" "f", 6, 0);

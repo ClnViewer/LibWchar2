@@ -8,10 +8,10 @@ START_TEST(test_mbsrtowcs)
     int     ret;
     errno = 0;
 
-    // BAD!
+    // 4-byte UTF-8. Check detail... Fix (table offset change to 0xffffffff)
     ret = _mbsrtowcs(out, &valid, 4, 0);
-    ck_assert(errno == EILSEQ);
-    ck_assert_int_eq(ret, -1);
+    ck_assert(errno != EILSEQ);
+    ck_assert_int_eq(ret, 4);
 
     ck_assert_msg((&mbsrtowcs == &_mbsrtowcs), 0, "mbsrtowcs NO equals! libc used!");
 }
