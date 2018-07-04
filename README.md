@@ -137,6 +137,7 @@ char* | const char* | char[] | const char[]
 wchar_t* | const wchar_t* | wchar_t[] | const wchar_t[]
 string_ws* | const string_ws* ||
 
+
 ### Source & Materials used:
 
 The project uses the revised code of the authors:
