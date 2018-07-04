@@ -62,7 +62,7 @@ int _wstat_ws(const string_ws *ws, struct stat *st)
 
 int _wstat_selector(int sel, const void *w, size_t sz, const void *s)
 {
-    struct stat  sst = {0},
+    struct stat  sst,
                 *st  = ((s == NULL) ? (struct stat*)&sst : (struct stat*)s);
 
     switch (sel)

@@ -3,5 +3,5 @@
 
 wchar_t _btowc(int c)
 {
-    return ((c < 128U) ? c : 0);
+    return ((c < 128) ? (wchar_t)c : L'\0');
 }

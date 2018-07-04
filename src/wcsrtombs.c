@@ -8,6 +8,7 @@
 
 size_t _wcsrtombs(char *restrict s, const wchar_t **restrict ws, size_t n, mbstate_t *restrict st)
 {
+    (void) st;
 	const wchar_t *ws2;
 	char buf[2]; // original 4
 	size_t N = n, l;

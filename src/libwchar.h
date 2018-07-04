@@ -66,16 +66,16 @@
 
 #define FLAGMASK (ALT_FORM|ZERO_PAD|LEFT_ADJ|PAD_POS|MARK_POS|GROUPED)
 
-#if UINT_MAX == ULONG_MAX
+#if (UINT_MAX == ULONG_MAX)
 #define LONG_IS_INT
 #endif
 
-#if SIZE_MAX != ULONG_MAX || UINTMAX_MAX != ULLONG_MAX
+#if ((SIZE_MAX != ULONG_MAX) || (UINTMAX_MAX != ULLONG_MAX))
 #define ODD_TYPES
 #endif
 
 #if !defined(__WCHAR_INTERNAL_LIB)
-extern const uint16_t bittab[];
+extern const uint32_t bittab[];
 #endif
 
 #include "../include/wchar2.h"

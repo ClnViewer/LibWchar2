@@ -8,6 +8,7 @@
 
 size_t _wcsnrtombs(char *restrict dst, const wchar_t **restrict wcs, size_t wn, size_t n, mbstate_t *restrict st)
 {
+    (void) st;
 	size_t l, cnt = 0, n2;
 	char *s, buf[256];
 	const wchar_t *ws = *wcs;

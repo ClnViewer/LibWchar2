@@ -65,6 +65,8 @@ int main(int argc, char *argv[])
     wchar_t *w0 = L"Hello word!";
     wchar_t *w1 = L"Hello word!";
     wchar_t *t  = L"/this/path/to/file.zip";
+    (void) argc;
+    (void) argv;
 
     printf("\t(%d) strerror: [%s]\n", __LINE__, strerror(errno)); errno = 0;
 

@@ -32,3 +32,8 @@ else
     SUBDIRS = src
 endif
 
+check_valgrind:
+	@libtool --mode=execute valgrind --show-reachable=yes --leak-check=full -v --tool=memcheck test/check_wchar2
+
+test_valgrind:
+	@libtool --mode=execute valgrind --show-reachable=yes --leak-check=full -v --tool=memcheck test/wchar2test

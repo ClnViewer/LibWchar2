@@ -52,7 +52,8 @@ static void out_init_buffer(Out* o, char* buffer, size_t buffer_size) {
   o->buffer_size = buffer_size;
 }
 
-static void out(Out* o, const char* text, int length) {
+static void out(Out* o, const char* text, size_t length)
+{
   if (length <= 0)
     return;
   if (o->file != NULL) {
@@ -64,7 +65,8 @@ static void out(Out* o, const char* text, int length) {
       length = avail;
     memcpy((char*)(o->buffer + o->buffer_pos),
            (const char*)text,
-           length);
+           length
+    );
     o->buffer_pos += length;
   }
 }
@@ -73,8 +75,8 @@ static void out(Out* o, const char* text, int length) {
 
 /* Some useful macros */
 
-#define MAX(a,b) ((a)>(b) ? (a) : (b))
-#define MIN(a,b) ((a)<(b) ? (a) : (b))
+#define MAX(a,b) ((a) > (b) ? (a) : (b))
+#define MIN(a,b) ((a) < (b) ? (a) : (b))
 #define CONCAT2(x,y) x ## y
 #define CONCAT(x,y) CONCAT2(x,y)
 
@@ -207,13 +209,17 @@ static void out(FILE *f, const char *s, size_t l)
 
 static void pad(Out* f, char c, int w, int l, int fl)
 {
-	char pad[256];
-	if (fl & (LEFT_ADJ | ZERO_PAD) || l >= w) return;
-	l = w - l;
-	memset(pad, c, l>sizeof pad ? sizeof pad : l);
-	for (; l >= sizeof pad; l -= sizeof pad)
-		out(f, pad, sizeof pad);
-	out(f, pad, l);
+    char _pad[256];
+    const int _psz = (int) sizeof(_pad);
+
+    if ((fl & (LEFT_ADJ | ZERO_PAD)) || (l >= w)) return;
+    l = (w - l);
+    memset(_pad, c, ((l > _psz) ? _psz : l));
+    for (; (l >= _psz); l -= _psz)
+    {
+        out(f, _pad, _psz);
+    }
+    out(f, _pad, l);
 }
 
 static const char xdigits[16] = {
@@ -244,7 +250,7 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 {
 	uint16_t big[(LDBL_MAX_EXP+LDBL_MANT_DIG)/9+1];
 	uint16_t *a, *d, *r, *z;
-	int e2=0, e, i, j, l;
+	int e2 = 0, e, i, j, l;
 	char buf[9+LDBL_MANT_DIG/4], *s;
 	const char *prefix="-0X+0X 0X-0x+0x 0x";
 	int pl;
@@ -388,7 +394,8 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 			/* Decide whether to round by probing round+small */
 			if (round+small != round) {
 				*d = *d + i;
-				while (*d > 999999999) {
+				while (*d == 0xFFFF) // == 65535 // Fix? (*d > 999999999)
+				{
 					*d--=0;
 					(*d)++;
 				}
@@ -480,19 +487,15 @@ static int getint(char **s) {
 
 static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, int *nl_type)
 {
-	char *a, *z, *s=(char *)fmt;
-	unsigned l10n=0, fl;
-	int w, p;
-	union arg arg;
-	int argpos;
-	unsigned st, ps;
-	int cnt=0, l=0;
-	int i;
-	char buf[sizeof(uintmax_t)*3+3+LDBL_MANT_DIG/4];
-	const char *prefix;
-	int t, pl;
-	wchar_t wc[2], *ws;
-	char mb[4];
+    char buf[(sizeof(uintmax_t) * 3 + 3 + (LDBL_MANT_DIG / 4))],
+         mb[4],
+        *a, *z, *s = (char *)fmt;
+    const char *prefix;
+    wchar_t wc[2], *ws;
+
+    int i, w, p, t, pl, argpos, cnt = 0, l = 0;
+    unsigned int st, ps, fl, l10n = 0;
+    union arg arg;
 
 	for (;;) {
 		/* Update output count, end loop when fmt is exhausted */
@@ -598,7 +601,7 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 			}
 			continue;
 		case 'p':
-			p = MAX(p, 2*sizeof(void*));
+			p = MAX(p, (int)(2 * sizeof(void*)));
 			t = 'x';
 			fl |= ALT_FORM;
 		case 'x': case 'X':
@@ -650,7 +653,7 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 #else
 			if (!z) z=a+p;
 			else p=z-a;
-#endif  /* ANDROID */
+#endif
 			fl &= ~ZERO_PAD;
 			break;
 		case 'C':
@@ -660,13 +663,25 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 			p = -1;
 		case 'S':
 			ws = arg.p;
-			for (i=l=0; i<0U+p && *ws && (l = _wctomb(mb, *ws++))>=0 && l<=0U+p-i; i+=l);
+			for (i = l = 0;
+                                (
+                                    (i < (0 + p))                   &&
+                                    *ws                             &&
+                                    ((l = _wctomb(mb, *ws++)) >= 0) &&
+                                    (l <= (0 + (p - i)))
+                                );
+                        i += l);
 			if (l<0) return -1;
 			p = i;
 			pad(f, ' ', w, p, fl);
 			ws = arg.p;
-			for (i=0; i<0U+p && *ws && i+(l = _wctomb(mb, *ws++))<=p; i+=l)
-				out(f, mb, l);
+			for (i = 0;
+                                (
+                                    (i < (0 + p))                   &&
+                                    *ws                             &&
+                                    (i + ((l = _wctomb(mb, *ws++)) <= p))
+                                );
+                        i += l) { out(f, mb, l); }
 			pad(f, ' ', w, p, fl^LEFT_ADJ);
 			l = w>p ? w : p;
 			continue;
@@ -702,17 +717,15 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 size_t _vfprintf(FILE *restrict f, const char *restrict fmt, va_list ap)
 {
 	va_list ap2;
-	int nl_type[NL_ARGMAX+1] = {0};
+	int ret, nl_type[(NL_ARGMAX + 1)] = {0};
 	union arg nl_arg[NL_ARGMAX+1];
-	size_t ret;
         Out out[1];
         out_init_file(out, f);
 
 	va_copy(ap2, ap);
         ret = printf_core(0, fmt, &ap2, nl_arg, nl_type);
         va_end(ap2);
-        if (ret < 0)
-          return -1;
+        if (0 < ret) return -1;
 
         va_copy(ap2, ap);
 	ret = printf_core(out, fmt, &ap2, nl_arg, nl_type);
@@ -734,7 +747,7 @@ size_t _vsnprintf(char *restrict s, size_t n, const char *restrict fmt, va_list 
         va_list ap2;
         int nl_type[NL_ARGMAX+1] = {0};
         union arg nl_arg[NL_ARGMAX+1];
-        size_t r;
+        size_t t, r;
         char b;
         Out out[1];
 
@@ -748,7 +761,8 @@ size_t _vsnprintf(char *restrict s, size_t n, const char *restrict fmt, va_list 
         }
 
         /* Ensure pointers don't wrap if "infinite" n is passed in */
-        if (n > (char *)0+SIZE_MAX-s-1) n = (char *)0+SIZE_MAX-s-1;
+        t = ((char*)0 + SIZE_MAX - s - 1);
+        if (n > t) n = t;
         out_init_buffer(out, s, n);
 
         va_copy(ap2, ap);

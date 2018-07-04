@@ -75,8 +75,14 @@ AS_IF([test "$BUILD_WC2" == "0"],[
 ])
 
 AX_CHECK_COMPILE_FLAG([-Wall],[AX_APPEND_FLAG([-Wall])])
-#AX_CHECK_COMPILE_FLAG([-Wextra],[AX_APPEND_FLAG([-Wextra])])
 AX_CHECK_COMPILE_FLAG([-pedantic],[AX_APPEND_FLAG([-pedantic])])
+
+AC_ARG_ENABLE([devel],
+    [AS_HELP_STRING([--enable-devel], [enable -Wextra in all Makefiles])])
+
+AS_IF([test "x$enable_devel" == "xyes"],[
+    AX_CHECK_COMPILE_FLAG([-Wextra],[AX_APPEND_FLAG([-Wextra])])
+])
 
 AC_ARG_ENABLE([werror],
     [AS_HELP_STRING([--enable-werror], [enable -Werror in all Makefiles])])
@@ -97,7 +103,9 @@ AM_CONDITIONAL([COND_BUILD_TEST], [test "x$enable_testlib" != "xno"])
 AC_SUBST([CHECK_CFLAGS])
 AC_SUBST([CHECK_LIBS])
 
-AC_MSG_NOTICE(["Build tests: $enable_testlib"])
+AC_MSG_NOTICE(["Build devel:  $enable_devel"])
+AC_MSG_NOTICE(["Build error:  $enable_werror"])
+AC_MSG_NOTICE(["Build tests:  $enable_testlib"])
 AC_MSG_NOTICE(["Build vendor: $ax_cv_c_compiler_vendor"])
 
 mkdir -p build/obj

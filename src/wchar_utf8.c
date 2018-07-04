@@ -83,7 +83,7 @@ int u8sverify(const char *u8s)
             return 0;
         }
         // 0xfffe <= byte <= 0xffff
-        if ((prev == 0xff) && ((0xfe <= cur) && (cur <= 0xff))) {
+        if ((prev == 0xff) &&((0xfe <= cur) && (cur < 0xff))) {
             return 0;
         }
         prev = cur;
