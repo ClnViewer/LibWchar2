@@ -426,11 +426,11 @@ static int wprintf_core(FOut *f, const wchar_t *fmt, va_list *ap, union arg *nl_
 		}
 
 		snprintf(charfmt, sizeof charfmt, "%%%s%s%s%s%s*.*%c%c",
-			"#"+!(fl & ALT_FORM),
-			"+"+!(fl & MARK_POS),
-			"-"+!(fl & LEFT_ADJ),
-			" "+!(fl & PAD_POS),
-			"0"+!(fl & ZERO_PAD),
+			((!(fl & ALT_FORM)) ? "#" : ""),
+			((!(fl & MARK_POS)) ? "+" : ""),
+			((!(fl & LEFT_ADJ)) ? "-" : ""),
+			((!(fl & PAD_POS))  ? " " : ""),
+			((!(fl & ZERO_PAD)) ? "0" : ""),
 			sizeprefix[(t|32)-'a'], t);
 
 		switch (t|32) {

@@ -1,9 +1,11 @@
 
 #include "libwchar.h"
 
-static const unsigned char table[] = {
-#include "table-alpha.h"
-};
+/*
+ static const unsigned char table[] = {
+ #include "table-alpha.h"
+ };
+*/
 
 int _iswalpha(wchar_t wc)
 {

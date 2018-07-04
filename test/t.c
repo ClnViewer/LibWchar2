@@ -98,8 +98,8 @@ int main(int argc, char *argv[])
     //wchar_t b1[(sz1 + 1)];
     //sz2 = _mbstowcs(b1, c, (sz1 + 1));
     //fprintf(stdout, "\t fprintf \t [%ls] [%d/%d]\n", b1, sz1, sz2);
-    fprintf(stdout, "\t fprintf \t [%ls]\n", wcs1);
-    fwprintf(stdout, L"\t fwprintf \t [%S] [%s] [%d/%d]\n", wcs1, c, sz1, sz2);
+    fprintf(stdout, "\t fprintf \t wcs1: [%ls]\n", wcs1);
+    fwprintf(stdout, L"\t fwprintf \t wcs1: [%S] [%s] [%d/%d]\n", wcs1, c, sz1, sz2);
     printf("\t(%d) strerror: [%s]\n", __LINE__, strerror(errno)); errno = 0;
 
     wchar_t *wfile = L"./test-\x20AC-\x20AC.txt";

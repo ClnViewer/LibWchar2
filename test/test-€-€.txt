@@ -1,1 +1,1 @@
-	 (wfopen)(overwrite) fprintf 	 [Привет мир!]
+	 (wfopen)(overwrite) fprintf 	 []

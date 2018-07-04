@@ -1,6 +1,6 @@
 START_TEST(test_mbsrtowcs)
 {
-    const const char* VALID = "A" "\xc2\xa2" "\xe2\x82\xac" "\xf0\xa4\xad\xa2" "ef";
+    const char* VALID = "A" "\xc2\xa2" "\xe2\x82\xac" "\xf0\xa4\xad\xa2" "ef";
     // const const char* INVALID = "A" "\xc2\x20" "ef";
     // const const char* INCOMPLETE = "A" "\xc2";
     const char* valid = VALID;
