@@ -117,7 +117,7 @@ CC | key
     #define WS_FS_REDEFINE 1
     #include <wchar2.h>
 
-или,если есть необходимость использовать только `UTF-8` кодировку:
+или, если есть необходимость использовать только `UTF-8` кодировку:
 
     #define WS_FS_REDEFINE 1
     #define WS_FS_UTF8 1
