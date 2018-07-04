@@ -107,9 +107,36 @@ The library itself is connected in the standard way:
     CFLAGS = -I. -fwchar-type=short -fno-signed-wchar /* clang */
     LDFLAGS = -L. -lwchar2
 
+Definitely convenient is the redefinition of standard functions working with the file system, such as: `mkdir`, `remove`, `rename`, `stat`, `fopen`, `fputc`, `fputs`.
+
+For this, before including the header, define the following definitions:
+
+    #define WS_FS_REDEFINE 1
+    #include <wchar2.h>
+
+or, if there is a need to use only `UTF-8` encoding:
+
+    #define WS_FS_REDEFINE 1
+    #define WS_FS_UTF8 1
+    #include <wchar2.h>
+
+**Attention**, the `WS_FS_UTF8` key will not work separately.
+
+In the `WS_FS_UTF8` definition mode, functions` mkdir`, `remove`,  `rename`, `stat`, `fopen` only accept input data in `wchar_t` format, otherwise the input data can be in the formats shown in the table, in this case the determination is made automatically.
+
 ### Test & Testing
 
-If you have the time and the desire or the opportunity to help make the library better, you can take part in writing tests for library functions. This way you will take part in the testing.
+If you have the time and the desire or the opportunity to help make the library better, you can take part in writing tests for library functions.
+This way you will take part in the testing.
+
+See: [wchar2.h](https://github.com/ClnViewer/LibWchar2/blob/f884fcf232e483759b827a53cc2333332d2cda27/include/wchar2.h#L342) macro `__wchar_type_id(..)`
+
+Type |
+--- | --- | --- | --- |
+char* | const char* | char[] | const char[] |
+wchar_t* | const wchar_t* | wchar_t[] | const wchar_t[] |
+string_ws* | const string_ws* |||
+
 
 ### Source & Materials used:
 

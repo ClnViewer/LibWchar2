@@ -110,6 +110,31 @@ CC | key
     CFLAGS = -I. -fwchar-type=short -fno-signed-wchar /* clang */
     LDFLAGS = -L. -lwchar2
 
+Определенно удобно может быть переопределение стандартных функций работающих с файловой системой, таких как: `mkdir`, `remove`, `rename`, `stat`, `fopen`, `fputc`, `fputs`.
+
+Для этого, до включения заголовка, определите следующие определения:
+ 
+    #define WS_FS_REDEFINE 1
+    #include <wchar2.h>
+
+или,если есть необходимость использовать только `UTF-8` кодировку:
+
+    #define WS_FS_REDEFINE 1
+    #define WS_FS_UTF8 1
+    #include <wchar2.h>
+
+**Внимание**, отдельно ключ `WS_FS_UTF8` работать не будет.
+
+В режиме определения `WS_FS_UTF8` функции `mkdir`, `remove`, `rename`, `stat`, `fopen` воспринимают входные данные только в формате строки `wchar_t`, в другом случае входные данные могут быть в форматах приведенных в таблице, определение в этом случае производиться автоматически.
+
+Подробнее смотри: [wchar2.h](https://github.com/ClnViewer/LibWchar2/blob/f884fcf232e483759b827a53cc2333332d2cda27/include/wchar2.h#L342) macro `__wchar_type_id(..)`
+
+Тип |
+--- | --- | --- | --- |
+char* | const char* | char[] | const char[] |
+wchar_t* | const wchar_t* | wchar_t[] | const wchar_t[] |
+string_ws* | const string_ws* |||
+
 
 ### Тесты:
 

@@ -454,6 +454,24 @@ int       u8wmkdir(const wchar_t*, mode_t);
 #   undef snprintf
 #endif
 
+#if defined(WS_FS_REDEFINE)
+#      define fputc _fputwc
+#      define fputs _fputws
+#   if defined(WS_FS_UTF8)
+#      define mkdir u8wmkdir
+#      define remove u8wremove
+#      define rename u8wrename
+#      define stat u8wstat
+#      define fopen u8wfopen
+#   else
+#      define mkdir _wmkdir_macro
+#      define remove _wremove_macro
+#      define rename _wrename_macro
+#      define stat _wstat_macro
+#      define fopen _wfopen_macro
+#   endif
+#endif
+
 #define wmkdir _wmkdir_macro
 #define wmkdir_w _wmkdir
 #define wmkdir_s _wmkdir_s
