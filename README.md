@@ -70,6 +70,7 @@ Run the `configure` installation script from the project's root directory.
 In addition to typical keys, the script understands the following options:
 
 * `--enable-werror`  - collect the library and tests with the `-Werror` key.
+* `--enable-devel`    - collect the library and tests with the `-Wextra` key.
 * `--disable-testlib` - do not collect library tests.
 * `--enable-debug`    - collect a library with debugging information.
 
