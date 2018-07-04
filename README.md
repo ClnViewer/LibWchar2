@@ -131,11 +131,11 @@ This way you will take part in the testing.
 
 See: [wchar2.h](https://github.com/ClnViewer/LibWchar2/blob/f884fcf232e483759b827a53cc2333332d2cda27/include/wchar2.h#L342) macro `__wchar_type_id(..)`
 
-Type |
+Type |||
 --- | --- | --- | --- |
-char* | const char* | char[] | const char[] |
-wchar_t* | const wchar_t* | wchar_t[] | const wchar_t[] |
-string_ws* | const string_ws* |||
+char* | const char* | char[] | const char[]
+wchar_t* | const wchar_t* | wchar_t[] | const wchar_t[]
+string_ws* | const string_ws* ||
 
 
 ### Source & Materials used:

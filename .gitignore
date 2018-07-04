@@ -14,6 +14,7 @@ gmon.out
 libwchar2.pc
 *~
 "test/test-\342\202\254-\342\202\254.txt"
+/test/test-*.txt
 
 # Prerequisites
 *.d
