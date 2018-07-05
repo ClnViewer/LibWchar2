@@ -4,7 +4,8 @@
  *    // use default libc
  *    gcc -std=gnu99 -Wall -Wextra -pedantic fs-redifine.c -o fs-redifine.libc
  *    // use libwchar2 && WS_FS_REDEFINE
- *    gcc -std=gnu99 -Wall -Wextra -pedantic -fshort-wchar -DWS_FS_REDEFINE -L../src/.libs -Wl,-rpath=../src/.libs -lwchar2 fs-redifine.c -o fs-redifine.wchar2
+ *    gcc -std=gnu99 -Wall -Wextra -pedantic -fshort-wchar -DWS_FS_REDEFINE \
+ *       -L../src/.libs -Wl,-rpath=../src/.libs -lwchar2 fs-redifine.c -o fs-redifine.wchar2
  */
 
 #if !defined(_GNU_SOURCE)
