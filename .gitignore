@@ -18,6 +18,7 @@ libwchar2.pc
 /test"/test-€-€.txt"
 /test/check_wchar2
 /test/wchar2test
+/example/*.txt
 
 # Prerequisites
 *.d
