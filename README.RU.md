@@ -125,6 +125,8 @@ CC | key
 
 **Внимание**, отдельно ключ `WS_FS_UTF8` работать не будет.
 
+Пример [использования](https://github.com/ClnViewer/LibWchar2/blob/master/example/fs-redifine.c)
+
 В режиме определения `WS_FS_UTF8` функции `mkdir`, `remove`, `rename`, `stat`, `fopen` воспринимают входные данные только в формате строки `wchar_t`, в другом случае входные данные могут быть в форматах приведенных в таблице, определение в этом случае производиться автоматически.
 
 Подробнее смотри: [wchar2.h](https://github.com/ClnViewer/LibWchar2/blob/f884fcf232e483759b827a53cc2333332d2cda27/include/wchar2.h#L342) macro `__wchar_type_id(..)`

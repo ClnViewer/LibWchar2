@@ -55,6 +55,9 @@
 #define __WS_(x) L##x
 #define __WS(x) __WS_(x)
 
+#define __WS_STR_FMT  "ls"
+#define __WS_CHAR_FMT "lc"
+
 #define __WCSZ(x) (x->sz * sizeof(wchar_t) + 1)
 
 #ifdef __cplusplus
