@@ -13,7 +13,7 @@ _fprintf(stdout, "[%ls] [%d]\n", test, ret);
 _fwprintf(stdout, L"[%ls] [%d]\n", test, ret);
 
     free(test);
-    ck_assert_int_eq(ret, 34); // 33!
+    ck_assert_int_eq(ret, 33); // 33!
     ck_assert_msg((&vfwprintf == &_vfwprintf), 0, "vfwprintf NO equals! libc used!");
 }
 END_TEST
