@@ -13,8 +13,10 @@ autom4te.cache
 gmon.out
 libwchar2.pc
 *~
-# "test/test-\342\202\254-\342\202\254.txt"
-# /test/test-*.txt
+"test/test-\342\202\254-\342\202\254.txt"
+/test/test-*.txt
+/test"/test-€-€.txt"
+/test/check_wchar2
 
 # Prerequisites
 *.d
