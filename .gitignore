@@ -19,6 +19,7 @@ libwchar2.pc
 /test/check_wchar2
 /test/wchar2test
 /example/*.txt
+/test/core.*
 
 # Prerequisites
 *.d
