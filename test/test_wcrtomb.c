@@ -27,7 +27,7 @@ START_TEST(test_wcrtomb)
     memset(bytes, 0, sizeof(bytes));
     ret = _wcrtomb(bytes, 0x00a2, 0);
     ck_assert(errno != EILSEQ);
-    ck_assert_int_eq(ret, 2);
+    ck_assert_int_eq(ret, 2); // TODO: return == -1 ?
     ck_assert_int_eq(bytes[0], '\xc2');
     ck_assert_int_eq(bytes[1], '\xa2');
 
