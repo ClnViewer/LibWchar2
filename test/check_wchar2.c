@@ -45,6 +45,16 @@
 
 #include "../include/wchar2.h"
 
+#define __NELE(A) (sizeof(A) / sizeof(A[0]))
+
+static const char *test_status(int x)
+{
+    return ((!x) ?
+        (const char *)&"probably BAD?" :
+        (const char *)&"GOOD!"
+    );
+}
+
 #include "check_wchar2_utf8.h"
 #include "test_Lmacro.c"
 #include "check_wchar2_include.c"

@@ -18,14 +18,14 @@ size_t _wcrtomb(char *restrict s, wchar_t wc, mbstate_t *restrict st)
 		*s   = 0x80 | (wc & 0x3f);
 		return 2;
 	} else if (((unsigned)wc < 0xd800) || (((unsigned)wc - 0xe000) < 0x2000)) {
-		*s++ = 0xe0 | (wc >> 12);
+		*s++ = 0xe0 |  (wc >> 12);
 		*s++ = 0x80 | ((wc >> 6) & 0x3f);
-		*s   = 0x80 | (wc & 0x3f);
+		*s   = 0x80 |  (wc & 0x3f);
 		return 3;
 	} else if (((unsigned)wc - 0x10000) < 0x100000) {
-		*s++ = 0xf0 | (wc>>18);
-		*s++ = 0x80 | ((wc>>12) & 0x3f);
-		*s++ = 0x80 | ((wc>>6) & 0x3f);
+		*s++ = 0xf0 |  (wc >> 18);
+		*s++ = 0x80 | ((wc >> 12) & 0x3f);
+		*s++ = 0x80 | ((wc >> 6) & 0x3f);
 		*s   = 0x80 | (wc & 0x3f);
 		return 4;
 	}
