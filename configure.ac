@@ -51,6 +51,7 @@ AC_TYPE_UINT32_T
 AC_TYPE_UINT64_T
 AC_CHECK_TYPES([ptrdiff_t])
 AC_CHECK_SIZEOF(wchar_t, 4)
+AC_C_RESTRICT
 
 AS_IF([test "$ac_cv_sizeof_wchar_t" == "2"],[
     AC_MSG_ERROR([size wchar_t is $ac_cv_sizeof_wchar_t - not needed this library.])

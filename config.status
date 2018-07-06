@@ -928,6 +928,7 @@ D["HAVE_SYS_RESOURCE_H"]=" 1"
 D["restrict"]=" __restrict"
 D["HAVE_PTRDIFF_T"]=" 1"
 D["SIZEOF_WCHAR_T"]=" 4"
+D["restrict"]=" __restrict"
   for (key in D) D_is_set[key] = 1
   FS = ""
 }

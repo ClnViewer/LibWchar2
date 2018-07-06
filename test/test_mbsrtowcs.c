@@ -5,7 +5,7 @@ START_TEST(test_mbsrtowcs)
     const char *VALID = "A" "\xc2\xa2" "\xe2\x82\xac" "\xf0\xa4\xad\xa2" "ef";
     const char *INVALID0 = "\x20";
     const char *INVALID1 = "A" "\xc2\x20" "ef";
-    const const char *INCOMPLETE = "A" "\xc2";
+    const char *INCOMPLETE = "A" "\xc2";
     const char *instr;
     wchar_t out[4];
     int     ret;

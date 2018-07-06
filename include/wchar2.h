@@ -343,6 +343,10 @@ int       u8wmkdir(const wchar_t*, mode_t);
 
 /** Other non standart macro */
 
+#if defined(__clang__)
+#   pragma clang diagnostic ignored "-Wlanguage-extension-token"
+#endif
+
  /** @brief auto check type macro */
 #define __wchar_type_id(A)                                           \
        __builtin_types_compatible_p(typeof(A),         wchar_t*) * 1 \

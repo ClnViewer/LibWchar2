@@ -30,7 +30,7 @@
 #include <float.h>
 #include "libwchar.h"
 
-#if 1  /* ANDROID */
+#if 1
 // A wrapper around either a FILE* or a string buffer, used to output
 // the result of formatted expansion.
 typedef struct {
@@ -71,14 +71,7 @@ static void out(Out* o, const char* text, size_t length)
   }
 }
 
-#endif  /* ANDROID */
-
-/* Some useful macros */
-
-#define MAX(a,b) ((a) > (b) ? (a) : (b))
-#define MIN(a,b) ((a) < (b) ? (a) : (b))
-#define CONCAT2(x,y) x ## y
-#define CONCAT(x,y) CONCAT2(x,y)
+#endif
 
 /* State machine to accept length modifiers + conversion specifiers.
  * Result is 0 on failure, or an argument type to pop on success. */
@@ -200,7 +193,7 @@ static void pop_arg(union arg *arg, int type, va_list *ap)
 	}
 }
 
-#if 0  /* ANDROID */
+#if 0
 static void out(FILE *f, const char *s, size_t l)
 {
 	__fwritex((void *)s, l, f);
@@ -210,7 +203,7 @@ static void out(FILE *f, const char *s, size_t l)
 static void pad(Out* f, char c, int w, int l, int fl)
 {
     char _pad[256];
-    const int _psz = (int) sizeof(_pad);
+    const int _psz = (int)(sizeof(_pad));
 
     if ((fl & (LEFT_ADJ | ZERO_PAD)) || (l >= w)) return;
     l = (w - l);
@@ -223,13 +216,13 @@ static void pad(Out* f, char c, int w, int l, int fl)
 }
 
 static const char xdigits[16] = {
-	"0123456789ABCDEF"
+    "0123456789ABCDEF"
 };
 
 static char *fmt_x(uintmax_t x, char *s, int lower)
 {
-	for (; x; x>>=4) *--s = xdigits[(x&15)]|lower;
-	return s;
+    for (; x; x>>=4) *--s = xdigits[(x&15)]|lower;
+    return s;
 }
 
 static char *fmt_o(uintmax_t x, char *s)
@@ -248,15 +241,17 @@ static char *fmt_u(uintmax_t x, char *s)
 
 static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 {
-	uint16_t big[(LDBL_MAX_EXP+LDBL_MANT_DIG)/9+1];
-	uint16_t *a, *d, *r, *z;
-	int e2 = 0, e, i, j, l;
-	char buf[9+LDBL_MANT_DIG/4], *s;
+	uint32_t big[(LDBL_MAX_EXP+LDBL_MANT_DIG)/9+1];
+	uint32_t *a, *d, *r, *z;
+	int e2 = 0, e, i, j, l, pl;
 	const char *prefix="-0X+0X 0X-0x+0x 0x";
-	int pl;
-	char ebuf0[3*sizeof(int)], *ebuf=&ebuf0[3*sizeof(int)], *estr;
+	char ebuf0[(3 * sizeof(int))],
+            *ebuf = &ebuf0[(3 *sizeof(int))],
+             buf[(9 + LDBL_MANT_DIG / 4)],
+            *estr,
+            *s;
 
-	pl=1;
+	pl = 1;
 	if (signbit(y)) {
 		y=-y;
 	} else if (fl & MARK_POS) {
@@ -272,7 +267,7 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 		out(f, prefix, pl);
 		out(f, s, 3);
 		pad(f, ' ', w, 3+pl, fl^LEFT_ADJ);
-		return MAX(w, 3+pl);
+		return __MAX(w, 3+pl);
 	}
 
 	y = frexpl(y, &e2) * 2;
@@ -308,7 +303,7 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 
 		s=buf;
 		do {
-			int x=y;
+			int x = y;
 			*s++=xdigits[x]|(t&32);
 			y=16*(y-x);
 			if (s-buf==1 && (y||p>0||(fl&ALT_FORM))) *s++='.';
@@ -326,23 +321,21 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 		pad(f, '0', l-(ebuf-estr)-(s-buf), 0, 0);
 		out(f, estr, ebuf-estr);
 		pad(f, ' ', w, pl+l, fl^LEFT_ADJ);
-		return MAX(w, pl+l);
+		return __MAX(w, pl+l);
 	}
-	if (p<0) p=6;
-
-	if (y) y *= 0x1p28, e2-=28;
-
-	if (e2<0) a=r=z=big;
-	else a=r=z=big+sizeof(big)/sizeof(*big) - LDBL_MANT_DIG - 1;
+	if (p < 0)  { p = 6; }
+	if (y)      { y *= 0x1p28, e2 -= 28; }
+	if (e2 < 0) { a = r = z = big; }
+	else        { a = r = z = (big + sizeof(big)/sizeof(*big) - LDBL_MANT_DIG - 1); }
 
 	do {
 		*z = y;
 		y = 1000000000*(y-*z++);
 	} while (y);
 
-	while (e2>0) {
-		uint16_t carry=0;
-		int sh=MIN(29,e2);
+	while (e2 > 0) {
+		uint32_t carry=0;
+		int sh = __MIN(29,e2);
 		for (d=z-1; d>=a; d--) {
 			uint64_t x = ((uint64_t)*d<<sh)+carry;
 			*d = x % 1000000000;
@@ -352,11 +345,11 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 		if (carry) *--a = carry;
 		e2-=sh;
 	}
-	while (e2<0) {
-		uint16_t carry=0, *b;
-		int sh=MIN(9,-e2);
+	while (e2 < 0) {
+		uint32_t carry = 0, *b;
+		int sh = __MIN(9,-e2);
 		for (d=a; d<z; d++) {
-			uint16_t rm = *d & ((1 << sh) - 1);
+			uint32_t rm = *d & ((1 << sh) - 1);
 			*d = (*d>>sh) + carry;
 			carry = (1000000000>>sh) * rm;
 		}
@@ -368,13 +361,14 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 		e2+=sh;
 	}
 
-	if (a<z) for (i=10, e=9*(r-a); *a>=i; i*=10, e++);
-	else e=0;
+	if (a<z) {
+            for (i = 10, e = (9 * (r - a)); *a >= (uint32_t)i; i*= 10, e++);
+	} else { e = 0; }
 
 	/* Perform rounding: j is precision after the radix (possibly neg) */
 	j = p - ((t|32)!='f')*e - ((t|32)=='g' && p);
 	if (j < 9*(z-r-1)) {
-		uint16_t x;
+		uint32_t x;
 		/* We avoid C's broken division of negative numbers */
 		d = r + 1 + ((j+9*LDBL_MAX_EXP)/9 - LDBL_MAX_EXP);
 		j += 9*LDBL_MAX_EXP;
@@ -383,11 +377,11 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 		x = *d % i;
 		/* Are there any significant digits past j? */
 		if (x || d+1!=z) {
-			long double round = CONCAT(0x1p,LDBL_MANT_DIG);
+			long double round = __WEV(0x1p,LDBL_MANT_DIG);
 			long double small;
-			if (*d/i & 1) round += 2;
-			if (x<i/2) small=0x0.8p0;
-			else if (x==i/2 && d+1==z) small=0x1.0p0;
+			if ((*d / i) & 1) round += 2;
+			if (x < (uint32_t)(i / 2))  small = 0x0.8p0;
+			else if ((x == (uint32_t)(i / 2)) && ((d + 1) == z)) small=0x1.0p0;
 			else small=0x1.8p0;
 			if (pl && *prefix=='-') round*=-1, small*=-1;
 			*d -= x;
@@ -400,7 +394,7 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 					(*d)++;
 				}
 				if (d<a) a=d;
-				for (i=10, e=9*(r-a); *a>=i; i*=10, e++);
+				for (i = 10, e = (9 * (r-a)); *a >= (uint32_t)i; i *= 10, e++);
 			}
 		}
 		if (z>d+1) z=d+1;
@@ -418,12 +412,12 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 		}
 		if (!(fl&ALT_FORM)) {
 			/* Count trailing zeros in last place */
-			if (z>a && z[-1]) for (i=10, j=0; z[-1]%i==0; i*=10, j++);
+			if (z > a && z[-1]) for (i=10, j=0; z[-1]%i==0; i*=10, j++);
 			else j=9;
-			if ((t|32)=='f')
-				p = MIN(p,MAX(0,9*(z-r-1)-j));
+			if ((t | 32)=='f')
+				p = __MIN(p,__MAX(0,9*(z-r-1)-j));
 			else
-				p = MIN(p,MAX(0,9*(z-r-1)+e-j));
+				p = __MIN(p,__MAX(0,9*(z-r-1)+e-j));
 		}
 	}
 	l = 1 + p + (p || (fl&ALT_FORM));
@@ -453,7 +447,7 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 		for (; d<z && p>0; d++, p-=9) {
 			char *s = fmt_u(*d, buf+9);
 			while (s>buf) *--s='0';
-			out(f, s, MIN(9,p));
+			out(f, s, __MIN(9,p));
 		}
 		pad(f, '0', p+9, 9, 0);
 	} else {
@@ -466,7 +460,7 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 				out(f, s++, 1);
 				if (p>0||(fl&ALT_FORM)) out(f, ".", 1);
 			}
-			out(f, s, MIN(buf+9-s, p));
+			out(f, s, __MIN(buf+9-s, p));
 			p -= buf+9-s;
 		}
 		pad(f, '0', p+18, 18, 0);
@@ -475,7 +469,7 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 
 	pad(f, ' ', w, pl+l, fl^LEFT_ADJ);
 
-	return MAX(w, pl+l);
+	return __MAX(w, pl+l);
 }
 
 static int getint(char **s) {
@@ -601,7 +595,7 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 			}
 			continue;
 		case 'p':
-			p = MAX(p, (int)(2 * sizeof(void*)));
+			p = __MAX(p, (int)(2 * sizeof(void*)));
 			t = 'x';
 			fl |= ALT_FORM;
 		case 'x': case 'X':
@@ -629,7 +623,7 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 				a=z;
 				break;
 			}
-			p = MAX(p, z-a + !arg.i);
+			p = __MAX(p, z-a + !arg.i);
 			break;
 		case 'c':
 			*(a=z-(p=1))=arg.i;
@@ -639,7 +633,7 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 			if (1) a = strerror(errno); else
 		case 's':
 			a = arg.p ? arg.p : "(null)";
-#if 1  /* ANDROID */
+#if 1
                         /* On Android, memchr() will return NULL for
                          * out-of-bound requests, e.g. if |p == -1|. */
                         if (p >= 0) {
@@ -665,10 +659,10 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 			ws = arg.p;
 			for (i = l = 0;
                                 (
-                                    (i < (0 + p))                   &&
+                                    ((uint32_t)i < (0U + p))        &&
                                     *ws                             &&
                                     ((l = _wctomb(mb, *ws++)) >= 0) &&
-                                    (l <= (0 + (p - i)))
+                                    ((uint32_t)l <= (0U + (p - i)))
                                 );
                         i += l);
 			if (l<0) return -1;
@@ -677,9 +671,9 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 			ws = arg.p;
 			for (i = 0;
                                 (
-                                    (i < (0 + p))                   &&
+                                    ((uint32_t)i < (0U + p))        &&
                                     *ws                             &&
-                                    (i + ((l = _wctomb(mb, *ws++)) <= p))
+                                    (i + ((l = _wctomb(mb, *ws++))) <= p)
                                 );
                         i += l) { out(f, mb, l); }
 			pad(f, ' ', w, p, fl^LEFT_ADJ);
