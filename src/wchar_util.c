@@ -258,8 +258,9 @@ size_t _wcsspn(const wchar_t *s, const wchar_t *set) {
 wchar_t *_wcsstr(const wchar_t *s, const wchar_t *find) {
 
     unsigned int i;
+    wchar_t *p = (wchar_t*)s;
 
-    if (!s)
+    if (!p)
         return NULL;
 
     // Always find the empty string
@@ -269,8 +270,7 @@ wchar_t *_wcsstr(const wchar_t *s, const wchar_t *find) {
     size_t flen = _wcslen(find);
 
     for (i = 0; i < flen; i++) {
-        wchar_t* p = _wcschr(s, find[i]);
-        if (p == NULL)
+        if ((p = _wcschr(p, find[i])) == NULL)
             return NULL;
 
         if (!_wmemcmp(p, find, flen))
