@@ -363,7 +363,6 @@ wchar_t *_wmemmove(wchar_t* d, const wchar_t* s, size_t n) {
 
 wchar_t *_wmemset(wchar_t* s, wchar_t c, size_t n) {
     size_t i;
-    for (i = 0; i < n; ++i)
-        s[i] = c;
+    for (i = 0; i < n; i++) s[i] = c;
     return s;
 }

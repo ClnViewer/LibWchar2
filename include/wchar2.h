@@ -61,6 +61,19 @@
 
 #define __WCSZ(x) (x->sz * sizeof(wchar_t) + 1)
 
+#if ((!defined(__STDC_VERSION__) || (__STDC_VERSION__ < 199901L)) && \
+      !defined(__STDC_C99) && !defined(__C99_RESTRICT))
+#   if !defined(restrict)
+#      if defined(__GNUC__) || defined(__clang__) || defined(_MSC_VER)
+#         define restrict __restrict
+#      elif defined(__SUNPRO_C)
+#         define restrict _Restrict
+#      else
+#         define restrict
+#      endif
+#   endif
+#endif
+
 #ifdef __cplusplus
 extern "C" {
 #endif
