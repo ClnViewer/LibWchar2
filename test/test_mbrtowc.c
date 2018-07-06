@@ -122,9 +122,8 @@ START_TEST(test_mbrtowc)
 
     errno = 0;
     ret = _mbrtowc(&wc, "\x20" "c", 2, 0);
-    ck_assert(errno == EILSEQ);
+    ck_assert(errno == EILSEQ); // this not work if remove mbstate ?
     ck_assert_int_eq(ret, -1);
-
 
     // Invalid multi byte continuation.
     errno = 0;

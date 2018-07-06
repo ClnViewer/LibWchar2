@@ -716,21 +716,21 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 
 size_t _vfprintf(FILE *restrict f, const char *restrict fmt, va_list ap)
 {
-	va_list ap2;
-	int ret, nl_type[(NL_ARGMAX + 1)] = {0};
-	union arg nl_arg[NL_ARGMAX+1];
-        Out out[1];
-        out_init_file(out, f);
+    va_list ap2;
+    int ret, nl_type[(NL_ARGMAX + 1)] = {0};
+    union arg nl_arg[NL_ARGMAX+1];
+    Out out[1];
+    out_init_file(out, f);
 
-	va_copy(ap2, ap);
-        ret = printf_core(0, fmt, &ap2, nl_arg, nl_type);
-        va_end(ap2);
-        if (0 < ret) return -1;
+    va_copy(ap2, ap);
+    ret = printf_core(0, fmt, &ap2, nl_arg, nl_type);
+    va_end(ap2);
+    if (0 < ret) return -1;
 
-        va_copy(ap2, ap);
-	ret = printf_core(out, fmt, &ap2, nl_arg, nl_type);
-	va_end(ap2);
-	return ret;
+    va_copy(ap2, ap);
+    ret = printf_core(out, fmt, &ap2, nl_arg, nl_type);
+    va_end(ap2);
+    return ret;
 }
 
 size_t _fprintf(FILE *restrict f, const char *restrict fmt, ...)
