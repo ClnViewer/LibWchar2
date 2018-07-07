@@ -1,3 +1,10 @@
+
+/*
+    MIT License
+    Copyright (c) 2018 PS
+    GitHub: https://github.com/ClnViewer/LibWchar2
+ */
+
 START_TEST(test_u8stowcs)
 {
     wchar_t *wcs = malloc(u8stowcs(NULL, cs1) + 1);

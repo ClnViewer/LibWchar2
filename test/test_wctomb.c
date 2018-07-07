@@ -1,3 +1,10 @@
+
+/*
+    MIT License
+    Copyright (c) 2018 PS
+    GitHub: https://github.com/ClnViewer/LibWchar2
+ */
+
 START_TEST(test_wctomb)
 {
     char bytes[MB_LEN_MAX] = {0};

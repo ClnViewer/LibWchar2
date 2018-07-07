@@ -1,4 +1,10 @@
 
+/*
+    MIT License
+    Copyright (c) 2018 PS
+    GitHub: https://github.com/ClnViewer/LibWchar2
+ */
+
 START_TEST (test_wcsrtombs)
 {
     const wchar_t  chars[] = { L'h', L'e', L'l', L'l', L'o', L'\0' };

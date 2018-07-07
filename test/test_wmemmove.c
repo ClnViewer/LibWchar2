@@ -1,3 +1,11 @@
+
+/*
+    MIT License
+    Copyright (c) 2018 PS
+    GitHub: https://github.com/ClnViewer/LibWchar2
+ */
+
+
 START_TEST(test_wmemmove)
 {
     const wchar_t wcs[] = L"This is a test of something or other.....";
