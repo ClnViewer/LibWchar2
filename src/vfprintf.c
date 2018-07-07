@@ -532,7 +532,7 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 				w = f ? va_arg(*ap, int) : 0;
 				s++;
 			} else return -1;
-			if (w < 0) fl |= __LEFT_ADJ, w =- w;
+			if (w < 0) fl |= __LEFT_ADJ, w =-w;
 		} else if ((w = getint(&s)) < 0) return -1;
 
 		/* Read precision */

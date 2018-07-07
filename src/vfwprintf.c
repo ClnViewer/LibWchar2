@@ -334,7 +334,7 @@ static int wprintf_core(FOut *f, const wchar_t *fmt, va_list *ap, union arg *nl_
 				w = f ? va_arg(*ap, int) : 0;
 				s++;
 			} else return -1;
-			if (w < 0) fl |= __LEFT_ADJ, w =- w;
+			if (w < 0) fl |= __LEFT_ADJ, w =-w;
 		} else if ((w = getint(&s))<0) return -1;
 
 		/* Read precision */
