@@ -306,44 +306,44 @@ FILE    * _wfopen_selector(int, const void*, size_t, const void*);
           /** @brief Open file stream, convert file name from wide characters to UTF-8, mode as const char */
 FILE    * u8wfopen(const wchar_t*, const char*);
 
-          /** @brief  */
+          /** @brief Statistic from file, wide char input */
 int       _wstat(const wchar_t*, struct stat*);
-          /** @brief  */
+          /** @brief Statistic from file, wide char input with size */
 int       _wstat_s(const wchar_t*, size_t, struct stat*);
-          /** @brief  */
+          /** @brief Statistic from file, struct string_ws input */
 int       _wstat_ws(const string_ws*, struct stat*);
           /** @brief Automatic type selector for wstat* functions */
 int       _wstat_selector(int, const void*, size_t, const void*);
-          /** @brief statistic from file, convert file name from wide characters to UTF-8 */
+          /** @brief Statistic from file, convert file name from wide characters to UTF-8 */
 int       u8wstat(const wchar_t*, struct stat*);
 
-          /** @brief  */
+          /** @brief Rename file, wide char input */
 int       _wrename(const wchar_t*, const wchar_t*);
-          /** @brief  */
+          /** @brief Rename file, wide char input with size */
 int       _wrename_s(const wchar_t*, size_t, const wchar_t*, size_t);
-          /** @brief  */
+          /** @brief Rename file, struct string_ws input */
 int       _wrename_ws(const string_ws*, const string_ws*);
           /** @brief Automatic type selector for wrename* functions */
 int       _wrename_selector(int, const void*, size_t, const void*, size_t);
-          /** @brief rename file, convert file name from wide characters to UTF-8 */
+          /** @brief Rename file, convert file name from wide characters to UTF-8 */
 int       u8wrename(const wchar_t*, const wchar_t*);
 
-          /** @brief  */
+          /** @brief Delete (remove) file, wide char input */
 int       _wremove(const wchar_t*);
-          /** @brief  */
+          /** @brief Delete (remove) file, wide char input with size */
 int       _wremove_s(const wchar_t*, size_t);
-          /** @brief  */
+          /** @brief Delete (remove) file, struct string_ws input */
 int       _wremove_ws(const string_ws*);
           /** @brief Automatic type selector for wremove* functions */
 int       _wremove_selector(int, const void*, size_t);
-          /** @brief delete (remove) file, convert file name from wide characters to UTF-8 */
+          /** @brief Delete (remove) file, convert file name from wide characters to UTF-8 */
 int       u8wremove(const wchar_t*);
 
-          /** @brief  */
+          /** @brief Make directory, wide char input */
 int       _wmkdir(const wchar_t*, mode_t);
-          /** @brief  */
+          /** @brief Make directory, wide char input with size */
 int       _wmkdir_s(const wchar_t*, size_t, mode_t);
-          /** @brief  */
+          /** @brief  Make directory, struct string_ws input */
 int       _wmkdir_ws(const string_ws*, mode_t);
           /** @brief Automatic type selector for wmkdir* functions */
 int       _wmkdir_selector(int, const void*, size_t, mode_t);
@@ -417,11 +417,12 @@ int       u8wmkdir(const wchar_t*, mode_t);
   * @brief wchar_t* type to char[]
   * A char[]   - array name
   * B wchar_t* - source
+  * D          - function return value if error
   */
-#define wstocscvt(A,B,C)                                                                                           \
+#define wstocscvt(A,B,D)                                                                                           \
     size_t __WEV(sz,__LINE__); errno = 0;                                                                          \
     if ((__WEV(sz,__LINE__) = _wcsrtombs(NULL, &(const wchar_t*){B}, 0, 0)) <= 0) {                                \
-        errno = EILSEQ; return C;                                                                                  \
+        errno = EILSEQ; return D;                                                                                  \
     }                                                                                                              \
     char __WEV(A,__LINE__)[(__WEV(sz,__LINE__) + 1)], * A = (char*)&__WEV(A,__LINE__);                             \
     if ((__WEV(sz,__LINE__) = _wcsrtombs(__WEV(A,__LINE__), &(const wchar_t*){B}, (__WEV(sz,__LINE__) + 1), 0))) { \
@@ -429,10 +430,11 @@ int       u8wmkdir(const wchar_t*, mode_t);
     }
 
  /**
-  * @brief wchar_t* type to char[]
+  * @brief wchar_t* type to char[] with size
   * A char[]   - array name
   * B wchar_t* - source
   * C size_t   - wchar_t* size
+  * D          - function return value if error
   */
 #define wstocsncvt(A,B,C,D)                                                                                         \
     char __WEV(A,__LINE__)[(C * 2 + 1)], * A = (char*)&__WEV(A,__LINE__); errno = 0;                                \
@@ -444,6 +446,9 @@ int       u8wmkdir(const wchar_t*, mode_t);
  /**
   * @brief string_ws type to char[]
   * this struct defined on top of this file
+  * A char[]     - array name
+  * B string_ws* - source
+  * D            - function return value if error
   */
 #define wstrtocscvt(A,B,D)                                                                                          \
     size_t __WEV(sz,__LINE__); errno = 0;                                                                           \
@@ -455,8 +460,9 @@ int       u8wmkdir(const wchar_t*, mode_t);
 
 /** Redefined 'symbols' libc functions */
 
-/* for osx Darwin
- * macro redefined: /usr/include/secure/_stdio.h
+/** for osx Darwin
+ *  macro redefined: /usr/include/secure/_stdio.h
+ *    vsnprintf, snprintf, vsnprintf, snprintf
  */
 
 #if defined(vsnprintf)

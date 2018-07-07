@@ -34,3 +34,4 @@ wchar_t __attribute__((unused)) wcs3[] = L"Hello, world!";
 char    __attribute__((unused)) cs1 [] = "Привет мир!";
 char    __attribute__((unused)) cs2 [] = "Привет Мир!";
 char    __attribute__((unused)) cs3 [] = "Hello, world!";
+
