@@ -1,0 +1,9 @@
+{
+  "name": "@PACKAGE_NAME@",
+  "version": "@PACKAGE_VERSION@",
+  "repo": "ClnViewer/LibWchar2",
+  "description": "Library design to use wchar_t == 2, Windows API software compatible, for *nix portable.",
+  "keywords": ["libwchar2", "system", "wchar", "wchar_t", "wide", "string"],
+  "license": "MIT",
+  "install": "autogen.sh ; build.sh"
+}

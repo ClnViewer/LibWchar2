@@ -12,6 +12,7 @@ CLEANFILES = \
 
 EXTRA_DIST = \
     autogen.sh \
+    package.json \
     test/createtest.sh \
     README.md
 

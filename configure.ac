@@ -126,5 +126,6 @@ AC_CONFIG_FILES([
     test/Makefile
     src/Makefile
     libwchar2.pc
+    package.json
 ])
 AC_OUTPUT
