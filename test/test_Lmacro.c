@@ -7,6 +7,8 @@
 
 START_TEST (test_Lmacro)
 {
+    /* g++ -E -dD -fshort-wchar -xc++ /dev/null | grep WCHAR */
+
 #   if defined(__WCHAR_TYPE__)
     wchar_t a = L'a';
     if (!__builtin_types_compatible_p(typeof(a), __WCHAR_TYPE__))
