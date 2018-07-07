@@ -16,15 +16,15 @@ int _mbtowc(wchar_t *restrict wc, const char *restrict src, size_t n)
 	if (!wc) wc = (void *)&wc;
 
 	if (*s < 0x80) return !!(*wc = *s);
-	if ((*s - SA) > (SB - SA)) goto ilseq;
-	c = bittab[*s++-SA];
+	if ((*s - __SA) > (__SB - __SA)) goto ilseq;
+	c = bittab[*s++ - __SA];
 
 	/* Avoid excessive checks against n: If shifting the state n-1
 	 * times does not clear the high bit, then the value of n is
 	 * insufficient to read a character */
 	if (n<4 && ((c<<(6*n-6)) & (1U<<31))) goto ilseq;
 
-	if (OOB(c,*s)) goto ilseq;
+	if (__OOB(c,*s)) goto ilseq;
 	c = ((c << 6) | (*s++ - 0x80));
 	if (!(c&(1U<<31))) {
 		*wc = c;

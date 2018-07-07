@@ -81,14 +81,14 @@ enum {
 	ZTPRE, JPRE,
 	STOP,
 	PTR, INT, UINT, ULLONG,
-#ifndef LONG_IS_INT
+#ifndef __LONG_IS_INT
 	LONG, ULONG,
 #else
 #define LONG INT
 #define ULONG UINT
 #endif
 	SHORT, USHORT, CHAR, UCHAR,
-#ifdef ODD_TYPES
+#ifdef __ODD_TYPES
 	LLONG, SIZET, IMAX, UMAX, PDIFF, UIPTR,
 #else
 #define LLONG ULLONG
@@ -171,7 +171,7 @@ static void pop_arg(union arg *arg, int type, va_list *ap)
 	       case PTR:	arg->p = va_arg(*ap, void *);
 	break; case INT:	arg->i = va_arg(*ap, int);
 	break; case UINT:	arg->i = va_arg(*ap, unsigned int);
-#ifndef LONG_IS_INT
+#ifndef __LONG_IS_INT
 	break; case LONG:	arg->i = va_arg(*ap, long);
 	break; case ULONG:	arg->i = va_arg(*ap, unsigned long);
 #endif
@@ -180,7 +180,7 @@ static void pop_arg(union arg *arg, int type, va_list *ap)
 	break; case USHORT:	arg->i = (unsigned short)va_arg(*ap, int);
 	break; case CHAR:	arg->i = (signed char)va_arg(*ap, int);
 	break; case UCHAR:	arg->i = (unsigned char)va_arg(*ap, int);
-#ifdef ODD_TYPES
+#ifdef __ODD_TYPES
 	break; case LLONG:	arg->i = va_arg(*ap, long long);
 	break; case SIZET:	arg->i = va_arg(*ap, size_t);
 	break; case IMAX:	arg->i = va_arg(*ap, intmax_t);
@@ -205,7 +205,7 @@ static void pad(Out* f, char c, int w, int l, int fl)
     char _pad[256];
     const int _psz = (int)(sizeof(_pad));
 
-    if ((fl & (LEFT_ADJ | ZERO_PAD)) || (l >= w)) return;
+    if ((fl & (__LEFT_ADJ | __ZERO_PAD)) || (l >= w)) return;
     l = (w - l);
     memset(_pad, c, ((l > _psz) ? _psz : l));
     for (; (l >= _psz); l -= _psz)
@@ -254,20 +254,20 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 	pl = 1;
 	if (signbit(y)) {
 		y=-y;
-	} else if (fl & MARK_POS) {
+	} else if (fl & __MARK_POS) {
 		prefix+=3;
-	} else if (fl & PAD_POS) {
+	} else if (fl & __PAD_POS) {
 		prefix+=6;
 	} else prefix++, pl=0;
 
 	if (!isfinite(y)) {
-		char *s = (t&32)?"inf":"INF";
-		if (y!=y) s=(t&32)?"nan":"NAN", pl=0;
-		pad(f, ' ', w, 3+pl, fl&~ZERO_PAD);
+		char *s = ((t & 32)   ? "inf" : "INF");
+		if (y != y) { s = ((t & 32) ? "nan" : "NAN"); pl=0; }
+		pad(f, ' ', w, 3 + pl, fl &~ __ZERO_PAD);
 		out(f, prefix, pl);
 		out(f, s, 3);
-		pad(f, ' ', w, 3+pl, fl^LEFT_ADJ);
-		return __MAX(w, 3+pl);
+		pad(f, ' ', w, 3 + pl, fl ^ __LEFT_ADJ);
+		return __MAX(w, 3 + pl);
 	}
 
 	y = frexpl(y, &e2) * 2;
@@ -280,7 +280,7 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 		if (t&32) prefix += 9;
 		pl += 2;
 
-		if (p<0 || p>=LDBL_MANT_DIG/4-1) re=0;
+		if (p < 0 || p >= (LDBL_MANT_DIG/4 - 1)) re = 0;
 		else re=LDBL_MANT_DIG/4-1-p;
 
 		if (re) {
@@ -306,7 +306,7 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 			int x = y;
 			*s++=xdigits[x]|(t&32);
 			y=16*(y-x);
-			if (s-buf==1 && (y||p>0||(fl&ALT_FORM))) *s++='.';
+			if (s-buf==1 && (y||p>0||(fl&__ALT_FORM))) *s++='.';
 		} while (y);
 
 		if (p && s-buf-2 < p)
@@ -316,11 +316,11 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 
 		pad(f, ' ', w, pl+l, fl);
 		out(f, prefix, pl);
-		pad(f, '0', w, pl+l, fl^ZERO_PAD);
+		pad(f, '0', w, pl+l, fl ^ __ZERO_PAD);
 		out(f, buf, s-buf);
-		pad(f, '0', l-(ebuf-estr)-(s-buf), 0, 0);
+		pad(f, '0', (l - (ebuf - estr) - (s - buf)), 0, 0);
 		out(f, estr, ebuf-estr);
-		pad(f, ' ', w, pl+l, fl^LEFT_ADJ);
+		pad(f, ' ', w, pl+l, fl ^ __LEFT_ADJ);
 		return __MAX(w, pl+l);
 	}
 	if (p < 0)  { p = 6; }
@@ -410,7 +410,7 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 			t-=2;
 			p--;
 		}
-		if (!(fl&ALT_FORM)) {
+		if (!(fl&__ALT_FORM)) {
 			/* Count trailing zeros in last place */
 			if (z > a && z[-1]) for (i=10, j=0; z[-1]%i==0; i*=10, j++);
 			else j=9;
@@ -420,7 +420,7 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 				p = __MIN(p,__MAX(0,9*(z-r-1)+e-j));
 		}
 	}
-	l = 1 + p + (p || (fl&ALT_FORM));
+	l = 1 + p + (p || (fl&__ALT_FORM));
 	if ((t|32)=='f') {
 		if (e>0) l+=e;
 	} else {
@@ -433,7 +433,7 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 
 	pad(f, ' ', w, pl+l, fl);
 	out(f, prefix, pl);
-	pad(f, '0', w, pl+l, fl^ZERO_PAD);
+	pad(f, '0', w, pl+l, fl ^ __ZERO_PAD);
 
 	if ((t|32)=='f') {
 		if (a>r) a=r;
@@ -443,7 +443,7 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 			else if (s==buf+9) *--s='0';
 			out(f, s, buf+9-s);
 		}
-		if (p || (fl&ALT_FORM)) out(f, ".", 1);
+		if (p || (fl & __ALT_FORM)) out(f, ".", 1);
 		for (; d<z && p>0; d++, p-=9) {
 			char *s = fmt_u(*d, buf+9);
 			while (s>buf) *--s='0';
@@ -458,7 +458,7 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 			if (d!=a) while (s>buf) *--s='0';
 			else {
 				out(f, s++, 1);
-				if (p>0||(fl&ALT_FORM)) out(f, ".", 1);
+				if (p>0||(fl & __ALT_FORM)) out(f, ".", 1);
 			}
 			out(f, s, __MIN(buf+9-s, p));
 			p -= buf+9-s;
@@ -467,7 +467,7 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 		out(f, estr, ebuf-estr);
 	}
 
-	pad(f, ' ', w, pl+l, fl^LEFT_ADJ);
+	pad(f, ' ', w, pl+l, fl ^ __LEFT_ADJ);
 
 	return __MAX(w, pl+l);
 }
@@ -518,7 +518,7 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 		}
 
 		/* Read modifier flags */
-		for (fl=0; (((unsigned)*s - ' ') < 32) && (FLAGMASK & (1U << (*s - ' '))); s++)
+		for (fl = 0; (((unsigned)*s - ' ') < 32) && (__FLAGMASK & (1U << (*s - ' '))); s++)
 			fl |= (1U << (*s - ' '));
 
 		/* Read field width */
@@ -532,8 +532,8 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 				w = f ? va_arg(*ap, int) : 0;
 				s++;
 			} else return -1;
-			if (w<0) fl|=LEFT_ADJ, w=-w;
-		} else if ((w=getint(&s))<0) return -1;
+			if (w < 0) fl |= __LEFT_ADJ, w =- w;
+		} else if ((w = getint(&s)) < 0) return -1;
 
 		/* Read precision */
 		if (*s=='.' && s[1]=='*') {
@@ -553,7 +553,7 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 		/* Format specifier state machine */
 		st=0;
 		do {
-			if (OOP(*s)) return -1;
+			if (__OOP(*s)) return -1;
 			ps=st;
 			st=states[st]S(*s++);
 		} while ((st - 1) < STOP);
@@ -580,7 +580,7 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 		if (ps && (t&15)==3) t&=~32;
 
 		/* - and 0 flags are mutually exclusive */
-		if (fl & LEFT_ADJ) fl &= ~ZERO_PAD;
+		if (fl & __LEFT_ADJ) fl &= ~ __ZERO_PAD;
 
 		switch(t) {
 		case 'n':
@@ -597,37 +597,37 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 		case 'p':
 			p = __MAX(p, (int)(2 * sizeof(void*)));
 			t = 'x';
-			fl |= ALT_FORM;
+			fl |= __ALT_FORM;
 		case 'x': case 'X':
 			a = fmt_x(arg.i, z, t&32);
-			if (arg.i && (fl & ALT_FORM)) prefix+=(t>>4), pl=2;
+			if (arg.i && (fl & __ALT_FORM)) prefix+=(t>>4), pl=2;
 			if (0) {
 		case 'o':
 			a = fmt_o(arg.i, z);
-			if ((fl&ALT_FORM) && arg.i) prefix+=5, pl=1;
+			if ((fl&__ALT_FORM) && arg.i) prefix+=5, pl=1;
 			} if (0) {
 		case 'd': case 'i':
 			pl=1;
-			if (arg.i>INTMAX_MAX) {
+			if (arg.i > INTMAX_MAX) {
 				arg.i=-arg.i;
-			} else if (fl & MARK_POS) {
+			} else if (fl & __MARK_POS) {
 				prefix++;
-			} else if (fl & PAD_POS) {
+			} else if (fl & __PAD_POS) {
 				prefix+=2;
 			} else pl=0;
 		case 'u':
 			a = fmt_u(arg.i, z);
 			}
-			if (p>=0) fl &= ~ZERO_PAD;
+			if (p >= 0) fl &= ~__ZERO_PAD;
 			if (!arg.i && !p) {
-				a=z;
+				a = z;
 				break;
 			}
 			p = __MAX(p, z-a + !arg.i);
 			break;
 		case 'c':
 			*(a=z-(p=1))=arg.i;
-			fl &= ~ZERO_PAD;
+			fl &= ~__ZERO_PAD;
 			break;
 		case 'm':
 			if (1) a = strerror(errno); else
@@ -648,7 +648,7 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 			if (!z) z=a+p;
 			else p=z-a;
 #endif
-			fl &= ~ZERO_PAD;
+			fl &= ~__ZERO_PAD;
 			break;
 		case 'C':
 			wc[0] = arg.i;
@@ -676,7 +676,7 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
                                     (i + ((l = _wctomb(mb, *ws++))) <= p)
                                 );
                         i += l) { out(f, mb, l); }
-			pad(f, ' ', w, p, fl^LEFT_ADJ);
+			pad(f, ' ', w, p, fl ^ __LEFT_ADJ);
 			l = w>p ? w : p;
 			continue;
 		case 'e': case 'f': case 'g': case 'a':
@@ -690,10 +690,10 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 
 		pad(f, ' ', w, pl+p, fl);
 		out(f, prefix, pl);
-		pad(f, '0', w, pl+p, fl^ZERO_PAD);
+		pad(f, '0', w, pl+p, fl ^ __ZERO_PAD);
 		pad(f, '0', p, z-a, 0);
 		out(f, a, z-a);
-		pad(f, ' ', w, pl+p, fl^LEFT_ADJ);
+		pad(f, ' ', w, pl+p, fl ^ __LEFT_ADJ);
 
 		l = w;
 	}
@@ -701,18 +701,18 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 	if (f) return cnt;
 	if (!l10n) return 0;
 
-	for (i=1; i <= NL_ARGMAX && nl_type[i]; i++)
+	for (i=1; i <= __ARGMAX && nl_type[i]; i++)
 		pop_arg(nl_arg+i, nl_type[i], ap);
-	for (; i <= NL_ARGMAX && !nl_type[i]; i++);
-	if (i <= NL_ARGMAX) return -1;
+	for (; i <= __ARGMAX && !nl_type[i]; i++);
+	if (i <= __ARGMAX) return -1;
 	return 1;
 }
 
 size_t _vfprintf(FILE *restrict f, const char *restrict fmt, va_list ap)
 {
     va_list ap2;
-    int ret, nl_type[(NL_ARGMAX + 1)] = {0};
-    union arg nl_arg[NL_ARGMAX+1];
+    int ret, nl_type[(__ARGMAX + 1)] = {0};
+    union arg nl_arg[__ARGMAX+1];
     Out out[1];
     out_init_file(out, f);
 
@@ -739,8 +739,8 @@ size_t _fprintf(FILE *restrict f, const char *restrict fmt, ...)
 size_t _vsnprintf(char *restrict s, size_t n, const char *restrict fmt, va_list ap)
 {
         va_list ap2;
-        int nl_type[NL_ARGMAX+1] = {0};
-        union arg nl_arg[NL_ARGMAX+1];
+        int nl_type[__ARGMAX+1] = {0};
+        union arg nl_arg[__ARGMAX+1];
         size_t t, r;
         char b;
         Out out[1];

@@ -153,14 +153,14 @@ enum {
 	ZTPRE, JPRE,
 	STOP,
 	PTR, INT, UINT, ULLONG,
-#ifndef LONG_IS_INT
+#ifndef __LONG_IS_INT
 	LONG, ULONG,
 #else
 #define LONG INT
 #define ULONG UINT
 #endif
 	SHORT, USHORT, CHAR, UCHAR,
-#ifdef ODD_TYPES
+#ifdef __ODD_TYPES
 	LLONG, SIZET, IMAX, UMAX, PDIFF, UIPTR,
 #else
 #define LLONG ULLONG
@@ -241,7 +241,7 @@ static void pop_arg(union arg *arg, int type, va_list *ap)
 	       case PTR:	arg->p = va_arg(*ap, void *);
 	break; case INT:	arg->i = va_arg(*ap, int);
 	break; case UINT:	arg->i = va_arg(*ap, unsigned int);
-#ifndef LONG_IS_INT
+#ifndef __LONG_IS_INT
 	break; case LONG:	arg->i = va_arg(*ap, long);
 	break; case ULONG:	arg->i = va_arg(*ap, unsigned long);
 #endif
@@ -250,7 +250,7 @@ static void pop_arg(union arg *arg, int type, va_list *ap)
 	break; case USHORT:	arg->i = (unsigned short)va_arg(*ap, int);
 	break; case CHAR:	arg->i = (signed char)va_arg(*ap, int);
 	break; case UCHAR:	arg->i = (unsigned char)va_arg(*ap, int);
-#ifdef ODD_TYPES
+#ifdef __ODD_TYPES
 	break; case LLONG:	arg->i = va_arg(*ap, long long);
 	break; case SIZET:	arg->i = va_arg(*ap, size_t);
 	break; case IMAX:	arg->i = va_arg(*ap, intmax_t);
@@ -320,7 +320,7 @@ static int wprintf_core(FOut *f, const wchar_t *fmt, va_list *ap, union arg *nl_
 		}
 
 		/* Read modifier flags */
-		for (fl=0; ((((unsigned)*s - ' ') < 32) && (FLAGMASK &(1U << (*s - ' ')))); s++)
+		for (fl=0; ((((unsigned)*s - ' ') < 32) && (__FLAGMASK &(1U << (*s - ' ')))); s++)
 			fl |= (1U << (*s - ' '));
 
 		/* Read field width */
@@ -334,8 +334,8 @@ static int wprintf_core(FOut *f, const wchar_t *fmt, va_list *ap, union arg *nl_
 				w = f ? va_arg(*ap, int) : 0;
 				s++;
 			} else return -1;
-			if (w<0) fl|=LEFT_ADJ, w=-w;
-		} else if ((w=getint(&s))<0) return -1;
+			if (w < 0) fl |= __LEFT_ADJ, w =- w;
+		} else if ((w = getint(&s))<0) return -1;
 
 		/* Read precision */
 		if (*s=='.' && s[1]=='*') {
@@ -355,7 +355,7 @@ static int wprintf_core(FOut *f, const wchar_t *fmt, va_list *ap, union arg *nl_
 		/* Format specifier state machine */
 		st = 0;
 		do {
-			if (OOP(*s)) return -1;
+			if (__OOP(*s)) return -1;
 			ps=st;
 			st=states[st]S(*s++);
 		} while ((st - 1) < STOP);
@@ -401,36 +401,36 @@ static int wprintf_core(FOut *f, const wchar_t *fmt, va_list *ap, union arg *nl_
 			if (!z)    z = a + p;
 			else       p = z - a;
 			if (w < p) w = p;
-			if (!(fl&LEFT_ADJ)) out_printf(f, "%.*s", (w - p), "");
+			if (!(fl & __LEFT_ADJ)) out_printf(f, "%.*s", (w - p), "");
 			out(f, a, p);
-			if ((fl&LEFT_ADJ)) out_printf(f, "%.*s", (w - p), "");
+			if ((fl & __LEFT_ADJ)) out_printf(f, "%.*s", (w - p), "");
 			l = w;
 			continue;
 		case 's':
 			bs = arg.p;
-			if (p<0) p = INT_MAX;
-			for (i=l=0; l<p && (i = _mbtowc(&wc, bs, MB_LEN_MAX))>0; bs+=i, l++);
-			if (i<0) return -1;
+			if (p < 0) p = INT_MAX;
+			for (i = l = 0; ((l < p) && ((i = _mbtowc(&wc, bs, MB_LEN_MAX)) > 0)); bs += i, l++);
+			if (i < 0) return -1;
 			p = l;
-			if (w<p) w=p;
-			if (!(fl&LEFT_ADJ)) out_printf(f, "%.*s", w-p, "");
+			if (w < p) w=p;
+			if (!(fl & __LEFT_ADJ)) out_printf(f, "%.*s", w-p, "");
 			bs = arg.p;
 			while (l--) {
 				i = _mbtowc(&wc, bs, MB_LEN_MAX);
 				bs+=i;
 				out_putwc(wc, f);
 			}
-			if ((fl&LEFT_ADJ)) out_printf(f, "%.*s", w-p, "");
+			if ((fl & __LEFT_ADJ)) out_printf(f, "%.*s", w-p, "");
 			l=w;
 			continue;
 		}
 
 		snprintf(charfmt, sizeof charfmt, "%%%s%s%s%s%s*.*%c%c",
-			((!(fl & ALT_FORM)) ? "" : "#"),
-			((!(fl & MARK_POS)) ? "" : "+"),
-			((!(fl & LEFT_ADJ)) ? "" : "-"),
-			((!(fl & PAD_POS))  ? "" : " "),
-			((!(fl & ZERO_PAD)) ? "" : "0"),
+			((!(fl & __ALT_FORM)) ? "" : "#"),
+			((!(fl & __MARK_POS)) ? "" : "+"),
+			((!(fl & __LEFT_ADJ)) ? "" : "-"),
+			((!(fl & __PAD_POS))  ? "" : " "),
+			((!(fl & __ZERO_PAD)) ? "" : "0"),
 			sizeprefix[(t|32)-'a'], t);
 
 		switch (t|32) {
@@ -446,18 +446,18 @@ static int wprintf_core(FOut *f, const wchar_t *fmt, va_list *ap, union arg *nl_
 	if (f) return cnt;
 	if (!l10n) return 0;
 
-	for (i=1; i<=NL_ARGMAX && nl_type[i]; i++)
+	for (i = 1; i <= __ARGMAX && nl_type[i]; i++)
 		pop_arg(nl_arg+i, nl_type[i], ap);
-	for (; i<=NL_ARGMAX && !nl_type[i]; i++);
-	if (i<=NL_ARGMAX) return -1;
+	for (; i <= __ARGMAX && !nl_type[i]; i++);
+	if (i <= __ARGMAX) return -1;
 	return 1;
 }
 
 size_t _vfwprintf(FILE *restrict f, const wchar_t *restrict fmt, va_list ap)
 {
 	va_list ap2;
-	int nl_type[NL_ARGMAX] = {0};
-	union arg nl_arg[NL_ARGMAX];
+	int nl_type[__ARGMAX] = {0};
+	union arg nl_arg[__ARGMAX];
 	int ret;
         FOut out[1];
         out_init_file(out, f);
@@ -484,8 +484,8 @@ size_t _fwprintf(FILE *restrict f, const wchar_t *restrict fmt, ...)
 size_t _vswprintf(wchar_t *restrict s, size_t l, const wchar_t *restrict fmt, va_list ap)
 {
     va_list ap2;
-    int nl_type[NL_ARGMAX] = {0};
-    union arg nl_arg[NL_ARGMAX];
+    int nl_type[__ARGMAX] = {0};
+    union arg nl_arg[__ARGMAX];
     size_t ret;
     FOut out[1];
     out_init_buffer(out, s, l);

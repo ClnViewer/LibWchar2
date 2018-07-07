@@ -33,10 +33,10 @@ size_t _mbsrtowcs(wchar_t *restrict ws, const char **restrict src, size_t wn, mb
 			wn--;
 			continue;
 		}
-		if (*s-SA > SB-SA) break;
-		c = bittab[*s++-SA];
+		if (*s - __SA > __SB - __SA) break;
+		c = bittab[*s++ - __SA];
 resume0:
-		if (OOB(c,*s)) { s--; break; }
+		if (__OOB(c,*s)) { s--; break; }
 		s++;
 		if (c&(1U<<25)) {
 			if (*s-0x80u >= 0x40) { s-=2; break; }
@@ -59,15 +59,15 @@ resume0:
 				wn -= 4;
 			}
 		}
-		if (*s-1u < 0x7f) {
+		if (*s - 1U < 0x7f) {
 			*ws++ = *s++;
 			wn--;
 			continue;
 		}
-		if (*s-SA > SB-SA) break;
-		c = bittab[*s++-SA];
+		if (*s - __SA > __SB - __SA) break;
+		c = bittab[*s++ - __SA];
 resume:
-		if (OOB(c,*s)) { s--; break; }
+		if (__OOB(c,*s)) { s--; break; }
 		c = ((c << 6) | (*s++ - 0x80));
 		if (c&(1U<<31)) {
 			if (*s-0x80u >= 0x40) { s-=2; break; }

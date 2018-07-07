@@ -58,7 +58,7 @@ A short free translation of the essence of what is stated in the standards conce
         
 > In the library **LibWchar2** the variable with the type `mbstate_t` is ignored, and even if you do not set this variable, it removes the intermediate states that are stored and prevent the mutual execution of ` input/output` in one thread.
 >
-> Also, work with the orientation of the stream is deleted in the `input/output` functions, its necessity is a very controversial issue, but this also affects the stability of the functions associated with the `input/ output` operations.
+> Also, work with the orientation of the stream is deleted in the `input/output` functions, its necessity is a very controversial issue, but this also affects the stability of the functions associated with the `input/output` operations.
         
 > In the library **LibWchar2** the problem of types is solved, all functions that work in one way or another with wide characters are reduced to a single type `wchar_t`.
 
@@ -83,7 +83,7 @@ In addition to typical keys, the script understands the following options:
 
 Also, you can use the script `build.sh` from the root directory, this will allow you not to enter these commands with your hands.
 
-If there is a need to rebuild the script `./ configure`, execute:
+If there is a need to rebuild the script `./configure`, execute:
 
     ./autogen.sh
 
@@ -92,7 +92,7 @@ If there is a need to rebuild the script `./ configure`, execute:
 
 Header file: [wchar2.h](https://github.com/ClnViewer/LibWchar2/blob/master/include/wchar2.h)
 
-To use the library in the project, connect the header last, after all system headers, while `wchar.h` and` wctype.h` can be omitted, they are already included.
+To use the library in the project, connect the header last, after all system headers, while `wchar.h` and `wctype.h` can be omitted, they are already included.
 
     #include <stdio.h>
     #include <string.h>

@@ -38,15 +38,15 @@ size_t _mbrtowc(wchar_t *restrict wc, const char *restrict src, size_t n, mbstat
         {
             return !!(*wc = *s);
         }
-        if ((*s - SA) > (SB - SA))
+        if ((*s - __SA) > (__SB - __SA))
         {
             goto ilseq;
         }
-        c = bittab[(*s++ - SA)];
+        c = bittab[(*s++ - __SA)];
         n--;
     }
     if (n) {
-        if (OOB(c,*s)) goto ilseq;
+        if (__OOB(c,*s)) goto ilseq;
 loop:
         c = ((c << 6) | (*s++ - 0x80)); n--;
         if (!(c & (1U << 31))) {
@@ -55,7 +55,7 @@ loop:
             return N-n;
         }
         if (n) {
-            if ((*s - 0x80u) >= 0x40) goto ilseq;
+            if ((*s - 0x80U) >= 0x40) goto ilseq;
             goto loop;
         }
     }

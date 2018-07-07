@@ -29,10 +29,6 @@ char libinfo[] __attribute__ ((section ("LIBINFO"))) = "libwchar2 v.0.0.1 " __DA
 #define __WCHAR_INTERNAL_LIB 1
 #include "libwchar.h"
 
-#if defined(__clang__)
-#   pragma clang diagnostic ignored "-Wlanguage-extension-token"
-#endif
-
 #define C(x) ((x < 2) ? 0xffffffff : (R(0x80,0xc0) | x))
 #define D(x) C((x + 16))
 #define E(x) ( ( x == 0 ? R(0xa0,0xc0) : \
