@@ -1,6 +1,7 @@
 #!/bin/sh
 
-    cd ../
+    #cd ../
+    pwd
 
     if [ -z "${PREFIX}" ] ;
     then
