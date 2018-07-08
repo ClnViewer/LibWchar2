@@ -322,7 +322,7 @@ on `(hostname || uname -n) 2>/dev/null | sed 1q`
 "
 
 # Files that config.status was made for.
-config_files=" Makefile test/Makefile src/Makefile libwchar2.pc package.json"
+config_files=" Makefile test/Makefile src/Makefile docs/Doxyfile libwchar2.pc package.json"
 config_headers=" config.h"
 config_commands=" depfiles libtool"
 
@@ -656,6 +656,7 @@ do
     "Makefile") CONFIG_FILES="$CONFIG_FILES Makefile" ;;
     "test/Makefile") CONFIG_FILES="$CONFIG_FILES test/Makefile" ;;
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
+    "docs/Doxyfile") CONFIG_FILES="$CONFIG_FILES docs/Doxyfile" ;;
     "libwchar2.pc") CONFIG_FILES="$CONFIG_FILES libwchar2.pc" ;;
     "package.json") CONFIG_FILES="$CONFIG_FILES package.json" ;;
 

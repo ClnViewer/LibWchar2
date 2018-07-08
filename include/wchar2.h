@@ -17,15 +17,21 @@
     Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
- /**
-  * This library design to use wchar_t == 2, Windows software compatible.
+
+/**
+  * @file wchar2.h
+  * @mainpage LibWchar2
+  * @brief This library design to use wchar_t == 2, Windows software compatible.
+  *
   * Compile this library and you programm use:
-  *   gcc as key:   -fshort-wchar
-  *   clang as key: -fwchar-type=short -fno-signed-wchar
+  *  - gcc as key:   -fshort-wchar
+  *  - clang as key: -fwchar-type=short -fno-signed-wchar
+  *
+  * @copyright  MIT 2018 (c) PS
   */
 
   /*
-    Missing curent:
+    Missing curent, TODO ?:
         wcscoll  Locale-specific wide-character string compare
         wcscpy   Copy wide-character string
         wcscspn  Count wide characters not in string
@@ -46,6 +52,10 @@
 #if defined(__SIZEOF_WCHAR_T__) && (__SIZEOF_WCHAR_T__ != 2)
 #  error "size of 'wchar_t' != '2'; Use gcc key: '-fshort-wchar', or clang key: '-fwchar-type=short' '-fno-signed-wchar'"
 #endif
+
+/**
+ * \htmlonly
+ */
 
 #define __WEV_(A,B) A ## B
 #define __WEV(A,B)  __WEV_(A,B)
@@ -74,14 +84,18 @@
 #   endif
 #endif
 
+/**
+ * \endhtmlonly
+ */
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /** @brief Base wide string structure */
 typedef struct __wchar_string_ws_ {
-    wchar_t *str;
-    size_t   sz;
+    wchar_t *str; /** wide string pointer */
+    size_t   sz;  /** size wide string */
 
 } string_ws;
 
@@ -391,6 +405,10 @@ wchar_t * _wbaseext_selector(int, const void*, size_t);
     }
 #endif
 
+/**
+ * \htmlonly
+ */
+
 /** Other non standart macro */
 
 #if defined(__clang__)
@@ -465,6 +483,17 @@ wchar_t * _wbaseext_selector(int, const void*, size_t);
 
 #   define _wbaseext_macro(...) \
         __WEV(EV_BEXT_ARG_, __WEVFA(__VA_ARGS__))(__VA_ARGS__)
+
+/**
+ * \endhtmlonly
+ */
+
+ /**
+   * @note Macro as convert type wchar_t to char
+   * @See  wchar2.h
+   *
+   *
+  */
 
  /**
   * @brief wchar_t* type to char[]
@@ -552,6 +581,10 @@ wchar_t * _wbaseext_selector(int, const void*, size_t);
 #      define basename _wbasename_macro
 #   endif
 #endif
+
+/**
+ * \htmlonly
+ */
 
 #define wmkdir _wmkdir_macro
 #define wmkdir_w _wmkdir
@@ -675,5 +708,9 @@ wchar_t * _wbaseext_selector(int, const void*, size_t);
 #define wcsncasecmp _wcsncasecmp
 #define wcsncmp _wcsncmp
 #define wmemcmp _wmemcmp
+
+/**
+ * \endhtmlonly
+ */
 
 #endif

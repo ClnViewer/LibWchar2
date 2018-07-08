@@ -125,6 +125,7 @@ AC_CONFIG_FILES([
     Makefile
     test/Makefile
     src/Makefile
+    docs/Doxyfile
     libwchar2.pc
     package.json
 ])

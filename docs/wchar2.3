@@ -1,0 +1,585 @@
+.TH "include/wchar2.h" 3 "Sun Jul 8 2018" "libwchar2 0.0.2" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+include/wchar2.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <wctype\&.h>\fP
+.br
+\fC#include <wchar\&.h>\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fB__wchar_string_ws_\fP"
+.br
+.RI " "
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBwstocscvt\fP(A,  B,  D)"
+.br
+.RI " "
+.ti -1c
+.RI "#define \fBwstocsncvt\fP(A,  B,  C,  D)"
+.br
+.RI "wchar_t* type to char[] with size A char[] - array name B wchar_t* - source C size_t - wchar_t* size D - function return value if error "
+.ti -1c
+.RI "#define \fBwstrtocscvt\fP(A,  B,  D)"
+.br
+.RI "string_ws type to char[] this struct defined on top of this file A char[] - array name B string_ws* - source D - function return value if error "
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fB__wchar_string_ws_\fP \fBstring_ws\fP"
+.br
+.RI " "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "wchar_t \fB_towupper\fP (wchar_t)"
+.br
+.RI "Translate wide characters to uppercase\&. "
+.ti -1c
+.RI "wchar_t \fB_towlower\fP (wchar_t)"
+.br
+.RI "Translate wide characters to lowercase\&. "
+.ti -1c
+.RI "wchar_t \fB_towctrans\fP (wchar_t, wctrans_t)"
+.br
+.RI "Extensible wide-character translation\&. "
+.ti -1c
+.RI "wctype_t \fB_wctype\fP (const char *)"
+.br
+.RI "Compute wide-character test type\&. "
+.ti -1c
+.RI "wctrans_t \fB_wctrans\fP (const char *)"
+.br
+.RI "Compute wide-character translation type\&. "
+.ti -1c
+.RI "int \fB_wcwidth\fP (wchar_t)"
+.br
+.RI "Number of column positions of a wide-character code\&. "
+.ti -1c
+.RI "int \fB_wcswidth\fP (const wchar_t *, size_t)"
+.br
+.RI "Number of column positions of a wide-character string\&. "
+.ti -1c
+.RI "int \fB_iswctype\fP (wchar_t, wctype_t)"
+.br
+.RI "Extensible wide-character test\&. "
+.ti -1c
+.RI "int \fB_iswxdigit\fP (wchar_t)"
+.br
+.RI "Hexadecimal digit wide character predicate\&. "
+.ti -1c
+.RI "int \fB_iswupper\fP (wchar_t)"
+.br
+.RI "Uppercase wide character predicate\&. "
+.ti -1c
+.RI "int \fB_iswspace\fP (wchar_t)"
+.br
+.RI "Whitespace wide character predicate\&. "
+.ti -1c
+.RI "int \fB_iswpunct\fP (wchar_t)"
+.br
+.RI "Punctuation wide character predicate\&. "
+.ti -1c
+.RI "int \fB_iswprint\fP (wchar_t)"
+.br
+.RI "Printable wide character predicate\&. "
+.ti -1c
+.RI "int \fB_iswlower\fP (wchar_t)"
+.br
+.RI "Lowercase wide character predicate\&. "
+.ti -1c
+.RI "int \fB_iswgraph\fP (wchar_t)"
+.br
+.RI "Graphic wide character predicate\&. "
+.ti -1c
+.RI "int \fB_iswdigit\fP (wchar_t)"
+.br
+.RI "Decimal digit wide character predicate\&. "
+.ti -1c
+.RI "int \fB_iswcntrl\fP (wchar_t)"
+.br
+.RI "Control wide character predicate\&. "
+.ti -1c
+.RI "int \fB_iswblank\fP (wchar_t)"
+.br
+.RI "Blank wide character predicate\&. "
+.ti -1c
+.RI "int \fB_iswalpha\fP (wchar_t)"
+.br
+.RI "Alphabetic wide character predicate\&. "
+.ti -1c
+.RI "int \fB_iswalnum\fP (wchar_t)"
+.br
+.RI "Alphanumeric wide character predicate\&. "
+.ti -1c
+.RI "size_t \fB_wcstombs\fP (char *restrict, const wchar_t *restrict, size_t)"
+.br
+.RI "Minimal wide string to multibyte string converter\&. "
+.ti -1c
+.RI "size_t \fB_wcstombs_s\fP (char *restrict, const wchar_t *restrict, size_t)"
+.br
+.RI "Minimal wide string to multibyte string converter + double size out buffer\&. "
+.ti -1c
+.RI "size_t \fB_wcsrtombs\fP (char *restrict, const wchar_t **restrict, size_t, mbstate_t *restrict)"
+.br
+.RI "Convert a wide-character string to a character string\&. "
+.ti -1c
+.RI "size_t \fB_wcrtomb\fP (char *restrict, wchar_t, mbstate_t *restrict)"
+.br
+.RI "Convert wide character to multibyte sequence\&. "
+.ti -1c
+.RI "size_t \fB_mbstowcs\fP (wchar_t *restrict, const char *restrict, size_t)"
+.br
+.RI "Minimal multibyte string to wide string converter\&. "
+.ti -1c
+.RI "size_t \fB_mbsrtowcs\fP (wchar_t *restrict, const char **restrict, size_t, mbstate_t *restrict)"
+.br
+.RI "Convert a character string to a wide-character string\&. "
+.ti -1c
+.RI "size_t \fB_wcsnrtombs\fP (char *restrict, const wchar_t **restrict, size_t, size_t, mbstate_t *restrict)"
+.br
+.RI "Convert a wide-character string to a character string\&. "
+.ti -1c
+.RI "size_t \fB_mbsnrtowcs\fP (wchar_t *restrict, const char **restrict, size_t, size_t, mbstate_t *restrict)"
+.br
+.RI "Convert a character string to a wide-character string\&. "
+.ti -1c
+.RI "size_t \fB_mbrtowc\fP (wchar_t *restrict, const char *restrict src, size_t, mbstate_t *restrict)"
+.br
+.RI "Converts a narrow multibyte character to a wide character\&. "
+.ti -1c
+.RI "size_t \fB_mbrlen\fP (const char *restrict, size_t, mbstate_t *restrict)"
+.br
+.RI "Get length of multibyte character\&. "
+.ti -1c
+.RI "int \fB_mblen\fP (const char *, size_t)"
+.br
+.RI "Determines the size, in bytes, of the multibyte character whose first byte is pointed\&. "
+.ti -1c
+.RI "int \fB_mbsinit\fP (const mbstate_t *)"
+.br
+.RI "Check if initial conversion state\&. "
+.ti -1c
+.RI "int \fB_mbtowc\fP (wchar_t *restrict, const char *restrict, size_t)"
+.br
+.RI "Minimal multibyte to wide char converter\&. "
+.ti -1c
+.RI "int \fB_wctomb\fP (char *, wchar_t)"
+.br
+.RI "Minimal wide char to multibyte converter\&. "
+.ti -1c
+.RI "int \fB_wctob\fP (wchar_t)"
+.br
+.RI "Convert wide character to single byte\&. "
+.ti -1c
+.RI "wchar_t \fB_btowc\fP (int)"
+.br
+.RI "Convert single byte character to wide character\&. "
+.ti -1c
+.RI "void \fBwcprint\fP (wchar_t *)"
+.br
+.RI "Other non standart function\&. "
+.ti -1c
+.RI "int \fBwcstocscmp\fP (const char *, wchar_t *, size_t)"
+.br
+.RI "compare char* <-> wchar_t* ASCII only! size_t - wchar_t* size "
+.ti -1c
+.RI "wchar_t * \fBwcsregexp\fP (wchar_t *restrict, wchar_t *restrict, int *)"
+.br
+.RI "Original name: aov-rx - Angel Ortega's regular expression library Copyright (C) 2011/2012 Angel Ortega angel@triptico.com https://github.com/angelortega/aov-rx or http://triptico.com\&. "
+.ti -1c
+.RI "size_t \fBu8stowcs\fP (wchar_t *, const char *)"
+.br
+.RI "Covert utf-8 char* to wchar_t* wchar_t* - output const char* - input return size_t - size\&. "
+.ti -1c
+.RI "size_t \fBwcstou8s\fP (char *, const wchar_t *)"
+.br
+.RI "Convert wchar_t* to utf-8 char* char* - output const wchar_t* - input return size_t - size\&. "
+.ti -1c
+.RI "int \fBu8sverify\fP (const char *)"
+.br
+.RI "Verify char* to utf-8 valid string const char* - input int (bool) - output\&. "
+.ti -1c
+.RI "wchar_t * \fB_wcpcpy\fP (wchar_t *, const wchar_t *)"
+.br
+.RI "Copy a wide-character string returning a pointer to its end\&. "
+.ti -1c
+.RI "wchar_t * \fB_wcpncpy\fP (wchar_t *, const wchar_t *, size_t)"
+.br
+.RI "Copy part of a wide-character string returning a pointer to its end\&. "
+.ti -1c
+.RI "wchar_t * \fB_wcscat\fP (wchar_t *, const wchar_t *)"
+.br
+.RI "Concatenate wide-character strings\&. "
+.ti -1c
+.RI "wchar_t * \fB_wcsncat\fP (wchar_t *, const wchar_t *, size_t)"
+.br
+.RI "Concatenate wide-character strings\&. "
+.ti -1c
+.RI "wchar_t * \fB_wcsncpy\fP (wchar_t *, const wchar_t *, size_t)"
+.br
+.RI "Counted copy wide-character string\&. "
+.ti -1c
+.RI "wchar_t * \fB_wcspbrk\fP (const wchar_t *, const wchar_t *)"
+.br
+.RI "Find wide characters in string\&. "
+.ti -1c
+.RI "wchar_t * \fB_wcschr\fP (const wchar_t *, wchar_t)"
+.br
+.RI "Search for wide character in string\&. "
+.ti -1c
+.RI "wchar_t * \fB_wcsrchr\fP (const wchar_t *, wchar_t)"
+.br
+.RI "Reverse search for wide character in string\&. "
+.ti -1c
+.RI "wchar_t * \fB_wcsstr\fP (const wchar_t *, const wchar_t *)"
+.br
+.RI "Find wide-character string segment\&. "
+.ti -1c
+.RI "wchar_t * \fB_wcstok\fP (wchar_t *, const wchar_t *, wchar_t **)"
+.br
+.RI "Tokenize wide-character string\&. "
+.ti -1c
+.RI "wchar_t * \fB_wmemchr\fP (const wchar_t *, wchar_t, size_t)"
+.br
+.RI "Find wide character in memory\&. "
+.ti -1c
+.RI "wchar_t * \fB_wmemcpy\fP (wchar_t *, const wchar_t *, size_t)"
+.br
+.RI "Copy wide characters in memory\&. "
+.ti -1c
+.RI "wchar_t * \fB_wmemmove\fP (wchar_t *, const wchar_t *, size_t)"
+.br
+.RI "Copy wide characters in memory with overlapping areas\&. "
+.ti -1c
+.RI "wchar_t * \fB_wmemset\fP (wchar_t *, wchar_t, size_t)"
+.br
+.RI "Set wide characters in memory\&. "
+.ti -1c
+.RI "size_t \fB_wcslcat\fP (wchar_t *, const wchar_t *, size_t)"
+.br
+.RI "Concatenate wide-character strings to specified length\&. "
+.ti -1c
+.RI "size_t \fB_wcslcpy\fP (wchar_t *, const wchar_t *, size_t)"
+.br
+.RI "Copy wide-character string to specified length\&. "
+.ti -1c
+.RI "size_t \fB_wcslen\fP (const wchar_t *)"
+.br
+.RI "Wide-character string length\&. "
+.ti -1c
+.RI "size_t \fB_wcsnlen\fP (const wchar_t *, size_t)"
+.br
+.RI "Wide-character string length with maximum limit\&. "
+.ti -1c
+.RI "size_t \fB_wcsspn\fP (const wchar_t *, const wchar_t *)"
+.br
+.RI "Find initial match in wide-character string\&. "
+.ti -1c
+.RI "int \fB_wcscasecmp\fP (const wchar_t *, const wchar_t *)"
+.br
+.RI "Case-insensitive wide character string compare\&. "
+.ti -1c
+.RI "int \fB_wcsncasecmp\fP (const wchar_t *, const wchar_t *, size_t)"
+.br
+.RI "Case-insensitive wide character string compare with size\&. "
+.ti -1c
+.RI "int \fB_wcscmp\fP (const wchar_t *, const wchar_t *)"
+.br
+.RI "Wide-character string compare\&. "
+.ti -1c
+.RI "int \fB_wcsncmp\fP (const wchar_t *, const wchar_t *, size_t)"
+.br
+.RI "Wide-character string compare\&. "
+.ti -1c
+.RI "int \fB_wmemcmp\fP (const wchar_t *, const wchar_t *, size_t)"
+.br
+.RI "Compare wide characters in memory\&. "
+.ti -1c
+.RI "size_t \fB_vfprintf\fP (FILE *restrict, const char *restrict, va_list) __attribute__((__nonnull__"
+.br
+.RI "Write to stream char format variable argument list\&. "
+.ti -1c
+.RI "size_t \fB__format__\fP (__printf__, 2, 0)))"
+.br
+.ti -1c
+.RI "size_t \fB_vsnprintf\fP (char *restrict, size_t, const char *restrict, va_list) __attribute__((__format__(__printf__"
+.br
+.RI "Write formatted data from variable argument list to sized buffer\&. "
+.ti -1c
+.RI "size_t size_t \fB_fprintf\fP (FILE *restrict, const char *restrict,\&.\&.\&.) __attribute__((__nonnull__"
+.br
+.RI "Write to stream char format variable arguments\&. "
+.ti -1c
+.RI "size_t \fB_snprintf\fP (char *restrict, size_t, const char *restrict,\&.\&.\&.) __attribute__((__format__(__printf__"
+.br
+.RI "Format variable arguments list\&. "
+.ti -1c
+.RI "size_t size_t \fB_vfwprintf\fP (FILE *restrict, const wchar_t *restrict, va_list)"
+.br
+.RI "Write to stream wide character format variable argument list\&. "
+.ti -1c
+.RI "size_t \fB_vswprintf\fP (wchar_t *restrict, size_t, const wchar_t *restrict, va_list ap)"
+.br
+.RI "Write formatted data from variable argument list to sized buffer\&. "
+.ti -1c
+.RI "size_t \fB_fwprintf\fP (FILE *restrict, const wchar_t *restrict,\&.\&.\&.)"
+.br
+.RI "Write to stream wide character format variable arguments\&. "
+.ti -1c
+.RI "size_t \fB_swprintf\fP (wchar_t *restrict, size_t, const wchar_t *restrict,\&.\&.\&.)"
+.br
+.RI "Write formatted wide character output\&. "
+.ti -1c
+.RI "size_t \fB_wprintf\fP (const wchar_t *restrict fmt,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fB_fputws\fP (const wchar_t *restrict, FILE *restrict)"
+.br
+.RI "Write a wide character string to a file or stream\&. "
+.ti -1c
+.RI "wchar_t \fB_fputwc\fP (wchar_t, FILE *restrict)"
+.br
+.RI "Write a wide character to a file or stream\&. "
+.ti -1c
+.RI "FILE * \fB_wfopen\fP (const wchar_t *, const char *)"
+.br
+.RI "Open file stream, accepts file name as wide characters, mode as const char\&. "
+.ti -1c
+.RI "FILE * \fB_wfopen_s\fP (const wchar_t *, size_t, const char *)"
+.br
+.RI "Same as wfopen, include size file name variable\&. "
+.ti -1c
+.RI "FILE * \fB_wfopen_ws\fP (const \fBstring_ws\fP *, const char *)"
+.br
+.RI "Same as wfopen, file name as structure string_ws\&. "
+.ti -1c
+.RI "FILE * \fB_wfopen_selector\fP (int, const void *, size_t, const void *)"
+.br
+.RI "Automatic type selector for wfopen* functions\&. "
+.ti -1c
+.RI "FILE * \fBu8wfopen\fP (const wchar_t *, const char *)"
+.br
+.RI "Open file stream, convert file name from wide characters to UTF-8, mode as const char\&. "
+.ti -1c
+.RI "int \fB_wstat\fP (const wchar_t *, struct stat *)"
+.br
+.RI "Statistic from file, wide char input\&. "
+.ti -1c
+.RI "int \fB_wstat_s\fP (const wchar_t *, size_t, struct stat *)"
+.br
+.RI "Statistic from file, wide char input with size\&. "
+.ti -1c
+.RI "int \fB_wstat_ws\fP (const \fBstring_ws\fP *, struct stat *)"
+.br
+.RI "Statistic from file, struct string_ws input\&. "
+.ti -1c
+.RI "int \fB_wstat_selector\fP (int, const void *, size_t, const void *)"
+.br
+.RI "Automatic type selector for wstat* functions\&. "
+.ti -1c
+.RI "int \fBu8wstat\fP (const wchar_t *, struct stat *)"
+.br
+.RI "Statistic from file, convert file name from wide characters to UTF-8\&. "
+.ti -1c
+.RI "int \fB_wrename\fP (const wchar_t *, const wchar_t *)"
+.br
+.RI "Rename file, wide char input\&. "
+.ti -1c
+.RI "int \fB_wrename_s\fP (const wchar_t *, size_t, const wchar_t *, size_t)"
+.br
+.RI "Rename file, wide char input with size\&. "
+.ti -1c
+.RI "int \fB_wrename_ws\fP (const \fBstring_ws\fP *, const \fBstring_ws\fP *)"
+.br
+.RI "Rename file, struct string_ws input\&. "
+.ti -1c
+.RI "int \fB_wrename_selector\fP (int, const void *, size_t, const void *, size_t)"
+.br
+.RI "Automatic type selector for wrename* functions\&. "
+.ti -1c
+.RI "int \fBu8wrename\fP (const wchar_t *, const wchar_t *)"
+.br
+.RI "Rename file, convert file name from wide characters to UTF-8\&. "
+.ti -1c
+.RI "int \fB_wremove\fP (const wchar_t *)"
+.br
+.RI "Delete (remove) file, wide char input\&. "
+.ti -1c
+.RI "int \fB_wremove_s\fP (const wchar_t *, size_t)"
+.br
+.RI "Delete (remove) file, wide char input with size\&. "
+.ti -1c
+.RI "int \fB_wremove_ws\fP (const \fBstring_ws\fP *)"
+.br
+.RI "Delete (remove) file, struct string_ws input\&. "
+.ti -1c
+.RI "int \fB_wremove_selector\fP (int, const void *, size_t)"
+.br
+.RI "Automatic type selector for wremove* functions\&. "
+.ti -1c
+.RI "int \fBu8wremove\fP (const wchar_t *)"
+.br
+.RI "Delete (remove) file, convert file name from wide characters to UTF-8\&. "
+.ti -1c
+.RI "int \fB_wmkdir\fP (const wchar_t *, mode_t)"
+.br
+.RI "Make directory, wide char input\&. "
+.ti -1c
+.RI "int \fB_wmkdir_s\fP (const wchar_t *, size_t, mode_t)"
+.br
+.RI "Make directory, wide char input with size\&. "
+.ti -1c
+.RI "int \fB_wmkdir_ws\fP (const \fBstring_ws\fP *, mode_t)"
+.br
+.RI "Make directory, struct string_ws input\&. "
+.ti -1c
+.RI "int \fB_wmkdir_selector\fP (int, const void *, size_t, mode_t)"
+.br
+.RI "Automatic type selector for wmkdir* functions\&. "
+.ti -1c
+.RI "int \fBu8wmkdir\fP (const wchar_t *, mode_t)"
+.br
+.RI "Make directory, convert file name from wide characters to UTF-8\&. "
+.ti -1c
+.RI "wchar_t * \fB_wbasename\fP (const wchar_t *)"
+.br
+.RI "Parse path file name, wide char input\&. "
+.ti -1c
+.RI "wchar_t * \fB_wbasename_s\fP (const wchar_t *, size_t __attribute__((__unused__)))"
+.br
+.RI "Parse path file name, wide char input with size, realy size not used, compatible only\&. "
+.ti -1c
+.RI "wchar_t * \fB_wbasename_ws\fP (const \fBstring_ws\fP *)"
+.br
+.RI "Parse path file name, struct string_ws input\&. "
+.ti -1c
+.RI "wchar_t * \fB_wbasename_selector\fP (int, const void *, size_t)"
+.br
+.RI "Automatic type selector for wbasename* functions\&. "
+.ti -1c
+.RI "wchar_t * \fB_wbaseext\fP (const wchar_t *)"
+.br
+.RI "Parse path extension, wide char input\&. "
+.ti -1c
+.RI "wchar_t * \fB_wbaseext_s\fP (const wchar_t *, size_t __attribute__((__unused__)))"
+.br
+.RI "Parse path extension, wide char input with size, realy size not used, compatible only\&. "
+.ti -1c
+.RI "wchar_t * \fB_wbaseext_ws\fP (const \fBstring_ws\fP *)"
+.br
+.RI "Parse path extension, struct string_ws input\&. "
+.ti -1c
+.RI "wchar_t * \fB_wbaseext_selector\fP (int, const void *, size_t)"
+.br
+.RI "Automatic type selector for wbaseext* functions\&. "
+.in -1c
+.SH "Data Structure Documentation"
+.PP 
+.SH "struct __wchar_string_ws_"
+.PP 
+ 
+
+Base wide string structure 
+.PP
+\fBData Fields:\fP
+.RS 4
+wchar_t * \fIstr\fP 
+.br
+.PP
+size_t \fIsz\fP wide string pointer 
+.br
+.PP
+.RE
+.PP
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define wstocscvt(A, B, D)"
+\fBValue:\fP
+.PP
+.nf
+size_t __WEV(sz,__LINE__); errno = 0;                                                                          \
+    if ((__WEV(sz,__LINE__) = _wcsrtombs(NULL, &(const wchar_t*){B}, 0, 0)) <= 0) {                                \
+        errno = EILSEQ; return D;                                                                                  \
+    }                                                                                                              \
+    char __WEV(A,__LINE__)[(__WEV(sz,__LINE__) + 1)], * A = (char*)&__WEV(A,__LINE__);                             \
+    if ((__WEV(sz,__LINE__) = _wcsrtombs(__WEV(A,__LINE__), &(const wchar_t*){B}, (__WEV(sz,__LINE__) + 1), 0))) { \
+        __WEV(A,__LINE__)[(__WEV(sz,__LINE__))] = '\0';                                                            \
+    }
+.fi
+.PP
+ 
+.PP
+\fBNote:\fP
+.RS 4
+Macro as convert type wchar_t to char  \fBwchar2\&.h\fP wchar_t* type to char[] A char[] - array name B wchar_t* - source D - function return value if error 
+.RE
+.PP
+
+.SS "#define wstocsncvt(A, B, C, D)"
+\fBValue:\fP
+.PP
+.nf
+char __WEV(A,__LINE__)[(C * 2 + 1)], * A = (char*)&__WEV(A,__LINE__); errno = 0;                                \
+    if (((C) = _wcsrtombs(__WEV(A,__LINE__), &(const wchar_t*){B}, (C * 2 + 1), 0)) <= 0) {                         \
+        errno = EILSEQ; return D;                                                                                   \
+    }                                                                                                               \
+    __WEV(A,__LINE__)[(C)] = '\0'
+.fi
+.PP
+wchar_t* type to char[] with size A char[] - array name B wchar_t* - source C size_t - wchar_t* size D - function return value if error 
+.SS "#define wstrtocscvt(A, B, D)"
+\fBValue:\fP
+.PP
+.nf
+size_t __WEV(sz,__LINE__); errno = 0;                                                                           \
+    char __WEV(A,__LINE__)[(B->sz * 2 + 1)], * A = (char*)&__WEV(A,__LINE__);                                       \
+    if ((__WEV(sz,__LINE__) = _wcsrtombs(__WEV(A,__LINE__), &(const wchar_t*){B->str}, (B->sz * 2 + 1), 0)) <= 0) { \
+        errno = EILSEQ; return D;                                                                                   \
+    }                                                                                                               \
+    __WEV(A,__LINE__)[__WEV(sz,__LINE__)] = '\0'
+.fi
+.PP
+string_ws type to char[] this struct defined on top of this file A char[] - array name B string_ws* - source D - function return value if error 
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fB__wchar_string_ws_\fP  \fBstring_ws\fP"
+
+.PP
+ Base wide string structure 
+.SH "Function Documentation"
+.PP 
+.SS "void wcprint (wchar_t *)"
+
+.PP
+Other non standart function\&. wchar_t* print Test variably only! Instead use _vfprintf, _vfwprintf, _fprintf, _fwprintf 
+.SS "wchar_t* wcsregexp (wchar_t * restrict, wchar_t * restrict, int *)"
+
+.PP
+Original name: aov-rx - Angel Ortega's regular expression library Copyright (C) 2011/2012 Angel Ortega angel@triptico.com https://github.com/angelortega/aov-rx or http://triptico.com\&. wcsregexp - Matches a regular expression : the regular expression : the text to be matched : a pointer to integer where the matching lenght is stored
+.PP
+Matches the string  for the regular expression in \&. On output, the integer pointer by  will contain the number of matched characters (with 0 meaning that no matching was possible)\&. If the end of string mark ($) is used in the regular expression and a match is effective, the ending zero is included in the match\&.
+.PP
+Returns the address of the match\&. 
+.SS "int wcstocscmp (const char *, wchar_t *, size_t)"
+
+.PP
+compare char* <-> wchar_t* ASCII only! size_t - wchar_t* size 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for libwchar2 0\&.0\&.2 from the source code\&.

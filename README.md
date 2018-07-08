@@ -90,7 +90,8 @@ If there is a need to rebuild the script `./configure`, execute:
 
 ### API
 
-Header file: [wchar2.h](https://github.com/ClnViewer/LibWchar2/blob/master/include/wchar2.h)
+Header file: [wchar2.h](https://github.com/ClnViewer/LibWchar2/blob/master/include/wchar2.h)  
+Manual: [wchar2 man](https://github.com/ClnViewer/LibWchar2/blob/master/docs/wchar2.3)
 
 To use the library in the project, connect the header last, after all system headers, while `wchar.h` and `wctype.h` can be omitted, they are already included.
 
