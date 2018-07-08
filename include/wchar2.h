@@ -361,12 +361,31 @@ int       u8wremove(const wchar_t*);
 int       _wmkdir(const wchar_t*, mode_t);
           /** @brief Make directory, wide char input with size */
 int       _wmkdir_s(const wchar_t*, size_t, mode_t);
-          /** @brief  Make directory, struct string_ws input */
+          /** @brief Make directory, struct string_ws input */
 int       _wmkdir_ws(const string_ws*, mode_t);
           /** @brief Automatic type selector for wmkdir* functions */
 int       _wmkdir_selector(int, const void*, size_t, mode_t);
           /** @brief Make directory, convert file name from wide characters to UTF-8 */
 int       u8wmkdir(const wchar_t*, mode_t);
+
+          /** @brief Parse path file name, wide char input */
+wchar_t * _wbasename(const wchar_t*);
+          /** @brief Parse path file name, wide char input with size, realy size not used, compatible only */
+wchar_t * _wbasename_s(const wchar_t*, size_t __attribute__((__unused__)));
+          /** @brief Parse path file name, struct string_ws input */
+wchar_t * _wbasename_ws(const string_ws*);
+          /** @brief Automatic type selector for wbasename* functions */
+wchar_t * _wbasename_selector(int, const void*, size_t);
+
+          /** @brief Parse path extension, wide char input */
+wchar_t * _wbaseext(const wchar_t*);
+          /** @brief Parse path extension, wide char input with size, realy size not used, compatible only */
+wchar_t * _wbaseext_s(const wchar_t*, size_t __attribute__((__unused__)));
+          /** @brief Parse path extension, struct string_ws input */
+wchar_t * _wbaseext_ws(const string_ws*);
+          /** @brief Automatic type selector for wbaseext* functions */
+wchar_t * _wbaseext_selector(int, const void*, size_t);
+
 
 #ifdef __cplusplus
     }
@@ -430,6 +449,22 @@ int       u8wmkdir(const wchar_t*, mode_t);
 
 #   define _wstat_macro(...) \
         __WEV(EV_STAT_ARG_, __WEVFA(__VA_ARGS__))(__VA_ARGS__)
+
+#   define EV_BNAME_ARG_3(_1,_2,_3) _wbasename_selector(4,_1,_3,_2)
+#   define EV_BNAME_ARG_2(_1,_2) _wbasename_selector(__wchar_type_id(_1),_1,0,_2)
+#   define EV_BNAME_ARG_1(_1) _wbasename_selector(__wchar_type_id(_1),_1,0,NULL)
+#   define EV_BNAME_ARG_0(...)
+
+#   define _wbasename_macro(...) \
+        __WEV(EV_BNAME_ARG_, __WEVFA(__VA_ARGS__))(__VA_ARGS__)
+
+#   define EV_BEXT_ARG_3(_1,_2,_3) _wbaseext_selector(4,_1,_3,_2)
+#   define EV_BEXT_ARG_2(_1,_2) _wbaseext_selector(__wchar_type_id(_1),_1,0,_2)
+#   define EV_BEXT_ARG_1(_1) _wbaseext_selector(__wchar_type_id(_1),_1,0,NULL)
+#   define EV_BEXT_ARG_0(...)
+
+#   define _wbaseext_macro(...) \
+        __WEV(EV_BEXT_ARG_, __WEVFA(__VA_ARGS__))(__VA_ARGS__)
 
  /**
   * @brief wchar_t* type to char[]
@@ -514,6 +549,7 @@ int       u8wmkdir(const wchar_t*, mode_t);
 #      define rename _wrename_macro
 #      define stat _wstat_macro
 #      define fopen _wfopen_macro
+#      define basename _wbasename_macro
 #   endif
 #endif
 
@@ -541,6 +577,16 @@ int       u8wmkdir(const wchar_t*, mode_t);
 #define wfopen_w _wfopen
 #define wfopen_s _wfopen_s
 #define wfopen_ws _wfopen_ws
+
+#define wbasename _wbasename_macro
+#define wbasename_w _wbasename
+#define wbasename_s _wbasename_s
+#define wbasename_ws _wbasename_ws
+
+#define wbaseext _wbaseext_macro
+#define wbaseext_w _wbaseext
+#define wbaseext_s _wbaseext_s
+#define wbaseext_ws _wbaseext_ws
 
 #define fputwc _fputwc
 #define fputws _fputws

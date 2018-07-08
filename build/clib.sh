@@ -3,7 +3,12 @@
     #cd ../
     pwd
 
-    if [ -z "${PREFIX}" ] ;
+    if [[ -f ../env.sh ]] ;
+    then
+        INFO=`../env.sh`
+        echo "ENV info: ${INFO}"
+    fi
+    if [[ -z "${PREFIX}" ]] ;
     then
         PREFIX=/usr/local
     fi

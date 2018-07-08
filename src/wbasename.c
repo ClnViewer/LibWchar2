@@ -27,72 +27,85 @@
 #include <stdlib.h>
 #include "libwchar.h"
 
-static char * __basename(const wchar_t *wc)
+static wchar_t * __basepart(const wchar_t *ws, wchar_t wc)
 {
-    wstocscvt(b, ws, NULL);
-    return basename(b);
+    wchar_t *p;
+    if (!(p = _wcsrchr(ws, wc))) { return NULL; }
+    return (p + 1);
 }
 
-wchar_t * u8wbasename(const wchar_t *wc)
+wchar_t * _wbasename(const wchar_t *ws)
 {
-    char    *bp, *b = NULL,
-    wchar_t *wcs = NULL;
-
-    do
-    {
-        if (
-            ((b = calloc(1, wcstou8s(NULL, wc) + 1)) == NULL)   ||
-            (wcstou8s(b, wc) <= 0)                              ||
-            ((bp = basename(b)) == NULL)                        ||
-            ((wcs = calloc(1, u8stowcs(NULL, bp) + 1)) == NULL) ||
-            (u8stowcs(wcs, bp) <= 0)
-           ) { break; }
-
-        free(b);
-        return wc;
-
-    } while(0);
-
-    if (b != NULL) free(b);
-    return NULL;
+    return __basepart(ws, L'/');
 }
 
-int wbasename(const wchar_t *ws)
+wchar_t * _wbasename_s(const wchar_t *ws, size_t sz)
 {
-    wstocscvt(b, ws, -1);
-    return mkdir(b, m);
+    (void) sz;
+    return __basepart(ws, L'/');
 }
 
-int wbasename_s(const wchar_t *ws, size_t sz)
+wchar_t * _wbasename_ws(const string_ws *ws)
 {
-    wstocsncvt(b, ws, sz, -1);
-    return basename(b, m);
+    return __basepart(ws->str, L'/');
 }
 
-int wbasename_ws(const string_ws *ws)
-{
-    wstrtocscvt(b, ws, -1);
-    return wbasename(b, m);
-}
-
-int _wbasename_selector(int sel, const void *w, size_t sz)
+wchar_t * _wbasename_selector(int sel, const void *w, size_t sz)
 {
     switch(sel)
     {
         case 1: {
-            return wbasename((const wchar_t*)w);
+            return _wbasename((const wchar_t*)w);
         }
         case 2: {
-            return wbasename_ws((const string_ws*)w);
+            return _wbasename_ws((const string_ws*)w);
         }
         case 3: {
-            return basename((const char*)w);
+            return NULL;
         }
         case 4: {
-            return wbasename_s((const wchar_t*)w, sz);
+            return _wbasename_s((const wchar_t*)w, sz);
         }
         default: {
-            return -1;
+            return NULL;
+        }
+    }
+}
+
+wchar_t * _wbaseext(const wchar_t *ws)
+{
+    return __basepart(ws, L'.');
+}
+
+wchar_t * _wbaseext_s(const wchar_t *ws, size_t sz)
+{
+    (void) sz;
+    return __basepart(ws, L'.');
+}
+
+wchar_t * _wbaseext_ws(const string_ws *ws)
+{
+    return __basepart(ws->str, L'.');
+}
+
+wchar_t * _wbaseext_selector(int sel, const void *w, size_t sz)
+{
+    switch(sel)
+    {
+        case 1: {
+            return _wbaseext((const wchar_t*)w);
+        }
+        case 2: {
+            return _wbaseext_ws((const string_ws*)w);
+        }
+        case 3: {
+            return NULL;
+        }
+        case 4: {
+            return _wbaseext_s((const wchar_t*)w, sz);
+        }
+        default: {
+            return NULL;
         }
     }
 }

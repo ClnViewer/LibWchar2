@@ -241,7 +241,6 @@ wchar_t *_wcspbrk(const wchar_t *s, const wchar_t *set) {
 }
 
 wchar_t *_wcschr(const wchar_t *s, wchar_t c) {
-  // ??? What!? char dummy[1 - 2*(sizeof(wchar_t) != 4)];
   size_t n = 0;
   for (;;) {
     wchar_t wc = s[n];

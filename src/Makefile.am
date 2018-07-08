@@ -16,6 +16,7 @@ libwchar2_la_SOURCES = \
     wremove.c \
     wrename.c \
     wstat.c \
+    wbasename.c \
     btowc.c \
     mblen.c \
     mbrlen.c \
