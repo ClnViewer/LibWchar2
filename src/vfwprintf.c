@@ -133,7 +133,7 @@ static int out_printf(FOut* o, const char* format, ...)
             ((mb_buffer = malloc(mb_len + 1)) == NULL)
            ) { va_end(args); return 0; }
 
-        _vsnprintf(mb_buffer, mb_len + 1, format, args);
+        (void) _vsnprintf(mb_buffer, mb_len + 1, format, args);
 
         // Then convert to wchar_t buffer.
 
@@ -142,7 +142,7 @@ static int out_printf(FOut* o, const char* format, ...)
             ((wide_buffer = malloc((wide_len + 1) * sizeof(wchar_t))) == NULL)
            ) { va_end(args); free(mb_buffer); return 0; }
 
-        _mbstowcs(wide_buffer, mb_buffer, mb_len);
+        (void) _mbstowcs(wide_buffer, mb_buffer, mb_len);
 
         // Add to buffer.
         out(o, wide_buffer, wide_len);
@@ -503,6 +503,15 @@ size_t _fwprintf(FILE *restrict f, const wchar_t *restrict fmt, ...)
     va_list ap;
     va_start(ap, fmt);
     size_t ret = _vfwprintf(f, fmt, ap);
+    va_end(ap);
+    return ret;
+}
+
+size_t _wprintf(const wchar_t *restrict fmt, ...)
+{
+    va_list ap;
+    va_start(ap, fmt);
+    size_t ret = _vfwprintf(stdout, fmt, ap);
     va_end(ap);
     return ret;
 }

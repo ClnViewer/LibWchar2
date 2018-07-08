@@ -274,21 +274,39 @@ int       _wcsncmp(const wchar_t*, const wchar_t*, size_t);
 int       _wmemcmp(const wchar_t*, const wchar_t*, size_t);
 
           /** @brief Write to stream char format variable argument list */
-size_t    _vfprintf(FILE *restrict, const char *restrict, va_list);
+size_t    _vfprintf(FILE *restrict, const char *restrict, va_list)
+                __attribute__((__nonnull__, __format__(__printf__, 2, 0)));
+
           /** @brief Write formatted data from variable argument list to sized buffer */
-size_t    _vsnprintf(char *restrict, size_t, const char *restrict, va_list);
+size_t    _vsnprintf(char *restrict, size_t, const char *restrict, va_list)
+                __attribute__((__format__(__printf__, 3, 0)));
+
           /** @brief Write to stream char format variable arguments */
-size_t    _fprintf(FILE *restrict, const char *restrict, ...);
+size_t    _fprintf(FILE *restrict, const char *restrict, ...)
+                __attribute__((__nonnull__, __format__(__printf__, 2, 0)));
+
           /** @brief Format variable arguments list */
-size_t    _snprintf(char *restrict, size_t, const char *restrict, ...);
+size_t    _snprintf(char *restrict, size_t, const char *restrict, ...)
+                __attribute__((__format__(__printf__, 3, 0)));
+
           /** @brief Write to stream wide character format variable argument list */
-size_t    _vfwprintf(FILE *restrict, const wchar_t *restrict, va_list);
+size_t    _vfwprintf(FILE *restrict, const wchar_t *restrict, va_list)
+                /* __attribute__((__nonnull__, __format__(__wprintf__, 2, 0))) */ ;
+
           /** @brief Write formatted data from variable argument list to sized buffer */
-size_t    _vswprintf(wchar_t *restrict, size_t, const wchar_t *restrict, va_list ap);
+size_t    _vswprintf(wchar_t *restrict, size_t, const wchar_t *restrict, va_list ap)
+                /* __attribute__((__format__(__wprintf__, 3, 0))) */ ;
+
           /** @brief Write to stream wide character format variable arguments */
-size_t    _fwprintf(FILE *restrict, const wchar_t *restrict, ...);
+size_t    _fwprintf(FILE *restrict, const wchar_t *restrict, ...)
+                /* __attribute__((__nonnull__, __format__(__wprintf__, 2, 0))) */ ;
+
           /** @brief Write formatted wide character output */
-size_t    _swprintf(wchar_t *restrict, size_t, const wchar_t *restrict, ...);
+size_t    _swprintf(wchar_t *restrict, size_t, const wchar_t *restrict, ...)
+                /* __attribute__((__format__(__wprintf__, 3, 0))) */ ;
+
+size_t    _wprintf(const wchar_t *restrict fmt, ...)
+                /* __attribute__((__format__(__wprintf__, 1, 0))) */ ;
 
           /** @brief Write a wide character string to a file or stream */
 int       _fputws(const wchar_t *restrict, FILE *restrict);
@@ -534,6 +552,8 @@ int       u8wmkdir(const wchar_t*, mode_t);
 #define vswprintf _vswprintf
 #define fwprintf _fwprintf
 #define swprintf _swprintf
+#define wprintf _wprintf
+#define fprintf _fprintf
 
 /** Tests compability only */
 #define _wcprint wcprint

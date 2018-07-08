@@ -22,5 +22,9 @@ START_TEST (test_vfwprintf)
 
     free(test);
     ck_assert_msg((&vfwprintf == &_vfwprintf), 0, "vfwprintf NO equals! libc used!");
+    ck_assert_msg((&wprintf == &_wprintf), 0, "wprintf NO equals! libc used!");
+    ck_assert_msg((&vswprintf == &_vswprintf), 0, "vswprintf NO equals! libc used!");
+    ck_assert_msg((&fwprintf == &_fwprintf), 0, "fwprintf NO equals! libc used!");
+    ck_assert_msg((&swprintf == &_swprintf), 0, "swprintf NO equals! libc used!");
 }
 END_TEST
