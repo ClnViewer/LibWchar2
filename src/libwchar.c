@@ -30,11 +30,18 @@
   * unnecessary.
   */
 
-char libinfo[] __attribute__ ((section ("LIBINFO"))) = "libwchar2 v.0.0.1 " __DATE__ " " __TIME__;
-// to OSX char libinfo[]  __attribute__((section("__SEGMENT,__LIBINFO"))) = "";
-
 #define __WCHAR_INTERNAL_LIB 1
 #include "libwchar.h"
+
+#if defined(PACKAGE_STRING)
+    char libinfo[]
+#  if (defined(__APPLE__) || defined(__OSX__) || defined(__MACH__))
+    __attribute__((section("__SEGMENT,__LIBINFO")))
+#  else
+    __attribute__ ((section ("LIBINFO")))
+#  endif
+    = PACKAGE_STRING " " __DATE__ " " __TIME__;
+#endif
 
 #define C(x) ((x < 2) ? 0xffffffff : (R(0x80,0xc0) | x))
 #define D(x) C((x + 16))

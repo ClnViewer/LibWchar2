@@ -72,6 +72,16 @@
 
 #define __NELE(A) (sizeof(A) / sizeof(A[0]))
 
+#if defined(PACKAGE_STRING)
+    char testinfo[]
+#  if (defined(__APPLE__) || defined(__OSX__) || defined(__MACH__))
+    __attribute__((section("__SEGMENT,__TESTINFO")))
+#  else
+    __attribute__ ((section ("TESTINFO")))
+#  endif
+    = PACKAGE_STRING " " __DATE__ " " __TIME__;
+#endif
+
 static const char *test_status(int x)
 {
     return ((!x) ?

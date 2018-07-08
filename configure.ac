@@ -1,6 +1,6 @@
 
 AC_PREREQ([2.63])
-AC_INIT([libwchar2], [0.0.1], [])
+AC_INIT([libwchar2], [0.0.2], [])
 AC_CONFIG_SRCDIR([src/libwchar.c])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_AUX_DIR([build])
