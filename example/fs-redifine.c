@@ -30,6 +30,7 @@
 #else
 #  include <libgen.h> /* for dirname, basename */
 #  define __WSTR  char
+#  define __WSTRFREE __WSTR
 #  define __WS(x) x
 #  define __WSTR_FMT  "s"
 #  define __WCHAR_FMT "c"
@@ -43,13 +44,13 @@ int main(int argc, char *argv[])
 
     FILE   *fp;
     const __WSTR fpath[] = __WS("/this/path/to/file.zip");
-    __WSTR *file   = __WS("open-file-name.txt");
-    __WSTR *string = __WS("A texts is a type of computer program that edits plain text.");
-    __WSTR *bext   = __WS("--NOT SUPPORT LIBWCHAR2 EXTENSION--"),
-           *bdir   = NULL,
-           *bname  = NULL;
+    __WSTR      *file    = __WS("open-file-name.txt");
+    __WSTR      *string  = __WS("A texts is a type of computer program that edits plain text.");
+    __WSTR      *bext    = __WS("--NOT SUPPORT LIBWCHAR2 EXTENSION--"),
+                *bname   = NULL;
+    __WSTRFREE  *bdir    = NULL;
 
-    bdir   = dirname((__WSTR*)fpath); /* free instance needed, see free next line */
+    bdir   = dirname((__WSTR*)fpath); /* free instance needed, auto free is enabled */
     bname  = basename((__WSTR*)fpath);
 #   if defined(WS_FS_REDEFINE)
     bext   = baseext((__WSTR*)fpath);
@@ -73,7 +74,10 @@ int main(int argc, char *argv[])
     fclose(fp);
 
 #   if defined(WS_FS_REDEFINE)
-    free(bdir);
+    /*
+        Is no declare variable as __WSTRFREE, manual free needed.
+        free(bdir);
+    */
 #   endif
 
     fprintf(stdout, "\n\tstring [%" __WSTR_FMT "] ->\n\t\tfputs to file: [%" __WSTR_FMT "]\n", string, file);

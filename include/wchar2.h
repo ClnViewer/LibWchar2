@@ -66,6 +66,7 @@
 #define __WS(x) __WS_(x)
 
 #define __WSTR wchar_t
+#define __WSTRFREE __attribute__((cleanup(__wsfree))) __WSTR
 #define __WSTR_FMT  "ls"
 #define __WCHAR_FMT "lc"
 
@@ -407,6 +408,11 @@ wchar_t * _wbasedir_ws(const string_ws*, int);
           /** @brief Automatic type selector for wbasedir* functions \note free result required! */
 void *    _wbasedir_selector(int, const void*, int);
 
+void free(void*);
+
+static inline void __attribute__((always_inline)) __wsfree(void *v) {
+    if (v) { void *x = *(void**)v; if (x) { free(x); x = ((void*)0); }}
+}
 
 #ifdef __cplusplus
     }
