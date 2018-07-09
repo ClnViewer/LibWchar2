@@ -108,7 +108,7 @@ The library itself is connected in the standard way:
     CFLAGS = -I. -fwchar-type=short -fno-signed-wchar /* clang */
     LDFLAGS = -L. -lwchar2
 
-Definitely convenient is the redefinition of standard functions working with the file system, such as: `mkdir`, `remove`, `rename`, `stat`, `basename`, `fopen`, `fputc`, `fputs`.
+Definitely convenient is the redefinition of standard functions working with the file system, such as: `mkdir`, `remove`, `rename`, `stat`, `basename`, `dirname`, `fopen`, `fputc`, `fputs`.
 
 For this, before including the header, define the following definitions:
 

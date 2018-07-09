@@ -68,3 +68,4 @@
 	tcase_add_test(t, test_wcscmp);
 	tcase_add_test(t, test_wcsncmp);
 	tcase_add_test(t, test_wmemcmp);
+	tcase_add_test(t, test_wbasename);

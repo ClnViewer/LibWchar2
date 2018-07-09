@@ -753,6 +753,15 @@ size_t _vfprintf(FILE *restrict f, const char *restrict fmt, va_list ap)
     return ret;
 }
 
+size_t _printf(const char *restrict fmt, ...)
+{
+    va_list ap;
+    va_start(ap, fmt);
+    size_t ret = _vfprintf(stdout, fmt, ap);
+    va_end(ap);
+    return ret;
+}
+
 size_t _fprintf(FILE *restrict f, const char *restrict fmt, ...)
 {
     va_list ap;

@@ -41,7 +41,7 @@ AC_PROG_LIBTOOL
 AC_CHECK_HEADERS([wchar.h wctype.h], [], [
   AC_MSG_ERROR([unable to find header wchar.h or wctype.h])
 ])
-AC_CHECK_HEADERS([inttypes.h stdint.h stdarg.h string.h errno.h ctype.h check.h sys/stat.h limits.h locale.h unistd.h sys/resource.h])
+AC_CHECK_HEADERS([inttypes.h stdint.h stdarg.h string.h errno.h ctype.h check.h libgen.h sys/stat.h limits.h locale.h unistd.h sys/resource.h])
 
 AC_TYPE_MODE_T
 AC_C_RESTRICT

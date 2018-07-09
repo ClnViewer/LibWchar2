@@ -15,3 +15,6 @@ check_wchar2_SOURCES = check_wchar2.c $(top_srcdir)/include/wchar2.h
 check_wchar2_CFLAGS = $(CFLAGS) $(CHECK_CFLAGS)
 check_wchar2_LDFLAGS = -L$(top_srcdir)/src/.libs/ $(LDFLAGS)
 check_wchar2_LDADD = $(top_srcdir)/src/.libs/libwchar2.a $(CHECK_LIBS)
+
+CLEANFILES = \
+    core.*

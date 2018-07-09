@@ -27,44 +27,83 @@
 #include <stdlib.h>
 #include "libwchar.h"
 
-static wchar_t * __basepart(const wchar_t *ws, wchar_t wc)
+#if (defined(_WIN32) || defined(_WIN64) || defined(__CYGWIN__) || defined(__MINGW32__))
+#   define __PSW L'\\'
+#   define __PSC '\\'
+#else
+#   define __PSW L'/'
+#   define __PSC '/'
+#endif
+
+static wchar_t * __basepart_w(const wchar_t *ws, wchar_t wc)
 {
     wchar_t *p;
     if (!(p = _wcsrchr(ws, wc))) { return NULL; }
     return (p + 1);
 }
 
-wchar_t * _wbasename(const wchar_t *ws)
+static char * __basepart_c(const char *s, char c)
 {
-    return __basepart(ws, L'/');
+    char *p;
+    if (!(p = strrchr(s, c))) { return NULL; }
+    return (p + 1);
 }
 
-wchar_t * _wbasename_s(const wchar_t *ws, size_t sz)
+static wchar_t * __dirname_w(const wchar_t *ws, int issep)
 {
-    (void) sz;
-    return __basepart(ws, L'/');
+    int off;
+    wchar_t *p;
+
+    if (
+        (!(p = _wcsrchr(ws, __PSW))) ||
+        ((off = (p - ws)) <= 0)
+       ) { return (wchar_t*)ws; }
+
+    off += ((issep > 0) ? 1 : 0);
+    p = (wchar_t*)ws;
+    p[off] = L'\0';
+    return p;
+}
+
+static char * __dirname_c(const char *s, int issep)
+{
+    int off;
+    char *p;
+
+    if (
+        (!(p = strrchr(s, __PSC))) ||
+        ((off = (p - s)) <= 0)
+       ) { return (char*)s; }
+
+    off += ((issep > 0) ? 1 : 0);
+    p = (char*)s;
+    p[off] = '\0';
+    return p;
+}
+
+wchar_t * _wbasename(const wchar_t *ws)
+{
+    return __basepart_w(ws, __PSW);
 }
 
 wchar_t * _wbasename_ws(const string_ws *ws)
 {
-    return __basepart(ws->str, L'/');
+    return __basepart_w(ws->str, __PSW);
 }
 
-wchar_t * _wbasename_selector(int sel, const void *w, size_t sz)
+void * _wbasename_selector(int sel, const void *w)
 {
     switch(sel)
     {
-        case 1: {
-            return _wbasename((const wchar_t*)w);
+        case 1:
+        case 4: {
+            return (void*) _wbasename((const wchar_t*)w);
         }
         case 2: {
-            return _wbasename_ws((const string_ws*)w);
+            return (void*) _wbasename_ws((const string_ws*)w);
         }
         case 3: {
-            return NULL;
-        }
-        case 4: {
-            return _wbasename_s((const wchar_t*)w, sz);
+            return (void*) __basepart_c((char*)w, __PSC);
         }
         default: {
             return NULL;
@@ -74,35 +113,131 @@ wchar_t * _wbasename_selector(int sel, const void *w, size_t sz)
 
 wchar_t * _wbaseext(const wchar_t *ws)
 {
-    return __basepart(ws, L'.');
-}
-
-wchar_t * _wbaseext_s(const wchar_t *ws, size_t sz)
-{
-    (void) sz;
-    return __basepart(ws, L'.');
+    return __basepart_w(ws, L'.');
 }
 
 wchar_t * _wbaseext_ws(const string_ws *ws)
 {
-    return __basepart(ws->str, L'.');
+    return __basepart_w(ws->str, L'.');
 }
 
-wchar_t * _wbaseext_selector(int sel, const void *w, size_t sz)
+void * _wbaseext_selector(int sel, const void *w)
 {
     switch(sel)
     {
-        case 1: {
-            return _wbaseext((const wchar_t*)w);
+        case 1:
+        case 4: {
+            return (void*) _wbaseext((const wchar_t*)w);
         }
         case 2: {
-            return _wbaseext_ws((const string_ws*)w);
+            return (void*) _wbaseext_ws((const string_ws*)w);
         }
         case 3: {
+            return (void*) __basepart_c((char*)w, '.');
+        }
+        default: {
             return NULL;
         }
+    }
+}
+
+wchar_t * _wbasedir(const wchar_t *ws, int issep)
+{
+    wchar_t *p  = NULL;
+    int      sz = (int) _wcslen(ws);
+
+    if (
+        (sz <= 0)  ||
+        ((p = calloc(sizeof(wchar_t), sz)) == NULL)
+       ) { return NULL; }
+
+    _wmemcpy((void*)p, (void*)ws, sz);
+    return __dirname_w(p, issep);
+}
+
+wchar_t * _wbasedir_ws(const string_ws *ws, int issep)
+{
+    wchar_t *p  = NULL;
+    int      sz = ws->sz;
+             sz = ((!sz) ? (int) _wcslen(ws->str) : sz);
+
+    if (
+        (sz <= 0)  ||
+        ((p = calloc(sizeof(wchar_t), sz)) == NULL)
+       ) { return NULL; }
+
+    _wmemcpy((void*)p, (void*)ws->str, sz);
+    return __dirname_w(p, issep);
+}
+
+void * _wbasedir_selector(int sel, const void *w, int issep)
+{
+    int         sz  = 0,
+                esz = 0;
+    void       *p   = NULL;
+    const void *pp  = NULL;
+
+    switch(sel)
+    {
+        case 1:
         case 4: {
-            return _wbaseext_s((const wchar_t*)w, sz);
+            esz = sizeof(wchar_t);
+            sz  = (int) _wcslen((const wchar_t*)w);
+            pp  = w;
+            break;
+        }
+        case 2: {
+            esz = sizeof(wchar_t);
+            sz  = ((const string_ws*)w)->sz;
+            sz  = ((!sz) ? (int) _wcslen(((const string_ws*)w)->str) : sz);
+            pp  = (const void*)((const string_ws*)w)->str;
+            break;
+        }
+        case 3: {
+            esz = sizeof(char);
+            sz  = strlen((char*)w);
+            pp  = w;
+            break;
+        }
+        default: {
+            return NULL;
+        }
+    }
+
+    if (
+        (sz <= 0)  ||
+        (!pp)      ||
+        ((p = calloc(esz, sz)) == NULL)
+       ) { return NULL; }
+
+    switch(sel)
+    {
+        case 1:
+        case 2:
+        case 4: {
+            _wmemcpy(p, pp, sz);
+            break;
+        }
+        case 3: {
+            memcpy(p, pp, sz);
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+
+    if (!p) { return NULL; }
+
+    switch(sel)
+    {
+        case 1:
+        case 2:
+        case 4: {
+            return (void*) __dirname_w((const wchar_t*)p, issep);
+        }
+        case 3: {
+            return (void*) __dirname_c((char*)p, issep);
         }
         default: {
             return NULL;

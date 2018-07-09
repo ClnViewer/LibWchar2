@@ -299,6 +299,10 @@ size_t    _vsnprintf(char *restrict, size_t, const char *restrict, va_list)
 size_t    _fprintf(FILE *restrict, const char *restrict, ...)
                 __attribute__((__nonnull__, __format__(__printf__, 2, 0)));
 
+          /** @brief Write to stdout char format variable arguments */
+size_t    _printf(const char *restrict fmt, ...)
+                __attribute__((__nonnull__, __format__(__printf__, 1, 0)));
+
           /** @brief Format variable arguments list */
 size_t    _snprintf(char *restrict, size_t, const char *restrict, ...)
                 __attribute__((__format__(__printf__, 3, 0)));
@@ -384,21 +388,24 @@ int       u8wmkdir(const wchar_t*, mode_t);
 
           /** @brief Parse path file name, wide char input */
 wchar_t * _wbasename(const wchar_t*);
-          /** @brief Parse path file name, wide char input with size, realy size not used, compatible only */
-wchar_t * _wbasename_s(const wchar_t*, size_t __attribute__((__unused__)));
           /** @brief Parse path file name, struct string_ws input */
 wchar_t * _wbasename_ws(const string_ws*);
           /** @brief Automatic type selector for wbasename* functions */
-wchar_t * _wbasename_selector(int, const void*, size_t);
+void *    _wbasename_selector(int, const void*);
 
           /** @brief Parse path extension, wide char input */
 wchar_t * _wbaseext(const wchar_t*);
-          /** @brief Parse path extension, wide char input with size, realy size not used, compatible only */
-wchar_t * _wbaseext_s(const wchar_t*, size_t __attribute__((__unused__)));
           /** @brief Parse path extension, struct string_ws input */
 wchar_t * _wbaseext_ws(const string_ws*);
           /** @brief Automatic type selector for wbaseext* functions */
-wchar_t * _wbaseext_selector(int, const void*, size_t);
+void *    _wbaseext_selector(int, const void*);
+
+          /** @brief Parse path directory, wide char input \note free result required! */
+wchar_t * _wbasedir(const wchar_t*, int);
+          /** @brief Parse path directory, struct string_ws input \note free result required! */
+wchar_t * _wbasedir_ws(const string_ws*, int);
+          /** @brief Automatic type selector for wbasedir* functions \note free result required! */
+void *    _wbasedir_selector(int, const void*, int);
 
 
 #ifdef __cplusplus
@@ -468,21 +475,26 @@ wchar_t * _wbaseext_selector(int, const void*, size_t);
 #   define _wstat_macro(...) \
         __WEV(EV_STAT_ARG_, __WEVFA(__VA_ARGS__))(__VA_ARGS__)
 
-#   define EV_BNAME_ARG_3(_1,_2,_3) _wbasename_selector(4,_1,_3,_2)
-#   define EV_BNAME_ARG_2(_1,_2) _wbasename_selector(__wchar_type_id(_1),_1,0,_2)
-#   define EV_BNAME_ARG_1(_1) _wbasename_selector(__wchar_type_id(_1),_1,0,NULL)
+#   define EV_BNAME_ARG_2(_1,_2) _wbasename_selector(__wchar_type_id(_1),_1,)
+#   define EV_BNAME_ARG_1(_1) _wbasename_selector(__wchar_type_id(_1),_1)
 #   define EV_BNAME_ARG_0(...)
 
 #   define _wbasename_macro(...) \
         __WEV(EV_BNAME_ARG_, __WEVFA(__VA_ARGS__))(__VA_ARGS__)
 
-#   define EV_BEXT_ARG_3(_1,_2,_3) _wbaseext_selector(4,_1,_3,_2)
-#   define EV_BEXT_ARG_2(_1,_2) _wbaseext_selector(__wchar_type_id(_1),_1,0,_2)
-#   define EV_BEXT_ARG_1(_1) _wbaseext_selector(__wchar_type_id(_1),_1,0,NULL)
+#   define EV_BEXT_ARG_2(_1,_2) _wbaseext_selector(__wchar_type_id(_1),_1)
+#   define EV_BEXT_ARG_1(_1) _wbaseext_selector(__wchar_type_id(_1),_1)
 #   define EV_BEXT_ARG_0(...)
 
 #   define _wbaseext_macro(...) \
         __WEV(EV_BEXT_ARG_, __WEVFA(__VA_ARGS__))(__VA_ARGS__)
+
+#   define EV_BDIR_ARG_2(_1,_2) _wbasedir_selector(__wchar_type_id(_1),_1,_2)
+#   define EV_BDIR_ARG_1(_1) _wbasedir_selector(__wchar_type_id(_1),_1, 0)
+#   define EV_BDIR_ARG_0(...)
+
+#   define _wbasedir_macro(...) \
+        __WEV(EV_BDIR_ARG_, __WEVFA(__VA_ARGS__))(__VA_ARGS__)
 
 /**
  * \endhtmlonly
@@ -519,7 +531,7 @@ wchar_t * _wbaseext_selector(int, const void*, size_t);
   * D          - function return value if error
   */
 #define wstocsncvt(A,B,C,D)                                                                                         \
-    char __WEV(A,__LINE__)[(C * 2 + 1)], * A = (char*)&__WEV(A,__LINE__); errno = 0;                                \
+    char __WEV(A,__LINE__)[(C + 1 * sizeof(wchar_t))], * A = (char*)&__WEV(A,__LINE__); errno = 0;                  \
     if (((C) = _wcsrtombs(__WEV(A,__LINE__), &(const wchar_t*){B}, (C * 2 + 1), 0)) <= 0) {                         \
         errno = EILSEQ; return D;                                                                                   \
     }                                                                                                               \
@@ -534,7 +546,7 @@ wchar_t * _wbaseext_selector(int, const void*, size_t);
   */
 #define wstrtocscvt(A,B,D)                                                                                          \
     size_t __WEV(sz,__LINE__); errno = 0;                                                                           \
-    char __WEV(A,__LINE__)[(B->sz * 2 + 1)], * A = (char*)&__WEV(A,__LINE__);                                       \
+    char __WEV(A,__LINE__)[(B->sz + 1 * sizeof(wchar_t))], * A = (char*)&__WEV(A,__LINE__);                         \
     if ((__WEV(sz,__LINE__) = _wcsrtombs(__WEV(A,__LINE__), &(const wchar_t*){B->str}, (B->sz * 2 + 1), 0)) <= 0) { \
         errno = EILSEQ; return D;                                                                                   \
     }                                                                                                               \
@@ -578,7 +590,9 @@ wchar_t * _wbaseext_selector(int, const void*, size_t);
 #      define rename _wrename_macro
 #      define stat _wstat_macro
 #      define fopen _wfopen_macro
-#      define basename _wbasename_macro
+#      define basename(A) (__WSTR *) _wbasename_macro(A)
+#      define dirname(A)  (__WSTR *) _wbasedir_macro(A)
+#      define baseext(A)  (__WSTR *) _wbaseext_macro(A)
 #   endif
 #endif
 
@@ -613,13 +627,15 @@ wchar_t * _wbaseext_selector(int, const void*, size_t);
 
 #define wbasename _wbasename_macro
 #define wbasename_w _wbasename
-#define wbasename_s _wbasename_s
 #define wbasename_ws _wbasename_ws
 
 #define wbaseext _wbaseext_macro
 #define wbaseext_w _wbaseext
-#define wbaseext_s _wbaseext_s
 #define wbaseext_ws _wbaseext_ws
+
+#define wbasedir _wbasedir_macro
+#define wbasedir_w _wbasedir
+#define wbasedir_ws _wbasedir_ws
 
 #define fputwc _fputwc
 #define fputws _fputws
