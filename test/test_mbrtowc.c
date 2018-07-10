@@ -95,7 +95,7 @@ START_TEST(test_mbrtowc)
     ret = _mbrtowc(&wc, "x", MB_CUR_MAX, 0);
     ck_assert(errno != EILSEQ);
     ck_assert_int_eq(ret, 1);
-    _fwprintf(stdout, L"\tTest _mbrtowc:%d -> %lc == x, %d (%s)\n", __LINE__, wc, ret,
+    _fwprintf(stdout, L"\tTest _mbrtowc::%d\t-> %lc == x, %d (%s)\n", __LINE__, wc, ret,
         test_status(wc == L'x')
     );
     ck_assert(wc == L'x');
@@ -105,7 +105,7 @@ START_TEST(test_mbrtowc)
     ret = _mbrtowc(&wc, "\xc2\xa2", MB_CUR_MAX, 0);
     ck_assert(errno != EILSEQ);
     ck_assert_int_eq(ret, 2);
-    _fwprintf(stdout, L"\tTest _mbrtowc:%d -> %lc == %lc, %d (%s)\n", __LINE__, wc, wc2_mbrtowc, ret,
+    _fwprintf(stdout, L"\tTest _mbrtowc::%d\t-> %lc == %lc, %d (%s)\n", __LINE__, wc, wc2_mbrtowc, ret,
         test_status(wc == wc2_mbrtowc)
     );
     // TODO: error off
@@ -116,7 +116,7 @@ START_TEST(test_mbrtowc)
     ret = _mbrtowc(&wc, "\xe2\x82\xac", MB_CUR_MAX, 0);
     ck_assert(errno != EILSEQ);
     ck_assert_int_eq(ret, 3);
-    _fwprintf(stdout, L"\tTest _mbrtowc:%d -> %lc == %lc, %d (%s)\n", __LINE__, wc, wc3_mbrtowc, ret,
+    _fwprintf(stdout, L"\tTest _mbrtowc::%d\t-> %lc == %lc, %d (%s)\n", __LINE__, wc, wc3_mbrtowc, ret,
         test_status(wc == wc3_mbrtowc)
     );
     ck_assert(wc == wc3_mbrtowc);

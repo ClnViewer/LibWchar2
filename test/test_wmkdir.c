@@ -14,13 +14,13 @@ START_TEST(test_wmkdir)
 
     ret = _wmkdir(pathwbad, m);
     ck_assert_int_eq(ret, 0);
-    _fprintf (stdout,  "\tTest _wmkdir:%d -> wide: [%ls] -> [%d/%d][%s]\n",
+    _fprintf (stdout,  "\tTest _wmkdir:%d\t\t-> wide: [%ls] -> [%d/%d][%s]\n",
         __LINE__, pathwbad, ret, errno, strerror(errno)
     );
 
     ret = _wmkdir(pathw, m);
     ck_assert_int_eq(ret, 0);
-    _fprintf (stdout,  "\tTest _wmkdir:%d -> wide: [%ls] -> [%d/%d][%s]\n",
+    _fprintf (stdout,  "\tTest _wmkdir:%d\t\t-> wide: [%ls] -> [%d/%d][%s]\n",
         __LINE__, pathw, ret, errno, strerror(errno)
     );
 }

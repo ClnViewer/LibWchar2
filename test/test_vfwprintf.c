@@ -16,9 +16,9 @@ START_TEST (test_vfwprintf)
     len = _wcslen(test);
     // ck_assert_int_eq(ret, len); ? TODO: not equals size
 
-    _fprintf  (stdout,  "\tTest _vfprintf:%d -> [%d/%d] = %ls\n",  __LINE__, ret, len, test);
-    _fwprintf (stdout, L"\tTest _vfwprintf:%d -> [%d/%d] = %ls\n", __LINE__, ret, len, test);
-    _fwprintf (stdout, L"\tTest _vfwprintf:%d -> [%d/%d] = %S\n",  __LINE__, ret, len, test);
+    _fprintf  (stdout,  "\tTest _vfprintf::%d\t-> [%d/%d] = %ls\n",  __LINE__, ret, len, test);
+    _fwprintf (stdout, L"\tTest _vfwprintf::%d\t-> [%d/%d] = %ls\n", __LINE__, ret, len, test);
+    _fwprintf (stdout, L"\tTest _vfwprintf::%d\t-> [%d/%d] = %S\n",  __LINE__, ret, len, test);
 
     free(test);
     ck_assert_msg((&vfwprintf == &_vfwprintf), 0, "vfwprintf NO equals! libc used!");
