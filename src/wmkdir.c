@@ -36,9 +36,9 @@ static int __mkdirp(const char *s, mode_t m)
     {
         switch (errno)
         {
-            case EEXIST: { return  0; }
-            case ENOENT: { break; }
-            default: { return -1; }
+            case EEXIST: { return 0;  }
+            case ENOENT: { break;     }
+            default:     { return -1; }
         }
         do
         {
