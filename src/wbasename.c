@@ -35,6 +35,30 @@
 #   define __PSC '/'
 #endif
 
+#define __PATH_SPLIT(_N,_T,_F,_P,_E)                            \
+    static _T * __WEV(__dirname_,_N)(_T *ws, int issep) {       \
+        int i, n, off;                                          \
+        _T *p, *s;                                              \
+        if (                                                    \
+            (!(p = _F(ws, _P))) ||                              \
+            ((off = (p - ws)) <= 0)                             \
+           ) { return (_T *)ws; }                               \
+        off += ((issep > 0) ? 1 : 0);                           \
+        p = s = (_T *)ws;                                       \
+        for (i = n = 0; i < off; i++, n++) {                    \
+            s[n] = ((s[n] == p[i]) ? s[n] : p[i]);              \
+            if (p[i] == _P) {                                   \
+                while (p[i] == _P) { i++; } --i;                \
+            }                                                   \
+        }                                                       \
+        if ((!issep) && (s[(n - 1)] == _P)) --n;                \
+        s[n] = _E;                                              \
+        return s;                                               \
+    }
+
+__PATH_SPLIT(w, wchar_t, _wcsrchr, __PSW, L'\0')
+__PATH_SPLIT(c, char, strrchr, __PSC, '\0')
+
 static wchar_t * __basepart_w(const wchar_t *ws, wchar_t wc)
 {
     wchar_t *p;
@@ -47,38 +71,6 @@ static char * __basepart_c(const char *s, char c)
     char *p;
     if (!(p = strrchr(s, c))) { return NULL; }
     return (p + 1);
-}
-
-static wchar_t * __dirname_w(const wchar_t *ws, int issep)
-{
-    int off;
-    wchar_t *p;
-
-    if (
-        (!(p = _wcsrchr(ws, __PSW))) ||
-        ((off = (p - ws)) <= 0)
-       ) { return (wchar_t*)ws; }
-
-    off += ((issep > 0) ? 1 : 0);
-    p = (wchar_t*)ws;
-    p[off] = L'\0';
-    return p;
-}
-
-static char * __dirname_c(const char *s, int issep)
-{
-    int off;
-    char *p;
-
-    if (
-        (!(p = strrchr(s, __PSC))) ||
-        ((off = (p - s)) <= 0)
-       ) { return (char*)s; }
-
-    off += ((issep > 0) ? 1 : 0);
-    p = (char*)s;
-    p[off] = '\0';
-    return p;
 }
 
 wchar_t * _wbasename(const wchar_t *ws)
@@ -234,7 +226,7 @@ void * _wbasedir_selector(int sel, const void *w, int issep)
         case 1:
         case 2:
         case 4: {
-            return (void*) __dirname_w((const wchar_t*)p, issep);
+            return (void*) __dirname_w((wchar_t*)p, issep);
         }
         case 3: {
             return (void*) __dirname_c((char*)p, issep);
