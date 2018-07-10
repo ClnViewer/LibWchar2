@@ -24,68 +24,75 @@
     SOFTWARE.
  */
 
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/stat.h>
 #include <unistd.h>
+#include <sys/stat.h>
 #include "libwchar.h"
 
-int u8wstat(const wchar_t *wc, struct stat *st)
+static access_e __access(const char *s, int m)
 {
-    int   ret = -1;
-    char *b   = NULL;
-
-    do
-    {
-        if (
-            ((b = calloc(1, wcstou8s(NULL, wc) + 1)) == NULL) ||
-            (wcstou8s(b, wc) <= 0)
-           ) { break; }
-
-        ret = stat(b, st);
-
-    } while(0);
-
-    if (b != NULL) free(b);
+    access_e ret = ISERROR;
+    struct stat sb;
+    if (stat(s, &sb) < 0)         { return ret;     }
+    else if (S_ISDIR(sb.st_mode)) { ret = ISDIR;    }
+    else if (S_ISLNK(sb.st_mode)) { ret = ISLNK;    }
+    else if (S_ISREG(sb.st_mode)) { ret = ISFIL;    }
+    else                          { return ret;     }
+    if (access(s, m) < 0)         { return ISERROR; }
     return ret;
 }
 
-int _wstat(const wchar_t *ws, struct stat *st)
+access_e u8waccess(const wchar_t *o, int m)
 {
-    wstocscvt(b, ws, -1);
-    return stat(b, st);
+    int   ret = -1;
+    char *ob  = NULL;
+    do
+    {
+        if (
+            ((ob = calloc(1, wcstou8s(NULL, o) + 1)) == NULL) ||
+            (wcstou8s(ob, o) <= 0)
+           ) { break; }
+
+        ret = __access(ob, m);
+
+    } while(0);
+
+    if (ob != NULL) free(ob);
+    return ret;
 }
 
-int _wstat_s(const wchar_t *ws, size_t sz, struct stat *st)
+access_e _waccess(const wchar_t *o, int m)
 {
-    wstocsncvt(b, ws, sz, -1);
-    return stat(b, st);
+    wstocscvt(ob, o, -1);
+    return __access(ob, m);
 }
 
-int _wstat_ws(const string_ws *ws, struct stat *st)
+access_e _waccess_s(const wchar_t *o, size_t osz, int m)
 {
-    wstrtocscvt(b, ws, -1);
-    return stat(b, st);
+    wstocsncvt(ob, o, osz, -1);
+    return __access(ob, m);
 }
 
-int _wstat_selector(int sel, const void *w, size_t sz, const void *s)
+access_e _waccess_ws(const string_ws *o, int m)
 {
-    struct stat  sst,
-                *st  = ((s == NULL) ? (struct stat*)&sst : (struct stat*)s);
+    wstrtocscvt(ob, o, -1);
+    return __access(ob, m);
+}
 
-    switch (sel)
+access_e _waccess_selector(int sel, const void *w, size_t osz, int m)
+{
+    switch(sel)
     {
         case 1: {
-            return _wstat((const wchar_t*)w, st);
+            return _waccess((const wchar_t*)w, m);
         }
         case 2: {
-            return _wstat_ws((const string_ws*)w, st);
+            return _waccess_ws((const string_ws*)w, m);
         }
         case 3: {
-            return stat((const char*)w, st);
+            return __access((const char*)w, m);
         }
         case 4: {
-            return _wstat_s((const wchar_t*)w, sz, st);
+            return _waccess_s((const wchar_t*)w, osz, m);
         }
         default: {
             errno = EFAULT;

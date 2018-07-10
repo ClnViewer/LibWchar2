@@ -69,3 +69,5 @@
 #include "test_wcsncmp.c"
 #include "test_wmemcmp.c"
 #include "test_wbasename.c"
+#include "test_wpathnormalize.c"
+#include "test_waccess.c"

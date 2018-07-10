@@ -86,6 +86,12 @@
 #define __ODD_TYPES
 #endif
 
+#if (defined(_WIN32) || defined(_WIN64) || defined(__CYGWIN__) || defined(__MINGW32__))
+#   define __PSEP '\\'
+#else
+#   define __PSEP '/'
+#endif
+
 #if !defined(__WCHAR_INTERNAL_LIB)
 extern const uint32_t bittab[];
 #endif

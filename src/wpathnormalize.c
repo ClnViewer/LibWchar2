@@ -24,72 +24,55 @@
     SOFTWARE.
  */
 
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <unistd.h>
 #include "libwchar.h"
 
-int u8wstat(const wchar_t *wc, struct stat *st)
+char * u8wpathnormalize(const wchar_t *ws)
 {
-    int   ret = -1;
-    char *b   = NULL;
-
+    char *ob  = NULL;
+    wchar_t __AUTO *wo = NULL;
     do
     {
         if (
-            ((b = calloc(1, wcstou8s(NULL, wc) + 1)) == NULL) ||
-            (wcstou8s(b, wc) <= 0)
+            ((wo = _wpathnormalize(ws, 0)) == NULL)            ||
+            ((ob = calloc(1, wcstou8s(NULL, wo) + 1)) == NULL) ||
+            (wcstou8s(ob, wo) <= 0)
            ) { break; }
 
-        ret = stat(b, st);
+        return ob;
 
     } while(0);
 
-    if (b != NULL) free(b);
-    return ret;
+    if (ob != NULL) free(ob);
+    return NULL;
 }
 
-int _wstat(const wchar_t *ws, struct stat *st)
+wchar_t * _wpathnormalize(const wchar_t *ws, int sz)
 {
-    wstocscvt(b, ws, -1);
-    return stat(b, st);
-}
+    int i, n;
+    wchar_t *p;
+    sz = ((sz > 0) ? sz : (int) _wcslen(ws));
 
-int _wstat_s(const wchar_t *ws, size_t sz, struct stat *st)
-{
-    wstocsncvt(b, ws, sz, -1);
-    return stat(b, st);
-}
+    if (
+        (sz <= 0)  ||
+        ((p = calloc(sizeof(wchar_t), sz)) == NULL)
+       ) { return NULL; }
 
-int _wstat_ws(const string_ws *ws, struct stat *st)
-{
-    wstrtocscvt(b, ws, -1);
-    return stat(b, st);
-}
+    _wmemcpy(p, ws, sz);
 
-int _wstat_selector(int sel, const void *w, size_t sz, const void *s)
-{
-    struct stat  sst,
-                *st  = ((s == NULL) ? (struct stat*)&sst : (struct stat*)s);
-
-    switch (sel)
+    for (i = n = 0; i < sz; i++, n++)
     {
-        case 1: {
-            return _wstat((const wchar_t*)w, st);
-        }
-        case 2: {
-            return _wstat_ws((const string_ws*)w, st);
-        }
-        case 3: {
-            return stat((const char*)w, st);
-        }
-        case 4: {
-            return _wstat_s((const wchar_t*)w, sz, st);
-        }
-        default: {
-            errno = EFAULT;
-            return -1;
+        p[n] = ((p[n] == p[i]) ? p[n] : p[i]);
+        if (p[i] == __WEV(L,__PSEP))
+        {
+            while ((p[i] == __WEV(L,__PSEP)) && (i < sz)) {  i++; } --i;
         }
     }
+
+    p[n] = L'\0';
+    return p;
+}
+
+wchar_t * _wpathnormalize_ws(const string_ws *ws)
+{
+    return _wpathnormalize(ws->str, ws->sz);
 }

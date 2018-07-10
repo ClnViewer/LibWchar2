@@ -83,7 +83,8 @@ am_libwchar2_la_OBJECTS = libwchar2_la-libwchar.lo \
 	libwchar2_la-fputwc.lo libwchar2_la-fputws.lo \
 	libwchar2_la-wfopen.lo libwchar2_la-wmkdir.lo \
 	libwchar2_la-wremove.lo libwchar2_la-wrename.lo \
-	libwchar2_la-wstat.lo libwchar2_la-wbasename.lo \
+	libwchar2_la-wstat.lo libwchar2_la-waccess.lo \
+	libwchar2_la-wbasename.lo libwchar2_la-wpathnormalize.lo \
 	libwchar2_la-btowc.lo libwchar2_la-mblen.lo \
 	libwchar2_la-mbrlen.lo libwchar2_la-mbrtowc.lo \
 	libwchar2_la-mbsinit.lo libwchar2_la-mbsnrtowcs.lo \
@@ -281,7 +282,9 @@ libwchar2_la_SOURCES = \
     wremove.c \
     wrename.c \
     wstat.c \
+    waccess.c \
     wbasename.c \
+    wpathnormalize.c \
     btowc.c \
     mblen.c \
     mbrlen.c \
@@ -424,6 +427,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-towctrans.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-vfprintf.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-vfwprintf.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-waccess.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wbasename.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wchar_utf8.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wchar_util.Plo@am__quote@
@@ -441,6 +445,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wcwidth.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wfopen.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wmkdir.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wpathnormalize.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wremove.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wrename.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wstat.Plo@am__quote@
@@ -536,6 +541,14 @@ libwchar2_la-wstat.lo: wstat.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libwchar2_la_CPPFLAGS) $(CPPFLAGS) $(libwchar2_la_CFLAGS) $(CFLAGS) -c -o libwchar2_la-wstat.lo `test -f 'wstat.c' || echo '$(srcdir)/'`wstat.c
 
+libwchar2_la-waccess.lo: waccess.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libwchar2_la_CPPFLAGS) $(CPPFLAGS) $(libwchar2_la_CFLAGS) $(CFLAGS) -MT libwchar2_la-waccess.lo -MD -MP -MF $(DEPDIR)/libwchar2_la-waccess.Tpo -c -o libwchar2_la-waccess.lo `test -f 'waccess.c' || echo '$(srcdir)/'`waccess.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libwchar2_la-waccess.Tpo $(DEPDIR)/libwchar2_la-waccess.Plo
+@am__fastdepCC_FALSE@	$(AM_V_CC) @AM_BACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='waccess.c' object='libwchar2_la-waccess.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libwchar2_la_CPPFLAGS) $(CPPFLAGS) $(libwchar2_la_CFLAGS) $(CFLAGS) -c -o libwchar2_la-waccess.lo `test -f 'waccess.c' || echo '$(srcdir)/'`waccess.c
+
 libwchar2_la-wbasename.lo: wbasename.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libwchar2_la_CPPFLAGS) $(CPPFLAGS) $(libwchar2_la_CFLAGS) $(CFLAGS) -MT libwchar2_la-wbasename.lo -MD -MP -MF $(DEPDIR)/libwchar2_la-wbasename.Tpo -c -o libwchar2_la-wbasename.lo `test -f 'wbasename.c' || echo '$(srcdir)/'`wbasename.c
 @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libwchar2_la-wbasename.Tpo $(DEPDIR)/libwchar2_la-wbasename.Plo
@@ -543,6 +556,14 @@ libwchar2_la-wbasename.lo: wbasename.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='wbasename.c' object='libwchar2_la-wbasename.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libwchar2_la_CPPFLAGS) $(CPPFLAGS) $(libwchar2_la_CFLAGS) $(CFLAGS) -c -o libwchar2_la-wbasename.lo `test -f 'wbasename.c' || echo '$(srcdir)/'`wbasename.c
+
+libwchar2_la-wpathnormalize.lo: wpathnormalize.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libwchar2_la_CPPFLAGS) $(CPPFLAGS) $(libwchar2_la_CFLAGS) $(CFLAGS) -MT libwchar2_la-wpathnormalize.lo -MD -MP -MF $(DEPDIR)/libwchar2_la-wpathnormalize.Tpo -c -o libwchar2_la-wpathnormalize.lo `test -f 'wpathnormalize.c' || echo '$(srcdir)/'`wpathnormalize.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libwchar2_la-wpathnormalize.Tpo $(DEPDIR)/libwchar2_la-wpathnormalize.Plo
+@am__fastdepCC_FALSE@	$(AM_V_CC) @AM_BACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='wpathnormalize.c' object='libwchar2_la-wpathnormalize.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libwchar2_la_CPPFLAGS) $(CPPFLAGS) $(libwchar2_la_CFLAGS) $(CFLAGS) -c -o libwchar2_la-wpathnormalize.lo `test -f 'wpathnormalize.c' || echo '$(srcdir)/'`wpathnormalize.c
 
 libwchar2_la-btowc.lo: btowc.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libwchar2_la_CPPFLAGS) $(CPPFLAGS) $(libwchar2_la_CFLAGS) $(CFLAGS) -MT libwchar2_la-btowc.lo -MD -MP -MF $(DEPDIR)/libwchar2_la-btowc.Tpo -c -o libwchar2_la-btowc.lo `test -f 'btowc.c' || echo '$(srcdir)/'`btowc.c

@@ -89,6 +89,7 @@ int _wrename_selector(int sel, const void *w, size_t osz, const void *s, size_t 
             return _wrename_s((const wchar_t*)w, osz, (const wchar_t*)s, nsz);
         }
         default: {
+            errno = EFAULT;
             return -1;
         }
     }

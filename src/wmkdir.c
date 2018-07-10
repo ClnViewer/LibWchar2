@@ -109,6 +109,7 @@ int _wmkdir_selector(int sel, const void *w, size_t sz, mode_t m)
             return _wmkdir_s((const wchar_t*)w, sz, m);
         }
         default: {
+            errno = EFAULT;
             return -1;
         }
     }

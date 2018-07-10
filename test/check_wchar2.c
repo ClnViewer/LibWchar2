@@ -41,6 +41,7 @@
 #include <sys/stat.h>
 #include <locale.h>
 #include <limits.h>
+#include <unistd.h>
 
 #if defined(HAVE_CONFIG_H)
 #   include "../config.h"

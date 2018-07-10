@@ -83,6 +83,7 @@ FILE * _wfopen_selector(int sel, const void *w, size_t sz, const void *m)
             return _wfopen_s((const wchar_t*)w, sz, (const char*)m);
         }
         default: {
+            errno = EFAULT;
             return NULL;
         }
     }

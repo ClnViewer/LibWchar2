@@ -27,12 +27,6 @@
 #include <stdlib.h>
 #include "libwchar.h"
 
-#if (defined(_WIN32) || defined(_WIN64) || defined(__CYGWIN__) || defined(__MINGW32__))
-#   define __PSEP '\\'
-#else
-#   define __PSEP '/'
-#endif
-
 #define __PATH_SPLIT(_N,_T,_F,_P,_E)                            \
     static _T * __WEV(__dirname_,_N)(_T *ws, int issep) {       \
         int i, n, off;                                          \
@@ -66,38 +60,6 @@ __PATH_SPLIT(c, char, strrchr, __PSEP, '\0')
 
 __PATH_BASE(w, wchar_t, _wcsrchr)
 __PATH_BASE(c, char, strrchr)
-
-
-wchar_t * _wpathnormalize(const wchar_t *ws, int sz)
-{
-    int i, n;
-    wchar_t *p;
-    sz = ((sz > 0) ? sz : (int) _wcslen(ws));
-
-    if (
-        (sz <= 0)  ||
-        ((p = calloc(sizeof(wchar_t), sz)) == NULL)
-       ) { return NULL; }
-
-    _wmemcpy(p, ws, sz);
-
-    for (i = n = 0; i < sz; i++, n++)
-    {
-        p[n] = ((p[n] == p[i]) ? p[n] : p[i]);
-        if (p[i] == __WEV(L,__PSEP))
-        {
-            while ((p[i] == __WEV(L,__PSEP)) && (i < sz)) {  i++; } --i;
-        }
-    }
-
-    p[n] = L'\0';
-    return p;
-}
-
-wchar_t * _wpathnormalize_ws(const string_ws *ws)
-{
-    return _wpathnormalize(ws->str, ws->sz);
-}
 
 wchar_t * _wbasename(const wchar_t *ws)
 {
@@ -218,6 +180,7 @@ void * _wbasedir_selector(int sel, const void *w, int issep)
             break;
         }
         default: {
+            errno = EFAULT;
             return NULL;
         }
     }
@@ -258,6 +221,7 @@ void * _wbasedir_selector(int sel, const void *w, int issep)
             return (void*) __dirname_c((char*)p, issep);
         }
         default: {
+            errno = EFAULT;
             return NULL;
         }
     }

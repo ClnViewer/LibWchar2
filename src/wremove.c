@@ -83,6 +83,7 @@ int _wremove_selector(int sel, const void *w, size_t sz)
             return _wremove_s((const wchar_t*)w, sz);
         }
         default: {
+            errno = EFAULT;
             return -1;
         }
     }
