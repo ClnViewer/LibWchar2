@@ -1,4 +1,4 @@
-.TH "include/wchar2.h" 3 "Sun Jul 8 2018" "libwchar2 0.0.2" \" -*- nroff -*-
+.TH "include/wchar2.h" 3 "Wed Jul 11 2018" "libwchar2 0.0.2" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -42,6 +42,14 @@ include/wchar2.h
 .RI "typedef struct \fB__wchar_string_ws_\fP \fBstring_ws\fP"
 .br
 .RI " "
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBaccess_e\fP { \fBISERROR\fP = -1, \fBISUNK\fP = 0, \fBISFIL\fP = 1, \fBISLNK\fP = 2, \fBISDIR\fP = 3 }"
+.br
+.RI "enumeration for return waccess function "
 .in -1c
 .SS "Functions"
 
@@ -311,26 +319,27 @@ include/wchar2.h
 .br
 .RI "Compare wide characters in memory\&. "
 .ti -1c
-.RI "size_t \fB_vfprintf\fP (FILE *restrict, const char *restrict, va_list) __attribute__((__nonnull__"
+.RI "size_t \fB_vfprintf\fP (FILE *restrict, const char *restrict, va_list)"
 .br
 .RI "Write to stream char format variable argument list\&. "
 .ti -1c
-.RI "size_t \fB__format__\fP (__printf__, 2, 0)))"
-.br
-.ti -1c
-.RI "size_t \fB_vsnprintf\fP (char *restrict, size_t, const char *restrict, va_list) __attribute__((__format__(__printf__"
+.RI "size_t \fB_vsnprintf\fP (char *restrict, size_t, const char *restrict, va_list)"
 .br
 .RI "Write formatted data from variable argument list to sized buffer\&. "
 .ti -1c
-.RI "size_t size_t \fB_fprintf\fP (FILE *restrict, const char *restrict,\&.\&.\&.) __attribute__((__nonnull__"
+.RI "size_t \fB_fprintf\fP (FILE *restrict, const char *restrict,\&.\&.\&.)"
 .br
 .RI "Write to stream char format variable arguments\&. "
 .ti -1c
-.RI "size_t \fB_snprintf\fP (char *restrict, size_t, const char *restrict,\&.\&.\&.) __attribute__((__format__(__printf__"
+.RI "size_t \fB_printf\fP (const char *restrict fmt,\&.\&.\&.)"
+.br
+.RI "Write to stdout char format variable arguments\&. "
+.ti -1c
+.RI "size_t \fB_snprintf\fP (char *restrict, size_t, const char *restrict,\&.\&.\&.)"
 .br
 .RI "Format variable arguments list\&. "
 .ti -1c
-.RI "size_t size_t \fB_vfwprintf\fP (FILE *restrict, const wchar_t *restrict, va_list)"
+.RI "size_t \fB_vfwprintf\fP (FILE *restrict, const wchar_t *restrict, va_list)"
 .br
 .RI "Write to stream wide character format variable argument list\&. "
 .ti -1c
@@ -457,19 +466,35 @@ include/wchar2.h
 .br
 .RI "Make directory, convert file name from wide characters to UTF-8\&. "
 .ti -1c
+.RI "\fBaccess_e\fP \fB_waccess\fP (const wchar_t *, int)"
+.br
+.RI "Check permissions for a file or directory, wide char input\&. "
+.ti -1c
+.RI "\fBaccess_e\fP \fB_waccess_s\fP (const wchar_t *, size_t, int)"
+.br
+.RI "Check permissions for a file or directory, wide char input with size\&. "
+.ti -1c
+.RI "\fBaccess_e\fP \fB_waccess_ws\fP (const \fBstring_ws\fP *, int)"
+.br
+.RI "Check permissions for a file or directory, struct string_ws input\&. "
+.ti -1c
+.RI "\fBaccess_e\fP \fB_waccess_selector\fP (int, const void *, size_t, int)"
+.br
+.RI "Automatic type selector for wmkdir* functions\&. "
+.ti -1c
+.RI "\fBaccess_e\fP \fBu8waccess\fP (const wchar_t *, int)"
+.br
+.RI "Check permissions for a file or directory, convert file name from wide characters to UTF-8\&. "
+.ti -1c
 .RI "wchar_t * \fB_wbasename\fP (const wchar_t *)"
 .br
 .RI "Parse path file name, wide char input\&. "
-.ti -1c
-.RI "wchar_t * \fB_wbasename_s\fP (const wchar_t *, size_t __attribute__((__unused__)))"
-.br
-.RI "Parse path file name, wide char input with size, realy size not used, compatible only\&. "
 .ti -1c
 .RI "wchar_t * \fB_wbasename_ws\fP (const \fBstring_ws\fP *)"
 .br
 .RI "Parse path file name, struct string_ws input\&. "
 .ti -1c
-.RI "wchar_t * \fB_wbasename_selector\fP (int, const void *, size_t)"
+.RI "void * \fB_wbasename_selector\fP (int, const void *)"
 .br
 .RI "Automatic type selector for wbasename* functions\&. "
 .ti -1c
@@ -477,17 +502,76 @@ include/wchar2.h
 .br
 .RI "Parse path extension, wide char input\&. "
 .ti -1c
-.RI "wchar_t * \fB_wbaseext_s\fP (const wchar_t *, size_t __attribute__((__unused__)))"
-.br
-.RI "Parse path extension, wide char input with size, realy size not used, compatible only\&. "
-.ti -1c
 .RI "wchar_t * \fB_wbaseext_ws\fP (const \fBstring_ws\fP *)"
 .br
 .RI "Parse path extension, struct string_ws input\&. "
 .ti -1c
-.RI "wchar_t * \fB_wbaseext_selector\fP (int, const void *, size_t)"
+.RI "void * \fB_wbaseext_selector\fP (int, const void *)"
 .br
 .RI "Automatic type selector for wbaseext* functions\&. "
+.ti -1c
+.RI "wchar_t * \fB_wbasedir\fP (const wchar_t *, int)"
+.br
+.RI "Parse path directory + normalize slash from path, wide char input\&. "
+.ti -1c
+.RI "wchar_t * \fB_wbasedir_ws\fP (const \fBstring_ws\fP *, int)"
+.br
+.RI "Parse path directory + normalize slash from path, struct string_ws input\&. "
+.ti -1c
+.RI "void * \fB_wbasedir_selector\fP (int, const void *, int)"
+.br
+.RI "Automatic type selector for wbasedir* functions\&. "
+.ti -1c
+.RI "wchar_t * \fB_wpathnormalize\fP (const wchar_t *, int)"
+.br
+.RI "Normalize slash from path, wide char input, int is string size, default 0\&. "
+.ti -1c
+.RI "wchar_t * \fB_wpathnormalize_ws\fP (const \fBstring_ws\fP *)"
+.br
+.RI "Normalize slash from path, struct string_ws input\&. "
+.ti -1c
+.RI "char * \fBu8wpathnormalize\fP (const wchar_t *)"
+.br
+.RI "Normalize slash from path, convert file name from wide characters to UTF-8\&. "
+.ti -1c
+.RI "void \fBwstring_free\fP (\fBstring_ws\fP *)"
+.br
+.RI "API string_ws\&. "
+.ti -1c
+.RI "size_t \fBwstring_alloc\fP (\fBstring_ws\fP *, size_t)"
+.br
+.RI "Memory allocation string, struct string_ws->str output\&. "
+.ti -1c
+.RI "size_t \fBwstring_wstocs\fP (char [], size_t, const \fBstring_ws\fP *)"
+.br
+.RI "Converting string, struct string_ws input, char array output\&. "
+.ti -1c
+.RI "size_t \fBwstring_cstows\fP (wchar_t [], size_t, const char *)"
+.br
+.RI "Converting string, char input, wchar_t array output\&. "
+.ti -1c
+.RI "int \fBwstring_isempty\fP (const wchar_t *s, int)"
+.br
+.RI "Check string is empty, wchar_t input, boolean return\&. "
+.ti -1c
+.RI "\fBstring_ws\fP \fBwstring_trunc\fP (const wchar_t *ws, int)"
+.br
+.RI "Truncation string, wchar_t input, struct string_ws return\&. "
+.ti -1c
+.RI "size_t \fBwstring_format\fP (\fBstring_ws\fP *, const wchar_t *,\&.\&.\&.)"
+.br
+.RI "Append string, format vargs input, struct string_ws output\&. "
+.ti -1c
+.RI "size_t \fBwstring_append_cvt\fP (\fBstring_ws\fP *, const char *, size_t)"
+.br
+.RI "Append string, char input, struct string_ws output\&. "
+.ti -1c
+.RI "size_t \fBwstring_append\fP (\fBstring_ws\fP *, const wchar_t *, size_t)"
+.br
+.RI "Append string, wchar_t input, struct string_ws output\&. "
+.ti -1c
+.RI "void \fBfree\fP (void *)"
+.br
 .in -1c
 .SH "Data Structure Documentation"
 .PP 
@@ -524,18 +608,13 @@ size_t __WEV(sz,__LINE__); errno = 0;                                           
 .fi
 .PP
  
-.PP
-\fBNote:\fP
-.RS 4
-Macro as convert type wchar_t to char  \fBwchar2\&.h\fP wchar_t* type to char[] A char[] - array name B wchar_t* - source D - function return value if error 
-.RE
-.PP
-
+.br
+wchar_t* type to char[] A char[] - array name B wchar_t* - source D - function return value if error 
 .SS "#define wstocsncvt(A, B, C, D)"
 \fBValue:\fP
 .PP
 .nf
-char __WEV(A,__LINE__)[(C * 2 + 1)], * A = (char*)&__WEV(A,__LINE__); errno = 0;                                \
+char __WEV(A,__LINE__)[(C + 1 * sizeof(wchar_t))], * A = (char*)&__WEV(A,__LINE__); errno = 0;                  \
     if (((C) = _wcsrtombs(__WEV(A,__LINE__), &(const wchar_t*){B}, (C * 2 + 1), 0)) <= 0) {                         \
         errno = EILSEQ; return D;                                                                                   \
     }                                                                                                               \
@@ -548,7 +627,7 @@ wchar_t* type to char[] with size A char[] - array name B wchar_t* - source C si
 .PP
 .nf
 size_t __WEV(sz,__LINE__); errno = 0;                                                                           \
-    char __WEV(A,__LINE__)[(B->sz * 2 + 1)], * A = (char*)&__WEV(A,__LINE__);                                       \
+    char __WEV(A,__LINE__)[(B->sz + 1 * sizeof(wchar_t))], * A = (char*)&__WEV(A,__LINE__);                         \
     if ((__WEV(sz,__LINE__) = _wcsrtombs(__WEV(A,__LINE__), &(const wchar_t*){B->str}, (B->sz * 2 + 1), 0)) <= 0) { \
         errno = EILSEQ; return D;                                                                                   \
     }                                                                                                               \
@@ -562,8 +641,157 @@ string_ws type to char[] this struct defined on top of this file A char[] - arra
 
 .PP
  Base wide string structure 
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBaccess_e\fP"
+
+.PP
+enumeration for return waccess function 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIISERROR \fP\fP
+Error check\&. 
+.TP
+\fB\fIISUNK \fP\fP
+is a Unknown 
+.TP
+\fB\fIISFIL \fP\fP
+is a Regular file 
+.TP
+\fB\fIISLNK \fP\fP
+is a Symbolic link 
+.TP
+\fB\fIISDIR \fP\fP
+is a Directory 
 .SH "Function Documentation"
 .PP 
+.SS "wchar_t* _wbasedir (const wchar_t *, int)"
+
+.PP
+Parse path directory + normalize slash from path, wide char input\&. 
+.PP
+\fBAttention:\fP
+.RS 4
+all functions _wbasedir* required free result, use type __WSTRFREE for auto free 
+.RE
+.PP
+
+.SS "int _wmkdir (const wchar_t *, mode_t)"
+
+.PP
+Make directory, wide char input\&. 
+.PP
+\fBNote:\fP
+.RS 4
+the equivalent of using the mkdir command with the -p switch for all functions _wmkdir* 
+.RE
+.PP
+
+.SS "wchar_t* _wpathnormalize (const wchar_t *, int)"
+
+.PP
+Normalize slash from path, wide char input, int is string size, default 0\&. 
+.PP
+\fBAttention:\fP
+.RS 4
+all functions _wpathnormalize* required free result, use type __WSTRFREE for auto free 
+.RE
+.PP
+
+.SS "size_t u8stowcs (wchar_t *, const char *)"
+
+.PP
+Covert utf-8 char* to wchar_t* wchar_t* - output const char* - input return size_t - size\&. 
+.PP
+\fBNote:\fP
+.RS 4
+function u8stowcs required free result 
+.RE
+.PP
+
+.SS "int u8sverify (const char *)"
+
+.PP
+Verify char* to utf-8 valid string const char* - input int (bool) - output\&. 
+.SS "\fBaccess_e\fP u8waccess (const wchar_t *, int)"
+
+.PP
+Check permissions for a file or directory, convert file name from wide characters to UTF-8\&. 
+.PP
+\fBAttention:\fP
+.RS 4
+function u8waccess required free result 
+.RE
+.PP
+
+.SS "FILE* u8wfopen (const wchar_t *, const char *)"
+
+.PP
+Open file stream, convert file name from wide characters to UTF-8, mode as const char\&. 
+.PP
+\fBAttention:\fP
+.RS 4
+function u8wfopen required free result 
+.RE
+.PP
+
+.SS "int u8wmkdir (const wchar_t *, mode_t)"
+
+.PP
+Make directory, convert file name from wide characters to UTF-8\&. 
+.PP
+\fBAttention:\fP
+.RS 4
+function u8wmkdir required free result 
+.RE
+.PP
+
+.SS "char* u8wpathnormalize (const wchar_t *)"
+
+.PP
+Normalize slash from path, convert file name from wide characters to UTF-8\&. 
+.PP
+\fBAttention:\fP
+.RS 4
+function u8wpathnormalize required free result 
+.RE
+.PP
+
+.SS "int u8wremove (const wchar_t *)"
+
+.PP
+Delete (remove) file, convert file name from wide characters to UTF-8\&. 
+.PP
+\fBAttention:\fP
+.RS 4
+function u8wremove required free result 
+.RE
+.PP
+
+.SS "int u8wrename (const wchar_t *, const wchar_t *)"
+
+.PP
+Rename file, convert file name from wide characters to UTF-8\&. 
+.PP
+\fBAttention:\fP
+.RS 4
+function u8wrename required free result 
+.RE
+.PP
+
+.SS "int u8wstat (const wchar_t *, struct stat *)"
+
+.PP
+Statistic from file, convert file name from wide characters to UTF-8\&. 
+.PP
+\fBAttention:\fP
+.RS 4
+function u8wstat required free result 
+.RE
+.PP
+
 .SS "void wcprint (wchar_t *)"
 
 .PP
@@ -580,6 +808,21 @@ Returns the address of the match\&.
 
 .PP
 compare char* <-> wchar_t* ASCII only! size_t - wchar_t* size 
+.SS "size_t wcstou8s (char *, const wchar_t *)"
+
+.PP
+Convert wchar_t* to utf-8 char* char* - output const wchar_t* - input return size_t - size\&. 
+.PP
+\fBNote:\fP
+.RS 4
+function wcstou8s required free result 
+.RE
+.PP
+
+.SS "void wstring_free (\fBstring_ws\fP *)"
+
+.PP
+API string_ws\&. Memory free string, empty and clear struct string_ws 
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for libwchar2 0\&.0\&.2 from the source code\&.

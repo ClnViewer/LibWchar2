@@ -27,7 +27,11 @@
   *  - gcc as key:   -fshort-wchar
   *  - clang as key: -fwchar-type=short -fno-signed-wchar
   *
+  * @author     PS
   * @copyright  MIT 2018 (c) PS
+  * @see https://clnviewer.github.io/LibWchar2/ [Web Home]
+  * @see https://github.com/ClnViewer/LibWchar2 [Git Home]
+  *
   */
 
   /*
@@ -102,11 +106,16 @@ typedef struct __wchar_string_ws_ {
 
 /** @brief enumeration for return waccess function */
 typedef enum {
-    ISERROR = -1, /** Error check */
-    ISUNK   =  0, /** is a Unknown */
-    ISFIL   =  1, /** is a Regular file */
-    ISLNK   =  2, /** is a Symbolic link */
-    ISDIR   =  3  /** is a Directory */
+    /** Error check */
+    ISERROR = -1,
+    /** is a Unknown */
+    ISUNK   =  0,
+    /** is a Regular file */
+    ISFIL   =  1,
+    /** is a Symbolic link */
+    ISLNK   =  2,
+    /** is a Directory */
+    ISDIR   =  3
 } access_e;
 
           /** @brief Translate wide characters to uppercase */
@@ -229,7 +238,7 @@ wchar_t *  wcsregexp(wchar_t *restrict, wchar_t *restrict, int*);
   *  const char*       - input
   *  return size_t     - size
   *
-  *  @note required free result
+  *  @note function u8stowcs required free result
   */
 size_t     u8stowcs(wchar_t*, const char*);
 
@@ -239,7 +248,7 @@ size_t     u8stowcs(wchar_t*, const char*);
   *  const wchar_t*    - input
   *  return size_t     - size
   *
-  *  @note required free result
+  *  @note function wcstou8s required free result
   */
 size_t     wcstou8s(char*, const wchar_t*);
 
@@ -356,7 +365,7 @@ FILE    * _wfopen_ws(const string_ws*, const char*);
 FILE    * _wfopen_selector(int, const void*, size_t, const void*);
           /**
            *  @brief Open file stream, convert file name from wide characters to UTF-8, mode as const char
-           *  @note required free result
+           *  @attention function u8wfopen required free result
            */
 FILE    * u8wfopen(const wchar_t*, const char*);
 
@@ -370,7 +379,7 @@ int       _wstat_ws(const string_ws*, struct stat*);
 int       _wstat_selector(int, const void*, size_t, const void*);
           /** 
            *  @brief Statistic from file, convert file name from wide characters to UTF-8
-           *  @note required free result
+           *  @attention function u8wstat required free result
            */
 int       u8wstat(const wchar_t*, struct stat*);
 
@@ -384,7 +393,7 @@ int       _wrename_ws(const string_ws*, const string_ws*);
 int       _wrename_selector(int, const void*, size_t, const void*, size_t);
           /**
            *  @brief Rename file, convert file name from wide characters to UTF-8
-           *  @note required free result
+           *  @attention function u8wrename required free result
            */
 int       u8wrename(const wchar_t*, const wchar_t*);
 
@@ -398,7 +407,7 @@ int       _wremove_ws(const string_ws*);
 int       _wremove_selector(int, const void*, size_t);
           /**
            *  @brief Delete (remove) file, convert file name from wide characters to UTF-8
-           *  @note required free result
+           *  @attention function u8wremove required free result
            */
 int       u8wremove(const wchar_t*);
 
@@ -415,7 +424,7 @@ int       _wmkdir_ws(const string_ws*, mode_t);
 int       _wmkdir_selector(int, const void*, size_t, mode_t);
           /**
            *  @brief Make directory, convert file name from wide characters to UTF-8
-           *  @note required free result
+           *  @attention function u8wmkdir required free result
            */
 int       u8wmkdir(const wchar_t*, mode_t);
 
@@ -430,7 +439,7 @@ access_e  _waccess_ws(const string_ws*, int);
 access_e  _waccess_selector(int, const void*, size_t, int);
           /**
            *  @brief Check permissions for a file or directory, convert file name from wide characters to UTF-8
-           *  @note required free result
+           *  @attention function u8waccess required free result
            */
 access_e  u8waccess(const wchar_t*, int);
 
@@ -449,7 +458,7 @@ wchar_t * _wbaseext_ws(const string_ws*);
 void *    _wbaseext_selector(int, const void*);
 
           /**
-           *  @note all functions _wbasedir* required free result, use type __WSTRFREE for auto free
+           *  @attention all functions _wbasedir* required free result, use type __WSTRFREE for auto free
            */
           /** @brief Parse path directory + normalize slash from path, wide char input */
 wchar_t * _wbasedir(const wchar_t*, int);
@@ -459,7 +468,7 @@ wchar_t * _wbasedir_ws(const string_ws*, int);
 void *    _wbasedir_selector(int, const void*, int);
 
           /**
-           *  @note all functions _wpathnormalize* required free result, use type __WSTRFREE for auto free
+           *  @attention all functions _wpathnormalize* required free result, use type __WSTRFREE for auto free
            */
           /** @brief Normalize slash from path, wide char input, int is string size, default 0 */
 wchar_t * _wpathnormalize(const wchar_t*, int);
@@ -467,9 +476,33 @@ wchar_t * _wpathnormalize(const wchar_t*, int);
 wchar_t * _wpathnormalize_ws(const string_ws*);
           /**
            *  @brief Normalize slash from path, convert file name from wide characters to UTF-8
-           *  @note required free result
+           *  @attention function u8wpathnormalize required free result
            */
 char *    u8wpathnormalize(const wchar_t*);
+
+
+          /**
+           *  API string_ws
+           */
+
+          /** @brief Memory free string, empty and clear struct string_ws */
+void      wstring_free(string_ws*);
+          /** @brief Memory allocation string, struct string_ws->str output */
+size_t    wstring_alloc(string_ws*, size_t);
+          /** @brief Converting string, struct string_ws input, char array output */
+size_t    wstring_wstocs(char [], size_t, const string_ws*);
+          /** @brief Converting string, char input, wchar_t array output */
+size_t    wstring_cstows(wchar_t [], size_t, const char*);
+          /** @brief Check string is empty, wchar_t input, boolean return */
+int       wstring_isempty(const wchar_t *s, int);
+          /** @brief Truncation string, wchar_t input, struct string_ws return */
+string_ws wstring_trunc(const wchar_t *ws, int);
+          /** @brief Append string, format vargs input, struct string_ws output */
+size_t    wstring_format(string_ws*, const wchar_t*, ...);
+          /** @brief Append string, char input, struct string_ws output */
+size_t    wstring_append_cvt(string_ws*, const char*, size_t);
+          /** @brief Append string, wchar_t input, struct string_ws output */
+size_t    wstring_append(string_ws*, const wchar_t*, size_t);
 
 
 void free(void*);
@@ -578,12 +611,7 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
  * \endhtmlonly
  */
 
- /**
-   * @note Macro as convert type wchar_t to char
-   * @see  wchar2.h
-   *
-   *
-  */
+/** \paragraph usemacro Macro as convert type wchar_t to char */
 
  /**
   * @brief wchar_t* type to char[]

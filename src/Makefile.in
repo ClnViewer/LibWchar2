@@ -104,7 +104,7 @@ am_libwchar2_la_OBJECTS = libwchar2_la-libwchar.lo \
 	libwchar2_la-iswxdigit.lo libwchar2_la-towctrans.lo \
 	libwchar2_la-wcswidth.lo libwchar2_la-wctrans.lo \
 	libwchar2_la-wcwidth.lo libwchar2_la-wchar_util.lo \
-	libwchar2_la-wchar_utf8.lo
+	libwchar2_la-wchar_utf8.lo libwchar2_la-wstring_utl.lo
 libwchar2_la_OBJECTS = $(am_libwchar2_la_OBJECTS)
 AM_V_lt = $(am__v_lt_$(V))
 am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))
@@ -323,7 +323,8 @@ libwchar2_la_SOURCES = \
     wctrans.c \
     wcwidth.c \
     wchar_util.c \
-    wchar_utf8.c
+    wchar_utf8.c \
+    wstring_utl.c
 
 all: all-am
 
@@ -449,6 +450,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wremove.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wrename.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wstat.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wstring_utl.Plo@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(AM_V_CC)depbase=`echo $@ | sed 's|[^/]*$$|$(DEPDIR)/&|;s|\.o$$||'`;\
@@ -876,6 +878,14 @@ libwchar2_la-wchar_utf8.lo: wchar_utf8.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='wchar_utf8.c' object='libwchar2_la-wchar_utf8.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libwchar2_la_CPPFLAGS) $(CPPFLAGS) $(libwchar2_la_CFLAGS) $(CFLAGS) -c -o libwchar2_la-wchar_utf8.lo `test -f 'wchar_utf8.c' || echo '$(srcdir)/'`wchar_utf8.c
+
+libwchar2_la-wstring_utl.lo: wstring_utl.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libwchar2_la_CPPFLAGS) $(CPPFLAGS) $(libwchar2_la_CFLAGS) $(CFLAGS) -MT libwchar2_la-wstring_utl.lo -MD -MP -MF $(DEPDIR)/libwchar2_la-wstring_utl.Tpo -c -o libwchar2_la-wstring_utl.lo `test -f 'wstring_utl.c' || echo '$(srcdir)/'`wstring_utl.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libwchar2_la-wstring_utl.Tpo $(DEPDIR)/libwchar2_la-wstring_utl.Plo
+@am__fastdepCC_FALSE@	$(AM_V_CC) @AM_BACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='wstring_utl.c' object='libwchar2_la-wstring_utl.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libwchar2_la_CPPFLAGS) $(CPPFLAGS) $(libwchar2_la_CFLAGS) $(CFLAGS) -c -o libwchar2_la-wstring_utl.lo `test -f 'wstring_utl.c' || echo '$(srcdir)/'`wstring_utl.c
 
 mostlyclean-libtool:
 	-rm -f *.lo
