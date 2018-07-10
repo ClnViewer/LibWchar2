@@ -8,7 +8,7 @@
 START_TEST(test_wbasename)
 {
     char    *outc;
-    wchar_t *outw, *outfree;
+    wchar_t *outw, *outwfree;
     wchar_t pathw[] = L"/this//path///to/////file.zip";
     char    pathc[] =  "/this////path//to///file.zip";
     string_ws wss   = { (wchar_t*)&pathw, 0 };
@@ -23,35 +23,35 @@ START_TEST(test_wbasename)
     _fprintf (stdout,  "\tTest _wbaseext:%d  -> wide: [%ls]\n",  __LINE__, outw);
     ck_assert(_wcscmp(outw, L"zip") == 0);
 
-    outfree = _wbasedir(pathw, 0);
-    _fprintf (stdout,  "\tTest _wbasedir:%d  -> wide: [%ls]\n",  __LINE__, outfree);
-    ck_assert(_wcscmp(outfree, L"/this/path/to") == 0);
-    if (outfree) { free(outfree); outfree = NULL; }
+    outwfree = _wbasedir(pathw, 0);
+    _fprintf (stdout,  "\tTest _wbasedir:%d  -> wide: [%ls]\n",  __LINE__, outwfree);
+    ck_assert(_wcscmp(outwfree, L"/this/path/to") == 0);
+    if (outwfree) { free(outwfree); outwfree = NULL; }
 
-    outfree = _wbasedir(pathw, 1);
-    _fprintf (stdout,  "\tTest _wbasedir:%d  -> wide: [%ls] + separator\n",  __LINE__, outfree);
-    ck_assert(_wcscmp(outfree, L"/this/path/to/") == 0);
-    if (outfree) { free(outfree); outfree = NULL; }
+    outwfree = _wbasedir(pathw, 1);
+    _fprintf (stdout,  "\tTest _wbasedir:%d  -> wide: [%ls] + separator\n",  __LINE__, outwfree);
+    ck_assert(_wcscmp(outwfree, L"/this/path/to/") == 0);
+    if (outwfree) { free(outwfree); outwfree = NULL; }
 
-    outfree = _wbasedir_ws(&wss, 1);
-    _fprintf (stdout,  "\tTest _wbasedir:%d  -> wide: [%ls] - manual (string_ws)\n",  __LINE__, outfree);
-    ck_assert(_wcscmp(outfree, L"/this/path/to/") == 0);
-    if (outfree) { free(outfree); outfree = NULL; }
+    outwfree = _wbasedir_ws(&wss, 1);
+    _fprintf (stdout,  "\tTest _wbasedir:%d  -> wide: [%ls] - manual (string_ws)\n",  __LINE__, outwfree);
+    ck_assert(_wcscmp(outwfree, L"/this/path/to/") == 0);
+    if (outwfree) { free(outwfree); outwfree = NULL; }
 
-    outfree = wbasedir((wchar_t*)&pathw, 1);
-    _fprintf (stdout,  "\tTest  wbasedir:%d  -> wide: [%ls] - auto (wchar_t[])\n",  __LINE__, outfree);
-    ck_assert(_wcscmp(outfree, L"/this/path/to/") == 0);
-    if (outfree) { free(outfree); outfree = NULL; }
+    outwfree = wbasedir((wchar_t*)&pathw, 1);
+    _fprintf (stdout,  "\tTest  wbasedir:%d  -> wide: [%ls] - auto (wchar_t[])\n",  __LINE__, outwfree);
+    ck_assert(_wcscmp(outwfree, L"/this/path/to/") == 0);
+    if (outwfree) { free(outwfree); outwfree = NULL; }
 
-    outfree = wbasedir((string_ws*)&wss, 1);
-    _fprintf (stdout,  "\tTest  wbasedir:%d  -> wide: [%ls] - auto (string_ws)\n",  __LINE__, outfree);
-    ck_assert(_wcscmp(outfree, L"/this/path/to/") == 0);
-    if (outfree) { free(outfree); outfree = NULL; }
+    outwfree = wbasedir((string_ws*)&wss, 1);
+    _fprintf (stdout,  "\tTest  wbasedir:%d  -> wide: [%ls] - auto (string_ws)\n",  __LINE__, outwfree);
+    ck_assert(_wcscmp(outwfree, L"/this/path/to/") == 0);
+    if (outwfree) { free(outwfree); outwfree = NULL; }
 
-    outfree = wbasedir((wchar_t*)&pathw, 1);
-    _fprintf (stdout,  "\tTest  wbasedir:%d  -> wide: [%ls] - auto (wchar_t)\n",  __LINE__, outfree);
-    ck_assert(_wcscmp(outfree, L"/this/path/to/") == 0);
-    if (outfree) { free(outfree); outfree = NULL; }
+    outwfree = wbasedir((wchar_t*)&pathw, 1);
+    _fprintf (stdout,  "\tTest  wbasedir:%d  -> wide: [%ls] - auto (wchar_t)\n",  __LINE__, outwfree);
+    ck_assert(_wcscmp(outwfree, L"/this/path/to/") == 0);
+    if (outwfree) { free(outwfree); outwfree = NULL; }
 
     outc = (char*) wbasedir((char*)&pathc, 1);
     _fprintf (stdout,  "\tTest  wbasedir:%d  -> char: [%s] - auto (char)\n",  __LINE__, outc);
@@ -77,6 +77,11 @@ START_TEST(test_wbasename)
     outc = (char*) wbasename((char*)&pathc);
     _fprintf (stdout,  "\tTest wbasename:%d  -> char: [%s] - auto (char*)\n",  __LINE__, outc);
     ck_assert_str_eq(outc, "file.zip");
+
+    outwfree = wpathnormalize(pathw, 0);
+    _fprintf (stdout,  "\tTest wpathnormalize:%d -> wide: [%ls]\n",  __LINE__, outwfree);
+    ck_assert(_wcscmp(outwfree, L"/this/path/to/file.zip") == 0);
+    if (outwfree) { __wsfree(&outwfree); }
 
 }
 END_TEST

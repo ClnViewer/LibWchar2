@@ -46,14 +46,13 @@
         for (i = n = 0; i < off; i++, n++) {                    \
             p[n] = ((p[n] == p[i]) ? p[n] : p[i]);              \
             if (p[i] == _P) {                                   \
-                while (p[i] == _P) { i++; } --i;                \
+                while ((p[i] == _P) && (i < off)) { i++; } --i; \
             }                                                   \
         }                                                       \
         if ((!issep) && (p[(n - 1)] == _P)) --n;                \
         p[n] = _E;                                              \
         return p;                                               \
     }
-
 
 #define __PATH_BASE(_N,_T,_F)                                   \
     static _T * __WEV(__basepart_,_N)(const _T *ws, _T wc) {    \
@@ -86,8 +85,11 @@ wchar_t * _wpathnormalize(const wchar_t *ws, int sz)
     {
         p[n] = ((p[n] == p[i]) ? p[n] : p[i]);
         if (p[i] == __WEV(L,__PSEP))
-            while (p[i] == __WEV(L,__PSEP)) { i++; } --i;
+        {
+            while ((p[i] == __WEV(L,__PSEP)) && (i < sz)) {  i++; } --i;
+        }
     }
+
     p[n] = L'\0';
     return p;
 }
