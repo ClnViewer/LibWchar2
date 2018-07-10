@@ -482,7 +482,7 @@ char *    u8wpathnormalize(const wchar_t*);
 
 
           /**
-           *  API string_ws
+           *  API use struct string_ws
            */
 
           /** @brief Memory free string, empty and clear struct string_ws */
