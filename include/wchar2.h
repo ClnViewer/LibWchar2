@@ -662,6 +662,7 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
 #      define rename u8wrename
 #      define stat u8wstat
 #      define fopen u8wfopen
+#      define access u8waccess
 #   else
 #      define mkdir _wmkdir_macro
 #      define remove _wremove_macro
@@ -669,10 +670,10 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
 #      define stat _wstat_macro
 #      define access _waccess_macro
 #      define fopen _wfopen_macro
+#      define access _waccess_macro
 #      define basename(A) (__WSTR *) _wbasename_macro(A)
 #      define dirname(A)  (__WSTR *) _wbasedir_macro(A)
 #      define baseext(A)  (__WSTR *) _wbaseext_macro(A)
-#      define access _waccess_macro
 #   endif
 #endif
 
