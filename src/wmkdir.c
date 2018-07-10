@@ -28,6 +28,32 @@
 #include <stdlib.h>
 #include "libwchar.h"
 
+static int __mkdirp(const char *s, mode_t m)
+{
+    char __AUTO *p = NULL;
+
+    if (mkdir(s, m) == -1)
+    {
+        switch (errno)
+        {
+            case EEXIST: { return  0; }
+            case ENOENT: { break; }
+            default: { return -1; }
+        }
+        do
+        {
+            if ((p = (char*) _wbasedir_selector(3, (const void*)s, 0)) == NULL) { break; }
+            if (__mkdirp(p, m) == 0) return mkdir(s, m);
+
+        } while (0);
+
+        errno = ENOENT;
+        return -1;
+    }
+    errno = 0;
+    return errno;
+}
+
 int u8wmkdir(const wchar_t *wc, mode_t m)
 {
     int   ret = -1;
@@ -40,7 +66,7 @@ int u8wmkdir(const wchar_t *wc, mode_t m)
             (wcstou8s(b, wc) <= 0)
            ) { break; }
 
-        ret = mkdir(b, m);
+        ret = __mkdirp(b, m);
 
     } while(0);
 
@@ -51,19 +77,19 @@ int u8wmkdir(const wchar_t *wc, mode_t m)
 int _wmkdir(const wchar_t *ws, mode_t m)
 {
     wstocscvt(b, ws, -1);
-    return mkdir(b, m);
+    return __mkdirp(b, m);
 }
 
 int _wmkdir_s(const wchar_t *ws, size_t sz, mode_t m)
 {
     wstocsncvt(b, ws, sz, -1);
-    return mkdir(b, m);
+    return __mkdirp(b, m);
 }
 
 int _wmkdir_ws(const string_ws *ws, mode_t m)
 {
     wstrtocscvt(b, ws, -1);
-    return mkdir(b, m);
+    return __mkdirp(b, m);
 }
 
 int _wmkdir_selector(int sel, const void *w, size_t sz, mode_t m)
@@ -77,7 +103,7 @@ int _wmkdir_selector(int sel, const void *w, size_t sz, mode_t m)
             return _wmkdir_ws((const string_ws*)w, m);
         }
         case 3: {
-            return mkdir((const char*)w, m);
+            return __mkdirp((const char*)w, m);
         }
         case 4: {
             return _wmkdir_s((const wchar_t*)w, sz, m);

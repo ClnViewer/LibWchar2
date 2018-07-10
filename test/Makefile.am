@@ -16,5 +16,6 @@ check_wchar2_CFLAGS = $(CFLAGS) $(CHECK_CFLAGS)
 check_wchar2_LDFLAGS = -L$(top_srcdir)/src/.libs/ $(LDFLAGS)
 check_wchar2_LDADD = $(top_srcdir)/src/.libs/libwchar2.a $(CHECK_LIBS)
 
-CLEANFILES = \
-    core.*
+clean-local:
+	@rm -f core.* test-*.txt
+	@rm -rf thisdir

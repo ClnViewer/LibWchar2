@@ -376,6 +376,9 @@ int       _wremove_selector(int, const void*, size_t);
           /** @brief Delete (remove) file, convert file name from wide characters to UTF-8 */
 int       u8wremove(const wchar_t*);
 
+          /**
+           *  @note the equivalent of using the mkdir command with the -p switch for all functions _wmkdir*
+           */
           /** @brief Make directory, wide char input */
 int       _wmkdir(const wchar_t*, mode_t);
           /** @brief Make directory, wide char input with size */
@@ -401,16 +404,22 @@ wchar_t * _wbaseext_ws(const string_ws*);
           /** @brief Automatic type selector for wbaseext* functions */
 void *    _wbaseext_selector(int, const void*);
 
-          /** @brief Parse path directory + normalize slash from path, wide char input \note free result required! */
+          /**
+           *  @note all functions _wbasedir* required free result, use type __WSTRFREE for auto free
+           */
+          /** @brief Parse path directory + normalize slash from path, wide char input */
 wchar_t * _wbasedir(const wchar_t*, int);
-          /** @brief Parse path directory + normalize slash from path, struct string_ws input \note free result required! */
+          /** @brief Parse path directory + normalize slash from path, struct string_ws input */
 wchar_t * _wbasedir_ws(const string_ws*, int);
-          /** @brief Automatic type selector for wbasedir* functions \note free result required! */
+          /** @brief Automatic type selector for wbasedir* functions */
 void *    _wbasedir_selector(int, const void*, int);
 
-          /** @brief Normalize slash from path, wide char input \note free result required! */
+          /**
+           *  @note all functions _wpathnormalize* required free result, use type __WSTRFREE for auto free
+           */
+          /** @brief Normalize slash from path, wide char input */
 wchar_t * _wpathnormalize(const wchar_t*, int);
-          /** @brief Normalize slash from path, struct string_ws input \note free result required! */
+          /** @brief Normalize slash from path, struct string_ws input */
 wchar_t * _wpathnormalize_ws(const string_ws*);
 
 void free(void*);
@@ -513,7 +522,7 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
 
  /**
    * @note Macro as convert type wchar_t to char
-   * @See  wchar2.h
+   * @see  wchar2.h
    *
    *
   */
