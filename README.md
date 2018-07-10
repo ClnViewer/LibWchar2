@@ -108,7 +108,7 @@ The library itself is connected in the standard way:
     CFLAGS = -I. -fwchar-type=short -fno-signed-wchar /* clang */
     LDFLAGS = -L. -lwchar2
 
-Definitely convenient is the redefinition of standard functions working with the file system, such as: `mkdir`, `remove`, `rename`, `stat`, `basename`, `dirname`, `fopen`, `fputc`, `fputs`.
+Definitely convenient is the redefinition of standard functions working with the file system, such as: `mkdir`, `remove`, `rename`, `stat`, `access`, `basename`, `dirname`, `fopen`, `fputc`, `fputs`.
 
 For this, before including the header, define the following definitions:
 
@@ -125,7 +125,7 @@ or, if there is a need to use only `UTF-8` encoding:
 
 Example [code snippets](https://github.com/ClnViewer/LibWchar2/blob/master/example/fs-redifine.c)
 
-In the `WS_FS_UTF8` definition mode, functions` mkdir`, `remove`,  `rename`, `stat`, `fopen` only accept input data in `wchar_t` format, otherwise the input data can be in the formats shown in the table, in this case the determination is made automatically.
+In the `WS_FS_UTF8` definition mode, functions` mkdir`, `remove`, `rename`, `stat`, `fopen`, `access` only accept input data in `wchar_t` format, otherwise the input data can be in the formats shown in the table, in this case the determination is made automatically.
 
 See: [wchar2.h](https://github.com/ClnViewer/LibWchar2/blob/f884fcf232e483759b827a53cc2333332d2cda27/include/wchar2.h#L342) macro `__wchar_type_id(..)`
 

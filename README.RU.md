@@ -112,7 +112,7 @@ CC | key
     CFLAGS = -I. -fwchar-type=short -fno-signed-wchar /* clang */
     LDFLAGS = -L. -lwchar2
 
-Определенно удобно может быть переопределение стандартных функций работающих с файловой системой, таких как: `mkdir`, `remove`, `rename`, `stat`, `basename`, `dirname`, `fopen`, `fputc`, `fputs`.
+Определенно удобно может быть переопределение стандартных функций работающих с файловой системой, таких как: `mkdir`, `remove`, `rename`, `stat`, `basename`, `dirname`, `access`, `fopen`, `fputc`, `fputs`.
 
 Для этого, до включения заголовка, определите следующие определения:
  
@@ -129,7 +129,7 @@ CC | key
 
 Пример [использования](https://github.com/ClnViewer/LibWchar2/blob/master/example/fs-redifine.c)
 
-В режиме определения `WS_FS_UTF8` функции `mkdir`, `remove`, `rename`, `stat`, `fopen` воспринимают входные данные только в формате строки `wchar_t`, в другом случае входные данные могут быть в форматах приведенных в таблице, определение в этом случае производиться автоматически.
+В режиме определения `WS_FS_UTF8` функции `mkdir`, `remove`, `rename`, `stat`, `fopen`, `access` воспринимают входные данные только в формате строки `wchar_t`, в другом случае входные данные могут быть в форматах приведенных в таблице, определение в этом случае производиться автоматически.
 
 Подробнее смотри: [wchar2.h](https://github.com/ClnViewer/LibWchar2/blob/f884fcf232e483759b827a53cc2333332d2cda27/include/wchar2.h#L342) macro `__wchar_type_id(..)`
 
