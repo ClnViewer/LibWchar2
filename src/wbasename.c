@@ -38,40 +38,38 @@
 #define __PATH_SPLIT(_N,_T,_F,_P,_E)                            \
     static _T * __WEV(__dirname_,_N)(_T *ws, int issep) {       \
         int i, n, off;                                          \
-        _T *p, *s;                                              \
+        _T *p;                                                  \
         if (                                                    \
             (!(p = _F(ws, _P))) ||                              \
             ((off = (p - ws)) <= 0)                             \
            ) { return (_T *)ws; }                               \
         off += ((issep > 0) ? 1 : 0);                           \
-        p = s = (_T *)ws;                                       \
+        p = (_T *)ws;                                           \
         for (i = n = 0; i < off; i++, n++) {                    \
-            s[n] = ((s[n] == p[i]) ? s[n] : p[i]);              \
+            p[n] = ((p[n] == p[i]) ? p[n] : p[i]);              \
             if (p[i] == _P) {                                   \
                 while (p[i] == _P) { i++; } --i;                \
             }                                                   \
         }                                                       \
-        if ((!issep) && (s[(n - 1)] == _P)) --n;                \
-        s[n] = _E;                                              \
-        return s;                                               \
+        if ((!issep) && (p[(n - 1)] == _P)) --n;                \
+        p[n] = _E;                                              \
+        return p;                                               \
+    }
+
+
+#define __PATH_BASE(_N,_T,_F)                                   \
+    static _T * __WEV(__basepart_,_N)(const _T *ws, _T wc) {    \
+        _T *p;                                                  \
+        if (!(p = _F(ws, wc))) { return NULL; }                 \
+        return (p + 1);                                         \
     }
 
 __PATH_SPLIT(w, wchar_t, _wcsrchr, __PSW, L'\0')
 __PATH_SPLIT(c, char, strrchr, __PSC, '\0')
 
-static wchar_t * __basepart_w(const wchar_t *ws, wchar_t wc)
-{
-    wchar_t *p;
-    if (!(p = _wcsrchr(ws, wc))) { return NULL; }
-    return (p + 1);
-}
+__PATH_BASE(w, wchar_t, _wcsrchr)
+__PATH_BASE(c, char, strrchr)
 
-static char * __basepart_c(const char *s, char c)
-{
-    char *p;
-    if (!(p = strrchr(s, c))) { return NULL; }
-    return (p + 1);
-}
 
 wchar_t * _wbasename(const wchar_t *ws)
 {

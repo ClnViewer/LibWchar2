@@ -401,9 +401,9 @@ wchar_t * _wbaseext_ws(const string_ws*);
           /** @brief Automatic type selector for wbaseext* functions */
 void *    _wbaseext_selector(int, const void*);
 
-          /** @brief Parse path directory, wide char input \note free result required! */
+          /** @brief Parse path directory + normalize slash from path, wide char input \note free result required! */
 wchar_t * _wbasedir(const wchar_t*, int);
-          /** @brief Parse path directory, struct string_ws input \note free result required! */
+          /** @brief Parse path directory + normalize slash from path, struct string_ws input \note free result required! */
 wchar_t * _wbasedir_ws(const string_ws*, int);
           /** @brief Automatic type selector for wbasedir* functions \note free result required! */
 void *    _wbasedir_selector(int, const void*, int);
