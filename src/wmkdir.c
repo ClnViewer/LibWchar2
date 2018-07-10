@@ -56,8 +56,8 @@ static int __mkdirp(const char *s, mode_t m)
 
 int u8wmkdir(const wchar_t *wc, mode_t m)
 {
-    int   ret = -1;
-    char *b   = NULL;
+    int  ret       = -1;
+    char __AUTO *b = NULL;
 
     do
     {
@@ -70,7 +70,6 @@ int u8wmkdir(const wchar_t *wc, mode_t m)
 
     } while(0);
 
-    if (b != NULL) free(b);
     return ret;
 }
 

@@ -32,8 +32,8 @@
 
 int u8wstat(const wchar_t *wc, struct stat *st)
 {
-    int   ret = -1;
-    char *b   = NULL;
+    int  ret       = -1;
+    char __AUTO *b = NULL;
 
     do
     {
@@ -46,7 +46,6 @@ int u8wstat(const wchar_t *wc, struct stat *st)
 
     } while(0);
 
-    if (b != NULL) free(b);
     return ret;
 }
 

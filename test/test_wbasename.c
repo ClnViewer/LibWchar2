@@ -13,7 +13,7 @@ START_TEST(test_wbasename)
     char    pathc[] =  "/this////path//to///file.zip";
     string_ws wss   = { (wchar_t*)&pathw, 0 };
 
-    _fprintf (stdout,  "\tTest SOURCE:%d\t\t-> wide: [%ls] char: [%s]\n",  __LINE__, pathw, pathc);
+    _fprintf (stdout,  "\tTest SOURCE:%d\t\t-> wide: [%ls]\n\t\t\t\t-> char: [%s]\n",  __LINE__, pathw, pathc);
 
     outw = _wbasename(pathw);
     _fprintf (stdout,  "\tTest _wbasename:%d\t-> wide: [%ls]\n",  __LINE__, outw);

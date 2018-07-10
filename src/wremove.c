@@ -30,8 +30,8 @@
 
 int u8wremove(const wchar_t *wc)
 {
-    int   ret = -1;
-    char *b   = NULL;
+    int  ret       = -1;
+    char __AUTO *b = NULL;
 
     do
     {
@@ -44,7 +44,6 @@ int u8wremove(const wchar_t *wc)
 
     } while(0);
 
-    if (b != NULL) free(b);
     return ret;
 }
 

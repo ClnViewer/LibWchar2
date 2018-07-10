@@ -41,22 +41,22 @@ static access_e __access(const char *s, int m)
     return ret;
 }
 
-access_e u8waccess(const wchar_t *o, int m)
+access_e u8waccess(const wchar_t *ws, int m)
 {
-    int   ret = -1;
-    char *ob  = NULL;
+    int  ret       = -1;
+    char __AUTO *b = NULL;
+
     do
     {
         if (
-            ((ob = calloc(1, wcstou8s(NULL, o) + 1)) == NULL) ||
-            (wcstou8s(ob, o) <= 0)
+            ((b = calloc(1, wcstou8s(NULL, ws) + 1)) == NULL) ||
+            (wcstou8s(b, ws) <= 0)
            ) { break; }
 
-        ret = __access(ob, m);
+        ret = __access(b, m);
 
     } while(0);
 
-    if (ob != NULL) free(ob);
     return ret;
 }
 

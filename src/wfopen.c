@@ -30,8 +30,8 @@
 
 FILE * u8wfopen(const wchar_t *wc, const char *m)
 {
-    FILE *f = NULL;
-    char *b = NULL;
+    FILE        *f = NULL;
+    char __AUTO *b = NULL;
 
     do
     {
@@ -44,7 +44,6 @@ FILE * u8wfopen(const wchar_t *wc, const char *m)
 
     } while(0);
 
-    if (b != NULL) free(b);
     return f;
 }
 

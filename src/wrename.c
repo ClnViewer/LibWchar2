@@ -30,9 +30,10 @@
 
 int u8wrename(const wchar_t *o, const wchar_t *n)
 {
-    int   ret = -1;
-    char *ob  = NULL,
-         *nb  = NULL;
+    int  ret        = -1;
+    char __AUTO *ob = NULL;
+    char __AUTO *nb = NULL;
+
     do
     {
         if (
@@ -46,8 +47,6 @@ int u8wrename(const wchar_t *o, const wchar_t *n)
 
     } while(0);
 
-    if (ob != NULL) free(ob);
-    if (nb != NULL) free(nb);
     return ret;
 }
 
