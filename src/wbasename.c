@@ -69,6 +69,34 @@ __PATH_BASE(w, wchar_t, _wcsrchr)
 __PATH_BASE(c, char, strrchr)
 
 
+wchar_t * _wpathnormalize(const wchar_t *ws, int sz)
+{
+    int i, n;
+    wchar_t *p;
+    sz = ((sz > 0) ? sz : (int) _wcslen(ws));
+
+    if (
+        (sz <= 0)  ||
+        ((p = calloc(sizeof(wchar_t), sz)) == NULL)
+       ) { return NULL; }
+
+    _wmemcpy(p, ws, sz);
+
+    for (i = n = 0; i < sz; i++, n++)
+    {
+        p[n] = ((p[n] == p[i]) ? p[n] : p[i]);
+        if (p[i] == __WEV(L,__PSEP))
+            while (p[i] == __WEV(L,__PSEP)) { i++; } --i;
+    }
+    p[n] = L'\0';
+    return p;
+}
+
+wchar_t * _wpathnormalize_ws(const string_ws *ws)
+{
+    return _wpathnormalize(ws->str, ws->sz);
+}
+
 wchar_t * _wbasename(const wchar_t *ws)
 {
     return __basepart_w(ws, __WEV(L,__PSEP));

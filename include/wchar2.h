@@ -408,6 +408,11 @@ wchar_t * _wbasedir_ws(const string_ws*, int);
           /** @brief Automatic type selector for wbasedir* functions \note free result required! */
 void *    _wbasedir_selector(int, const void*, int);
 
+          /** @brief Normalize slash from path, wide char input \note free result required! */
+wchar_t * _wpathnormalize(const wchar_t*, int);
+          /** @brief Normalize slash from path, struct string_ws input \note free result required! */
+wchar_t * _wpathnormalize_ws(const string_ws*);
+
 void free(void*);
 
 static inline void __attribute__((always_inline)) __wsfree(void *v) {
@@ -642,6 +647,8 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
 #define wbasedir _wbasedir_macro
 #define wbasedir_w _wbasedir
 #define wbasedir_ws _wbasedir_ws
+#define wpathnormalize _wpathnormalize
+#define wpathnormalize_ws _wpathnormalize_ws
 
 #define fputwc _fputwc
 #define fputws _fputws
