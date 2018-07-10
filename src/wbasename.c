@@ -28,11 +28,9 @@
 #include "libwchar.h"
 
 #if (defined(_WIN32) || defined(_WIN64) || defined(__CYGWIN__) || defined(__MINGW32__))
-#   define __PSW L'\\'
-#   define __PSC '\\'
+#   define __PSEP '\\'
 #else
-#   define __PSW L'/'
-#   define __PSC '/'
+#   define __PSEP '/'
 #endif
 
 #define __PATH_SPLIT(_N,_T,_F,_P,_E)                            \
@@ -64,8 +62,8 @@
         return (p + 1);                                         \
     }
 
-__PATH_SPLIT(w, wchar_t, _wcsrchr, __PSW, L'\0')
-__PATH_SPLIT(c, char, strrchr, __PSC, '\0')
+__PATH_SPLIT(w, wchar_t, _wcsrchr, __WEV(L,__PSEP), L'\0')
+__PATH_SPLIT(c, char, strrchr, __PSEP, '\0')
 
 __PATH_BASE(w, wchar_t, _wcsrchr)
 __PATH_BASE(c, char, strrchr)
@@ -73,12 +71,12 @@ __PATH_BASE(c, char, strrchr)
 
 wchar_t * _wbasename(const wchar_t *ws)
 {
-    return __basepart_w(ws, __PSW);
+    return __basepart_w(ws, __WEV(L,__PSEP));
 }
 
 wchar_t * _wbasename_ws(const string_ws *ws)
 {
-    return __basepart_w(ws->str, __PSW);
+    return __basepart_w(ws->str, __WEV(L,__PSEP));
 }
 
 void * _wbasename_selector(int sel, const void *w)
@@ -93,7 +91,7 @@ void * _wbasename_selector(int sel, const void *w)
             return (void*) _wbasename_ws((const string_ws*)w);
         }
         case 3: {
-            return (void*) __basepart_c((char*)w, __PSC);
+            return (void*) __basepart_c((char*)w, __PSEP);
         }
         default: {
             return NULL;
