@@ -18,19 +18,19 @@
  */
 
 
-/**
-  * @file wchar2.h
-  * @mainpage LibWchar2
-  * @brief This library design to use wchar_t == 2, Windows software compatible.
+/*!
+  * \file wchar2.h
+  * \mainpage LibWchar2
+  * \brief This library design to use wchar_t == 2, Windows software compatible.
   *
   * Compile this library and you programm use:
   *  - gcc as key:   -fshort-wchar
   *  - clang as key: -fwchar-type=short -fno-signed-wchar
   *
-  * @author     PS
-  * @copyright  MIT 2018 (c) PS
-  * @see https://clnviewer.github.io/LibWchar2/ [Web Home]
-  * @see https://github.com/ClnViewer/LibWchar2 [Git Home]
+  * \author     PS
+  * \copyright  MIT 2018 (c) PS
+  * \see https://clnviewer.github.io/LibWchar2/ [Web Home]
+  * \see https://github.com/ClnViewer/LibWchar2 [Git Home]
   *
   */
 
@@ -57,7 +57,7 @@
 #  error "size of 'wchar_t' != '2'; Use gcc key: '-fshort-wchar', or clang key: '-fwchar-type=short' '-fno-signed-wchar'"
 #endif
 
-/**
+/*!
  * \htmlonly
  */
 
@@ -89,7 +89,7 @@
 #   endif
 #endif
 
-/**
+/*!
  * \endhtmlonly
  */
 
@@ -97,132 +97,134 @@
 extern "C" {
 #endif
 
-/** @brief Base wide string structure */
+/*! \brief Base wide string structure */
 typedef struct __wchar_string_ws_ {
-    wchar_t *str; /** wide string pointer */
-    size_t   sz;  /** size wide string */
+    /*! wide string pointer */
+    wchar_t *str;
+    /*! size wide string */
+    size_t   sz;
 
 } string_ws;
 
-/** @brief enumeration for return waccess function */
+/*! \brief enumeration for return waccess function */
 typedef enum {
-    /** Error check */
+    /*! Error check */
     ISERROR = -1,
-    /** is a Unknown */
+    /*! is a Unknown */
     ISUNK   =  0,
-    /** is a Regular file */
+    /*! is a Regular file */
     ISFIL   =  1,
-    /** is a Symbolic link */
+    /*! is a Symbolic link */
     ISLNK   =  2,
-    /** is a Directory */
+    /*! is a Directory */
     ISDIR   =  3
 } access_e;
 
-          /** @brief Translate wide characters to uppercase */
+          /*! \brief Translate wide characters to uppercase */
 wchar_t   _towupper(wchar_t);
-          /** @brief Translate wide characters to lowercase */
+          /*! \brief Translate wide characters to lowercase */
 wchar_t   _towlower(wchar_t);
-          /** @brief Extensible wide-character translation */
+          /*! \brief Extensible wide-character translation */
 wchar_t   _towctrans(wchar_t, wctrans_t);
-          /** @brief Compute wide-character test type */
+          /*! \brief Compute wide-character test type */
 wctype_t  _wctype(const char*);
-          /** @brief Compute wide-character translation type */
+          /*! \brief Compute wide-character translation type */
 wctrans_t _wctrans(const char*);
 
-          /** @brief Number of column positions of a wide-character code */
+          /*! \brief Number of column positions of a wide-character code */
 int       _wcwidth(wchar_t);
-          /** @brief Number of column positions of a wide-character string */
+          /*! \brief Number of column positions of a wide-character string */
 int       _wcswidth(const wchar_t*, size_t);
-          /** @brief Extensible wide-character test */
+          /*! \brief Extensible wide-character test */
 int       _iswctype(wchar_t, wctype_t);
-          /** @brief Hexadecimal digit wide character predicate */
+          /*! \brief Hexadecimal digit wide character predicate */
 int       _iswxdigit(wchar_t);
-          /** @brief Uppercase wide character predicate */
+          /*! \brief Uppercase wide character predicate */
 int       _iswupper(wchar_t);
-          /** @brief Whitespace wide character predicate */
+          /*! \brief Whitespace wide character predicate */
 int       _iswspace(wchar_t);
-          /** @brief Punctuation wide character predicate */
+          /*! \brief Punctuation wide character predicate */
 int       _iswpunct(wchar_t);
-          /** @brief Printable wide character predicate */
+          /*! \brief Printable wide character predicate */
 int       _iswprint(wchar_t);
-          /** @brief Lowercase wide character predicate */
+          /*! \brief Lowercase wide character predicate */
 int       _iswlower(wchar_t);
-          /** @brief Graphic wide character predicate */
+          /*! \brief Graphic wide character predicate */
 int       _iswgraph(wchar_t);
-          /** @brief Decimal digit wide character predicate */
+          /*! \brief Decimal digit wide character predicate */
 int       _iswdigit(wchar_t);
-          /** @brief Control wide character predicate */
+          /*! \brief Control wide character predicate */
 int       _iswcntrl(wchar_t);
-          /** @brief Blank wide character predicate */
+          /*! \brief Blank wide character predicate */
 int       _iswblank(wchar_t);
-          /** @brief Alphabetic wide character predicate */
+          /*! \brief Alphabetic wide character predicate */
 int       _iswalpha(wchar_t);
-          /** @brief Alphanumeric wide character predicate */
+          /*! \brief Alphanumeric wide character predicate */
 int       _iswalnum(wchar_t);
 
-          /** @brief Minimal wide string to multibyte string converter */
+          /*! \brief Minimal wide string to multibyte string converter */
 size_t    _wcstombs(char *restrict, const wchar_t *restrict, size_t);
-          /** @brief Minimal wide string to multibyte string converter + double size out buffer */
+          /*! \brief Minimal wide string to multibyte string converter + double size out buffer */
 size_t    _wcstombs_s(char *restrict, const wchar_t *restrict, size_t);
-          /** @brief Convert a wide-character string to a character string */
+          /*! \brief Convert a wide-character string to a character string */
 size_t    _wcsrtombs(char *restrict, const wchar_t **restrict, size_t, mbstate_t *restrict);
-          /** @brief Convert wide character to multibyte sequence */
+          /*! \brief Convert wide character to multibyte sequence */
 size_t    _wcrtomb(char *restrict, wchar_t, mbstate_t *restrict);
-          /** @brief Minimal multibyte string to wide string converter */
+          /*! \brief Minimal multibyte string to wide string converter */
 size_t    _mbstowcs(wchar_t *restrict, const char *restrict, size_t);
-          /** @brief Convert a character string to a wide-character string */
+          /*! \brief Convert a character string to a wide-character string */
 size_t    _mbsrtowcs(wchar_t *restrict, const char **restrict, size_t, mbstate_t *restrict);
-          /** @brief Convert a wide-character string to a character string */
+          /*! \brief Convert a wide-character string to a character string */
 size_t    _wcsnrtombs(char *restrict, const wchar_t **restrict, size_t, size_t, mbstate_t *restrict);
-          /** @brief Convert a character string to a wide-character string */
+          /*! \brief Convert a character string to a wide-character string */
 size_t    _mbsnrtowcs(wchar_t *restrict, const char **restrict, size_t, size_t, mbstate_t *restrict);
-          /** @brief Converts a narrow multibyte character to a wide character */
+          /*! \brief Converts a narrow multibyte character to a wide character */
 size_t    _mbrtowc(wchar_t *restrict, const char *restrict src, size_t, mbstate_t *restrict);
-          /** @brief Get length of multibyte character */
+          /*! \brief Get length of multibyte character */
 size_t    _mbrlen(const char *restrict, size_t, mbstate_t *restrict);
-          /** @brief Determines the size, in bytes, of the multibyte character whose first byte is pointed */
+          /*! \brief Determines the size, in bytes, of the multibyte character whose first byte is pointed */
 int       _mblen(const char*, size_t);
-          /** @brief Check if initial conversion state */
+          /*! \brief Check if initial conversion state */
 int       _mbsinit(const mbstate_t*);
-          /** @brief Minimal multibyte to wide char converter */
+          /*! \brief Minimal multibyte to wide char converter */
 int       _mbtowc(wchar_t *restrict, const char *restrict, size_t);
-          /** @brief Minimal wide char to multibyte converter */
+          /*! \brief Minimal wide char to multibyte converter */
 int       _wctomb(char*, wchar_t);
-          /** @brief Convert wide character to single byte */
+          /*! \brief Convert wide character to single byte */
 int       _wctob(wchar_t);
-          /** @brief Convert single byte character to wide character */
+          /*! \brief Convert single byte character to wide character */
 wchar_t   _btowc(int);
 
-/** Other non standart function */
+/*! Other non standart function */
 
- /**
-  * @brief wchar_t* print
+ /*!
+  * \brief wchar_t* print
   * Test variably only!
   * Instead use _vfprintf, _vfwprintf, _fprintf, _fwprintf
   *
   */
 void       wcprint(wchar_t*);
 
- /**
-  * @brief compare char* <->  wchar_t*
+ /*!
+  * \brief compare char* <->  wchar_t*
   * ASCII only!
   * size_t   - wchar_t* size
   *
   */
 int        wcstocscmp(const char*, wchar_t*, size_t); // ASCII mode only
 
- /**
+ /*!
   *    Original name: aov-rx - Angel Ortega's regular expression library
   *    Copyright (C) 2011/2012 Angel Ortega <angel@triptico.com>
   *    https://github.com/angelortega/aov-rx or http://triptico.com
   *
-  * @brief wcsregexp - Matches a regular expression
-  * @rx: the regular expression
-  * @tx: the text to be matched
-  * @size: a pointer to integer where the matching lenght is stored
+  * \brief wcsregexp - Matches a regular expression
+  * \param rx: the regular expression
+  * \param tx: the text to be matched
+  * \param size: a pointer to integer where the matching lenght is stored
   *
-  * Matches the string @tx for the regular expression in @rx.
-  * On output, the integer pointer by @size will contain the number
+  * Matches the string tx for the regular expression in rx.
+  * On output, the integer pointer by size will contain the number
   * of matched characters (with 0 meaning that no matching was
   * possible). If the end of string mark ($) is used in the regular
   * expression and a match is effective, the ending zero is included
@@ -232,276 +234,276 @@ int        wcstocscmp(const char*, wchar_t*, size_t); // ASCII mode only
   */
 wchar_t *  wcsregexp(wchar_t *restrict, wchar_t *restrict, int*);
 
- /**
-  *  @brief Covert utf-8 char* to wchar_t*
+ /*!
+  *  \brief Covert utf-8 char* to wchar_t*
   *  wchar_t*          - output
   *  const char*       - input
   *  return size_t     - size
   *
-  *  @note function u8stowcs required free result
+  *  \note function u8stowcs required free result
   */
 size_t     u8stowcs(wchar_t*, const char*);
 
- /**
-  *  @brief Convert wchar_t* to utf-8 char*
+ /*!
+  *  \brief Convert wchar_t* to utf-8 char*
   *  char*             - output
   *  const wchar_t*    - input
   *  return size_t     - size
   *
-  *  @note function wcstou8s required free result
+  *  \note function wcstou8s required free result
   */
 size_t     wcstou8s(char*, const wchar_t*);
 
- /**
-  *  @brief Verify char* to utf-8 valid string
+ /*!
+  *  \brief Verify char* to utf-8 valid string
   *  const char* - input
   *  int (bool)  - output
   *
   */
 int        u8sverify(const char*);
 
-          /** @brief Copy a wide-character string returning a pointer to its end */
+          /*! \brief Copy a wide-character string returning a pointer to its end */
 wchar_t * _wcpcpy(wchar_t*, const wchar_t*);
-          /** @brief Copy part of a wide-character string returning a pointer to its end */
+          /*! \brief Copy part of a wide-character string returning a pointer to its end */
 wchar_t * _wcpncpy(wchar_t*, const wchar_t*, size_t);
-          /** @brief Concatenate wide-character strings */
+          /*! \brief Concatenate wide-character strings */
 wchar_t * _wcscat(wchar_t*, const wchar_t*);
-          /** @brief Concatenate wide-character strings */
+          /*! \brief Concatenate wide-character strings */
 wchar_t * _wcsncat(wchar_t*, const wchar_t*, size_t);
-          /** @brief Counted copy wide-character string */
+          /*! \brief Counted copy wide-character string */
 wchar_t * _wcsncpy(wchar_t*, const wchar_t*, size_t);
-          /** @brief Find wide characters in string */
+          /*! \brief Find wide characters in string */
 wchar_t * _wcspbrk(const wchar_t*, const wchar_t*);
-          /** @brief Search for wide character in string */
+          /*! \brief Search for wide character in string */
 wchar_t * _wcschr(const wchar_t*, wchar_t);
-          /** @brief Reverse search for wide character in string */
+          /*! \brief Reverse search for wide character in string */
 wchar_t * _wcsrchr(const wchar_t*, wchar_t);
-          /** @brief Find wide-character string segment */
+          /*! \brief Find wide-character string segment */
 wchar_t * _wcsstr(const wchar_t*, const wchar_t*);
-          /** @brief Tokenize wide-character string */
+          /*! \brief Tokenize wide-character string */
 wchar_t * _wcstok(wchar_t*, const wchar_t*, wchar_t**);
-          /** @brief Find wide character in memory */
+          /*! \brief Find wide character in memory */
 wchar_t * _wmemchr(const wchar_t*, wchar_t, size_t);
-          /** @brief Copy wide characters in memory */
+          /*! \brief Copy wide characters in memory */
 wchar_t * _wmemcpy(wchar_t*, const wchar_t*, size_t);
-          /** @brief Copy wide characters in memory with overlapping areas */
+          /*! \brief Copy wide characters in memory with overlapping areas */
 wchar_t * _wmemmove(wchar_t*, const wchar_t*, size_t);
-          /** @brief Set wide characters in memory */
+          /*! \brief Set wide characters in memory */
 wchar_t * _wmemset(wchar_t*, wchar_t, size_t);
 
-          /** @brief Concatenate wide-character strings to specified length */
+          /*! \brief Concatenate wide-character strings to specified length */
 size_t    _wcslcat(wchar_t*, const wchar_t*, size_t);
-          /** @brief Copy wide-character string to specified length */
+          /*! \brief Copy wide-character string to specified length */
 size_t    _wcslcpy(wchar_t*, const wchar_t*, size_t);
-          /** @brief Wide-character string length */
+          /*! \brief Wide-character string length */
 size_t    _wcslen(const wchar_t*);
-          /** @brief Wide-character string length with maximum limit */
+          /*! \brief Wide-character string length with maximum limit */
 size_t    _wcsnlen(const wchar_t*, size_t);
-          /** @brief Find initial match in wide-character string */
+          /*! \brief Find initial match in wide-character string */
 size_t    _wcsspn(const wchar_t*, const wchar_t*);
 
-          /** @brief Case-insensitive wide character string compare */
+          /*! \brief Case-insensitive wide character string compare */
 int       _wcscasecmp(const wchar_t*, const wchar_t*);
-          /** @brief Case-insensitive wide character string compare with size */
+          /*! \brief Case-insensitive wide character string compare with size */
 int       _wcsncasecmp(const wchar_t*, const wchar_t*, size_t);
-          /** @brief Wide-character string compare */
+          /*! \brief Wide-character string compare */
 int       _wcscmp(const wchar_t*, const wchar_t*);
-          /** @brief Wide-character string compare */
+          /*! \brief Wide-character string compare */
 int       _wcsncmp(const wchar_t*, const wchar_t*, size_t);
-          /** @brief Compare wide characters in memory */
+          /*! \brief Compare wide characters in memory */
 int       _wmemcmp(const wchar_t*, const wchar_t*, size_t);
 
-          /** @brief Write to stream char format variable argument list */
+          /*! \brief Write to stream char format variable argument list */
 size_t    _vfprintf(FILE *restrict, const char *restrict, va_list)
                 __attribute__((__nonnull__, __format__(__printf__, 2, 0)));
 
-          /** @brief Write formatted data from variable argument list to sized buffer */
+          /*! \brief Write formatted data from variable argument list to sized buffer */
 size_t    _vsnprintf(char *restrict, size_t, const char *restrict, va_list)
                 __attribute__((__format__(__printf__, 3, 0)));
 
-          /** @brief Write to stream char format variable arguments */
+          /*! \brief Write to stream char format variable arguments */
 size_t    _fprintf(FILE *restrict, const char *restrict, ...)
                 __attribute__((__nonnull__, __format__(__printf__, 2, 0)));
 
-          /** @brief Write to stdout char format variable arguments */
+          /*! \brief Write to stdout char format variable arguments */
 size_t    _printf(const char *restrict fmt, ...)
                 __attribute__((__nonnull__, __format__(__printf__, 1, 0)));
 
-          /** @brief Format variable arguments list */
+          /*! \brief Format variable arguments list */
 size_t    _snprintf(char *restrict, size_t, const char *restrict, ...)
                 __attribute__((__format__(__printf__, 3, 0)));
 
-          /** @brief Write to stream wide character format variable argument list */
+          /*! \brief Write to stream wide character format variable argument list */
 size_t    _vfwprintf(FILE *restrict, const wchar_t *restrict, va_list)
                 /* __attribute__((__nonnull__, __format__(__wprintf__, 2, 0))) */ ;
 
-          /** @brief Write formatted data from variable argument list to sized buffer */
+          /*! \brief Write formatted data from variable argument list to sized buffer */
 size_t    _vswprintf(wchar_t *restrict, size_t, const wchar_t *restrict, va_list ap)
                 /* __attribute__((__format__(__wprintf__, 3, 0))) */ ;
 
-          /** @brief Write to stream wide character format variable arguments */
+          /*! \brief Write to stream wide character format variable arguments */
 size_t    _fwprintf(FILE *restrict, const wchar_t *restrict, ...)
                 /* __attribute__((__nonnull__, __format__(__wprintf__, 2, 0))) */ ;
 
-          /** @brief Write formatted wide character output */
+          /*! \brief Write formatted wide character output */
 size_t    _swprintf(wchar_t *restrict, size_t, const wchar_t *restrict, ...)
                 /* __attribute__((__format__(__wprintf__, 3, 0))) */ ;
 
 size_t    _wprintf(const wchar_t *restrict fmt, ...)
                 /* __attribute__((__format__(__wprintf__, 1, 0))) */ ;
 
-          /** @brief Write a wide character string to a file or stream */
+          /*! \brief Write a wide character string to a file or stream */
 int       _fputws(const wchar_t *restrict, FILE *restrict);
-          /** @brief Write a wide character to a file or stream */
+          /*! \brief Write a wide character to a file or stream */
 wchar_t   _fputwc(wchar_t, FILE *restrict);
 
-          /** @brief Open file stream, accepts file name as wide characters, mode as const char */
+          /*! \brief Open file stream, accepts file name as wide characters, mode as const char */
 FILE    * _wfopen(const wchar_t*, const char*);
-          /** @brief Same as wfopen, include size file name variable */
+          /*! \brief Same as wfopen, include size file name variable */
 FILE    * _wfopen_s(const wchar_t*, size_t, const char*);
-          /** @brief Same as wfopen, file name as structure string_ws */
+          /*! \brief Same as wfopen, file name as structure string_ws */
 FILE    * _wfopen_ws(const string_ws*, const char*);
-          /** @brief Automatic type selector for wfopen* functions */
+          /*! \brief Automatic type selector for wfopen* functions */
 FILE    * _wfopen_selector(int, const void*, size_t, const void*);
-          /**
-           *  @brief Open file stream, convert file name from wide characters to UTF-8, mode as const char
-           *  @attention function u8wfopen required free result
+          /*!
+           *  \brief Open file stream, convert file name from wide characters to UTF-8, mode as const char
+           *  \attention function u8wfopen required free result
            */
 FILE    * u8wfopen(const wchar_t*, const char*);
 
-          /** @brief Statistic from file, wide char input */
+          /*! \brief Statistic from file, wide char input */
 int       _wstat(const wchar_t*, struct stat*);
-          /** @brief Statistic from file, wide char input with size */
+          /*! \brief Statistic from file, wide char input with size */
 int       _wstat_s(const wchar_t*, size_t, struct stat*);
-          /** @brief Statistic from file, struct string_ws input */
+          /*! \brief Statistic from file, struct string_ws input */
 int       _wstat_ws(const string_ws*, struct stat*);
-          /** @brief Automatic type selector for wstat* functions */
+          /*! \brief Automatic type selector for wstat* functions */
 int       _wstat_selector(int, const void*, size_t, const void*);
-          /** 
-           *  @brief Statistic from file, convert file name from wide characters to UTF-8
-           *  @attention function u8wstat required free result
+          /*! 
+           *  \brief Statistic from file, convert file name from wide characters to UTF-8
+           *  \attention function u8wstat required free result
            */
 int       u8wstat(const wchar_t*, struct stat*);
 
-          /** @brief Rename file, wide char input */
+          /*! \brief Rename file, wide char input */
 int       _wrename(const wchar_t*, const wchar_t*);
-          /** @brief Rename file, wide char input with size */
+          /*! \brief Rename file, wide char input with size */
 int       _wrename_s(const wchar_t*, size_t, const wchar_t*, size_t);
-          /** @brief Rename file, struct string_ws input */
+          /*! \brief Rename file, struct string_ws input */
 int       _wrename_ws(const string_ws*, const string_ws*);
-          /** @brief Automatic type selector for wrename* functions */
+          /*! \brief Automatic type selector for wrename* functions */
 int       _wrename_selector(int, const void*, size_t, const void*, size_t);
-          /**
-           *  @brief Rename file, convert file name from wide characters to UTF-8
-           *  @attention function u8wrename required free result
+          /*!
+           *  \brief Rename file, convert file name from wide characters to UTF-8
+           *  \attention function u8wrename required free result
            */
 int       u8wrename(const wchar_t*, const wchar_t*);
 
-          /** @brief Delete (remove) file, wide char input */
+          /*! \brief Delete (remove) file, wide char input */
 int       _wremove(const wchar_t*);
-          /** @brief Delete (remove) file, wide char input with size */
+          /*! \brief Delete (remove) file, wide char input with size */
 int       _wremove_s(const wchar_t*, size_t);
-          /** @brief Delete (remove) file, struct string_ws input */
+          /*! \brief Delete (remove) file, struct string_ws input */
 int       _wremove_ws(const string_ws*);
-          /** @brief Automatic type selector for wremove* functions */
+          /*! \brief Automatic type selector for wremove* functions */
 int       _wremove_selector(int, const void*, size_t);
-          /**
-           *  @brief Delete (remove) file, convert file name from wide characters to UTF-8
-           *  @attention function u8wremove required free result
+          /*!
+           *  \brief Delete (remove) file, convert file name from wide characters to UTF-8
+           *  \attention function u8wremove required free result
            */
 int       u8wremove(const wchar_t*);
 
-          /**
-           *  @note the equivalent of using the mkdir command with the -p switch for all functions _wmkdir*
+          /*!
+           *  \note the equivalent of using the mkdir command with the -p switch for all functions _wmkdir*
            */
-          /** @brief Make directory, wide char input */
+          /*! \brief Make directory, wide char input */
 int       _wmkdir(const wchar_t*, mode_t);
-          /** @brief Make directory, wide char input with size */
+          /*! \brief Make directory, wide char input with size */
 int       _wmkdir_s(const wchar_t*, size_t, mode_t);
-          /** @brief Make directory, struct string_ws input */
+          /*! \brief Make directory, struct string_ws input */
 int       _wmkdir_ws(const string_ws*, mode_t);
-          /** @brief Automatic type selector for wmkdir* functions */
+          /*! \brief Automatic type selector for wmkdir* functions */
 int       _wmkdir_selector(int, const void*, size_t, mode_t);
-          /**
-           *  @brief Make directory, convert file name from wide characters to UTF-8
-           *  @attention function u8wmkdir required free result
+          /*!
+           *  \brief Make directory, convert file name from wide characters to UTF-8
+           *  \attention function u8wmkdir required free result
            */
 int       u8wmkdir(const wchar_t*, mode_t);
 
 
-          /** @brief Check permissions for a file or directory, wide char input */
+          /*! \brief Check permissions for a file or directory, wide char input */
 access_e  _waccess(const wchar_t*, int);
-          /** @brief Check permissions for a file or directory, wide char input with size */
+          /*! \brief Check permissions for a file or directory, wide char input with size */
 access_e  _waccess_s(const wchar_t*, size_t, int);
-          /** @brief Check permissions for a file or directory, struct string_ws input */
+          /*! \brief Check permissions for a file or directory, struct string_ws input */
 access_e  _waccess_ws(const string_ws*, int);
-          /** @brief Automatic type selector for wmkdir* functions */
+          /*! \brief Automatic type selector for wmkdir* functions */
 access_e  _waccess_selector(int, const void*, size_t, int);
-          /**
-           *  @brief Check permissions for a file or directory, convert file name from wide characters to UTF-8
-           *  @attention function u8waccess required free result
+          /*!
+           *  \brief Check permissions for a file or directory, convert file name from wide characters to UTF-8
+           *  \attention function u8waccess required free result
            */
 access_e  u8waccess(const wchar_t*, int);
 
-          /** @brief Parse path file name, wide char input */
+          /*! \brief Parse path file name, wide char input */
 wchar_t * _wbasename(const wchar_t*);
-          /** @brief Parse path file name, struct string_ws input */
+          /*! \brief Parse path file name, struct string_ws input */
 wchar_t * _wbasename_ws(const string_ws*);
-          /** @brief Automatic type selector for wbasename* functions */
+          /*! \brief Automatic type selector for wbasename* functions */
 void *    _wbasename_selector(int, const void*);
 
-          /** @brief Parse path extension, wide char input */
+          /*! \brief Parse path extension, wide char input */
 wchar_t * _wbaseext(const wchar_t*);
-          /** @brief Parse path extension, struct string_ws input */
+          /*! \brief Parse path extension, struct string_ws input */
 wchar_t * _wbaseext_ws(const string_ws*);
-          /** @brief Automatic type selector for wbaseext* functions */
+          /*! \brief Automatic type selector for wbaseext* functions */
 void *    _wbaseext_selector(int, const void*);
 
-          /**
-           *  @attention all functions _wbasedir* required free result, use type __WSTRFREE for auto free
+          /*!
+           *  \attention all functions _wbasedir* required free result, use type __WSTRFREE for auto free
            */
-          /** @brief Parse path directory + normalize slash from path, wide char input */
+          /*! \brief Parse path directory + normalize slash from path, wide char input */
 wchar_t * _wbasedir(const wchar_t*, int);
-          /** @brief Parse path directory + normalize slash from path, struct string_ws input */
+          /*! \brief Parse path directory + normalize slash from path, struct string_ws input */
 wchar_t * _wbasedir_ws(const string_ws*, int);
-          /** @brief Automatic type selector for wbasedir* functions */
+          /*! \brief Automatic type selector for wbasedir* functions */
 void *    _wbasedir_selector(int, const void*, int);
 
-          /**
-           *  @attention all functions _wpathnormalize* required free result, use type __WSTRFREE for auto free
+          /*!
+           *  \attention all functions _wpathnormalize* required free result, use type __WSTRFREE for auto free
            */
-          /** @brief Normalize slash from path, wide char input, int is string size, default 0 */
+          /*! \brief Normalize slash from path, wide char input, int is string size, default 0 */
 wchar_t * _wpathnormalize(const wchar_t*, int);
-          /** @brief Normalize slash from path, struct string_ws input */
+          /*! \brief Normalize slash from path, struct string_ws input */
 wchar_t * _wpathnormalize_ws(const string_ws*);
-          /**
-           *  @brief Normalize slash from path, convert file name from wide characters to UTF-8
-           *  @attention function u8wpathnormalize required free result
+          /*!
+           *  \brief Normalize slash from path, convert file name from wide characters to UTF-8
+           *  \attention function u8wpathnormalize required free result
            */
 char *    u8wpathnormalize(const wchar_t*);
 
 
-          /**
+          /*!
            *  API use struct string_ws
            */
 
-          /** @brief Memory free string, empty and clear struct string_ws */
+          /*! \brief Memory free string, empty and clear struct string_ws */
 void      wstring_free(string_ws*);
-          /** @brief Memory allocation string, struct string_ws->str output */
+          /*! \brief Memory allocation string, struct string_ws->str output */
 size_t    wstring_alloc(string_ws*, size_t);
-          /** @brief Converting string, struct string_ws input, char array output */
+          /*! \brief Converting string, struct string_ws input, char array output */
 size_t    wstring_wstocs(char [], size_t, const string_ws*);
-          /** @brief Converting string, char input, wchar_t array output */
+          /*! \brief Converting string, char input, wchar_t array output */
 size_t    wstring_cstows(wchar_t [], size_t, const char*);
-          /** @brief Check string is empty, wchar_t input, boolean return */
+          /*! \brief Check string is empty, wchar_t input, boolean return */
 int       wstring_isempty(const wchar_t *s, int);
-          /** @brief Truncation string, wchar_t input, struct string_ws return */
+          /*! \brief Truncation string, wchar_t input, struct string_ws return */
 string_ws wstring_trunc(const wchar_t *ws, int);
-          /** @brief Append string, format vargs input, struct string_ws output */
+          /*! \brief Append string, format vargs input, struct string_ws output */
 size_t    wstring_format(string_ws*, const wchar_t*, ...);
-          /** @brief Append string, char input, struct string_ws output */
+          /*! \brief Append string, char input, struct string_ws output */
 size_t    wstring_append_cvt(string_ws*, const char*, size_t);
-          /** @brief Append string, wchar_t input, struct string_ws output */
+          /*! \brief Append string, wchar_t input, struct string_ws output */
 size_t    wstring_append(string_ws*, const wchar_t*, size_t);
 
 
@@ -515,17 +517,17 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
     }
 #endif
 
-/**
+/*!
  * \htmlonly
  */
 
-/** Other non standart macro */
+/*! Other non standart macro */
 
 #if defined(__clang__)
 #   pragma clang diagnostic ignored "-Wlanguage-extension-token"
 #endif
 
- /** @brief auto check type macro */
+ /*! \brief auto check type macro */
 #define __wchar_type_id(A)                                           \
        __builtin_types_compatible_p(typeof(A),         wchar_t*) * 1 \
     +  __builtin_types_compatible_p(typeof(A),   const wchar_t*) * 1 \
@@ -607,14 +609,15 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
 #   define _wbasedir_macro(...) \
         __WEV(EV_BDIR_ARG_, __WEVFA(__VA_ARGS__))(__VA_ARGS__)
 
-/**
+/*!
  * \endhtmlonly
  */
 
-/** \paragraph usemacro Macro as convert type wchar_t to char */
+/*! \paragraph usemacro Macro as convert type wchar_t to char */
 
- /**
-  * @brief wchar_t* type to char[]
+ /*!
+  * \def wstocscvt(A,B,D)
+  * \brief wchar_t* type to char[]
   * A char[]   - array name
   * B wchar_t* - source
   * D          - function return value if error
@@ -629,8 +632,9 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
         __WEV(A,__LINE__)[(__WEV(sz,__LINE__))] = '\0';                                                            \
     }
 
- /**
-  * @brief wchar_t* type to char[] with size
+ /*!
+  * \def wstocsncvt(A,B,C,D)
+  * \brief wchar_t* type to char[] with size
   * A char[]   - array name
   * B wchar_t* - source
   * C size_t   - wchar_t* size
@@ -643,8 +647,9 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
     }                                                                                                               \
     __WEV(A,__LINE__)[(C)] = '\0'
 
- /**
-  * @brief string_ws type to char[]
+ /*!
+  * \def wstrtocscvt(A,B,D)
+  * \brief string_ws type to char[]
   * this struct defined on top of this file
   * A char[]     - array name
   * B string_ws* - source
@@ -658,9 +663,9 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
     }                                                                                                               \
     __WEV(A,__LINE__)[__WEV(sz,__LINE__)] = '\0'
 
-/** Redefined 'symbols' libc functions */
+/*! \paragraph redefsym Redefined 'symbols' libc functions */
 
-/** for osx Darwin
+/*! for osx Darwin
  *  macro redefined: /usr/include/secure/_stdio.h
  *    vsnprintf, snprintf, vsnprintf, snprintf
  */
@@ -705,7 +710,7 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
 #   endif
 #endif
 
-/**
+/*!
  * \htmlonly
  */
 
@@ -766,7 +771,7 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
 #define wprintf _wprintf
 #define fprintf _fprintf
 
-/** Tests compability only */
+/*! Tests compability only */
 #define _wcprint wcprint
 #define _wcsregexp wcsregexp
 #define _wcstocscmp wcstocscmp
@@ -842,7 +847,7 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
 #define wcsncmp _wcsncmp
 #define wmemcmp _wmemcmp
 
-/**
+/*!
  * \endhtmlonly
  */
 

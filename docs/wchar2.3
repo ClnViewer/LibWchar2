@@ -17,7 +17,7 @@ include/wchar2.h
 .ti -1c
 .RI "struct \fB__wchar_string_ws_\fP"
 .br
-.RI " "
+.RI "Base wide string structure\&. "
 .in -1c
 .SS "Macros"
 
@@ -25,7 +25,7 @@ include/wchar2.h
 .ti -1c
 .RI "#define \fBwstocscvt\fP(A,  B,  D)"
 .br
-.RI " "
+.RI "wchar_t* type to char[] A char[] - array name B wchar_t* - source D - function return value if error "
 .ti -1c
 .RI "#define \fBwstocsncvt\fP(A,  B,  C,  D)"
 .br
@@ -41,7 +41,7 @@ include/wchar2.h
 .ti -1c
 .RI "typedef struct \fB__wchar_string_ws_\fP \fBstring_ws\fP"
 .br
-.RI " "
+.RI "Base wide string structure\&. "
 .in -1c
 .SS "Enumerations"
 
@@ -201,7 +201,7 @@ include/wchar2.h
 .ti -1c
 .RI "void \fBwcprint\fP (wchar_t *)"
 .br
-.RI "Other non standart function\&. "
+.RI "wchar_t* print Test variably only! Instead use _vfprintf, _vfwprintf, _fprintf, _fwprintf "
 .ti -1c
 .RI "int \fBwcstocscmp\fP (const char *, wchar_t *, size_t)"
 .br
@@ -209,7 +209,7 @@ include/wchar2.h
 .ti -1c
 .RI "wchar_t * \fBwcsregexp\fP (wchar_t *restrict, wchar_t *restrict, int *)"
 .br
-.RI "Original name: aov-rx - Angel Ortega's regular expression library Copyright (C) 2011/2012 Angel Ortega angel@triptico.com https://github.com/angelortega/aov-rx or http://triptico.com\&. "
+.RI "wcsregexp - Matches a regular expression "
 .ti -1c
 .RI "size_t \fBu8stowcs\fP (wchar_t *, const char *)"
 .br
@@ -536,7 +536,7 @@ include/wchar2.h
 .ti -1c
 .RI "void \fBwstring_free\fP (\fBstring_ws\fP *)"
 .br
-.RI "API use struct string_ws\&. "
+.RI "Memory free string, empty and clear struct string_ws\&. "
 .ti -1c
 .RI "size_t \fBwstring_alloc\fP (\fBstring_ws\fP *, size_t)"
 .br
@@ -577,16 +577,16 @@ include/wchar2.h
 .PP 
 .SH "struct __wchar_string_ws_"
 .PP 
- 
+Base wide string structure\&. 
 
-Base wide string structure 
+ 
 .PP
 \fBData Fields:\fP
 .RS 4
-wchar_t * \fIstr\fP 
+wchar_t * \fIstr\fP wide string pointer 
 .br
 .PP
-size_t \fIsz\fP wide string pointer 
+size_t \fIsz\fP size wide string 
 .br
 .PP
 .RE
@@ -607,8 +607,6 @@ size_t __WEV(sz,__LINE__); errno = 0;                                           
     }
 .fi
 .PP
- 
-.br
 wchar_t* type to char[] A char[] - array name B wchar_t* - source D - function return value if error 
 .SS "#define wstocsncvt(A, B, C, D)"
 \fBValue:\fP
@@ -640,7 +638,7 @@ string_ws type to char[] this struct defined on top of this file A char[] - arra
 .SS "typedef struct \fB__wchar_string_ws_\fP  \fBstring_ws\fP"
 
 .PP
- Base wide string structure 
+Base wide string structure\&.  
 .SH "Enumeration Type Documentation"
 .PP 
 .SS "enum \fBaccess_e\fP"
@@ -652,7 +650,7 @@ enumeration for return waccess function
 .in +1c
 .TP
 \fB\fIISERROR \fP\fP
-Error check\&. 
+Error check 
 .TP
 \fB\fIISUNK \fP\fP
 is a Unknown 
@@ -711,10 +709,6 @@ function u8stowcs required free result
 .RE
 .PP
 
-.SS "int u8sverify (const char *)"
-
-.PP
-Verify char* to utf-8 valid string const char* - input int (bool) - output\&. 
 .SS "\fBaccess_e\fP u8waccess (const wchar_t *, int)"
 
 .PP
@@ -795,19 +789,24 @@ function u8wstat required free result
 .SS "void wcprint (wchar_t *)"
 
 .PP
-Other non standart function\&. wchar_t* print Test variably only! Instead use _vfprintf, _vfwprintf, _fprintf, _fwprintf 
+wchar_t* print Test variably only! Instead use _vfprintf, _vfwprintf, _fprintf, _fwprintf Other non standart function 
 .SS "wchar_t* wcsregexp (wchar_t * restrict, wchar_t * restrict, int *)"
 
 .PP
-Original name: aov-rx - Angel Ortega's regular expression library Copyright (C) 2011/2012 Angel Ortega angel@triptico.com https://github.com/angelortega/aov-rx or http://triptico.com\&. wcsregexp - Matches a regular expression : the regular expression : the text to be matched : a pointer to integer where the matching lenght is stored
+wcsregexp - Matches a regular expression Original name: aov-rx - Angel Ortega's regular expression library Copyright (C) 2011/2012 Angel Ortega angel@triptico.com https://github.com/angelortega/aov-rx or http://triptico.com
 .PP
-Matches the string  for the regular expression in \&. On output, the integer pointer by  will contain the number of matched characters (with 0 meaning that no matching was possible)\&. If the end of string mark ($) is used in the regular expression and a match is effective, the ending zero is included in the match\&.
+\fBParameters:\fP
+.RS 4
+\fIrx\fP the regular expression 
+.br
+\fItx\fP the text to be matched 
+.br
+\fIsize\fP a pointer to integer where the matching lenght is stored
+.RE
+.PP
+Matches the string tx for the regular expression in rx\&. On output, the integer pointer by size will contain the number of matched characters (with 0 meaning that no matching was possible)\&. If the end of string mark ($) is used in the regular expression and a match is effective, the ending zero is included in the match\&.
 .PP
 Returns the address of the match\&. 
-.SS "int wcstocscmp (const char *, wchar_t *, size_t)"
-
-.PP
-compare char* <-> wchar_t* ASCII only! size_t - wchar_t* size 
 .SS "size_t wcstou8s (char *, const wchar_t *)"
 
 .PP
@@ -822,7 +821,7 @@ function wcstou8s required free result
 .SS "void wstring_free (\fBstring_ws\fP *)"
 
 .PP
-API use struct string_ws\&. Memory free string, empty and clear struct string_ws 
+Memory free string, empty and clear struct string_ws\&. API use struct string_ws 
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for libwchar2 0\&.0\&.3 from the source code\&.
