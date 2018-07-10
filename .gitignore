@@ -20,6 +20,8 @@ libwchar2.pc
 /test/wchar2test
 /example/*.txt
 /test/core.*
+/example/fs-redifine.libc
+/example/fs-redifine.wchar2
 
 # Prerequisites
 *.d
