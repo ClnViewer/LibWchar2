@@ -23,6 +23,8 @@ libwchar2.pc
 /example/fs-redifine.libc
 /example/fs-redifine.wchar2
 
+!/example/Makefile
+
 # Prerequisites
 *.d
 
