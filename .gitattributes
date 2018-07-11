@@ -1,4 +1,7 @@
-build/* linguist-vendored
 docs/* linguist-documentation
+build/* linguist-vendored
+*.sh linguist-vendored
+libtool linguist-vendored
+confugure linguist-vendored
 *.c linguist-language=C
 *.h linguist-language=C
