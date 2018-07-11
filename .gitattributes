@@ -1,8 +1,8 @@
 build/* linguist-vendored
 docs/* linguist-documentation
 *.sh linguist-vendored=true
-*.c linguist-vendored=false
-*.h linguist-vendored=false
+#*.c linguist-vendored=false
+#*.h linguist-vendored=false
 *.c linguist-generated=true
 *.h linguist-generated=true
 *.c linguist-language=C
