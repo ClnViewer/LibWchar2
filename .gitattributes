@@ -1,7 +1,8 @@
 docs/* linguist-documentation
 build/* linguist-vendored
 *.sh linguist-vendored
-libtool linguist-vendored
-confugure linguist-vendored
+libtool linguist-generated=true
+confugure linguist-generated=true
+config.status linguist-generated=true
 *.c linguist-language=C
 *.h linguist-language=C
