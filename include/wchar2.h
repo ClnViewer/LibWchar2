@@ -491,9 +491,24 @@ char *    u8wpathnormalize(const wchar_t*);
 void      wstring_free(string_ws*);
           /*! \brief Memory allocation string, struct string_ws->str output */
 size_t    wstring_alloc(string_ws*, size_t);
-          /*! \brief Converting string, struct string_ws input, char array output */
+          /*!
+           *  \brief Converting string, wchar_t input, char allocate output
+           *  \attention function wstring_wstocs_alloc required free result
+           */
+char    * wstring_wstocs_alloc(const wchar_t*);
+          /*!
+           *  \brief Converting string, string_ws input, char allocate output
+           *  \attention function wstring_swstocs_alloc required free result
+           */
+char    * wstring_swstocs_alloc(const string_ws*);
+          /*!
+           *  \brief Converting string, char input, wchar_t allocate output
+           *  \attention function wstring_cstows_alloc required free result
+           */
+wchar_t * wstring_cstows_alloc(const char*);
+          /*! \brief Converting string, struct string_ws input, char array output, to alloc buffer write */
 size_t    wstring_wstocs(char [], size_t, const string_ws*);
-          /*! \brief Converting string, char input, wchar_t array output */
+          /*! \brief Converting string, char input, wchar_t array output, to alloc buffer write */
 size_t    wstring_cstows(wchar_t [], size_t, const char*);
           /*! \brief Check string is empty, wchar_t input, boolean return */
 int       wstring_isempty(const wchar_t *s, int);

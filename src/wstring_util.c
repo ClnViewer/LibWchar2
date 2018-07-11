@@ -90,12 +90,53 @@ string_ws wstring_trunc(const wchar_t *ws, int sz)
     return    ss;
 }
 
+char * wstring_wstocs_alloc(const wchar_t *src)
+{
+    char __AUTO *p = NULL;
+    char  *dst;
+    size_t ssz;
+
+    if (
+        (!src)                                            ||
+        ((ssz = _wcstombs(NULL, src, 0)) == 0)            ||
+        ((p   = calloc(sizeof(wchar_t), (ssz + 2))) == 0) ||
+        ((ssz = _wcstombs(p, src, (ssz + sizeof(char)))) == 0)
+       ) { return NULL; }
+
+    // p[ssz] = '\0';
+    dst = p; p = NULL;
+    return dst;
+}
+
+char * wstring_swstocs_alloc(const string_ws *src)
+{
+    if (!src) { return 0; }
+    return wstring_wstocs_alloc(src->str);
+}
+
+wchar_t * wstring_cstows_alloc(const char *src)
+{
+    wchar_t __AUTO *p = NULL;
+    wchar_t *dst;
+    size_t   ssz;
+
+    if (
+        (!src)                                            ||
+        ((ssz = _mbstowcs(NULL, src, 0)) == 0)            ||
+        ((p   = calloc(sizeof(wchar_t), (ssz + 4))) == 0) ||
+        ((ssz = _mbstowcs(p, src, (ssz + sizeof(wchar_t)))) == 0)
+       ) { return NULL; }
+
+    // p[ssz] = L'\0';
+    dst = p; p = NULL;
+    return dst;
+}
+
 size_t wstring_wstocs(char dst[], size_t dsz, const string_ws *src)
 {
-    int
-    if ((dsz = _wcstombs(dst, src->str, dsz)) == 0) { return 0; }
-
-    dsz = ((src->sz >= dsz) ? (dsz - 1) : src->sz);
+    size_t ssz = src->sz;
+    ssz = ((!ssz) ? _wcslen(src->str) : ssz);
+    dsz = ((ssz >= dsz) ? (dsz - 1) : ssz);
     if ((dsz = _wcstombs(dst, src->str, dsz)) == 0) { return 0; }
     dst[dsz] = '\0';
     return dsz;
