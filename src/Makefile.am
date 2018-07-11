@@ -58,4 +58,4 @@ libwchar2_la_SOURCES = \
     wcwidth.c \
     wchar_util.c \
     wchar_utf8.c \
-    wstring_utl.c
+    wstring_util.c
