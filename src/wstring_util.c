@@ -153,13 +153,13 @@ size_t wstring_cstows(wchar_t dst[], size_t dsz, const char *src)
 
 size_t wstring_alloc(string_ws *dst, size_t sz)
 {
-        if (!dst) { return 0; }
-        dst->str = ((dst->str == NULL) ?
-            calloc(1, sz + 1) :
-            realloc(dst->str, (dst->sz + sz + 1))
-        );
-        if (dst->str == NULL) { return 0; }
-        return (dst->sz + sz);
+    if (!dst) { return 0; }
+    dst->str = ((dst->str == NULL) ?
+        calloc(sizeof(wchar_t), (sz + 1)) :
+        realloc(dst->str, ((dst->sz + sz + 1) * sizeof(wchar_t)))
+    );
+    if (dst->str == NULL) { return 0; }
+    return (dst->sz + sz);
 }
 
 size_t wstring_append(string_ws *dst, const wchar_t *s, size_t sz)
@@ -168,7 +168,7 @@ size_t wstring_append(string_ws *dst, const wchar_t *s, size_t sz)
         (!s)                               ||
         (!dst)                             ||
         ((!sz) && (!(sz = _wcslen(s))))    ||
-        (!wstring_alloc(dst, sz)  )        ||
+        (!wstring_alloc(dst, sz))          ||
         (!_wmemcpy((void*)(dst->str + dst->sz), (const void*)s, sz))
        ) { return 0; }
 

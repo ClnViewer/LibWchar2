@@ -1,4 +1,4 @@
-.TH "include/wchar2.h" 3 "Wed Jul 11 2018" "libwchar2 0.0.3" \" -*- nroff -*-
+.TH "include/wchar2.h" 3 "Thu Jul 12 2018" "libwchar2 0.0.3" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -542,13 +542,25 @@ include/wchar2.h
 .br
 .RI "Memory allocation string, struct string_ws->str output\&. "
 .ti -1c
+.RI "char * \fBwstring_wstocs_alloc\fP (const wchar_t *)"
+.br
+.RI "Converting string, wchar_t input, char allocate output\&. "
+.ti -1c
+.RI "char * \fBwstring_swstocs_alloc\fP (const \fBstring_ws\fP *)"
+.br
+.RI "Converting string, string_ws input, char allocate output\&. "
+.ti -1c
+.RI "wchar_t * \fBwstring_cstows_alloc\fP (const char *)"
+.br
+.RI "Converting string, char input, wchar_t allocate output\&. "
+.ti -1c
 .RI "size_t \fBwstring_wstocs\fP (char [], size_t, const \fBstring_ws\fP *)"
 .br
-.RI "Converting string, struct string_ws input, char array output\&. "
+.RI "Converting string, struct string_ws input, char array output, to alloc buffer write\&. "
 .ti -1c
 .RI "size_t \fBwstring_cstows\fP (wchar_t [], size_t, const char *)"
 .br
-.RI "Converting string, char input, wchar_t array output\&. "
+.RI "Converting string, char input, wchar_t array output, to alloc buffer write\&. "
 .ti -1c
 .RI "int \fBwstring_isempty\fP (const wchar_t *s, int)"
 .br
@@ -818,10 +830,43 @@ function wcstou8s required free result
 .RE
 .PP
 
+.SS "wchar_t* wstring_cstows_alloc (const char *)"
+
+.PP
+Converting string, char input, wchar_t allocate output\&. 
+.PP
+\fBAttention:\fP
+.RS 4
+function wstring_cstows_alloc required free result 
+.RE
+.PP
+
 .SS "void wstring_free (\fBstring_ws\fP *)"
 
 .PP
 Memory free string, empty and clear struct string_ws\&. API use struct string_ws 
+.SS "char* wstring_swstocs_alloc (const \fBstring_ws\fP *)"
+
+.PP
+Converting string, string_ws input, char allocate output\&. 
+.PP
+\fBAttention:\fP
+.RS 4
+function wstring_swstocs_alloc required free result 
+.RE
+.PP
+
+.SS "char* wstring_wstocs_alloc (const wchar_t *)"
+
+.PP
+Converting string, wchar_t input, char allocate output\&. 
+.PP
+\fBAttention:\fP
+.RS 4
+function wstring_wstocs_alloc required free result 
+.RE
+.PP
+
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for libwchar2 0\&.0\&.3 from the source code\&.
