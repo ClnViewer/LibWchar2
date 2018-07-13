@@ -25,6 +25,9 @@ libwchar2.pc
 
 !/example/Makefile
 
+/docs/mansrc
+/docs/doxyinc
+
 # Prerequisites
 *.d
 
