@@ -48,7 +48,7 @@ const unsigned char c_strip[0x100] = {
     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 };
 
-int wstring_isempty(const wchar_t *s, int sz)
+int wstring_isempty(const wchar_t *restrict s, int sz)
 {
     const wchar_t *c = s;
     sz = ((sz < 0) ? 0 : sz);
@@ -90,7 +90,18 @@ string_ws wstring_trunc(const wchar_t *ws, int sz)
     return    ss;
 }
 
-char * wstring_wstocs_alloc(const wchar_t *src)
+size_t wstring_alloc(string_ws *restrict dst, size_t sz)
+{
+    if (!dst) { return 0U; }
+    dst->str = ((dst->str == NULL) ?
+        calloc(sizeof(wchar_t), (sz + 1)) :
+        realloc(dst->str, ((dst->sz + sz + 1) * sizeof(wchar_t)))
+    );
+    if (dst->str == NULL) { return 0U; }
+    return (dst->sz + sz);
+}
+
+char * wstring_wstocs_alloc(const wchar_t *restrict src)
 {
     char __AUTO *p = NULL;
     char  *dst;
@@ -108,61 +119,59 @@ char * wstring_wstocs_alloc(const wchar_t *src)
     return dst;
 }
 
-char * wstring_swstocs_alloc(const string_ws *src)
+char * wstring_swstocs_alloc(const string_ws *restrict src)
 {
-    if (!src) { return 0; }
+    if (!src) { return NULL; }
     return wstring_wstocs_alloc(src->str);
 }
 
-wchar_t * wstring_cstows_alloc(const char *src)
+size_t wstring_cstows_ws_alloc(string_ws *restrict ws, const char *restrict src)
 {
     wchar_t __AUTO *p = NULL;
-    wchar_t *dst;
-    size_t   ssz;
+
+    if (!ws) { return 0U; }
+    wstring_free(ws);
+    p = ws->str;
 
     if (
-        (!src)                                            ||
-        ((ssz = _mbstowcs(NULL, src, 0)) == 0)            ||
-        ((p   = calloc(sizeof(wchar_t), (ssz + 4))) == 0) ||
-        ((ssz = _mbstowcs(p, src, (ssz + sizeof(wchar_t)))) == 0)
-       ) { return NULL; }
+        (!src)                                                   ||
+        ((ws->sz  = _mbstowcs(NULL, src, 0)) == 0)               ||
+        ((ws->str = calloc(sizeof(wchar_t), (ws->sz + 4))) == 0) ||
+        ((ws->sz  = _mbstowcs(ws->str, src, (ws->sz + sizeof(wchar_t)))) == 0)
+       ) { return 0U; }
 
-    // p[ssz] = L'\0';
-    dst = p; p = NULL;
-    return dst;
+    // ws->str[ws->sz] = L'\0';
+    p = NULL;
+    return ws->sz;
 }
 
-size_t wstring_wstocs(char dst[], size_t dsz, const string_ws *src)
+wchar_t * wstring_cstows_alloc(const char *restrict src)
+{
+    string_ws ws = { NULL, 0U };
+    if (!wstring_cstows_ws_alloc(&ws, src)) { return NULL; }
+    return ws.str;
+}
+
+size_t wstring_wstocs(char dst[], size_t dsz, const string_ws *restrict src)
 {
     size_t ssz = src->sz;
     ssz = ((!ssz) ? _wcslen(src->str) : ssz);
     dsz = ((ssz >= dsz) ? (dsz - 1) : ssz);
-    if ((dsz = _wcstombs(dst, src->str, dsz)) == 0) { return 0; }
+    if ((dsz = _wcstombs(dst, src->str, dsz)) == 0) { return 0U; }
     dst[dsz] = '\0';
     return dsz;
 }
 
-size_t wstring_cstows(wchar_t dst[], size_t dsz, const char *src)
+size_t wstring_cstows(wchar_t dst[], size_t dsz, const char *restrict src)
 {
     size_t ssz = strlen(src);
     dsz = ((ssz >= dsz) ? (dsz - 1) : ssz);
-    if ((dsz = _mbstowcs(dst, src, dsz)) == 0) { return 0; }
+    if ((dsz = _mbstowcs(dst, src, dsz)) == 0) { return 0U; }
     dst[dsz] = L'\0';
     return dsz;
 }
 
-size_t wstring_alloc(string_ws *dst, size_t sz)
-{
-    if (!dst) { return 0; }
-    dst->str = ((dst->str == NULL) ?
-        calloc(sizeof(wchar_t), (sz + 1)) :
-        realloc(dst->str, ((dst->sz + sz + 1) * sizeof(wchar_t)))
-    );
-    if (dst->str == NULL) { return 0; }
-    return (dst->sz + sz);
-}
-
-size_t wstring_append(string_ws *dst, const wchar_t *s, size_t sz)
+size_t wstring_append(string_ws *dst, const wchar_t *restrict s, size_t sz)
 {
     if (
         (!s)                               ||
@@ -170,24 +179,24 @@ size_t wstring_append(string_ws *dst, const wchar_t *s, size_t sz)
         ((!sz) && (!(sz = _wcslen(s))))    ||
         (!wstring_alloc(dst, sz))          ||
         (!_wmemcpy((void*)(dst->str + dst->sz), (const void*)s, sz))
-       ) { return 0; }
+       ) { return 0U; }
 
     dst->sz          += sz;
     dst->str[dst->sz] = L'\0';
     return dst->sz;
 }
 
-size_t wstring_append_cvt(string_ws *dst, const char *c, size_t sz)
+size_t wstring_append_cvt(string_ws *dst, const char *restrict c, size_t sz)
 {
     sz = ((!sz) ? strlen(c) : sz);
     {
         wchar_t s[(sz + 1)];
-        if ((sz = wstring_cstows(s, (sz + 1), c)) <= 0) { return 0; }
+        if ((sz = wstring_cstows(s, (sz + 1), c)) <= 0) { return 0U; }
         return wstring_append(dst, s, sz);
     }
 }
 
-size_t wstring_format(string_ws *dst, const wchar_t *fmt, ...)
+size_t wstring_format(string_ws *dst, const wchar_t *restrict fmt, ...)
 {
     va_list ap;
     va_start(ap, fmt);
@@ -214,7 +223,7 @@ size_t wstring_format(string_ws *dst, const wchar_t *fmt, ...)
     return ret;
 }
 
-void wstring_free(string_ws *dst)
+void wstring_free(string_ws *restrict dst)
 {
     if (
         (!dst)    ||

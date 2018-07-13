@@ -487,43 +487,66 @@ char *    u8wpathnormalize(const wchar_t*);
            *  API use struct string_ws
            */
 
+          /*!
+           *  \paragraph Allocate memory function
+           */
+
           /*! \brief Memory free string, empty and clear struct string_ws */
-void      wstring_free(string_ws*);
+void      wstring_free(string_ws *restrict);
           /*! \brief Memory allocation string, struct string_ws->str output */
-size_t    wstring_alloc(string_ws*, size_t);
+size_t    wstring_alloc(string_ws *restrict, size_t);
           /*!
            *  \brief Converting string, wchar_t input, char allocate output
            *  \attention function wstring_wstocs_alloc required free result
            */
-char    * wstring_wstocs_alloc(const wchar_t*);
+char    * wstring_wstocs_alloc(const wchar_t *restrict);
           /*!
            *  \brief Converting string, string_ws input, char allocate output
            *  \attention function wstring_swstocs_alloc required free result
            */
-char    * wstring_swstocs_alloc(const string_ws*);
+char    * wstring_swstocs_alloc(const string_ws *restrict);
           /*!
            *  \brief Converting string, char input, wchar_t allocate output
            *  \attention function wstring_cstows_alloc required free result
            */
-wchar_t * wstring_cstows_alloc(const char*);
+wchar_t * wstring_cstows_alloc(const char *restrict);
+          /*!
+           *  \brief Converting string, string_ws input, length output
+           *  \attention function wstring_cstows_alloc required free result
+           */
+size_t    wstring_cstows_ws_alloc(string_ws *restrict, const char *restrict);
+
+          /*! \brief Append string, format vargs input, struct string_ws output */
+size_t    wstring_format(string_ws*, const wchar_t *restrict, ...);
+          /*! \brief Append string, wchar_t input, struct string_ws output */
+size_t    wstring_append(string_ws*, const wchar_t *restrict, size_t);
+          /*! \brief Append string, char input, struct string_ws output */
+size_t    wstring_append_cvt(string_ws*, const char *restrict, size_t);
+
+          /*!
+           *  \paragraph User buffer memory function
+           */
+
           /*! \brief Converting string, struct string_ws input, char array output, to alloc buffer write */
-size_t    wstring_wstocs(char [], size_t, const string_ws*);
+size_t    wstring_wstocs(char [], size_t, const string_ws *restrict);
           /*! \brief Converting string, char input, wchar_t array output, to alloc buffer write */
-size_t    wstring_cstows(wchar_t [], size_t, const char*);
+size_t    wstring_cstows(wchar_t [], size_t, const char *restrict);
           /*! \brief Check string is empty, wchar_t input, boolean return */
-int       wstring_isempty(const wchar_t *s, int);
+
+          /*!
+           *  \paragraph misc function
+           */
+
+          /*! \brief Check wchar_t input string is empty, bool return */
+int       wstring_isempty(const wchar_t *restrict s, int);
           /*! \brief Truncation string, wchar_t input, struct string_ws return */
 string_ws wstring_trunc(const wchar_t *ws, int);
-          /*! \brief Append string, format vargs input, struct string_ws output */
-size_t    wstring_format(string_ws*, const wchar_t*, ...);
-          /*! \brief Append string, char input, struct string_ws output */
-size_t    wstring_append_cvt(string_ws*, const char*, size_t);
-          /*! \brief Append string, wchar_t input, struct string_ws output */
-size_t    wstring_append(string_ws*, const wchar_t*, size_t);
 
 
+/* declaration from stdlib.h */
 void free(void*);
 
+          /*! \brief User free instance callback */
 static inline void __attribute__((always_inline)) __wsfree(void *v) {
     if (v) { void *x = *(void**)v; if (x) { free(x); x = ((void*)0); }}
 }
