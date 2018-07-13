@@ -357,6 +357,12 @@ int       _fputws(const wchar_t *restrict, FILE *restrict);
           /*! \brief Write a wide character to a file or stream */
 wchar_t   _fputwc(wchar_t, FILE *restrict);
 
+          /*!
+           *  \paragraph Open file stream
+           *  \note The wfopen* function opens the file whose name is the string pointed
+           *        to by pathname and associates a stream with it, standart returned
+           */
+
           /*! \brief Open file stream, accepts file name as wide characters, mode as const char */
 FILE    * _wfopen(const wchar_t*, const char*);
           /*! \brief Same as wfopen, include size file name variable */
@@ -370,6 +376,11 @@ FILE    * _wfopen_selector(int, const void*, size_t, const void*);
            *  \attention function u8wfopen required free result
            */
 FILE    * u8wfopen(const wchar_t*, const char*);
+
+          /*!
+           *  \paragraph Statistic from file
+           *  \note These functions return information about a file, standart returned
+           */
 
           /*! \brief Statistic from file, wide char input */
 int       _wstat(const wchar_t*, struct stat*);
@@ -385,6 +396,11 @@ int       _wstat_selector(int, const void*, size_t, const void*);
            */
 int       u8wstat(const wchar_t*, struct stat*);
 
+          /*!
+           *  \paragraph Rename (move) file
+           *  \note The wrename* function shall change the name or location of a file, standart returned
+           */
+
           /*! \brief Rename file, wide char input */
 int       _wrename(const wchar_t*, const wchar_t*);
           /*! \brief Rename file, wide char input with size */
@@ -398,6 +414,11 @@ int       _wrename_selector(int, const void*, size_t, const void*, size_t);
            *  \attention function u8wrename required free result
            */
 int       u8wrename(const wchar_t*, const wchar_t*);
+
+          /*!
+           *  \paragraph Delete (remove) file or directory
+           *  \note Deletes a name from the file system, standart returned
+           */
 
           /*! \brief Delete (remove) file, wide char input */
 int       _wremove(const wchar_t*);
@@ -414,8 +435,12 @@ int       _wremove_selector(int, const void*, size_t);
 int       u8wremove(const wchar_t*);
 
           /*!
-           *  \note the equivalent of using the mkdir command with the -p switch for all functions _wmkdir*
+           *  \paragraph Make directory
+           *  \note The equivalent of using the mkdir command with the -p switch for all functions _wmkdir*
+           *        If the internal EXIST flag is received when creating the directory, return 0, otherwise
+           *        the standard is returned.
            */
+
           /*! \brief Make directory, wide char input */
 int       _wmkdir(const wchar_t*, mode_t);
           /*! \brief Make directory, wide char input with size */
@@ -431,6 +456,12 @@ int       _wmkdir_selector(int, const void*, size_t, mode_t);
 int       u8wmkdir(const wchar_t*, mode_t);
 
 
+          /*!
+           *  \paragraph Check permissions for a file or directory
+           *  \note All waccess* function return extended status, see access_e enum value,
+           *        if error return standart -1
+           */
+
           /*! \brief Check permissions for a file or directory, wide char input */
 access_e  _waccess(const wchar_t*, int);
           /*! \brief Check permissions for a file or directory, wide char input with size */
@@ -445,12 +476,22 @@ access_e  _waccess_selector(int, const void*, size_t, int);
            */
 access_e  u8waccess(const wchar_t*, int);
 
+          /*!
+           *  \paragraph Parse path file name
+           *  \note If Success return substring of path, else return NULL
+           */
+
           /*! \brief Parse path file name, wide char input */
 wchar_t * _wbasename(const wchar_t*);
           /*! \brief Parse path file name, struct string_ws input */
 wchar_t * _wbasename_ws(const string_ws*);
           /*! \brief Automatic type selector for wbasename* functions */
 void *    _wbasename_selector(int, const void*);
+
+          /*!
+           *  \paragraph Parse path extension
+           *  \note If Success return substring of path, else return NULL
+           */
 
           /*! \brief Parse path extension, wide char input */
 wchar_t * _wbaseext(const wchar_t*);
@@ -460,8 +501,11 @@ wchar_t * _wbaseext_ws(const string_ws*);
 void *    _wbaseext_selector(int, const void*);
 
           /*!
+           *  \paragraph Parse path directory
+           *  \note If Success return substring of path, else return NULL
            *  \attention all functions _wbasedir* required free result, use type __WSTRFREE for auto free
            */
+
           /*! \brief Parse path directory + normalize slash from path, wide char input */
 wchar_t * _wbasedir(const wchar_t*, int);
           /*! \brief Parse path directory + normalize slash from path, struct string_ws input */
@@ -470,8 +514,11 @@ wchar_t * _wbasedir_ws(const string_ws*, int);
 void *    _wbasedir_selector(int, const void*, int);
 
           /*!
+           *  \paragraph Normalize slash from path
+           *  \note If Success return modified path, else return NULL
            *  \attention all functions _wpathnormalize* required free result, use type __WSTRFREE for auto free
            */
+
           /*! \brief Normalize slash from path, wide char input, int is string size, default 0 */
 wchar_t * _wpathnormalize(const wchar_t*, int);
           /*! \brief Normalize slash from path, struct string_ws input */
