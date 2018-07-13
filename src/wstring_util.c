@@ -135,10 +135,10 @@ size_t wstring_cstows_ws_alloc(string_ws *restrict ws, const char *restrict src)
 
     if (
         (!src)                                                   ||
-        ((ws->sz  = _mbstowcs(NULL, src, 0)) == 0)               ||
-        ((ws->str = calloc(sizeof(wchar_t), (ws->sz + 4))) == 0) ||
-        ((ws->sz  = _mbstowcs(ws->str, src, (ws->sz + sizeof(wchar_t)))) == 0)
-       ) { return 0U; }
+        ((ws->sz   = _mbstowcs(NULL, src, 0)) == 0)               ||
+        ((ws->str  = calloc(sizeof(wchar_t), (ws->sz + 4))) == 0) ||
+        ((ws->sz   = _mbstowcs(ws->str, src, (ws->sz + sizeof(wchar_t)))) == 0)
+       ) { ws->str = NULL; return 0U; }
 
     // ws->str[ws->sz] = L'\0';
     p = NULL;
