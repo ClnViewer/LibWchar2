@@ -27,7 +27,7 @@ var menudata={children:[
 {text:"Git",url:"https://github.com/ClnViewer/LibWchar2"},
 {text:"Downloads",url:"https://github.com/ClnViewer/LibWchar2/releases"}]},
 {text:"Documentation",url:"usergroup1.html",children:[
-{text:"LibWchar2 manual",url:"https://clnviewer.github.io/LibWchar2/docs/html/wchar2_8h.html"},
+{text:"LibWchar2 manual",url:"https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html"},
 {text:"Files",url:"files.html"},
 {text:"Globals",url:"globals.html",children:[
 {text:"All",url:"globals.html",children:[
