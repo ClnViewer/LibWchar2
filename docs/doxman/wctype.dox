@@ -17,17 +17,17 @@
     The set of valid names depends on the `LC_CTYPE` category of the current locale,
     but the following names are valid in all locales.
 
-    `alnum` - realizes the isalnum(3) classification function
-    `alpha` - realizes the isalpha(3) classification function
-    `blank` - realizes the isblank(3) classification function
-    `cntrl` - realizes the iscntrl(3) classification function
-    `digit` - realizes the isdigit(3) classification function
-    `graph` - realizes the isgraph(3) classification function
-    `lower` - realizes the islower(3) classification function
-    `print` - realizes the isprint(3) classification function
-    `punct` - realizes the ispunct(3) classification function
-    `space` - realizes the isspace(3) classification function
-    `upper` - realizes the isupper(3) classification function
+    `alnum` - realizes the isalnum(3) classification function  
+    `alpha` - realizes the isalpha(3) classification function  
+    `blank` - realizes the isblank(3) classification function  
+    `cntrl` - realizes the iscntrl(3) classification function  
+    `digit` - realizes the isdigit(3) classification function  
+    `graph` - realizes the isgraph(3) classification function  
+    `lower` - realizes the islower(3) classification function  
+    `print` - realizes the isprint(3) classification function  
+    `punct` - realizes the ispunct(3) classification function  
+    `space` - realizes the isspace(3) classification function  
+    `upper` - realizes the isupper(3) classification function  
     `xdigit` - realizes the isxdigit(3) classification function
 
     # Return Value
