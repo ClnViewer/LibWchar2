@@ -1,7 +1,7 @@
 /*!
   \page wcsncmp wcsncmp manual
 
-    __wcsncmp - ``__
+    __wcsncmp - `compare two fixed-size wide-character strings`__
 
        The   wcsncmp()  function  is  the  wide-character  equivalent  of  the
        strncmp(3) function.  It compares the wide-character string pointed  to
