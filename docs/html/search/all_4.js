@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['str',['str',['../wchar2_8h.html#ac43fe0f0787fdc1ee9ef98f4540f462d',1,'__wchar_string_ws_']]],
-  ['string_5fws',['string_ws',['../wchar2_8h.html#a9e3f0acf0399420829e1892929672716',1,'wchar2.h']]],
-  ['sz',['sz',['../wchar2_8h.html#a42c7ab920fc9f64dfffbd96f63d9f80d',1,'__wchar_string_ws_']]]
+  ['str',['str',['../wchar2_8h.html#a8793a62e7b6e30b1c8b5edb70723a904',1,'string_ws']]],
+  ['string_5fws',['string_ws',['../wchar2_8h.html#structstring__ws',1,'']]],
+  ['sz',['sz',['../wchar2_8h.html#a849e57ba7292b680efe2cb4343b823a8',1,'string_ws']]]
 ];

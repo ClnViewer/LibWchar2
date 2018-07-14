@@ -15,7 +15,7 @@ include/wchar2.h
 
 .in +1c
 .ti -1c
-.RI "struct \fB__wchar_string_ws_\fP"
+.RI "struct \fBstring_ws\fP"
 .br
 .RI "Base wide string structure\&. "
 .in -1c
@@ -33,15 +33,7 @@ include/wchar2.h
 .ti -1c
 .RI "#define \fBwstrtocscvt\fP(A,  B,  D)"
 .br
-.RI "string_ws type to char[] this struct defined on top of this file A char[] - array name B string_ws* - source D - function return value if error "
-.in -1c
-.SS "Typedefs"
-
-.in +1c
-.ti -1c
-.RI "typedef struct \fB__wchar_string_ws_\fP \fBstring_ws\fP"
-.br
-.RI "Base wide string structure\&. "
+.RI "\fBstring_ws\fP type to char[] this struct defined on top of this file A char[] - array name B string_ws* - source D - function return value if error "
 .in -1c
 .SS "Enumerations"
 
@@ -376,7 +368,7 @@ include/wchar2.h
 .ti -1c
 .RI "FILE * \fB_wfopen_ws\fP (const \fBstring_ws\fP *, const char *)"
 .br
-.RI "Same as wfopen, file name as structure string_ws\&. "
+.RI "Same as wfopen, file name as structure \fBstring_ws\fP\&. "
 .ti -1c
 .RI "FILE * \fB_wfopen_selector\fP (int, const void *, size_t, const void *)"
 .br
@@ -396,7 +388,7 @@ include/wchar2.h
 .ti -1c
 .RI "int \fB_wstat_ws\fP (const \fBstring_ws\fP *, struct stat *)"
 .br
-.RI "Statistic from file, struct string_ws input\&. "
+.RI "Statistic from file, struct \fBstring_ws\fP input\&. "
 .ti -1c
 .RI "int \fB_wstat_selector\fP (int, const void *, size_t, const void *)"
 .br
@@ -416,7 +408,7 @@ include/wchar2.h
 .ti -1c
 .RI "int \fB_wrename_ws\fP (const \fBstring_ws\fP *, const \fBstring_ws\fP *)"
 .br
-.RI "Rename file, struct string_ws input\&. "
+.RI "Rename file, struct \fBstring_ws\fP input\&. "
 .ti -1c
 .RI "int \fB_wrename_selector\fP (int, const void *, size_t, const void *, size_t)"
 .br
@@ -436,7 +428,7 @@ include/wchar2.h
 .ti -1c
 .RI "int \fB_wremove_ws\fP (const \fBstring_ws\fP *)"
 .br
-.RI "Delete (remove) file, struct string_ws input\&. "
+.RI "Delete (remove) file, struct \fBstring_ws\fP input\&. "
 .ti -1c
 .RI "int \fB_wremove_selector\fP (int, const void *, size_t)"
 .br
@@ -456,7 +448,7 @@ include/wchar2.h
 .ti -1c
 .RI "int \fB_wmkdir_ws\fP (const \fBstring_ws\fP *, mode_t)"
 .br
-.RI "Make directory, struct string_ws input\&. "
+.RI "Make directory, struct \fBstring_ws\fP input\&. "
 .ti -1c
 .RI "int \fB_wmkdir_selector\fP (int, const void *, size_t, mode_t)"
 .br
@@ -476,7 +468,7 @@ include/wchar2.h
 .ti -1c
 .RI "\fBaccess_e\fP \fB_waccess_ws\fP (const \fBstring_ws\fP *, int)"
 .br
-.RI "Check permissions for a file or directory, struct string_ws input\&. "
+.RI "Check permissions for a file or directory, struct \fBstring_ws\fP input\&. "
 .ti -1c
 .RI "\fBaccess_e\fP \fB_waccess_selector\fP (int, const void *, size_t, int)"
 .br
@@ -492,7 +484,7 @@ include/wchar2.h
 .ti -1c
 .RI "wchar_t * \fB_wbasename_ws\fP (const \fBstring_ws\fP *)"
 .br
-.RI "Parse path file name, struct string_ws input\&. "
+.RI "Parse path file name, struct \fBstring_ws\fP input\&. "
 .ti -1c
 .RI "void * \fB_wbasename_selector\fP (int, const void *)"
 .br
@@ -504,7 +496,7 @@ include/wchar2.h
 .ti -1c
 .RI "wchar_t * \fB_wbaseext_ws\fP (const \fBstring_ws\fP *)"
 .br
-.RI "Parse path extension, struct string_ws input\&. "
+.RI "Parse path extension, struct \fBstring_ws\fP input\&. "
 .ti -1c
 .RI "void * \fB_wbaseext_selector\fP (int, const void *)"
 .br
@@ -516,7 +508,7 @@ include/wchar2.h
 .ti -1c
 .RI "wchar_t * \fB_wbasedir_ws\fP (const \fBstring_ws\fP *, int)"
 .br
-.RI "Parse path directory + normalize slash from path, struct string_ws input\&. "
+.RI "Parse path directory + normalize slash from path, struct \fBstring_ws\fP input\&. "
 .ti -1c
 .RI "void * \fB_wbasedir_selector\fP (int, const void *, int)"
 .br
@@ -528,7 +520,7 @@ include/wchar2.h
 .ti -1c
 .RI "wchar_t * \fB_wpathnormalize_ws\fP (const \fBstring_ws\fP *)"
 .br
-.RI "Normalize slash from path, struct string_ws input\&. "
+.RI "Normalize slash from path, struct \fBstring_ws\fP input\&. "
 .ti -1c
 .RI "char * \fBu8wpathnormalize\fP (const wchar_t *)"
 .br
@@ -536,7 +528,7 @@ include/wchar2.h
 .ti -1c
 .RI "void \fBwstring_free\fP (\fBstring_ws\fP *restrict)"
 .br
-.RI "Memory free string, empty and clear struct string_ws\&. "
+.RI "Memory free string, empty and clear struct \fBstring_ws\fP\&. "
 .ti -1c
 .RI "size_t \fBwstring_alloc\fP (\fBstring_ws\fP *restrict, size_t)"
 .br
@@ -548,7 +540,7 @@ include/wchar2.h
 .ti -1c
 .RI "char * \fBwstring_swstocs_alloc\fP (const \fBstring_ws\fP *restrict)"
 .br
-.RI "Converting string, string_ws input, char allocate output\&. "
+.RI "Converting string, \fBstring_ws\fP input, char allocate output\&. "
 .ti -1c
 .RI "wchar_t * \fBwstring_cstows_alloc\fP (const char *restrict)"
 .br
@@ -556,23 +548,23 @@ include/wchar2.h
 .ti -1c
 .RI "size_t \fBwstring_cstows_ws_alloc\fP (\fBstring_ws\fP *restrict, const char *restrict)"
 .br
-.RI "Converting string, string_ws input, length output\&. "
+.RI "Converting string, \fBstring_ws\fP input, length output\&. "
 .ti -1c
 .RI "size_t \fBwstring_format\fP (\fBstring_ws\fP *, const wchar_t *restrict,\&.\&.\&.)"
 .br
-.RI "Append string, format vargs input, struct string_ws output\&. "
+.RI "Append string, format vargs input, struct \fBstring_ws\fP output\&. "
 .ti -1c
 .RI "size_t \fBwstring_append\fP (\fBstring_ws\fP *, const wchar_t *restrict, size_t)"
 .br
-.RI "Append string, wchar_t input, struct string_ws output\&. "
+.RI "Append string, wchar_t input, struct \fBstring_ws\fP output\&. "
 .ti -1c
 .RI "size_t \fBwstring_append_cvt\fP (\fBstring_ws\fP *, const char *restrict, size_t)"
 .br
-.RI "Append string, char input, struct string_ws output\&. "
+.RI "Append string, char input, struct \fBstring_ws\fP output\&. "
 .ti -1c
 .RI "size_t \fBwstring_wstocs\fP (char [], size_t, const \fBstring_ws\fP *restrict)"
 .br
-.RI "Converting string, struct string_ws input, char array output, to alloc buffer write\&. "
+.RI "Converting string, struct \fBstring_ws\fP input, char array output, to alloc buffer write\&. "
 .ti -1c
 .RI "size_t \fBwstring_cstows\fP (wchar_t [], size_t, const char *restrict)"
 .br
@@ -584,14 +576,14 @@ include/wchar2.h
 .ti -1c
 .RI "\fBstring_ws\fP \fBwstring_trunc\fP (const wchar_t *ws, int)"
 .br
-.RI "Truncation string, wchar_t input, struct string_ws return\&. "
+.RI "Truncation string, wchar_t input, struct \fBstring_ws\fP return\&. "
 .ti -1c
 .RI "void \fBfree\fP (void *)"
 .br
 .in -1c
 .SH "Data Structure Documentation"
 .PP 
-.SH "struct __wchar_string_ws_"
+.SH "struct string_ws"
 .PP 
 Base wide string structure\&. 
 .PP
@@ -646,7 +638,7 @@ size_t __WEV(sz,__LINE__); errno = 0;                                           
     __WEV(A,__LINE__)[__WEV(sz,__LINE__)] = '\0'
 .fi
 .PP
-string_ws type to char[] this struct defined on top of this file A char[] - array name B string_ws* - source D - function return value if error 
+\fBstring_ws\fP type to char[] this struct defined on top of this file A char[] - array name B string_ws* - source D - function return value if error 
 .SH "Enumeration Type Documentation"
 .PP 
 .SS "enum \fBaccess_e\fP"
@@ -959,7 +951,7 @@ function wstring_cstows_alloc required free result
 .SS "size_t wstring_cstows_ws_alloc (\fBstring_ws\fP * restrict, const char * restrict)"
 
 .PP
-Converting string, string_ws input, length output\&. 
+Converting string, \fBstring_ws\fP input, length output\&. 
 .PP
 \fBAttention:\fP
 .RS 4
@@ -970,7 +962,7 @@ function wstring_cstows_alloc required free result
 .SS "void wstring_free (\fBstring_ws\fP * restrict)"
 
 .PP
-Memory free string, empty and clear struct string_ws\&. API use struct string_ws
+Memory free string, empty and clear struct \fBstring_ws\fP\&. API use struct \fBstring_ws\fP
 .SS "int wstring_isempty (const wchar_t *restrict s, int)"
 
 .PP
@@ -978,7 +970,7 @@ Check string is empty, wchar_t input, boolean return\&. Check wchar_t input stri
 .SS "char* wstring_swstocs_alloc (const \fBstring_ws\fP * restrict)"
 
 .PP
-Converting string, string_ws input, char allocate output\&. 
+Converting string, \fBstring_ws\fP input, char allocate output\&. 
 .PP
 \fBAttention:\fP
 .RS 4
@@ -989,7 +981,7 @@ function wstring_swstocs_alloc required free result
 .SS "size_t wstring_wstocs (char[], size_t, const \fBstring_ws\fP * restrict)"
 
 .PP
-Converting string, struct string_ws input, char array output, to alloc buffer write\&. 
+Converting string, struct \fBstring_ws\fP input, char array output, to alloc buffer write\&. 
 .SS "char* wstring_wstocs_alloc (const wchar_t * restrict)"
 
 .PP

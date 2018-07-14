@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['_5f_5fwchar_5fstring_5fws_5f',['__wchar_string_ws_',['../wchar2_8h.html#struct____wchar__string__ws__',1,'']]],
   ['_5fbtowc',['_btowc',['../wchar2_8h.html#ae07c315c570b721621e4c2fd987c963c',1,'wchar2.h']]],
   ['_5ffprintf',['_fprintf',['../wchar2_8h.html#ad81c989d1b31a9befe1293d08d5b6832',1,'wchar2.h']]],
   ['_5ffputwc',['_fputwc',['../wchar2_8h.html#a5d61519b0500f248176077d842c21576',1,'wchar2.h']]],

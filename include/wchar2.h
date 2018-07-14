@@ -33,6 +33,7 @@
   * \par LibWchar2 manual 
   * https://clnviewer.github.io/LibWchar2/docs/html/wchar2_8h.html
   *
+  * \par Using
   * Using compilation keys to build your program with this library:
   *  - gcc as key:   `-fshort-wchar`
   *  - clang as key: `-fwchar-type=short` `-fno-signed-wchar`
@@ -109,7 +110,7 @@ extern "C" {
 #endif
 
 /*! \brief Base wide string structure */
-typedef struct __wchar_string_ws_ {
+typedef struct {
     wchar_t *str; /**<  wide string pointer */
     size_t   sz;  /**<  size wide string */
 
