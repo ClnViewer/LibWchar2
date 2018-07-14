@@ -1,0 +1,34 @@
+/*!
+  \page iswctype iswctype manual
+
+    __iswctype - `wide-character classification`__
+
+    If `wc`  is a wide character having the character property designated by `desc`,
+    or in other words: belongs to the character class  designated by `desc`,
+    the iswctype() function returns nonzero.  
+
+    Otherwise, it returns zero.  If wc is `WEOF`, zero is returned.
+
+    Variable `desc` must be a character property descriptor returned by the  wctype(3) function.
+
+
+    # Return Value
+
+    The  iswctype()  function  returns nonzero if the `wc` has the designated property.  
+    Otherwise, it returns zero.
+
+
+    # Notes
+
+    The behavior of iswctype() depends on the `LC_CTYPE` category of the current locale.
+
+
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_iswctype.c
+
+
+
+    \includedoc docs/man-license.dox
+
+*/

@@ -1,0 +1,37 @@
+/*!
+  \page iswcntrl iswcntrl manual
+
+    __iswcntrl - `test for control wide character`__
+
+    The  iswcntrl()  function is the wide-character equivalent of the iscntrl(3)
+    function.  It tests whether wc is a wide character belonging  to
+    the wide-character class `cntrl`.
+
+    The  wide-character  class  `cntrl` is disjoint from the wide-character
+    class `print` and therefore also disjoint from its subclasses  `graph`,
+    `alpha`, `upper`, `lower`, `digit`, `xdigit`, `punct`.
+
+    For  an unsigned char c, iscntrl(c) implies iswcntrl(btowc(c)), but not vice versa.
+
+
+    # Return Value
+
+    The iswcntrl() function returns nonzero if `wc` is a  wide character belonging
+    to  the wide-character class `cntrl`.  
+    Otherwise, it returns zero.
+
+
+    # Notes
+
+       The behavior of iswcntrl() depends on the `LC_CTYPE` category of the current locale.
+
+
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_iswcntrl.c
+
+
+
+    \includedoc docs/man-license.dox
+
+*/

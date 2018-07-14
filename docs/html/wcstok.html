@@ -69,13 +69,13 @@ $(function() {
 <div class="textblock"><p><b>wcstok - <code>split wide-character string into tokens</code></b></p>
 <p>The wcstok() function is the wide-character equivalent of the strtok(3) function, with an added argument to make it multithread-safe. It can be used to split a wide-character string wcs into tokens, where a token is defined as a substring not containing any wide-characters from delim.</p>
 <p>The search starts at wcs, if wcs is not <code>NULL</code>, or at *ptr, if wcs is <code>NULL</code>. First, any delimiter wide-characters are skipped, that is, the pointer is advanced beyond any wide-characters which occur in delim. If the end of the wide-character string is now reached, wcstok() returns <code>NULL</code>, to indicate that no tokens were found, and stores an appropriate value in *ptr, so that subsequent calls to wcstok() will continue to return <code>NULL</code>. Otherwise, the wcstok() function recognizes the beginning of a token and returns a pointer to it, but before doing that, it zero-terminates the token by replacing the next wide-character which occurs in delim with a null wide character (L'\0'), and it updates *ptr so that subsequent calls will continue searching after the end of recognized token.</p>
-<h1><a class="anchor" id="autotoc_md51"></a>
+<h1><a class="anchor" id="autotoc_md99"></a>
 Return Value</h1>
 <p>The wcstok() function returns a pointer to the next token, or <code>NULL</code> if no further token was found.</p>
-<h1><a class="anchor" id="autotoc_md52"></a>
+<h1><a class="anchor" id="autotoc_md100"></a>
 Notes</h1>
 <p>The original wcs wide-character string is destructively modified during the operation.</p>
-<h1><a class="anchor" id="autotoc_md53"></a>
+<h1><a class="anchor" id="autotoc_md101"></a>
 Example</h1>
 <p>The following code loops over the tokens contained in a wide-character string.</p>
 <div class="fragment"><div class="line"><span class="keywordtype">wchar_t</span> *wcs = ...;</div><div class="line"><span class="keywordtype">wchar_t</span> *token;</div><div class="line"><span class="keywordtype">wchar_t</span> *state;</div><div class="line"><span class="keywordflow">for</span> (token = wcstok(wcs, <span class="stringliteral">&quot; \\t\\n&quot;</span>, &amp;state);</div><div class="line">     token != NULL;</div><div class="line">     token = wcstok(NULL, <span class="stringliteral">&quot; \\t\\n&quot;</span>, &amp;state)) {</div><div class="line">    ...</div><div class="line">}</div></div><!-- fragment --><dl class="section see"><dt>See also</dt><dd><a href="https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcstok.c">https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcstok.c</a></dd></dl>
@@ -89,7 +89,7 @@ Example</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jul 15 2018 01:24:58 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jul 15 2018 02:28:04 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

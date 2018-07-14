@@ -72,7 +72,7 @@ $(function() {
 <p>The check is done using the calling process's real <code>UID</code> and <code>GID</code>, rather than the effective IDs as is done when actually attempting an operation (e.g., open(2)) on the file. Similarly, for the root user, the check uses the set of permitted capabilities rather than the set of effective capabilities; and for non-root users, the check uses an empty set of capabilities.</p>
 <p>This allows set-user-ID programs and capability-endowed programs to easily determine the invoking user's authority. In other words, access() does not answer the "can I read/write/execute this file?" question. It answers a slightly different question: "(assuming I'm a setuid binary) can the user who invoked me read/write/execute this file?", which gives set-user-ID programs the possibility to prevent malicious users from causing them to read files which users shouldn't be able to read.</p>
 <p>If the calling process is privileged (i.e., its real <code>UID</code> is zero), then an <code>X_OK</code> check is successful for a regular file if execute permission is enabled for any of the file owner, group, or other.</p>
-<h1><a class="anchor" id="autotoc_md3"></a>
+<h1><a class="anchor" id="autotoc_md51"></a>
 Return Value</h1>
 <p>On success, all requested permissions granted, or mode is <code>F_OK</code> and the file exists, return extended status, see <a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49">access_e</a> enum value:</p>
 <ul>
@@ -82,7 +82,7 @@ Return Value</h1>
 <li><code>ISDIR</code> is a Directory</li>
 </ul>
 <p>On error, at least one bit in mode asked for a permission that is denied, or mode is F_OK and the file does not exist, or some other error occurred, <code>-1</code> is returned, and errno is set appropriately.</p>
-<h1><a class="anchor" id="autotoc_md4"></a>
+<h1><a class="anchor" id="autotoc_md52"></a>
 See example</h1>
 <dl class="section see"><dt>See also</dt><dd><a href="https://github.com/ClnViewer/LibWchar2/blob/master/test/test_waccess.c">https://github.com/ClnViewer/LibWchar2/blob/master/test/test_waccess.c</a></dd></dl>
 <p><dl class="section user"><dt>LibWchar2 information</dt><dd></dd></dl>
@@ -95,7 +95,7 @@ See example</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jul 15 2018 01:24:58 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jul 15 2018 02:28:04 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

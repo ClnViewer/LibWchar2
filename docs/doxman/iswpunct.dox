@@ -1,0 +1,49 @@
+/*!
+  \page iswpunct iswpunct manual
+
+    __iswpunct - `test for punctuation or symbolic wide character`__
+
+       The  iswpunct()  function  is  the  wide-character  equivalent  of  the
+       ispunct(3) function.  It tests whether wc is a wide character belonging
+       to the wide-character class `punct`.
+
+       The  wide-character  class  `punct` is a subclass of the wide-character
+       class `graph`, and therefore also  a  subclass  of  the  wide-character
+       class `print`.
+
+       The  wide-character  class  `punct` is disjoint from the wide-character
+       class `alnum` and therefore also disjoint from its subclasses  `alpha`,
+       `upper`, `lower`, `digit`, `xdigit`.
+
+       Being  a subclass of the wide-character class `print`, the wide-charac-
+       ter class `punct` is disjoint from the wide-character class `cntrl`.
+
+       Being a subclass of the wide-character class `graph`, the  wide-charac-
+       ter class `punct` is disjoint from the wide-character class `space` and
+       its subclass `blank`.
+
+
+    # Return Value
+
+    The iswpunct() function returns nonzero if `wc` is a  wide character belonging
+    to  the wide-character class `punct`.  
+    Otherwise, it returns zero.
+
+
+    # Notes
+
+    The behavior of iswpunct() depends on the `LC_CTYPE` category of the current locale.
+
+    This  function's  name  is a misnomer when dealing with Unicode characters,
+    because the wide-character class `punct` contains  both  punctuation characters
+    and symbol (math, currency, etc.) characters.
+
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_iswpunct.c
+
+
+
+    \includedoc docs/man-license.dox
+
+*/

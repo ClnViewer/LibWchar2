@@ -101,55 +101,55 @@ include/wchar2.h
 .ti -1c
 .RI "int \fB_iswctype\fP (wchar_t, wctype_t)"
 .br
-.RI "Extensible wide-character test\&. "
+.RI "Extensible wide-character test, wide-character classification\&. "
 .ti -1c
 .RI "int \fB_iswxdigit\fP (wchar_t)"
 .br
-.RI "Hexadecimal digit wide character predicate\&. "
+.RI "Test for hexadecimal digit wide character\&. "
 .ti -1c
 .RI "int \fB_iswupper\fP (wchar_t)"
 .br
-.RI "Uppercase wide character predicate\&. "
+.RI "Test for uppercase wide character\&. "
 .ti -1c
 .RI "int \fB_iswspace\fP (wchar_t)"
 .br
-.RI "Whitespace wide character predicate\&. "
+.RI "Test for whitespace wide character\&. "
 .ti -1c
 .RI "int \fB_iswpunct\fP (wchar_t)"
 .br
-.RI "Punctuation wide character predicate\&. "
+.RI "Test for punctuation or symbolic wide character\&. "
 .ti -1c
 .RI "int \fB_iswprint\fP (wchar_t)"
 .br
-.RI "Printable wide character predicate\&. "
+.RI "Test for printing wide character\&. "
 .ti -1c
 .RI "int \fB_iswlower\fP (wchar_t)"
 .br
-.RI "Lowercase wide character predicate\&. "
+.RI "Ttest for lowercase wide character\&. "
 .ti -1c
 .RI "int \fB_iswgraph\fP (wchar_t)"
 .br
-.RI "Graphic wide character predicate\&. "
+.RI "Test for graphic wide character\&. "
 .ti -1c
 .RI "int \fB_iswdigit\fP (wchar_t)"
 .br
-.RI "Decimal digit wide character predicate\&. "
+.RI "Test for decimal digit wide character\&. "
 .ti -1c
 .RI "int \fB_iswcntrl\fP (wchar_t)"
 .br
-.RI "Control wide character predicate\&. "
+.RI "Test for control wide character\&. "
 .ti -1c
 .RI "int \fB_iswblank\fP (wchar_t)"
 .br
-.RI "Blank wide character predicate\&. "
+.RI "Test for whitespace wide character\&. "
 .ti -1c
 .RI "int \fB_iswalpha\fP (wchar_t)"
 .br
-.RI "Alphabetic wide character predicate\&. "
+.RI "Test for whitespace wide character, alphabetic wide character predicate\&. "
 .ti -1c
 .RI "int \fB_iswalnum\fP (wchar_t)"
 .br
-.RI "Alphanumeric wide character predicate\&. "
+.RI "Test for alphanumeric wide character, alphabetic wide character predicate\&. "
 .ti -1c
 .RI "size_t \fB_wcstombs\fP (char *restrict, const wchar_t *restrict, size_t)"
 .br
@@ -699,12 +699,140 @@ Write to stream wide character format variable arguments\&.
 \fBwprintf manual\fP 
 .PP
 
+.SS "int _iswalnum (wchar_t)"
+
+.PP
+Test for alphanumeric wide character, alphabetic wide character predicate\&. 
+.IP "\(bu" 2
+\fBiswalnum manual\fP 
+.PP
+
+.SS "int _iswalpha (wchar_t)"
+
+.PP
+Test for whitespace wide character, alphabetic wide character predicate\&. 
+.IP "\(bu" 2
+\fBiswalpha manual\fP 
+.PP
+
+.SS "int _iswblank (wchar_t)"
+
+.PP
+Test for whitespace wide character\&. 
+.IP "\(bu" 2
+\fBiswblank manual\fP 
+.PP
+
+.SS "int _iswcntrl (wchar_t)"
+
+.PP
+Test for control wide character\&. 
+.IP "\(bu" 2
+\fBiswcntrl manual\fP 
+.PP
+
+.SS "int _iswctype (wchar_t, wctype_t)"
+
+.PP
+Extensible wide-character test, wide-character classification\&. 
+.IP "\(bu" 2
+\fBiswctype manual\fP 
+.PP
+
+.SS "int _iswdigit (wchar_t)"
+
+.PP
+Test for decimal digit wide character\&. 
+.IP "\(bu" 2
+\fBiswdigit manual\fP 
+.PP
+
+.SS "int _iswgraph (wchar_t)"
+
+.PP
+Test for graphic wide character\&. 
+.IP "\(bu" 2
+\fBiswgraph manual\fP 
+.PP
+
+.SS "int _iswlower (wchar_t)"
+
+.PP
+Ttest for lowercase wide character\&. 
+.IP "\(bu" 2
+\fBiswlower manual\fP 
+.PP
+
+.SS "int _iswprint (wchar_t)"
+
+.PP
+Test for printing wide character\&. 
+.IP "\(bu" 2
+\fBiswprint manual\fP 
+.PP
+
+.SS "int _iswpunct (wchar_t)"
+
+.PP
+Test for punctuation or symbolic wide character\&. 
+.IP "\(bu" 2
+\fBiswpunct manual\fP 
+.PP
+
+.SS "int _iswspace (wchar_t)"
+
+.PP
+Test for whitespace wide character\&. 
+.IP "\(bu" 2
+\fBiswspace manual\fP 
+.PP
+
+.SS "int _iswupper (wchar_t)"
+
+.PP
+Test for uppercase wide character\&. 
+.IP "\(bu" 2
+\fBiswupper manual\fP 
+.PP
+
+.SS "int _iswxdigit (wchar_t)"
+
+.PP
+Test for hexadecimal digit wide character\&. 
+.IP "\(bu" 2
+\fBiswxdigit manual\fP 
+.PP
+
 .SS "size_t _swprintf (wchar_t * restrict, size_t, const wchar_t * restrict,  \&.\&.\&.)"
 
 .PP
 Write formatted wide character output\&. 
 .IP "\(bu" 2
 \fBwprintf manual\fP 
+.PP
+
+.SS "wchar_t _towctrans (wchar_t, wctrans_t)"
+
+.PP
+Extensible wide-character translation\&. 
+.IP "\(bu" 2
+\fBtowctrans manual\fP 
+.PP
+
+.SS "wchar_t _towlower (wchar_t)"
+
+.PP
+Translate wide characters to lowercase\&. 
+.IP "\(bu" 2
+\fBtowlower manual\fP 
+.PP
+
+.SS "wchar_t _towupper (wchar_t)"
+
+.PP
+Translate wide characters to uppercase\&. 
+.IP "\(bu" 2
+\fBtowupper manual\fP 
 .PP
 
 .SS "size_t _vfwprintf (FILE * restrict, const wchar_t * restrict, va_list)"

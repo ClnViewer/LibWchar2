@@ -1,0 +1,43 @@
+/*!
+  \page iswgraph iswgraph manual
+
+    __iswgraph - `test for graphic wide character`__
+
+       The  iswgraph()  function  is  the  wide-character  equivalent  of  the
+       isgraph(3) function.  It tests whether wc is a wide character belonging
+       to the wide-character class `graph`.
+
+       The  wide-character  class  `graph` is a subclass of the wide-character
+       class `print`.
+
+       Being a subclass of the wide-character class `print`, the  wide-charac-
+       ter class `graph` is disjoint from the wide-character class `cntrl`.
+
+       The  wide-character  class  `graph` is disjoint from the wide-character
+       class `space` and therefore also disjoint from its subclass `blank`.
+
+       The wide-character class `graph` contains all the wide characters  from
+       the wide-character class `print` except the space character.  It there-
+       fore contains the wide-character classes `alnum` and `punct`.
+
+
+    # Return Value
+
+    The iswgraph() function returns nonzero if `wc` is a  wide character belonging
+    to  the wide-character class `graph`.  
+    Otherwise, it returns zero.
+
+
+    # Notes
+
+       The behavior of iswgraph() depends on the `LC_CTYPE` category of the current locale.
+
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_iswgraph.c
+
+
+
+    \includedoc docs/man-license.dox
+
+*/

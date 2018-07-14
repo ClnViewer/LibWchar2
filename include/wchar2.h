@@ -123,11 +123,25 @@ typedef enum {
     ISDIR   =  3  /**<  is a Directory */
 } access_e;
 
-          /*! \brief Translate wide characters to uppercase */
+          /*!
+           * \brief Translate wide characters to uppercase
+           *
+           * - \subpage towupper
+           */
 wchar_t   _towupper(wchar_t);
-          /*! \brief Translate wide characters to lowercase */
+
+          /*!
+           * \brief Translate wide characters to lowercase
+           *
+           * - \subpage towlower
+           */
 wchar_t   _towlower(wchar_t);
-          /*! \brief Extensible wide-character translation */
+
+          /*!
+           * \brief Extensible wide-character translation
+           *
+           * - \subpage towctrans
+           */
 wchar_t   _towctrans(wchar_t, wctrans_t);
 
           /*!
@@ -157,31 +171,96 @@ int       _wcwidth(wchar_t);
            * - \subpage wcswidth
            */
 int       _wcswidth(const wchar_t*, size_t);
-          /*! \brief Extensible wide-character test */
+
+          /*!
+           * \brief Extensible wide-character test, wide-character classification
+           *
+           * - \subpage iswctype
+           */
 int       _iswctype(wchar_t, wctype_t);
-          /*! \brief Hexadecimal digit wide character predicate */
+
+          /*!
+           * \brief Test for hexadecimal digit wide character
+           *
+           * - \subpage iswxdigit
+           */
 int       _iswxdigit(wchar_t);
-          /*! \brief Uppercase wide character predicate */
+
+          /*!
+           * \brief Test for uppercase wide character
+           *
+           * - \subpage iswupper
+           */
 int       _iswupper(wchar_t);
-          /*! \brief Whitespace wide character predicate */
+
+          /*!
+           * \brief Test for whitespace wide character
+           *
+           * - \subpage iswspace
+           */
 int       _iswspace(wchar_t);
-          /*! \brief Punctuation wide character predicate */
+
+          /*!
+           * \brief Test for punctuation or symbolic wide character
+           *
+           * - \subpage iswpunct
+           */
 int       _iswpunct(wchar_t);
-          /*! \brief Printable wide character predicate */
+
+          /*!
+           * \brief Test for printing wide character
+           *
+           * - \subpage iswprint
+           */
 int       _iswprint(wchar_t);
-          /*! \brief Lowercase wide character predicate */
+
+          /*!
+           * \brief Ttest for lowercase wide character
+           *
+           * - \subpage iswlower
+           */
 int       _iswlower(wchar_t);
-          /*! \brief Graphic wide character predicate */
+
+          /*!
+           * \brief Test for graphic wide character
+           *
+           * - \subpage iswgraph
+           */
 int       _iswgraph(wchar_t);
-          /*! \brief Decimal digit wide character predicate */
+
+          /*!
+           * \brief Test for decimal digit wide character
+           *
+           * - \subpage iswdigit
+           */
 int       _iswdigit(wchar_t);
-          /*! \brief Control wide character predicate */
+
+          /*!
+           * \brief Test for control wide character
+           *
+           * - \subpage iswcntrl
+           */
 int       _iswcntrl(wchar_t);
-          /*! \brief Blank wide character predicate */
+
+          /*!
+           * \brief Test for whitespace wide character
+           *
+           * - \subpage iswblank
+           */
 int       _iswblank(wchar_t);
-          /*! \brief Alphabetic wide character predicate */
+
+          /*!
+           * \brief Test for whitespace wide character, alphabetic wide character predicate
+           *
+           * - \subpage iswalpha
+           */
 int       _iswalpha(wchar_t);
-          /*! \brief Alphanumeric wide character predicate */
+
+          /*!
+           * \brief Test for alphanumeric wide character, alphabetic wide character predicate
+           *
+           * - \subpage iswalnum
+           */
 int       _iswalnum(wchar_t);
 
           /*!

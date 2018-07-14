@@ -1,0 +1,58 @@
+/*!
+  \page iswupper iswupper manual
+
+    __iswupper - `test for uppercase wide character`__
+
+       The  iswupper()  function is the wide-character equivalent of the isup-
+       per(3) function.  It tests whether wc is a wide character belonging  to
+       the wide-character class `upper`.
+
+       The  wide-character  class  `upper` is a subclass of the wide-character
+       class `alpha`, and therefore also  a  subclass  of  the  wide-character
+       class  `alnum`,  of  the  wide-character class `graph` and of the wide-
+       character class `print`.
+
+       Being a subclass of the wide-character class `print`, the  wide-charac-
+       ter class `upper` is disjoint from the wide-character class `cntrl`.
+
+       Being  a subclass of the wide-character class `graph`, the wide-charac-
+       ter class `upper` is disjoint from the wide-character class `space` and
+       its subclass `blank`.
+
+       Being  a subclass of the wide-character class `alnum`, the wide-charac-
+       ter class `upper` is disjoint from the wide-character class `punct`.
+
+       Being a subclass of the wide-character class `alpha`, the  wide-charac-
+       ter class `upper` is disjoint from the wide-character class `digit`.
+
+       The  wide-character class `upper` contains at least those characters wc
+       which are equal to towupper(wc) and different from towlower(wc).
+
+       The wide-character class `upper` always contains at least  the  letters
+       `A` to `Z`.
+
+
+    # Return Value
+
+    The iswupper() function returns nonzero if `wc` is a  wide character belonging
+    to  the wide-character class `upper`.  
+    Otherwise, it returns zero.
+
+
+    # Notes
+
+    The behavior of iswupper() depends on the `LC_CTYPE` category of the current locale.
+
+    This function is not very appropriate for dealing with Unicode  characters,
+    because Unicode knows about three cases: upper, lower and title case.
+
+
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_iswupper.c
+
+
+
+    \includedoc docs/man-license.dox
+
+*/

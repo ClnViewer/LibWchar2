@@ -1,0 +1,38 @@
+/*!
+  \page iswprint iswprint manual
+
+    __iswprint - `test for printing wide character`__
+
+       The  iswprint()  function  is  the  wide-character  equivalent  of  the
+       isprint(3) function.  It tests whether wc is a wide character belonging
+       to the wide-character class `print`.
+
+       The  wide-character  class  `print` is disjoint from the wide-character
+       class `cntrl`.
+
+       The wide-character class  `print`  contains  the  wide-character  class
+       `graph`.
+
+
+    # Return Value
+
+    The iswprint() function returns nonzero if `wc` is a  wide character belonging
+    to  the wide-character class `print`.  
+    Otherwise, it returns zero.
+
+
+    # Notes
+
+    The behavior of iswprint() depends on the `LC_CTYPE` category of the current locale.
+
+
+
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_iswprint.c
+
+
+
+    \includedoc docs/man-license.dox
+
+*/

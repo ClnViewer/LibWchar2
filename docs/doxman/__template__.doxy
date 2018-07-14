@@ -5,11 +5,23 @@
 
 
 
+
     # Return Value
 
+    The xxx() function returns nonzero if `wc` is a  wide character belonging
+    to  the wide-character class `xxx`.  
+    Otherwise, it returns zero.
 
 
     # Notes
+
+    The behavior of xxx() depends on the `LC_CTYPE` category of the current locale.
+
+
+
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_xxx.c
 
 
 

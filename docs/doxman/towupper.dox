@@ -1,0 +1,45 @@
+/*!
+  \page towupper towupper manual
+
+    __towupper - `convert a wide character to uppercase`__
+
+       The  towupper()  function is the wide-character equivalent of the toup-
+       per(3) function.  If wc is a lowercase wide character, and there exists
+       an uppercase equivalent in the current locale, it returns the uppercase
+       equivalent of wc.  In all other cases, wc is returned unchanged.
+
+       The towupper_l() function performs the same task, but performs the con-
+       version based on the character type information in the locale specified
+       by locale.  The behavior of towupper_l() is undefined if locale is  the
+       special  locale  object `LC_GLOBAL_LOCALE` (see duplocale(3)) or is not a
+       valid locale object handle.
+
+       The argument wc must be representable as a wchar_t and be a valid char-
+       acter in the locale or be the value `WEOF`.
+
+
+    # Return Value
+
+    If wc was convertible to uppercase, towupper() returns its uppercase equivalent.  
+    Otherwise, it returns `wc`.
+
+
+    # Notes
+
+    The behavior of towupper() depends on the `LC_CTYPE` category of the current locale.
+
+    These functions are not very appropriate for dealing with Unicode characters,
+    because Unicode knows about three cases: upper, lower and title case.
+
+    The towupper_l() function not implemented is libwchar2.
+
+
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_towupper.c
+
+
+
+    \includedoc docs/man-license.dox
+
+*/

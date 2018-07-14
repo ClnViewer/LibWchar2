@@ -1,0 +1,58 @@
+/*!
+  \page iswlower iswlower manual
+
+    __iswlower - `test for lowercase wide character`__
+
+       The  iswlower()  function  is  the  wide-character  equivalent  of  the
+       islower(3) function.  It tests whether wc is a wide character belonging
+       to the wide-character class `lower`.
+
+       The  wide-character  class  `lower` is a subclass of the wide-character
+       class `alpha`, and therefore also  a  subclass  of  the  wide-character
+       class  `alnum`,  of  the  wide-character class `graph` and of the wide-
+       character class `print`.
+
+       Being a subclass of the wide-character class `print`, the  wide-charac-
+       ter class `lower` is disjoint from the wide-character class `cntrl`.
+
+       Being  a subclass of the wide-character class `graph`, the wide-charac-
+       ter class `lower` is disjoint from the wide-character class `space` and
+       its subclass `blank`.
+
+       Being  a subclass of the wide-character class `alnum`, the wide-charac-
+       ter class `lower` is disjoint from the wide-character class `punct`.
+
+       Being a subclass of the wide-character class `alpha`, the  wide-charac-
+       ter class `lower` is disjoint from the wide-character class `digit`.
+
+       The  wide-character class `lower` contains at least those characters wc
+       which are equal to towlower(wc) and different from towupper(wc).
+
+       The wide-character class `lower` always contains at least  the  letters
+       `a` to `z`.
+
+
+    # Return Value
+
+    The iswlower() function returns nonzero if `wc` is a  wide character belonging
+    to  the wide-character class `lower`.  
+    Otherwise, it returns zero.
+
+
+    # Notes
+
+    The behavior of iswlower() depends on the `LC_CTYPE` category of the current locale.
+
+    This function is not very appropriate for dealing with Unicode  characters, because
+    Unicode knows about three cases: upper, lower and title case.
+
+
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_iswlower.c
+
+
+
+    \includedoc docs/man-license.dox
+
+*/

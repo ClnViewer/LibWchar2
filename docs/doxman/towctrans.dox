@@ -1,0 +1,32 @@
+/*!
+  \page towctrans towctrans manual
+
+    __towctrans - `wide-character transliteration`__
+
+    If `wc` is a  wide character, the towctrans() function translates it
+    according to the transliteration descriptor desc.  
+    If `wc` is `WEOF`, `WEOF`  is returned.
+
+    Variable `desc` must be a transliteration descriptor returned by the wctrans(3) function.
+
+
+    # Return Value
+
+    The towctrans() function returns the translated wide character, or `WEOF` if wc is `WEOF`.
+
+
+    # Notes
+
+    The behavior of towctrans() depends on the `LC_CTYPE` category of the current locale.
+
+
+
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_towctrans.c
+
+
+
+    \includedoc docs/man-license.dox
+
+*/

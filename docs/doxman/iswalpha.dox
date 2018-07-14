@@ -1,0 +1,54 @@
+/*!
+  \page iswalpha iswalpha manual
+
+    __iswalpha - `test for alphabetic wide character`__
+
+       The  iswalpha()  function is the wide-character equivalent of the isal-
+       pha(3) function.  It tests whether wc is a wide character belonging  to
+       the wide-character class `alpha`.
+
+       The  wide-character  class  `alpha` is a subclass of the wide-character
+       class `alnum`, and therefore also  a  subclass  of  the  wide-character
+       class `graph` and of the wide-character class `print`.
+
+       Being  a subclass of the wide-character class `print`, the wide-charac-
+       ter class `alpha` is disjoint from the wide-character class `cntrl`.
+
+       Being a subclass of the wide-character class `graph`, the  wide-charac-
+       ter class `alpha` is disjoint from the wide-character class `space` and
+       its subclass `blank`.
+
+       Being a subclass of the wide-character class `alnum`, the  wide-charac-
+       ter class `alpha` is disjoint from the wide-character class `punct`.
+
+       The  wide-character  class  `alpha` is disjoint from the wide-character
+       class `digit`.
+
+       The wide-character class `alpha` contains  the  wide-character  classes
+       `upper` and `lower`.
+
+       The  wide-character  class `alpha` always contains at least the letters
+       `A` to `Z` and `a` to `z`.
+
+
+    # Return Value
+
+    The iswalpha() function returns nonzero  if `wc` is a wide  character
+    belonging  to  the wide-character class `alpha`.  
+    Otherwise, it returns zero.
+
+
+    # Notes
+
+       The behavior of iswalpha() depends on the `LC_CTYPE` category of the current locale.
+
+
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_iswalpha.c
+
+
+
+    \includedoc docs/man-license.dox
+
+*/

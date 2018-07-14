@@ -1,0 +1,47 @@
+/*!
+  \page towlower towlower manual
+
+    __towlower - `convert a wide character to lowercase`__
+
+
+       The  towlower()  function  is  the  wide-character  equivalent  of  the
+       tolower(3) function.  If wc is an uppercase wide character,  and  there
+       exists  a  lowercase  equivalent  in the current locale, it returns the
+       lowercase equivalent of  wc.   In  all  other  cases,  `wc`  is  returned
+       unchanged.
+
+       The towlower_l() function performs the same task, but performs the con-
+       version based on the character type information in the locale specified
+       by  locale.  The behavior of towlower_l() is undefined if locale is the
+       special locale object `LC_GLOBAL_LOCALE` (see duplocale(3)) or is  not  a
+       valid locale object handle.
+
+       The argument wc must be representable as a wchar_t and be a valid char-
+       acter in the locale or be the value `WEOF`.
+
+
+    # Return Value
+
+    If wc was convertible to lowercase, towlower() returns its lowercase equivalent.  
+    Otherwise, it returns `wc`.
+
+
+    # Notes
+
+    The behavior of towlower() depends on the `LC_CTYPE` category of the current locale.
+
+    These functions are not very appropriate for dealing with Unicode characters,
+    because Unicode knows about three cases: upper, lower and title case.
+
+    The towlower_l() function not implemented is libwchar2.
+
+
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_towlower.c
+
+
+
+    \includedoc docs/man-license.dox
+
+*/
