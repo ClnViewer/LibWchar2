@@ -94,6 +94,7 @@ var searchData=
   ['_5fwmkdir_5fws',['_wmkdir_ws',['../wchar2_8h.html#a84ba545f55734722bbd5b7a72eaf71e2',1,'wchar2.h']]],
   ['_5fwpathnormalize',['_wpathnormalize',['../wchar2_8h.html#a14c73e5e9b82693f1042999c1598be30',1,'wchar2.h']]],
   ['_5fwpathnormalize_5fws',['_wpathnormalize_ws',['../wchar2_8h.html#a0d2e161b6a586b0735483e42f162d41f',1,'wchar2.h']]],
+  ['_5fwprintf',['_wprintf',['../wchar2_8h.html#abfbd1f9cad1859acc02a0f1a3fb3e59b',1,'wchar2.h']]],
   ['_5fwremove',['_wremove',['../wchar2_8h.html#acee6e22080b370e0e83da7d814c9f06d',1,'wchar2.h']]],
   ['_5fwremove_5fs',['_wremove_s',['../wchar2_8h.html#a7019c9aedb7132f831eb256b9af0ea8c',1,'wchar2.h']]],
   ['_5fwremove_5fselector',['_wremove_selector',['../wchar2_8h.html#a6d744672078f686c9e15dd0710178239',1,'wchar2.h']]],

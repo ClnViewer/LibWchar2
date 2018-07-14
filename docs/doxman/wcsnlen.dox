@@ -1,0 +1,27 @@
+/*!
+  \page wcsnlen wcsnlen manual
+
+    __wcsnlen - `determine the length of a fixed-size wide-character string`__
+
+       The   wcsnlen()  function  is  the  wide-character  equivalent  of  the
+       strnlen(3) function.  It returns the number of wide-characters  in  the
+       string pointed to by s, not including the terminating null wide charac-
+       ter (L'\0'), but at most maxlen wide characters (note:  this  parameter
+       is not a byte count).  In doing this, wcsnlen() looks at only the first
+       maxlen wide characters at s and never beyond s+maxlen.
+
+
+    # Return Value
+
+       The wcsnlen() function returns wcslen(s), if that is less than  maxlen,
+       or  maxlen  if  there  is no null wide character among the first maxlen
+       wide characters pointed to by s.
+
+    # Notes
+
+       The wcsnlen() function is provided in glibc since version 2.1.
+
+
+    \includedoc docs/man-license.dox
+
+*/

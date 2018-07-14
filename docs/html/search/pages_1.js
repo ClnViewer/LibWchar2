@@ -11,5 +11,20 @@ var searchData=
   ['wcslen_20manual',['wcslen manual',['../wcslen.html',1,'']]],
   ['wcsncat_20manual',['wcsncat manual',['../wcsncat.html',1,'']]],
   ['wcsncmp_20manual',['wcsncmp manual',['../wcsncmp.html',1,'']]],
-  ['wctob_20manual',['wctob manual',['../wctob.html',1,'']]]
+  ['wcsncpy_20manual',['wcsncpy manual',['../wcsncpy.html',1,'']]],
+  ['wcsnlen_20manual',['wcsnlen manual',['../wcsnlen.html',1,'']]],
+  ['wcsnrtombs_20manual',['wcsnrtombs manual',['../wcsnrtombs.html',1,'']]],
+  ['wcspbrk_20manual',['wcspbrk manual',['../wcspbrk.html',1,'']]],
+  ['wcsrchr_20manual',['wcsrchr manual',['../wcsrchr.html',1,'']]],
+  ['wcsrtombs_20manual',['wcsrtombs manual',['../wcsrtombs.html',1,'']]],
+  ['wcsspn_20manual',['wcsspn manual',['../wcsspn.html',1,'']]],
+  ['wcsstr_20manual',['wcsstr manual',['../wcsstr.html',1,'']]],
+  ['wcstok_20manual',['wcstok manual',['../wcstok.html',1,'']]],
+  ['wcstombs_20manual',['wcstombs manual',['../wcstombs.html',1,'']]],
+  ['wcswidth_20manual',['wcswidth manual',['../wcswidth.html',1,'']]],
+  ['wctob_20manual',['wctob manual',['../wctob.html',1,'']]],
+  ['wctomb_20manual',['wctomb manual',['../wctomb.html',1,'']]],
+  ['wctype_20manual',['wctype manual',['../wctype.html',1,'']]],
+  ['wcwidth_20manual',['wcwidth manual',['../wcwidth.html',1,'']]],
+  ['wprintf_20manual',['wprintf manual',['../wprintf.html',1,'']]]
 ];

@@ -1,0 +1,29 @@
+/*!
+  \page wcsncpy wcsncpy manual
+
+    __wcsncpy - `copy a fixed-size string of wide characters`__
+
+       The   wcsncpy()  function  is  the  wide-character  equivalent  of  the
+       strncpy(3) function.  It copies at most  n  wide  characters  from  the
+       wide-character string pointed to by src, including the terminating null
+       wide character (L'\0'), to the array pointed to  by  dest.   Exactly  n
+       wide  characters  are  written  at  dest.  If the length wcslen(src) is
+       smaller than n, the remaining wide characters in the array  pointed  to
+       by   dest  are  filled  with  null  wide  characters.   If  the  length
+       wcslen(src) is greater than or equal to n, the  string  pointed  to  by
+       dest will not be terminated by a null wide character.
+
+       The strings may not overlap.
+
+       The programmer must ensure that there is room for at least n wide char-
+       acters at dest.
+
+
+    # Return Value
+
+       wcsncpy() returns dest.
+
+
+    \includedoc docs/man-license.dox
+
+*/

@@ -349,6 +349,7 @@ include/wchar2.h
 .ti -1c
 .RI "size_t \fB_wprintf\fP (const wchar_t *restrict fmt,\&.\&.\&.)"
 .br
+.RI "Write formatted wide character to \fCstdout\fP \fCIO\fP "
 .ti -1c
 .RI "int \fB_fputws\fP (const wchar_t *restrict, FILE *restrict)"
 .br
@@ -666,6 +667,38 @@ is a Symbolic link
 is a Directory 
 .SH "Function Documentation"
 .PP 
+.SS "size_t _fwprintf (FILE * restrict, const wchar_t * restrict,  \&.\&.\&.)"
+
+.PP
+Write to stream wide character format variable arguments\&. 
+.IP "\(bu" 2
+\fBwprintf manual\fP 
+.PP
+
+.SS "size_t _swprintf (wchar_t * restrict, size_t, const wchar_t * restrict,  \&.\&.\&.)"
+
+.PP
+Write formatted wide character output\&. 
+.IP "\(bu" 2
+\fBwprintf manual\fP 
+.PP
+
+.SS "size_t _vfwprintf (FILE * restrict, const wchar_t * restrict, va_list)"
+
+.PP
+Write to stream wide character format variable argument list\&. 
+.IP "\(bu" 2
+\fBwprintf manual\fP 
+.PP
+
+.SS "size_t _vswprintf (wchar_t * restrict, size_t, const wchar_t * restrict, va_list ap)"
+
+.PP
+Write formatted data from variable argument list to sized buffer\&. 
+.IP "\(bu" 2
+\fBwprintf manual\fP 
+.PP
+
 .SS "\fBaccess_e\fP _waccess (const wchar_t *, int)"
 
 .PP
@@ -804,12 +837,141 @@ Wide-character string compare\&. Wide-character string compare
 \fBwcsncmp manual\fP 
 .PP
 
+.SS "wchar_t* _wcsncpy (wchar_t *, const wchar_t *, size_t)"
+
+.PP
+Counted copy wide-character string\&. 
+.IP "\(bu" 2
+\fBwcsncpy manual\fP 
+.PP
+
+.SS "size_t _wcsnlen (const wchar_t *, size_t)"
+
+.PP
+Wide-character string length with maximum limit\&. 
+.IP "\(bu" 2
+\fBwcsnlen manual\fP 
+.PP
+
+.SS "size_t _wcsnrtombs (char * restrict, const wchar_t ** restrict, size_t, size_t, mbstate_t * restrict)"
+
+.PP
+Convert a wide-character string to a character string\&. 
+.IP "\(bu" 2
+\fBwcsnrtombs manual\fP 
+.PP
+
+.SS "wchar_t* _wcspbrk (const wchar_t *, const wchar_t *)"
+
+.PP
+Find wide characters in string\&. 
+.IP "\(bu" 2
+\fBwcspbrk manual\fP 
+.PP
+
+.SS "wchar_t* _wcsrchr (const wchar_t *, wchar_t)"
+
+.PP
+Reverse search for wide character in string\&. 
+.IP "\(bu" 2
+\fBwcsrchr manual\fP 
+.PP
+
+.SS "size_t _wcsrtombs (char * restrict, const wchar_t ** restrict, size_t, mbstate_t * restrict)"
+
+.PP
+Convert a wide-character string to a character string\&. 
+.IP "\(bu" 2
+\fBwcsrtombs manual\fP 
+.PP
+
+.SS "size_t _wcsspn (const wchar_t *, const wchar_t *)"
+
+.PP
+Find initial match in wide-character string\&. Find initial match in wide-character string
+.PP
+.IP "\(bu" 2
+\fBwcsspn manual\fP 
+.PP
+
+.SS "wchar_t* _wcsstr (const wchar_t *, const wchar_t *)"
+
+.PP
+Find wide-character string segment\&. 
+.IP "\(bu" 2
+\fBwcsstr manual\fP 
+.PP
+
+.SS "wchar_t* _wcstok (wchar_t *, const wchar_t *, wchar_t **)"
+
+.PP
+Tokenize wide-character string\&. 
+.IP "\(bu" 2
+\fBwcstok manual\fP 
+.PP
+
+.SS "size_t _wcstombs (char * restrict, const wchar_t * restrict, size_t)"
+
+.PP
+Minimal wide string to multibyte string converter\&. 
+.IP "\(bu" 2
+\fBwcstombs manual\fP 
+.PP
+
+.SS "size_t _wcstombs_s (char * restrict, const wchar_t * restrict, size_t)"
+
+.PP
+Minimal wide string to multibyte string converter + double size out buffer\&. 
+.IP "\(bu" 2
+\fBwcstombs manual\fP 
+.PP
+
+.SS "int _wcswidth (const wchar_t *, size_t)"
+
+.PP
+Number of column positions of a wide-character string\&. 
+.IP "\(bu" 2
+\fBwcswidth manual\fP 
+.PP
+
 .SS "int _wctob (wchar_t)"
 
 .PP
 Convert wide character to single byte\&. 
 .IP "\(bu" 2
 \fBwctob manual\fP 
+.PP
+
+.SS "int _wctomb (char *, wchar_t)"
+
+.PP
+Minimal wide char to multibyte converter\&. 
+.IP "\(bu" 2
+\fBwctomb manual\fP 
+.PP
+
+.SS "wctrans_t _wctrans (const char *)"
+
+.PP
+Compute wide-character translation type\&. 
+.IP "\(bu" 2
+\fBwctrans\fP 
+.PP
+
+.SS "wctype_t _wctype (const char *)"
+
+.PP
+Compute wide-character test type\&. 
+.IP "\(bu" 2
+\fBwctype manual\fP 
+.PP
+
+.SS "int _wcwidth (wchar_t)"
+
+.PP
+Number of column positions of a wide-character code\&. 
+.IP "\(bu" 2
+\fBwcwidth manual\fP 
 .PP
 
 .SS "FILE* _wfopen (const wchar_t *, const char *)"
@@ -848,6 +1010,14 @@ If Success return modified path, else return NULL
 .RS 4
 all functions _wpathnormalize* required free result, use type __WSTRFREE for auto free 
 .RE
+.PP
+
+.SS "size_t _wprintf (const wchar_t *restrict fmt,  \&.\&.\&.)"
+
+.PP
+Write formatted wide character to \fCstdout\fP \fCIO\fP 
+.IP "\(bu" 2
+\fBwprintf manual\fP 
 .PP
 
 .SS "int _wremove (const wchar_t *)"

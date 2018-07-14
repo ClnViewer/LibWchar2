@@ -1,0 +1,44 @@
+/*!
+  \page wctomb wctomb manual
+
+    __wctomb - `convert a wide character to a multibyte sequence`__
+
+       If  s is not NULL, the wctomb() function converts the wide character wc
+       to its multibyte representation and stores it at the beginning  of  the
+       character  array pointed to by s.  It updates the shift state, which is
+       stored in a static anonymous variable known only to the wctomb()  func-
+       tion, and returns the length of said multibyte representation, that is,
+       the number of bytes written at s.
+
+       The programmer must ensure that there is room for at  least  MB_CUR_MAX
+       bytes at s.
+
+       If  s is NULL, the wctomb() function resets the shift state, known only
+       to this function, to the initial state,  and  returns  nonzero  if  the
+       encoding  has nontrivial shift state, or zero if the encoding is state-
+       less.
+
+
+    # Return Value
+
+       If s is not NULL, the wctomb() function returns  the  number  of  bytes
+       that have been written to the byte array at s.  If wc can not be repre-
+       sented as a multibyte sequence (according to the current locale), -1 is
+       returned.
+
+       If s is NULL, the wctomb() function returns nonzero if the encoding has
+       nontrivial shift state, or zero if the encoding is stateless.
+
+
+    # Notes
+
+       The behavior of wctomb() depends on the LC_CTYPE category of  the  cur-
+       rent locale.
+
+       The  function  wcrtomb(3) provides a better interface to the same func-
+       tionality.
+
+
+    \includedoc docs/man-license.dox
+
+*/

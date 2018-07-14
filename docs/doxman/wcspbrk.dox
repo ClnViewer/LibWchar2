@@ -1,0 +1,21 @@
+/*!
+  \page wcspbrk wcspbrk manual
+
+    __wcspbrk - `search a wide-character string for any of a set of wide characters`__
+
+       The wcspbrk() function is the wide-character equivalent  of  the  strp-
+       brk(3)  function.   It  searches  for the first occurrence in the wide-
+       character string pointed to by wcs of any  of  the  characters  in  the
+       wide-character string pointed to by accept.
+
+
+    # Return Value
+
+       The wcspbrk() function returns a pointer to the first occurrence in wcs
+       of any of the characters listed in accept.  If  wcs  contains  none  of
+       these characters, NULL is returned.
+
+
+    \includedoc docs/man-license.dox
+
+*/

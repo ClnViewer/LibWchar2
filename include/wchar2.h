@@ -127,14 +127,33 @@ wchar_t   _towupper(wchar_t);
 wchar_t   _towlower(wchar_t);
           /*! \brief Extensible wide-character translation */
 wchar_t   _towctrans(wchar_t, wctrans_t);
-          /*! \brief Compute wide-character test type */
+
+          /*!
+           * \brief Compute wide-character test type
+           *
+           * - \subpage wctype
+           */
 wctype_t  _wctype(const char*);
-          /*! \brief Compute wide-character translation type */
+
+          /*!
+           * \brief Compute wide-character translation type
+           *
+           * - \subpage wctrans
+           */
 wctrans_t _wctrans(const char*);
 
-          /*! \brief Number of column positions of a wide-character code */
+          /*!
+           * \brief Number of column positions of a wide-character code
+           *
+           * - \subpage wcwidth
+           */
 int       _wcwidth(wchar_t);
-          /*! \brief Number of column positions of a wide-character string */
+
+          /*!
+           * \brief Number of column positions of a wide-character string
+           *
+           * - \subpage wcswidth
+           */
 int       _wcswidth(const wchar_t*, size_t);
           /*! \brief Extensible wide-character test */
 int       _iswctype(wchar_t, wctype_t);
@@ -163,11 +182,25 @@ int       _iswalpha(wchar_t);
           /*! \brief Alphanumeric wide character predicate */
 int       _iswalnum(wchar_t);
 
-          /*! \brief Minimal wide string to multibyte string converter */
+          /*!
+           * \brief Minimal wide string to multibyte string converter
+           *
+           * - \subpage wcstombs
+           */
 size_t    _wcstombs(char *restrict, const wchar_t *restrict, size_t);
-          /*! \brief Minimal wide string to multibyte string converter + double size out buffer */
+
+          /*!
+           * \brief Minimal wide string to multibyte string converter + double size out buffer
+           *
+           * - \subpage wcstombs
+           */
 size_t    _wcstombs_s(char *restrict, const wchar_t *restrict, size_t);
-          /*! \brief Convert a wide-character string to a character string */
+
+          /*!
+           * \brief Convert a wide-character string to a character string
+           *
+           * - \subpage wcsrtombs
+           */
 size_t    _wcsrtombs(char *restrict, const wchar_t **restrict, size_t, mbstate_t *restrict);
 
           /*!
@@ -180,7 +213,12 @@ size_t    _wcrtomb(char *restrict, wchar_t, mbstate_t *restrict);
 size_t    _mbstowcs(wchar_t *restrict, const char *restrict, size_t);
           /*! \brief Convert a character string to a wide-character string */
 size_t    _mbsrtowcs(wchar_t *restrict, const char **restrict, size_t, mbstate_t *restrict);
-          /*! \brief Convert a wide-character string to a character string */
+
+          /*!
+           * \brief Convert a wide-character string to a character string
+           *
+           * - \subpage wcsnrtombs
+           */
 size_t    _wcsnrtombs(char *restrict, const wchar_t **restrict, size_t, size_t, mbstate_t *restrict);
           /*! \brief Convert a character string to a wide-character string */
 size_t    _mbsnrtowcs(wchar_t *restrict, const char **restrict, size_t, size_t, mbstate_t *restrict);
@@ -194,7 +232,12 @@ int       _mblen(const char*, size_t);
 int       _mbsinit(const mbstate_t*);
           /*! \brief Minimal multibyte to wide char converter */
 int       _mbtowc(wchar_t *restrict, const char *restrict, size_t);
-          /*! \brief Minimal wide char to multibyte converter */
+
+          /*!
+           * \brief Minimal wide char to multibyte converter
+           *
+           * - \subpage wctomb
+           */
 int       _wctomb(char*, wchar_t);
 
           /*!
@@ -300,9 +343,19 @@ wchar_t * _wcscat(wchar_t*, const wchar_t*);
            * - \subpage wcsncat
            */
 wchar_t * _wcsncat(wchar_t*, const wchar_t*, size_t);
-          /*! \brief Counted copy wide-character string */
+
+          /*!
+           * \brief Counted copy wide-character string
+           *
+           * - \subpage wcsncpy
+           */
 wchar_t * _wcsncpy(wchar_t*, const wchar_t*, size_t);
-          /*! \brief Find wide characters in string */
+
+          /*!
+           * \brief Find wide characters in string
+           *
+           * - \subpage wcspbrk
+           */
 wchar_t * _wcspbrk(const wchar_t*, const wchar_t*);
 
           /*!
@@ -311,11 +364,26 @@ wchar_t * _wcspbrk(const wchar_t*, const wchar_t*);
            * - \subpage wcschr
            */
 wchar_t * _wcschr(const wchar_t*, wchar_t);
-          /*! \brief Reverse search for wide character in string */
+
+          /*!
+           * \brief Reverse search for wide character in string
+           *
+           * - \subpage wcsrchr
+           */
 wchar_t * _wcsrchr(const wchar_t*, wchar_t);
-          /*! \brief Find wide-character string segment */
+
+          /*!
+           * \brief Find wide-character string segment
+           *
+           * - \subpage wcsstr
+           */
 wchar_t * _wcsstr(const wchar_t*, const wchar_t*);
-          /*! \brief Tokenize wide-character string */
+
+          /*!
+           * \brief Tokenize wide-character string
+           *
+           * - \subpage wcstok
+           */
 wchar_t * _wcstok(wchar_t*, const wchar_t*, wchar_t**);
           /*! \brief Find wide character in memory */
 wchar_t * _wmemchr(const wchar_t*, wchar_t, size_t);
@@ -337,9 +405,21 @@ size_t    _wcslcpy(wchar_t*, const wchar_t*, size_t);
            * - \subpage wcslen
            */
 size_t    _wcslen(const wchar_t*);
-          /*! \brief Wide-character string length with maximum limit */
+
+          /*!
+           * \brief Wide-character string length with maximum limit
+           *
+           * - \subpage wcsnlen
+           */
 size_t    _wcsnlen(const wchar_t*, size_t);
+
           /*! \brief Find initial match in wide-character string */
+
+          /*!
+           * \brief Find initial match in wide-character string
+           *
+           * - \subpage wcsspn
+           */
 size_t    _wcsspn(const wchar_t*, const wchar_t*);
 
           /*!
@@ -393,22 +473,43 @@ size_t    _printf(const char *restrict fmt, ...)
 size_t    _snprintf(char *restrict, size_t, const char *restrict, ...)
                 __attribute__((__format__(__printf__, 3, 0)));
 
-          /*! \brief Write to stream wide character format variable argument list */
+          /*!
+           * \brief Write to stream wide character format variable argument list
+           *
+           * - \subpage wprintf
+           */
 size_t    _vfwprintf(FILE *restrict, const wchar_t *restrict, va_list)
                 /* __attribute__((__nonnull__, __format__(__wprintf__, 2, 0))) */ ;
 
-          /*! \brief Write formatted data from variable argument list to sized buffer */
+          /*!
+           * \brief Write formatted data from variable argument list to sized buffer
+           *
+           * - \subpage wprintf
+           */
 size_t    _vswprintf(wchar_t *restrict, size_t, const wchar_t *restrict, va_list ap)
                 /* __attribute__((__format__(__wprintf__, 3, 0))) */ ;
 
-          /*! \brief Write to stream wide character format variable arguments */
+          /*!
+           * \brief Write to stream wide character format variable arguments
+           *
+           * - \subpage wprintf
+           */
 size_t    _fwprintf(FILE *restrict, const wchar_t *restrict, ...)
                 /* __attribute__((__nonnull__, __format__(__wprintf__, 2, 0))) */ ;
 
-          /*! \brief Write formatted wide character output */
+          /*!
+           * \brief Write formatted wide character output
+           *
+           * - \subpage wprintf
+           */
 size_t    _swprintf(wchar_t *restrict, size_t, const wchar_t *restrict, ...)
                 /* __attribute__((__format__(__wprintf__, 3, 0))) */ ;
 
+          /*!
+           * \brief Write formatted wide character to `stdout` `IO`
+           *
+           * - \subpage wprintf
+           */
 size_t    _wprintf(const wchar_t *restrict fmt, ...)
                 /* __attribute__((__format__(__wprintf__, 1, 0))) */ ;
 

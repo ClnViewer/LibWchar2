@@ -1,0 +1,19 @@
+/*!
+  \page wcsrchr wcsrchr manual
+
+    __wcsrchr - `search a wide character in a wide-character string`__
+
+       The  wcsrchr()  function  is  the wide-character equivalent of the str-
+       rchr(3) function.  It searches the last occurrence of wc in  the  wide-
+       character string pointed to by wcs.
+
+    # Return Value
+
+       The  wcsrchr()  function returns a pointer to the last occurrence of wc
+       in the wide-character string pointed to by wcs, or NULL if wc does  not
+       occur in the string.
+
+
+    \includedoc docs/man-license.dox
+
+*/

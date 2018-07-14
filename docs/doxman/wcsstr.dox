@@ -1,0 +1,23 @@
+/*!
+  \page wcsstr wcsstr manual
+
+    __wcsstr - `locate a substring in a wide-character string`__
+
+       The wcsstr() function is the wide-character equivalent of the strstr(3)
+       function.  It searches for the first occurrence of  the  wide-character
+       string  needle (without its terminating null wide character (L'\0')) as
+       a substring in the wide-character string haystack.
+
+    # Return Value
+
+       The wcsstr() function returns a pointer to the first occurrence of nee-
+       dle  in  haystack.   It returns NULL if needle does not occur as a sub-
+       string in haystack.
+
+       Note the special case: If needle is the  empty  wide-character  string,
+       the return value is always haystack itself.
+
+
+    \includedoc docs/man-license.dox
+
+*/
