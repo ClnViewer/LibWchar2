@@ -69,9 +69,7 @@
 #  error "size of 'wchar_t' != '2'; Use gcc key: '-fshort-wchar', or clang key: '-fwchar-type=short' '-fno-signed-wchar'"
 #endif
 
-/*!
- * \cond NOTINDOC
- */
+/*! \cond NOTINDOC */
 
 #define __WEV_(A,B) A ## B
 #define __WEV(A,B)  __WEV_(A,B)
@@ -101,9 +99,7 @@
 #   endif
 #endif
 
-/*!
- * \endcond
- */
+/*! \endcond */
 
 #ifdef __cplusplus
 extern "C" {
@@ -612,9 +608,12 @@ int       wstring_isempty(const wchar_t *restrict s, int);
           /*! \brief Truncation string, wchar_t input, struct string_ws return */
 string_ws wstring_trunc(const wchar_t *ws, int);
 
+/*! \cond NOTINDOC */
 
 /* declaration from stdlib.h */
 void free(void*);
+
+/*! \endcond */
 
           /*! \brief User free instance callback */
 static inline void __attribute__((always_inline)) __wsfree(void *v) {
@@ -625,11 +624,9 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
     }
 #endif
 
-/*!
- * \cond NOTINDOC
- */
-
 /*! Other non standart macro */
+
+/*! \cond NOTINDOC */
 
 #if defined(__clang__)
 #   pragma clang diagnostic ignored "-Wlanguage-extension-token"
@@ -717,9 +714,7 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
 #   define _wbasedir_macro(...) \
         __WEV(EV_BDIR_ARG_, __WEVFA(__VA_ARGS__))(__VA_ARGS__)
 
-/*!
- * \endcond
- */
+/*! \endcond */
 
 /*! \paragraph usemacro Macro as convert type wchar_t to char */
 
@@ -818,9 +813,7 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
 #   endif
 #endif
 
-/*!
- * \cond NOTINDOC
- */
+/*! \cond NOTINDOC */
 
 #define wmkdir _wmkdir_macro
 #define wmkdir_w _wmkdir
@@ -955,8 +948,6 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
 #define wcsncmp _wcsncmp
 #define wmemcmp _wmemcmp
 
-/*!
- * \endcond
- */
+/*! \endcond */
 
 #endif

@@ -577,9 +577,6 @@ include/wchar2.h
 .RI "\fBstring_ws\fP \fBwstring_trunc\fP (const wchar_t *ws, int)"
 .br
 .RI "Truncation string, wchar_t input, struct \fBstring_ws\fP return\&. "
-.ti -1c
-.RI "void \fBfree\fP (void *)"
-.br
 .in -1c
 .SH "Data Structure Documentation"
 .PP 
@@ -613,7 +610,11 @@ size_t __WEV(sz,__LINE__); errno = 0;                                           
     }
 .fi
 .PP
-wchar_t* type to char[] A char[] - array name B wchar_t* - source D - function return value if error 
+wchar_t* type to char[] A char[] - array name B wchar_t* - source D - function return value if error Other non standart macro 
+.br
+
+.br
+
 .SS "#define wstocsncvt(A, B, C, D)"
 \fBValue:\fP
 .PP

@@ -613,9 +613,6 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wc
 <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a741c3f78c098a2f1b1bcfabff95bb318">wstring_trunc</a> (const wchar_t *ws, int)</td></tr>
 <tr class="memdesc:a741c3f78c098a2f1b1bcfabff95bb318"><td class="mdescLeft">&#160;</td><td class="mdescRight">Truncation string, wchar_t input, struct <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a> return. <br /></td></tr>
 <tr class="separator:a741c3f78c098a2f1b1bcfabff95bb318"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af07d89f5ceaea0c7c8252cc41fd75f37"><td class="memItemLeft" align="right" valign="top"><a id="af07d89f5ceaea0c7c8252cc41fd75f37"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>free</b> (void *)</td></tr>
-<tr class="separator:af07d89f5ceaea0c7c8252cc41fd75f37"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/><h2 class="groupheader">Data Structure Documentation</h2>
 <a name="structstring__ws" id="structstring__ws"></a>
@@ -683,6 +680,9 @@ size wide string </td></tr>
 <b>Value:</b><div class="fragment"><div class="line"><span class="keywordtype">size_t</span> __WEV(sz,__LINE__); errno = 0;                                                                          \</div><div class="line">    if ((__WEV(sz,__LINE__) = <a class="code" href="wchar2_8h.html#a010691a2fdd9b63850bf63f65d287424">_wcsrtombs</a>(NULL, &amp;(<span class="keyword">const</span> <span class="keywordtype">wchar_t</span>*){B}, 0, 0)) &lt;= 0) {                                \</div><div class="line">        errno = EILSEQ; <span class="keywordflow">return</span> D;                                                                                  \</div><div class="line">    }                                                                                                              \</div><div class="line">    char __WEV(A,__LINE__)[(__WEV(sz,__LINE__) + 1)], * A = (<span class="keywordtype">char</span>*)&amp;__WEV(A,__LINE__);                             \</div><div class="line">    if ((__WEV(sz,__LINE__) = <a class="code" href="wchar2_8h.html#a010691a2fdd9b63850bf63f65d287424">_wcsrtombs</a>(__WEV(A,__LINE__), &amp;(<span class="keyword">const</span> <span class="keywordtype">wchar_t</span>*){B}, (__WEV(sz,__LINE__) + 1), 0))) { \</div><div class="line">        __WEV(A,__LINE__)[(__WEV(sz,__LINE__))] = <span class="charliteral">&#39;\0&#39;</span>;                                                            \</div><div class="line">    }</div><div class="ttc" id="wchar2_8h_html_a010691a2fdd9b63850bf63f65d287424"><div class="ttname"><a href="wchar2_8h.html#a010691a2fdd9b63850bf63f65d287424">_wcsrtombs</a></div><div class="ttdeci">size_t _wcsrtombs(char *restrict, const wchar_t **restrict, size_t, mbstate_t *restrict)</div><div class="ttdoc">Convert a wide-character string to a character string. </div></div>
 </div><!-- fragment -->
 <p>wchar_t* type to char[] A char[] - array name B wchar_t* - source D - function return value if error </p>
+<p>Other non standart macro <br />
+<br />
+</p>
 
 </div>
 </div>
@@ -1724,7 +1724,7 @@ size wide string </td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 14 2018 17:07:35 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jul 14 2018 17:17:41 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>
