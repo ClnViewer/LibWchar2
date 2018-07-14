@@ -28,7 +28,7 @@
 /*!
   * \file wchar2.h
   * \mainpage LibWchar2
-  * \brief This library design to use `wchar_t == 2`, Windows software compatible.
+  * \brief This library design to use `wchar_t == 2`, Windows API software compatible.
   *
   * \par LibWchar2 Summary manual
   * https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html

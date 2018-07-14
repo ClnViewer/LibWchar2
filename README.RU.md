@@ -95,7 +95,7 @@ CC | key
 ### API
 
 Файл заголовков:     [wchar2.h](https://github.com/ClnViewer/LibWchar2/blob/master/include/wchar2.h)  
-OnLine документация: [libwchar2](https://clnviewer.github.io/LibWchar2/docs/html/wchar2_8h.html)  
+OnLine документация: [libwchar2](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html)  
 Список функций:      [manual](https://github.com/ClnViewer/LibWchar2/blob/master/docs/wchar2.3)
 
 Для использования библиотеки в проекте подключите заголовок последним, после всех системных заголовков, при этом `wchar.h` и `wctype.h` можно не указывать, они уже включены.
