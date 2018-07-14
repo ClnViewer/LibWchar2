@@ -23,7 +23,7 @@
   * \mainpage LibWchar2
   * \brief This library design to use wchar_t == 2, Windows software compatible.
   *
-  * - LibWchar2 manual https://clnviewer.github.io/LibWchar2/docs/html/wchar2_8h.html
+  * \par <a href="https://clnviewer.github.io/LibWchar2/docs/html/wchar2_8h.html">LibWchar2 manual</a>
   *
   * Compile this library and you programm use:
   *  - gcc as key:   -fshort-wchar
