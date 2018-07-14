@@ -37,7 +37,7 @@
        The following code loops over the tokens contained in a  wide-character
        string.
 
-    \code
+    \code{.c}
 
         wchar_t *wcs = ...;
         wchar_t *token;
