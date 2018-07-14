@@ -4,7 +4,7 @@ PROJECT_NAME           = "@PACKAGE_NAME@ @PACKAGE_VERSION@"
 INPUT                  = include/wchar2.h docs/doxman
 OUTPUT_DIRECTORY       = docs
 EXAMPLE_PATH           = ./ docs/doxman
-FILE_PATTERNS          =  += *.dox *.h
+FILE_PATTERNS         += *.dox *.h
 EXTENSION_MAPPING      = txt=md
 WARN_NO_PARAMDOC       = YES
 ENABLE_PREPROCESSING   = YES
