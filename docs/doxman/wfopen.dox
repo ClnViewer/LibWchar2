@@ -55,6 +55,11 @@
     If that operation is a wide-character operation, the stream is marked  wide-oriented, and functions
     to convert to the coded character set are loaded.
 
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wfopen.c
+
+
 
     \includedoc docs/man-license.dox
 

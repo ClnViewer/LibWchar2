@@ -23,6 +23,12 @@
 
     Function **wcpncpy**() returns a pointer to the last wide character written, that is, *dest*+*n*-1.
 
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcpncpy.c
+
+
+
     \includedoc docs/man-license.dox
 
 */

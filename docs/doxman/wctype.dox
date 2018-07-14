@@ -30,7 +30,7 @@
     # Return Value
 
        The wctype() function returns a property  descriptor  if  the  name  is
-       valid.  Otherwise, it returns (wctype_t) 0.
+       valid.  Otherwise, it returns `(wctype_t) 0`.
 
     # Notes
 

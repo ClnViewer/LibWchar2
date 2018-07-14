@@ -20,6 +20,11 @@
        not  contained  in  the wide-character string accept, or wcslen(wcs) if
        there is none.
 
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcsspn.c
+
+
 
     \includedoc docs/man-license.dox
 

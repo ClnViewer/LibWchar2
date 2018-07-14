@@ -23,6 +23,11 @@
 
     This equivalent of using the mkdir command with the -p switch for all functions _wmkdir*
 
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wmkdir.c
+
+
 
     \includedoc docs/man-license.dox
 

@@ -18,6 +18,11 @@
        wcpcpy()  returns  a  pointer  to  the end of the wide-character string
        dest, that is, a pointer to the terminating null wide character.
 
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcpcpy.c
+
+
     \includedoc docs/man-license.dox
 
 */

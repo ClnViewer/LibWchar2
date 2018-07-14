@@ -16,6 +16,11 @@
        zero  if  at  the first differing position `i` `(i < n)`, the corresponding
        wide-character `s1[i]` is less than `s2[i]`.
 
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wmemcmp.c
+
+
 
     \includedoc docs/man-license.dox
 

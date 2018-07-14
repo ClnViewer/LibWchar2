@@ -15,6 +15,11 @@
     On  success, zero is returned.  
     On error, -1 is returned, and errno is set appropriately.
 
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wstat.c
+
+
 
     \includedoc docs/man-license.dox
 

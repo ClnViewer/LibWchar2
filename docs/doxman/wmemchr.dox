@@ -11,6 +11,11 @@
        The  wmemchr()  function returns `a` pointer to the first occurrence of `c`
        among the `n` wide characters starting at `s`, or `NULL` if `c` does not  occur among these.
 
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wmemchr.c
+
+
 
     \includedoc docs/man-license.dox
 

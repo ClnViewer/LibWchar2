@@ -17,6 +17,13 @@
 
     It returns a negative integer if truncated *s1* is smaller than truncated *s2*, ignoring case.
 
+
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcsncasecmp.c
+
+
+
     \includedoc docs/man-license.dox
 
 */

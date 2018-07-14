@@ -21,7 +21,13 @@
 
        The wcsnlen() function is provided in glibc since version 2.1.
 
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcsnlen.c
+
+
 
     \includedoc docs/man-license.dox
 
 */
+y

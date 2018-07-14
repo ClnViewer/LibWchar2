@@ -47,6 +47,11 @@
        The function wcsrtombs(3) provides a better interface to the same func-
        tionality.
 
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcstombs.c
+
+
 
     \includedoc docs/man-license.dox
 

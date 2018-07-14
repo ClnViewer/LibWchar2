@@ -11,6 +11,12 @@
 
        wmemset() returns wcs.
 
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wmemset.c
+
+
+
     \includedoc docs/man-license.dox
 
 */

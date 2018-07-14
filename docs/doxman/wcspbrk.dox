@@ -15,6 +15,11 @@
        of any of the characters listed in accept.  If  wcs  contains  none  of
        these characters, `NULL` is returned.
 
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcspbrk.c
+
+
 
     \includedoc docs/man-license.dox
 

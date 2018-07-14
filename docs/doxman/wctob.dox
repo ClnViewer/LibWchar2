@@ -24,6 +24,12 @@
 
     Use either **wctomb**(3) or the thread-safe **wcrtomb**(3) instead.
 
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wctob.c
+
+
+
     \includedoc docs/man-license.dox
 
 */

@@ -47,7 +47,9 @@
     does not exist, or some other error occurred, `-1`  is  returned, and errno is set appropriately.
 
 
-    # Notes
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_waccess.c
 
 
 

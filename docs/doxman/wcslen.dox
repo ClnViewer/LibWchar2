@@ -12,6 +12,12 @@
        The wcslen() function returns the number of wide characters in s.
 
 
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcslen.c
+
+
+
     \includedoc docs/man-license.dox
 
 */

@@ -17,6 +17,11 @@
        Note the special case: If needle is the  empty  wide-character  string,
        the return value is always haystack itself.
 
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcsstr.c
+
+
 
     \includedoc docs/man-license.dox
 

@@ -20,6 +20,11 @@
        wcsncat() returns dest.
 
 
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcsncat.c
+
+
     \includedoc docs/man-license.dox
 
 */

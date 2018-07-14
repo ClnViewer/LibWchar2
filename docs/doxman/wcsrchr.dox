@@ -13,6 +13,10 @@
        in the wide-character string pointed to by wcs, or `NULL` if wc does  not
        occur in the string.
 
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcsrchr.c
+
 
     \includedoc docs/man-license.dox
 

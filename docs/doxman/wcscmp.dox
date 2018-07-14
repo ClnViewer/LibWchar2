@@ -18,6 +18,11 @@
        less than s2[i].
 
 
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcscmp.c
+
+
     \includedoc docs/man-license.dox
 
 */

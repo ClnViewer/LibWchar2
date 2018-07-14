@@ -52,6 +52,12 @@
 
        Passing `NULL` as ps is not multithread safe.
 
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcsrtombs.c
+
+
+
     \includedoc docs/man-license.dox
 
 */

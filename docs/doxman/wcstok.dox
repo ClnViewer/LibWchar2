@@ -51,6 +51,9 @@
 
     \endcode
 
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcstok.c
+
+
 
     \includedoc docs/man-license.dox
 

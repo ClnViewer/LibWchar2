@@ -17,6 +17,11 @@
 
     It returns a negative integer if *s1* is smaller than *s2*, ignoring case.
 
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcscasecmp.c
+
+
     \includedoc docs/man-license.dox
 
 */

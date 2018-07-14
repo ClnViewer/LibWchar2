@@ -18,6 +18,11 @@
        The behavior of wcswidth() depends on the `LC_CTYPE` category of the cur-
        rent locale.
 
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcswidth.c
+
+
 
     \includedoc docs/man-license.dox
 

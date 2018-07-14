@@ -27,6 +27,10 @@
 
     The errors that occur are those for unlink(2) and rmdir(2).
 
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wremove.c
+
 
     \includedoc docs/man-license.dox
 
