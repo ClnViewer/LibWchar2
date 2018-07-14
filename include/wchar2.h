@@ -28,7 +28,7 @@
 /*!
   * \file wchar2.h
   * \mainpage LibWchar2
-  * \brief This library design to use wchar_t == 2, Windows software compatible.
+  * \brief This library design to use `wchar_t == 2`, Windows software compatible.
   *
   * \par LibWchar2 manual 
   * https://clnviewer.github.io/LibWchar2/docs/html/wchar2_8h.html
@@ -39,18 +39,19 @@
   *
   * \author     `PS`
   * \copyright  `MIT` 2018 (c) `PS`
-  * \see https://clnviewer.github.io/LibWchar2/ [Web Home]
-  * \see https://github.com/ClnViewer/LibWchar2 [Git Home]
+  * \see https://clnviewer.github.io/LibWchar2/ [`Web Home`]
+  * \see https://github.com/ClnViewer/LibWchar2 [`Git Home`]
   *
   */
 
   /*
     Missing curent, TODO ?:
-        wcscoll  Locale-specific wide-character string compare
-        wcscpy   Copy wide-character string
-        wcscspn  Count wide characters not in string
-        wcsftime Convert date and time to a formatted wide-character string
-        wcsxfrm  Locale-specific wide-character string transformation
+        wcstoimax Convert wide-character string to integer (? who is this)
+        wcscoll   Locale-specific wide-character string compare
+        wcscpy    Copy wide-character string
+        wcscspn   Count wide characters not in string
+        wcsftime  Convert date and time to a formatted wide-character string
+        wcsxfrm   Locale-specific wide-character string transformation
    */
 
 #ifndef WCHAR2_LIBC_H
