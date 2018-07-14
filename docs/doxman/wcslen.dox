@@ -1,0 +1,17 @@
+/*!
+  \page wcslen wcslen manual
+
+    __wcslen - `determine the length of a wide-character string`__
+
+       The wcslen() function is the wide-character equivalent of the strlen(3)
+       function.  It  determines  the  length  of  the  wide-character  string
+       pointed to by s, excluding the terminating null wide character (L'\0').
+
+    # Return Value
+
+       The wcslen() function returns the number of wide characters in s.
+
+
+    \includedoc docs/man-license.dox
+
+*/

@@ -1,7 +1,18 @@
 var searchData=
 [
   ['wchar2_2eh',['wchar2.h',['../wchar2_8h.html',1,'']]],
+  ['wcpcpy_20manual',['wcpcpy manual',['../wcpcpy.html',1,'']]],
   ['wcprint',['wcprint',['../wchar2_8h.html#ae3cbd2aee452472d1b04a4a4817ee4a0',1,'wchar2.h']]],
+  ['wcrtomb_20manual',['wcrtomb manual',['../wcrtomb.html',1,'']]],
+  ['wcscat_20manual',['wcscat manual',['../wcscat.html',1,'']]],
+  ['wcschr_20manual',['wcschr manual',['../wcschr.html',1,'']]],
+  ['wcscmp_20manual',['wcscmp manual',['../wcscmp.html',1,'']]],
+  ['wcscpy_20manual',['wcscpy manual',['../wcscpy.html',1,'']]],
+  ['wcscspn_20manual',['wcscspn manual',['../wcscspn.html',1,'']]],
+  ['wcsdup_20manual',['wcsdup manual',['../wcsdup.html',1,'']]],
+  ['wcslen_20manual',['wcslen manual',['../wcslen.html',1,'']]],
+  ['wcsncat_20manual',['wcsncat manual',['../wcsncat.html',1,'']]],
+  ['wcsncmp_20manual',['wcsncmp manual',['../wcsncmp.html',1,'']]],
   ['wcsregexp',['wcsregexp',['../wchar2_8h.html#a000f12520ab4f2027d068c804797d488',1,'wchar2.h']]],
   ['wcstocscmp',['wcstocscmp',['../wchar2_8h.html#a796fc46df7a28111338f7f8c7fe25788',1,'wchar2.h']]],
   ['wcstou8s',['wcstou8s',['../wchar2_8h.html#a59ca46dae06e5f4952fed90a47893c27',1,'wchar2.h']]],

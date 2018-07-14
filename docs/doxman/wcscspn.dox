@@ -1,0 +1,26 @@
+/*!
+  \page wcscspn wcscspn manual
+
+    __wcscspn - `search a wide-character string for any of a set of wide characters`__
+
+       The wcscspn() function is the wide-character equivalent  of  the  strc-
+       spn(3)  function.  It determines the length of the longest initial seg-
+       ment of wcs which consists entirely of wide-characters  not  listed  in
+       reject.   In  other  words, it searches for the first occurrence in the
+       wide-character string wcs of any of the characters in the  wide-charac-
+       ter string reject.
+
+
+    # Return Value
+
+       The  wcscspn()  function  returns  the number of wide characters in the
+       longest initial segment of wcs which consists entirely of  wide-charac-
+       ters  not listed in reject.  In other words, it returns the position of
+       the first occurrence in the wide-character string wcs  of  any  of  the
+       characters in the wide-character string reject, or wcslen(wcs) if there
+       is none.
+
+
+    \includedoc docs/man-license.dox
+
+*/

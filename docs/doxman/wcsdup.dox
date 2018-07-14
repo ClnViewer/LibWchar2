@@ -1,0 +1,28 @@
+/*!
+  \page wcsdup wcsdup manual
+
+    __wcsdup - `duplicate a wide-character string`__
+
+       The wcsdup() function is the wide-character equivalent of the strdup(3)
+       function.  It allocates and returns a new wide-character  string  whose
+       initial contents is a duplicate of the wide-character string pointed to
+       by s.
+
+       Memory for the new wide-character string is  obtained  with  malloc(3),
+       and should be freed with free(3).
+
+    # Return Value
+
+       On  success,  wcsdup()  returns  a  pointer  to  the new wide-character
+       string.  On error, it returns NULL, with  errno  set  to  indicate  the
+       cause of the error.
+
+
+    # Errors
+
+       ENOMEM Insufficient memory available to allocate duplicate string.
+
+
+    \includedoc docs/man-license.dox
+
+*/

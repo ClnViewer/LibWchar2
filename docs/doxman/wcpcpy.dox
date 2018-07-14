@@ -1,0 +1,23 @@
+/*!
+  \page wcpcpy wcpcpy manual
+
+    __wcpcpy - `copy a wide-character string, returning a pointer to its end`__
+
+       The wcpcpy() function is the wide-character equivalent of the stpcpy(3)
+       function.  It copies the  wide-character  string  pointed  to  by  src,
+       including  the  terminating  null  wide character (L'\0'), to the array
+       pointed to by dest.
+
+       The strings may not overlap.
+
+       The  programmer  must  ensure  that  there  is  room   for   at   least
+       wcslen(src)+1 wide characters at dest.
+
+    # Return Value
+
+       wcpcpy()  returns  a  pointer  to  the end of the wide-character string
+       dest, that is, a pointer to the terminating null wide character.
+
+    \includedoc docs/man-license.dox
+
+*/

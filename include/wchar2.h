@@ -169,7 +169,12 @@ size_t    _wcstombs(char *restrict, const wchar_t *restrict, size_t);
 size_t    _wcstombs_s(char *restrict, const wchar_t *restrict, size_t);
           /*! \brief Convert a wide-character string to a character string */
 size_t    _wcsrtombs(char *restrict, const wchar_t **restrict, size_t, mbstate_t *restrict);
-          /*! \brief Convert wide character to multibyte sequence */
+
+          /*!
+           * \brief Convert wide character to multibyte sequence
+           *
+           * - \subpage wcrtomb
+           */
 size_t    _wcrtomb(char *restrict, wchar_t, mbstate_t *restrict);
           /*! \brief Minimal multibyte string to wide string converter */
 size_t    _mbstowcs(wchar_t *restrict, const char *restrict, size_t);
@@ -268,23 +273,43 @@ size_t     wcstou8s(char*, const wchar_t*);
   */
 int        u8sverify(const char*);
 
-          /*! \brief Copy a wide-character string returning a pointer to its end */
+          /*!
+           * \brief Copy a wide-character string returning a pointer to its end
+           *
+           * - \subpage wcpcpy
+           */
 wchar_t * _wcpcpy(wchar_t*, const wchar_t*);
+
           /*!
            * \brief Copy part of a wide-character string returning a pointer to its end
            *
            * - \subpage wcpncpy
            */
 wchar_t * _wcpncpy(wchar_t*, const wchar_t*, size_t);
-          /*! \brief Concatenate wide-character strings */
+
+          /*!
+           * \brief Concatenate wide-character strings
+           *
+           * - \subpage wcscat
+           */
 wchar_t * _wcscat(wchar_t*, const wchar_t*);
-          /*! \brief Concatenate wide-character strings */
+
+          /*!
+           * \brief Concatenate wide-character strings with size
+           *
+           * - \subpage wcsncat
+           */
 wchar_t * _wcsncat(wchar_t*, const wchar_t*, size_t);
           /*! \brief Counted copy wide-character string */
 wchar_t * _wcsncpy(wchar_t*, const wchar_t*, size_t);
           /*! \brief Find wide characters in string */
 wchar_t * _wcspbrk(const wchar_t*, const wchar_t*);
-          /*! \brief Search for wide character in string */
+
+          /*!
+           * \brief Search for wide character in string
+           *
+           * - \subpage wcschr
+           */
 wchar_t * _wcschr(const wchar_t*, wchar_t);
           /*! \brief Reverse search for wide character in string */
 wchar_t * _wcsrchr(const wchar_t*, wchar_t);
@@ -305,7 +330,12 @@ wchar_t * _wmemset(wchar_t*, wchar_t, size_t);
 size_t    _wcslcat(wchar_t*, const wchar_t*, size_t);
           /*! \brief Copy wide-character string to specified length */
 size_t    _wcslcpy(wchar_t*, const wchar_t*, size_t);
-          /*! \brief Wide-character string length */
+
+          /*!
+           * \brief Wide-character string length
+           *
+           * - \subpage wcslen
+           */
 size_t    _wcslen(const wchar_t*);
           /*! \brief Wide-character string length with maximum limit */
 size_t    _wcsnlen(const wchar_t*, size_t);
@@ -325,9 +355,20 @@ int       _wcscasecmp(const wchar_t*, const wchar_t*);
            * - \subpage wcsncasecmp
            */
 int       _wcsncasecmp(const wchar_t*, const wchar_t*, size_t);
-          /*! \brief Wide-character string compare */
+
+          /*!
+           * \brief Wide-character string compare
+           *
+           * - \subpage wcscmp
+           */
 int       _wcscmp(const wchar_t*, const wchar_t*);
           /*! \brief Wide-character string compare */
+
+          /*!
+           * \brief Wide-character string compare
+           *
+           * - \subpage wcsncmp
+           */
 int       _wcsncmp(const wchar_t*, const wchar_t*, size_t);
           /*! \brief Compare wide characters in memory */
 int       _wmemcmp(const wchar_t*, const wchar_t*, size_t);

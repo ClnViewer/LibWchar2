@@ -229,7 +229,7 @@ include/wchar2.h
 .ti -1c
 .RI "wchar_t * \fB_wcsncat\fP (wchar_t *, const wchar_t *, size_t)"
 .br
-.RI "Concatenate wide-character strings\&. "
+.RI "Concatenate wide-character strings with size\&. "
 .ti -1c
 .RI "wchar_t * \fB_wcsncpy\fP (wchar_t *, const wchar_t *, size_t)"
 .br
@@ -715,12 +715,28 @@ If Success return substring of path, else return NULL
 .RE
 .PP
 
+.SS "wchar_t* _wcpcpy (wchar_t *, const wchar_t *)"
+
+.PP
+Copy a wide-character string returning a pointer to its end\&. 
+.IP "\(bu" 2
+\fBwcpcpy manual\fP 
+.PP
+
 .SS "wchar_t* _wcpncpy (wchar_t *, const wchar_t *, size_t)"
 
 .PP
 Copy part of a wide-character string returning a pointer to its end\&. 
 .IP "\(bu" 2
 \fB'wcpncpy manual'\fP 
+.PP
+
+.SS "size_t _wcrtomb (char * restrict, wchar_t, mbstate_t * restrict)"
+
+.PP
+Convert wide character to multibyte sequence\&. 
+.IP "\(bu" 2
+\fBwcrtomb manual\fP 
 .PP
 
 .SS "int _wcscasecmp (const wchar_t *, const wchar_t *)"
@@ -731,12 +747,61 @@ Case-insensitive wide character string compare\&.
 \fB'wcscasecmp manual'\fP 
 .PP
 
+.SS "wchar_t* _wcscat (wchar_t *, const wchar_t *)"
+
+.PP
+Concatenate wide-character strings\&. 
+.IP "\(bu" 2
+\fBwcscat manual\fP 
+.PP
+
+.SS "wchar_t* _wcschr (const wchar_t *, wchar_t)"
+
+.PP
+Search for wide character in string\&. 
+.IP "\(bu" 2
+\fBwcschr manual\fP 
+.PP
+
+.SS "int _wcscmp (const wchar_t *, const wchar_t *)"
+
+.PP
+Wide-character string compare\&. 
+.IP "\(bu" 2
+\fBwcscmp manual\fP 
+.PP
+
+.SS "size_t _wcslen (const wchar_t *)"
+
+.PP
+Wide-character string length\&. 
+.IP "\(bu" 2
+\fBwcslen manual\fP 
+.PP
+
 .SS "int _wcsncasecmp (const wchar_t *, const wchar_t *, size_t)"
 
 .PP
 Case-insensitive wide character string compare with size\&. 
 .IP "\(bu" 2
 \fB'wcsncasecmp manual'\fP 
+.PP
+
+.SS "wchar_t* _wcsncat (wchar_t *, const wchar_t *, size_t)"
+
+.PP
+Concatenate wide-character strings with size\&. 
+.IP "\(bu" 2
+\fBwcsncat manual\fP 
+.PP
+
+.SS "int _wcsncmp (const wchar_t *, const wchar_t *, size_t)"
+
+.PP
+Wide-character string compare\&. Wide-character string compare
+.PP
+.IP "\(bu" 2
+\fBwcsncmp manual\fP 
 .PP
 
 .SS "int _wctob (wchar_t)"

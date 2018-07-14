@@ -1,0 +1,20 @@
+/*!
+  \page wcschr wcschr manual
+
+    __wcschr - `search a wide character in a wide-character strin`__
+
+       The wcschr() function is the wide-character equivalent of the strchr(3)
+       function.  It searches the first occurrence of wc in the wide-character
+       string pointed to by wcs.
+
+
+    # Return Value
+
+       The  wcschr()  function returns a pointer to the first occurrence of wc
+       in the wide-character string pointed to by wcs, or NULL if wc does  not
+       occur in the string.
+
+
+    \includedoc docs/man-license.dox
+
+*/

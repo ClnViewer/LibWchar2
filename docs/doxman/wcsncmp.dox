@@ -1,0 +1,26 @@
+/*!
+  \page wcsncmp wcsncmp manual
+
+    __wcsncmp - ``__
+
+       The   wcsncmp()  function  is  the  wide-character  equivalent  of  the
+       strncmp(3) function.  It compares the wide-character string pointed  to
+       by  s1  and  the  wide-character string pointed to by s2, but at most n
+       wide characters from each  string.   In  each  string,  the  comparison
+       extends  only  up  to  the  first  occurrence  of a null wide character
+       (L'\0'), if any.
+
+
+    # Return Value
+
+       The wcsncmp() function returns zero if the wide-character strings at s1
+       and  s2, truncated to at most length n, are equal.  It returns an inte-
+       ger greater than zero if at the first differing position i (i < n), the
+       corresponding  wide-character  s1[i] is greater than s2[i].  It returns
+       an integer less than zero if at the first differing position i (i < n),
+       the corresponding wide-character s1[i] is less than s2[i].
+
+
+    \includedoc docs/man-license.dox
+
+*/
