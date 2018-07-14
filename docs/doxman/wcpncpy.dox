@@ -1,6 +1,6 @@
 
 /*!
-  \page wcpncpy "wcpncpy manual"
+  \page wcpncpy wcpncpy manual
 
     __wcpncpy() - `copy a fixed-size string of wide characters`__
 

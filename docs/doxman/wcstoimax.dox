@@ -1,5 +1,5 @@
 /*!
-  \page wcstoimax "wcstoimax manual"
+  \page wcstoimax wcstoimax manual
 
     __wcstoimax() - `convert wide-character string to integer`__
 

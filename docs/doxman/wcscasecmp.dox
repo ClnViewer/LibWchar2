@@ -1,5 +1,5 @@
 /*!
-  \page wcscasecmp "wcscasecmp manual"
+  \page wcscasecmp wcscasecmp manual
 
     __wcscasecmp() - `compare two wide-character strings, ignoring case`__
 
