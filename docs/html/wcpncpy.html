@@ -66,16 +66,15 @@ $(function() {
 <div class="title">"wcpncpy manual" </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md3"></a>
-wcpncpy(3) - copy a fixed-size string of wide characters,</h1>
+<div class="textblock"><p><b>wcpncpy() - <code>copy a fixed-size string of wide characters</code></b></p>
 <p>The <b>wcpncpy</b>() function is the wide-character equivalent of the <b>stpncpy</b>(3) function.</p>
 <p>It copies at most <em>n</em> wide characters from the wide-character string pointed to by <em>src</em>, including the terminating null wide (L'\0'), to the array pointed to by <em>dest</em>.</p>
 <p>Exactly <em>n</em> wide characters are written at <em>dest</em>.</p>
-<p>If the length <em>wcslen(src)</em> is smaller than <em>n</em>, the remaining wide characters in the array pointed to by <em>dest</em> are filled with L'\0' characters.</p>
-<p>If the length <em>wcslen(src)</em> is greater than or equal to <em>n</em>, the string pointed to by <em>dest</em> will not be L'\0' terminated.</p>
-<p>The strings may not overlap.</p>
-<p>The programmer must ensure that there is room for at least <em>n</em> wide characters at <em>dest</em>.</p>
-<h1><a class="anchor" id="autotoc_md4"></a>
+<p>If the length <em>wcslen(src)</em> is smaller than <em>n</em>, the remaining wide characters in the array pointed to by <em>dest</em> are filled with L'\0' characters. <br />
+ If the length <em>wcslen(src)</em> is greater than or equal to <em>n</em>, the string pointed to by <em>dest</em> will not be L'\0' terminated.</p>
+<p>The strings may not overlap. <br />
+ The programmer must ensure that there is room for at least <em>n</em> wide characters at <em>dest</em>.</p>
+<h1><a class="anchor" id="autotoc_md3"></a>
 Return Value</h1>
 <p>Function <b>wcpncpy</b>() returns a pointer to the last wide character written, that is, <em>dest</em>+*n*-1.</p>
 <p><dl class="section user"><dt>LibWchar2 library version</dt><dd></dd></dl>
@@ -88,7 +87,7 @@ Return Value</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 14 2018 16:57:32 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jul 14 2018 17:00:58 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

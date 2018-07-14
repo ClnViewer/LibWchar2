@@ -2,7 +2,7 @@
 /*!
   \page wcpncpy "wcpncpy manual"
 
-    # wcpncpy(3) - copy a fixed-size string of wide characters,
+    __wcpncpy() - `copy a fixed-size string of wide characters`__
 
     The **wcpncpy**() function is the wide-character equivalent of the **stpncpy**(3) function.
 
@@ -12,13 +12,11 @@
     Exactly *n* wide characters are written at *dest*.
 
     If the length *wcslen(src)* is smaller than *n*, the remaining wide characters in the array
-    pointed to by *dest* are filled with L'\\0' characters.
-
+    pointed to by *dest* are filled with L'\\0' characters.  
     If the length *wcslen(src)* is greater than or equal to *n*, the string pointed to by *dest*
     will not be L'\\0' terminated.
 
-    The strings may not overlap.
-
+    The strings may not overlap.  
     The programmer must ensure that there is room for at least *n* wide characters at *dest*.
 
     # Return Value

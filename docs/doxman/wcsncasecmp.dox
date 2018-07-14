@@ -1,7 +1,7 @@
 /*!
   \page wcsncasecmp "wcsncasecmp manual"
 
-    # wcsncasecmp(3) - compare two fixed-size wide-character strings, ignoring case
+    __wcsncasecmp() - `compare two fixed-size wide-character strings, ignoring case`__
 
     The **wcsncasecmp**() function is the wide-character equivalent of the **strncasecmp**(3) function.
 
