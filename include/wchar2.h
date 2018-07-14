@@ -69,6 +69,16 @@
 #  error "size of 'wchar_t' != '2'; Use gcc key: '-fshort-wchar', or clang key: '-fwchar-type=short' '-fno-signed-wchar'"
 #endif
 
+#define __WS_(x) L##x
+#define __WS(x) __WS_(x) /**< static string to wide type macro */
+
+#define __WSTR wchar_t   /**< defenition wchar_t string macro */
+#define __WSTRFREE __attribute__((cleanup(__wsfree))) __WSTR /**< auto free wchar_t string macro */
+#define __WSTR_FMT  "ls" /**< print format wchar_t string macro */
+#define __WCHAR_FMT "lc" /**< print format wchar_t char macro */
+
+#define __WCSZ(x) ((x->sz + 1) * sizeof(wchar_t)) /**< determine size string_ws macro */
+
 /*! \cond NOTINDOC */
 
 #define __WEV_(A,B) A ## B
@@ -76,15 +86,6 @@
 #define __WEVFA_(_11, _10, _9, _8, _7, _6, _5, _4, _3, _2, _1, N, ...) N
 #define __WEVFA(...) __WEVFA_(__VA_ARGS__, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
 
-#define __WS_(x) L##x
-#define __WS(x) __WS_(x)
-
-#define __WSTR wchar_t
-#define __WSTRFREE __attribute__((cleanup(__wsfree))) __WSTR
-#define __WSTR_FMT  "ls"
-#define __WCHAR_FMT "lc"
-
-#define __WCSZ(x) (x->sz * sizeof(wchar_t) + 1)
 
 #if ((!defined(__STDC_VERSION__) || (__STDC_VERSION__ < 199901L)) && \
       !defined(__STDC_C99) && !defined(__C99_RESTRICT))
@@ -696,7 +697,7 @@ char *    u8wpathnormalize(const wchar_t*);
            */
 
           /*!
-           *  \paragraph Allocate memory function
+           *  \paragraph Allocate memory functions
            */
 
           /*! \brief Memory free string, empty and clear struct string_ws */

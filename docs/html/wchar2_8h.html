@@ -88,6 +88,33 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:a9f27307b789f79bfe576dbfd5ff21b8b"><td class="memItemLeft" align="right" valign="top"><a id="a9f27307b789f79bfe576dbfd5ff21b8b"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>__WS_</b>(x)&#160;&#160;&#160;L##x</td></tr>
+<tr class="separator:a9f27307b789f79bfe576dbfd5ff21b8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40ff1ee5db10dfcfbd0b7475b108c586"><td class="memItemLeft" align="right" valign="top"><a id="a40ff1ee5db10dfcfbd0b7475b108c586"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a40ff1ee5db10dfcfbd0b7475b108c586">__WS</a>(x)&#160;&#160;&#160;__WS_(x)</td></tr>
+<tr class="memdesc:a40ff1ee5db10dfcfbd0b7475b108c586"><td class="mdescLeft">&#160;</td><td class="mdescRight">static string to wide type macro <br /></td></tr>
+<tr class="separator:a40ff1ee5db10dfcfbd0b7475b108c586"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f774fe1f3dc0ffc0ddd9f20b8b005f4"><td class="memItemLeft" align="right" valign="top"><a id="a9f774fe1f3dc0ffc0ddd9f20b8b005f4"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a9f774fe1f3dc0ffc0ddd9f20b8b005f4">__WSTR</a>&#160;&#160;&#160;wchar_t</td></tr>
+<tr class="memdesc:a9f774fe1f3dc0ffc0ddd9f20b8b005f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">defenition wchar_t string macro <br /></td></tr>
+<tr class="separator:a9f774fe1f3dc0ffc0ddd9f20b8b005f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5773ae2b10bea60efa4b3849be370b57"><td class="memItemLeft" align="right" valign="top"><a id="a5773ae2b10bea60efa4b3849be370b57"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a5773ae2b10bea60efa4b3849be370b57">__WSTRFREE</a>&#160;&#160;&#160;__attribute__((cleanup(__wsfree))) <a class="el" href="wchar2_8h.html#a9f774fe1f3dc0ffc0ddd9f20b8b005f4">__WSTR</a></td></tr>
+<tr class="memdesc:a5773ae2b10bea60efa4b3849be370b57"><td class="mdescLeft">&#160;</td><td class="mdescRight">auto free wchar_t string macro <br /></td></tr>
+<tr class="separator:a5773ae2b10bea60efa4b3849be370b57"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9994480bdc2b86cf0d6dd3fbefd5cd7"><td class="memItemLeft" align="right" valign="top"><a id="ad9994480bdc2b86cf0d6dd3fbefd5cd7"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#ad9994480bdc2b86cf0d6dd3fbefd5cd7">__WSTR_FMT</a>&#160;&#160;&#160;&quot;ls&quot;</td></tr>
+<tr class="memdesc:ad9994480bdc2b86cf0d6dd3fbefd5cd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">print format wchar_t string macro <br /></td></tr>
+<tr class="separator:ad9994480bdc2b86cf0d6dd3fbefd5cd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bbb07ed75ba430c21fc0b891f3bace9"><td class="memItemLeft" align="right" valign="top"><a id="a3bbb07ed75ba430c21fc0b891f3bace9"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a3bbb07ed75ba430c21fc0b891f3bace9">__WCHAR_FMT</a>&#160;&#160;&#160;&quot;lc&quot;</td></tr>
+<tr class="memdesc:a3bbb07ed75ba430c21fc0b891f3bace9"><td class="mdescLeft">&#160;</td><td class="mdescRight">print format wchar_t char macro <br /></td></tr>
+<tr class="separator:a3bbb07ed75ba430c21fc0b891f3bace9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33b0160c4a515fa6dd94f5f55072c964"><td class="memItemLeft" align="right" valign="top"><a id="a33b0160c4a515fa6dd94f5f55072c964"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a33b0160c4a515fa6dd94f5f55072c964">__WCSZ</a>(x)&#160;&#160;&#160;((x-&gt;sz + 1) * sizeof(wchar_t))</td></tr>
+<tr class="memdesc:a33b0160c4a515fa6dd94f5f55072c964"><td class="mdescLeft">&#160;</td><td class="mdescRight">determine size <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a> macro <br /></td></tr>
+<tr class="separator:a33b0160c4a515fa6dd94f5f55072c964"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68e9217a61693973cf4301a4f8761150"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a68e9217a61693973cf4301a4f8761150">wstocscvt</a>(A,  B,  D)</td></tr>
 <tr class="memdesc:a68e9217a61693973cf4301a4f8761150"><td class="mdescLeft">&#160;</td><td class="mdescRight">wchar_t* type to char[] A char[] - array name B wchar_t* - source D - function return value if error  <a href="#a68e9217a61693973cf4301a4f8761150">More...</a><br /></td></tr>
 <tr class="separator:a68e9217a61693973cf4301a4f8761150"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2723,7 +2750,7 @@ size wide string </td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 14 2018 19:13:53 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jul 14 2018 19:22:29 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>
