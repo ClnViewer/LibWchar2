@@ -17,6 +17,8 @@
     The set of valid names depends on the `LC_CTYPE` category of the current locale,
     but the following names are valid in all locales.
 
+
+
     `alnum` - realizes the isalnum(3) classification function  
     `alpha` - realizes the isalpha(3) classification function  
     `blank` - realizes the isblank(3) classification function  
