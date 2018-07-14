@@ -39,12 +39,17 @@ check_valgrind:
 test_valgrind:
 	@libtool --mode=execute valgrind --show-reachable=yes --leak-check=full -v --tool=memcheck test/wchar2test
 
-man:
-	@(cat docs/Doxyfile ; echo "GENERATE_HTML=NO" ; echo "GENERATE_XML=NO") | doxygen -
+doxyclean:
 	@mv -f docs/man/man3/wchar2.h.3 docs/wchar2.3
 	@rm -rf docs/man
 	@rm -f docs/doxygen-warning-log.txt docs/doxygen.tag
 
-doc:
+mandoxy:
+	@(cat docs/Doxyfile ; echo "GENERATE_HTML=NO" ; echo "GENERATE_XML=NO") | doxygen -
+
+wwwdoxy:
 	@doxygen docs/Doxyfile
+
+man: mandoxy doxyclean
+doc: wwwdoxy doxyclean
 
