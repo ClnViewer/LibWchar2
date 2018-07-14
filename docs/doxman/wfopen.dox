@@ -31,7 +31,7 @@
         operations, thread cancellation points.
 
     `e` (since glibc 2.7)
-        Open  the  file  with  the O_CLOEXEC flag. 
+        Open  the  file  with  the `O_CLOEXEC` flag. 
         See open(2) for more information.
 
     `m` (since glibc 2.3)

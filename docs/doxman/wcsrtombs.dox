@@ -47,7 +47,7 @@
 
     # Notes
 
-       The  behavior  of  wcsrtombs()  depends on the LC_CTYPE category of the
+       The  behavior  of  wcsrtombs()  depends on the `LC_CTYPE` category of the
        current locale.
 
        Passing `NULL` as ps is not multithread safe.

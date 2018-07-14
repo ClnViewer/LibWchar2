@@ -68,7 +68,7 @@ $(function() {
 <div class="contents">
 <div class="textblock"><p><b>wctype - <code>wide-character classification</code></b></p>
 <p>The wctype_t type represents a property which a wide character may or may not have. In other words, it represents a class of wide charac- ters. This type's nature is implementation-dependent, but the special value (wctype_t) 0 denotes an invalid property. Nonzero wctype_t val- ues can be passed to the iswctype(3) function to actually test whether a given wide character has the property.</p>
-<p>The wctype() function returns a property, given by its name. The set of valid names depends on the LC_CTYPE category of the current locale, but the following names are valid in all locales. </p><pre class="fragment">`alnum` - realizes the isalnum(3) classification function
+<p>The wctype() function returns a property, given by its name. The set of valid names depends on the <code>LC_CTYPE</code> category of the current locale, but the following names are valid in all locales. </p><pre class="fragment">`alnum` - realizes the isalnum(3) classification function
 `alpha` - realizes the isalpha(3) classification function
 `blank` - realizes the isblank(3) classification function
 `cntrl` - realizes the iscntrl(3) classification function
@@ -85,7 +85,7 @@ Return Value</h1>
 <p>The wctype() function returns a property descriptor if the name is valid. Otherwise, it returns (wctype_t) 0.</p>
 <h1><a class="anchor" id="autotoc_md44"></a>
 Notes</h1>
-<p>The behavior of wctype() depends on the LC_CTYPE category of the cur- rent locale.</p>
+<p>The behavior of wctype() depends on the <code>LC_CTYPE</code> category of the cur- rent locale.</p>
 <p><dl class="section user"><dt>LibWchar2 library version</dt><dd></dd></dl>
 <dl class="section version"><dt>Version</dt><dd>libwchar2 0.0.3 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>Sat Jul 14 2018 </dd></dl>
@@ -96,7 +96,7 @@ Notes</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 14 2018 23:35:38 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jul 14 2018 23:48:01 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

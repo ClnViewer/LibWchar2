@@ -38,7 +38,7 @@
 
     # Notes
 
-       The  behavior of wcrtomb() depends on the LC_CTYPE category of the cur-
+       The  behavior of wcrtomb() depends on the `LC_CTYPE` category of the cur-
        rent locale.
 
        Passing `NULL` as ps is not multithread safe.

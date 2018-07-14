@@ -11,7 +11,7 @@
        a given wide character has the property.
 
        The wctype() function returns a property, given by its name.   The  set
-       of  valid names depends on the LC_CTYPE category of the current locale,
+       of  valid names depends on the `LC_CTYPE` category of the current locale,
        but the following names are valid in all locales.
 
            `alnum` - realizes the isalnum(3) classification function
@@ -34,7 +34,7 @@
 
     # Notes
 
-       The  behavior  of wctype() depends on the LC_CTYPE category of the cur-
+       The  behavior  of wctype() depends on the `LC_CTYPE` category of the cur-
        rent locale.
 
 

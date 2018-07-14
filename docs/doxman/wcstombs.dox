@@ -41,7 +41,7 @@
 
     # Notes
 
-       The behavior of wcstombs() depends on the LC_CTYPE category of the cur-
+       The behavior of wcstombs() depends on the `LC_CTYPE` category of the cur-
        rent locale.
 
        The function wcsrtombs(3) provides a better interface to the same func-

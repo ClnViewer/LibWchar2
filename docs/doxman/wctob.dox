@@ -17,7 +17,7 @@
 
     # Notes
 
-    The behavior of **wctob**() depends on the **LC_CTYPE** category of the current locale.
+    The behavior of **wctob**() depends on the **`LC_CTYPE`** category of the current locale.
 
     This function should never be used.
     Internationalized programs must never distinguish single-byte and multibyte characters.

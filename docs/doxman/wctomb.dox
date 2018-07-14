@@ -32,7 +32,7 @@
 
     # Notes
 
-       The behavior of wctomb() depends on the LC_CTYPE category of  the  cur-
+       The behavior of wctomb() depends on the `LC_CTYPE` category of  the  cur-
        rent locale.
 
        The  function  wcrtomb(3) provides a better interface to the same func-

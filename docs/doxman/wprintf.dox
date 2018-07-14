@@ -72,12 +72,12 @@
 
     # Notes
 
-       The behavior of wprintf() et al. depends on the  LC_CTYPE  category  of
+       The behavior of wprintf() et al. depends on the  `LC_CTYPE`  category  of
        the current locale.
 
        If  the  format  string contains `non-ASCII` wide characters, the program
-       will work correctly only if the LC_CTYPE category of the current locale
-       at  run time is the same as the LC_CTYPE category of the current locale
+       will work correctly only if the `LC_CTYPE` category of the current locale
+       at  run time is the same as the `LC_CTYPE` category of the current locale
        at compile time.  This is because the wchar_t representation  is  plat-
        form-  and  locale-dependent.   (The  glibc  represents wide characters
        using their Unicode (`ISO-10646`) code point, but other  platforms  don't

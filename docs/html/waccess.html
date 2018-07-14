@@ -71,7 +71,7 @@ $(function() {
 <p>The mode specifies the accessibility check(s) to be performed, and is either the value <code>F_OK</code>, or a mask consisting of the bitwise <code>OR</code> of one or more of <code>R_OK</code>, <code>W_OK</code>, and <code>X_OK</code>. <code>F_OK</code> tests for the existence of the file. <code>R_OK</code>, <code>W_OK</code>, and <code>X_OK</code> test whether the file exists and grants read, write, and execute permissions, respectively.</p>
 <p>The check is done using the calling process's real <code>UID</code> and <code>GID</code>, rather than the effective IDs as is done when actually attempting an operation (e.g., open(2)) on the file. Similarly, for the root user, the check uses the set of permitted capabilities rather than the set of effective capabilities; and for non-root users, the check uses an empty set of capabilities.</p>
 <p>This allows set-user-ID programs and capability-endowed programs to easily determine the invoking user's authority. In other words, access() does not answer the "can I read/write/execute this file?" question. It answers a slightly different question: "(assuming I'm a setuid binary) can the user who invoked me read/write/execute this file?", which gives set-user-ID programs the possibility to prevent malicious users from causing them to read files which users shouldn't be able to read.</p>
-<p>If the calling process is privileged (i.e., its real <code>UID</code> is zero), then an X_OK check is successful for a regular file if execute permission is enabled for any of the file owner, group, or other.</p>
+<p>If the calling process is privileged (i.e., its real <code>UID</code> is zero), then an <code>X_OK</code> check is successful for a regular file if execute permission is enabled for any of the file owner, group, or other.</p>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Return Value</h1>
 <p>On success, all requested permissions granted, or mode is <code>F_OK</code> and the file exists, return extended status, see <a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49">access_e</a> enum value:</p>
@@ -94,7 +94,7 @@ Notes</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 14 2018 23:35:38 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jul 14 2018 23:48:01 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

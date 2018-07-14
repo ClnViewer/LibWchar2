@@ -14,7 +14,7 @@
 
     # Notes
 
-       The behavior of wcwidth() depends on the LC_CTYPE category of the  cur-
+       The behavior of wcwidth() depends on the `LC_CTYPE` category of the  cur-
        rent locale.
 
 

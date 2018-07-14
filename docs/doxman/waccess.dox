@@ -29,7 +29,7 @@
        be able to read.
 
        If the calling process is privileged (i.e., its real `UID` is zero), then
-       an X_OK check is successful for a regular file if execute permission is
+       an `X_OK` check is successful for a regular file if execute permission is
        enabled for any of the file owner, group, or other.
 
 
