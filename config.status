@@ -322,7 +322,7 @@ on `(hostname || uname -n) 2>/dev/null | sed 1q`
 "
 
 # Files that config.status was made for.
-config_files=" Makefile test/Makefile src/Makefile docs/Doxyfile libwchar2.pc package.json"
+config_files=" Makefile test/Makefile src/Makefile docs/Doxyfile docs/man-license.dox libwchar2.pc package.json"
 config_headers=" config.h"
 config_commands=" depfiles libtool"
 
@@ -657,6 +657,7 @@ do
     "test/Makefile") CONFIG_FILES="$CONFIG_FILES test/Makefile" ;;
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
     "docs/Doxyfile") CONFIG_FILES="$CONFIG_FILES docs/Doxyfile" ;;
+    "docs/man-license.dox") CONFIG_FILES="$CONFIG_FILES docs/man-license.dox" ;;
     "libwchar2.pc") CONFIG_FILES="$CONFIG_FILES libwchar2.pc" ;;
     "package.json") CONFIG_FILES="$CONFIG_FILES package.json" ;;
 
@@ -726,6 +727,8 @@ S["am__EXEEXT_FALSE"]=""
 S["am__EXEEXT_TRUE"]="#"
 S["LTLIBOBJS"]=""
 S["LIBOBJS"]=""
+S["YDATE"]="2018"
+S["CRDATE"]="Sat Jul 14 2018"
 S["pkgconfigdir"]="${exec_prefix}/lib/pkgconfig"
 S["COND_BUILD_TEST_FALSE"]="#"
 S["COND_BUILD_TEST_TRUE"]=""

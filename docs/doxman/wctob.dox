@@ -1,0 +1,29 @@
+/*!
+  \page wctob "wctob manual"
+
+    # wctob(3) - try to represent a wide character as a single byte
+
+    The **wctob**() function tests whether
+    the multibyte representation of the wide character *c*, starting in the initial state, consists of a single byte.
+    If so, it is returned as an *unsigned char*.
+
+    Never use this function.
+    It cannot help you in writing internationalized programs.
+    Internationalized programs must never distinguish single-byte and multibyte characters.
+
+    # Return Value
+
+    The **wctob**() function returns the single-byte representation of *c*, if it exists, of **EOF** otherwise.
+
+    # Notes
+
+    The behavior of **wctob**() depends on the **LC_CTYPE** category of the current locale.
+
+    This function should never be used.
+    Internationalized programs must never distinguish single-byte and multibyte characters.
+
+    Use either **wctomb**(3) or the thread-safe **wcrtomb**(3) instead.
+
+    \includedoc docs/man-license.dox
+
+*/

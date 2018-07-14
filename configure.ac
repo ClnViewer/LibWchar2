@@ -120,12 +120,18 @@ then
 fi
 AC_SUBST([pkgconfigdir], [$pkgconfigdir])
 
+createdate=`date +"%a %b %d %Y"`
+yeardate=`date +"%Y"`
+AC_SUBST(CRDATE, "$createdate")
+AC_SUBST(YDATE, "$yeardate")
+
 AC_CONFIG_LIBOBJ_DIR([build/obj])
 AC_CONFIG_FILES([
     Makefile
     test/Makefile
     src/Makefile
     docs/Doxyfile
+    docs/man-license.dox
     libwchar2.pc
     package.json
 ])

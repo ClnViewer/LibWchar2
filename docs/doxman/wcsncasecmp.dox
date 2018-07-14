@@ -1,0 +1,22 @@
+/*!
+  \page wcsncasecmp "wcsncasecmp manual"
+
+    # wcsncasecmp(3) - compare two fixed-size wide-character strings, ignoring case
+
+    The **wcsncasecmp**() function is the wide-character equivalent of the **strncasecmp**(3) function.
+
+    It compares the wide-character string pointed to by *s1* and the wide-character string pointed to by *s2*,
+    but at most *n* wide characters from each string, ignoring case differences (**towupper**(3), **towlower**(3)).
+
+    # Return Value
+
+    The **wcsncasecmp**() function returns zero if the wide-character strings at *s1* and *s2*,
+    truncated to at most length *n*, are equal except for case distinctions.
+
+    It returns a positive integer if truncated *s1* isgreater than truncated *s2*, ignoring case.
+
+    It returns a negative integer if truncated *s1* is smaller than truncated *s2*, ignoring case.
+
+    \includedoc docs/man-license.dox
+
+*/

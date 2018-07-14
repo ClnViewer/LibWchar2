@@ -58,7 +58,7 @@
 #endif
 
 /*!
- * \htmlonly
+ * \cond NOTINDOC
  */
 
 #define __WEV_(A,B) A ## B
@@ -90,7 +90,7 @@
 #endif
 
 /*!
- * \endhtmlonly
+ * \endcond
  */
 
 #ifdef __cplusplus
@@ -99,25 +99,18 @@ extern "C" {
 
 /*! \brief Base wide string structure */
 typedef struct __wchar_string_ws_ {
-    /*! wide string pointer */
-    wchar_t *str;
-    /*! size wide string */
-    size_t   sz;
+    wchar_t *str; /**<  wide string pointer */
+    size_t   sz;  /**<  size wide string */
 
 } string_ws;
 
 /*! \brief enumeration for return waccess function */
 typedef enum {
-    /*! Error check */
-    ISERROR = -1,
-    /*! is a Unknown */
-    ISUNK   =  0,
-    /*! is a Regular file */
-    ISFIL   =  1,
-    /*! is a Symbolic link */
-    ISLNK   =  2,
-    /*! is a Directory */
-    ISDIR   =  3
+    ISERROR = -1, /**<  Error check */
+    ISUNK   =  0, /**<  is a Unknown */
+    ISFIL   =  1, /**<  is a Regular file */
+    ISLNK   =  2, /**<  is a Symbolic link */
+    ISDIR   =  3  /**<  is a Directory */
 } access_e;
 
           /*! \brief Translate wide characters to uppercase */
@@ -190,7 +183,12 @@ int       _mbsinit(const mbstate_t*);
 int       _mbtowc(wchar_t *restrict, const char *restrict, size_t);
           /*! \brief Minimal wide char to multibyte converter */
 int       _wctomb(char*, wchar_t);
-          /*! \brief Convert wide character to single byte */
+
+          /*!
+           * \brief Convert wide character to single byte
+           *
+           * - \subpage wctob
+           */
 int       _wctob(wchar_t);
           /*! \brief Convert single byte character to wide character */
 wchar_t   _btowc(int);
@@ -264,7 +262,11 @@ int        u8sverify(const char*);
 
           /*! \brief Copy a wide-character string returning a pointer to its end */
 wchar_t * _wcpcpy(wchar_t*, const wchar_t*);
-          /*! \brief Copy part of a wide-character string returning a pointer to its end */
+          /*!
+           * \brief Copy part of a wide-character string returning a pointer to its end
+           *
+           * - \subpage wcpncpy
+           */
 wchar_t * _wcpncpy(wchar_t*, const wchar_t*, size_t);
           /*! \brief Concatenate wide-character strings */
 wchar_t * _wcscat(wchar_t*, const wchar_t*);
@@ -302,9 +304,18 @@ size_t    _wcsnlen(const wchar_t*, size_t);
           /*! \brief Find initial match in wide-character string */
 size_t    _wcsspn(const wchar_t*, const wchar_t*);
 
-          /*! \brief Case-insensitive wide character string compare */
+          /*!
+           * \brief Case-insensitive wide character string compare
+           *
+           * - \subpage wcscasecmp
+           */
 int       _wcscasecmp(const wchar_t*, const wchar_t*);
-          /*! \brief Case-insensitive wide character string compare with size */
+
+          /*!
+           * \brief Case-insensitive wide character string compare with size
+           *
+           * - \subpage wcsncasecmp
+           */
 int       _wcsncasecmp(const wchar_t*, const wchar_t*, size_t);
           /*! \brief Wide-character string compare */
 int       _wcscmp(const wchar_t*, const wchar_t*);
@@ -603,7 +614,7 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
 #endif
 
 /*!
- * \htmlonly
+ * \cond NOTINDOC
  */
 
 /*! Other non standart macro */
@@ -695,7 +706,7 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
         __WEV(EV_BDIR_ARG_, __WEVFA(__VA_ARGS__))(__VA_ARGS__)
 
 /*!
- * \endhtmlonly
+ * \endcond
  */
 
 /*! \paragraph usemacro Macro as convert type wchar_t to char */
@@ -796,7 +807,7 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
 #endif
 
 /*!
- * \htmlonly
+ * \cond NOTINDOC
  */
 
 #define wmkdir _wmkdir_macro
@@ -933,7 +944,7 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
 #define wmemcmp _wmemcmp
 
 /*!
- * \endhtmlonly
+ * \endcond
  */
 
 #endif

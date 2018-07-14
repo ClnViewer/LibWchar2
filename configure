@@ -790,6 +790,8 @@ ac_subst_vars='am__EXEEXT_FALSE
 am__EXEEXT_TRUE
 LTLIBOBJS
 LIBOBJS
+YDATE
+CRDATE
 pkgconfigdir
 COND_BUILD_TEST_FALSE
 COND_BUILD_TEST_TRUE
@@ -5323,13 +5325,13 @@ if test "${lt_cv_nm_interface+set}" = set; then
 else
   lt_cv_nm_interface="BSD nm"
   echo "int some_variable = 0;" > conftest.$ac_ext
-  (eval echo "\"\$as_me:5326: $ac_compile\"" >&5)
+  (eval echo "\"\$as_me:5328: $ac_compile\"" >&5)
   (eval "$ac_compile" 2>conftest.err)
   cat conftest.err >&5
-  (eval echo "\"\$as_me:5329: $NM \\\"conftest.$ac_objext\\\"\"" >&5)
+  (eval echo "\"\$as_me:5331: $NM \\\"conftest.$ac_objext\\\"\"" >&5)
   (eval "$NM \"conftest.$ac_objext\"" 2>conftest.err > conftest.out)
   cat conftest.err >&5
-  (eval echo "\"\$as_me:5332: output\"" >&5)
+  (eval echo "\"\$as_me:5334: output\"" >&5)
   cat conftest.out >&5
   if $GREP 'External.*some_variable' conftest.out > /dev/null; then
     lt_cv_nm_interface="MS dumpbin"
@@ -6534,7 +6536,7 @@ ia64-*-hpux*)
   ;;
 *-*-irix6*)
   # Find out which ABI we are using.
-  echo '#line 6537 "configure"' > conftest.$ac_ext
+  echo '#line 6539 "configure"' > conftest.$ac_ext
   if { (eval echo "$as_me:$LINENO: \"$ac_compile\"") >&5
   (eval $ac_compile) 2>&5
   ac_status=$?
@@ -7901,11 +7903,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:7904: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:7906: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:7908: \$? = $ac_status" >&5
+   echo "$as_me:7910: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -8240,11 +8242,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:8243: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:8245: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>conftest.err)
    ac_status=$?
    cat conftest.err >&5
-   echo "$as_me:8247: \$? = $ac_status" >&5
+   echo "$as_me:8249: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s "$ac_outfile"; then
      # The compiler can only warn and ignore the option if not recognized
      # So say no if there are warnings other than the usual output.
@@ -8345,11 +8347,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:8348: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:8350: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:8352: \$? = $ac_status" >&5
+   echo "$as_me:8354: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -8400,11 +8402,11 @@ else
    -e 's:.*FLAGS}\{0,1\} :&$lt_compiler_flag :; t' \
    -e 's: [^ ]*conftest\.: $lt_compiler_flag&:; t' \
    -e 's:$: $lt_compiler_flag:'`
-   (eval echo "\"\$as_me:8403: $lt_compile\"" >&5)
+   (eval echo "\"\$as_me:8405: $lt_compile\"" >&5)
    (eval "$lt_compile" 2>out/conftest.err)
    ac_status=$?
    cat out/conftest.err >&5
-   echo "$as_me:8407: \$? = $ac_status" >&5
+   echo "$as_me:8409: \$? = $ac_status" >&5
    if (exit $ac_status) && test -s out/conftest2.$ac_objext
    then
      # The compiler can only warn and ignore the option if not recognized
@@ -11203,7 +11205,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<_LT_EOF
-#line 11206 "configure"
+#line 11208 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -11299,7 +11301,7 @@ else
   lt_dlunknown=0; lt_dlno_uscore=1; lt_dlneed_uscore=2
   lt_status=$lt_dlunknown
   cat > conftest.$ac_ext <<_LT_EOF
-#line 11302 "configure"
+#line 11304 "configure"
 #include "confdefs.h"
 
 #if HAVE_DLFCN_H
@@ -15640,8 +15642,15 @@ fi
 pkgconfigdir=$pkgconfigdir
 
 
+createdate=`date +"%a %b %d %Y"`
+yeardate=`date +"%Y"`
+CRDATE="$createdate"
 
-ac_config_files="$ac_config_files Makefile test/Makefile src/Makefile docs/Doxyfile libwchar2.pc package.json"
+YDATE="$yeardate"
+
+
+
+ac_config_files="$ac_config_files Makefile test/Makefile src/Makefile docs/Doxyfile docs/man-license.dox libwchar2.pc package.json"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -16546,6 +16555,7 @@ do
     "test/Makefile") CONFIG_FILES="$CONFIG_FILES test/Makefile" ;;
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
     "docs/Doxyfile") CONFIG_FILES="$CONFIG_FILES docs/Doxyfile" ;;
+    "docs/man-license.dox") CONFIG_FILES="$CONFIG_FILES docs/man-license.dox" ;;
     "libwchar2.pc") CONFIG_FILES="$CONFIG_FILES libwchar2.pc" ;;
     "package.json") CONFIG_FILES="$CONFIG_FILES package.json" ;;
 

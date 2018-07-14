@@ -1,4 +1,4 @@
-.TH "include/wchar2.h" 3 "Fri Jul 13 2018" "libwchar2 0.0.3" \" -*- nroff -*-
+.TH "include/wchar2.h" 3 "Sat Jul 14 2018" "libwchar2 0.0.3" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -594,8 +594,6 @@ include/wchar2.h
 .SH "struct __wchar_string_ws_"
 .PP 
 Base wide string structure\&. 
-
- 
 .PP
 \fBData Fields:\fP
 .RS 4
@@ -649,12 +647,6 @@ size_t __WEV(sz,__LINE__); errno = 0;                                           
 .fi
 .PP
 string_ws type to char[] this struct defined on top of this file A char[] - array name B string_ws* - source D - function return value if error 
-.SH "Typedef Documentation"
-.PP 
-.SS "typedef struct \fB__wchar_string_ws_\fP  \fBstring_ws\fP"
-
-.PP
-Base wide string structure\&.  
 .SH "Enumeration Type Documentation"
 .PP 
 .SS "enum \fBaccess_e\fP"
@@ -666,7 +658,7 @@ enumeration for return waccess function
 .in +1c
 .TP
 \fB\fIISERROR \fP\fP
-Error check 
+Error check\&. 
 .TP
 \fB\fIISUNK \fP\fP
 is a Unknown 
@@ -728,6 +720,38 @@ Parse path file name, wide char input\&.
 .RS 4
 If Success return substring of path, else return NULL 
 .RE
+.PP
+
+.SS "wchar_t* _wcpncpy (wchar_t *, const wchar_t *, size_t)"
+
+.PP
+Copy part of a wide-character string returning a pointer to its end\&. 
+.IP "\(bu" 2
+\fB'wcpncpy manual'\fP 
+.PP
+
+.SS "int _wcscasecmp (const wchar_t *, const wchar_t *)"
+
+.PP
+Case-insensitive wide character string compare\&. 
+.IP "\(bu" 2
+\fB'wcscasecmp manual'\fP 
+.PP
+
+.SS "int _wcsncasecmp (const wchar_t *, const wchar_t *, size_t)"
+
+.PP
+Case-insensitive wide character string compare with size\&. 
+.IP "\(bu" 2
+\fB'wcsncasecmp manual'\fP 
+.PP
+
+.SS "int _wctob (wchar_t)"
+
+.PP
+Convert wide character to single byte\&. 
+.IP "\(bu" 2
+\fB'wctob manual'\fP 
 .PP
 
 .SS "FILE* _wfopen (const wchar_t *, const char *)"

@@ -1,0 +1,22 @@
+/*!
+  \page wcscasecmp "wcscasecmp manual"
+
+    # wcscasecmp(3) - compare two wide-character strings, ignoring case
+
+    The **wcscasecmp**() function is the wide-character equivalent of the **strcasecmp**(3) function.
+
+    It compares the wide-character string pointed to by *s1* and the wide-character string pointed to by
+    *s2*, ignoring case differences (**towupper**(3), **towlower**(3)).
+
+    # Return Value
+
+    The **wcscasecmp**() function returns zero if the wide-character strings at *s1* and *s2* are equal except
+    for case distinctions.
+
+    It returns a positive integer if *s1* is greater than *s2*, ignoring case.
+
+    It returns a negative integer if *s1* is smaller than *s2*, ignoring case.
+
+    \includedoc docs/man-license.dox
+
+*/
