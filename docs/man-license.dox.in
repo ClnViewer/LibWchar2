@@ -1,12 +1,12 @@
 
-    \par LibWchar2 library version
+    \par LibWchar2 information
 
     \version   @PACKAGE_NAME@ @PACKAGE_VERSION@
     \date      @CRDATE@
     \author    (c) PS 2018-@YDATE@
 
-    \par Manual author and License
+    \par Manual author and license
 
     \copyright GNU Public License version 2.
-    \subpage mlicense "manual License details"
+    \subpage mlicense "Manual license details"
 

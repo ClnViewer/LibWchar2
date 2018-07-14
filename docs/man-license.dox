@@ -1,5 +1,5 @@
 
-    \par LibWchar2 library version
+    \par LibWchar2 information
 
     \version   libwchar2 0.0.3
     \date      Sat Jul 14 2018
@@ -8,5 +8,5 @@
     \par Manual author and License
 
     \copyright GNU Public License version 2.
-    \subpage mlicense Manual license details
+    \subpage mlicense "Manual license details"
 
