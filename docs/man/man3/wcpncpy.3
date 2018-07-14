@@ -1,0 +1,50 @@
+.TH "wcpncpy" 3 "Sat Jul 14 2018" "libwchar2 0.0.3" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+wcpncpy \- 'wcpncpy manual' 
+
+.SH "wcpncpy(3) - copy a fixed-size string of wide characters,"
+.PP
+The \fBwcpncpy\fP() function is the wide-character equivalent of the \fBstpncpy\fP(3) function\&.
+.PP
+It copies at most \fIn\fP wide characters from the wide-character string pointed to by \fIsrc\fP, including the terminating null wide (L'\\0'), to the array pointed to by \fIdest\fP\&.
+.PP
+Exactly \fIn\fP wide characters are written at \fIdest\fP\&.
+.PP
+If the length \fIwcslen(src)\fP is smaller than \fIn\fP, the remaining wide characters in the array pointed to by \fIdest\fP are filled with L'\\0' characters\&.
+.PP
+If the length \fIwcslen(src)\fP is greater than or equal to \fIn\fP, the string pointed to by \fIdest\fP will not be L'\\0' terminated\&.
+.PP
+The strings may not overlap\&.
+.PP
+The programmer must ensure that there is room for at least \fIn\fP wide characters at \fIdest\fP\&.
+.SH "Return Value"
+.PP
+Function \fBwcpncpy\fP() returns a pointer to the last wide character written, that is, \fIdest\fP+*n*-1\&.
+.PP
+/*! # LibWchar2 library version
+.PP
+\fBVersion:\fP
+.RS 4
+libwchar2 0\&.0\&.3 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+Sat Jul 14 2018 
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+(c) PS 2018-2018
+.RE
+.PP
+# Manual author and License
+.PP
+\fBCopyright:\fP
+.RS 4
+GNU Public License version 2\&. \fBmanual License details\fP
+.RE
+.PP
+*/  
