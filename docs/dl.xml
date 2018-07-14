@@ -8,6 +8,7 @@
         <tab type="user" visible="yes" title="Downloads" url="https://github.com/ClnViewer/LibWchar2/releases" />
     </tab>
     <tab type="usergroup" visible="yes" title="Documentation" briefdescription="Documentation">
+        <tab type="user" visible="yes" title="LibWchar2 manual" url="https://clnviewer.github.io/LibWchar2/docs/html/wchar2_8h.html" />
         <tab type="modules" visible="no" title="Functions" intro=""/>
         <tab type="classlist" visible="no" title="Data Structures" intro=""/>
         <tab type="filelist" visible="yes" title="Files" intro=""/>
