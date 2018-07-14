@@ -5,6 +5,7 @@ var searchData=
   ['wcsregexp',['wcsregexp',['../wchar2_8h.html#a000f12520ab4f2027d068c804797d488',1,'wchar2.h']]],
   ['wcstocscmp',['wcstocscmp',['../wchar2_8h.html#a796fc46df7a28111338f7f8c7fe25788',1,'wchar2.h']]],
   ['wcstou8s',['wcstou8s',['../wchar2_8h.html#a59ca46dae06e5f4952fed90a47893c27',1,'wchar2.h']]],
+  ['wctob_20manual',['wctob manual',['../wctob.html',1,'']]],
   ['wstocscvt',['wstocscvt',['../wchar2_8h.html#a68e9217a61693973cf4301a4f8761150',1,'wchar2.h']]],
   ['wstocsncvt',['wstocsncvt',['../wchar2_8h.html#a1ce3ebd71971a1caf706e820ee243c90',1,'wchar2.h']]],
   ['wstring_5falloc',['wstring_alloc',['../wchar2_8h.html#acd6b6cdd93d0a1f844d54572468f80ce',1,'wchar2.h']]],
