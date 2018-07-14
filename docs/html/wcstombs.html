@@ -67,19 +67,19 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><b>wcstombs - <code>convert a wide-character string to a multibyte string</code></b></p>
-<p>If dest is not NULL, the wcstombs() function converts the wide-charac- ter string src to a multibyte string starting at dest. At most n bytes are written to dest. The sequence of characters placed in dest begins in the initial shift state. The conversion can stop for three reasons:</p>
+<p>If dest is not <code>NULL</code>, the wcstombs() function converts the wide-charac- ter string src to a multibyte string starting at dest. At most n bytes are written to dest. The sequence of characters placed in dest begins in the initial shift state. The conversion can stop for three reasons:</p>
 <ol type="1">
-<li>A wide character has been encountered that can not be represented as a multibyte sequence (according to the current locale). In this case, (size_t) -1 is returned.</li>
+<li>A wide character has been encountered that can not be represented as a multibyte sequence (according to the current locale). In this case, <code>(size_t) -1</code> is returned.</li>
 <li>The length limit forces a stop. In this case, the number of bytes written to dest is returned, but the shift state at this point is lost.</li>
 <li>The wide-character string has been completely converted, including the terminating null wide character (L'\0'). In this case, the con- version ends in the initial shift state. The number of bytes writ- ten to dest, excluding the terminating null byte ('\0'), is returned.</li>
 </ol>
 <p>The programmer must ensure that there is room for at least n bytes at dest.</p>
-<p>If dest is NULL, n is ignored, and the conversion proceeds as above, except that the converted bytes are not written out to memory, and no length limit exists.</p>
-<p>In order to avoid the case 2 above, the programmer should make sure n is greater than or equal to wcstombs(NULL,src,0)+1.</p>
-<h1><a class="anchor" id="autotoc_md33"></a>
+<p>If dest is <code>NULL</code>, n is ignored, and the conversion proceeds as above, except that the converted bytes are not written out to memory, and no length limit exists.</p>
+<p>In order to avoid the case 2 above, the programmer should make sure n is greater than or equal to wcstombs(<code>NULL</code>,src,0)+1.</p>
+<h1><a class="anchor" id="autotoc_md35"></a>
 Return Value</h1>
-<p>The wcstombs() function returns the number of bytes that make up the converted part of a multibyte sequence, not including the terminating null byte. If a wide character was encountered which could not be con- verted, (size_t) -1 is returned.</p>
-<h1><a class="anchor" id="autotoc_md34"></a>
+<p>The wcstombs() function returns the number of bytes that make up the converted part of a multibyte sequence, not including the terminating null byte. If a wide character was encountered which could not be con- verted, <code>(size_t) -1</code> is returned.</p>
+<h1><a class="anchor" id="autotoc_md36"></a>
 Notes</h1>
 <p>The behavior of wcstombs() depends on the LC_CTYPE category of the cur- rent locale.</p>
 <p>The function wcsrtombs(3) provides a better interface to the same func- tionality.</p>
@@ -93,7 +93,7 @@ Notes</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 14 2018 19:29:40 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jul 14 2018 23:35:38 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

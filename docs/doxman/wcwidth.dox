@@ -5,8 +5,8 @@
 
        The  wcwidth()  function returns the number of columns needed to repre-
        sent the wide character c.  If c is a  printable  wide  character,  the
-       value is at least 0.  If c is null wide character (L'\0'), the value is
-       0.  Otherwise, -1 is returned.
+       value is at least 0.  If c is null wide character (L'\0'), the value is 0.
+       Otherwise, -1 is returned.
 
     # Return Value
 

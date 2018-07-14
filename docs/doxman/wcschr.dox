@@ -11,7 +11,7 @@
     # Return Value
 
        The  wcschr()  function returns a pointer to the first occurrence of wc
-       in the wide-character string pointed to by wcs, or NULL if wc does  not
+       in the wide-character string pointed to by wcs, or `NULL` if wc does  not
        occur in the string.
 
 

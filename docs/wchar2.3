@@ -730,8 +730,11 @@ Check permissions for a file or directory, wide char input\&.
 .PP
 \fBNote:\fP
 .RS 4
-All waccess* function return extended status, see access_e enum value, if error return standart -1 
+All waccess* function return extended status, see access_e enum value, if error return standart -1
 .RE
+.PP
+.IP "\(bu" 2
+\fBwaccess manual\fP 
 .PP
 
 .SS "wchar_t* _wbasedir (const wchar_t *, int)"
@@ -1005,8 +1008,43 @@ Open file stream, accepts file name as wide characters, mode as const char\&.
 .PP
 \fBNote:\fP
 .RS 4
-The wfopen* function opens the file whose name is the string pointed to by pathname and associates a stream with it, standart returned 
+The wfopen* function opens the file whose name is the string pointed to by pathname and associates a stream with it, standart returned\&.
 .RE
+.PP
+.IP "\(bu" 2
+\fBwfopen manual\fP 
+.PP
+
+.SS "wchar_t* _wmemchr (const wchar_t *, wchar_t, size_t)"
+
+.PP
+Find wide character in memory\&. 
+.IP "\(bu" 2
+\fBwmemchr manual\fP 
+.PP
+
+.SS "wchar_t* _wmemcpy (wchar_t *, const wchar_t *, size_t)"
+
+.PP
+Copy wide characters in memory\&. 
+.IP "\(bu" 2
+\fBwmemcpy manual\fP 
+.PP
+
+.SS "wchar_t* _wmemmove (wchar_t *, const wchar_t *, size_t)"
+
+.PP
+Copy wide characters in memory with overlapping areas\&. 
+.IP "\(bu" 2
+\fBwmemmove manual\fP 
+.PP
+
+.SS "wchar_t* _wmemset (wchar_t *, wchar_t, size_t)"
+
+.PP
+Set wide characters in memory\&. 
+.IP "\(bu" 2
+\fBwmemset manual\fP 
 .PP
 
 .SS "int _wmkdir (const wchar_t *, mode_t)"
@@ -1016,8 +1054,11 @@ Make directory, wide char input\&.
 .PP
 \fBNote:\fP
 .RS 4
-The equivalent of using the mkdir command with the -p switch for all functions _wmkdir* If the internal EXIST flag is received when creating the directory, return 0, otherwise the standard is returned\&. 
+The equivalent of using the mkdir command with the -p switch for all functions _wmkdir* If the internal EXIST flag is received when creating the directory, return 0, otherwise the standard is returned\&.
 .RE
+.PP
+.IP "\(bu" 2
+\fBwmkdir manual\fP 
 .PP
 
 .SS "wchar_t* _wpathnormalize (const wchar_t *, int)"
@@ -1051,8 +1092,11 @@ Delete (remove) file, wide char input\&.
 .PP
 \fBNote:\fP
 .RS 4
-Deletes a name from the file system, standart returned 
+Deletes a name from the file system, standart returned
 .RE
+.PP
+.IP "\(bu" 2
+\fBwremove manual\fP 
 .PP
 
 .SS "int _wrename (const wchar_t *, const wchar_t *)"
@@ -1062,8 +1106,11 @@ Rename file, wide char input\&.
 .PP
 \fBNote:\fP
 .RS 4
-The wrename* function shall change the name or location of a file, standart returned 
+The wrename* function shall change the name or location of a file, standart returned
 .RE
+.PP
+.IP "\(bu" 2
+\fBwrename manual\fP 
 .PP
 
 .SS "int _wstat (const wchar_t *, struct stat *)"
@@ -1073,8 +1120,11 @@ Statistic from file, wide char input\&.
 .PP
 \fBNote:\fP
 .RS 4
-These functions return information about a file, standart returned 
+These functions return information about a file, standart returned
 .RE
+.PP
+.IP "\(bu" 2
+\fBwstat manual\fP 
 .PP
 
 .SS "size_t u8stowcs (wchar_t *, const char *)"

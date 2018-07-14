@@ -1,0 +1,16 @@
+/*!
+  \page wmemset wmemset manual
+
+    __wmemset - `fill an array of wide-characters with a constant wide character`__
+
+       The wmemset() function is the wide-character  equivalent  of  the  mem-
+       set(3)  function.   It fills the array of n wide-characters starting at
+       wcs with n copies of the wide character wc.
+
+    # Return Value
+
+       wmemset() returns wcs.
+
+    \includedoc docs/man-license.dox
+
+*/

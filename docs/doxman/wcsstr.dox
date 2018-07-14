@@ -11,7 +11,7 @@
     # Return Value
 
        The wcsstr() function returns a pointer to the first occurrence of nee-
-       dle  in  haystack.   It returns NULL if needle does not occur as a sub-
+       dle  in  haystack.   It returns `NULL` if needle does not occur as a sub-
        string in haystack.
 
        Note the special case: If needle is the  empty  wide-character  string,

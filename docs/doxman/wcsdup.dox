@@ -14,7 +14,7 @@
     # Return Value
 
        On  success,  wcsdup()  returns  a  pointer  to  the new wide-character
-       string.  On error, it returns NULL, with  errno  set  to  indicate  the
+       string.  On error, it returns `NULL`, with  errno  set  to  indicate  the
        cause of the error.
 
 

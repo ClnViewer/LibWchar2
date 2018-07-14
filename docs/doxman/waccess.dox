@@ -1,0 +1,56 @@
+/*!
+  \page waccess waccess manual
+
+    __waccess - `check user's permissions for a file`__
+
+       The waccess()  checks  whether the calling process can access the file path-
+       name.  If pathname is a symbolic link, it is dereferenced.
+
+       The mode specifies the accessibility check(s) to be performed,  and  is
+       either the value `F_OK`, or a mask consisting of the bitwise `OR` of one or
+       more of `R_OK`, `W_OK`, and `X_OK`.  `F_OK` tests  for  the  existence  of  the
+       file.   `R_OK`,  `W_OK`,  and  `X_OK` test whether the file exists and grants
+       read, write, and execute permissions, respectively.
+
+       The check is done using the calling process's real `UID` and `GID`,  rather
+       than the effective IDs as is done when actually attempting an operation
+       (e.g., open(2)) on the file.  Similarly, for the root user,  the  check
+       uses the set of permitted capabilities rather than the set of effective
+       capabilities; and for non-root users, the check uses an  empty  set  of
+       capabilities.
+
+       This  allows  set-user-ID  programs  and capability-endowed programs to
+       easily determine  the  invoking  user's  authority.   In  other  words,
+       access()  does  not  answer  the  "can I read/write/execute this file?"
+       question.  It answers a slightly different question: "(assuming  I'm  a
+       setuid  binary)  can  the  user  who invoked me read/write/execute this
+       file?", which gives set-user-ID programs  the  possibility  to  prevent
+       malicious  users  from causing them to read files which users shouldn't
+       be able to read.
+
+       If the calling process is privileged (i.e., its real `UID` is zero), then
+       an X_OK check is successful for a regular file if execute permission is
+       enabled for any of the file owner, group, or other.
+
+
+    # Return Value
+
+    On success, all requested permissions granted, or mode is `F_OK` and the file exists,
+    return extended status, see \ref access_e enum value:
+
+    - `ISUNK` is a Unknown
+    - `ISFIL` is a Regular file
+    - `ISLNK` is a Symbolic link
+    - `ISDIR` is a Directory
+
+    On error, at least  one  bit  in  mode asked  for  a  permission  that is denied, or mode is F_OK and the file
+    does not exist, or some other error occurred, `-1`  is  returned, and errno is set appropriately.
+
+
+    # Notes
+
+
+
+    \includedoc docs/man-license.dox
+
+*/

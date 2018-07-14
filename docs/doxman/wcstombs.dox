@@ -3,14 +3,14 @@
 
     __wcstombs - `convert a wide-character string to a multibyte string`__
 
-       If  dest is not NULL, the wcstombs() function converts the wide-charac-
+       If  dest is not `NULL`, the wcstombs() function converts the wide-charac-
        ter string src to a multibyte string starting at dest.  At most n bytes
        are  written to dest.  The sequence of characters placed in dest begins
        in the initial shift state.  The conversion can stop for three reasons:
 
        1. A wide character has been encountered that can not be represented as
           a multibyte sequence (according to the  current  locale).   In  this
-          case, (size_t) -1 is returned.
+          case, `(size_t) -1` is returned.
 
        2. The  length  limit forces a stop.  In this case, the number of bytes
           written to dest is returned, but the shift state at  this  point  is
@@ -25,19 +25,19 @@
        The  programmer  must ensure that there is room for at least n bytes at
        dest.
 
-       If dest is NULL, n is ignored, and the conversion  proceeds  as  above,
+       If dest is `NULL`, n is ignored, and the conversion  proceeds  as  above,
        except  that  the converted bytes are not written out to memory, and no
        length limit exists.
 
        In order to avoid the case 2 above, the programmer should make  sure  n
-       is greater than or equal to wcstombs(NULL,src,0)+1.
+       is greater than or equal to wcstombs(`NULL`,src,0)+1.
 
     # Return Value
 
        The  wcstombs()  function  returns the number of bytes that make up the
        converted part of a multibyte sequence, not including  the  terminating
        null byte.  If a wide character was encountered which could not be con-
-       verted, (size_t) -1 is returned.
+       verted, `(size_t) -1` is returned.
 
     # Notes
 

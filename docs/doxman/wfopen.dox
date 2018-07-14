@@ -1,0 +1,61 @@
+/*!
+  \page wfopen wfopen manual
+
+    __wfopen - `stream open functions`__
+
+    # Family
+
+    `wfopen`, `wfopen_s`, `wfopen_ws`, `wfopen_selector`
+
+
+    The wfopen() function opens the file whose name is the string pointed to by pathname and associates a stream with it.
+
+    The argument mode points to a string beginning with one of the  following sequences
+    (possibly followed by additional characters, as described below): `r`, `r+`, `w` `w+`, `a`, `a+`
+
+    The `b` flag is ignored on all POSIX conforming systems, including Linux.
+
+    # Return Value
+
+    Upon successful completion wfopen() return a `FILE` pointer.  
+    Otherwise, `NULL` is returned and errno is set to indicate the error.
+
+    The return error number is `EINVAL` mode provided to wfopen() was invalid.
+
+    # Notes
+
+    The GNU C library allows the following extensions for the string specified in mode:
+
+    `c` (since glibc 2.3.3)
+        Do  not  make  the  open operation, or subsequent read and write
+        operations, thread cancellation points.
+
+    `e` (since glibc 2.7)
+        Open  the  file  with  the O_CLOEXEC flag. 
+        See open(2) for more information.
+
+    `m` (since glibc 2.3)
+        Attempt to access the file using mmap(2), rather than I/O system calls.
+        Currently, use of  mmap(2) is attempted only for a file opened for reading.
+
+    `x` Open the file exclusively (like the O_EXCL flag of open(2)).
+        If the file already exists, wfopen() fails, and sets errno to EEXIST.
+
+    In addition to the above characters, fopen() support the following syntax in mode:
+
+
+            ,ccs=string
+
+
+    The  given string is taken as the name of a coded character set and the stream is
+    marked as wide-oriented.  
+    Thereafter,  internal  conversion functions  convert  I/O  to  and from the character set string.  
+    If the `,ccs=string` syntax is not specified, then the wide-orientation of the stream is determined
+    by the first file operation.  
+    If that operation is a wide-character operation, the stream is marked  wide-oriented, and functions
+    to convert to the coded character set are loaded.
+
+
+    \includedoc docs/man-license.dox
+
+*/

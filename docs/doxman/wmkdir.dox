@@ -1,0 +1,29 @@
+/*!
+  \page wmkdir wmkdir manual
+
+    __wmkdir - `create a directory`__
+
+    The wmkdir() function attempts to create a directory named pathname.
+
+    The  argument  mode  specifies  the  mode  for  the  new directory (see inode(7)).  
+    It is modified by the process's umask in the usual way:  in
+    the  absence  of  a  default  ACL, the mode of the created directory is
+    `(mode & ~umask & 0777)`.  
+    Whether other mode bits are  honored  for  the created  directory  depends  on  the  operating system.  
+    For Linux, see NOTES below.
+
+
+    # Return Value
+
+    On  success, zero is returned...
+    If the internal EXIST flag is received when creating the directory, zero.  
+    On error, -1 is returned, and errno is set appropriately.
+
+    # Notes
+
+    This equivalent of using the mkdir command with the -p switch for all functions _wmkdir*
+
+
+    \includedoc docs/man-license.dox
+
+*/

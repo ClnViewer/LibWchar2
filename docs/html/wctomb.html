@@ -67,14 +67,14 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><b>wctomb - <code>convert a wide character to a multibyte sequence</code></b></p>
-<p>If s is not NULL, the wctomb() function converts the wide character wc to its multibyte representation and stores it at the beginning of the character array pointed to by s. It updates the shift state, which is stored in a static anonymous variable known only to the wctomb() func- tion, and returns the length of said multibyte representation, that is, the number of bytes written at s.</p>
+<p>If s is not <code>NULL</code>, the wctomb() function converts the wide character wc to its multibyte representation and stores it at the beginning of the character array pointed to by s. It updates the shift state, which is stored in a static anonymous variable known only to the wctomb() func- tion, and returns the length of said multibyte representation, that is, the number of bytes written at s.</p>
 <p>The programmer must ensure that there is room for at least MB_CUR_MAX bytes at s.</p>
-<p>If s is NULL, the wctomb() function resets the shift state, known only to this function, to the initial state, and returns nonzero if the encoding has nontrivial shift state, or zero if the encoding is state- less.</p>
-<h1><a class="anchor" id="autotoc_md39"></a>
+<p>If s is <code>NULL</code>, the wctomb() function resets the shift state, known only to this function, to the initial state, and returns nonzero if the encoding has nontrivial shift state, or zero if the encoding is state- less.</p>
+<h1><a class="anchor" id="autotoc_md41"></a>
 Return Value</h1>
-<p>If s is not NULL, the wctomb() function returns the number of bytes that have been written to the byte array at s. If wc can not be repre- sented as a multibyte sequence (according to the current locale), -1 is returned.</p>
-<p>If s is NULL, the wctomb() function returns nonzero if the encoding has nontrivial shift state, or zero if the encoding is stateless.</p>
-<h1><a class="anchor" id="autotoc_md40"></a>
+<p>If s is not <code>NULL</code>, the wctomb() function returns the number of bytes that have been written to the byte array at s. If wc can not be repre- sented as a multibyte sequence (according to the current locale), -1 is returned.</p>
+<p>If s is <code>NULL</code>, the wctomb() function returns nonzero if the encoding has nontrivial shift state, or zero if the encoding is stateless.</p>
+<h1><a class="anchor" id="autotoc_md42"></a>
 Notes</h1>
 <p>The behavior of wctomb() depends on the LC_CTYPE category of the cur- rent locale.</p>
 <p>The function wcrtomb(3) provides a better interface to the same func- tionality.</p>
@@ -88,7 +88,7 @@ Notes</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 14 2018 19:29:40 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jul 14 2018 23:35:38 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

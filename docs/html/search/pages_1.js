@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['waccess_20manual',['waccess manual',['../waccess.html',1,'']]],
   ['wcpcpy_20manual',['wcpcpy manual',['../wcpcpy.html',1,'']]],
   ['wcrtomb_20manual',['wcrtomb manual',['../wcrtomb.html',1,'']]],
   ['wcscat_20manual',['wcscat manual',['../wcscat.html',1,'']]],
@@ -26,5 +27,15 @@ var searchData=
   ['wctomb_20manual',['wctomb manual',['../wctomb.html',1,'']]],
   ['wctype_20manual',['wctype manual',['../wctype.html',1,'']]],
   ['wcwidth_20manual',['wcwidth manual',['../wcwidth.html',1,'']]],
-  ['wprintf_20manual',['wprintf manual',['../wprintf.html',1,'']]]
+  ['wfopen_20manual',['wfopen manual',['../wfopen.html',1,'']]],
+  ['wmemchr_20manual',['wmemchr manual',['../wmemchr.html',1,'']]],
+  ['wmemcmp_20manual',['wmemcmp manual',['../wmemcmp.html',1,'']]],
+  ['wmemcpy_20manual',['wmemcpy manual',['../wmemcpy.html',1,'']]],
+  ['wmemmove_20manual',['wmemmove manual',['../wmemmove.html',1,'']]],
+  ['wmemset_20manual',['wmemset manual',['../wmemset.html',1,'']]],
+  ['wmkdir_20manual',['wmkdir manual',['../wmkdir.html',1,'']]],
+  ['wprintf_20manual',['wprintf manual',['../wprintf.html',1,'']]],
+  ['wremove_20manual',['wremove manual',['../wremove.html',1,'']]],
+  ['wrename_20manual',['wrename manual',['../wrename.html',1,'']]],
+  ['wstat_20manual',['wstat manual',['../wstat.html',1,'']]]
 ];

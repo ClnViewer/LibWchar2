@@ -384,13 +384,33 @@ wchar_t * _wcsstr(const wchar_t*, const wchar_t*);
            * - \subpage wcstok
            */
 wchar_t * _wcstok(wchar_t*, const wchar_t*, wchar_t**);
-          /*! \brief Find wide character in memory */
+
+          /*!
+           * \brief Find wide character in memory
+           *
+           * - \subpage wmemchr
+           */
 wchar_t * _wmemchr(const wchar_t*, wchar_t, size_t);
-          /*! \brief Copy wide characters in memory */
+
+          /*!
+           * \brief Copy wide characters in memory
+           *
+           * - \subpage wmemcpy
+           */
 wchar_t * _wmemcpy(wchar_t*, const wchar_t*, size_t);
-          /*! \brief Copy wide characters in memory with overlapping areas */
+
+          /*!
+           * \brief Copy wide characters in memory with overlapping areas
+           *
+           * - \subpage wmemmove
+           */
 wchar_t * _wmemmove(wchar_t*, const wchar_t*, size_t);
-          /*! \brief Set wide characters in memory */
+
+          /*!
+           * \brief Set wide characters in memory
+           *
+           * - \subpage wmemset
+           */
 wchar_t * _wmemset(wchar_t*, wchar_t, size_t);
 
           /*! \brief Concatenate wide-character strings to specified length */
@@ -520,7 +540,9 @@ wchar_t   _fputwc(wchar_t, FILE *restrict);
           /*!
            *  \paragraph Open file stream
            *  \note The wfopen* function opens the file whose name is the string pointed
-           *        to by pathname and associates a stream with it, standart returned
+           *        to by pathname and associates a stream with it, standart returned.
+           *
+           * - \subpage wfopen
            */
 
           /*! \brief Open file stream, accepts file name as wide characters, mode as const char */
@@ -540,6 +562,8 @@ FILE    * u8wfopen(const wchar_t*, const char*);
           /*!
            *  \paragraph Statistic from file
            *  \note These functions return information about a file, standart returned
+           *
+           * - \subpage wstat
            */
 
           /*! \brief Statistic from file, wide char input */
@@ -559,6 +583,8 @@ int       u8wstat(const wchar_t*, struct stat*);
           /*!
            *  \paragraph Rename (move) file
            *  \note The wrename* function shall change the name or location of a file, standart returned
+           *
+           * - \subpage wrename
            */
 
           /*! \brief Rename file, wide char input */
@@ -578,6 +604,8 @@ int       u8wrename(const wchar_t*, const wchar_t*);
           /*!
            *  \paragraph Delete (remove) file or directory
            *  \note Deletes a name from the file system, standart returned
+           *
+           * - \subpage wremove
            */
 
           /*! \brief Delete (remove) file, wide char input */
@@ -599,6 +627,8 @@ int       u8wremove(const wchar_t*);
            *  \note The equivalent of using the mkdir command with the -p switch for all functions _wmkdir*
            *        If the internal EXIST flag is received when creating the directory, return 0, otherwise
            *        the standard is returned.
+           *
+           * - \subpage wmkdir
            */
 
           /*! \brief Make directory, wide char input */
@@ -620,6 +650,8 @@ int       u8wmkdir(const wchar_t*, mode_t);
            *  \paragraph Check permissions for a file or directory
            *  \note All waccess* function return extended status, see access_e enum value,
            *        if error return standart -1
+           *
+           * - \subpage waccess
            */
 
           /*! \brief Check permissions for a file or directory, wide char input */

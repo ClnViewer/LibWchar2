@@ -1,0 +1,22 @@
+/*!
+  \page wmemcmp wmemcmp manual
+
+    __wmemcmp - `compare two arrays of wide-characters`__
+
+       The  wmemcmp()  function  is  the wide-character equivalent of the mem-
+       cmp(3) function.  It compares the n wide-characters starting at s1  and
+       the n wide-characters starting at s2.
+
+    # Return Value
+
+       The  wmemcmp()  function  returns  zero if the wide-character arrays of
+       size n at `s1` and `s2` are equal.  It returns an integer greater than zero
+       if  at  the first differing position `i` `(i < n)`, the corresponding wide-
+       character `s1[i]` is greater than `s2[i]`.  It returns an integer less than
+       zero  if  at  the first differing position `i` `(i < n)`, the corresponding
+       wide-character `s1[i]` is less than `s2[i]`.
+
+
+    \includedoc docs/man-license.dox
+
+*/

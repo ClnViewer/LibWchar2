@@ -1,0 +1,21 @@
+/*!
+  \page wstat wstat manual
+
+    __wstat - `get file status`__
+
+    These functions return information about a file, in the buffer pointed to by statbuf.  
+
+    No permissions are required on the file itself, execute (search) permission
+    is required on all of the directories in  pathname  that lead to the file.
+
+    Retrieve information about the file pointed to by pathname.
+
+    # Return Value
+
+    On  success, zero is returned.  
+    On error, -1 is returned, and errno is set appropriately.
+
+
+    \includedoc docs/man-license.dox
+
+*/

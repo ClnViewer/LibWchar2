@@ -1,0 +1,17 @@
+/*!
+  \page wmemchr wmemchr manual
+
+    __wmemchr - `search a wide character in a wide-character array`__
+
+       The  wmemchr()  function  is  the wide-character equivalent of the memchr(3) function.  
+       It searches the n wide characters starting at `s` for the first occurrence of the wide character `c`.
+
+    # Return Value
+
+       The  wmemchr()  function returns `a` pointer to the first occurrence of `c`
+       among the `n` wide characters starting at `s`, or `NULL` if `c` does not  occur among these.
+
+
+    \includedoc docs/man-license.dox
+
+*/
