@@ -1,5 +1,6 @@
 
 [![Readme RU](https://img.shields.io/badge/Readme-RU-brightgreen.svg?style=flat)](https://github.com/ClnViewer/LibWchar2/blob/master/README.RU.md)
+[![Documentation](https://img.shields.io/badge/Documentation-DOC-brightgreen.svg?style=flat)](https://clnviewer.github.io/LibWchar2/docs/html/wchar2_8h.html)
 [![License MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=flat)](https://github.com/ClnViewer/LibWchar2/blob/master/LICENSE)
 [![Build Status](https://travis-ci.com/ClnViewer/LibWchar2.svg)](https://travis-ci.com/ClnViewer/LibWchar2)
 
