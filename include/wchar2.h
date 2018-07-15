@@ -290,9 +290,19 @@ size_t    _wcsrtombs(char *restrict, const wchar_t **restrict, size_t, mbstate_t
            * - \subpage wcrtomb
            */
 size_t    _wcrtomb(char *restrict, wchar_t, mbstate_t *restrict);
-          /*! \brief Minimal multibyte string to wide string converter */
+
+          /*!
+           * \brief Minimal multibyte string to wide string converter
+           *
+           * - \subpage mbstowcs
+           */
 size_t    _mbstowcs(wchar_t *restrict, const char *restrict, size_t);
-          /*! \brief Convert a character string to a wide-character string */
+
+          /*!
+           * \brief Convert a character string to a wide-character string
+           *
+           * - \subpage mbsrtowcs
+           */
 size_t    _mbsrtowcs(wchar_t *restrict, const char **restrict, size_t, mbstate_t *restrict);
 
           /*!
@@ -301,17 +311,47 @@ size_t    _mbsrtowcs(wchar_t *restrict, const char **restrict, size_t, mbstate_t
            * - \subpage wcsnrtombs
            */
 size_t    _wcsnrtombs(char *restrict, const wchar_t **restrict, size_t, size_t, mbstate_t *restrict);
-          /*! \brief Convert a character string to a wide-character string */
+
+          /*!
+           * \brief Convert a character string to a wide-character string
+           *
+           * - \subpage mbsnrtowcs
+           */
 size_t    _mbsnrtowcs(wchar_t *restrict, const char **restrict, size_t, size_t, mbstate_t *restrict);
-          /*! \brief Converts a narrow multibyte character to a wide character */
+
+          /*!
+           * \brief Converts a narrow multibyte character to a wide character
+           *
+           * - \subpage mbrtowc
+           */
 size_t    _mbrtowc(wchar_t *restrict, const char *restrict src, size_t, mbstate_t *restrict);
-          /*! \brief Get length of multibyte character */
+
+          /*!
+           * \brief Get length of multibyte character
+           *
+           * - \subpage mbrlen
+           */
 size_t    _mbrlen(const char *restrict, size_t, mbstate_t *restrict);
-          /*! \brief Determines the size, in bytes, of the multibyte character whose first byte is pointed */
+
+          /*!
+           * \brief Determines the size, in bytes, of the multibyte character whose first byte is pointed
+           *
+           * - \subpage mblen
+           */
 int       _mblen(const char*, size_t);
-          /*! \brief Check if initial conversion state */
+
+          /*!
+           * \brief Check if initial conversion state
+           *
+           * - \subpage mbsinit
+           */
 int       _mbsinit(const mbstate_t*);
-          /*! \brief Minimal multibyte to wide char converter */
+
+          /*!
+           * \brief Minimal multibyte to wide char converter
+           *
+           * - \subpage mbtowc
+           */
 int       _mbtowc(wchar_t *restrict, const char *restrict, size_t);
 
           /*!
@@ -327,47 +367,53 @@ int       _wctomb(char*, wchar_t);
            * - \subpage wctob
            */
 int       _wctob(wchar_t);
-          /*! \brief Convert single byte character to wide character */
+
+          /*!
+           * \brief Convert single byte character to wide character
+           *
+           * - \subpage btowc
+           */
 wchar_t   _btowc(int);
 
 /*! Other non standart function */
 
- /*!
-  * \brief wchar_t* print
-  * Test variably only!
-  * Instead use _vfprintf, _vfwprintf, _fprintf, _fwprintf
-  *
-  */
-void       wcprint(wchar_t*);
+          /*!
+           * \brief wchar_t* print
+           * This function to test variably only!
+           * Instead use _vfprintf, _vfwprintf, _fprintf, _fwprintf
+           *
+           */
+void      wcprint(wchar_t*);
 
- /*!
-  * \brief compare char* <->  wchar_t*
-  * ASCII only!
-  * size_t   - wchar_t* size
-  *
-  */
-int        wcstocscmp(const char*, wchar_t*, size_t); // ASCII mode only
+          /*!
+           * \brief compare char* <->  wchar_t*
+           * This function quick compare only ASCII range, NOT all Unicode symbols support!
+           * size_t - wchar_t* size
+           * return - boolean
+           *
+           */
+int       wcstocscmp(const char*, wchar_t*, size_t); // ASCII mode only
 
- /*!
-  *    Original name: aov-rx - Angel Ortega's regular expression library
-  *    Copyright (C) 2011/2012 Angel Ortega <angel@triptico.com>
-  *    https://github.com/angelortega/aov-rx or http://triptico.com
-  *
-  * \brief wcsregexp - Matches a regular expression
-  * \param rx: the regular expression
-  * \param tx: the text to be matched
-  * \param size: a pointer to integer where the matching lenght is stored
-  *
-  * Matches the string tx for the regular expression in rx.
-  * On output, the integer pointer by size will contain the number
-  * of matched characters (with 0 meaning that no matching was
-  * possible). If the end of string mark ($) is used in the regular
-  * expression and a match is effective, the ending zero is included
-  * in the match.
-  *
-  * Returns the address of the match.
-  */
-wchar_t *  wcsregexp(wchar_t *restrict, wchar_t *restrict, int*);
+          /*!
+           *    Original name: aov-rx - Angel Ortega's regular expression library
+           *    Copyright (C) 2011/2012 Angel Ortega <angel@triptico.com>
+           *    https://github.com/angelortega/aov-rx or http://triptico.com
+           *
+           * \brief wcsregexp - Matches a regular expression
+           * \param rx: the regular expression
+           * \param tx: the text to be matched
+           * \param size: a pointer to integer where the matching lenght is stored
+           *
+           * Matches the string tx for the regular expression in rx.
+           * On output, the integer pointer by size will contain the number
+           * of matched characters (with 0 meaning that no matching was
+           * possible). If the end of string mark ($) is used in the regular
+           * expression and a match is effective, the ending zero is included
+           * in the match.
+           *
+           * Returns the address of the match.
+           */
+wchar_t * wcsregexp(wchar_t *restrict, wchar_t *restrict, int*);
 
  /*!
   *  \brief Covert utf-8 char* to wchar_t*
@@ -377,7 +423,7 @@ wchar_t *  wcsregexp(wchar_t *restrict, wchar_t *restrict, int*);
   *
   *  \note function u8stowcs required free result
   */
-size_t     u8stowcs(wchar_t*, const char*);
+size_t    u8stowcs(wchar_t*, const char*);
 
  /*!
   *  \brief Convert wchar_t* to utf-8 char*
@@ -387,7 +433,7 @@ size_t     u8stowcs(wchar_t*, const char*);
   *
   *  \note function wcstou8s required free result
   */
-size_t     wcstou8s(char*, const wchar_t*);
+size_t    wcstou8s(char*, const wchar_t*);
 
  /*!
   *  \brief Verify char* to utf-8 valid string
@@ -395,7 +441,7 @@ size_t     wcstou8s(char*, const wchar_t*);
   *  int (bool)  - output
   *
   */
-int        u8sverify(const char*);
+int       u8sverify(const char*);
 
           /*!
            * \brief Copy a wide-character string returning a pointer to its end

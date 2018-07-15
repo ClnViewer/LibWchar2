@@ -217,11 +217,11 @@ include/wchar2.h
 .ti -1c
 .RI "void \fBwcprint\fP (wchar_t *)"
 .br
-.RI "wchar_t* print Test variably only! Instead use _vfprintf, _vfwprintf, _fprintf, _fwprintf "
+.RI "wchar_t* print This function to test variably only! Instead use _vfprintf, _vfwprintf, _fprintf, _fwprintf "
 .ti -1c
 .RI "int \fBwcstocscmp\fP (const char *, wchar_t *, size_t)"
 .br
-.RI "compare char* <-> wchar_t* ASCII only! size_t - wchar_t* size "
+.RI "compare char* <-> wchar_t* This function quick compare only ASCII range, NOT all Unicode symbols support! size_t - wchar_t* size return - boolean "
 .ti -1c
 .RI "wchar_t * \fBwcsregexp\fP (wchar_t *restrict, wchar_t *restrict, int *)"
 .br
@@ -691,6 +691,14 @@ is a Symbolic link
 is a Directory 
 .SH "Function Documentation"
 .PP 
+.SS "wchar_t _btowc (int)"
+
+.PP
+Convert single byte character to wide character\&. 
+.IP "\(bu" 2
+\fBbtowc manual\fP 
+.PP
+
 .SS "size_t _fwprintf (FILE * restrict, const wchar_t * restrict,  \&.\&.\&.)"
 
 .PP
@@ -801,6 +809,70 @@ Test for uppercase wide character\&.
 Test for hexadecimal digit wide character\&. 
 .IP "\(bu" 2
 \fBiswxdigit manual\fP 
+.PP
+
+.SS "int _mblen (const char *, size_t)"
+
+.PP
+Determines the size, in bytes, of the multibyte character whose first byte is pointed\&. 
+.IP "\(bu" 2
+\fBmblen manual\fP 
+.PP
+
+.SS "size_t _mbrlen (const char * restrict, size_t, mbstate_t * restrict)"
+
+.PP
+Get length of multibyte character\&. 
+.IP "\(bu" 2
+\fBmbrlen manual\fP 
+.PP
+
+.SS "size_t _mbrtowc (wchar_t * restrict, const char *restrict src, size_t, mbstate_t * restrict)"
+
+.PP
+Converts a narrow multibyte character to a wide character\&. 
+.IP "\(bu" 2
+\fBmbrtowc manual\fP 
+.PP
+
+.SS "int _mbsinit (const mbstate_t *)"
+
+.PP
+Check if initial conversion state\&. 
+.IP "\(bu" 2
+\fBmbsinit manual\fP 
+.PP
+
+.SS "size_t _mbsnrtowcs (wchar_t * restrict, const char ** restrict, size_t, size_t, mbstate_t * restrict)"
+
+.PP
+Convert a character string to a wide-character string\&. 
+.IP "\(bu" 2
+\fBmbsnrtowcs manual\fP 
+.PP
+
+.SS "size_t _mbsrtowcs (wchar_t * restrict, const char ** restrict, size_t, mbstate_t * restrict)"
+
+.PP
+Convert a character string to a wide-character string\&. 
+.IP "\(bu" 2
+\fBmbsrtowcs manual\fP 
+.PP
+
+.SS "size_t _mbstowcs (wchar_t * restrict, const char * restrict, size_t)"
+
+.PP
+Minimal multibyte string to wide string converter\&. 
+.IP "\(bu" 2
+\fBmbstowcs manual\fP 
+.PP
+
+.SS "int _mbtowc (wchar_t * restrict, const char * restrict, size_t)"
+
+.PP
+Minimal multibyte to wide char converter\&. 
+.IP "\(bu" 2
+\fBmbtowc manual\fP 
 .PP
 
 .SS "size_t _swprintf (wchar_t * restrict, size_t, const wchar_t * restrict,  \&.\&.\&.)"
@@ -1346,7 +1418,7 @@ function u8wstat required free result
 .SS "void wcprint (wchar_t *)"
 
 .PP
-wchar_t* print Test variably only! Instead use _vfprintf, _vfwprintf, _fprintf, _fwprintf Other non standart function 
+wchar_t* print This function to test variably only! Instead use _vfprintf, _vfwprintf, _fprintf, _fwprintf Other non standart function 
 .SS "wchar_t* wcsregexp (wchar_t * restrict, wchar_t * restrict, int *)"
 
 .PP

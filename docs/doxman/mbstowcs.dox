@@ -1,0 +1,61 @@
+/*!
+  \page mbstowcs mbstowcs manual
+
+    __mbstowcs - `convert a multibyte string to a wide-character string`__
+
+    If  dest  is  not  `NULL`, the mbstowcs() function converts the multibyte
+    string src to a wide-character string starting at dest.  
+    At most n wide characters  are  written to  dest.   
+    The sequence of characters in the string src shall begin in the initial shift state.  
+    The conversion can stop for three reasons:
+
+    1. An  invalid  multibyte sequence has been encountered.  
+        In this case, `(size_t) -1` is returned.
+
+    2. Wide characters `non-L'\0'` have been stored at position `n` to `dest`.  
+        In this case, the number of wide characters written to `dest` is returned, but the
+        shift state at this point is lost.
+
+    3. The multibyte string has been completely  converted, including the
+        terminating null character `L'\0'`.  
+        In this case, the number of wide characters written to `dest`, excluding the
+        terminating  null  wide character, is returned.
+
+    The programmer must ensure that there is room for at least n wide characters at `dest`.
+
+    If `dest` is `NULL`, `n` is ignored, and the conversion proceeds as above,
+    except that the converted wide characters are not written out to memory,
+    and that no length limit exists.
+
+    In order to avoid the case `2` above, the programmer should make sure `n` is greater than
+    or equal to:
+
+    \code{.c}
+
+
+          ... = mbstowcs(NULL,src,0) + 1;
+
+    \endcode
+
+
+    # Return Value
+
+    The mbstowcs() function returns the number of wide characters that make up the converted
+    part of the wide-character string, not  including  the terminating null wide character.  
+    If an invalid multibyte sequence was encountered, `(size_t) -1` is returned.
+
+    # Notes
+
+    The behavior of mbstowcs() depends on the `LC_CTYPE` category of the current locale.  
+    The function mbstowcs() provides a better interface to the same functionality.
+
+
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_mbstowcs.c
+
+
+
+    \includedoc docs/man-license.dox
+
+*/

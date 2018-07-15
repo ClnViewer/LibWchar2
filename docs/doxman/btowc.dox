@@ -1,0 +1,35 @@
+/*!
+  \page btowc btowc manual
+
+    __btowc - `convert single byte to wide character`__
+
+    The btowc() function converts `c`, interpreted as a multibyte sequence of
+    length `1`, starting in the initial shift state, to a wide character  and returns it.  
+    If `c` is `EOF` or not `a` valid multibyte sequence of length `1`, the btowc() function returns `WEOF`.
+
+
+    # Return Value
+
+    The btowc() function returns the wide character converted from the single byte `c`.  
+    If `c` is `EOF` or not a valid multibyte sequence of length `1`, it returns `WEOF`.
+
+
+    # Notes
+
+    The behavior of btowc() depends on the `LC_CTYPE` category of the current locale.  
+
+    \warning This function should never be used.  
+        It does not work for encodings which have state, and unnecessarily treats single bytes differently
+        from multibyte sequences.  
+        Use either mbtowc(3) or the thread-safe mbrtowc(3) instead.
+
+
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_btowc.c
+
+
+
+    \includedoc docs/man-license.dox
+
+*/

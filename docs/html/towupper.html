@@ -70,16 +70,16 @@ $(function() {
 <p>The towupper() function is the wide-character equivalent of the toup- per(3) function. If wc is a lowercase wide character, and there exists an uppercase equivalent in the current locale, it returns the uppercase equivalent of wc. In all other cases, wc is returned unchanged.</p>
 <p>The towupper_l() function performs the same task, but performs the con- version based on the character type information in the locale specified by locale. The behavior of towupper_l() is undefined if locale is the special locale object <code>LC_GLOBAL_LOCALE</code> (see duplocale(3)) or is not a valid locale object handle.</p>
 <p>The argument wc must be representable as a wchar_t and be a valid char- acter in the locale or be the value <code>WEOF</code>.</p>
-<h1><a class="anchor" id="autotoc_md48"></a>
+<h1><a class="anchor" id="autotoc_md75"></a>
 Return Value</h1>
 <p>If wc was convertible to uppercase, towupper() returns its uppercase equivalent. <br />
  Otherwise, it returns <code>wc</code>.</p>
-<h1><a class="anchor" id="autotoc_md49"></a>
+<h1><a class="anchor" id="autotoc_md76"></a>
 Notes</h1>
 <p>The behavior of towupper() depends on the <code>LC_CTYPE</code> category of the current locale.</p>
 <p>These functions are not very appropriate for dealing with Unicode characters, because Unicode knows about three cases: upper, lower and title case.</p>
 <p>The towupper_l() function not implemented is libwchar2.</p>
-<h1><a class="anchor" id="autotoc_md50"></a>
+<h1><a class="anchor" id="autotoc_md77"></a>
 See example</h1>
 <dl class="section see"><dt>See also</dt><dd><a href="https://github.com/ClnViewer/LibWchar2/blob/master/test/test_towupper.c">https://github.com/ClnViewer/LibWchar2/blob/master/test/test_towupper.c</a></dd></dl>
 <p><dl class="section user"><dt>LibWchar2 information</dt><dd></dd></dl>
@@ -92,7 +92,7 @@ See example</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jul 15 2018 03:00:33 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jul 15 2018 16:21:12 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

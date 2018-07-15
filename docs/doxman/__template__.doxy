@@ -8,15 +8,12 @@
 
     # Return Value
 
-    The xxx() function returns nonzero if `wc` is a  wide character belonging
-    to  the wide-character class `xxx`.  
-    Otherwise, it returns zero.
 
 
     # Notes
 
-    The behavior of xxx() depends on the `LC_CTYPE` category of the current locale.
-
+    The behavior of xxx() depends on the `LC_CTYPE` category of the current locale.  
+    The function xxx() provides a better interface to the same functionality.
 
 
     # See example
