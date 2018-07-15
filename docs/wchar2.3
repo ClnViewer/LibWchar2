@@ -359,7 +359,7 @@ include/wchar2.h
 .br
 .RI "Write to stream wide character format variable argument list\&. "
 .ti -1c
-.RI "size_t \fB_vswprintf\fP (wchar_t *restrict, size_t, const wchar_t *restrict, va_list ap)"
+.RI "size_t \fB_vswprintf\fP (wchar_t *restrict, size_t, const wchar_t *restrict, va_list)"
 .br
 .RI "Write formatted data from variable argument list to sized buffer\&. "
 .ti -1c
@@ -915,7 +915,7 @@ Write to stream wide character format variable argument list\&.
 \fBwprintf manual\fP 
 .PP
 
-.SS "size_t _vswprintf (wchar_t * restrict, size_t, const wchar_t * restrict, va_list ap)"
+.SS "size_t _vswprintf (wchar_t * restrict, size_t, const wchar_t * restrict, va_list)"
 
 .PP
 Write formatted data from variable argument list to sized buffer\&. 
@@ -1418,7 +1418,14 @@ function u8wstat required free result
 .SS "void wcprint (wchar_t *)"
 
 .PP
-wchar_t* print This function to test variably only! Instead use _vfprintf, _vfwprintf, _fprintf, _fwprintf Other non standart function 
+wchar_t* print This function to test variably only! Instead use _vfprintf, _vfwprintf, _fprintf, _fwprintf 
+.PP
+\fBOther non standart functions \fP
+.RS 4
+
+.RE
+.PP
+
 .SS "wchar_t* wcsregexp (wchar_t * restrict, wchar_t * restrict, int *)"
 
 .PP

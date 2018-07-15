@@ -375,7 +375,7 @@ int       _wctob(wchar_t);
            */
 wchar_t   _btowc(int);
 
-/*! Other non standart function */
+/*! \par Other non standart functions */
 
           /*!
            * \brief wchar_t* print
@@ -633,7 +633,7 @@ size_t    _vfwprintf(FILE *restrict, const wchar_t *restrict, va_list)
            *
            * - \subpage wprintf
            */
-size_t    _vswprintf(wchar_t *restrict, size_t, const wchar_t *restrict, va_list ap)
+size_t    _vswprintf(wchar_t *restrict, size_t, const wchar_t *restrict, va_list)
                 /* __attribute__((__format__(__wprintf__, 3, 0))) */ ;
 
           /*!

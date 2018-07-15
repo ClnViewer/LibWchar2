@@ -41,7 +41,7 @@ var searchData=
   ['_5fvfprintf',['_vfprintf',['../wchar2_8h.html#a9ba6176b8780555845f6a2328b9bc5cb',1,'wchar2.h']]],
   ['_5fvfwprintf',['_vfwprintf',['../wchar2_8h.html#a27402589a6b951f4ff763a6ac2fa9acb',1,'wchar2.h']]],
   ['_5fvsnprintf',['_vsnprintf',['../wchar2_8h.html#add197bdda7c0cd496d85c2ba464c75b9',1,'wchar2.h']]],
-  ['_5fvswprintf',['_vswprintf',['../wchar2_8h.html#a3665195f24bbe60352fddd326805dced',1,'wchar2.h']]],
+  ['_5fvswprintf',['_vswprintf',['../wchar2_8h.html#a1fab70ae34ff54a753f07ed7657c75cc',1,'wchar2.h']]],
   ['_5fwaccess',['_waccess',['../wchar2_8h.html#a09d17ff6785883e54ee005fee65f0c64',1,'wchar2.h']]],
   ['_5fwaccess_5fs',['_waccess_s',['../wchar2_8h.html#a5d4107c830d5415070afd70248a8a09e',1,'wchar2.h']]],
   ['_5fwaccess_5fselector',['_waccess_selector',['../wchar2_8h.html#a1f273350d886e01b323c97b0bfa46890',1,'wchar2.h']]],
