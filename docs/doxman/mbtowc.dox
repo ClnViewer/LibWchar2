@@ -9,7 +9,7 @@
     character and stores it at `*pwc`.
 
     It updates an internal shift state known only to the mbtowc() function.  
-    If `s` does not point to a null byte `L'\0'`, it returns the number of bytes
+    If `s` does not point to a null byte `L`'\0', it returns the number of bytes
     that were consumed from s, otherwise it returns `0`.
 
     If the `n` bytes starting at `s` do not contain a complete multibyte character,

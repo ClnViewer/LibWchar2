@@ -5,13 +5,12 @@
 
        The wcscpy() function is the wide-character equivalent of the strcpy(3)
        function.  It copies the  wide-character  string  pointed  to  by  src,
-       including  the  terminating  null  wide character (L'\0'), to the array
+       including  the  terminating  null  wide character `L`'\0', to the array
        pointed to by dest.
 
        The strings may not overlap.
 
-       The  programmer  must  ensure  that  there  is  room   for   at   least
-       wcslen(src)+1 wide characters at dest.
+       The  programmer  must  ensure  that  there  is  room   for   at   least `wcslen(src)+1` wide characters at dest.
 
     # Return Value
 

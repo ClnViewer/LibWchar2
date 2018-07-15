@@ -18,7 +18,7 @@
        continue  to  return `NULL`.  Otherwise, the wcstok() function recognizes
        the beginning of a token and returns a pointer to it, but before  doing
        that, it zero-terminates the token by replacing the next wide-character
-       which occurs in delim with  a  null  wide  character  (L'\0'),  and  it
+       which occurs in delim with  a  null  wide  character `L`'\0',  and  it
        updates *ptr so that subsequent calls will continue searching after the
        end of recognized token.
 

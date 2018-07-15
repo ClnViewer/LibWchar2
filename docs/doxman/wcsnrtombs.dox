@@ -21,7 +21,7 @@
           `(size_t) -1` is returned, and errno is set to `EILSEQ`.
 
        2. nwc wide characters have been converted without encountering a  null
-          wide  character (L'\0'), or the length limit forces a stop.  In this
+          wide  character `L`'\0', or the length limit forces a stop.  In this
           case, *src is left pointing to the next wide character  to  be  con-
           verted, and the number of bytes written to dest is returned.
 
@@ -29,7 +29,7 @@
           the terminating null wide character (which has the  side  effect  of
           bringing  back *ps to the initial state).  In this case, *src is set
           to `NULL`, and the number of bytes written to dest, excluding the ter-
-          minating null byte ('\0'), is returned.
+          minating null byte '\0', is returned.
 
        If  dest is `NULL`, len is ignored, and the conversion proceeds as above,
        except that the converted bytes are not written out to memory, and that

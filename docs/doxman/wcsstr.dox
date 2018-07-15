@@ -5,7 +5,7 @@
 
        The wcsstr() function is the wide-character equivalent of the strstr(3)
        function.  It searches for the first occurrence of  the  wide-character
-       string  needle (without its terminating null wide character (L'\0')) as
+       string  needle, without its terminating null wide character `L`'\0', as
        a substring in the wide-character string haystack.
 
     # Return Value

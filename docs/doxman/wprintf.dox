@@ -29,10 +29,9 @@
 
     - The format string is a wide-character string.
     - The output consists of wide characters, not bytes.
-    - swprintf() and vswprintf() take a  maxlen  argument,  sprintf(3)
-      and vsprintf(3)  do  not.  (snprintf(3) and vsnprintf(3) take a
-      maxlen argument, but these  functions  do  not  return  -1  upon
-      buffer overflow on Linux.)
+    - swprintf() and vswprintf() take a  maxlen  argument, sprintf(3) and vsprintf(3)  do  not.  
+    - snprintf(3) and vsnprintf(3) take a maxlen argument, but these functions
+      do not return `-1` upon buffer overflow on Linux.
 
     The treatment of the conversion characters c and s is different:
 
@@ -48,12 +47,12 @@
         wide characters (each by  a  call  to  the  mbrtowc(3)
         function  with  a conversion state starting in the initial state
         before the first byte).  The resulting wide characters are written
-        up to (but not including) the terminating null wide character `(L'\0')`.
+        up to (but not including) the terminating null wide character `L`'\0'.
         If a precision is specified, no more wide  characters  than the number
         specified are written.  
         Note that the precision determines the number of wide characters written,
         not the number of bytes or screen positions.  The array must contain a
-        terminating null byte ('\0'), unless a precision is given and it is so small
+        terminating null byte '\0', unless a precision is given and it is so small
         that the number of converted wide characters reaches it before the end of the
         array is reached.  
         If an l modifier is present:  the `const wchar_t *`  argument  is  expected

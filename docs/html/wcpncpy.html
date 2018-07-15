@@ -68,10 +68,10 @@ $(function() {
 <div class="contents">
 <div class="textblock"><p><b>wcpncpy() - <code>copy a fixed-size string of wide characters</code></b></p>
 <p>The <b>wcpncpy</b>() function is the wide-character equivalent of the <b>stpncpy</b>(3) function.</p>
-<p>It copies at most <em>n</em> wide characters from the wide-character string pointed to by <em>src</em>, including the terminating null wide (L'\0'), to the array pointed to by <em>dest</em>.</p>
+<p>It copies at most <em>n</em> wide characters from the wide-character string pointed to by <em>src</em>, including the terminating null wide <code>L</code>'\0', to the array pointed to by <em>dest</em>.</p>
 <p>Exactly <em>n</em> wide characters are written at <em>dest</em>.</p>
-<p>If the length <em>wcslen(src)</em> is smaller than <em>n</em>, the remaining wide characters in the array pointed to by <em>dest</em> are filled with L'\0' characters. <br />
- If the length <em>wcslen(src)</em> is greater than or equal to <em>n</em>, the string pointed to by <em>dest</em> will not be L'\0' terminated.</p>
+<p>If the length <em>wcslen(src)</em> is smaller than <em>n</em>, the remaining wide characters in the array pointed to by <em>dest</em> are filled with <code>L</code>'\0' characters. <br />
+ If the length <em>wcslen(src)</em> is greater than or equal to <em>n</em>, the string pointed to by <em>dest</em> will not be <code>L</code>'\0' terminated.</p>
 <p>The strings may not overlap. <br />
  The programmer must ensure that there is room for at least <em>n</em> wide characters at <em>dest</em>.</p>
 <h1><a class="anchor" id="autotoc_md82"></a>
@@ -82,15 +82,15 @@ See example</h1>
 <dl class="section see"><dt>See also</dt><dd><a href="https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcpncpy.c">https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcpncpy.c</a></dd></dl>
 <p><dl class="section user"><dt>LibWchar2 information</dt><dd></dd></dl>
 <dl class="section version"><dt>Version</dt><dd>libwchar2 0.0.3 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>Sat Jul 14 2018 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>Sun Jul 15 2018 </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>(c) PS 2018-2018</dd></dl>
-<dl class="section user"><dt>Manual author and License</dt><dd></dd></dl>
+<dl class="section user"><dt>Manual author and license</dt><dd></dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>GNU Public License version 2. <a class="el" href="mlicense.html">Manual license details</a></dd></dl>
  </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jul 15 2018 16:58:36 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jul 15 2018 17:25:45 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

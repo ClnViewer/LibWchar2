@@ -67,32 +67,34 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p><b>wcrtomb - <code>convert a wide character to a multibyte sequence</code></b></p>
-<p>The main case for this function is when s is not <code>NULL</code> and wc is not a null wide character (L'\0'). In this case, the wcrtomb() function con- verts the wide character wc to its multibyte representation and stores it at the beginning of the character array pointed to by s. It updates the shift state *ps, and returns the length of said multibyte represen- tation, that is, the number of bytes written at s.</p>
-<p>A different case is when s is not <code>NULL</code>, but wc is a null wide character (L'\0'). In this case, the wcrtomb() function stores at the character array pointed to by s the shift sequence needed to bring *ps back to the initial state, followed by a '\0' byte. It updates the shift state ps (i.e., brings it into the initial state), and returns the length of the shift sequence plus one, that is, the number of bytes written at s.</p>
-<p>A third case is when s is <code>NULL</code>. In this case, wc is ignored, and the function effectively returns </p><pre class="fragment">wcrtomb(buf, L'\0', ps)
-</pre><p>where buf is an internal anonymous buffer.</p>
+<p>The main case for this function is when s is not <code>NULL</code> and wc is not a null wide character <code>L</code>'\0'. In this case, the wcrtomb() function con- verts the wide character wc to its multibyte representation and stores it at the beginning of the character array pointed to by s. It updates the shift state *ps, and returns the length of said multibyte represen- tation, that is, the number of bytes written at s.</p>
+<p>A different case is when s is not <code>NULL</code>, but wc is a null wide character <code>L</code>'\0'. <br />
+ In this case, the wcrtomb() function stores at the character array pointed to by s the shift sequence needed to bring <code>*ps</code> back to the initial state, followed by a <code>L</code>'\0' byte. <br />
+ It updates the shift state <code>*ps</code>, i.e. - brings it into the initial state, and returns the length of the shift sequence plus one, that is, the number of bytes written at <code>s</code>.</p>
+<p>A third case is when s is <code>NULL</code>. In this case, wc is ignored, and the function effectively returns</p>
+<div class="fragment"><div class="line">wcrtomb(buf, L<span class="charliteral">&#39;\0&#39;</span>, ps)</div></div><!-- fragment --><p>where buf is an internal anonymous buffer.</p>
 <p>In all of the above cases, if ps is <code>NULL</code>, a static anonymous state known only to the wcrtomb() function is used instead.</p>
 <h1><a class="anchor" id="autotoc_md84"></a>
 Return Value</h1>
-<p>The wcrtomb() function returns the number of bytes that have been or would have been written to the byte array at s. If wc can not be rep- resented as a multibyte sequence (according to the current locale), <code>(size_t) -1</code> is returned, and errno set to <code>EILSEQ</code>.</p>
+<p>The wcrtomb() function returns the number of bytes that have been or would have been written to the byte array at s. If wc can not be represented as a multibyte sequence, according to the current locale, <code>(size_t) -1</code> is returned, and errno set to <code>EILSEQ</code>.</p>
 <h1><a class="anchor" id="autotoc_md85"></a>
 Notes</h1>
-<p>The behavior of wcrtomb() depends on the <code>LC_CTYPE</code> category of the cur- rent locale.</p>
-<p>Passing <code>NULL</code> as ps is not multithread safe.</p>
+<p>The behavior of wcrtomb() depends on the <code>LC_CTYPE</code> category of the current locale. <br />
+ Passing <code>NULL</code> as ps is not multithread safe.</p>
 <h1><a class="anchor" id="autotoc_md86"></a>
 See example</h1>
 <dl class="section see"><dt>See also</dt><dd><a href="https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcrtomb.c">https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcrtomb.c</a></dd></dl>
 <p><dl class="section user"><dt>LibWchar2 information</dt><dd></dd></dl>
 <dl class="section version"><dt>Version</dt><dd>libwchar2 0.0.3 </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>Sat Jul 14 2018 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>Sun Jul 15 2018 </dd></dl>
 <dl class="section author"><dt>Author</dt><dd>(c) PS 2018-2018</dd></dl>
-<dl class="section user"><dt>Manual author and License</dt><dd></dd></dl>
+<dl class="section user"><dt>Manual author and license</dt><dd></dd></dl>
 <dl class="section copyright"><dt>Copyright</dt><dd>GNU Public License version 2. <a class="el" href="mlicense.html">Manual license details</a></dd></dl>
  </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jul 15 2018 16:58:36 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jul 15 2018 17:25:45 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

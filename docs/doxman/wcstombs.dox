@@ -17,9 +17,9 @@
           lost.
 
        3. The  wide-character  string has been completely converted, including
-          the terminating null wide character (L'\0').  In this case, the con-
+          the terminating null wide character `L`'\0'.  In this case, the con-
           version  ends in the initial shift state.  The number of bytes writ-
-          ten  to  dest,  excluding  the  terminating  null  byte  ('\0'),  is
+          ten  to  dest,  excluding  the  terminating  null  byte  '\0',  is
           returned.
 
        The  programmer  must ensure that there is room for at least n bytes at
@@ -41,11 +41,9 @@
 
     # Notes
 
-       The behavior of wcstombs() depends on the `LC_CTYPE` category of the cur-
-       rent locale.
+    The behavior of wcstombs() depends on the `LC_CTYPE` category of the current locale.
 
-       The function wcsrtombs(3) provides a better interface to the same func-
-       tionality.
+    The function wcsrtombs(3) provides a better interface to the same functionality.
 
     # See example
 

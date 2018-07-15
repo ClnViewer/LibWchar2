@@ -23,16 +23,16 @@
 
     The conversion can stop for three reasons:
 
-    1. An  invalid  multibyte sequence has been encountered.  
+    - An  invalid  multibyte sequence has been encountered.  
         In this case, `*src` is left pointing to the invalid multibyte sequence, `(size_t) -1`
         is returned, and `errno` is set to `EILSEQ`.
 
-    2. length `non-L'\0'`  wide characters  have been stored at dest.  
+    - length non `L`'\0'  wide characters  have been stored at dest.  
         In this case, `*src` is left pointing to the next  multibyte sequence to  be converted,
         and the number of wide characters written to dest is returned.
 
-    3. The multibyte string has been completely  converted,  including  the
-        terminating null wide character `L'\0'`, which has the side effect of
+    - The multibyte string has been completely  converted,  including  the
+        terminating null wide character `L`'\0', which has the side effect of
         bringing back `*ps` to the initial state.  
         In this case, `*src` is set to `NULL`, and the number of wide characters
         written to dest, excluding the terminating null wide character, is returned.

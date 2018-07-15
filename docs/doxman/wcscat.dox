@@ -3,20 +3,17 @@
 
     __wcscat - `concatenate two wide-character strings`__
 
-       The wcscat() function is the wide-character equivalent of the strcat(3)
-       function.  It copies the  wide-character  string  pointed  to  by  src,
-       including  the  terminating  null wide character (L'\0'), to the end of
-       the wide-character string pointed to by dest.
+    The wcscat() function is the wide-character equivalent of the strcat(3) function.  
+    It copies the wide-character string pointed to by `src`, including the terminating
+    null wide character `L`'\0', to the end of the wide-character string pointed to by dest.  
+    The strings may not overlap.
 
-       The strings may not overlap.
-
-       The  programmer  must  ensure  that  there  is  room   for   at   least
-       wcslen(dest)+wcslen(src)+1 wide characters at dest.
-
+    The programmer must ensure that there is room for
+    at least `wcslen(dest) + wcslen(src) + 1` wide characters at `dest`.
 
     # Return Value
 
-       wcscat() returns dest.
+    Function wcscat() returns `dest`.
 
     # See example
 

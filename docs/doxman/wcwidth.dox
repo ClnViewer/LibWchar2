@@ -3,19 +3,18 @@
 
     __wcwidth - `determine columns needed for a wide character`__
 
-       The  wcwidth()  function returns the number of columns needed to repre-
-       sent the wide character c.  If c is a  printable  wide  character,  the
-       value is at least 0.  If c is null wide character (L'\0'), the value is 0.
-       Otherwise, -1 is returned.
+    The  wcwidth()  function returns the number of columns needed to represent the wide character `c`.  
+    If `c` is a printable  wide  character, the value is at least `0`.  
+    If c is null wide character `L`'\0', the value is `0`.  
+    Otherwise, `-1` is returned.
 
     # Return Value
 
-       The wcwidth() function returns the number of column positions for c.
+    The wcwidth() function returns the number of column positions for `c`.
 
     # Notes
 
-       The behavior of wcwidth() depends on the `LC_CTYPE` category of the  cur-
-       rent locale.
+    The behavior of wcwidth() depends on the `LC_CTYPE` category of the  current locale.
 
     # See example
 
