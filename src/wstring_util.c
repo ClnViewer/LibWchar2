@@ -225,12 +225,9 @@ size_t wstring_format(string_ws *dst, const wchar_t *restrict fmt, ...)
 
 void wstring_free(string_ws *restrict dst)
 {
-    if (
-        (!dst)    ||
-        (dst->str == NULL)
-       ) { return; }
+    if (!dst) { return; }
+    if (dst->str != NULL) { free(dst->str); }
 
-    free(dst->str);
     dst->str = NULL;
     dst->sz  = 0;
 }

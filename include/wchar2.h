@@ -392,7 +392,7 @@ void      wcprint(wchar_t*);
            * return - boolean
            *
            */
-int       wcstocscmp(const char*, wchar_t*, size_t); // ASCII mode only
+int       wcstocscmp(const char*, wchar_t*, size_t); // ASCII range only
 
           /*!
            *    Original name: aov-rx - Angel Ortega's regular expression library
@@ -597,7 +597,12 @@ int       _wcscmp(const wchar_t*, const wchar_t*);
            * - \subpage wcsncmp
            */
 int       _wcsncmp(const wchar_t*, const wchar_t*, size_t);
-          /*! \brief Compare wide characters in memory */
+
+          /*!
+           * \brief Compare wide characters in memory
+           *
+           * - \subpage wmemcmp
+           */
 int       _wmemcmp(const wchar_t*, const wchar_t*, size_t);
 
           /*! \brief Write to stream char format variable argument list */
@@ -1172,6 +1177,7 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
 #define swprintf _swprintf
 #define wprintf _wprintf
 #define fprintf _fprintf
+#define printf _printf
 
 /*! Tests compability only */
 #define _wcprint wcprint
