@@ -9,17 +9,17 @@
     The sequence of characters in the string src shall begin in the initial shift state.  
     The conversion can stop for three reasons:
 
-    1. An  invalid  multibyte sequence has been encountered.  
+
+    - An  invalid  multibyte sequence has been encountered.  
         In this case, `(size_t) -1` is returned.
 
-    2. Wide characters `non-L'\0'` have been stored at position `n` to `dest`.  
+    - Wide characters non `L`'\0' have been stored at position `n` to `dest`.  
         In this case, the number of wide characters written to `dest` is returned, but the
         shift state at this point is lost.
 
-    3. The multibyte string has been completely  converted, including the
-        terminating null character `L'\0'`.  
-        In this case, the number of wide characters written to `dest`, excluding the
-        terminating  null  wide character, is returned.
+    - The multibyte string has been completely  converted, including the terminating null character `L`'\0'.  
+        In this case, the number of wide characters written to `dest`, excluding the terminating null wide
+        character, is returned.
 
     The programmer must ensure that there is room for at least n wide characters at `dest`.
 
@@ -30,12 +30,16 @@
     In order to avoid the case `2` above, the programmer should make sure `n` is greater than
     or equal to:
 
+
+
     \code{.c}
 
 
           ... = mbstowcs(NULL,src,0) + 1;
 
     \endcode
+
+
 
 
     # Return Value

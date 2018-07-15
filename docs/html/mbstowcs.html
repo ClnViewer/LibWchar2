@@ -71,12 +71,14 @@ $(function() {
  At most n wide characters are written to dest. <br />
  The sequence of characters in the string src shall begin in the initial shift state. <br />
  The conversion can stop for three reasons:</p>
-<ol type="1">
+<ul>
 <li>An invalid multibyte sequence has been encountered. <br />
  In this case, <code>(size_t) -1</code> is returned.</li>
-<li>Wide characters &lsquo;non-L&rsquo;\0'<code>have been stored at position</code>n<code>to</code>dest<code>. &lt;br&gt; In this case, the number of wide characters written to</code>dest` is returned, but the shift state at this point is lost.</li>
-<li>The multibyte string has been completely converted, including the terminating null character &lsquo;L&rsquo;\0'<code>. &lt;br&gt; In this case, the number of wide characters written to</code>dest`, excluding the terminating null wide character, is returned.</li>
-</ol>
+<li>Wide characters non <code>L</code>'\0' have been stored at position <code>n</code> to <code>dest</code>. <br />
+ In this case, the number of wide characters written to <code>dest</code> is returned, but the shift state at this point is lost.</li>
+<li>The multibyte string has been completely converted, including the terminating null character <code>L</code>'\0'. <br />
+ In this case, the number of wide characters written to <code>dest</code>, excluding the terminating null wide character, is returned.</li>
+</ul>
 <p>The programmer must ensure that there is room for at least n wide characters at <code>dest</code>.</p>
 <p>If <code>dest</code> is <code>NULL</code>, <code>n</code> is ignored, and the conversion proceeds as above, except that the converted wide characters are not written out to memory, and that no length limit exists.</p>
 <p>In order to avoid the case <code>2</code> above, the programmer should make sure <code>n</code> is greater than or equal to:</p>
@@ -101,7 +103,7 @@ See example</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jul 15 2018 16:53:25 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jul 15 2018 16:58:36 for libwchar2 0.0.3 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>
