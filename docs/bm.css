@@ -11,3 +11,4 @@ dl.warning, dl.attention, dl.note {margin: 15px 0px 15px 12px;padding-left:10px;
 dl.note {border-color: #FFC107;}
 dl.warning {border-color: #FF5722;}
 dl.attention{border-color: #FF8100;}
+dd {margin-left:0;font-family: monospace;font-size: 16px;}
