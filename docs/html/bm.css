@@ -12,4 +12,4 @@ dl.note {border-color: #FFC107;}
 dl.warning {border-color: #FF5722;}
 dl.attention{border-color: #FF8100;}
 dd {margin-left:0;font-family: monospace;font-size: 16px;}
-li {font-family: monospace;font-size: 16px;}
+li {font-family: monospace;font-size: 16px; padding: 5px 0px 5px 5px;}
