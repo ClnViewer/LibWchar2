@@ -188,8 +188,7 @@ size_t wstring_append(string_ws *dst, const wchar_t *restrict s, size_t sz)
 
 size_t wstring_appends_(string_ws *dst, ...)
 {
-    int     cnt = 0;
-    size_t  sz  = 0;
+    size_t  sz  = 0U, cnt = 0U;
     wchar_t *ws;
     va_list ap, ap2;
 
@@ -208,7 +207,7 @@ size_t wstring_appends_(string_ws *dst, ...)
 
         if (!cnt) { va_end(ap); return 0U; }
 
-        string_ws wsarr[cnt]; cnt = 0;
+        string_ws wsarr[cnt]; cnt = 0U;
 
         while ((ws = va_arg(ap, wchar_t*)) != NULL)
         {
