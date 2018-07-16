@@ -204,18 +204,18 @@ size_t wstring_format(string_ws *dst, const wchar_t *restrict fmt, ...)
 
     do
     {
-        ssize_t sz;
+        int sz = 1024;
 
         if (
             (!fmt)                                       ||
             (!dst)                                       ||
-            ((sz = _vswprintf(NULL, 0, fmt, ap)) <= 0)   ||
             (!wstring_alloc(dst, sz))                    ||
             (_vswprintf((void*)(dst->str + dst->sz), (sz + 1), fmt, ap) <= 0)
            ) { break; }
 
-        dst->sz += (size_t)sz;
+        dst->sz  = (size_t) _wcslen(dst->str);
         ret      = dst->sz;
+        dst->str = realloc(dst->str, ((dst->sz + 1) * sizeof(wchar_t)));
 
     } while (0);
 

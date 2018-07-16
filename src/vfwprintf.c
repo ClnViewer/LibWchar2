@@ -330,16 +330,16 @@ static int wprintf_core(FOut *f, const wchar_t *fmt, va_list *ap, union arg *nl_
 		/* Handle literal text and %% format specifiers */
 		for (a=s; *s && *s!='%'; s++);
 		litpct = _wcsspn(s, L"%")/2; /* Optimize %%%% runs */
-		z = s+litpct;
-		s += 2*litpct;
+		z  = s + litpct;
+		s += 2 * litpct;
 		l = z-a;
 		if (f) out(f, a, l);
 		if (l) continue;
 
-		if (iswdigit(s[1]) && s[2]=='$') {
-			l10n=1;
-			argpos = s[1]-'0';
-			s+=3;
+		if (iswdigit(s[1]) && (s[2] == '$')) {
+			l10n = 1;
+			argpos = (s[1] - '0');
+			s += 3;
 		} else {
 			argpos = -1;
 			s++;
@@ -350,7 +350,7 @@ static int wprintf_core(FOut *f, const wchar_t *fmt, va_list *ap, union arg *nl_
 			fl |= (1U << (*s - ' '));
 
 		/* Read field width */
-		if (*s=='*') {
+		if (*s == '*') {
 			if (iswdigit(s[1]) && s[2]=='$') {
 				l10n=1;
 				nl_type[s[1]-'0'] = INT;
@@ -364,7 +364,7 @@ static int wprintf_core(FOut *f, const wchar_t *fmt, va_list *ap, union arg *nl_
 		} else if ((w = getint(&s))<0) return -1;
 
 		/* Read precision */
-		if (*s=='.' && s[1]=='*') {
+		if (*s == '.' && s[1]=='*') {
 			if (isdigit(s[2]) && s[3]=='$') {
 				nl_type[s[2]-'0'] = INT;
 				p = nl_arg[s[2]-'0'].i;
@@ -523,11 +523,20 @@ size_t _vswprintf(wchar_t *restrict s, size_t l, const wchar_t *restrict fmt, va
     union arg nl_arg[__ARGMAX];
     size_t ret;
     FOut out[1];
-    out_init_buffer(out, s, l);
+
     va_copy(ap2, ap);
+
+    if ((!s) || (!l))
+    {
+        ret = wprintf_core(0, fmt, &ap2, nl_arg, nl_type);
+        va_end(ap2);
+        return ret;
+    }
+    out_init_buffer(out, s, l);
     ret = wprintf_core(out, fmt, &ap2, nl_arg, nl_type);
     va_end(ap2);
-    if (out_overflow(out)) return -1;
+
+    if (out_overflow(out)) return ((size_t)-1);
     return ret;
 }
 
