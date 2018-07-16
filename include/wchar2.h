@@ -899,6 +899,7 @@ size_t    wstring_append(string_ws*, const wchar_t *restrict, size_t);
            *
            *  \note Do not use this function directly, first use the wstring_appends() macro,
            *        or end the last function's parameters with a value of NULL.
+           *  \attention function wstring_appends_() required free result
            *
            */
 size_t    wstring_appends_(string_ws*, ...);
