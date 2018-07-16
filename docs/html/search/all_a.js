@@ -52,6 +52,7 @@ var searchData=
   ['wstring_5falloc',['wstring_alloc',['../wchar2_8h.html#acd6b6cdd93d0a1f844d54572468f80ce',1,'wchar2.h']]],
   ['wstring_5fappend',['wstring_append',['../wchar2_8h.html#a6ea51e2ed496d7622890d90021d78ed3',1,'wchar2.h']]],
   ['wstring_5fappend_5fcvt',['wstring_append_cvt',['../wchar2_8h.html#ad1955a431f93440fceb9a493e3f1a48e',1,'wchar2.h']]],
+  ['wstring_5fappends',['wstring_appends',['../wchar2_8h.html#af8d4aaae7e0bf61359c5428c485c938b',1,'wchar2.h']]],
   ['wstring_5fappends_5f',['wstring_appends_',['../wchar2_8h.html#ac1bca3b3e0201e5a928fc06f83df994e',1,'wchar2.h']]],
   ['wstring_5fcstows',['wstring_cstows',['../wchar2_8h.html#a42417938ef3bbfb762adc2b4f939190d',1,'wchar2.h']]],
   ['wstring_5fcstows_5falloc',['wstring_cstows_alloc',['../wchar2_8h.html#a76a73789ad48f96b235c4d71d487f69b',1,'wchar2.h']]],

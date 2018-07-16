@@ -894,8 +894,18 @@ size_t    wstring_format(string_ws*, const wchar_t *restrict, ...);
           /*! \brief Append string, wchar_t input, struct string_ws output */
 size_t    wstring_append(string_ws*, const wchar_t *restrict, size_t);
 
-          /*! \brief Append string, only wchar_t* args inputs, struct string_ws output */
+          /*!
+           *  \brief Append string, only wchar_t* args inputs, struct string_ws output
+           *
+           *  \note Do not use this function directly, first use the wstring_appends() macro,
+           *        or end the last function's parameters with a value of NULL.
+           *
+           */
 size_t    wstring_appends_(string_ws*, ...);
+
+          /*!
+           *  \brief Macro to function wstring_appends_(), see notes
+           */
 #define   wstring_appends(A,...) wstring_appends_(A,__VA_ARGS__,NULL)
 
           /*! \brief Append string, char input, struct string_ws output */

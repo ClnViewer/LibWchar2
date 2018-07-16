@@ -49,6 +49,7 @@ include/wchar2.h
 .ti -1c
 .RI "#define \fBwstring_appends\fP(A, \&.\&.\&.)   \fBwstring_appends_\fP(A,__VA_ARGS__,NULL)"
 .br
+.RI "Macro to function \fBwstring_appends_()\fP, see notes\&. "
 .ti -1c
 .RI "#define \fBwstocscvt\fP(A,  B,  D)"
 .br
@@ -1466,6 +1467,17 @@ Convert wchar_t* to utf-8 char* char* - output const wchar_t* - input return siz
 \fBNote:\fP
 .RS 4
 function wcstou8s required free result 
+.RE
+.PP
+
+.SS "size_t wstring_appends_ (\fBstring_ws\fP *,  \&.\&.\&.)"
+
+.PP
+Append string, only wchar_t* args inputs, struct \fBstring_ws\fP output\&. 
+.PP
+\fBNote:\fP
+.RS 4
+Do not use this function directly, first use the \fBwstring_appends()\fP macro, or end the last function's parameters with a value of NULL\&. 
 .RE
 .PP
 

@@ -113,7 +113,8 @@ Macros</h2></td></tr>
 <tr class="memdesc:a33b0160c4a515fa6dd94f5f55072c964"><td class="mdescLeft">&#160;</td><td class="mdescRight">determine size <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a> macro <br /></td></tr>
 <tr class="separator:a33b0160c4a515fa6dd94f5f55072c964"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8d4aaae7e0bf61359c5428c485c938b"><td class="memItemLeft" align="right" valign="top"><a id="af8d4aaae7e0bf61359c5428c485c938b"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>wstring_appends</b>(A, ...)&#160;&#160;&#160;<a class="el" href="wchar2_8h.html#ac1bca3b3e0201e5a928fc06f83df994e">wstring_appends_</a>(A,__VA_ARGS__,NULL)</td></tr>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#af8d4aaae7e0bf61359c5428c485c938b">wstring_appends</a>(A, ...)&#160;&#160;&#160;<a class="el" href="wchar2_8h.html#ac1bca3b3e0201e5a928fc06f83df994e">wstring_appends_</a>(A,__VA_ARGS__,NULL)</td></tr>
+<tr class="memdesc:af8d4aaae7e0bf61359c5428c485c938b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to function <a class="el" href="wchar2_8h.html#ac1bca3b3e0201e5a928fc06f83df994e" title="Append string, only wchar_t* args inputs, struct string_ws output. ">wstring_appends_()</a>, see notes. <br /></td></tr>
 <tr class="separator:af8d4aaae7e0bf61359c5428c485c938b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68e9217a61693973cf4301a4f8761150"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a68e9217a61693973cf4301a4f8761150">wstocscvt</a>(A,  B,  D)</td></tr>
 <tr class="memdesc:a68e9217a61693973cf4301a4f8761150"><td class="mdescLeft">&#160;</td><td class="mdescRight">wchar_t* type to char[] A char[] - array name B wchar_t* - source D - function return value if error  <a href="#a68e9217a61693973cf4301a4f8761150">More...</a><br /></td></tr>
@@ -564,9 +565,8 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wc
 size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a6ea51e2ed496d7622890d90021d78ed3">wstring_append</a> (<a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *, const wchar_t *restrict, size_t)</td></tr>
 <tr class="memdesc:a6ea51e2ed496d7622890d90021d78ed3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append string, wchar_t input, struct <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a> output. <br /></td></tr>
 <tr class="separator:a6ea51e2ed496d7622890d90021d78ed3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1bca3b3e0201e5a928fc06f83df994e"><td class="memItemLeft" align="right" valign="top"><a id="ac1bca3b3e0201e5a928fc06f83df994e"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#ac1bca3b3e0201e5a928fc06f83df994e">wstring_appends_</a> (<a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *,...)</td></tr>
-<tr class="memdesc:ac1bca3b3e0201e5a928fc06f83df994e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append string, only wchar_t* args inputs, struct <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a> output. <br /></td></tr>
+<tr class="memitem:ac1bca3b3e0201e5a928fc06f83df994e"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#ac1bca3b3e0201e5a928fc06f83df994e">wstring_appends_</a> (<a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *,...)</td></tr>
+<tr class="memdesc:ac1bca3b3e0201e5a928fc06f83df994e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append string, only wchar_t* args inputs, struct <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a> output.  <a href="#ac1bca3b3e0201e5a928fc06f83df994e">More...</a><br /></td></tr>
 <tr class="separator:ac1bca3b3e0201e5a928fc06f83df994e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1955a431f93440fceb9a493e3f1a48e"><td class="memItemLeft" align="right" valign="top"><a id="ad1955a431f93440fceb9a493e3f1a48e"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#ad1955a431f93440fceb9a493e3f1a48e">wstring_append_cvt</a> (<a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *, const char *restrict, size_t)</td></tr>
@@ -3477,6 +3477,37 @@ size wide string </td></tr>
 
 </div>
 </div>
+<a id="ac1bca3b3e0201e5a928fc06f83df994e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1bca3b3e0201e5a928fc06f83df994e">&#9670;&nbsp;</a></span>wstring_appends_()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t wstring_appends_ </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Append string, only wchar_t* args inputs, struct <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a> output. </p>
+<dl class="section note"><dt>Note</dt><dd>Do not use this function directly, first use the <a class="el" href="wchar2_8h.html#af8d4aaae7e0bf61359c5428c485c938b" title="Macro to function wstring_appends_(), see notes. ">wstring_appends()</a> macro, or end the last function's parameters with a value of NULL. </dd></dl>
+
+</div>
+</div>
 <a id="a76a73789ad48f96b235c4d71d487f69b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a76a73789ad48f96b235c4d71d487f69b">&#9670;&nbsp;</a></span>wstring_cstows_alloc()</h2>
 
@@ -3662,7 +3693,7 @@ size wide string </td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 16 2018 20:52:14 for libwchar2 0.0.4 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 16 2018 23:07:23 for libwchar2 0.0.4 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>
