@@ -52,6 +52,8 @@
 
 /* Some useful macros */
 
+#define __NELE(a) (sizeof(a) / sizeof(a[0]))
+
 #define __MAX(a,b) ((a) > (b) ? (a) : (b))
 #define __MIN(a,b) ((a) < (b) ? (a) : (b))
 

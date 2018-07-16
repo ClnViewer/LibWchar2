@@ -186,6 +186,58 @@ size_t wstring_append(string_ws *dst, const wchar_t *restrict s, size_t sz)
     return dst->sz;
 }
 
+size_t wstring_appends_(string_ws *dst, ...)
+{
+    int     cnt = 0;
+    size_t  sz  = 0;
+    wchar_t *ws;
+    va_list ap, ap2;
+
+    if (!dst) return 0U;
+
+    va_start(ap, dst);
+    va_copy(ap2, ap);
+
+    do
+    {
+        while ((ws = va_arg(ap2, wchar_t*)) != NULL)
+        {
+            cnt++;
+        }
+        va_end(ap2);
+
+        if (!cnt) { va_end(ap); return 0U; }
+
+        string_ws wsarr[cnt]; cnt = 0;
+
+        while ((ws = va_arg(ap, wchar_t*)) != NULL)
+        {
+            wsarr[cnt].str = ws;
+            wsarr[cnt].sz  = wcslen(ws);
+            sz += wsarr[cnt++].sz;
+        }
+        va_end(ap);
+
+        if (
+            (!sz)                  ||
+            (!wstring_alloc(dst, sz))
+           ) { break; }
+
+        for (cnt = 0; cnt < __NELE(wsarr); cnt++)
+        {
+            (void) _wmemcpy((void*)(dst->str + dst->sz), (const void*)wsarr[cnt].str, wsarr[cnt].sz);
+            dst->sz += wsarr[cnt].sz;
+        }
+
+        dst->str[dst->sz] = L'\0';
+        return dst->sz;
+
+    } while (0);
+
+    wstring_free(dst);
+    return 0U;
+}
+
 size_t wstring_append_cvt(string_ws *dst, const char *restrict c, size_t sz)
 {
     sz = ((!sz) ? strlen(c) : sz);
@@ -204,6 +256,7 @@ size_t wstring_format(string_ws *dst, const wchar_t *restrict fmt, ...)
 
     do
     {
+        //TODO: make _vswprintf -> wprintf_core size output
         int sz = 1024;
 
         if (
@@ -215,7 +268,7 @@ size_t wstring_format(string_ws *dst, const wchar_t *restrict fmt, ...)
 
         dst->sz  = (size_t) _wcslen(dst->str);
         ret      = dst->sz;
-        dst->str = realloc(dst->str, ((dst->sz + 1) * sizeof(wchar_t)));
+        if (!(dst->str = realloc(dst->str, ((dst->sz + 1) * sizeof(wchar_t))))) { dst->sz = 0U; break; }
 
     } while (0);
 

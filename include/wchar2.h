@@ -890,8 +890,14 @@ size_t    wstring_cstows_ws_alloc(string_ws *restrict, const char *restrict);
 
           /*! \brief Append string, format vargs input, struct string_ws output */
 size_t    wstring_format(string_ws*, const wchar_t *restrict, ...);
+
           /*! \brief Append string, wchar_t input, struct string_ws output */
 size_t    wstring_append(string_ws*, const wchar_t *restrict, size_t);
+
+          /*! \brief Append string, only wchar_t* args inputs, struct string_ws output */
+size_t    wstring_appends_(string_ws*, ...);
+#define   wstring_appends(A,...) wstring_appends_(A,__VA_ARGS__,NULL)
+
           /*! \brief Append string, char input, struct string_ws output */
 size_t    wstring_append_cvt(string_ws*, const char *restrict, size_t);
 

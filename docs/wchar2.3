@@ -47,6 +47,9 @@ include/wchar2.h
 .br
 .RI "determine size \fBstring_ws\fP macro "
 .ti -1c
+.RI "#define \fBwstring_appends\fP(A, \&.\&.\&.)   \fBwstring_appends_\fP(A,__VA_ARGS__,NULL)"
+.br
+.ti -1c
 .RI "#define \fBwstocscvt\fP(A,  B,  D)"
 .br
 .RI "wchar_t* type to char[] A char[] - array name B wchar_t* - source D - function return value if error "
@@ -582,6 +585,10 @@ include/wchar2.h
 .RI "size_t \fBwstring_append\fP (\fBstring_ws\fP *, const wchar_t *restrict, size_t)"
 .br
 .RI "Append string, wchar_t input, struct \fBstring_ws\fP output\&. "
+.ti -1c
+.RI "size_t \fBwstring_appends_\fP (\fBstring_ws\fP *,\&.\&.\&.)"
+.br
+.RI "Append string, only wchar_t* args inputs, struct \fBstring_ws\fP output\&. "
 .ti -1c
 .RI "size_t \fBwstring_append_cvt\fP (\fBstring_ws\fP *, const char *restrict, size_t)"
 .br
