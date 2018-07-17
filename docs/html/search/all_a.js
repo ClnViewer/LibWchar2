@@ -62,6 +62,7 @@ var searchData=
   ['wstring_5fisempty',['wstring_isempty',['../wchar2_8h.html#a31488123da3cd7e2e3cb4eb0a03509c9',1,'wchar2.h']]],
   ['wstring_5fswstocs_5falloc',['wstring_swstocs_alloc',['../wchar2_8h.html#a65673d494af05df3881f1caf0a61c3a0',1,'wchar2.h']]],
   ['wstring_5ftrunc',['wstring_trunc',['../wchar2_8h.html#a741c3f78c098a2f1b1bcfabff95bb318',1,'wchar2.h']]],
+  ['wstring_5ftrunc_5falloc',['wstring_trunc_alloc',['../wchar2_8h.html#af93b37ba9262b389b26d833265c2d97d',1,'wchar2.h']]],
   ['wstring_5fwstocs',['wstring_wstocs',['../wchar2_8h.html#a9b41c94c3f68d24c0e383a5613e01fe0',1,'wchar2.h']]],
   ['wstring_5fwstocs_5falloc',['wstring_wstocs_alloc',['../wchar2_8h.html#a696e9182a1ea804548dd4ed993fc1fd0',1,'wchar2.h']]],
   ['wstrtocscvt',['wstrtocscvt',['../wchar2_8h.html#a674a7950e9f83d924109688e15565e93',1,'wchar2.h']]]

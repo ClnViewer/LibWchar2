@@ -928,8 +928,16 @@ size_t    wstring_cstows(wchar_t [], size_t, const char *restrict);
 
           /*! \brief Check wchar_t input string is empty, bool return */
 int       wstring_isempty(const wchar_t *restrict s, int);
-          /*! \brief Truncation string, wchar_t input, struct string_ws return */
+
+          /*!
+           *  \brief Truncation string, wchar_t input, struct string_ws return
+           */
 string_ws wstring_trunc(const wchar_t *ws, int);
+
+          /*!
+           *  \brief Truncation string, wchar_t input, return pointer to struct string_ws and lenght
+           */
+size_t    wstring_trunc_alloc(string_ws *restrict, const wchar_t*, int);
 
 /*! \cond NOTINDOC */
 

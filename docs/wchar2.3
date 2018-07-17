@@ -1,4 +1,4 @@
-.TH "include/wchar2.h" 3 "Mon Jul 16 2018" "libwchar2 0.0.4" \" -*- nroff -*-
+.TH "include/wchar2.h" 3 "Tue Jul 17 2018" "libwchar2 0.0.4" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -610,6 +610,10 @@ include/wchar2.h
 .RI "\fBstring_ws\fP \fBwstring_trunc\fP (const wchar_t *ws, int)"
 .br
 .RI "Truncation string, wchar_t input, struct \fBstring_ws\fP return\&. "
+.ti -1c
+.RI "size_t \fBwstring_trunc_alloc\fP (\fBstring_ws\fP *restrict, const wchar_t *, int)"
+.br
+.RI "Truncation string, wchar_t input, return pointer to struct \fBstring_ws\fP and lenght\&. "
 .in -1c
 .SH "Data Structure Documentation"
 .PP 

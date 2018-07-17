@@ -29,6 +29,17 @@
 #include <stdlib.h>
 #include "libwchar.h"
 
+#if defined(_WIN32) || defined(__WIN32__) || defined(_MSC_VER)
+#   undef  _wmemcpy
+#   define _wmemcpy wmemcpy
+#   define _wcslen wcslen
+#   define _wcstombs wcstombs
+#   define _vswprintf vswprintf
+#   include "../winext/libwchar-extension.h"
+#else
+#   include "libwchar.h"
+#endif
+
 const unsigned char c_strip[0x100] = {
     1,0,0,0,0,0,0,0,0,1,1,0,0,1,0,0,
     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -86,9 +97,29 @@ string_ws wstring_trunc(const wchar_t *ws, int sz)
 
     } while (0);
 
-    string_ws ss = { (wchar_t*)c, sz };
+    string_ws ss = { (wchar_t*)c, (size_t)sz };
     return    ss;
 }
+
+size_t wstring_trunc_alloc(string_ws *restrict dst, const wchar_t *ws, int sz)
+{
+#   if !defined(_MSC_VER)
+    wchar_t __AUTO *p = dst->str;
+#   endif
+    string_ws wss = wstring_trunc(ws, sz);
+
+    if (
+        (!wss.sz)                     ||
+        (!wstring_alloc(dst, wss.sz)) ||
+        (!_wmemcpy((void*)(dst->str + dst->sz), (const void*)wss.str, wss.sz))
+       ) { return 0; }
+
+#   if !defined(_MSC_VER)
+    p = NULL;
+#   endif
+    return dst->sz;
+}
+
 
 size_t wstring_alloc(string_ws *restrict dst, size_t sz)
 {
@@ -127,11 +158,16 @@ char * wstring_swstocs_alloc(const string_ws *restrict src)
 
 size_t wstring_cstows_ws_alloc(string_ws *restrict ws, const char *restrict src)
 {
+#   if !defined(_MSC_VER)
     wchar_t __AUTO *p = NULL;
+#   endif
 
     if (!ws) { return 0U; }
     wstring_free(ws);
+
+#   if !defined(_MSC_VER)
     p = ws->str;
+#   endif
 
     if (
         (!src)                                                   ||
@@ -141,7 +177,10 @@ size_t wstring_cstows_ws_alloc(string_ws *restrict ws, const char *restrict src)
        ) { ws->str = NULL; return 0U; }
 
     // ws->str[ws->sz] = L'\0';
+#   if !defined(_MSC_VER)
     p = NULL;
+#   endif
+
     return ws->sz;
 }
 
@@ -188,17 +227,25 @@ size_t wstring_append(string_ws *dst, const wchar_t *restrict s, size_t sz)
 
 size_t wstring_appends_(string_ws *dst, ...)
 {
-    size_t  sz  = 0U, cnt = 0U;
+    size_t   i, sz  = 0U, cnt = 0U;
     wchar_t *ws;
+#   if defined(_MSC_VER)
+    va_list ap;
+#   else
     va_list ap, ap2;
+#   endif
 
     if (!dst) return 0U;
 
-    va_start(ap, dst);
-    va_copy(ap2, ap);
-
     do
     {
+#       if defined(_MSC_VER)
+        string_ws wsarr[__ARGMAX] = {0};
+        va_start(ap, dst);
+#       else
+        va_start(ap, dst);
+        va_copy(ap2, ap);
+
         while ((ws = va_arg(ap2, wchar_t*)) != NULL)
         {
             cnt++;
@@ -208,6 +255,7 @@ size_t wstring_appends_(string_ws *dst, ...)
         if (!cnt) { va_end(ap); return 0U; }
 
         string_ws wsarr[cnt]; cnt = 0U;
+#       endif
 
         while ((ws = va_arg(ap, wchar_t*)) != NULL)
         {
@@ -222,10 +270,15 @@ size_t wstring_appends_(string_ws *dst, ...)
             (!wstring_alloc(dst, sz))
            ) { break; }
 
-        for (cnt = 0; cnt < __NELE(wsarr); cnt++)
+#       if defined(_MSC_VER)
+        for (i = 0U; i < cnt; i++)
+#       else
+        for (i = 0U; i < __NELE(wsarr); i++)
+#       endif
         {
-            (void) _wmemcpy((void*)(dst->str + dst->sz), (const void*)wsarr[cnt].str, wsarr[cnt].sz);
-            dst->sz += wsarr[cnt].sz;
+            if (wsarr[i].str == NULL) break;
+            (void) _wmemcpy((void*)(dst->str + dst->sz), (const void*)wsarr[i].str, wsarr[i].sz);
+            dst->sz += wsarr[i].sz;
         }
 
         dst->str[dst->sz] = L'\0';
@@ -255,19 +308,28 @@ size_t wstring_format(string_ws *dst, const wchar_t *restrict fmt, ...)
 
     do
     {
-        //TODO: make _vswprintf -> wprintf_core size output
+#       if defined(_MSC_VER)
+        int sz = 0;
+#       else
+        //TODO: *nix -> make _vswprintf -> wprintf_core size output
         int sz = 1024;
+#       endif
 
         if (
             (!fmt)                                       ||
             (!dst)                                       ||
+#           if defined(_MSC_VER)
+            ((sz = _vswprintf(NULL, 0, fmt, ap)) <= 0)   ||
+#           endif
             (!wstring_alloc(dst, sz))                    ||
             (_vswprintf((void*)(dst->str + dst->sz), (sz + 1), fmt, ap) <= 0)
            ) { break; }
 
         dst->sz  = (size_t) _wcslen(dst->str);
         ret      = dst->sz;
+#       if !defined(_MSC_VER)
         if (!(dst->str = realloc(dst->str, ((dst->sz + 1) * sizeof(wchar_t))))) { dst->sz = 0U; break; }
+#       endif
 
     } while (0);
 
