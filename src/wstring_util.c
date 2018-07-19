@@ -24,20 +24,16 @@
     SOFTWARE.
  */
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include "libwchar.h"
+#include "libbuild.h"
 
-#if defined(_WIN32) || defined(__WIN32__) || defined(_MSC_VER)
-#   undef  _wmemcpy
-#   define _wmemcpy wmemcpy
-#   define _wcslen wcslen
-#   define _wcstombs wcstombs
-#   define _vswprintf vswprintf
-#   include "../winext/libwchar-extension.h"
+#if defined(OS_WIN32) || defined(OS_WIN64) || defined(_MSC_VER)
+#   include "libwcharext.h"
+
 #else
+#   include <stdio.h>
+#   include <stdlib.h>
 #   include "libwchar.h"
+
 #endif
 
 const unsigned char c_strip[0x100] = {
@@ -59,7 +55,7 @@ const unsigned char c_strip[0x100] = {
     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 };
 
-int wstring_isempty(const wchar_t *restrict s, int sz)
+int wstring_isempty(const wchar_t *s, int sz)
 {
     const wchar_t *c = s;
     sz = ((sz < 0) ? 0 : sz);
@@ -77,6 +73,8 @@ string_ws wstring_trunc(const wchar_t *ws, int sz)
     int            osz = 0;
     const wchar_t *c   = ws,
                   *cc  = (ws + (sz - 1));
+    string_ws ss = { NULL, 0U };
+
     do
     {
         while(osz < sz)
@@ -97,11 +95,12 @@ string_ws wstring_trunc(const wchar_t *ws, int sz)
 
     } while (0);
 
-    string_ws ss = { (wchar_t*)c, (size_t)sz };
+    ss.str = (wchar_t*)c;
+    ss.sz  = (size_t)sz;
     return    ss;
 }
 
-size_t wstring_trunc_alloc(string_ws *restrict dst, const wchar_t *ws, int sz)
+size_t wstring_trunc_alloc(string_ws *dst, const wchar_t *ws, int sz)
 {
 #   if !defined(_MSC_VER)
     wchar_t __AUTO *p = dst->str;
@@ -121,7 +120,7 @@ size_t wstring_trunc_alloc(string_ws *restrict dst, const wchar_t *ws, int sz)
 }
 
 
-size_t wstring_alloc(string_ws *restrict dst, size_t sz)
+size_t wstring_alloc(string_ws *dst, size_t sz)
 {
     if (!dst) { return 0U; }
     dst->str = ((dst->str == NULL) ?
@@ -132,7 +131,7 @@ size_t wstring_alloc(string_ws *restrict dst, size_t sz)
     return (dst->sz + sz);
 }
 
-char * wstring_wstocs_alloc(const wchar_t *restrict src)
+char * wstring_wstocs_alloc(const wchar_t *src)
 {
     char __AUTO *p = NULL;
     char  *dst;
@@ -150,13 +149,13 @@ char * wstring_wstocs_alloc(const wchar_t *restrict src)
     return dst;
 }
 
-char * wstring_swstocs_alloc(const string_ws *restrict src)
+char * wstring_swstocs_alloc(const string_ws *src)
 {
     if (!src) { return NULL; }
     return wstring_wstocs_alloc(src->str);
 }
 
-size_t wstring_cstows_ws_alloc(string_ws *restrict ws, const char *restrict src)
+size_t wstring_cstows_ws_alloc(string_ws *ws, const char *src)
 {
 #   if !defined(_MSC_VER)
     wchar_t __AUTO *p = NULL;
@@ -171,8 +170,8 @@ size_t wstring_cstows_ws_alloc(string_ws *restrict ws, const char *restrict src)
 
     if (
         (!src)                                                   ||
-        ((ws->sz   = _mbstowcs(NULL, src, 0)) == 0)               ||
-        ((ws->str  = calloc(sizeof(wchar_t), (ws->sz + 4))) == 0) ||
+        ((ws->sz   = _mbstowcs(NULL, src, 0)) == 0)              ||
+        ((ws->str  = calloc(sizeof(wchar_t), (ws->sz + (sizeof(wchar_t) *2)))) == 0) ||
         ((ws->sz   = _mbstowcs(ws->str, src, (ws->sz + sizeof(wchar_t)))) == 0)
        ) { ws->str = NULL; return 0U; }
 
@@ -184,14 +183,14 @@ size_t wstring_cstows_ws_alloc(string_ws *restrict ws, const char *restrict src)
     return ws->sz;
 }
 
-wchar_t * wstring_cstows_alloc(const char *restrict src)
+wchar_t * wstring_cstows_alloc(const char *src)
 {
     string_ws ws = { NULL, 0U };
     if (!wstring_cstows_ws_alloc(&ws, src)) { return NULL; }
     return ws.str;
 }
 
-size_t wstring_wstocs(char dst[], size_t dsz, const string_ws *restrict src)
+size_t wstring_wstocs(char dst[], size_t dsz, const string_ws *src)
 {
     size_t ssz = src->sz;
     ssz = ((!ssz) ? _wcslen(src->str) : ssz);
@@ -201,7 +200,7 @@ size_t wstring_wstocs(char dst[], size_t dsz, const string_ws *restrict src)
     return dsz;
 }
 
-size_t wstring_cstows(wchar_t dst[], size_t dsz, const char *restrict src)
+size_t wstring_cstows(wchar_t dst[], size_t dsz, const char *src)
 {
     size_t ssz = strlen(src);
     dsz = ((ssz >= dsz) ? (dsz - 1) : ssz);
@@ -210,7 +209,7 @@ size_t wstring_cstows(wchar_t dst[], size_t dsz, const char *restrict src)
     return dsz;
 }
 
-size_t wstring_append(string_ws *dst, const wchar_t *restrict s, size_t sz)
+size_t wstring_append(string_ws *dst, const wchar_t *s, size_t sz)
 {
     if (
         (!s)                               ||
@@ -290,21 +289,37 @@ size_t wstring_appends_(string_ws *dst, ...)
     return 0U;
 }
 
-size_t wstring_append_cvt(string_ws *dst, const char *restrict c, size_t sz)
+size_t wstring_append_cvt(string_ws *dst, const char *c, size_t sz)
 {
+#   if defined(_MSC_VER)
+    wchar_t *s = NULL;
+#   endif
     sz = ((!sz) ? strlen(c) : sz);
+
+#   if defined(_MSC_VER)
+    __try {
+        if (!(s = calloc(sizeof(wchar_t),(sz + 1)))) { return 0U; }
+#   else
     {
         wchar_t s[(sz + 1)];
+#   endif
+
         if ((sz = wstring_cstows(s, (sz + 1), c)) <= 0) { return 0U; }
         return wstring_append(dst, s, sz);
+
+#   if defined(_MSC_VER)
+    }
+    __finally {
+        if (s) free(s);
+#   endif
     }
 }
 
-size_t wstring_format(string_ws *dst, const wchar_t *restrict fmt, ...)
+size_t wstring_format(string_ws *dst, const wchar_t *fmt, ...)
 {
+    size_t  ret = 0;
     va_list ap;
     va_start(ap, fmt);
-    size_t  ret = 0;
 
     do
     {
@@ -337,7 +352,7 @@ size_t wstring_format(string_ws *dst, const wchar_t *restrict fmt, ...)
     return ret;
 }
 
-void wstring_free(string_ws *restrict dst)
+void wstring_free(string_ws *dst)
 {
     if (!dst) { return; }
     if (dst->str != NULL) { free(dst->str); }

@@ -27,21 +27,12 @@
 #include "libbuild.h"
 
 #if defined(OS_WIN32) || defined(OS_WIN64) || defined(_MSC_VER)
-#   include "libwcharext.h"
-#   define  __wwrite(A) putwchar(A)
+
+#   if defined(_MSC_VER)
+#      pragma warning(disable : 4206)
+#      pragma comment(user, "Compiled on " __DATE__ " at " __TIME__)
+#   endif
 
 #else
-#   include <stdio.h>
-#   include <unistd.h>
-#   include "libwchar.h"
-#   define  __wwrite(A) write(fileno(stdout), (void*)& A, sizeof(wchar_t))
 
 #endif
-void wcprint(wchar_t *w)
-{
-    wchar_t *p = w;
-    while(*p)
-    {
-        __wwrite(*p++);
-    }
-}

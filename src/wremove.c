@@ -24,28 +24,63 @@
     SOFTWARE.
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "libwchar.h"
+#include "libbuild.h"
+
+#if defined(OS_WIN32) || defined(OS_WIN64) || defined(_MSC_VER)
+#   include "libwcharext.h"
+
+#else
+#   include <stdio.h>
+#   include <stdlib.h>
+#   include "libwchar.h"
+
+#endif
+
 
 int u8wremove(const wchar_t *wc)
 {
     int  ret       = -1;
     char __AUTO *b = NULL;
 
-    do
-    {
-        if (
-            ((b = calloc(1, wcstou8s(NULL, wc) + 1)) == NULL) ||
-            (wcstou8s(b, wc) <= 0)
-           ) { break; }
+#   if defined(_MSC_VER)
+	__try
+	{
+#   endif
+	    do
+	    {
+	        if (
+	            ((b = calloc(1, wcstou8s(NULL, wc) + 1)) == NULL) ||
+	            (wcstou8s(b, wc) <= 0)
+	           ) { break; }
 
-        ret = remove(b);
+	        ret = remove(b);
 
-    } while(0);
+	    } while(0);
 
-    return ret;
+	    return ret;
+
+#   if defined(_MSC_VER)
+	}
+    __finally {
+		if (b != NULL) free(b);
+	}
+#   endif
 }
+
+#if defined(_MSC_VER)
+
+int _wremove_s(const wchar_t *ws, size_t sz)
+{
+	(void) sz;
+    return _wremove(ws);
+}
+
+int _wremove_ws(const string_ws *ws)
+{
+    return _wremove(ws->str);
+}
+
+#else
 
 int _wremove(const wchar_t *ws)
 {
@@ -87,3 +122,5 @@ int _wremove_selector(int sel, const void *w, size_t sz)
         }
     }
 }
+
+#endif

@@ -24,20 +24,156 @@
     SOFTWARE.
  */
 
-#include <unistd.h>
-#include <sys/stat.h>
-#include "libwchar.h"
+#include "libbuild.h"
+
+#if defined(OS_WIN32) || defined(OS_WIN64) || defined(_MSC_VER)
+#   include <sys/stat.h>
+#   include "libwcharext.h"
+
+#else
+#   include <unistd.h>
+#   include <sys/stat.h>
+#   include <sys/types.h>
+#   include "libwchar.h"
+
+#endif
+
+#if defined(_MSC_VER)
+
+static access_e __waccess(const wchar_t *s, int m)
+{
+    access_e ret = ISERROR;
+    do
+    {
+        struct _stat sb;
+        if (_wstat(s, &sb) < 0)       { break; }
+        else if (((sb.st_mode) & _S_IFDIR) == _S_IFDIR) { ret = ISDIR; }
+        else if (((sb.st_mode) & _S_IFREG) == _S_IFREG) { ret = ISFIL; }
+        else                          { break; }
+        switch (m)
+        {
+            case 0:
+            {
+                if (
+                    (((sb.st_mode) & _S_IREAD)  != _S_IREAD) ||
+                    (((sb.st_mode) & _S_IWRITE) != _S_IWRITE) ||
+                    (((sb.st_mode) & _S_IEXEC)  != _S_IEXEC)
+                   ) { ret = ISERROR; }
+                break;
+            }
+            case 1:
+            {
+                if (((sb.st_mode) & _S_IEXEC) != _S_IEXEC) { ret = ISERROR; }
+                break;
+            }
+            case 2:
+            {
+                if (((sb.st_mode) & _S_IWRITE) != _S_IWRITE) { ret = ISERROR; }
+                break;
+            }
+            case 4:
+            {
+                if (((sb.st_mode) & _S_IREAD) != _S_IREAD) { ret = ISERROR; }
+                break;
+            }
+            case 6:
+            {
+                if (
+                    (((sb.st_mode) & _S_IREAD)  != _S_IREAD) ||
+                    (((sb.st_mode) & _S_IWRITE) != _S_IWRITE)
+                   ) { ret = ISERROR; }
+                break;
+            }
+            default:
+            {
+                ret = ISERROR;
+                break;
+            }
+        }
+
+    } while (0);
+
+    return ret;
+}
+
+access_e _waccess_s_(const wchar_t *w, size_t osz, int m)
+{
+    (void) osz;
+    return __waccess(w, m);
+}
+
+access_e _waccess_ws(const string_ws *ws, int m)
+{
+    return __waccess(ws->str, m);
+}
+
+access_e u8waccess(const wchar_t *w, int m)
+{
+    /*
+        TODO: char implement MSVC version
+    */
+    (void) w;
+    (void) m;
+    errno = ENOSYS;
+    return ISERROR;
+}
+
+#else
 
 static access_e __access(const char *s, int m)
 {
     access_e ret = ISERROR;
-    struct stat sb;
-    if (stat(s, &sb) < 0)         { return ret;     }
-    else if (S_ISDIR(sb.st_mode)) { ret = ISDIR;    }
-    else if (S_ISLNK(sb.st_mode)) { ret = ISLNK;    }
-    else if (S_ISREG(sb.st_mode)) { ret = ISFIL;    }
-    else                          { return ret;     }
-    if (access(s, m) < 0)         { return ISERROR; }
+    do
+    {
+        struct stat sb;
+        if (stat(s, &sb) < 0)         { break; }
+        else if (S_ISDIR(sb.st_mode)) { ret = ISDIR;    }
+        else if (S_ISLNK(sb.st_mode)) { ret = ISLNK;    }
+        else if (S_ISREG(sb.st_mode)) { ret = ISFIL;    }
+        else                          { break; }
+        switch (m)
+        {
+            case 0:
+            {
+                if (
+                    (!((sb.st_mode) & S_IRUSR)) ||
+                    (!((sb.st_mode) & S_IWUSR)) ||
+                    (!((sb.st_mode) & S_IXUSR))
+                   ) { ret = ISERROR; }
+                break;
+            }
+            case 1:
+            {
+                if (!((sb.st_mode) & S_IXUSR)) { ret = ISERROR; }
+                break;
+            }
+            case 2:
+            {
+                if (!((sb.st_mode) & S_IWUSR)) { ret = ISERROR; }
+                break;
+            }
+            case 4:
+            {
+                if (!((sb.st_mode) & S_IRUSR)) { ret = ISERROR; }
+                break;
+            }
+            case 6:
+            {
+                if (
+                    (!((sb.st_mode) & S_IRUSR)) ||
+                    (!((sb.st_mode) & S_IWUSR))
+                   ) { ret = ISERROR; }
+                break;
+            }
+            default:
+            {
+                ret = ISERROR;
+                break;
+            }
+        }
+
+    } while (0);
+
     return ret;
 }
 
@@ -100,3 +236,5 @@ access_e _waccess_selector(int sel, const void *w, size_t osz, int m)
         }
     }
 }
+
+#endif

@@ -1,4 +1,3 @@
-
 /*
     MIT License
 
@@ -24,24 +23,41 @@
     SOFTWARE.
  */
 
-#include "libbuild.h"
+#ifndef WCHAR2BUILD_LOCAL_H
+#define WCHAR2BUILD_LOCAL_H
 
-#if defined(OS_WIN32) || defined(OS_WIN64) || defined(_MSC_VER)
-#   include "libwcharext.h"
-#   define  __wwrite(A) putwchar(A)
+#if ( \
+		defined(_WIN32) || defined(__WIN32__) || defined(_Windows) || \
+		defined(_WIN64) || defined(__WIN64__) || \
+		defined(__CYGWIN__) || defined(__MINGW32__) || defined(__MINGW64__))
 
-#else
-#   include <stdio.h>
-#   include <unistd.h>
-#   include "libwchar.h"
-#   define  __wwrite(A) write(fileno(stdout), (void*)& A, sizeof(wchar_t))
+#   define OS_WIN
+#   if (defined(_WIN32) || defined(__WIN32__) || defined(_Windows))
+#       define OS_WIN32
+#   elif (defined(_WIN64) || defined(__WIN64__))
+#       define OS_WIN64
+#   else
+#       define OS_NONE
+#   endif
+
+#   if  (defined(OS_WIN32) && defined(_MSC_VER))
+#       define BUILD_MSVC32
+#   elif  (defined(OS_WIN64) && defined(_MSC_VER))
+#       define BUILD_MSVC64
+#   elif  (defined(OS_WIN32) && defined(__CYGWIN__))
+#       define BUILD_CYGWIN32
+#   elif  (defined(OS_WIN64) && defined(__CYGWIN__))
+#       define BUILD_CYGWIN64
+#   elif  (defined(OS_WIN32) && defined(__MINGW32__))
+#       define BUILD_MINGW32
+#   elif  (defined(OS_WIN64) && defined(__MINGW64__))
+#       define BUILD_MINGW64
+#   endif
 
 #endif
-void wcprint(wchar_t *w)
-{
-    wchar_t *p = w;
-    while(*p)
-    {
-        __wwrite(*p++);
-    }
-}
+
+#if defined(_MSC_VER)
+/* #define _CRT_SECURE_NO_WARNINGS (devel suppress) */
+#endif
+
+#endif

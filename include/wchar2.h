@@ -61,6 +61,10 @@
 #ifndef WCHAR2_LIBC_H
 #define WCHAR2_LIBC_H
 
+#if defined(WCHAR2EXT_MSVC_H)
+#   error "Only one header include, wchar2.h or wchar2ext.h"
+#endif
+
 #include <wctype.h>
 #include <wchar.h>
 

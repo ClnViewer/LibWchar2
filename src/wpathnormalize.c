@@ -24,27 +24,15 @@
     SOFTWARE.
  */
 
-#include "libwchar.h"
+#include "libbuild.h"
 
-char * u8wpathnormalize(const wchar_t *ws)
-{
-    char *ob  = NULL;
-    wchar_t __AUTO *wo = NULL;
-    do
-    {
-        if (
-            ((wo = _wpathnormalize(ws, 0)) == NULL)            ||
-            ((ob = calloc(1, wcstou8s(NULL, wo) + 1)) == NULL) ||
-            (wcstou8s(ob, wo) <= 0)
-           ) { break; }
+#if defined(OS_WIN32) || defined(OS_WIN64) || defined(_MSC_VER)
+#   include "libwcharext.h"
 
-        return ob;
+#else
+#   include "libwchar.h"
 
-    } while(0);
-
-    if (ob != NULL) free(ob);
-    return NULL;
-}
+#endif
 
 wchar_t * _wpathnormalize(const wchar_t *ws, int sz)
 {
@@ -75,4 +63,37 @@ wchar_t * _wpathnormalize(const wchar_t *ws, int sz)
 wchar_t * _wpathnormalize_ws(const string_ws *ws)
 {
     return _wpathnormalize(ws->str, ws->sz);
+}
+
+char * u8wpathnormalize(const wchar_t *ws)
+{
+    char *ob  = NULL;
+    wchar_t __AUTO *wo = NULL;
+
+#   if defined(_MSC_VER)
+	__try
+	{
+#   endif
+
+		do
+	    {
+	        if (
+	            ((wo = _wpathnormalize(ws, 0)) == NULL)            ||
+	            ((ob = calloc(1, wcstou8s(NULL, wo) + 1)) == NULL) ||
+	            (wcstou8s(ob, wo) <= 0)
+	           ) { break; }
+
+	        return ob;
+
+	    } while(0);
+
+	    if (ob != NULL) free(ob);
+	    return NULL;
+
+#   if defined(_MSC_VER)
+	}
+    __finally {
+		if (wo != NULL) free(wo);
+	}
+#   endif
 }

@@ -14,6 +14,8 @@ EXTRA_DIST = \
     autogen.sh \
     package.json \
     test/createtest.sh \
+    test/check_wchar2_MSVC.c \
+    src/libwcharext.c \
     README.md
 
 EXTRA_HEADERS = \
@@ -23,7 +25,10 @@ EXTRA_HEADERS = \
     src/table-alpha.h \
     src/table-nonspacing.h \
     src/table-punct.h \
-    src/table-wide.h
+    src/table-wide.h \
+    src/libwcharext.h \
+    src/libbuild.h \
+    include/wchar2ext.h
 
 METASOURCES = AUTO
 

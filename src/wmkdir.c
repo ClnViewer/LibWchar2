@@ -24,13 +24,95 @@
     SOFTWARE.
  */
 
-#include <sys/stat.h>
-#include <stdlib.h>
-#include "libwchar.h"
+#include "libbuild.h"
+
+#if defined(OS_WIN32) || defined(OS_WIN64) || defined(_MSC_VER)
+#   include "libwcharext.h"
+typedef unsigned short mode_t;
+
+#else
+#   include <stdlib.h>
+#   include <sys/stat.h>
+#   include "libwchar.h"
+
+#endif
+
+#if defined(_MSC_VER)
+
+static int __mkdirwp(const wchar_t *w)
+{
+	wchar_t *p = NULL;
+
+	if (!w)
+	{
+		errno = EINVAL;
+		return -1;
+	}
+
+	__try
+	{
+	    if (_wmkdir(w) == -1)
+	    {
+	        switch (errno)
+	        {
+	            case EEXIST: { return 0;  }
+	            case ENOENT: { break;     }
+	            default:     { return -1; }
+	        }
+	        do
+	        {
+	            if ((p = _wbasedir(w, 0)) == NULL) { break; }
+	            if (__mkdirwp(p) == 0) return _wmkdir(w);
+
+	        } while (0);
+
+	        errno = ENOENT;
+	        return -1;
+	    }
+	    errno = 0;
+	    return errno;
+
+	}
+    __finally {
+		if (p != NULL) free(p);
+	}
+}
+
+int _wmkdir_s(const wchar_t *w, size_t sz, mode_t m)
+{
+    (void) sz;
+    (void) m;
+    return __mkdirwp(w);
+}
+
+int _wmkdir_ws(const string_ws *ws, mode_t m)
+{
+    (void) m;
+    return __mkdirwp(ws->str);
+}
+
+int u8wmkdir(const wchar_t *w, mode_t m)
+{
+	/*
+		TODO: char implement MSVC version
+	*/
+	(void) w;
+	(void) m;
+	errno = ENOSYS;
+	return -1;
+}
+
+#else
 
 static int __mkdirp(const char *s, mode_t m)
 {
     char __AUTO *p = NULL;
+
+	if (!s)
+	{
+		errno = EINVAL;
+		return -1;
+	}
 
     if (mkdir(s, m) == -1)
     {
@@ -56,17 +138,17 @@ static int __mkdirp(const char *s, mode_t m)
 
 int u8wmkdir(const wchar_t *wc, mode_t m)
 {
-    int  ret       = -1;
+	int  ret       = -1;
     char __AUTO *b = NULL;
 
-    do
-    {
+	do
+	{
         if (
             ((b = calloc(1, wcstou8s(NULL, wc) + 1)) == NULL) ||
             (wcstou8s(b, wc) <= 0)
            ) { break; }
 
-        ret = __mkdirp(b, m);
+		ret = __mkdirp(b, m);
 
     } while(0);
 
@@ -113,3 +195,5 @@ int _wmkdir_selector(int sel, const void *w, size_t sz, mode_t m)
         }
     }
 }
+
+#endif

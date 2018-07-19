@@ -24,9 +24,50 @@
     SOFTWARE.
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "libwchar.h"
+#if defined(OS_WIN32) || defined(OS_WIN64) || defined(_MSC_VER)
+#   include <stdio.h>
+#   include "libwcharext.h"
+
+#else
+#   include <stdio.h>
+#   include <stdlib.h>
+#   include "libwchar.h"
+
+#endif
+
+#if defined(_MSC_VER)
+
+FILE * _wfopen_s_(const wchar_t *w, size_t sz, const char *m)
+{
+    FILE   *fp         = NULL;
+    wchar_t bmode[256] = {0};
+    (void) sz;
+
+    if (
+        (!wstring_cstows(bmode, sizeof(bmode), m)) ||
+        (!_wfopen_s(&fp, w, bmode))
+       ) { return NULL; }
+
+    return fp;
+}
+
+FILE * _wfopen_ws(const string_ws *ws, const char *m)
+{
+    return _wfopen_s_(ws->str, 0U, m);
+}
+
+FILE * u8wfopen(const wchar_t *w, const char *m)
+{
+    /*
+        TODO: char implement MSVC version
+    */
+    (void) w;
+    (void) m;
+    errno = ENOSYS;
+    return NULL;
+}
+
+#else
 
 FILE * u8wfopen(const wchar_t *wc, const char *m)
 {
@@ -87,3 +128,5 @@ FILE * _wfopen_selector(int sel, const void *w, size_t sz, const void *m)
         }
     }
 }
+
+#endif

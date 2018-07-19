@@ -24,7 +24,15 @@
     SOFTWARE.
  */
 
-#include "libwchar.h"
+#include "libbuild.h"
+
+#if defined(OS_WIN32) || defined(OS_WIN64) || defined(_MSC_VER)
+#   include "libwcharext.h"
+
+#else
+#   include "libwchar.h"
+
+#endif
 
 static const char _u8cmaxlen = 4;
 static const char _u8bit = '\x80';
@@ -37,7 +45,8 @@ size_t u8stowcs(wchar_t *wcs, const char *u8s) {
     wchar_t *p_wcs = wcs;
     size_t rp_u8s = 0;
     char u8;
-    while ((u8 = *(u8s + rp_u8s++)) != '\0') {
+
+	while ((u8 = *(u8s + rp_u8s++)) != '\0') {
         wchar_t wc = L'\xfffd';
         char b;
         for (b = _u8cmaxlen - 1; b >= 0; b--)
@@ -70,17 +79,19 @@ size_t wcstou8s(char *u8s, const wchar_t *wcs) {
     char *p_u8s = u8s;
     size_t rp_wcs = 0;
     wchar_t wc;
-    while ((wc = *(wcs + rp_wcs++)) != L'\0') {
+
+	while ((wc = *(wcs + rp_wcs++)) != L'\0') {
         char b;
         for (b = _u8cmaxlen - 1; b; b--)
             if (_wcsrange[(unsigned char)b] < wc) { break; }
 
         len += b + 1;
         if (u8s) {
+            char c = b;
             *p_u8s = _u8bits[(unsigned char)b];
             p_u8s += b;
-            char c = b;
-            while (c-- > 0) {
+
+			while (c-- > 0) {
                 *p_u8s =  _u8bit + (wc & L'\x3f');
                 wc >>= 6;
                 p_u8s--;

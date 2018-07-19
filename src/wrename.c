@@ -24,9 +24,17 @@
     SOFTWARE.
  */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "libwchar.h"
+#include "libbuild.h"
+
+#if defined(OS_WIN32) || defined(OS_WIN64) || defined(_MSC_VER)
+#   include "libwcharext.h"
+
+#else
+#   include <stdio.h>
+#   include <stdlib.h>
+#   include "libwchar.h"
+
+#endif
 
 int u8wrename(const wchar_t *o, const wchar_t *n)
 {
@@ -34,21 +42,49 @@ int u8wrename(const wchar_t *o, const wchar_t *n)
     char __AUTO *ob = NULL;
     char __AUTO *nb = NULL;
 
-    do
-    {
-        if (
-            ((ob = calloc(1, wcstou8s(NULL, o) + 1)) == NULL) ||
-            (wcstou8s(ob, o) <= 0)                            ||
-            ((nb = calloc(1, wcstou8s(NULL, n) + 1)) == NULL) ||
-            (wcstou8s(nb, n) <= 0)
-           ) { break; }
+#   if defined(_MSC_VER)
+	__try
+	{
+#   endif
+	    do
+	    {
+	        if (
+	            ((ob = calloc(1, wcstou8s(NULL, o) + 1)) == NULL) ||
+	            (wcstou8s(ob, o) <= 0)                            ||
+	            ((nb = calloc(1, wcstou8s(NULL, n) + 1)) == NULL) ||
+	            (wcstou8s(nb, n) <= 0)
+	           ) { break; }
 
-        ret = rename(ob, nb);
+	        ret = rename(ob, nb);
 
-    } while(0);
+	    } while(0);
 
-    return ret;
+	    return ret;
+
+#   if defined(_MSC_VER)
+	}
+    __finally {
+		if (ob != NULL) free(ob);
+		if (nb != NULL) free(nb);
+	}
+#   endif
 }
+
+#if defined(_MSC_VER)
+
+int _wrename_ws(const string_ws *o, const string_ws *n)
+{
+    return _wrename(o->str, n->str);
+}
+
+int _wrename_s(const wchar_t *o, size_t osz, const wchar_t *n, size_t nsz)
+{
+	(void) osz;
+	(void) nsz;
+    return _wrename(o, n);
+}
+
+#else
 
 int _wrename(const wchar_t *o, const wchar_t *n)
 {
@@ -93,3 +129,5 @@ int _wrename_selector(int sel, const void *w, size_t osz, const void *s, size_t 
         }
     }
 }
+
+#endif
