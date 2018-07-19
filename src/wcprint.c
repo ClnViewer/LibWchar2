@@ -34,7 +34,7 @@
 #   include <stdio.h>
 #   include <unistd.h>
 #   include "libwchar.h"
-#   define  __wwrite(A) write(fileno(stdout), (void*)& A, sizeof(wchar_t))
+#   define  __wwrite(A) if (write(fileno(stdout), (void*)& A, sizeof(wchar_t)) <= 0) { break; }
 
 #endif
 void wcprint(wchar_t *w)
