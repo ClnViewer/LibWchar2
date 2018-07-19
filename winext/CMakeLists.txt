@@ -6,6 +6,7 @@ cmake_minimum_required (VERSION 2.6)
 
 project(libwchar2ext)
 enable_language(C)
+enable_testing()
 
 set( CMAKE_COLOR_MAKEFILE ON )
 set( CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Configs" FORCE )
@@ -50,7 +51,7 @@ add_executable( ${app_target} "../test/check_wchar2_MSVC.c" )
 target_link_libraries( ${app_target} ${lib_target} )
 set_property( DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${app_target} )
 
-add_test(NAME test COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/Debug/TestWchar2ext.exe")
+add_test( NAME test COMMAND ${app_target} )
 
 if(MSVC)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W3 /Zc:wchar_t")
