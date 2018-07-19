@@ -40,13 +40,17 @@
 
 #if defined(_MSC_VER)
 
-static access_e __waccess(const wchar_t *s, int m)
+static access_e __waccess(const wchar_t *s, const char *c, int m)
 {
     access_e ret = ISERROR;
     do
     {
-        struct _stat sb;
-        if (_wstat(s, &sb) < 0)       { break; }
+        struct _stat sb = {0};
+        if (
+            ((!s) && (!c))                ||
+            ((s) && (_wstat(s, &sb) < 0)) ||
+            ((c) && (_stat(c, &sb) < 0))
+           ) { break; }
         else if (((sb.st_mode) & _S_IFDIR) == _S_IFDIR) { ret = ISDIR; }
         else if (((sb.st_mode) & _S_IFREG) == _S_IFREG) { ret = ISFIL; }
         else                          { break; }
@@ -99,23 +103,31 @@ static access_e __waccess(const wchar_t *s, int m)
 access_e _waccess_s_(const wchar_t *w, size_t osz, int m)
 {
     (void) osz;
-    return __waccess(w, m);
+    return __waccess(w, NULL, m);
 }
 
 access_e _waccess_ws(const string_ws *ws, int m)
 {
-    return __waccess(ws->str, m);
+    return __waccess(ws->str, NULL, m);
 }
 
 access_e u8waccess(const wchar_t *w, int m)
 {
-    /*
-        TODO: char implement MSVC version
-    */
-    (void) w;
-    (void) m;
-    errno = ENOSYS;
-    return ISERROR;
+    char *b  = NULL;
+
+    __try
+    {
+        if (
+            ((b = calloc(1, wcstou8s(NULL, w) + 1)) == NULL) ||
+            (wcstou8s(b, w) <= 0)
+           ) { return -1; }
+
+        return __waccess(NULL, b, m);
+
+   }
+   __finally {
+        if (b != NULL) free(b);
+   }
 }
 
 #else
@@ -126,11 +138,13 @@ static access_e __access(const char *s, int m)
     do
     {
         struct stat sb;
-        if (stat(s, &sb) < 0)         { break; }
-        else if (S_ISDIR(sb.st_mode)) { ret = ISDIR;    }
-        else if (S_ISLNK(sb.st_mode)) { ret = ISLNK;    }
-        else if (S_ISREG(sb.st_mode)) { ret = ISFIL;    }
-        else                          { break; }
+        memset((void*)&sb, 0, sizeof(struct stat));
+
+        if (stat(s, &sb) < 0)         { break;       }
+        else if (S_ISDIR(sb.st_mode)) { ret = ISDIR; }
+        else if (S_ISLNK(sb.st_mode)) { ret = ISLNK; }
+        else if (S_ISREG(sb.st_mode)) { ret = ISFIL; }
+        else                          { break;       }
         switch (m)
         {
             case 0:
@@ -179,21 +193,14 @@ static access_e __access(const char *s, int m)
 
 access_e u8waccess(const wchar_t *ws, int m)
 {
-    int  ret       = -1;
     char __AUTO *b = NULL;
 
-    do
-    {
-        if (
-            ((b = calloc(1, wcstou8s(NULL, ws) + 1)) == NULL) ||
-            (wcstou8s(b, ws) <= 0)
-           ) { break; }
+    if (
+        ((b = calloc(1, wcstou8s(NULL, ws) + 1)) == NULL) ||
+        (wcstou8s(b, ws) <= 0)
+       ) { return -1; }
 
-        ret = __access(b, m);
-
-    } while(0);
-
-    return ret;
+    return __access(b, m);
 }
 
 access_e _waccess(const wchar_t *o, int m)

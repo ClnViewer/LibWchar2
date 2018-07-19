@@ -30,9 +30,17 @@
 
 #   if defined(_MSC_VER)
 #      pragma warning(disable : 4206)
-#      pragma comment(user, "Compiled on " __DATE__ " at " __TIME__)
+#      pragma comment(user, "libwchar2ext compiled on " __DATE__ " at " __TIME__)
 #   endif
 
 #else
+
+    char libinfo[]
+#   if (defined(__APPLE__) || defined(__OSX__) || defined(__MACH__))
+    __attribute__((section("__SEGMENT,__LIBINFO")))
+#   else
+    __attribute__ ((section ("LIBINFO")))
+#   endif
+    = "libwchar2ext compiled on " __DATE__ " at " __TIME__;
 
 #endif

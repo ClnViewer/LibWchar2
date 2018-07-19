@@ -24,47 +24,76 @@
     SOFTWARE.
  */
 
-#include <stdlib.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <unistd.h>
-#include "libwchar.h"
+#include "libbuild.h"
 
-int u8wstat(const wchar_t *wc, struct stat *st)
+#if defined(OS_WIN32) || defined(OS_WIN64) || defined(_MSC_VER)
+#   include <sys/stat.h>
+#   include "libwcharext.h"
+#   define  __sstat _stat
+
+#else
+#   include <unistd.h>
+#   include <sys/stat.h>
+#   include <sys/types.h>
+#   include "libwchar.h"
+#   define  __sstat stat
+
+
+#endif
+
+int u8wstat(const wchar_t *wc, struct __sstat *st)
 {
-    int  ret       = -1;
     char __AUTO *b = NULL;
 
-    do
+#   if defined(_MSC_VER)
+    __try
     {
+#   endif
         if (
             ((b = calloc(1, wcstou8s(NULL, wc) + 1)) == NULL) ||
             (wcstou8s(b, wc) <= 0)
-           ) { break; }
+           ) { return -1; }
 
-        ret = stat(b, st);
+        return __sstat(b, st);
 
-    } while(0);
-
-    return ret;
+#   if defined(_MSC_VER)
+    }
+    __finally {
+        if (b != NULL) free(b);
+    }
+#   endif
 }
 
-int _wstat(const wchar_t *ws, struct stat *st)
+#if defined(_MSC_VER)
+
+int _wstat_s_(const wchar_t *w, size_t sz, struct _stat *st)
 {
-    wstocscvt(b, ws, -1);
+    (void) sz;
+    return _wstat(w, st);
+}
+
+int _wstat_ws(const string_ws *ws, struct _stat *st)
+{
+    return _wstat_s_(ws->str, 0U, st);
+}
+
+#else
+
+int _wstat(const wchar_t *w, struct stat *st)
+{
+    wstocscvt(b, w, -1);
     return stat(b, st);
 }
 
-int _wstat_s(const wchar_t *ws, size_t sz, struct stat *st)
+int _wstat_s(const wchar_t *w, size_t sz, struct stat *st)
 {
-    wstocsncvt(b, ws, sz, -1);
+    wstocsncvt(b, w, sz, -1);
     return stat(b, st);
 }
 
 int _wstat_ws(const string_ws *ws, struct stat *st)
 {
-    wstrtocscvt(b, ws, -1);
-    return stat(b, st);
+    return _wstat(ws->str, st);
 }
 
 int _wstat_selector(int sel, const void *w, size_t sz, const void *s)
@@ -92,3 +121,4 @@ int _wstat_selector(int sel, const void *w, size_t sz, const void *s)
         }
     }
 }
+#endif

@@ -71,29 +71,30 @@ char * u8wpathnormalize(const wchar_t *ws)
     wchar_t __AUTO *wo = NULL;
 
 #   if defined(_MSC_VER)
-	__try
-	{
+    __try
+    {
 #   endif
 
-		do
-	    {
-	        if (
-	            ((wo = _wpathnormalize(ws, 0)) == NULL)            ||
-	            ((ob = calloc(1, wcstou8s(NULL, wo) + 1)) == NULL) ||
-	            (wcstou8s(ob, wo) <= 0)
-	           ) { break; }
+        do
+        {
+            if (
+                ((wo = _wpathnormalize(ws, 0)) == NULL)            ||
+                ((ob = calloc(1, wcstou8s(NULL, wo) + 1)) == NULL) ||
+                (wcstou8s(ob, wo) <= 0)
+               ) { break; }
 
-	        return ob;
+            return ob;
 
-	    } while(0);
+        } while (0);
 
-	    if (ob != NULL) free(ob);
-	    return NULL;
+        if (ob != NULL) free(ob);
+        return NULL;
 
 #   if defined(_MSC_VER)
-	}
+    }
     __finally {
-		if (wo != NULL) free(wo);
-	}
+        if (wo != NULL) free(wo);
+    }
 #   endif
 }
+

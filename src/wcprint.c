@@ -34,12 +34,16 @@
 #   include <stdio.h>
 #   include <unistd.h>
 #   include "libwchar.h"
-#   define  __wwrite(A) if (write(fileno(stdout), (void*)& A, sizeof(wchar_t)) <= 0) { break; }
+#   define  __wwrite(A) if (write(fd, (void*)& A, sizeof(wchar_t)) <= 0) { break; }
 
 #endif
 void wcprint(wchar_t *w)
 {
     wchar_t *p = w;
+#   if !defined(_MSC_VER)
+    int fd = fileno(stdout);
+#   endif
+
     while(*p)
     {
         __wwrite(*p++);

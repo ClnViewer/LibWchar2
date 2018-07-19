@@ -38,35 +38,28 @@
 
 int u8wrename(const wchar_t *o, const wchar_t *n)
 {
-    int  ret        = -1;
     char __AUTO *ob = NULL;
     char __AUTO *nb = NULL;
 
 #   if defined(_MSC_VER)
-	__try
-	{
+    __try
+    {
 #   endif
-	    do
-	    {
-	        if (
-	            ((ob = calloc(1, wcstou8s(NULL, o) + 1)) == NULL) ||
-	            (wcstou8s(ob, o) <= 0)                            ||
-	            ((nb = calloc(1, wcstou8s(NULL, n) + 1)) == NULL) ||
-	            (wcstou8s(nb, n) <= 0)
-	           ) { break; }
+        if (
+            ((ob = calloc(1, wcstou8s(NULL, o) + 1)) == NULL) ||
+            (wcstou8s(ob, o) <= 0)                            ||
+            ((nb = calloc(1, wcstou8s(NULL, n) + 1)) == NULL) ||
+            (wcstou8s(nb, n) <= 0)
+           ) { return -1; }
 
-	        ret = rename(ob, nb);
-
-	    } while(0);
-
-	    return ret;
+        return rename(ob, nb);
 
 #   if defined(_MSC_VER)
-	}
+    }
     __finally {
-		if (ob != NULL) free(ob);
-		if (nb != NULL) free(nb);
-	}
+        if (ob != NULL) free(ob);
+        if (nb != NULL) free(nb);
+    }
 #   endif
 }
 
@@ -79,8 +72,8 @@ int _wrename_ws(const string_ws *o, const string_ws *n)
 
 int _wrename_s(const wchar_t *o, size_t osz, const wchar_t *n, size_t nsz)
 {
-	(void) osz;
-	(void) nsz;
+    (void) osz;
+    (void) nsz;
     return _wrename(o, n);
 }
 

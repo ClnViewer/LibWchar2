@@ -239,6 +239,4 @@ void * _wbasename_selector(int sel, const void *w)
         }
     }
 }
-
 #endif
-

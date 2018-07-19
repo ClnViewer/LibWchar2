@@ -41,41 +41,41 @@ typedef unsigned short mode_t;
 
 static int __mkdirwp(const wchar_t *w)
 {
-	wchar_t *p = NULL;
+    wchar_t *p = NULL;
 
-	if (!w)
-	{
-		errno = EINVAL;
-		return -1;
-	}
+    if (!w)
+    {
+        errno = EINVAL;
+        return -1;
+    }
 
-	__try
-	{
-	    if (_wmkdir(w) == -1)
-	    {
-	        switch (errno)
-	        {
-	            case EEXIST: { return 0;  }
-	            case ENOENT: { break;     }
-	            default:     { return -1; }
-	        }
-	        do
-	        {
-	            if ((p = _wbasedir(w, 0)) == NULL) { break; }
-	            if (__mkdirwp(p) == 0) return _wmkdir(w);
+    __try
+    {
+        if (_wmkdir(w) == -1)
+        {
+            switch (errno)
+            {
+                case EEXIST: { return 0;  }
+                case ENOENT: { break;     }
+                default:     { return -1; }
+            }
+            do
+            {
+                if ((p = _wbasedir(w, 0)) == NULL) { break; }
+                if (__mkdirwp(p) == 0) return _wmkdir(w);
 
-	        } while (0);
+            } while (0);
 
-	        errno = ENOENT;
-	        return -1;
-	    }
-	    errno = 0;
-	    return errno;
+            errno = ENOENT;
+            return -1;
+        }
+        errno = 0;
+        return errno;
 
-	}
+    }
     __finally {
-		if (p != NULL) free(p);
-	}
+        if (p != NULL) free(p);
+    }
 }
 
 int _wmkdir_s(const wchar_t *w, size_t sz, mode_t m)
@@ -93,13 +93,13 @@ int _wmkdir_ws(const string_ws *ws, mode_t m)
 
 int u8wmkdir(const wchar_t *w, mode_t m)
 {
-	/*
-		TODO: char implement MSVC version
-	*/
-	(void) w;
-	(void) m;
-	errno = ENOSYS;
-	return -1;
+    /*
+        TODO: char implement MSVC version
+    */
+    (void) w;
+    (void) m;
+    errno = ENOSYS;
+    return -1;
 }
 
 #else
@@ -108,11 +108,11 @@ static int __mkdirp(const char *s, mode_t m)
 {
     char __AUTO *p = NULL;
 
-	if (!s)
-	{
-		errno = EINVAL;
-		return -1;
-	}
+    if (!s)
+    {
+        errno = EINVAL;
+        return -1;
+    }
 
     if (mkdir(s, m) == -1)
     {
@@ -138,21 +138,14 @@ static int __mkdirp(const char *s, mode_t m)
 
 int u8wmkdir(const wchar_t *wc, mode_t m)
 {
-	int  ret       = -1;
     char __AUTO *b = NULL;
 
-	do
-	{
-        if (
-            ((b = calloc(1, wcstou8s(NULL, wc) + 1)) == NULL) ||
-            (wcstou8s(b, wc) <= 0)
-           ) { break; }
+    if (
+        ((b = calloc(1, wcstou8s(NULL, wc) + 1)) == NULL) ||
+        (wcstou8s(b, wc) <= 0)
+       ) { return -1; }
 
-		ret = __mkdirp(b, m);
-
-    } while(0);
-
-    return ret;
+    return __mkdirp(b, m);
 }
 
 int _wmkdir(const wchar_t *ws, mode_t m)

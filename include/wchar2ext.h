@@ -157,7 +157,11 @@ int       u8wmkdir(const wchar_t*, unsigned short); /* Function not implemented 
 
 access_e  _waccess_s_(const wchar_t*, size_t, int);
 access_e  _waccess_ws(const string_ws*, int);
-access_e  u8waccess(const wchar_t*, int); /* Function not implemented */
+access_e  u8waccess(const wchar_t*, int);
+
+int       _wstat_s_(const wchar_t*, size_t, void*);
+int       _wstat_ws(const string_ws*, void*);
+int       u8wstat(const wchar_t*, void*);
 
 FILE    * _wfopen_s_(const wchar_t*, size_t, const char*);
 FILE    * _wfopen_ws(const string_ws*, const char*);
@@ -205,6 +209,10 @@ wchar_t * _wbasedir_ws(const string_ws*, int);
 #define wfopen(A,B) _wfopen_s_(A,0,B)
 #define wfopen_s(A,B,C) _wfopen_s_(A,B,C)
 #define wfopen_ws _wfopen_ws
+
+#define wstat_s _wstat_s_
+#define wstat_ws _wstat_ws
+#define wstat(A,B) _wstat_s_(A,0,B)
 
 #endif
 

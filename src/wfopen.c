@@ -37,55 +37,68 @@
 
 #if defined(_MSC_VER)
 
-FILE * _wfopen_s_(const wchar_t *w, size_t sz, const char *m)
+static FILE * __wfopen(const wchar_t *w, const char *c, const char *m)
 {
     FILE   *fp         = NULL;
     wchar_t bmode[256] = {0};
-    (void) sz;
 
     if (
-        (!wstring_cstows(bmode, sizeof(bmode), m)) ||
-        (!_wfopen_s(&fp, w, bmode))
+        ((!w) && (!c))                     ||
+        (
+            ((c) && (!fopen_s(&fp, c, m))) ||
+            ((w) &&
+                (
+                    (!wstring_cstows(bmode, sizeof(bmode), m)) ||
+                    (!_wfopen_s(&fp, w, bmode))
+                )
+            )
+        )
        ) { return NULL; }
 
     return fp;
 }
 
+FILE * _wfopen_s_(const wchar_t *w, size_t sz, const char *m)
+{
+    (void) sz;
+    return __wfopen(w, NULL, m);
+}
+
 FILE * _wfopen_ws(const string_ws *ws, const char *m)
 {
-    return _wfopen_s_(ws->str, 0U, m);
+    return __wfopen(ws->str, NULL, m);
 }
 
 FILE * u8wfopen(const wchar_t *w, const char *m)
 {
-    /*
-        TODO: char implement MSVC version
-    */
-    (void) w;
-    (void) m;
-    errno = ENOSYS;
-    return NULL;
+    char *b = NULL;
+
+    __try
+    {
+        if (
+            ((b = calloc(1, wcstou8s(NULL, w) + 1)) == NULL) ||
+            (wcstou8s(b, w) <= 0)
+           ) { return NULL; }
+
+        return __wfopen(NULL, b, m);
+    }
+    __finally {
+        if (b != NULL) free(b);
+    }
 }
 
 #else
 
-FILE * u8wfopen(const wchar_t *wc, const char *m)
+FILE * u8wfopen(const wchar_t *w, const char *m)
 {
-    FILE        *f = NULL;
     char __AUTO *b = NULL;
 
-    do
-    {
-        if (
-            ((b = calloc(1, wcstou8s(NULL, wc) + 1)) == NULL) ||
-            (wcstou8s(b, wc) <= 0)
-           ) { break; }
+    if (
+        ((b = calloc(1, wcstou8s(NULL, w) + 1)) == NULL) ||
+        (wcstou8s(b, w) <= 0)
+       ) { return NULL; }
 
-        f = fopen(b, m);
-
-    } while(0);
-
-    return f;
+    return fopen(b, m);
 }
 
 FILE * _wfopen(const wchar_t *wc, const char *m)
@@ -128,5 +141,4 @@ FILE * _wfopen_selector(int sel, const void *w, size_t sz, const void *m)
         }
     }
 }
-
 #endif

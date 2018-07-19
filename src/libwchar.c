@@ -40,7 +40,7 @@
 #  else
     __attribute__ ((section ("LIBINFO")))
 #  endif
-    = PACKAGE_STRING " " __DATE__ " " __TIME__;
+    = PACKAGE_STRING " compiled on " __DATE__ " at " __TIME__;
 #endif
 
 #define C(x) ((x < 2) ? 0xffffffff : (R(0x80,0xc0) | x))

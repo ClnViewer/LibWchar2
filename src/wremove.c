@@ -36,34 +36,26 @@
 
 #endif
 
-
 int u8wremove(const wchar_t *wc)
 {
-    int  ret       = -1;
     char __AUTO *b = NULL;
 
 #   if defined(_MSC_VER)
-	__try
-	{
+    __try
+    {
 #   endif
-	    do
-	    {
-	        if (
-	            ((b = calloc(1, wcstou8s(NULL, wc) + 1)) == NULL) ||
-	            (wcstou8s(b, wc) <= 0)
-	           ) { break; }
+        if (
+            ((b = calloc(1, wcstou8s(NULL, wc) + 1)) == NULL) ||
+            (wcstou8s(b, wc) <= 0)
+           ) { return -1; }
 
-	        ret = remove(b);
-
-	    } while(0);
-
-	    return ret;
+        return remove(b);
 
 #   if defined(_MSC_VER)
-	}
+    }
     __finally {
-		if (b != NULL) free(b);
-	}
+        if (b != NULL) free(b);
+    }
 #   endif
 }
 
@@ -71,7 +63,7 @@ int u8wremove(const wchar_t *wc)
 
 int _wremove_s(const wchar_t *ws, size_t sz)
 {
-	(void) sz;
+    (void) sz;
     return _wremove(ws);
 }
 
