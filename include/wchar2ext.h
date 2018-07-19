@@ -76,7 +76,10 @@
 #endif
 
 #if (defined(_MSC_VER) && !defined(WCHAR2EXT_MSVC_ORIGIN))
-#pragma comment(lib, "libwchar2ext.lib")
+#   if !defined(WCHAR2LIB_PRAGMA_ADD)
+#     define WCHAR2LIB_PRAGMA_ADD 1
+#     pragma comment(lib, "libwchar2ext.lib")
+#   endif
 #endif
 
 #define __WS_(x) L##x
