@@ -50,6 +50,8 @@ add_executable( ${app_target} "../test/check_wchar2_MSVC.c" )
 target_link_libraries( ${app_target} ${lib_target} )
 set_property( DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${app_target} )
 
+add_test(NAME test COMMAND "${CMAKE_CURRENT_SOURCE_DIR}/Debug/TestWchar2ext.exe")
+
 if(MSVC)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W3 /Zc:wchar_t")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Zc:wchar_t")
