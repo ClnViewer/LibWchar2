@@ -41,7 +41,7 @@
 #include "../include/wchar2ext.h"
 
 #pragma comment( user, "Compiled on " __DATE__ " at " __TIME__ )
-#pragma comment(lib, "libwchar2-extension.lib")
+// #pragma comment(lib, "libwchar2ext.lib")
 
 #define F_OK 0
 

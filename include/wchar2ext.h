@@ -75,6 +75,10 @@
 #   endif
 #endif
 
+#if (defined(_MSC_VER) && !defined(WCHAR2EXT_MSVC_ORIGIN))
+#pragma comment(lib, "libwchar2ext.lib")
+#endif
+
 #define __WS_(x) L##x
 #define __WEV_(A,B) A ## B
 #define __WEV(A,B)  __WEV_(A,B)
