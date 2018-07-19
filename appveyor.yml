@@ -1,7 +1,11 @@
 version: 1.0.{build}
 build_script:
 - cmd: >-
-    cd c:\projects\LibWchar2\winext\build
+    cd c:\projects\libwchar2\winext\build
+
     cmake -G"Visual Studio 14" -DCMAKE_BUILD_TYPE=Debug ..
+
     cmake --build . --config %CMAKE_BUILD_TYPE%
+
     ctest --verbose -C "Debug"
+

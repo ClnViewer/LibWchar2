@@ -41,6 +41,8 @@
 #include "../include/wchar2ext.h"
 
 #pragma comment( user, "Compiled on " __DATE__ " at " __TIME__ )
+
+// Not needed, pragma lib include in wchar2ext.h
 // #pragma comment(lib, "libwchar2ext.lib")
 
 #define F_OK 0
