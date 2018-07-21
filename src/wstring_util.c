@@ -327,7 +327,7 @@ size_t wstring_format(string_ws *dst, const wchar_t *fmt, ...)
         int sz = 0;
 #       else
         //TODO: *nix -> make _vswprintf -> wprintf_core size output
-        int sz = 1024;
+        int sz = 8192;
 #       endif
 
         if (
