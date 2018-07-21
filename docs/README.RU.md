@@ -1,6 +1,6 @@
 
 [![Git HOME](https://img.shields.io/badge/Home-Git-brightgreen.svg?style=flat)](https://github.com/ClnViewer/LibWchar2)
-[![Readme ENG](https://img.shields.io/badge/Readme-ENG-brightgreen.svg?style=flat)](https://clnviewer.github.io/LibWchar2/docs/README.md)
+[![Readme ENG](https://img.shields.io/badge/Readme-ENG-brightgreen.svg?style=flat)](https://github.com/ClnViewer/LibWchar2/blob/master/docs/README.md)
 [![Documentation](https://img.shields.io/badge/Documentation-DOC-brightgreen.svg?style=flat)](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html)
 [![License MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=flat)](https://github.com/ClnViewer/LibWchar2/blob/master/LICENSE)
 [![Build Travis](https://travis-ci.com/ClnViewer/LibWchar2.svg)](https://travis-ci.com/ClnViewer/LibWchar2)
@@ -98,7 +98,7 @@ CC | key
 
 ### Расширения библиотеки для Windows API
  
-- Установка [библиотеки расширений LibWchar2](https://clnviewer.github.io/LibWchar2/docs/README-WINAPIEXT.RU.md) для Windows API
+- Установка [библиотеки расширений LibWchar2](https://github.com/ClnViewer/LibWchar2/blob/master/docs/README-WINAPIEXT.RU.md) для Windows API
 
 ### API
 
