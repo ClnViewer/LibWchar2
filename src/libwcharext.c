@@ -26,12 +26,16 @@
 
 #include "libbuild.h"
 
+#include <stdio.h>
+
 #if defined(OS_WIN32) || defined(OS_WIN64) || defined(_MSC_VER)
 
 #   if defined(_MSC_VER)
 // #      pragma warning(disable : 4206) // About empty code file
 #      pragma comment(user, "libwchar2ext compiled on " __DATE__ " at " __TIME__)
 #   endif
+#   include <windows.h>
+#   include <excpt.h>
 
 int __seh_except_(unsigned int code, unsigned int line, const char *file, const char *func)
 {
