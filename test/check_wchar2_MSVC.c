@@ -27,7 +27,7 @@
     /* This MSVC/MSVS libwchar2 extension test, Windows API compatible */
 
 #include <stdio.h>
-#include <conio.h>
+// #include <conio.h>
 #include <stdlib.h>
 #include <stdarg.h>
 #include <errno.h>

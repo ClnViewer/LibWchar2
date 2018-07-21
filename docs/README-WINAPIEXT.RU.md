@@ -63,6 +63,41 @@
 
 С исходным кодом теста можно ознакомиться в файле [`test/check_wchar2_MSVC.c`](https://github.com/ClnViewer/LibWchar2/blob/master/test/check_wchar2_MSVC.c).
 
+
+### Пример использования
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <errno.h>
+    #include <string.h>
+    #include <wchar.h>
+    /*
+      pragma описанная в wchar2ext.h уже включает библиотеку char2ext.lib,
+      не нужен другой метод, связывающий эту библиотеку с вашем приложением.
+    */
+    #include "wchar2ext.h"
+
+     int main(int argc, char *argv[])
+     {
+        int ret;
+        string_ws dst = { NULL, 0U };
+
+        ret = wstring_append(&dst, __WS("моя строка"), 0);
+        printf("\n\t*(%d) wstring_appends: [%ls][%u]\n", __LINE__,
+          dst.str, dst.sz
+        );
+
+        ret = wstring_append(&dst, __WS(", следующая строка"), 0);
+        printf("\n\t*(%d) wstring_appends: [%ls][%u]\n", __LINE__,
+          dst.str, dst.sz
+        );
+
+        wstring_free(&dst);
+
+        (void) getchar();
+        return 0;
+      }
+
 ## License
 
 _MIT_

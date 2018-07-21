@@ -62,6 +62,41 @@ In the `Visual Studio` project, it is added automatically, if you want to test t
 
 The source code of the test can be found in the file [`test/check_wchar2_MSVC.c`](https://github.com/ClnViewer/LibWchar2/blob/master/test/check_wchar2_MSVC.c).
 
+### Example use
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <errno.h>
+    #include <string.h>
+    #include <wchar.h>
+    /*
+      pragma include lib char2ext.lib already in wchar2ext.h,
+      not needed other method link this lib.
+    */
+    #include "wchar2ext.h"
+
+     int main(int argc, char *argv[])
+     {
+        int ret;
+        string_ws dst = { NULL, 0U };
+
+        ret = wstring_append(&dst, __WS("my one"), 0);
+        printf("\n\t*(%d) wstring_appends: [%ls][%u]\n", __LINE__,
+          dst.str, dst.sz
+        );
+
+        ret = wstring_append(&dst, __WS(", next string"), 0);
+        printf("\n\t*(%d) wstring_appends: [%ls][%u]\n", __LINE__,
+          dst.str, dst.sz
+        );
+
+        wstring_free(&dst);
+
+        (void) getchar();
+        return 0;
+      }
+
+
 ## License
 
 _MIT_
