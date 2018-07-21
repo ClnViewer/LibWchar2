@@ -98,7 +98,7 @@ CC | key
 
 ### Расширения библиотеки для Windows API
  
-- Установка [библиотеки расширений LibWchar2](https://github.com/ClnViewer/LibWchar2/blob/master/docs/README-WINAPIEXT.RU.md) для Windows API
+- Установка [библиотеки расширений `LibWchar2`](https://github.com/ClnViewer/LibWchar2/blob/master/docs/README-WINAPIEXT.RU.md) для `Windows API`.
 
 ### API
 

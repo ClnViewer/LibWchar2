@@ -94,7 +94,7 @@ If there is a need to rebuild the script `./configure`, execute:
 
 ### Library extensions for Windows API
 
-- Installing [extension LibWchar2 Library](https://github.com/ClnViewer/LibWchar2/blob/master/docs/README-WINAPIEXT.md) for Windows API
+- Installing [extension `LibWchar2` Library](https://github.com/ClnViewer/LibWchar2/blob/master/docs/README-WINAPIEXT.md) for `Windows API`.
 
 
 ### API
