@@ -36,7 +36,7 @@ CC  | key
 - It was tested under `Linux`, on other *nix platforms the behavior is not guaranteed.
 - It is not intended for assembly in the `Windows API` environment, because it is not needed on this platform.
 - The library includes both the main functions from the `libc`, `glibc` libraries, for working with the `wchar_t` type, and third-party developments and other extensions.
-- An additional [library of extensions](https://clnviewer.github.io/LibWchar2/docs/README-WINAPIEXT.md) based on LibWchar2 for Windows API platforms is available.
+- An additional [library of extensions](https://github.com/ClnViewer/LibWchar2/blob/master/docs/README-WINAPIEXT.md) based on LibWchar2 for Windows API platforms is available.
 - **Attention**, not all functions are properly tested, if you help with tests and search for inconsistencies, this will make the library better and more reliable.
  
 ### Standart ISO/IEC 9899:2011 + stddef.h
