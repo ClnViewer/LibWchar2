@@ -144,7 +144,7 @@ char * wstring_wstocs_alloc(const wchar_t *src)
         ((ssz = _wcstombs(p, src, (ssz + sizeof(char)))) == 0)
        ) { return NULL; }
 
-    // p[ssz] = '\0';
+    p[ssz] = '\0';
     dst = p; p = NULL;
     return dst;
 }
@@ -175,7 +175,7 @@ size_t wstring_cstows_ws_alloc(string_ws *ws, const char *src)
         ((ws->sz   = _mbstowcs(ws->str, src, (ws->sz + sizeof(wchar_t)))) == 0)
        ) { ws->str = NULL; return 0U; }
 
-    // ws->str[ws->sz] = L'\0';
+    ws->str[ws->sz] = L'\0';
 #   if !defined(_MSC_VER)
     p = NULL;
 #   endif
