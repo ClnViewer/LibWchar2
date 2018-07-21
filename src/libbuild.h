@@ -27,9 +27,9 @@
 #define WCHAR2BUILD_LOCAL_H
 
 #if ( \
-		defined(_WIN32) || defined(__WIN32__) || defined(_Windows) || \
-		defined(_WIN64) || defined(__WIN64__) || \
-		defined(__CYGWIN__) || defined(__MINGW32__) || defined(__MINGW64__))
+        defined(_WIN32) || defined(__WIN32__) || defined(_Windows) || \
+        defined(_WIN64) || defined(__WIN64__) || \
+        defined(__CYGWIN__) || defined(__MINGW32__) || defined(__MINGW64__))
 
 #   define OS_WIN
 #   if (defined(_WIN32) || defined(__WIN32__) || defined(_Windows))

@@ -101,6 +101,12 @@
 
 #include "../include/wchar2ext.h"
 
+#if defined(OS_WIN32) || defined(OS_WIN64)
+#   include <windows.h>
+#   define __seh_except() __seh_except_(GetExceptionCode(), __LINE__, __FILE__, __FUNCTION__)
+    int    __seh_except_(unsigned int, unsigned int, const char*, const char*);
+#endif
+
 #if defined(BUILD_MSVC32) || defined(BUILD_MSVC64)
 
 static inline size_t __wcstombs_s(char *out, const wchar_t *src, size_t sz) {

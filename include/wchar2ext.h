@@ -75,6 +75,14 @@
 #   endif
 #endif
 
+#if defined(__GNUC__) && (__GNUC__ >= 4)
+#   define __CHKRET __attribute__ ((warn_unused_result))
+#elif defined(_MSC_VER) && (_MSC_VER >= 1700)
+#   define __CHKRET _Check_return_
+#else
+#   define __CHKRET
+#endif
+
 #if (defined(_MSC_VER) && !defined(WCHAR2EXT_MSVC_ORIGIN))
 #   if !defined(WCHAR2LIB_PRAGMA_ADD)
 #     define WCHAR2LIB_PRAGMA_ADD 1
@@ -134,8 +142,11 @@ size_t    wstring_format(string_ws *dst, const wchar_t *restrict, ...);
 string_ws wstring_trunc(const wchar_t *ws, int);
 size_t    wstring_trunc_alloc(string_ws *restrict, const wchar_t*, int);
 
+__CHKRET
 char    * wstring_wstocs_alloc(const wchar_t *restrict);
+__CHKRET
 char    * wstring_swstocs_alloc(const string_ws *restrict);
+__CHKRET
 wchar_t * wstring_cstows_alloc(const char *restrict);
 size_t    wstring_cstows_ws_alloc(string_ws *restrict, const char *restrict);
 
@@ -146,8 +157,11 @@ size_t    u8stowcs(wchar_t*, const char*);
 size_t    wcstou8s(char*, const wchar_t*);
 int       u8sverify(const char*);
 
+__CHKRET
 wchar_t * _wpathnormalize(const wchar_t*, int);
+__CHKRET
 wchar_t * _wpathnormalize_ws(const string_ws*);
+__CHKRET
 char *    u8wpathnormalize(const wchar_t*);
 
 int       _wrename_s(const wchar_t*, size_t, const wchar_t*, size_t);
@@ -170,15 +184,21 @@ int       _wstat_s_(const wchar_t*, size_t, void*);
 int       _wstat_ws(const string_ws*, void*);
 int       u8wstat(const wchar_t*, void*);
 
+__CHKRET
 FILE    * _wfopen_s_(const wchar_t*, size_t, const char*);
+__CHKRET
 FILE    * _wfopen_ws(const string_ws*, const char*);
+__CHKRET
 FILE    * u8wfopen(const wchar_t*, const char*);
 
 wchar_t * _wbasename(const wchar_t*);
 wchar_t * _wbasename_ws(const string_ws*);
 wchar_t * _wbaseext(const wchar_t*);
 wchar_t * _wbaseext_ws(const string_ws*);
+
+__CHKRET
 wchar_t * _wbasedir(const wchar_t*, int);
+__CHKRET
 wchar_t * _wbasedir_ws(const string_ws*, int);
 
 /*! \cond NOTINDOC */

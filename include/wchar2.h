@@ -683,18 +683,24 @@ wchar_t   _fputwc(wchar_t, FILE *restrict);
            */
 
           /*! \brief Open file stream, accepts file name as wide characters, mode as const char */
-FILE    * _wfopen(const wchar_t*, const char*);
+FILE    * _wfopen(const wchar_t*, const char*)
+                __attribute__((warn_unused_result));
           /*! \brief Same as wfopen, include size file name variable */
-FILE    * _wfopen_s(const wchar_t*, size_t, const char*);
+FILE    * _wfopen_s(const wchar_t*, size_t, const char*)
+                __attribute__((warn_unused_result));
           /*! \brief Same as wfopen, file name as structure string_ws */
-FILE    * _wfopen_ws(const string_ws*, const char*);
+FILE    * _wfopen_ws(const string_ws*, const char*)
+                __attribute__((warn_unused_result));
           /*! \brief Automatic type selector for wfopen* functions */
-FILE    * _wfopen_selector(int, const void*, size_t, const void*);
+FILE    * _wfopen_selector(int, const void*, size_t, const void*)
+                __attribute__((warn_unused_result));
+
           /*!
            *  \brief Open file stream, convert file name from wide characters to UTF-8, mode as const char
            *  \attention function u8wfopen required free result
            */
-FILE    * u8wfopen(const wchar_t*, const char*);
+FILE    * u8wfopen(const wchar_t*, const char*)
+                __attribute__((warn_unused_result));
 
           /*!
            *  \paragraph Statistic from file
@@ -836,11 +842,14 @@ void *    _wbaseext_selector(int, const void*);
            */
 
           /*! \brief Parse path directory + normalize slash from path, wide char input */
-wchar_t * _wbasedir(const wchar_t*, int);
+wchar_t * _wbasedir(const wchar_t*, int)
+                __attribute__((warn_unused_result));
           /*! \brief Parse path directory + normalize slash from path, struct string_ws input */
-wchar_t * _wbasedir_ws(const string_ws*, int);
+wchar_t * _wbasedir_ws(const string_ws*, int)
+                __attribute__((warn_unused_result));
           /*! \brief Automatic type selector for wbasedir* functions */
-void *    _wbasedir_selector(int, const void*, int);
+void *    _wbasedir_selector(int, const void*, int)
+                __attribute__((warn_unused_result));
 
           /*!
            *  \paragraph Normalize slash from path
@@ -849,14 +858,17 @@ void *    _wbasedir_selector(int, const void*, int);
            */
 
           /*! \brief Normalize slash from path, wide char input, int is string size, default 0 */
-wchar_t * _wpathnormalize(const wchar_t*, int);
+wchar_t * _wpathnormalize(const wchar_t*, int)
+                __attribute__((warn_unused_result));
           /*! \brief Normalize slash from path, struct string_ws input */
-wchar_t * _wpathnormalize_ws(const string_ws*);
+wchar_t * _wpathnormalize_ws(const string_ws*)
+                __attribute__((warn_unused_result));
           /*!
            *  \brief Normalize slash from path, convert file name from wide characters to UTF-8
            *  \attention function u8wpathnormalize required free result
            */
-char *    u8wpathnormalize(const wchar_t*);
+char *    u8wpathnormalize(const wchar_t*)
+                __attribute__((warn_unused_result));
 
 
           /*!
@@ -871,21 +883,28 @@ char *    u8wpathnormalize(const wchar_t*);
 void      wstring_free(string_ws *restrict);
           /*! \brief Memory allocation string, struct string_ws->str output */
 size_t    wstring_alloc(string_ws *restrict, size_t);
+
           /*!
            *  \brief Converting string, wchar_t input, char allocate output
            *  \attention function wstring_wstocs_alloc required free result
            */
-char    * wstring_wstocs_alloc(const wchar_t *restrict);
+char    * wstring_wstocs_alloc(const wchar_t *restrict)
+                __attribute__((warn_unused_result));
+
           /*!
            *  \brief Converting string, string_ws input, char allocate output
            *  \attention function wstring_swstocs_alloc required free result
            */
-char    * wstring_swstocs_alloc(const string_ws *restrict);
+char    * wstring_swstocs_alloc(const string_ws *restrict)
+                __attribute__((warn_unused_result));
+
           /*!
            *  \brief Converting string, char input, wchar_t allocate output
            *  \attention function wstring_cstows_alloc required free result
            */
-wchar_t * wstring_cstows_alloc(const char *restrict);
+wchar_t * wstring_cstows_alloc(const char *restrict)
+                __attribute__((warn_unused_result));
+
           /*!
            *  \brief Converting string, string_ws input, length output
            *  \attention function wstring_cstows_alloc required free result
