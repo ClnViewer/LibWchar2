@@ -1040,27 +1040,28 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
         __WEV(EV_STAT_ARG_, __WEVFA(__VA_ARGS__))(__VA_ARGS__)
 
 #   define EV_ACCESS_ARG_3(_1,_2,_3) _waccess_selector(4,_1,_3,_2)
-#   define EV_ACCESS_ARG_2(_1,_2) _waccess_selector(__wchar_type_id(_1),_1,0,_2)
+#   define EV_ACCESS_ARG_2(_1,_2) _waccess_selector(__wchar_type_id(_1),_1,_2,0)
 #   define EV_ACCESS_ARG_1(_1) _waccess_selector(__wchar_type_id(_1),_1,0,0)
 #   define EV_ACCESS_ARG_0(...)
 
 #   define _waccess_macro(...) \
         __WEV(EV_ACCESS_ARG_, __WEVFA(__VA_ARGS__))(__VA_ARGS__)
 
-#   define EV_BNAME_ARG_2(_1,_2) _wbasename_selector(__wchar_type_id(_1),_1,)
+#   define EV_BNAME_ARG_2(_1,_2) _wbasename_selector(_1,_2)
 #   define EV_BNAME_ARG_1(_1) _wbasename_selector(__wchar_type_id(_1),_1)
 #   define EV_BNAME_ARG_0(...)
 
 #   define _wbasename_macro(...) \
         __WEV(EV_BNAME_ARG_, __WEVFA(__VA_ARGS__))(__VA_ARGS__)
 
-#   define EV_BEXT_ARG_2(_1,_2) _wbaseext_selector(__wchar_type_id(_1),_1)
+#   define EV_BEXT_ARG_2(_1,_2) _wbaseext_selector(_1,_2)
 #   define EV_BEXT_ARG_1(_1) _wbaseext_selector(__wchar_type_id(_1),_1)
 #   define EV_BEXT_ARG_0(...)
 
 #   define _wbaseext_macro(...) \
         __WEV(EV_BEXT_ARG_, __WEVFA(__VA_ARGS__))(__VA_ARGS__)
 
+#   define EV_BDIR_ARG_3(_1,_2,_3) _wbasedir_selector(_1,_2,_3)
 #   define EV_BDIR_ARG_2(_1,_2) _wbasedir_selector(__wchar_type_id(_1),_1,_2)
 #   define EV_BDIR_ARG_1(_1) _wbasedir_selector(__wchar_type_id(_1),_1, 0)
 #   define EV_BDIR_ARG_0(...)
