@@ -911,7 +911,10 @@ wchar_t * wstring_cstows_alloc(const char *restrict)
            */
 size_t    wstring_cstows_ws_alloc(string_ws *restrict, const char *restrict);
 
-          /*! \brief Append string, format vargs input, struct string_ws output */
+          /*!
+           *  \brief Append string, format vargs input, struct string_ws output
+           *  \attention curent status: is FIX output buffer size 8192 byte for *nix version
+           */
 size_t    wstring_format(string_ws*, const wchar_t *restrict, ...);
 
           /*! \brief Append string, wchar_t input, struct string_ws output */

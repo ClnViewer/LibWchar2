@@ -1,4 +1,4 @@
-.TH "include/wchar2.h" 3 "Fri Jul 20 2018" "libwchar2 0.0.5" \" -*- nroff -*-
+.TH "include/wchar2.h" 3 "Sun Jul 22 2018" "libwchar2 0.0.5" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -1509,6 +1509,17 @@ Converting string, \fBstring_ws\fP input, length output\&.
 \fBAttention:\fP
 .RS 4
 function wstring_cstows_alloc required free result 
+.RE
+.PP
+
+.SS "size_t wstring_format (\fBstring_ws\fP *, const wchar_t * restrict,  \&.\&.\&.)"
+
+.PP
+Append string, format vargs input, struct \fBstring_ws\fP output\&. 
+.PP
+\fBAttention:\fP
+.RS 4
+curent status: is FIX output buffer size 8192 byte for *nix version 
 .RE
 .PP
 
