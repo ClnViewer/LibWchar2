@@ -1,4 +1,3 @@
-
 /*
     MIT License
 
@@ -100,7 +99,10 @@ wchar_t * _wbasedir(const wchar_t *ws, int issep)
     if (
         (sz <= 0)  ||
         ((p = calloc(sizeof(wchar_t), sz)) == NULL)
-       ) { return NULL; }
+    )
+    {
+        return NULL;
+    }
 
     (void) _wmemcpy((void*)p, (void*)ws, sz);
     return __dirname_w(p, issep);
@@ -110,12 +112,15 @@ wchar_t * _wbasedir_ws(const string_ws *ws, int issep)
 {
     wchar_t *p  = NULL;
     int      sz = ws->sz;
-             sz = ((!sz) ? (int) _wcslen(ws->str) : sz);
+    sz = ((!sz) ? (int) _wcslen(ws->str) : sz);
 
     if (
         (sz <= 0)  ||
         ((p = calloc(sizeof(wchar_t), sz)) == NULL)
-       ) { return NULL; }
+    )
+    {
+        return NULL;
+    }
 
     (void) _wmemcpy((void*)p, (void*)ws->str, sz);
     return __dirname_w(p, issep);
@@ -132,71 +137,87 @@ void * _wbasedir_selector(int sel, const void *w, int issep)
 
     switch(sel)
     {
-        case 1:
-        case 4: {
-            esz = sizeof(wchar_t);
-            sz  = (int) _wcslen((const wchar_t*)w);
-            pp  = w;
-            break;
-        }
-        case 2: {
-            esz = sizeof(wchar_t);
-            sz  = ((const string_ws*)w)->sz;
-            sz  = ((!sz) ? (int) _wcslen(((const string_ws*)w)->str) : sz);
-            pp  = (const void*)((const string_ws*)w)->str;
-            break;
-        }
-        case 3: {
-            esz = sizeof(char);
-            sz  = strlen((char*)w);
-            pp  = w;
-            break;
-        }
-        default: {
-            errno = EFAULT;
-            return NULL;
-        }
+    case 1:
+    case 4:
+    {
+        esz = sizeof(wchar_t);
+        sz  = (int) _wcslen((const wchar_t*)w);
+        pp  = w;
+        break;
+    }
+    case 2:
+    {
+        esz = sizeof(wchar_t);
+        sz  = ((const string_ws*)w)->sz;
+        sz  = ((!sz) ? (int) _wcslen(((const string_ws*)w)->str) : sz);
+        pp  = (const void*)((const string_ws*)w)->str;
+        break;
+    }
+    case 3:
+    {
+        esz = sizeof(char);
+        sz  = strlen((char*)w);
+        pp  = w;
+        break;
+    }
+    default:
+    {
+        errno = EFAULT;
+        return NULL;
+    }
     }
 
     if (
         (sz <= 0)  ||
         (!pp)      ||
         ((p = calloc(esz, sz)) == NULL)
-       ) { return NULL; }
-
-    switch(sel)
+    )
     {
-        case 1:
-        case 2:
-        case 4: {
-            _wmemcpy(p, pp, sz);
-            break;
-        }
-        case 3: {
-            memcpy(p, pp, sz);
-            break;
-        }
-        default: {
-            break;
-        }
+        return NULL;
     }
 
-    if (!p) { return NULL; }
+    switch(sel)
+    {
+    case 1:
+    case 2:
+    case 4:
+    {
+        _wmemcpy(p, pp, sz);
+        break;
+    }
+    case 3:
+    {
+        memcpy(p, pp, sz);
+        break;
+    }
+    default:
+    {
+        break;
+    }
+    }
+
+    if (!p)
+    {
+        return NULL;
+    }
 
     switch(sel)
     {
-        case 1:
-        case 2:
-        case 4: {
-            return (void*) __dirname_w((wchar_t*)p, issep);
-        }
-        case 3: {
-            return (void*) __dirname_c((char*)p, issep);
-        }
-        default: {
-            errno = EFAULT;
-            return NULL;
-        }
+    case 1:
+    case 2:
+    case 4:
+    {
+        return (void*) __dirname_w((wchar_t*)p, issep);
+    }
+    case 3:
+    {
+        return (void*) __dirname_c((char*)p, issep);
+    }
+    default:
+    {
+        errno = EFAULT;
+        return NULL;
+    }
     }
 }
 
@@ -204,19 +225,23 @@ void * _wbaseext_selector(int sel, const void *w)
 {
     switch(sel)
     {
-        case 1:
-        case 4: {
-            return (void*) _wbaseext((const wchar_t*)w);
-        }
-        case 2: {
-            return (void*) _wbaseext_ws((const string_ws*)w);
-        }
-        case 3: {
-            return (void*) __basepart_c((char*)w, '.');
-        }
-        default: {
-            return NULL;
-        }
+    case 1:
+    case 4:
+    {
+        return (void*) _wbaseext((const wchar_t*)w);
+    }
+    case 2:
+    {
+        return (void*) _wbaseext_ws((const string_ws*)w);
+    }
+    case 3:
+    {
+        return (void*) __basepart_c((char*)w, '.');
+    }
+    default:
+    {
+        return NULL;
+    }
     }
 }
 
@@ -224,19 +249,23 @@ void * _wbasename_selector(int sel, const void *w)
 {
     switch(sel)
     {
-        case 1:
-        case 4: {
-            return (void*) _wbasename((const wchar_t*)w);
-        }
-        case 2: {
-            return (void*) _wbasename_ws((const string_ws*)w);
-        }
-        case 3: {
-            return (void*) __basepart_c((char*)w, __PSEP);
-        }
-        default: {
-            return NULL;
-        }
+    case 1:
+    case 4:
+    {
+        return (void*) _wbasename((const wchar_t*)w);
+    }
+    case 2:
+    {
+        return (void*) _wbasename_ws((const string_ws*)w);
+    }
+    case 3:
+    {
+        return (void*) __basepart_c((char*)w, __PSEP);
+    }
+    default:
+    {
+        return NULL;
+    }
     }
 }
 #endif

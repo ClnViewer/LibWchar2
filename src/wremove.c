@@ -1,4 +1,3 @@
-
 /*
     MIT License
 
@@ -47,19 +46,24 @@ int u8wremove(const wchar_t *wc)
         if (
             ((b = calloc(1, wcstou8s(NULL, wc) + 1)) == NULL) ||
             (wcstou8s(b, wc) <= 0)
-           ) { return -1; }
+        )
+        {
+            return -1;
+        }
 
         return remove(b);
 
 #   if defined(_MSC_VER)
     }
-    __finally {
-        if (b != NULL) free(b);
+    __finally
+    {
+        if (b != NULL)
+            free(b);
     }
 #   endif
 }
 
-#if defined(_MSC_VER)
+#if defined(OS_WIN)
 
 int _wremove_s(const wchar_t *ws, size_t sz)
 {
@@ -96,22 +100,27 @@ int _wremove_selector(int sel, const void *w, size_t sz)
 {
     switch(sel)
     {
-        case 1: {
-            return _wremove((const wchar_t*)w);
-        }
-        case 2: {
-            return _wremove_ws((const string_ws*)w);
-        }
-        case 3: {
-            return remove((const char*)w);
-        }
-        case 4: {
-            return _wremove_s((const wchar_t*)w, sz);
-        }
-        default: {
-            errno = EFAULT;
-            return -1;
-        }
+    case 1:
+    {
+        return _wremove((const wchar_t*)w);
+    }
+    case 2:
+    {
+        return _wremove_ws((const string_ws*)w);
+    }
+    case 3:
+    {
+        return remove((const char*)w);
+    }
+    case 4:
+    {
+        return _wremove_s((const wchar_t*)w, sz);
+    }
+    default:
+    {
+        errno = EFAULT;
+        return -1;
+    }
     }
 }
 

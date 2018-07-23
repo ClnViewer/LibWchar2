@@ -1,4 +1,3 @@
-
 /*
     MIT License
 
@@ -37,6 +36,7 @@
 #   define  __wwrite(A) if (write(fd, (void*)& A, sizeof(wchar_t)) <= 0) { break; }
 
 #endif
+
 void wcprint(wchar_t *w)
 {
     wchar_t *p = w;

@@ -1,4 +1,3 @@
-
 /*
     MIT License
 
@@ -50,20 +49,26 @@ int u8wrename(const wchar_t *o, const wchar_t *n)
             (wcstou8s(ob, o) <= 0)                            ||
             ((nb = calloc(1, wcstou8s(NULL, n) + 1)) == NULL) ||
             (wcstou8s(nb, n) <= 0)
-           ) { return -1; }
+        )
+        {
+            return -1;
+        }
 
         return rename(ob, nb);
 
 #   if defined(_MSC_VER)
     }
-    __finally {
-        if (ob != NULL) free(ob);
-        if (nb != NULL) free(nb);
+    __finally
+    {
+        if (ob != NULL)
+            free(ob);
+        if (nb != NULL)
+            free(nb);
     }
 #   endif
 }
 
-#if defined(_MSC_VER)
+#if defined(OS_WIN)
 
 int _wrename_ws(const string_ws *o, const string_ws *n)
 {
@@ -104,22 +109,27 @@ int _wrename_selector(int sel, const void *w, size_t osz, const void *s, size_t 
 {
     switch(sel)
     {
-        case 1: {
-            return _wrename((const wchar_t*)w, (const wchar_t*)s);
-        }
-        case 2: {
-            return _wrename_ws((const string_ws*)w, (const string_ws*)s);
-        }
-        case 3: {
-            return rename((const char*)w, (const char*)s);
-        }
-        case 4: {
-            return _wrename_s((const wchar_t*)w, osz, (const wchar_t*)s, nsz);
-        }
-        default: {
-            errno = EFAULT;
-            return -1;
-        }
+    case 1:
+    {
+        return _wrename((const wchar_t*)w, (const wchar_t*)s);
+    }
+    case 2:
+    {
+        return _wrename_ws((const string_ws*)w, (const string_ws*)s);
+    }
+    case 3:
+    {
+        return rename((const char*)w, (const char*)s);
+    }
+    case 4:
+    {
+        return _wrename_s((const wchar_t*)w, osz, (const wchar_t*)s, nsz);
+    }
+    default:
+    {
+        errno = EFAULT;
+        return -1;
+    }
     }
 }
 

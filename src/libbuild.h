@@ -31,27 +31,29 @@
         defined(_WIN64) || defined(__WIN64__) || \
         defined(__CYGWIN__) || defined(__MINGW32__) || defined(__MINGW64__))
 
-#   define OS_WIN
+#   define OS_WIN 1
 #   if (defined(_WIN32) || defined(__WIN32__) || defined(_Windows))
-#       define OS_WIN32
+#       define OS_WIN32 1
 #   elif (defined(_WIN64) || defined(__WIN64__))
-#       define OS_WIN64
+#       define OS_WIN64 1
 #   else
-#       define OS_NONE
+#       define OS_NONE 1
 #   endif
 
 #   if  (defined(OS_WIN32) && defined(_MSC_VER))
-#       define BUILD_MSVC32
+#       define BUILD_MSVC32 1
 #   elif  (defined(OS_WIN64) && defined(_MSC_VER))
-#       define BUILD_MSVC64
+#       define BUILD_MSVC64 1
 #   elif  (defined(OS_WIN32) && defined(__CYGWIN__))
-#       define BUILD_CYGWIN32
+#       define BUILD_CYGWIN32 1
 #   elif  (defined(OS_WIN64) && defined(__CYGWIN__))
-#       define BUILD_CYGWIN64
+#       define BUILD_CYGWIN64 1
 #   elif  (defined(OS_WIN32) && defined(__MINGW32__))
-#       define BUILD_MINGW32
+#       define BUILD_MINGW 1
+#       define BUILD_MINGW32 1
 #   elif  (defined(OS_WIN64) && defined(__MINGW64__))
-#       define BUILD_MINGW64
+#       define BUILD_MINGW 1
+#       define BUILD_MINGW64 1
 #   endif
 
 #endif

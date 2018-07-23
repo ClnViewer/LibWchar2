@@ -1,4 +1,3 @@
-
 /*
     MIT License
 
@@ -24,7 +23,9 @@
     SOFTWARE.
  */
 
-#if defined(OS_WIN32) || defined(OS_WIN64) || defined(_MSC_VER)
+#include "libbuild.h"
+
+#if defined(OS_WIN)
 #   include <stdio.h>
 #   include "libwcharext.h"
 
@@ -35,28 +36,47 @@
 
 #endif
 
-#if defined(_MSC_VER)
+#if defined(OS_WIN)
 
 static FILE * __wfopen(const wchar_t *w, const char *c, const char *m)
 {
     FILE   *fp         = NULL;
-    wchar_t bmode[256] = {0};
+
+#   if defined(_MSC_VER)
+    wchar_t bmode[(256 + 1)] = {0};
+#   elif defined(BUILD_MINGW)
+    char fpath[(256 + 1 * sizeof(wchar_t))] = {0};
+#   endif
+    errno = 0;
 
     if (
         ((!w) && (!c))                     ||
         (
+#           if defined(_MSC_VER)
             ((c) && (!fopen_s(&fp, c, m))) ||
+#           elif defined(BUILD_MINGW)
+            ((c) && (!(fp = fopen(c, m)))) ||
+#           endif
             ((w) &&
-                (
-                    (!wstring_cstows(bmode, sizeof(bmode), m)) ||
-                    (!_wfopen_s(&fp, w, bmode))
-                )
+             (
+#                   if defined(_MSC_VER)
+                 (!wstring_cstows(bmode, sizeof(bmode), m, 0)) ||
+                 (!_wfopen_s(&fp, w, bmode))
+#                   elif defined(BUILD_MINGW)
+                 (!wstring_wstocs(fpath, sizeof(fpath), w, 0)) ||
+                 (!(fp = fopen(fpath, m)))
+#                   endif
+             )
             )
         )
-       ) { return NULL; }
+    )
+    {
+        return NULL;
+    }
 
     return fp;
 }
+
 
 FILE * _wfopen_s_(const wchar_t *w, size_t sz, const char *m)
 {
@@ -71,20 +91,30 @@ FILE * _wfopen_ws(const string_ws *ws, const char *m)
 
 FILE * u8wfopen(const wchar_t *w, const char *m)
 {
-    char *b = NULL;
+    char __AUTO *b = NULL;
 
+#   if defined(_MSC_VER)
     __try
     {
+#   endif
         if (
             ((b = calloc(1, wcstou8s(NULL, w) + 1)) == NULL) ||
             (wcstou8s(b, w) <= 0)
-           ) { return NULL; }
+        )
+        {
+            return NULL;
+        }
 
         return __wfopen(NULL, b, m);
+
+#   if defined(_MSC_VER)
     }
-    __finally {
-        if (b != NULL) free(b);
+    __finally
+    {
+        if (b != NULL)
+            free(b);
     }
+#   endif
 }
 
 #else
@@ -96,7 +126,10 @@ FILE * u8wfopen(const wchar_t *w, const char *m)
     if (
         ((b = calloc(1, wcstou8s(NULL, w) + 1)) == NULL) ||
         (wcstou8s(b, w) <= 0)
-       ) { return NULL; }
+    )
+    {
+        return NULL;
+    }
 
     return fopen(b, m);
 }
@@ -123,22 +156,27 @@ FILE * _wfopen_selector(int sel, const void *w, size_t sz, const void *m)
 {
     switch(sel)
     {
-        case 1: {
-            return _wfopen((const wchar_t*)w, (const char*)m);
-        }
-        case 2: {
-            return _wfopen_ws((const string_ws*)w, (const char*)m);
-        }
-        case 3: {
-            return fopen((const char*)w, (const char*)m);
-        }
-        case 4: {
-            return _wfopen_s((const wchar_t*)w, sz, (const char*)m);
-        }
-        default: {
-            errno = EFAULT;
-            return NULL;
-        }
+    case 1:
+    {
+        return _wfopen((const wchar_t*)w, (const char*)m);
+    }
+    case 2:
+    {
+        return _wfopen_ws((const string_ws*)w, (const char*)m);
+    }
+    case 3:
+    {
+        return fopen((const char*)w, (const char*)m);
+    }
+    case 4:
+    {
+        return _wfopen_s((const wchar_t*)w, sz, (const char*)m);
+    }
+    default:
+    {
+        errno = EFAULT;
+        return NULL;
+    }
     }
 }
 #endif

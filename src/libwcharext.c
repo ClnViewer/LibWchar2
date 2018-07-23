@@ -1,4 +1,3 @@
-
 /*
     MIT License
 
@@ -44,61 +43,67 @@ int __seh_except_(unsigned int code, unsigned int line, const char *file, const 
 
     switch (code)
     {
-        case EXCEPTION_ACCESS_VIOLATION:
-        {
-            err = "Read/Write access violation, abort";
-            ret = EXCEPTION_EXECUTE_HANDLER; break;
-        }
+    case EXCEPTION_ACCESS_VIOLATION:
+    {
+        err = "Read/Write access violation, abort";
+        ret = EXCEPTION_EXECUTE_HANDLER;
+        break;
+    }
 
-        case EXCEPTION_STACK_OVERFLOW:
-        {
-            err = "Stack overflow, abort";
-            ret = EXCEPTION_EXECUTE_HANDLER; break;
-        }
+    case EXCEPTION_STACK_OVERFLOW:
+    {
+        err = "Stack overflow, abort";
+        ret = EXCEPTION_EXECUTE_HANDLER;
+        break;
+    }
 
-        case EXCEPTION_INT_OVERFLOW:
-        {
-            err = "Int overflow, abort";
-            ret = EXCEPTION_EXECUTE_HANDLER; break;
-        }
+    case EXCEPTION_INT_OVERFLOW:
+    {
+        err = "Int overflow, abort";
+        ret = EXCEPTION_EXECUTE_HANDLER;
+        break;
+    }
 
-        case EXCEPTION_INT_DIVIDE_BY_ZERO:
-        {
-            err = "Int zero divide, abort";
-            ret = EXCEPTION_EXECUTE_HANDLER; break;
-        }
+    case EXCEPTION_INT_DIVIDE_BY_ZERO:
+    {
+        err = "Int zero divide, abort";
+        ret = EXCEPTION_EXECUTE_HANDLER;
+        break;
+    }
 
-        case EXCEPTION_ARRAY_BOUNDS_EXCEEDED:
-        {
-            err = "Array out of bounds, abort";
-            ret = EXCEPTION_EXECUTE_HANDLER; break;
-        }
+    case EXCEPTION_ARRAY_BOUNDS_EXCEEDED:
+    {
+        err = "Array out of bounds, abort";
+        ret = EXCEPTION_EXECUTE_HANDLER;
+        break;
+    }
 
-        /*
-        case EXCEPTION_xxx:
-        {
-            ret = EXCEPTION_CONTINUE_EXECUTION; break;
-        }
-        */
-        default:
-        {
-            err = "Other exceptions, function ending";
-            ret = EXCEPTION_CONTINUE_SEARCH; break;
-        }
+    /*
+    case EXCEPTION_xxx:
+    {
+        ret = EXCEPTION_CONTINUE_EXECUTION; break;
+    }
+    */
+    default:
+    {
+        err = "Other exceptions, function ending";
+        ret = EXCEPTION_CONTINUE_SEARCH;
+        break;
+    }
     }
     printf("\n! Exception: code [%u]:\n\t-> source [%s:%u]\n\t-> func   [%s]\n\t-> status [%s]\n\n",
-        code, file, line, func, err
-    );
+           code, file, line, func, err
+          );
     return ret;
 }
 
 #else
 
-    char libinfo[]
+char libinfo[]
 #   if (defined(__APPLE__) || defined(__OSX__) || defined(__MACH__))
-    __attribute__((section("__SEGMENT,__LIBINFO")))
+__attribute__((section("__SEGMENT,__LIBINFO")))
 #   else
-    __attribute__ ((section ("LIBINFO")))
+__attribute__ ((section ("LIBINFO")))
 #   endif
     = "libwchar2ext compiled on " __DATE__ " at " __TIME__;
 

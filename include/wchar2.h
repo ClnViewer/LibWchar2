@@ -721,7 +721,7 @@ int       _wstat_selector(int, const void*, size_t, const void*);
            *  \brief Statistic from file, convert file name from wide characters to UTF-8
            *  \attention function u8wstat required free result
            */
-int       u8wstat(const wchar_t*, struct stat*);
+int       u8wstat(const wchar_t*, void*);
 
           /*!
            *  \paragraph Rename (move) file
@@ -944,11 +944,13 @@ size_t    wstring_append_cvt(string_ws*, const char *restrict, size_t);
            *  \paragraph User buffer memory function
            */
 
-          /*! \brief Converting string, struct string_ws input, char array output, to alloc buffer write */
-size_t    wstring_wstocs(char [], size_t, const string_ws *restrict);
           /*! \brief Converting string, char input, wchar_t array output, to alloc buffer write */
-size_t    wstring_cstows(wchar_t [], size_t, const char *restrict);
-          /*! \brief Check string is empty, wchar_t input, boolean return */
+size_t    wstring_cstows(wchar_t [], size_t, const char *restrict, size_t);
+          /*! \brief Converting string, struct wchar_t input, char array output, to alloc buffer write */
+size_t    wstring_wstocs(char [], size_t, const wchar_t *restrict, size_t);
+          /*! \brief Converting string, struct string_ws input, char array output, to alloc buffer write */
+size_t    wstring_wstocs_ws(char [], size_t, const string_ws *restrict);
+
 
           /*!
            *  \paragraph misc function

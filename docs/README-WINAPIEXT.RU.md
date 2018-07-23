@@ -21,17 +21,24 @@
 
 ### Установка библиотеки расширений
 
-Сборка библиотеки расширений `libwchar2` рассчитана на среду компиляции `MSVC`/`MSVS`. Подготовка к сборке происходит с помощью сценария `cmake`.
+Сборка библиотеки расширений `libwchar2` рассчитана на среду компиляции `MSVC`/`MSVS` или `MinGW`, `MSYS`. Подготовка к сборке происходит с помощью сценария `cmake`.
 
 Последовательность шагов для сборки библиотеки расширений если ваша версия `Visual Studio` или `Visual C++` с помощью внешней утилиты `cmake`:
 
 #### Выполнение сценария `cmake` для командной строки 
 
 - перейдите в директорию `winext/build` в репозитории.
-- выполните команду `cmake` с ключом `-G`, где параметром ключа является [версия](https://cmake.org/cmake/help/v3.4/manual/cmake-generators.7.html#visual-studio-generators) `Visual Studio` или `Visual C++`:
+- выполните команду `cmake` с ключом `-G`, где параметром ключа является [версия](https://cmake.org/cmake/help/v3.4/manual/cmake-generators.7.html#visual-studio-generators) `Visual Studio` или `Visual C++`, или строка соответствующая сборки под `MinGW`, `MSYS`:
 
         cd winext/build
+
+        // для Visual Studio
         cmake -G"Visual Studio 14"  .. 
+        // или для MinGW
+        cmake -G "MinGW Makefiles"  ..
+        // или для MinGW CodeBlocks
+        cmake -G "CodeBlocks - MinGW Makefiles"  ..
+
         cmake --build . --target "ALL_BUILD" --config "Release"
 
 - выходные файлы библиотеки после успешной сборки и инсталляции должны находиться в директории `winext/lib`.
@@ -45,7 +52,7 @@
 - указываем пути:
  - `Where is the source code` - полный путь до папки `winext` в репозитории.
  - `Where to build the binaries` - полный путь до папки `winext/build` в репозитории, туда будут генерироваться файлы проекта.
-- нажимаем кнопку `Configure` и выбираем версию `Visual Studio`, в случае ошибки нажимаем еще раз :)
+- нажимаем кнопку `Configure` и выбираем версию `Visual Studio`, или `MinGW Makefiles`, в случае ошибки нажимаем еще раз :)
 - нажимаем кнопку `Generate`.
 - нажимаем кнопку `Open Project`, поддерживаться с версии `CMake GUI` `>=` `3.12`.
 - в `Visual Studio`, выбираем тип сборки `Release` или `Debug`.

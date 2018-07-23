@@ -1,4 +1,3 @@
-
 /*
     MIT License
 
@@ -37,11 +36,12 @@ typedef unsigned short mode_t;
 
 #endif
 
-#if defined(_MSC_VER)
+#if defined(OS_WIN)
 
 static int __mkdirwp(const wchar_t *w)
 {
-    wchar_t *p = NULL;
+    wchar_t __AUTO *p = NULL;
+    errno = 0;
 
     if (!w)
     {
@@ -49,22 +49,38 @@ static int __mkdirwp(const wchar_t *w)
         return -1;
     }
 
+#   if defined(_MSC_VER)
     __try
     {
+#   endif
         if (_wmkdir(w) == -1)
         {
             switch (errno)
             {
-                case EEXIST: { return 0;  }
-                case ENOENT: { break;     }
-                default:     { return -1; }
+            case EEXIST:
+            {
+                return 0;
+            }
+            case ENOENT:
+            {
+                break;
+            }
+            default:
+            {
+                return -1;
+            }
             }
             do
             {
-                if ((p = _wbasedir(w, 0)) == NULL) { break; }
-                if (__mkdirwp(p) == 0) return _wmkdir(w);
+                if ((p = _wbasedir(w, 0)) == NULL)
+                {
+                    break;
+                }
+                if (__mkdirwp(p) == 0)
+                    return _wmkdir(w);
 
-            } while (0);
+            }
+            while (0);
 
             errno = ENOENT;
             return -1;
@@ -72,10 +88,14 @@ static int __mkdirwp(const wchar_t *w)
         errno = 0;
         return errno;
 
+#   if defined(_MSC_VER)
     }
-    __finally {
-        if (p != NULL) free(p);
+    __finally
+    {
+        if (p != NULL)
+            free(p);
     }
+#   endif
 }
 
 int _wmkdir_s(const wchar_t *w, size_t sz, mode_t m)
@@ -107,6 +127,7 @@ int u8wmkdir(const wchar_t *w, mode_t m)
 static int __mkdirp(const char *s, mode_t m)
 {
     char __AUTO *p = NULL;
+    errno = 0;
 
     if (!s)
     {
@@ -118,16 +139,30 @@ static int __mkdirp(const char *s, mode_t m)
     {
         switch (errno)
         {
-            case EEXIST: { return 0;  }
-            case ENOENT: { break;     }
-            default:     { return -1; }
+        case EEXIST:
+        {
+            return 0;
+        }
+        case ENOENT:
+        {
+            break;
+        }
+        default:
+        {
+            return -1;
+        }
         }
         do
         {
-            if ((p = (char*) _wbasedir_selector(3, (const void*)s, 0)) == NULL) { break; }
-            if (__mkdirp(p, m) == 0) return mkdir(s, m);
+            if ((p = (char*) _wbasedir_selector(3, (const void*)s, 0)) == NULL)
+            {
+                break;
+            }
+            if (__mkdirp(p, m) == 0)
+                return mkdir(s, m);
 
-        } while (0);
+        }
+        while (0);
 
         errno = ENOENT;
         return -1;
@@ -143,7 +178,10 @@ int u8wmkdir(const wchar_t *wc, mode_t m)
     if (
         ((b = calloc(1, wcstou8s(NULL, wc) + 1)) == NULL) ||
         (wcstou8s(b, wc) <= 0)
-       ) { return -1; }
+    )
+    {
+        return -1;
+    }
 
     return __mkdirp(b, m);
 }
@@ -170,22 +208,27 @@ int _wmkdir_selector(int sel, const void *w, size_t sz, mode_t m)
 {
     switch(sel)
     {
-        case 1: {
-            return _wmkdir((const wchar_t*)w, m);
-        }
-        case 2: {
-            return _wmkdir_ws((const string_ws*)w, m);
-        }
-        case 3: {
-            return __mkdirp((const char*)w, m);
-        }
-        case 4: {
-            return _wmkdir_s((const wchar_t*)w, sz, m);
-        }
-        default: {
-            errno = EFAULT;
-            return -1;
-        }
+    case 1:
+    {
+        return _wmkdir((const wchar_t*)w, m);
+    }
+    case 2:
+    {
+        return _wmkdir_ws((const string_ws*)w, m);
+    }
+    case 3:
+    {
+        return __mkdirp((const char*)w, m);
+    }
+    case 4:
+    {
+        return _wmkdir_s((const wchar_t*)w, sz, m);
+    }
+    default:
+    {
+        errno = EFAULT;
+        return -1;
+    }
     }
 }
 

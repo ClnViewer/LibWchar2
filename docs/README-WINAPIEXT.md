@@ -20,17 +20,24 @@ The current results of the test builds of the extension library `LibWchar2` on [
 
 ### Installing LibWchar2 extension library
 
-The libwchar2 extension library build is designed for the `MSVC`/`MSVS` compilation environment. Preparation for the assembly is done using the  `cmake` script.
+The libwchar2 extension library build is designed for the `MSVC`/`MSVS` or `MinGW`, `MSYS` compilation environment. Preparation for the assembly is done using the  `cmake` script.
 
-The sequence of steps for building an extension library if your version of `Visual Studio` or `Visual C ++` is using the external utility `cmake`:
+The sequence of steps for building an extension library if your version of `Visual Studio` or `Visual C++` is using the external utility `cmake`:
 
 #### Executing the `cmake` script for the command line
 
 - go to the `winext/build` directory in the repository.
-- execute the command `cmake` with the -G key, where the key parameter is the [version](https://cmake.org/cmake/help/v3.4/manual/cmake-generators.7.html#visual-studio-generators) of `Visual Studio` or `Visual C ++`:
+- execute the command `cmake` with the -G key, where the key parameter is the [version](https://cmake.org/cmake/help/v3.4/manual/cmake-generators.7.html#visual-studio-generators) of `Visual Studio` or `Visual C ++`, or predefined build-name string to `MinGW`, `MSYS`:
 
         cd winext/build
+
+        // to Visual Studio project
         cmake -G"Visual Studio 14"  .. 
+        // or MinGW
+        cmake -G "MinGW Makefiles"  ..
+        // or MinGW CodeBlocks
+        cmake -G "CodeBlocks - MinGW Makefiles"  ..
+
         cmake --build . --target "ALL_BUILD" --config "Release"
 
 - Library output files after successful assembly and installation should be in the directory `winext/lib`.
@@ -43,7 +50,7 @@ You can also select `winext/build/libwchar2ext.sln` in `Visual Studio` and compi
 - specify the ways:
  - `Where is the source code` - the full path to the `winext` folder in the repository.
  - `Where to build the binaries` - the full path to the `winext / build` folder in the repository, the project files will be generated there.
-- press the `Configure` button and select the version of `Visual Studio`, in case of error, click again :)
+- press the `Configure` button and select the version of `Visual Studio` or `MinGW Makefiles`, in case of error, click again :)
 - Press the button `Generate`.
 - we press the button `Open Project`, it is supported from the version ` CMake GUI` `> =` `3.12`.
 - in `Visual Studio`, choose the type of assembly `Release` or `Debug`.

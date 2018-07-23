@@ -1,4 +1,3 @@
-
 /*
     MIT License
 
@@ -39,11 +38,15 @@ wchar_t * _wpathnormalize(const wchar_t *ws, int sz)
     int i, n;
     wchar_t *p;
     sz = ((sz > 0) ? sz : (int) _wcslen(ws));
+    errno = 0;
 
     if (
         (sz <= 0)  ||
         ((p = calloc(sizeof(wchar_t), sz)) == NULL)
-       ) { return NULL; }
+    )
+    {
+        return NULL;
+    }
 
     _wmemcpy(p, ws, sz);
 
@@ -52,7 +55,11 @@ wchar_t * _wpathnormalize(const wchar_t *ws, int sz)
         p[n] = ((p[n] == p[i]) ? p[n] : p[i]);
         if (p[i] == __WEV(L,__PSEP))
         {
-            while ((p[i] == __WEV(L,__PSEP)) && (i < sz)) {  i++; } --i;
+            while ((p[i] == __WEV(L,__PSEP)) && (i < sz))
+            {
+                i++;
+            }
+            --i;
         }
     }
 
@@ -81,19 +88,26 @@ char * u8wpathnormalize(const wchar_t *ws)
                 ((wo = _wpathnormalize(ws, 0)) == NULL)            ||
                 ((ob = calloc(1, wcstou8s(NULL, wo) + 1)) == NULL) ||
                 (wcstou8s(ob, wo) <= 0)
-               ) { break; }
+            )
+            {
+                break;
+            }
 
             return ob;
 
-        } while (0);
+        }
+        while (0);
 
-        if (ob != NULL) free(ob);
+        if (ob != NULL)
+            free(ob);
         return NULL;
 
 #   if defined(_MSC_VER)
     }
-    __finally {
-        if (wo != NULL) free(wo);
+    __finally
+    {
+        if (wo != NULL)
+            free(wo);
     }
 #   endif
 }
