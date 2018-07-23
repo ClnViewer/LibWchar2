@@ -49,34 +49,47 @@ static FILE * __wfopen(const wchar_t *w, const char *c, const char *m)
 #   endif
     errno = 0;
 
-    if (
-        ((!w) && (!c))                     ||
-        (
+#   if defined(_MSC_VER)
+    __try
+    {
+#   endif
+
+        if (
+            ((w == NULL) && (c == NULL))       ||
+            (
 #           if defined(_MSC_VER)
-            ((c) && (!fopen_s(&fp, c, m))) ||
+                ((c != NULL) && (fopen_s(&fp, c, m) != 0)) ||
 #           elif defined(BUILD_MINGW)
-            ((c) && (!(fp = fopen(c, m)))) ||
+                ((c != NULL) && (!(fp = fopen(c, m)))) ||
 #           endif
-            ((w) &&
-             (
-#                   if defined(_MSC_VER)
-                 (!wstring_cstows(bmode, sizeof(bmode), m, 0)) ||
-                 (!_wfopen_s(&fp, w, bmode))
-#                   elif defined(BUILD_MINGW)
-                 (!wstring_wstocs(fpath, sizeof(fpath), w, 0)) ||
-                 (!(fp = fopen(fpath, m)))
-#                   endif
-             )
+                ((w != NULL) &&
+                 (
+#                if defined(_MSC_VER)
+                     (!wstring_cstows(bmode, wsizeof(bmode), m, 0)) ||
+                     (_wfopen_s(&fp, w, (const wchar_t*)&bmode) != 0)
+#                elif defined(BUILD_MINGW)
+                     (!wstring_wstocs(fpath, sizeof(fpath), w, 0)) ||
+                     (!(fp = fopen(fpath, m)))
+#                endif
+                 )
+                )
             )
         )
-    )
+        {
+            return NULL;
+        }
+
+        return fp;
+
+#   if defined(_MSC_VER)
+    }
+    __except(__seh_except())
     {
         return NULL;
     }
+#   endif
 
-    return fp;
 }
-
 
 FILE * _wfopen_s_(const wchar_t *w, size_t sz, const char *m)
 {

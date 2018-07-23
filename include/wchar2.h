@@ -90,7 +90,7 @@
 #define __WEV(A,B)  __WEV_(A,B)
 #define __WEVFA_(_11, _10, _9, _8, _7, _6, _5, _4, _3, _2, _1, N, ...) N
 #define __WEVFA(...) __WEVFA_(__VA_ARGS__, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0)
-
+#define wsizeof(x) (unsigned long)(sizeof(x) / sizeof(wchar_t)) /**< determine size wchar_t object macro, replace `sizeof` */
 
 #if ((!defined(__STDC_VERSION__) || (__STDC_VERSION__ < 199901L)) && \
       !defined(__STDC_C99) && !defined(__C99_RESTRICT))

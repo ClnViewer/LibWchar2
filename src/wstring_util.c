@@ -25,7 +25,7 @@
 
 #include "libbuild.h"
 
-#if defined(OS_WIN32) || defined(OS_WIN64) || defined(_MSC_VER)
+#if defined(OS_WIN)
 #   include "libwcharext.h"
 
 #else
@@ -235,7 +235,7 @@ wchar_t * wstring_cstows_alloc(const char *src)
 size_t wstring_wstocs(char dst[], size_t dsz, const wchar_t *src, size_t ssz)
 {
     ssz = ((!ssz) ? _wcslen(src) : ssz);
-    dsz = ((ssz >= dsz) ? (dsz - 1) : ssz);
+    dsz = ((ssz >= dsz) ? (dsz - 1) : dsz);
     if ((dsz = _wcstombs(dst, src, dsz)) == 0)
     {
         return 0U;
@@ -252,7 +252,7 @@ size_t wstring_wstocs_ws(char dst[], size_t dsz, const string_ws *src)
 size_t wstring_cstows(wchar_t dst[], size_t dsz, const char *src, size_t ssz)
 {
     ssz = ((!ssz) ? strlen(src) : ssz);
-    dsz = ((ssz >= dsz) ? (dsz - 1) : ssz);
+    dsz = ((ssz >= dsz) ? (dsz - 1) : dsz);
     if ((dsz = _mbstowcs(dst, src, dsz)) == 0)
     {
         return 0U;

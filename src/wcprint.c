@@ -25,7 +25,7 @@
 
 #include "libbuild.h"
 
-#if defined(OS_WIN32) || defined(OS_WIN64) || defined(_MSC_VER)
+#if defined(OS_WIN)
 #   include "libwcharext.h"
 #   define  __wwrite(A) putwchar(A)
 
@@ -33,7 +33,7 @@
 #   include <stdio.h>
 #   include <unistd.h>
 #   include "libwchar.h"
-#   define  __wwrite(A) if (write(fd, (void*)& A, sizeof(wchar_t)) <= 0) { break; }
+#   define  __wwrite(A) if (write(fd, (void*)&(A), sizeof(wchar_t)) <= 0) { break; }
 
 #endif
 

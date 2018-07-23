@@ -1,4 +1,3 @@
-
 /*
     MIT License
 
@@ -107,20 +106,23 @@
 #define __WSTR_FMT  "ls" /**< print format wchar_t string macro */
 #define __WCHAR_FMT "lc" /**< print format wchar_t char macro */
 #define __WCSZ(x) ((x->sz + 1) * sizeof(wchar_t)) /**< determine size string_ws macro */
+#define wsizeof(x) (unsigned long)(sizeof(x) / sizeof(wchar_t)) /**< replace `sizeof` to `wchar_t` size macro */
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
 /*! \brief Base wide string structure */
-typedef struct {
+typedef struct
+{
     wchar_t *str; /**<  wide string pointer */
     size_t   sz;  /**<  size wide string */
 
 } string_ws;
 
 /*! \brief enumeration for return waccess function */
-typedef enum {
+typedef enum
+{
     ISERROR = -1, /**<  Error check */
     ISUNK   =  0, /**<  is a Unknown */
     ISFIL   =  1, /**<  is a Regular file */
@@ -150,9 +152,9 @@ __CHKRET
 wchar_t * wstring_cstows_alloc(const char *restrict);
 size_t    wstring_cstows_ws_alloc(string_ws *restrict, const char *restrict);
 
-size_t    wstring_cstows(wchar_t [], size_t, const char *restrict, size_t);
 size_t    wstring_wstocs(char [], size_t, const wchar_t *restrict, size_t);
 size_t    wstring_wstocs_ws(char [], size_t, const string_ws *restrict);
+size_t    wstring_cstows(wchar_t [], size_t, const char *restrict, size_t);
 
 size_t    u8stowcs(wchar_t*, const char*);
 size_t    wcstou8s(char*, const wchar_t*);

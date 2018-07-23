@@ -17,9 +17,20 @@ set( CMAKE_SKIP_PACKAGE_ALL_DEPENDENCY true )
 set_property( GLOBAL PROPERTY USE_FOLDERS ON )
 set( PREDEFINED_TARGETS_FOLDER "CmakeDepends" )
 
+include(CheckCXXCompilerFlag)
+CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
+if(COMPILER_SUPPORTS_CXX11)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+endif()
+
+
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/../include
     ${CMAKE_CURRENT_SOURCE_DIR}/../src
+)
+
+set(inst_hdrs
+	${CMAKE_CURRENT_SOURCE_DIR}/../include/wchar2ext.h
 )
 
 set(lib_hdrs
@@ -83,5 +94,9 @@ install ( TARGETS ${lib_target}
 
 install ( TARGETS ${app_target}
   RUNTIME DESTINATION "${CMAKE_CURRENT_SOURCE_DIR}/lib/test"
+)
+
+install ( FILES ${inst_hdrs}
+  DESTINATION "${CMAKE_CURRENT_SOURCE_DIR}/lib/include"
 )
 

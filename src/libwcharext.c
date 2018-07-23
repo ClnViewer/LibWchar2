@@ -25,14 +25,13 @@
 
 #include "libbuild.h"
 
-#include <stdio.h>
-
-#if defined(OS_WIN32) || defined(OS_WIN64) || defined(_MSC_VER)
+#if defined(OS_WIN)
 
 #   if defined(_MSC_VER)
 // #      pragma warning(disable : 4206) // About empty code file
 #      pragma comment(user, "libwchar2ext compiled on " __DATE__ " at " __TIME__)
 #   endif
+#   include <stdio.h>
 #   include <windows.h>
 #   include <excpt.h>
 

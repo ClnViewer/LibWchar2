@@ -25,17 +25,20 @@ static const char * __access_error(access_e x)
                             ((x == ISDIR) ? "is a Directory" : "Unknown result"))));
 }
 
-static const char * __get_error(char **errstr, int err)
+#if defined(_MSC_VER)
+static const char * __get_error(char errstr[], int err)
+#else
+static const char * __get_error(char *errstr, int err)
+#endif
 {
 #   if defined(_MSC_VER)
-    (void) strerror_s(*errstr, 256, err);
-    return (const char*)*errstr;
+    (void) strerror_s(errstr, 256, err);
+    return (const char*)errstr;
 #   else
-    *errstr = strerror(err);
-    return (const char*)(*errstr);
+    (void) errstr;
+    return (const char*)strerror(err);
 #   endif
 }
-
 
 int main(int argc, char *argv[])
 {
@@ -48,13 +51,27 @@ int main(int argc, char *argv[])
               aa  = { L"_two_string_", 0U },
               aaa  = { L".", 0U };
     const char wtext[] = "write text UTF8 - тест текст";
+    wchar_t wout[256];
+    char    cout[(sizeof(wout) * 2)];
+
 #   if defined(_MSC_VER)
-    char bstr[256] = {0}, *errstr = (char*)&bstr;
+    char errstr[256] = {0};
 #   else
     char *errstr = NULL;
 #   endif
 
     printf("\n\ti sizeof wchar_t [%u]\n", sizeof(wchar_t));
+
+    /* low-level Function test */
+
+    wmemset((void*)&wout, 0, wsizeof(wout));
+    memset((void*)&cout, 0,  sizeof(cout));
+
+    ret = wstring_cstows(wout, wsizeof(wout), (const char*)wtext, 0);
+    printf("\n\t*(%d) wstring_cstows: [%ls][%d]\n", __LINE__, wout, ret);
+
+    ret = wstring_wstocs(cout, sizeof(cout), (const wchar_t*)wout, 0);
+    printf("\n\t*(%d) wstring_wstocs: [%s][%d]\n", __LINE__, cout, ret);
 
     sz = wstring_appends_(&dst, (wchar_t*)a.str, (wchar_t*)aaa.str, (wchar_t*)aa.str, NULL);
     printf("\n\t*(%d) wstring_appends: [%ls][%u]\n", __LINE__, dst.str, dst.sz);
@@ -95,28 +112,31 @@ int main(int argc, char *argv[])
     printf("\n\t*(%d) waccess: [%ls] -> [%d][%s]\n", __LINE__, pathmkd, ret, __access_error(ret));
 
     ret = wmkdir(pathmkd, 0);
-    printf("\n\t*(%d) wmkdir: [create] [%ls] -> [%d/%d][%s]\n", __LINE__, pathmkd, ret, errno, __get_error((char**)&errstr, errno));
+    printf("\n\t*(%d) wmkdir: [create] [%ls] -> [%d/%d][%s]\n", __LINE__, pathmkd, ret, errno, __get_error(errstr, errno));
 
     ret = waccess(pathmkd, F_OK);
     printf("\n\t*(%d) waccess: [%ls] -> [%d][%s]\n", __LINE__, pathmkd, ret, __access_error(ret));
 
     ret = wmkdir(pathmkd, 0);
-    printf("\n\t*(%d) wmkdir: [exist]  [%ls] -> [%d/%d][%s]\n", __LINE__, pathmkd, ret, errno, __get_error((char**)&errstr, errno));
+    printf("\n\t*(%d) wmkdir: [exist]  [%ls] -> [%d/%d][%s]\n", __LINE__, pathmkd, ret, errno, __get_error(errstr, errno));
 
+    do
     {
         FILE *fp;
         errno = 0;
         if (!(fp = wfopen(__WS("test-write.txt"), "a+")))
         {
-            printf("\n\t*(%d) wfopen: [error] -> [%d][%s]\n", __LINE__, errno, __get_error((char**)&errstr, errno));
-            return 0;
+            printf("\n\t*(%d) wfopen: [error] -> [%d][%s]\n", __LINE__, errno, __get_error(errstr, errno));
+            break;
         }
-        printf("\n\t*(%d) wfopen: [ok] -> [%d][%s]\n", __LINE__, errno, __get_error((char**)&errstr, errno));
+        printf("\n\t*(%d) wfopen: [ok] -> [%d][%s]\n", __LINE__, errno, __get_error(errstr, errno));
         errno = 0;
         ret = fwrite((void*)wtext, sizeof(char), sizeof(wtext), fp);
-        printf("\n\t*(%d) fwrite: [status]  -> [%d/%d][%s]\n", __LINE__, ret, errno, __get_error((char**)&errstr, errno));
+        printf("\n\t*(%d) fwrite: [status]  -> [%d/%d][%s]\n", __LINE__, ret, errno, __get_error(errstr, errno));
         fclose(fp);
+
     }
+    while (0);
 
     (void) getchar();
     return 0;

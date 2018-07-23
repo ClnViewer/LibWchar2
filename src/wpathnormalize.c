@@ -25,7 +25,7 @@
 
 #include "libbuild.h"
 
-#if defined(OS_WIN32) || defined(OS_WIN64) || defined(_MSC_VER)
+#if defined(OS_WIN)
 #   include "libwcharext.h"
 
 #else

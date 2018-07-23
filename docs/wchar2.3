@@ -1,4 +1,4 @@
-.TH "include/wchar2.h" 3 "Sun Jul 22 2018" "libwchar2 0.0.5" \" -*- nroff -*-
+.TH "include/wchar2.h" 3 "Tue Jul 24 2018" "libwchar2 0.0.5" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -423,7 +423,7 @@ include/wchar2.h
 .br
 .RI "Automatic type selector for wstat* functions\&. "
 .ti -1c
-.RI "int \fBu8wstat\fP (const wchar_t *, struct stat *)"
+.RI "int \fBu8wstat\fP (const wchar_t *, void *)"
 .br
 .RI "Statistic from file, convert file name from wide characters to UTF-8\&. "
 .ti -1c
@@ -595,17 +595,21 @@ include/wchar2.h
 .br
 .RI "Append string, char input, struct \fBstring_ws\fP output\&. "
 .ti -1c
-.RI "size_t \fBwstring_wstocs\fP (char [], size_t, const \fBstring_ws\fP *restrict)"
-.br
-.RI "Converting string, struct \fBstring_ws\fP input, char array output, to alloc buffer write\&. "
-.ti -1c
-.RI "size_t \fBwstring_cstows\fP (wchar_t [], size_t, const char *restrict)"
+.RI "size_t \fBwstring_cstows\fP (wchar_t [], size_t, const char *restrict, size_t)"
 .br
 .RI "Converting string, char input, wchar_t array output, to alloc buffer write\&. "
 .ti -1c
+.RI "size_t \fBwstring_wstocs\fP (char [], size_t, const wchar_t *restrict, size_t)"
+.br
+.RI "Converting string, struct wchar_t input, char array output, to alloc buffer write\&. "
+.ti -1c
+.RI "size_t \fBwstring_wstocs_ws\fP (char [], size_t, const \fBstring_ws\fP *restrict)"
+.br
+.RI "Converting string, struct \fBstring_ws\fP input, char array output, to alloc buffer write\&. "
+.ti -1c
 .RI "int \fBwstring_isempty\fP (const wchar_t *restrict s, int)"
 .br
-.RI "Check string is empty, wchar_t input, boolean return\&. "
+.RI "Check wchar_t input string is empty, bool return\&. "
 .ti -1c
 .RI "\fBstring_ws\fP \fBwstring_trunc\fP (const wchar_t *ws, int)"
 .br
@@ -1424,7 +1428,7 @@ function u8wrename required free result
 .RE
 .PP
 
-.SS "int u8wstat (const wchar_t *, struct stat *)"
+.SS "int u8wstat (const wchar_t *, void *)"
 
 .PP
 Statistic from file, convert file name from wide characters to UTF-8\&. 
@@ -1490,6 +1494,10 @@ function \fBwstring_appends_()\fP required free result
 .RE
 .PP
 
+.SS "size_t wstring_cstows (wchar_t[], size_t, const char * restrict, size_t)"
+
+.PP
+Converting string, char input, wchar_t array output, to alloc buffer write\&. 
 .SS "wchar_t* wstring_cstows_alloc (const char * restrict)"
 
 .PP
@@ -1530,7 +1538,7 @@ Memory free string, empty and clear struct \fBstring_ws\fP\&. API use struct \fB
 .SS "int wstring_isempty (const wchar_t *restrict s, int)"
 
 .PP
-Check string is empty, wchar_t input, boolean return\&. Check wchar_t input string is empty, bool return 
+Check wchar_t input string is empty, bool return\&. 
 .SS "char* wstring_swstocs_alloc (const \fBstring_ws\fP * restrict)"
 
 .PP
@@ -1542,10 +1550,6 @@ function wstring_swstocs_alloc required free result
 .RE
 .PP
 
-.SS "size_t wstring_wstocs (char[], size_t, const \fBstring_ws\fP * restrict)"
-
-.PP
-Converting string, struct \fBstring_ws\fP input, char array output, to alloc buffer write\&. 
 .SS "char* wstring_wstocs_alloc (const wchar_t * restrict)"
 
 .PP

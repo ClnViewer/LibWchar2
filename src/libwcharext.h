@@ -73,6 +73,10 @@
 #   if defined(_MSC_VER)
 #      define _wcstombs __wcstombs_s
 #      define _mbstowcs __mbstowcs_s
+
+//#   define __wcstombs wcstombs
+//#   define __mbstowcs mbstowcs
+
 #      pragma warning(disable : 4127)
 #      pragma warning(disable : 4706)
 #      define __AUTO
@@ -112,10 +116,12 @@
 
 #include "../include/wchar2ext.h"
 
-#if defined(OS_WIN32) || defined(OS_WIN64)
-#   include <windows.h>
-#   define __seh_except() __seh_except_(GetExceptionCode(), __LINE__, __FILE__, __FUNCTION__)
+#if defined(OS_WIN)
+#   if defined(_MSC_VER)
+#      include <windows.h>
+#      define __seh_except() __seh_except_(GetExceptionCode(), __LINE__, __FILE__, __FUNCTION__)
 int    __seh_except_(unsigned int, unsigned int, const char*, const char*);
+#   endif
 #endif
 
 #if defined(BUILD_MSVC32) || defined(BUILD_MSVC64)
@@ -123,14 +129,14 @@ int    __seh_except_(unsigned int, unsigned int, const char*, const char*);
 static inline size_t __wcstombs_s(char *out, const wchar_t *src, size_t sz)
 {
     size_t  ssz;
-    if (wcstombs_s(&ssz,out,sz,src,sz) != 0)
+    if (wcstombs_s(&ssz, out, sz, src, (sz - 1)) != 0)
         return 0U;
     return ssz;
 }
 static inline size_t __mbstowcs_s(wchar_t *out, const char *src, size_t sz)
 {
     size_t  ssz;
-    if (mbstowcs_s(&ssz,out,sz,src,sz) != 0)
+    if (mbstowcs_s(&ssz, out, sz, src, (sz - 1)) != 0)
         return 0U;
     return ssz;
 }

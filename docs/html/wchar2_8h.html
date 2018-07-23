@@ -420,9 +420,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#afc25d00a5aa55cc7a013171681d6e8b1">_wstat_selector</a> (int, const void *, size_t, const void *)</td></tr>
 <tr class="memdesc:afc25d00a5aa55cc7a013171681d6e8b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Automatic type selector for wstat* functions. <br /></td></tr>
 <tr class="separator:afc25d00a5aa55cc7a013171681d6e8b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abaf47ee1e83739673dd000caec3c02f0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#abaf47ee1e83739673dd000caec3c02f0">u8wstat</a> (const wchar_t *, struct stat *)</td></tr>
-<tr class="memdesc:abaf47ee1e83739673dd000caec3c02f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statistic from file, convert file name from wide characters to UTF-8.  <a href="#abaf47ee1e83739673dd000caec3c02f0">More...</a><br /></td></tr>
-<tr class="separator:abaf47ee1e83739673dd000caec3c02f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0aebfaa71308604cf26968873f2e6fc3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a0aebfaa71308604cf26968873f2e6fc3">u8wstat</a> (const wchar_t *, void *)</td></tr>
+<tr class="memdesc:a0aebfaa71308604cf26968873f2e6fc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statistic from file, convert file name from wide characters to UTF-8.  <a href="#a0aebfaa71308604cf26968873f2e6fc3">More...</a><br /></td></tr>
+<tr class="separator:a0aebfaa71308604cf26968873f2e6fc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a894561bb3b4c319164bff726cbad5ddf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a894561bb3b4c319164bff726cbad5ddf">_wrename</a> (const wchar_t *, const wchar_t *)</td></tr>
 <tr class="memdesc:a894561bb3b4c319164bff726cbad5ddf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rename file, wide char input.  <a href="#a894561bb3b4c319164bff726cbad5ddf">More...</a><br /></td></tr>
 <tr class="separator:a894561bb3b4c319164bff726cbad5ddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -571,15 +571,19 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wc
 size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#ad1955a431f93440fceb9a493e3f1a48e">wstring_append_cvt</a> (<a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *, const char *restrict, size_t)</td></tr>
 <tr class="memdesc:ad1955a431f93440fceb9a493e3f1a48e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append string, char input, struct <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a> output. <br /></td></tr>
 <tr class="separator:ad1955a431f93440fceb9a493e3f1a48e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b41c94c3f68d24c0e383a5613e01fe0"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a9b41c94c3f68d24c0e383a5613e01fe0">wstring_wstocs</a> (char [], size_t, const <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *restrict)</td></tr>
-<tr class="memdesc:a9b41c94c3f68d24c0e383a5613e01fe0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converting string, struct <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a> input, char array output, to alloc buffer write.  <a href="#a9b41c94c3f68d24c0e383a5613e01fe0">More...</a><br /></td></tr>
-<tr class="separator:a9b41c94c3f68d24c0e383a5613e01fe0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42417938ef3bbfb762adc2b4f939190d"><td class="memItemLeft" align="right" valign="top"><a id="a42417938ef3bbfb762adc2b4f939190d"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a42417938ef3bbfb762adc2b4f939190d">wstring_cstows</a> (wchar_t [], size_t, const char *restrict)</td></tr>
-<tr class="memdesc:a42417938ef3bbfb762adc2b4f939190d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converting string, char input, wchar_t array output, to alloc buffer write. <br /></td></tr>
-<tr class="separator:a42417938ef3bbfb762adc2b4f939190d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33461b356d0fdb60975a873ad8807d4f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a33461b356d0fdb60975a873ad8807d4f">wstring_cstows</a> (wchar_t [], size_t, const char *restrict, size_t)</td></tr>
+<tr class="memdesc:a33461b356d0fdb60975a873ad8807d4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converting string, char input, wchar_t array output, to alloc buffer write.  <a href="#a33461b356d0fdb60975a873ad8807d4f">More...</a><br /></td></tr>
+<tr class="separator:a33461b356d0fdb60975a873ad8807d4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95083af974df5717ec773e5b382c090d"><td class="memItemLeft" align="right" valign="top"><a id="a95083af974df5717ec773e5b382c090d"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a95083af974df5717ec773e5b382c090d">wstring_wstocs</a> (char [], size_t, const wchar_t *restrict, size_t)</td></tr>
+<tr class="memdesc:a95083af974df5717ec773e5b382c090d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converting string, struct wchar_t input, char array output, to alloc buffer write. <br /></td></tr>
+<tr class="separator:a95083af974df5717ec773e5b382c090d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b86a1508cbb3a71d14cb907f5c9a7d4"><td class="memItemLeft" align="right" valign="top"><a id="a4b86a1508cbb3a71d14cb907f5c9a7d4"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a4b86a1508cbb3a71d14cb907f5c9a7d4">wstring_wstocs_ws</a> (char [], size_t, const <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *restrict)</td></tr>
+<tr class="memdesc:a4b86a1508cbb3a71d14cb907f5c9a7d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converting string, struct <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a> input, char array output, to alloc buffer write. <br /></td></tr>
+<tr class="separator:a4b86a1508cbb3a71d14cb907f5c9a7d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31488123da3cd7e2e3cb4eb0a03509c9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a31488123da3cd7e2e3cb4eb0a03509c9">wstring_isempty</a> (const wchar_t *restrict s, int)</td></tr>
-<tr class="memdesc:a31488123da3cd7e2e3cb4eb0a03509c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check string is empty, wchar_t input, boolean return.  <a href="#a31488123da3cd7e2e3cb4eb0a03509c9">More...</a><br /></td></tr>
+<tr class="memdesc:a31488123da3cd7e2e3cb4eb0a03509c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check wchar_t input string is empty, bool return.  <a href="#a31488123da3cd7e2e3cb4eb0a03509c9">More...</a><br /></td></tr>
 <tr class="separator:a31488123da3cd7e2e3cb4eb0a03509c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a741c3f78c098a2f1b1bcfabff95bb318"><td class="memItemLeft" align="right" valign="top"><a id="a741c3f78c098a2f1b1bcfabff95bb318"></a>
 <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a741c3f78c098a2f1b1bcfabff95bb318">wstring_trunc</a> (const wchar_t *ws, int)</td></tr>
@@ -3350,8 +3354,8 @@ size wide string </td></tr>
 
 </div>
 </div>
-<a id="abaf47ee1e83739673dd000caec3c02f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abaf47ee1e83739673dd000caec3c02f0">&#9670;&nbsp;</a></span>u8wstat()</h2>
+<a id="a0aebfaa71308604cf26968873f2e6fc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0aebfaa71308604cf26968873f2e6fc3">&#9670;&nbsp;</a></span>u8wstat()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -3365,7 +3369,7 @@ size wide string </td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">struct stat *&#160;</td>
+          <td class="paramtype">void *&#160;</td>
           <td class="paramname">&#160;</td>
         </tr>
         <tr>
@@ -3512,6 +3516,48 @@ size wide string </td></tr>
 
 </div>
 </div>
+<a id="a33461b356d0fdb60975a873ad8807d4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33461b356d0fdb60975a873ad8807d4f">&#9670;&nbsp;</a></span>wstring_cstows()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t wstring_cstows </td>
+          <td>(</td>
+          <td class="paramtype">wchar_t&#160;</td>
+          <td class="paramname">[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>restrict</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converting string, char input, wchar_t array output, to alloc buffer write. </p>
+
+</div>
+</div>
 <a id="a76a73789ad48f96b235c4d71d487f69b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a76a73789ad48f96b235c4d71d487f69b">&#9670;&nbsp;</a></span>wstring_cstows_alloc()</h2>
 
@@ -3648,8 +3694,7 @@ size wide string </td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Check string is empty, wchar_t input, boolean return. </p>
-<p>Check wchar_t input string is empty, bool return </p>
+<p>Check wchar_t input string is empty, bool return. </p>
 
 </div>
 </div>
@@ -3671,42 +3716,6 @@ size wide string </td></tr>
 
 <p>Converting string, <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a> input, char allocate output. </p>
 <dl class="section attention"><dt>Attention</dt><dd>function wstring_swstocs_alloc required free result </dd></dl>
-
-</div>
-</div>
-<a id="a9b41c94c3f68d24c0e383a5613e01fe0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b41c94c3f68d24c0e383a5613e01fe0">&#9670;&nbsp;</a></span>wstring_wstocs()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">size_t wstring_wstocs </td>
-          <td>(</td>
-          <td class="paramtype">char&#160;</td>
-          <td class="paramname">[], </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t&#160;</td>
-          <td class="paramname">, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *&#160;</td>
-          <td class="paramname"><em>restrict</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Converting string, struct <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a> input, char array output, to alloc buffer write. </p>
 
 </div>
 </div>
@@ -3734,7 +3743,7 @@ size wide string </td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jul 22 2018 16:55:56 for libwchar2 0.0.5 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jul 24 2018 01:12:04 for libwchar2 0.0.5 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>
