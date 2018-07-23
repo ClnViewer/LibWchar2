@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
     sz = wstring_format(&dst, L"%ls%ls%ls", a.str, aaa.str, aa.str);
     printf("\n\t*(%d) wstring_format: [%ls][%u]\n", __LINE__, dst.str, dst.sz);
 
-    printf("\n\t*(%d) wcprint: ");
+    printf("\n\t*(%d) wcprint: ", __LINE__);
     wcprint(dst.str);
     wstring_free(&dst);
 
