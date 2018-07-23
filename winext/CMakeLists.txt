@@ -61,6 +61,7 @@ add_library( ${lib_target} STATIC ${lib_srcs} ${lib_hdrs} )
 add_executable( ${app_target} "../test/check_wchar2_MSVC.c" ) 
 target_link_libraries( ${app_target} ${lib_target} )
 set_property( DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${app_target} )
+set_target_properties(${lib_target} PROPERTIES PUBLIC_HEADER ${inst_hdrs})
 
 add_test( NAME test COMMAND ${app_target} )
 
@@ -90,13 +91,10 @@ endif()
 install ( TARGETS ${lib_target}
   ARCHIVE DESTINATION "${CMAKE_CURRENT_SOURCE_DIR}/lib"
   LIBRARY DESTINATION "${CMAKE_CURRENT_SOURCE_DIR}/lib"
+  PUBLIC_HEADER DESTINATION "${CMAKE_CURRENT_SOURCE_DIR}/lib/include"
 )
 
 install ( TARGETS ${app_target}
   RUNTIME DESTINATION "${CMAKE_CURRENT_SOURCE_DIR}/lib/test"
-)
-
-install ( FILES ${inst_hdrs}
-  DESTINATION "${CMAKE_CURRENT_SOURCE_DIR}/lib/include"
 )
 
