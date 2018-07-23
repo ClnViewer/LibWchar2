@@ -44,10 +44,6 @@ The sequence of steps for building an extension library if your version of `Visu
 
 You can also select `winext/build/libwchar2ext.sln` in `Visual Studio`, or to `CodeBlocks` `winext/build/libwchar2ext.cbp`, and compile it in the standard way.
 
-> In case of errors when creating `CMake` configuration files for `MinGW Makefiles` or `CodeBlocks - MinGW Makefiles` - rename the directory:
-`<path>\MinGW\mingw32` for example in `<path>\MinGW\mingw32old`.
->
->In the case of `CodeBlocks`, `MinGW` is inside, with `<path>\CodeBlocks\MinGW\mingw32` fully installed.
 
 #### Executing the `cmake` script for `CMake GUI`
 
@@ -61,6 +57,11 @@ You can also select `winext/build/libwchar2ext.sln` in `Visual Studio`, or to `C
 - in `Visual Studio`, choose the type of assembly `Release` or `Debug`.
 - Press `F7`, we compile the project.
 - library output files after successful assembly and installation should be in the directory `winext/lib`
+
+> In case of errors when creating `CMake` configuration files for `MinGW Makefiles` or `CodeBlocks - MinGW Makefiles` - rename the directory:
+`<path>\MinGW\mingw32` for example in `<path>\MinGW\mingw32old`.
+>
+>In the case of `CodeBlocks`, `MinGW` is inside, with `<path>\CodeBlocks\MinGW\mingw32` fully installed.
 
 
 ### LibWchar2 extension library tests

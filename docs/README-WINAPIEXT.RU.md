@@ -45,12 +45,6 @@
 
 Так же вы можете выбрать в `Visual Studio` проект `winext/build/libwchar2ext.sln`, или для `CodeBlocks` `winext/build/libwchar2ext.cbp` и собрать его стандартным образом.
 
-> В случае ошибок при создании `CMake` конфигурационных файлов для `MinGW Makefiles` или `CodeBlocks - MinGW Makefiles` - переименуйте директорию:
-> `<путь>\MinGW\mingw32` например в `<путь>\MinGW\mingw32old`.
-> 
-> В случае с `CodeBlocks` `MinGW` находиться внутри, при полной установке, `<путь>\CodeBlocks\MinGW\mingw32`.
-
-
 
 #### Выполнение сценария `cmake` для `CMake GUI`
 
@@ -64,6 +58,13 @@
 - в `Visual Studio`, выбираем тип сборки `Release` или `Debug`.
 - нажимаем `F7`, компилируем проект.
 - выходные файлы библиотеки после успешной сборки и инсталляции должны находиться в директории `winext/lib`
+
+
+> В случае ошибок при создании `CMake` конфигурационных файлов для `MinGW Makefiles` или `CodeBlocks - MinGW Makefiles` - переименуйте директорию:
+> `<путь>\MinGW\mingw32` например в `<путь>\MinGW\mingw32old`.
+> 
+> В случае с `CodeBlocks` `MinGW` находиться внутри, при полной установке, `<путь>\CodeBlocks\MinGW\mingw32`.
+
 
 ### Тесты функций библиотеки расширений
 
