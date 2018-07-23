@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
               aaa  = { L".", 0U };
     const char wtext[] = "write text UTF8 - тест текст";
 #   if defined(_MSC_VER)
-    char errstr[256] = {0};
+    char bstr[256] = {0}, *errstr = (char*)&bstr;
 #   else
     char *errstr = NULL;
 #   endif
