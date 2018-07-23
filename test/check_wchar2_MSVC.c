@@ -95,26 +95,26 @@ int main(int argc, char *argv[])
     printf("\n\t*(%d) waccess: [%ls] -> [%d][%s]\n", __LINE__, pathmkd, ret, __access_error(ret));
 
     ret = wmkdir(pathmkd, 0);
-    printf("\n\t*(%d) wmkdir: [create] [%ls] -> [%d/%d][%s]\n", __LINE__, pathmkd, ret, errno, __get_error(&errstr, errno));
+    printf("\n\t*(%d) wmkdir: [create] [%ls] -> [%d/%d][%s]\n", __LINE__, pathmkd, ret, errno, __get_error((char**)&errstr, errno));
 
     ret = waccess(pathmkd, F_OK);
     printf("\n\t*(%d) waccess: [%ls] -> [%d][%s]\n", __LINE__, pathmkd, ret, __access_error(ret));
 
     ret = wmkdir(pathmkd, 0);
-    printf("\n\t*(%d) wmkdir: [exist]  [%ls] -> [%d/%d][%s]\n", __LINE__, pathmkd, ret, errno, __get_error(&errstr, errno));
+    printf("\n\t*(%d) wmkdir: [exist]  [%ls] -> [%d/%d][%s]\n", __LINE__, pathmkd, ret, errno, __get_error((char**)&errstr, errno));
 
     {
         FILE *fp;
         errno = 0;
         if (!(fp = wfopen(__WS("test-write.txt"), "a+")))
         {
-            printf("\n\t*(%d) wfopen: [error] -> [%d][%s]\n", __LINE__, errno, __get_error(&errstr, errno));
+            printf("\n\t*(%d) wfopen: [error] -> [%d][%s]\n", __LINE__, errno, __get_error((char**)&errstr, errno));
             return 0;
         }
-        printf("\n\t*(%d) wfopen: [ok] -> [%d][%s]\n", __LINE__, errno, __get_error(&errstr, errno));
+        printf("\n\t*(%d) wfopen: [ok] -> [%d][%s]\n", __LINE__, errno, __get_error((char**)&errstr, errno));
         errno = 0;
         ret = fwrite((void*)wtext, sizeof(char), sizeof(wtext), fp);
-        printf("\n\t*(%d) fwrite: [status]  -> [%d/%d][%s]\n", __LINE__, ret, errno, __get_error(&errstr, errno));
+        printf("\n\t*(%d) fwrite: [status]  -> [%d/%d][%s]\n", __LINE__, ret, errno, __get_error((char**)&errstr, errno));
         fclose(fp);
     }
 
