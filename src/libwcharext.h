@@ -84,7 +84,10 @@
 #   else
 #      define _wcstombs wcstombs
 #      define _mbstowcs mbstowcs
+
+#      if defined(BUILD_MINGW32)
        int vswprintf(wchar_t*, const wchar_t*, va_list);
+#      endif
 
 #      if defined(BUILD_MINGW)
 #         define __AUTO __attribute__((cleanup(__wsfree)))
