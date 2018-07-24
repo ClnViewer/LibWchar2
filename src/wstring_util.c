@@ -408,12 +408,12 @@ size_t wstring_format(string_ws *dst, const wchar_t *fmt, ...)
         if (
             (!fmt)                                       ||
             (!dst)                                       ||
-#           if defined(_MSC_VER)
+#           if (defined(_MSC_VER) || defined(BUILD_MINGW64))
             ((sz = _vswprintf(NULL, 0, fmt, ap)) <= 0)   ||
 #           endif
             (!wstring_alloc(dst, sz))                    ||
-#           if defined(BUILD_MINGW)
-            // strange vswprintf declaration ... ?
+#           if defined(BUILD_MINGW32)
+            /* https://sourceforge.net/p/mingw/bugs/1728/#4a30/036a */
             (_vswprintf((wchar_t*)(dst->str + dst->sz), fmt, ap) <= 0)
 #           else
             (_vswprintf((void*)(dst->str + dst->sz), (sz + 1), fmt, ap) <= 0)

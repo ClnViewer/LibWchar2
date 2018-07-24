@@ -915,7 +915,8 @@ size_t    wstring_cstows_ws_alloc(string_ws *restrict, const char *restrict);
            *  \brief Append string, format vargs input, struct string_ws output
            *  \attention curent status: broken, if out data large 8192 byte!
            *             Now, fixing output buffer size 8192 byte for *nix version.
-           *             TODO: rewrite length detected
+           *             For MinGW32 always fixing output buffer size 8192 byte.
+           *             TODO: rewrite length detected for *nix
            */
 size_t    wstring_format(string_ws*, const wchar_t *restrict, ...);
 
