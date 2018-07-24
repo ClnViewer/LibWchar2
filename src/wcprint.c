@@ -27,20 +27,31 @@
 
 #if defined(OS_WIN)
 #   include "libwcharext.h"
-#   define  __wwrite(A) putwchar(A)
+
+#   if defined(BUILD_MINGW)
+#      include <stdio.h>
+#      include <unistd.h>
+int fileno(FILE *stream);
+#   endif
 
 #else
+#   define _POSIX_C_SOURCE 200809L
 #   include <stdio.h>
 #   include <unistd.h>
 #   include "libwchar.h"
-#   define  __wwrite(A) if (write(fd, (void*)&(A), sizeof(wchar_t)) <= 0) { break; }
 
+#endif
+
+#if (defined(BUILD_MINGW) || !defined(OS_WIN))
+#   define  __wwrite(A) if (write(fd, (void*)&(A), sizeof(wchar_t)) <= 0) { break; }
+#elif defined(_MSC_VER)
+#   define  __wwrite(A) putwchar(A)
 #endif
 
 void wcprint(wchar_t *w)
 {
     wchar_t *p = w;
-#   if !defined(_MSC_VER)
+#   if (defined(BUILD_MINGW) || !defined(OS_WIN))
     int fd = fileno(stdout);
 #   endif
 

@@ -29,7 +29,11 @@
 #   include "libwcharext.h"
 
 #   if defined(_MSC_VER)
-     typedef unsigned short mode_t;
+typedef unsigned short mode_t;
+#   elif defined(BUILD_MINGW)
+#      include <stdlib.h>
+#      include <sys/stat.h>
+int _wmkdir(const wchar_t*);
 #   endif
 
 #else
@@ -75,6 +79,11 @@ static int __mkdirwp(const wchar_t *w)
             }
             do
             {
+#               if defined(_MSC_VER)
+                __try
+                {
+#               endif
+
                 if ((p = _wbasedir(w, 0)) == NULL)
                 {
                     break;
@@ -82,6 +91,17 @@ static int __mkdirwp(const wchar_t *w)
                 if (__mkdirwp(p) == 0)
                     return _wmkdir(w);
 
+#               if defined(_MSC_VER)
+                }
+                __except(__seh_except())
+                {
+                    if (p != NULL)
+                        free(p);
+
+                    errno = EFAULT;
+                    return -1;
+                }
+#               endif
             }
             while (0);
 

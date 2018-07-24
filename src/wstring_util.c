@@ -413,6 +413,7 @@ size_t wstring_format(string_ws *dst, const wchar_t *fmt, ...)
 #           endif
             (!wstring_alloc(dst, sz))                    ||
 #           if defined(BUILD_MINGW)
+            // strange vswprintf declaration ... ?
             (_vswprintf((wchar_t*)(dst->str + dst->sz), fmt, ap) <= 0)
 #           else
             (_vswprintf((void*)(dst->str + dst->sz), (sz + 1), fmt, ap) <= 0)

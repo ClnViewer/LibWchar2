@@ -12,8 +12,10 @@
 
 #include "../include/wchar2ext.h"
 
-#pragma comment( user, "Compiled on " __DATE__ " at " __TIME__ )
+#if defined(_MSC_VER)
+#   pragma comment( user, "Compiled on " __DATE__ " at " __TIME__ )
 // #pragma comment(lib, "libwchar2ext.lib")
+#endif
 
 #define F_OK 0
 
@@ -60,6 +62,9 @@ int main(int argc, char *argv[])
     char *errstr = NULL;
 #   endif
 
+    (void) argc;
+    (void) argv;
+
     printf("\n\ti sizeof wchar_t [%u]\n", sizeof(wchar_t));
 
     /* low-level Function test */
@@ -74,15 +79,15 @@ int main(int argc, char *argv[])
     printf("\n\t*(%d) wstring_wstocs: [%s][%d]\n", __LINE__, cout, ret);
 
     sz = wstring_appends_(&dst, (wchar_t*)a.str, (wchar_t*)aaa.str, (wchar_t*)aa.str, NULL);
-    printf("\n\t*(%d) wstring_appends: [%ls][%u]\n", __LINE__, dst.str, dst.sz);
+    printf("\n\t*(%d) wstring_appends: [%ls][%u] -> [%u]\n", __LINE__, dst.str, dst.sz, sz);
     wstring_free(&dst);
 
     sz = wstring_append(&dst, (wchar_t*)aa.str, 0);
-    printf("\n\t*(%d) wstring_append: [%ls][%u]\n", __LINE__, dst.str, dst.sz);
+    printf("\n\t*(%d) wstring_append: [%ls][%u] -> [%u]\n", __LINE__, dst.str, dst.sz, sz);
     wstring_free(&dst);
 
     sz = wstring_format(&dst, L"%ls%ls%ls", a.str, aaa.str, aa.str);
-    printf("\n\t*(%d) wstring_format: [%ls][%u]\n", __LINE__, dst.str, dst.sz);
+    printf("\n\t*(%d) wstring_format: [%ls][%u] -> [%u]\n", __LINE__, dst.str, dst.sz, sz);
 
     printf("\n\t*(%d) wcprint: ", __LINE__);
     wcprint(dst.str);

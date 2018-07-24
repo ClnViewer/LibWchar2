@@ -65,6 +65,9 @@
 
 #if defined(OS_WIN)
 
+#include <stdlib.h>
+#include <stdio.h>
+
 #   define _wmemcpy wmemcpy
 #   define _wcslen wcslen
 #   define _wcsrchr wcsrchr
@@ -74,9 +77,6 @@
 #      define _wcstombs __wcstombs_s
 #      define _mbstowcs __mbstowcs_s
 
-//#   define __wcstombs wcstombs
-//#   define __mbstowcs mbstowcs
-
 #      pragma warning(disable : 4127)
 #      pragma warning(disable : 4706)
 #      define __AUTO
@@ -84,6 +84,8 @@
 #   else
 #      define _wcstombs wcstombs
 #      define _mbstowcs mbstowcs
+       int vswprintf(wchar_t*, const wchar_t*, va_list);
+
 #      if defined(BUILD_MINGW)
 #         define __AUTO __attribute__((cleanup(__wsfree)))
 #      else
@@ -91,6 +93,7 @@
 #      endif
 
 #   endif
+
 
 #elif defined(__GNUC__) || defined(__clang__)
 
