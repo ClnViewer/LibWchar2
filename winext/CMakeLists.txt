@@ -65,6 +65,10 @@ set_target_properties(${lib_target} PROPERTIES PUBLIC_HEADER ${inst_hdrs})
 
 add_test( NAME test COMMAND ${app_target} )
 
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE "Release")
+endif()
+
 if(MSVC)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W3 /Zc:wchar_t")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Zc:wchar_t")

@@ -85,6 +85,7 @@ static FILE * __wfopen(const wchar_t *w, const char *c, const char *m)
     }
     __except(__seh_except())
     {
+        errno = EFAULT;
         return NULL;
     }
 #   endif
