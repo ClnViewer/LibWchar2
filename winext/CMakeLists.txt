@@ -17,12 +17,7 @@ set( CMAKE_SKIP_PACKAGE_ALL_DEPENDENCY true )
 set_property( GLOBAL PROPERTY USE_FOLDERS ON )
 set( PREDEFINED_TARGETS_FOLDER "CmakeDepends" )
 
-include(CheckCXXCompilerFlag)
-CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
-if(COMPILER_SUPPORTS_CXX11)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
-endif()
-
+include(CheckCCompilerFlag)
 
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/../include
@@ -69,13 +64,42 @@ if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release")
 endif()
 
+if(UNIX OR MINGW OR MSYS)
+
+     CHECK_C_COMPILER_FLAG("-std=c11" COMPILER_SUPPORTS_C11)
+     if(COMPILER_SUPPORTS_C11)
+       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c11")
+     endif()
+
+     CHECK_C_COMPILER_FLAG("-Wstrict-prototypes" COMPILER_SUPPORTS_CWSP)
+     if(COMPILER_SUPPORTS_CWSP)
+       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wstrict-prototypes")
+     endif()
+
+     CHECK_C_COMPILER_FLAG("-Wall" COMPILER_SUPPORTS_CWALL)
+     if(COMPILER_SUPPORTS_CWALL)
+       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+     endif()
+
+     CHECK_C_COMPILER_FLAG("-Wextra" COMPILER_SUPPORTS_CWETRA)
+     if(COMPILER_SUPPORTS_CWETRA)
+       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wextra")
+     endif()
+
+     CHECK_C_COMPILER_FLAG("-pedantic" COMPILER_SUPPORTS_CPEDANT)
+     if(COMPILER_SUPPORTS_CPEDANT)
+       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pedantic")
+     endif()
+
+endif()
+
 if(MSVC)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W3 /Zc:wchar_t")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Zc:wchar_t")
 endif()
 
 if(UNIX)
-     if(CMAKE_COMPILER_IS_GNUCXX OR CV_ICC)
+     if(CMAKE_COMPILER_IS_GNUCC OR CV_ICC)
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
      endif()
 endif()
