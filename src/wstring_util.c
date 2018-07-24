@@ -398,7 +398,7 @@ size_t wstring_format(string_ws *dst, const wchar_t *fmt, ...)
 
     do
     {
-#       if defined(_MSC_VER)
+#       if (defined(_MSC_VER) || defined(BUILD_MINGW64))
         int sz = 0;
 #       else
         /** TODO (ClnViewer#1#24.07.2018): *nix -> make _vswprintf -> wprintf_core size output */
