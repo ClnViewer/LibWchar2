@@ -77,6 +77,7 @@ AS_IF([test "$BUILD_WC2" == "0"],[
 
 AX_CHECK_COMPILE_FLAG([-Wall],[AX_APPEND_FLAG([-Wall])])
 AX_CHECK_COMPILE_FLAG([-pedantic],[AX_APPEND_FLAG([-pedantic])])
+AX_CHECK_COMPILE_FLAG([-Wstrict-prototypes],[AX_APPEND_FLAG([-Wstrict-prototypes])])
 
 AC_ARG_ENABLE([devel],
     [AS_HELP_STRING([--enable-devel], [enable -Wextra in all Makefiles])])
