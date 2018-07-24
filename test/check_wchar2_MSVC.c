@@ -29,18 +29,17 @@ static const char * __access_error(access_e x)
 
 #if defined(_MSC_VER)
 static const char * __get_error(char errstr[], int err)
-#else
-static const char * __get_error(char *errstr, int err)
-#endif
 {
-#   if defined(_MSC_VER)
     (void) strerror_s(errstr, 256, err);
     return (const char*)errstr;
-#   else
+}
+#else
+static const char * __get_error(char *errstr, int err)
+{
     (void) errstr;
     return (const char*)strerror(err);
-#   endif
 }
+#endif
 
 int main(int argc, char *argv[])
 {

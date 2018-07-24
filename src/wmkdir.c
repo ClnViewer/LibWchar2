@@ -136,9 +136,7 @@ int _wmkdir_ws(const string_ws *ws, mode_t m)
 
 int u8wmkdir(const wchar_t *w, mode_t m)
 {
-    /*
-        TODO: char implement MSVC version
-    */
+    /** TODO (ClnViewer#1#24.07.2018): char implement MSVC/MINGW version */
     (void) w;
     (void) m;
     errno = ENOSYS;

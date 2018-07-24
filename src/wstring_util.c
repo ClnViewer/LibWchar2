@@ -401,11 +401,12 @@ size_t wstring_format(string_ws *dst, const wchar_t *fmt, ...)
 #       if defined(_MSC_VER)
         int sz = 0;
 #       else
-        /*
+        /** TODO (ClnViewer#1#24.07.2018): *nix -> make _vswprintf -> wprintf_core size output */
+        /** \atention (ClnViewer#1#24.07.2018):
             For MinGW32 always fixing output buffer size 8192 byte.
             https://sourceforge.net/p/mingw/bugs/1728/#4a30/036a
-          */
-        // TODO: *nix -> make _vswprintf -> wprintf_core size output
+            http://vsokovikov.narod.ru/New_MSDN_API/Add_func_runtime_C/fn_vsprintf.htm
+         */
         int sz = 8192;
 #       endif
 
