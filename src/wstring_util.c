@@ -121,21 +121,33 @@ size_t wstring_trunc_alloc(string_ws *dst, const wchar_t *ws, int sz)
 #   if !defined(_MSC_VER)
     wchar_t __AUTO *p = dst->str;
 #   endif
-    string_ws wss = wstring_trunc(ws, sz);
 
-    if (
-        (!wss.sz)                     ||
-        (!wstring_alloc(dst, wss.sz)) ||
-        (!_wmemcpy((void*)(dst->str + dst->sz), (const void*)wss.str, wss.sz))
-    )
+    if ((!dst) || (!ws))
     {
-        return 0;
+        errno = EINVAL;
+        return 0U;
     }
 
+    do
+    {
+        string_ws wss = wstring_trunc(ws, sz);
+        if (
+            (!wss.sz)                     ||
+            (!wstring_alloc(dst, wss.sz)) ||
+            (!_wmemcpy((void*)(dst->str + dst->sz), (const void*)wss.str, wss.sz))
+        )
+        {
+            break;
+        }
+
 #   if !defined(_MSC_VER)
-    p = NULL;
+        p = NULL;
 #   endif
-    return dst->sz;
+        return dst->sz;
+    }
+    while (0);
+
+    return 0U;
 }
 
 
@@ -143,6 +155,7 @@ size_t wstring_alloc(string_ws *dst, size_t sz)
 {
     if (!dst)
     {
+        errno = EINVAL;
         return 0U;
     }
     dst->str = ((dst->str == NULL) ?
@@ -162,8 +175,13 @@ char * wstring_wstocs_alloc(const wchar_t *src)
     char  *dst;
     size_t ssz;
 
+    if (!src)
+    {
+        errno = EINVAL;
+        return NULL;
+    }
+
     if (
-        (!src)                                            ||
         ((ssz = _wcstombs(NULL, src, 0)) == 0)            ||
         ((p   = calloc(sizeof(wchar_t), (ssz + 2))) == 0) ||
         ((ssz = _wcstombs(p, src, (ssz + sizeof(char)))) == 0)
@@ -182,6 +200,7 @@ char * wstring_swstocs_alloc(const string_ws *src)
 {
     if (!src)
     {
+        errno = EINVAL;
         return NULL;
     }
     return wstring_wstocs_alloc(src->str);
@@ -193,8 +212,9 @@ size_t wstring_cstows_ws_alloc(string_ws *ws, const char *src)
     wchar_t __AUTO *p = NULL;
 #   endif
 
-    if (!ws)
+    if ((!ws) || (!src))
     {
+        errno = EINVAL;
         return 0U;
     }
     wstring_free(ws);
@@ -225,6 +245,13 @@ size_t wstring_cstows_ws_alloc(string_ws *ws, const char *src)
 wchar_t * wstring_cstows_alloc(const char *src)
 {
     string_ws ws = { NULL, 0U };
+
+    if (!src)
+    {
+        errno = EINVAL;
+        return 0U;
+    }
+
     if (!wstring_cstows_ws_alloc(&ws, src))
     {
         return NULL;
@@ -234,6 +261,12 @@ wchar_t * wstring_cstows_alloc(const char *src)
 
 size_t wstring_wstocs(char dst[], size_t dsz, const wchar_t *src, size_t ssz)
 {
+    if (!src)
+    {
+        errno = EINVAL;
+        return 0U;
+    }
+
     ssz = ((!ssz) ? _wcslen(src) : ssz);
     dsz = ((ssz >= dsz) ? (dsz - 1) : dsz);
     if ((dsz = _wcstombs(dst, src, dsz)) == 0)
@@ -251,6 +284,12 @@ size_t wstring_wstocs_ws(char dst[], size_t dsz, const string_ws *src)
 
 size_t wstring_cstows(wchar_t dst[], size_t dsz, const char *src, size_t ssz)
 {
+    if (!src)
+    {
+        errno = EINVAL;
+        return 0U;
+    }
+
     ssz = ((!ssz) ? strlen(src) : ssz);
     dsz = ((ssz >= dsz) ? (dsz - 1) : dsz);
     if ((dsz = _mbstowcs(dst, src, dsz)) == 0)
@@ -263,9 +302,13 @@ size_t wstring_cstows(wchar_t dst[], size_t dsz, const char *src, size_t ssz)
 
 size_t wstring_append(string_ws *dst, const wchar_t *s, size_t sz)
 {
+    if ((!dst) || (!s))
+    {
+        errno = EINVAL;
+        return 0U;
+    }
+
     if (
-        (!s)                               ||
-        (!dst)                             ||
         ((!sz) && (!(sz = _wcslen(s))))    ||
         (!wstring_alloc(dst, sz))          ||
         (!_wmemcpy((void*)(dst->str + dst->sz), (const void*)s, sz))
@@ -290,7 +333,10 @@ size_t wstring_appends_(string_ws *dst, ...)
 #   endif
 
     if (!dst)
+    {
+        errno = EINVAL;
         return 0U;
+    }
 
     do
     {
@@ -360,6 +406,13 @@ size_t wstring_append_cvt(string_ws *dst, const char *c, size_t sz)
 #   if defined(_MSC_VER)
     wchar_t *s = NULL;
 #   endif
+
+    if ((!dst) || (!c))
+    {
+        errno = EINVAL;
+        return 0U;
+    }
+
     sz = ((!sz) ? strlen(c) : sz);
 
 #   if defined(_MSC_VER)
@@ -392,8 +445,18 @@ size_t wstring_append_cvt(string_ws *dst, const char *c, size_t sz)
 
 size_t wstring_format(string_ws *dst, const wchar_t *fmt, ...)
 {
-    size_t  ret = 0;
+    size_t  ret = 0U;
+#   if !defined(_MSC_VER)
+    wchar_t __AUTO *p = NULL;
+#   endif
     va_list ap;
+
+    if ((!dst) || (!fmt))
+    {
+        errno = EINVAL;
+        return ret;
+    }
+
     va_start(ap, fmt);
 
     do
@@ -402,17 +465,17 @@ size_t wstring_format(string_ws *dst, const wchar_t *fmt, ...)
         int sz = 0;
 #       else
         /** TODO (ClnViewer#1#24.07.2018): *nix -> make _vswprintf -> wprintf_core size output */
-        /** \atention (ClnViewer#1#24.07.2018):
-            For MinGW32 always fixing output buffer size 8192 byte.
+        /** \atention For MinGW32 always fixing output buffer size 8192 byte.
             https://sourceforge.net/p/mingw/bugs/1728/#4a30/036a
             http://vsokovikov.narod.ru/New_MSDN_API/Add_func_runtime_C/fn_vsprintf.htm
          */
         int sz = 8192;
 #       endif
+#       if !defined(_MSC_VER)
+        p = dst->str;
+#       endif
 
         if (
-            (!fmt)                                       ||
-            (!dst)                                       ||
 #           if (defined(_MSC_VER) || defined(BUILD_MINGW64))
             ((sz = _vswprintf(NULL, 0, fmt, ap)) <= 0)   ||
 #           endif
@@ -428,7 +491,6 @@ size_t wstring_format(string_ws *dst, const wchar_t *fmt, ...)
         }
 
         dst->sz  = (size_t) _wcslen(dst->str);
-        ret      = dst->sz;
 #       if (!defined(_MSC_VER) && !defined(BUILD_MINGW))
         if (!(dst->str = realloc(dst->str, ((dst->sz + 1) * sizeof(wchar_t)))))
         {
@@ -436,7 +498,10 @@ size_t wstring_format(string_ws *dst, const wchar_t *fmt, ...)
             break;
         }
 #       endif
-
+#       if !defined(_MSC_VER)
+        p = NULL;
+#       endif
+        ret = dst->sz;
     }
     while (0);
 

@@ -249,12 +249,7 @@ wchar_t * _wbasedir_ws(const string_ws*, int);
 #define wbasedir _wbasedir
 #define wbasedir_ws _wbasedir_ws
 
-#if defined(OS_WIN_FOPEN_MIXED_CHAR)
-#   define wfopen(A,B) _wfopen_s_(A,0,B)
-#else
-#   define wfopen _wfopen
-#endif
-
+#define wfopen(A,B) _wfopen_s_(A,0,B)
 #define wfopen_s _wfopen_s_
 #define wfopen_ws _wfopen_ws
 

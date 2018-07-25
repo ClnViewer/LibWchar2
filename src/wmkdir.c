@@ -84,12 +84,12 @@ static int __mkdirwp(const wchar_t *w)
                 {
 #               endif
 
-                if ((p = _wbasedir(w, 0)) == NULL)
-                {
-                    break;
-                }
-                if (__mkdirwp(p) == 0)
-                    return _wmkdir(w);
+                    if ((p = _wbasedir(w, 0)) == NULL)
+                    {
+                        break;
+                    }
+                    if (__mkdirwp(p) == 0)
+                        return _wmkdir(w);
 
 #               if defined(_MSC_VER)
                 }

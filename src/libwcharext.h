@@ -86,7 +86,7 @@
 #      define _mbstowcs mbstowcs
 
 #      if defined(BUILD_MINGW32)
-       int vswprintf(wchar_t*, const wchar_t*, va_list);
+int vswprintf(wchar_t*, const wchar_t*, va_list);
 #      endif
 
 #      if defined(BUILD_MINGW)

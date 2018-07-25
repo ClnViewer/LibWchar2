@@ -143,6 +143,7 @@ FILE * u8wfopen(const wchar_t *w, const wchar_t *m)
 #   if defined(_MSC_VER)
     __try
     {
+        FILE *fp = NULL;
 #   endif
         if (
             (!wstring_wstocs(t, sizeof(t), m, 0))            ||
@@ -153,7 +154,15 @@ FILE * u8wfopen(const wchar_t *w, const wchar_t *m)
             return NULL;
         }
 
-    return fopen(b, t);
+#       if defined(_MSC_VER)
+
+        if (fopen_s(&fp, b, t) != 0)
+            return NULL;
+
+        return fp;
+#       else
+        return fopen(b, t);
+#       endif
 
 #   if defined(_MSC_VER)
     }
@@ -167,13 +176,25 @@ FILE * u8wfopen(const wchar_t *w, const wchar_t *m)
 
 FILE * _wfopen_s_(const wchar_t *w, size_t sz, const wchar_t *m)
 {
+#   if defined(_MSC_VER)
+    FILE *fp = NULL;
+#   endif
     (void) sz;
+
+#   if defined(_MSC_VER)
+
+    if (_wfopen_s(&fp, w, m) != 0)
+        return NULL;
+
+    return fp;
+#   else
     return _wfopen(w, m);
+#   endif
 }
 
 FILE * _wfopen_ws(const string_ws *ws, const wchar_t *m)
 {
-    return _wfopen(ws->str, m);
+    return _wfopen_s_(ws->str, 0U, m);
 }
 
 #endif /* OS_WIN_FOPEN_MIXED_CHAR */
@@ -189,6 +210,7 @@ FILE * u8wfopen(const wchar_t *w, const wchar_t *m)
 
     if (!msz)
     {
+        errno = EINVAL;
         return NULL;
     }
 
@@ -254,6 +276,7 @@ FILE * _wfopen_selector(int sel, const void *w, size_t sz, const void *m)
     }
     }
 }
+
 #endif
 
 
