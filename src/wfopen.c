@@ -185,10 +185,17 @@ FILE * _wfopen_ws(const string_ws *ws, const wchar_t *m)
 FILE * u8wfopen(const wchar_t *w, const wchar_t *m)
 {
     char __AUTO *b = NULL;
-    char         t[256] = {0};
+    size_t msz = _wcslen(m);
+
+    if (!msz)
+    {
+        return NULL;
+    }
+
+    char t[(msz + 1 * sizeof(wchar_t))];
 
     if (
-        (!wstring_wstocs(t, sizeof(t), m, 0))            ||
+        (!wstring_wstocs(t, sizeof(t), m, msz))            ||
         ((b = calloc(1, wcstou8s(NULL, w) + 1)) == NULL) ||
         (wcstou8s(b, w) <= 0)
     )
