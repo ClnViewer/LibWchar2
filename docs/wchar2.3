@@ -1,4 +1,4 @@
-.TH "include/wchar2.h" 3 "Tue Jul 24 2018" "libwchar2 0.0.6" \" -*- nroff -*-
+.TH "include/wchar2.h" 3 "Wed Jul 25 2018" "libwchar2 0.0.6" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -387,15 +387,15 @@ include/wchar2.h
 .br
 .RI "Write a wide character to a file or stream\&. "
 .ti -1c
-.RI "FILE * \fB_wfopen\fP (const wchar_t *, const char *)"
+.RI "FILE * \fB_wfopen\fP (const wchar_t *, const wchar_t *)"
 .br
-.RI "Open file stream, accepts file name as wide characters, mode as const char\&. "
+.RI "Open file stream, accepts file name and mode as wide characters\&. "
 .ti -1c
-.RI "FILE * \fB_wfopen_s\fP (const wchar_t *, size_t, const char *)"
+.RI "FILE * \fB_wfopen_s\fP (const wchar_t *, size_t, const wchar_t *)"
 .br
 .RI "Same as wfopen, include size file name variable\&. "
 .ti -1c
-.RI "FILE * \fB_wfopen_ws\fP (const \fBstring_ws\fP *, const char *)"
+.RI "FILE * \fB_wfopen_ws\fP (const \fBstring_ws\fP *, const wchar_t *)"
 .br
 .RI "Same as wfopen, file name as structure \fBstring_ws\fP\&. "
 .ti -1c
@@ -403,9 +403,9 @@ include/wchar2.h
 .br
 .RI "Automatic type selector for wfopen* functions\&. "
 .ti -1c
-.RI "FILE * \fBu8wfopen\fP (const wchar_t *, const char *)"
+.RI "FILE * \fBu8wfopen\fP (const wchar_t *, const wchar_t *)"
 .br
-.RI "Open file stream, convert file name from wide characters to UTF-8, mode as const char\&. "
+.RI "Open file stream, convert file name from wide characters to UTF-8\&. "
 .ti -1c
 .RI "int \fB_wstat\fP (const wchar_t *, struct stat *)"
 .br
@@ -1217,10 +1217,10 @@ Number of column positions of a wide-character code\&.
 \fBwcwidth manual\fP 
 .PP
 
-.SS "FILE* _wfopen (const wchar_t *, const char *)"
+.SS "FILE* _wfopen (const wchar_t *, const wchar_t *)"
 
 .PP
-Open file stream, accepts file name as wide characters, mode as const char\&. 
+Open file stream, accepts file name and mode as wide characters\&. 
 .PP
 \fBNote:\fP
 .RS 4
@@ -1373,10 +1373,10 @@ function u8waccess required free result
 .RE
 .PP
 
-.SS "FILE* u8wfopen (const wchar_t *, const char *)"
+.SS "FILE* u8wfopen (const wchar_t *, const wchar_t *)"
 
 .PP
-Open file stream, convert file name from wide characters to UTF-8, mode as const char\&. 
+Open file stream, convert file name from wide characters to UTF-8\&. 
 .PP
 \fBAttention:\fP
 .RS 4
