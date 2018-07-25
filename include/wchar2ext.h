@@ -101,7 +101,7 @@
 #include <wchar.h>
 
 #define __WS(x) __WS_(x) /**< static string to wide type macro */
-#define __WSTR wchar_t   /**< defenition wchar_t string macro */
+#define __WSTR wchar_t   /**< definition wchar_t string macro */
 #define __WSTRFREE __attribute__((cleanup(__wsfree))) __WSTR /**< auto free wchar_t string macro */
 #define __WSTR_FMT  "ls" /**< print format wchar_t string macro */
 #define __WCHAR_FMT "lc" /**< print format wchar_t char macro */
@@ -187,7 +187,7 @@ int       _wstat_s_(const wchar_t*, size_t, void*);
 int       _wstat_ws(const string_ws*, void*);
 int       u8wstat(const wchar_t*, void*);
 
-#if (defined(OS_WIN) && defined(OS_WIN_FOPEN_MIXED_CHAR))
+#if defined(OS_WIN_FOPEN_MIXED_CHAR)
 __CHKRET
 FILE    * _wfopen_s_(const wchar_t*, size_t, const char*);
 __CHKRET
@@ -238,6 +238,10 @@ wchar_t * _wbasedir_ws(const string_ws*, int);
 #define waccess_s _waccess_s_
 #define waccess_ws _waccess_ws
 
+#define wstat_s _wstat_s_
+#define wstat_ws _wstat_ws
+#define wstat(A,B) _wstat_s_(A,0,B)
+
 #define wbasename _wbasename
 #define wbasename_ws _wbasename_ws
 #define wbaseext _wbaseext
@@ -245,7 +249,7 @@ wchar_t * _wbasedir_ws(const string_ws*, int);
 #define wbasedir _wbasedir
 #define wbasedir_ws _wbasedir_ws
 
-#if (defined(OS_WIN) && defined(OS_WIN_FOPEN_MIXED_CHAR))
+#if defined(OS_WIN_FOPEN_MIXED_CHAR)
 #   define wfopen(A,B) _wfopen_s_(A,0,B)
 #else
 #   define wfopen _wfopen
@@ -253,10 +257,6 @@ wchar_t * _wbasedir_ws(const string_ws*, int);
 
 #define wfopen_s _wfopen_s_
 #define wfopen_ws _wfopen_ws
-
-#define wstat_s _wstat_s_
-#define wstat_ws _wstat_ws
-#define wstat(A,B) _wstat_s_(A,0,B)
 
 #endif
 
