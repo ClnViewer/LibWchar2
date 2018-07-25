@@ -128,7 +128,7 @@ int main(int argc, char *argv[])
     {
         FILE *fp;
         errno = 0;
-        if (!(fp = wfopen(__WS("test-write.txt"), "a+")))
+        if (!(fp = wfopen(__WS("test-write.txt"), __WS("a+"))))
         {
             printf("\n\t*(%d) wfopen: [error] -> [%d][%s]\n", __LINE__, errno, __get_error(errstr, errno));
             break;

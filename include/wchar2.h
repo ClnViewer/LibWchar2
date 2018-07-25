@@ -682,24 +682,24 @@ wchar_t   _fputwc(wchar_t, FILE *restrict);
            * - \subpage wfopen
            */
 
-          /*! \brief Open file stream, accepts file name as wide characters, mode as const char */
-FILE    * _wfopen(const wchar_t*, const char*)
+          /*! \brief Open file stream, accepts file name and mode as wide characters */
+FILE    * _wfopen(const wchar_t*, const wchar_t*)
                 __attribute__((warn_unused_result));
           /*! \brief Same as wfopen, include size file name variable */
-FILE    * _wfopen_s(const wchar_t*, size_t, const char*)
+FILE    * _wfopen_s(const wchar_t*, size_t, const wchar_t*)
                 __attribute__((warn_unused_result));
           /*! \brief Same as wfopen, file name as structure string_ws */
-FILE    * _wfopen_ws(const string_ws*, const char*)
+FILE    * _wfopen_ws(const string_ws*, const wchar_t*)
                 __attribute__((warn_unused_result));
           /*! \brief Automatic type selector for wfopen* functions */
 FILE    * _wfopen_selector(int, const void*, size_t, const void*)
                 __attribute__((warn_unused_result));
 
           /*!
-           *  \brief Open file stream, convert file name from wide characters to UTF-8, mode as const char
+           *  \brief Open file stream, convert file name from wide characters to UTF-8
            *  \attention function u8wfopen required free result
            */
-FILE    * u8wfopen(const wchar_t*, const char*)
+FILE    * u8wfopen(const wchar_t*, const wchar_t*)
                 __attribute__((warn_unused_result));
 
           /*!

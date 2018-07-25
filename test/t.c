@@ -134,14 +134,14 @@ int main(int argc, char *argv[])
 
     printf("[%s] [%d/%d]\n", cfile, len, ret);
 
-    FILE *fp = fopen(cfile,"w");
+    FILE *fp = fopen(cfile, "w");
     if (fp == NULL) { printf( "\tfp is null! [%s]\n", strerror(errno)); } else {
         fprintf(fp, "\t (fopen)(initial) fprintf \t [%ls]\n", wcs1);
         fclose(fp);
     }
     free(cfile);
 
-    fp = wfopen(wfile,"w");
+    fp = wfopen(wfile,__WS("w"));
     if (fp == NULL) { printf( "\tfp is null! [%s]\n", strerror(errno)); } else {
         fprintf(fp, "\t (wfopen)(overwrite) fprintf \t [%ls]\n", wcs1);
         fclose(fp);

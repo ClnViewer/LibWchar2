@@ -38,6 +38,8 @@
 
 #if defined(OS_WIN)
 
+#if defined(OS_WIN_FOPEN_MIXED_CHAR)
+
 static FILE * __wfopen(const wchar_t *w, const char *c, const char *m)
 {
     FILE   *fp         = NULL;
@@ -131,13 +133,62 @@ FILE * u8wfopen(const wchar_t *w, const char *m)
 #   endif
 }
 
-#else
+#else /* is NOT OS_WIN_FOPEN_MIXED_CHAR */
 
-FILE * u8wfopen(const wchar_t *w, const char *m)
+FILE * u8wfopen(const wchar_t *w, const wchar_t *m)
 {
     char __AUTO *b = NULL;
+    char         t[256] = {0};
+
+#   if defined(_MSC_VER)
+    __try
+    {
+#   endif
+        if (
+            (!wstring_wstocs(t, sizeof(t), m, 0))            ||
+            ((b = calloc(1, wcstou8s(NULL, w) + 1)) == NULL) ||
+            (wcstou8s(b, w) <= 0)
+        )
+        {
+            return NULL;
+        }
+
+    return fopen(b, t);
+
+#   if defined(_MSC_VER)
+    }
+    __finally
+    {
+        if (b != NULL)
+            free(b);
+    }
+#   endif
+}
+
+FILE * _wfopen_s_(const wchar_t *w, size_t sz, const wchar_t *m)
+{
+    (void) sz;
+    return _wfopen(w, m);
+}
+
+FILE * _wfopen_ws(const string_ws *ws, const wchar_t *m)
+{
+    return _wfopen(ws->str, m);
+}
+
+#endif /* OS_WIN_FOPEN_MIXED_CHAR */
+
+#else
+
+/** non WINxx realization */
+
+FILE * u8wfopen(const wchar_t *w, const wchar_t *m)
+{
+    char __AUTO *b = NULL;
+    char         t[256] = {0};
 
     if (
+        (!wstring_wstocs(t, sizeof(t), m, 0))            ||
         ((b = calloc(1, wcstou8s(NULL, w) + 1)) == NULL) ||
         (wcstou8s(b, w) <= 0)
     )
@@ -145,25 +196,28 @@ FILE * u8wfopen(const wchar_t *w, const char *m)
         return NULL;
     }
 
-    return fopen(b, m);
+    return fopen(b, t);
 }
 
-FILE * _wfopen(const wchar_t *wc, const char *m)
+FILE * _wfopen(const wchar_t *w, const wchar_t *m)
 {
-    wstocscvt(b, wc, NULL);
-    return fopen(b, m);
+    wstocscvt(b, w, NULL);
+    wstocscvt(t, m, NULL);
+    return fopen(b, t);
 }
 
-FILE * _wfopen_s(const wchar_t *wc, size_t sz, const char *m)
+FILE * _wfopen_s(const wchar_t *w, size_t sz, const wchar_t *m)
 {
-    wstocsncvt(b, wc, sz, NULL);
-    return fopen(b, m);
+    wstocsncvt(b, w, sz, NULL);
+    wstocscvt(t, m, NULL);
+    return fopen(b, t);
 }
 
-FILE * _wfopen_ws(const string_ws *ws, const char *m)
+FILE * _wfopen_ws(const string_ws *ws, const wchar_t *m)
 {
     wstrtocscvt(b, ws, NULL);
-    return fopen(b, m);
+    wstocscvt(t, m, NULL);
+    return fopen(b, t);
 }
 
 FILE * _wfopen_selector(int sel, const void *w, size_t sz, const void *m)
@@ -172,11 +226,11 @@ FILE * _wfopen_selector(int sel, const void *w, size_t sz, const void *m)
     {
     case 1:
     {
-        return _wfopen((const wchar_t*)w, (const char*)m);
+        return _wfopen((const wchar_t*)w, (const wchar_t*)m);
     }
     case 2:
     {
-        return _wfopen_ws((const string_ws*)w, (const char*)m);
+        return _wfopen_ws((const string_ws*)w, (const wchar_t*)m);
     }
     case 3:
     {
@@ -184,7 +238,7 @@ FILE * _wfopen_selector(int sel, const void *w, size_t sz, const void *m)
     }
     case 4:
     {
-        return _wfopen_s((const wchar_t*)w, sz, (const char*)m);
+        return _wfopen_s((const wchar_t*)w, sz, (const wchar_t*)m);
     }
     default:
     {
@@ -194,3 +248,5 @@ FILE * _wfopen_selector(int sel, const void *w, size_t sz, const void *m)
     }
 }
 #endif
+
+

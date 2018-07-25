@@ -187,12 +187,21 @@ int       _wstat_s_(const wchar_t*, size_t, void*);
 int       _wstat_ws(const string_ws*, void*);
 int       u8wstat(const wchar_t*, void*);
 
+#if (defined(OS_WIN) && defined(OS_WIN_FOPEN_MIXED_CHAR))
 __CHKRET
 FILE    * _wfopen_s_(const wchar_t*, size_t, const char*);
 __CHKRET
 FILE    * _wfopen_ws(const string_ws*, const char*);
 __CHKRET
 FILE    * u8wfopen(const wchar_t*, const char*);
+#else
+__CHKRET
+FILE    * _wfopen_s_(const wchar_t*, size_t, const wchar_t*);
+__CHKRET
+FILE    * _wfopen_ws(const string_ws*, const wchar_t*);
+__CHKRET
+FILE    * u8wfopen(const wchar_t*, const wchar_t*);
+#endif
 
 wchar_t * _wbasename(const wchar_t*);
 wchar_t * _wbasename_ws(const string_ws*);
@@ -236,8 +245,13 @@ wchar_t * _wbasedir_ws(const string_ws*, int);
 #define wbasedir _wbasedir
 #define wbasedir_ws _wbasedir_ws
 
-#define wfopen(A,B) _wfopen_s_(A,0,B)
-#define wfopen_s(A,B,C) _wfopen_s_(A,B,C)
+#if (defined(OS_WIN) && defined(OS_WIN_FOPEN_MIXED_CHAR))
+#   define wfopen(A,B) _wfopen_s_(A,0,B)
+#else
+#   define wfopen _wfopen
+#endif
+
+#define wfopen_s _wfopen_s_
 #define wfopen_ws _wfopen_ws
 
 #define wstat_s _wstat_s_
