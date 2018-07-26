@@ -25,15 +25,29 @@
 
 #include "libbuild.h"
 
-#if defined(OS_WIN)
+#if (defined(OS_WIN) && defined(_MSC_VER))
 
-#   if defined(_MSC_VER)
 // #      pragma warning(disable : 4206) // About empty code file
-#      pragma comment(user, "libwchar2ext compiled on " __DATE__ " at " __TIME__)
-#   endif
+#   pragma comment(user, "libwchar2ext compiled on " __DATE__ " at " __TIME__)
 #   include <stdio.h>
 #   include <windows.h>
 #   include <excpt.h>
+
+static void __error_console(const char *str, unsigned int code, const char *file, unsigned int line, const char *func)
+{
+#   if defined(OS_WIN_EXCEPTION_CONSOLE)
+    fprintf(stderr,
+            "\n! Exception: code: [%u]:\n\t-> source: [%s:%u]\n\t-> function: [%s]\n\t-> status: [%s]\n\n",
+            code, file, line, func, str
+           );
+#   else
+    (void) str;
+    (void) code;
+    (void) file;
+    (void) line;
+    (void) func;
+#   endif
+}
 
 int __seh_except_(unsigned int code, unsigned int line, const char *file, const char *func)
 {
@@ -90,9 +104,7 @@ int __seh_except_(unsigned int code, unsigned int line, const char *file, const 
         break;
     }
     }
-    printf("\n! Exception: code [%u]:\n\t-> source [%s:%u]\n\t-> func   [%s]\n\t-> status [%s]\n\n",
-           code, file, line, func, err
-          );
+    __error_console(err, code, file, line, func);
     return ret;
 }
 

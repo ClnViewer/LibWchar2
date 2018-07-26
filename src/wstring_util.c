@@ -60,6 +60,12 @@ int wstring_isempty(const wchar_t *s, int sz)
     const wchar_t *c = s;
     sz = ((sz < 0) ? 0 : sz);
 
+    if (!s)
+    {
+        errno = EINVAL;
+        return 0;
+    }
+
     while(sz--)
     {
         if ((*c > 0x100) || ((*c < 0x100) && (!c_strip[*c])))
@@ -75,11 +81,19 @@ string_ws wstring_trunc(const wchar_t *ws, int sz)
 {
     int            osz = 0;
     const wchar_t *c   = ws,
-                   *cc  = (ws + (sz - 1));
+                  *cc  = NULL;
     string_ws ss = { NULL, 0U };
 
     do
     {
+        if ((!ws) || (sz <= 0))
+        {
+            errno = EINVAL;
+            break;
+        }
+
+        cc = (ws + (sz - 1));
+
         while(osz < sz)
         {
             if ((*c < 0x100) && (!c_strip[*c]))
