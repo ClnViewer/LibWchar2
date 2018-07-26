@@ -202,7 +202,8 @@ static access_e __access(const char *s, int m)
         {
             if (
                 (!((sb.st_mode) & S_IRUSR)) ||
-                (!((sb.st_mode) & S_IWUSR))
+                (!((sb.st_mode) & S_IWUSR)) ||
+                ((ret == ISDIR) && (!((sb.st_mode) & S_IXUSR)))
             )
             {
                 ret = ISERROR;
