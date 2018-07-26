@@ -36,10 +36,15 @@
 static void __error_console(const char *str, unsigned int code, const char *file, unsigned int line, const char *func)
 {
 #   if defined(OS_WIN_EXCEPTION_CONSOLE)
-    fprintf(stderr,
-            "\n! Exception: code: [%u]:\n\t-> source: [%s:%u]\n\t-> function: [%s]\n\t-> status: [%s]\n\n",
-            code, file, line, func, str
-           );
+
+    if (AttachConsole(ATTACH_PARENT_PROCESS))
+    {
+        fprintf(stderr,
+                "\n! Exception: code: [%u]:\n\t-> source: [%s:%u]\n\t-> function: [%s]\n\t-> status: [%s]\n\n",
+                code, file, line, func, str
+               );
+    }
+
 #   else
     (void) str;
     (void) code;
