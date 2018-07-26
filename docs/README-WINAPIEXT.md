@@ -63,6 +63,16 @@ You can also select `winext/build/libwchar2ext.sln` in `Visual Studio`, or to `C
 >
 >In the case of `CodeBlocks`, `MinGW` is inside, with `<path>\CodeBlocks\MinGW\mingw32` fully installed.
 
+### Additional assembly keys
+
+- `OS_WIN_EXCEPTION_CONSOLE` - collect with support for displaying fatal exceptions in the console.
+- `OS_WIN_FOPEN_MIXED_CHAR` - collect the `wfopen` function with a mixed data type:
+
+        wfopen(const wchar_t*, const char*);
+instead of the default declaration:
+
+        wfopen(const wchar_t*, const wchar_t*);
+
 
 ### LibWchar2 extension library tests
 

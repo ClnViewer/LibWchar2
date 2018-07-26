@@ -65,6 +65,16 @@
 > 
 > В случае с `CodeBlocks` `MinGW` находиться внутри, при полной установке, `<путь>\CodeBlocks\MinGW\mingw32`.
 
+### Дополнительные ключи сборки
+
+- `OS_WIN_EXCEPTION_CONSOLE` - собрать с поддержкой отображения фатальных исключений в консоли.
+- `OS_WIN_FOPEN_MIXED_CHAR` - собрать функцию `wfopen` со смешанным типом данных:
+
+        wfopen(const wchar_t*, const char*);
+вместо декларации по умолчанию:
+
+        wfopen(const wchar_t*, const wchar_t*);
+
 
 ### Тесты функций библиотеки расширений
 
