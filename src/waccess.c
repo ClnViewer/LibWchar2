@@ -70,7 +70,7 @@ static access_e __waccess(const wchar_t *s, const char *c, int m)
         case 0:
         {
             if (
-                (((sb.st_mode) & _S_IREAD)  != _S_IREAD) ||
+                (((sb.st_mode) & _S_IREAD)  != _S_IREAD)  ||
                 (((sb.st_mode) & _S_IWRITE) != _S_IWRITE) ||
                 (((sb.st_mode) & _S_IEXEC)  != _S_IEXEC)
             )
@@ -202,8 +202,7 @@ static access_e __access(const char *s, int m)
         {
             if (
                 (!((sb.st_mode) & S_IRUSR)) ||
-                (!((sb.st_mode) & S_IWUSR)) ||
-                (!((sb.st_mode) & S_IXUSR))
+                (!((sb.st_mode) & S_IWUSR))
             )
             {
                 ret = ISERROR;
@@ -238,7 +237,8 @@ static access_e __access(const char *s, int m)
         {
             if (
                 (!((sb.st_mode) & S_IRUSR)) ||
-                (!((sb.st_mode) & S_IWUSR))
+                (!((sb.st_mode) & S_IWUSR)) ||
+                (!((sb.st_mode) & S_IXUSR))
             )
             {
                 ret = ISERROR;
