@@ -26,6 +26,7 @@ libwchar2.pc
 !/example/Makefile
 
 /docs/mansrc
+/build/doxymd
 
 # Prerequisites
 *.d
