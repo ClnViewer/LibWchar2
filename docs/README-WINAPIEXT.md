@@ -14,9 +14,9 @@ For backwards compatibility with the `*nix` version of the library, non-standard
 
 ### List of features of the extension library
 
-With the list of functions included in the library extensions `LibWchar2` can be found in the header file [`wchar2ext.h`](https://github.com/ClnViewer/LibWchar2/blob/master/include/wchar2ext.h).  
-More details are described in the [documentation](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html).  
-The current results of the test builds of the extension library `LibWchar2` on [appveyor.com](https://ci.appveyor.com/project/ClnViewer/libwchar2).
+- With the list of functions included in the library extensions `LibWchar2` can be found in the header file [`wchar2ext.h`](https://github.com/ClnViewer/LibWchar2/blob/master/include/wchar2ext.h).  
+- More details are described in the [documentation](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html).  
+- The current results of the test builds of the extension library `LibWchar2` on [appveyor.com](https://ci.appveyor.com/project/ClnViewer/libwchar2).
 
 ### Installing LibWchar2 extension library
 

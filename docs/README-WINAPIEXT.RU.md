@@ -15,9 +15,9 @@
 
 ### Список функций библиотеки расширений
 
-Со списком функций вошедшими в библиотеку расширений `LibWchar2` можно ознакомиться в файле заголовков [`wchar2ext.h`](https://github.com/ClnViewer/LibWchar2/blob/master/include/wchar2ext.h).  
-Подробнее функции описаны в [документации](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html).  
-Текущий результаты тестовых сборок библиотеки расширений `LibWchar2` на [appveyor.com](https://ci.appveyor.com/project/ClnViewer/libwchar2)
+- Со списком функций вошедшими в библиотеку расширений `LibWchar2` можно ознакомиться в файле заголовков [`wchar2ext.h`](https://github.com/ClnViewer/LibWchar2/blob/master/include/wchar2ext.h).  
+- Подробнее функции описаны в [документации](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html).  
+- Текущий результаты тестовых сборок библиотеки расширений `LibWchar2` на [appveyor.com](https://ci.appveyor.com/project/ClnViewer/libwchar2)
 
 ### Установка библиотеки расширений
 
