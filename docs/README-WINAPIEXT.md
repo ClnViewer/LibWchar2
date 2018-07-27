@@ -73,6 +73,10 @@ instead of the default declaration:
 
         wfopen(const wchar_t*, const wchar_t*);
 
+How to add compiler keys:
+
+        cmake -G "..."  .. -DOS_WIN_EXCEPTION_CONSOLE -DOS_WIN_FOPEN_MIXED_CHAR
+
 
 ### LibWchar2 extension library tests
 

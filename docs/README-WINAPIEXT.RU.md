@@ -75,6 +75,10 @@
 
         wfopen(const wchar_t*, const wchar_t*);
 
+Добавление ключей:
+
+        cmake -G "..."  .. -DOS_WIN_EXCEPTION_CONSOLE -DOS_WIN_FOPEN_MIXED_CHAR
+
 
 ### Тесты функций библиотеки расширений
 
