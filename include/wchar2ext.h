@@ -137,9 +137,9 @@ int       wstring_isempty(const wchar_t *restrict s, int);
 
 size_t    wstring_alloc(string_ws *restrict, size_t);
 size_t    wstring_append_cvt(string_ws*, const char *restrict, size_t);
-size_t    wstring_appends_(string_ws *dst, ...);
+size_t    wstring_appends_(string_ws*, ...);
 size_t    wstring_append(string_ws*, const wchar_t *restrict, size_t);
-size_t    wstring_format(string_ws *dst, const wchar_t *restrict, ...);
+size_t    wstring_format(string_ws*, const wchar_t *restrict, ...);
 
 string_ws wstring_trunc(const wchar_t *ws, int);
 size_t    wstring_trunc_alloc(string_ws *restrict, const wchar_t*, int);
