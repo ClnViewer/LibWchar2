@@ -96,6 +96,12 @@ endif()
 if(MSVC)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /W3 /Zc:wchar_t")
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /Zc:wchar_t")
+    if(OS_WIN_EXCEPTION_CONSOLE)
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /DOS_WIN_EXCEPTION_CONSOLE=1")
+    endif()
+    if(OS_WIN_FOPEN_MIXED_CHAR)
+       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /DOS_WIN_FOPEN_MIXED_CHAR=1")
+    endif()
 endif()
 
 if(UNIX)
@@ -105,11 +111,14 @@ if(UNIX)
 endif()
 
 if(WIN32)
-  # Postfix of DLLs:
-  set(LIB_DEBUG_POSTFIX d)
+# Postfix of DLLs:
+    set(LIB_DEBUG_POSTFIX d)
+    if(OS_WIN_FOPEN_MIXED_CHAR AND NOT MSVC)
+       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DOS_WIN_FOPEN_MIXED_CHAR")
+    endif()
 else()
-  # Postfix of so's:
-  set(LIB_DEBUG_POSTFIX)
+# Postfix of so's:
+    set(LIB_DEBUG_POSTFIX)
 endif()
 
 if(ENABLE_SOLUTION_FOLDERS)
