@@ -387,6 +387,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar
 wchar_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a5d61519b0500f248176077d842c21576">_fputwc</a> (wchar_t, FILE *restrict)</td></tr>
 <tr class="memdesc:a5d61519b0500f248176077d842c21576"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write a wide character to a file or stream. <br /></td></tr>
 <tr class="separator:a5d61519b0500f248176077d842c21576"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf6e26da7bd1c30ad18ddaffaba1ae46"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#adf6e26da7bd1c30ad18ddaffaba1ae46">_wcsftime</a> (wchar_t *restrict, size_t sz, const wchar_t *restrict, const void *restrict)</td></tr>
+<tr class="memdesc:adf6e26da7bd1c30ad18ddaffaba1ae46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert date and time to a formatted wide-character string.  <a href="#adf6e26da7bd1c30ad18ddaffaba1ae46">More...</a><br /></td></tr>
+<tr class="separator:adf6e26da7bd1c30ad18ddaffaba1ae46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc7c3067c70b376b9ae51976442427f6"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#abc7c3067c70b376b9ae51976442427f6">_wfopen</a> (const wchar_t *, const wchar_t *)</td></tr>
 <tr class="memdesc:abc7c3067c70b376b9ae51976442427f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open file stream, accepts file name and mode as wide characters.  <a href="#abc7c3067c70b376b9ae51976442427f6">More...</a><br /></td></tr>
 <tr class="separator:abc7c3067c70b376b9ae51976442427f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2016,6 +2019,52 @@ size wide string </td></tr>
 <p>Wide-character string compare. </p>
 <ul>
 <li><a class="el" href="wcscmp.html">wcscmp manual</a> </li>
+</ul>
+
+</div>
+</div>
+<a id="adf6e26da7bd1c30ad18ddaffaba1ae46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf6e26da7bd1c30ad18ddaffaba1ae46">&#9670;&nbsp;</a></span>_wcsftime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t _wcsftime </td>
+          <td>(</td>
+          <td class="paramtype">wchar_t *&#160;</td>
+          <td class="paramname"><em>restrict</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>sz</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const wchar_t *&#160;</td>
+          <td class="paramname"><em>restrict</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>restrict</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert date and time to a formatted wide-character string. </p>
+<p>This is the wide-character counterpart of strftime(). So that we do not have to duplicate the code of strftime(), we convert the format string to multibyte, call strftime(), then convert the result back into wide characters.</p>
+<ul>
+<li><a class="el" href="wcsftime.html">wcsftime manual</a> </li>
 </ul>
 
 </div>
@@ -3743,7 +3792,7 @@ size wide string </td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Jul 25 2018 18:52:37 for libwchar2 0.0.6 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jul 28 2018 03:45:33 for libwchar2 0.0.6 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

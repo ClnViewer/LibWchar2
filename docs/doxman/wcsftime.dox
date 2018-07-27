@@ -1,0 +1,26 @@
+/*!
+  \page wcsftime wcsftime manual
+
+    __wcsftime() - `convert date and time to a formatted wide-character string`__
+
+    Copies into `destination` the content of format, expanding its format tags
+    into the corresponding values as specified by `time ptr`, with a limit of maxsize characters.
+
+    This is the wide-character counterpart of `strftime()`.  
+    So that we do not have to duplicate the code of `strftime()`,
+    we convert the format string to multibyte, call `strftime()`,
+    then convert the result back into wide characters.
+
+    # Return Value
+
+    The **wcsftime**() function returns size of `destination` wide string.  
+    Otherwise, zero is returned and the contents of the array are indeterminate.
+
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcsftime.c
+
+
+    \includedoc docs/man-license.dox
+
+*/

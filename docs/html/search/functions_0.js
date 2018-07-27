@@ -56,6 +56,7 @@ var searchData=
   ['_5fwcscat',['_wcscat',['../wchar2_8h.html#a4d9842734e7c33bf7c1a99dc5adf3750',1,'wchar2.h']]],
   ['_5fwcschr',['_wcschr',['../wchar2_8h.html#a61711642ef74b869dc2fd40669b1c985',1,'wchar2.h']]],
   ['_5fwcscmp',['_wcscmp',['../wchar2_8h.html#a0edf23fd311ebf73b7c0539abcea90aa',1,'wchar2.h']]],
+  ['_5fwcsftime',['_wcsftime',['../wchar2_8h.html#adf6e26da7bd1c30ad18ddaffaba1ae46',1,'wchar2.h']]],
   ['_5fwcslcat',['_wcslcat',['../wchar2_8h.html#a1abf8f900eb10eb42bd1e2b0758bacd2',1,'wchar2.h']]],
   ['_5fwcslcpy',['_wcslcpy',['../wchar2_8h.html#ad0f68f716cb62e53889a73f1300e2d23',1,'wchar2.h']]],
   ['_5fwcslen',['_wcslen',['../wchar2_8h.html#aca45b4f92e22f7fad59e2b5c763fde72',1,'wchar2.h']]],

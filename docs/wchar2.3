@@ -1,4 +1,4 @@
-.TH "include/wchar2.h" 3 "Wed Jul 25 2018" "libwchar2 0.0.6" \" -*- nroff -*-
+.TH "include/wchar2.h" 3 "Sat Jul 28 2018" "libwchar2 0.0.6" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -386,6 +386,10 @@ include/wchar2.h
 .RI "wchar_t \fB_fputwc\fP (wchar_t, FILE *restrict)"
 .br
 .RI "Write a wide character to a file or stream\&. "
+.ti -1c
+.RI "size_t \fB_wcsftime\fP (wchar_t *restrict, size_t sz, const wchar_t *restrict, const void *restrict)"
+.br
+.RI "Convert date and time to a formatted wide-character string\&. "
 .ti -1c
 .RI "FILE * \fB_wfopen\fP (const wchar_t *, const wchar_t *)"
 .br
@@ -1045,6 +1049,15 @@ Search for wide character in string\&.
 Wide-character string compare\&. 
 .IP "\(bu" 2
 \fBwcscmp manual\fP 
+.PP
+
+.SS "size_t _wcsftime (wchar_t * restrict, size_t sz, const wchar_t * restrict, const void * restrict)"
+
+.PP
+Convert date and time to a formatted wide-character string\&. This is the wide-character counterpart of strftime()\&. So that we do not have to duplicate the code of strftime(), we convert the format string to multibyte, call strftime(), then convert the result back into wide characters\&.
+.PP
+.IP "\(bu" 2
+\fBwcsftime manual\fP 
 .PP
 
 .SS "size_t _wcslen (const wchar_t *)"

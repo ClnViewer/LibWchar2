@@ -54,7 +54,6 @@
         wcscoll   Locale-specific wide-character string compare
         wcscpy    Copy wide-character string
         wcscspn   Count wide characters not in string
-        wcsftime  Convert date and time to a formatted wide-character string
         wcsxfrm   Locale-specific wide-character string transformation
    */
 
@@ -673,6 +672,18 @@ size_t    _wprintf(const wchar_t *restrict fmt, ...)
 int       _fputws(const wchar_t *restrict, FILE *restrict);
           /*! \brief Write a wide character to a file or stream */
 wchar_t   _fputwc(wchar_t, FILE *restrict);
+
+          /*! \brief Convert date and time to a formatted wide-character string.
+           *
+           * \details This is the wide-character counterpart of strftime(). So that we do not
+           * have to duplicate the code of strftime(), we convert the format string to
+           * multibyte, call strftime(), then convert the result back into wide
+           * characters.
+           *
+           *
+           * - \subpage wcsftime
+           */
+size_t    _wcsftime(wchar_t *restrict, size_t sz, const wchar_t *restrict, const void *restrict);
 
           /*!
            *  \paragraph Open file stream
@@ -1298,6 +1309,7 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
 #define wcsstr _wcsstr
 #define wcstok _wcstok
 #define wcscmp _wcscmp
+#define wcsftime _wcsftime
 #define wmemchr _wmemchr
 #define wmemcpy _wmemcpy
 #define wmemmove _wmemmove

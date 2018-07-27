@@ -37,6 +37,7 @@ libwchar2_la_SOURCES = \
     wcprint.c \
     wcstocscmp.c \
     wcsregexp.c \
+    wcsftime.c \
     vfprintf.c \
     vfwprintf.c \
     iswalnum.c \

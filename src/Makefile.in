@@ -94,17 +94,18 @@ am_libwchar2_la_OBJECTS = libwchar2_la-libwchar.lo \
 	libwchar2_la-wcstombs.lo libwchar2_la-wctob.lo \
 	libwchar2_la-wctomb.lo libwchar2_la-wcprint.lo \
 	libwchar2_la-wcstocscmp.lo libwchar2_la-wcsregexp.lo \
-	libwchar2_la-vfprintf.lo libwchar2_la-vfwprintf.lo \
-	libwchar2_la-iswalnum.lo libwchar2_la-iswalpha.lo \
-	libwchar2_la-iswblank.lo libwchar2_la-iswcntrl.lo \
-	libwchar2_la-iswctype.lo libwchar2_la-iswdigit.lo \
-	libwchar2_la-iswgraph.lo libwchar2_la-iswlower.lo \
-	libwchar2_la-iswprint.lo libwchar2_la-iswpunct.lo \
-	libwchar2_la-iswspace.lo libwchar2_la-iswupper.lo \
-	libwchar2_la-iswxdigit.lo libwchar2_la-towctrans.lo \
-	libwchar2_la-wcswidth.lo libwchar2_la-wctrans.lo \
-	libwchar2_la-wcwidth.lo libwchar2_la-wchar_util.lo \
-	libwchar2_la-wchar_utf8.lo libwchar2_la-wstring_util.lo
+	libwchar2_la-wcsftime.lo libwchar2_la-vfprintf.lo \
+	libwchar2_la-vfwprintf.lo libwchar2_la-iswalnum.lo \
+	libwchar2_la-iswalpha.lo libwchar2_la-iswblank.lo \
+	libwchar2_la-iswcntrl.lo libwchar2_la-iswctype.lo \
+	libwchar2_la-iswdigit.lo libwchar2_la-iswgraph.lo \
+	libwchar2_la-iswlower.lo libwchar2_la-iswprint.lo \
+	libwchar2_la-iswpunct.lo libwchar2_la-iswspace.lo \
+	libwchar2_la-iswupper.lo libwchar2_la-iswxdigit.lo \
+	libwchar2_la-towctrans.lo libwchar2_la-wcswidth.lo \
+	libwchar2_la-wctrans.lo libwchar2_la-wcwidth.lo \
+	libwchar2_la-wchar_util.lo libwchar2_la-wchar_utf8.lo \
+	libwchar2_la-wstring_util.lo
 libwchar2_la_OBJECTS = $(am_libwchar2_la_OBJECTS)
 AM_V_lt = $(am__v_lt_$(V))
 am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))
@@ -305,6 +306,7 @@ libwchar2_la_SOURCES = \
     wcprint.c \
     wcstocscmp.c \
     wcsregexp.c \
+    wcsftime.c \
     vfprintf.c \
     vfwprintf.c \
     iswalnum.c \
@@ -436,6 +438,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wchar_util.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wcprint.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wcrtomb.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wcsftime.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wcsnrtombs.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wcsregexp.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wcsrtombs.Plo@am__quote@
@@ -712,6 +715,14 @@ libwchar2_la-wcsregexp.lo: wcsregexp.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='wcsregexp.c' object='libwchar2_la-wcsregexp.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libwchar2_la_CPPFLAGS) $(CPPFLAGS) $(libwchar2_la_CFLAGS) $(CFLAGS) -c -o libwchar2_la-wcsregexp.lo `test -f 'wcsregexp.c' || echo '$(srcdir)/'`wcsregexp.c
+
+libwchar2_la-wcsftime.lo: wcsftime.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libwchar2_la_CPPFLAGS) $(CPPFLAGS) $(libwchar2_la_CFLAGS) $(CFLAGS) -MT libwchar2_la-wcsftime.lo -MD -MP -MF $(DEPDIR)/libwchar2_la-wcsftime.Tpo -c -o libwchar2_la-wcsftime.lo `test -f 'wcsftime.c' || echo '$(srcdir)/'`wcsftime.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libwchar2_la-wcsftime.Tpo $(DEPDIR)/libwchar2_la-wcsftime.Plo
+@am__fastdepCC_FALSE@	$(AM_V_CC) @AM_BACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='wcsftime.c' object='libwchar2_la-wcsftime.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libwchar2_la_CPPFLAGS) $(CPPFLAGS) $(libwchar2_la_CFLAGS) $(CFLAGS) -c -o libwchar2_la-wcsftime.lo `test -f 'wcsftime.c' || echo '$(srcdir)/'`wcsftime.c
 
 libwchar2_la-vfprintf.lo: vfprintf.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libwchar2_la_CPPFLAGS) $(CPPFLAGS) $(libwchar2_la_CFLAGS) $(CFLAGS) -MT libwchar2_la-vfprintf.lo -MD -MP -MF $(DEPDIR)/libwchar2_la-vfprintf.Tpo -c -o libwchar2_la-vfprintf.lo `test -f 'vfprintf.c' || echo '$(srcdir)/'`vfprintf.c

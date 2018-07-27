@@ -13,6 +13,7 @@ var searchData=
   ['wcscpy_20manual',['wcscpy manual',['../wcscpy.html',1,'']]],
   ['wcscspn_20manual',['wcscspn manual',['../wcscspn.html',1,'']]],
   ['wcsdup_20manual',['wcsdup manual',['../wcsdup.html',1,'']]],
+  ['wcsftime_20manual',['wcsftime manual',['../wcsftime.html',1,'']]],
   ['wcslen_20manual',['wcslen manual',['../wcslen.html',1,'']]],
   ['wcsncasecmp_20manual',['wcsncasecmp manual',['../wcsncasecmp.html',1,'']]],
   ['wcsncat_20manual',['wcsncat manual',['../wcsncat.html',1,'']]],
