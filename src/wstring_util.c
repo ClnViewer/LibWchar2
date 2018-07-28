@@ -569,25 +569,26 @@ wchar_t * wstring_timeformat(const wchar_t *src, size_t sz, const wchar_t *fmtin
                 break;
             }
 
-            if (!(p = realloc(p, (osz + 1 * sizeof(wchar_t)))))
+            if (!(p = realloc(p, ((osz + 1) * sizeof(wchar_t)))))
             {
                 break;
             }
 
 			p[osz] = L'\0';
             out = p;
-
-#       if !defined(_MSC_VER)
             p = NULL;
-#       endif
-            return out;
+
+			return out;
 
 #       if defined(_MSC_VER)
         }
         __finally
         {
             if (s != NULL)
-                free(s); s = NULL;
+			{
+                free(s);
+				s = NULL;
+			}
         }
 #       endif
 

@@ -191,11 +191,11 @@ int main(int argc, char *argv[])
             break;
 
         printf("\n\t*(%d) wstring_timeformat -> [%ls] -> [%ls]\n", __LINE__, tstr, tout);
-        free(tout);
+        free(tout); tout = NULL;
 
     }
     while (0);
 
     (void) getchar();
-    return 0;
+	return 0;
 }
