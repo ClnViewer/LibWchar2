@@ -46,13 +46,13 @@ macro_revision=1.3017
 build_old_libs=yes
 
 # Whether or not to build shared libraries.
-build_libtool_libs=yes
+build_libtool_libs=no
 
 # What type of objects to build.
 pic_mode=default
 
 # Whether or not to optimize for fast installation.
-fast_install=yes
+fast_install=needless
 
 # The host system.
 host_alias=
@@ -132,7 +132,7 @@ old_postuninstall_cmds=""
 LTCC="gcc -std=gnu99"
 
 # LTCC compiler flags.
-LTCFLAGS="-g -O2 -fshort-wchar -Wall -pedantic -Wstrict-prototypes -Wextra"
+LTCFLAGS="-g -O2 -fshort-wchar -Wall -pedantic -Wstrict-prototypes"
 
 # Take the output of nm and produce a listing of raw symbols and C names.
 global_symbol_pipe="sed -n -e 's/^.*[	 ]\\([ABCDGIRSTW][ABCDGIRSTW]*\\)[	 ][	 ]*\\([_A-Za-z][_A-Za-z0-9]*\\)\$/\\1 \\2 \\2/p'"
@@ -281,7 +281,7 @@ link_static_flag="-static"
 compiler_c_o="yes"
 
 # Whether or not to add -lc for building shared libraries.
-build_libtool_need_lc=no
+build_libtool_need_lc=yes
 
 # Whether or not to disallow shared libs when runtime libs are static.
 allow_libtool_libs_with_static_runtimes=no
