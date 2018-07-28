@@ -40,6 +40,7 @@ set(lib_srcs
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wbasename.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wchar_utf8.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wcprint.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src/wcsptime.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wfopen.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wmkdir.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wpathnormalize.c
