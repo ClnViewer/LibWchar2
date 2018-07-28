@@ -199,8 +199,8 @@ char * wstring_wstocs_alloc(const wchar_t *src)
     }
 
     if (
-        ((ssz = _wcstombs(NULL, src, 0)) == 0)            ||
-        ((p   = calloc(sizeof(wchar_t), (ssz + 2))) == 0) ||
+        ((ssz = _wcstombs(NULL, src, 0)) == 0)                          ||
+        ((p   = calloc(sizeof(wchar_t), (ssz + sizeof(wchar_t)))) == 0) ||
         ((ssz = _wcstombs(p, src, (ssz + sizeof(char)))) == 0)
     )
     {
@@ -243,7 +243,7 @@ size_t wstring_cstows_ws_alloc(string_ws *ws, const char *src)
     if (
         (!src)                                                   ||
         ((ws->sz   = _mbstowcs(NULL, src, 0)) == 0)              ||
-        ((ws->str  = calloc(sizeof(wchar_t), (ws->sz + (sizeof(wchar_t) *2)))) == 0) ||
+        ((ws->str  = calloc(sizeof(wchar_t), (ws->sz + (sizeof(wchar_t) * 2)))) == 0) ||
         ((ws->sz   = _mbstowcs(ws->str, src, (ws->sz + sizeof(wchar_t)))) == 0)
     )
     {
@@ -574,21 +574,21 @@ wchar_t * wstring_timeformat(const wchar_t *src, size_t sz, const wchar_t *fmtin
                 break;
             }
 
-			p[osz] = L'\0';
+            p[osz] = L'\0';
             out = p;
             p = NULL;
 
-			return out;
+            return out;
 
 #       if defined(_MSC_VER)
         }
         __finally
         {
             if (s != NULL)
-			{
+            {
                 free(s);
-				s = NULL;
-			}
+                s = NULL;
+            }
         }
 #       endif
 

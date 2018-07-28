@@ -66,8 +66,8 @@ wchar_t * _wcsptime(const wchar_t *w, const wchar_t *fmt, void *v)
         return NULL;
     }
 
-    fsz = (fsz + 1 * sizeof(wchar_t));
-    bsz = (bsz + 1 * sizeof(wchar_t));
+    fsz = ((fsz + 1) * sizeof(wchar_t));
+    bsz = ((bsz + 1) * sizeof(wchar_t));
 
     memset(v, 0, sizeof(struct tm));
 
