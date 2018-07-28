@@ -18,4 +18,3 @@
 - [#13](https://github.com/ClnViewer/LibWchar2/commit/8102ce9116b593a9b0453b9fcfe56fd3f7bbd77d)  	update header declarition 2018-07-27 (*2018-07-27T14:20:41Z*)
 - [#14](https://github.com/ClnViewer/LibWchar2/commit/a5eded8e19cd4a73f614803ffc74ffaa36956dd2)  	update CMake script 2018-07-27 (*2018-07-27T14:04:50Z*)
 - [#15](https://github.com/ClnViewer/LibWchar2/commit/6c690efdc151444ed93058eca2d845906cf21e8a)  	fix waccess for linux 2018-07-27 (*2018-07-26T20:43:16Z*)
-- [#16](https://github.com/ClnViewer/LibWchar2/commit/1c006a190a8aa2d48784aef72002f6c893576451)  	fix waccess for linux 2018-07-27 (*2018-07-26T20:40:51Z*)

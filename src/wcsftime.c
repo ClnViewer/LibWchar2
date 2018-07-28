@@ -1,4 +1,3 @@
-
 /*
     MIT License
 
@@ -24,8 +23,17 @@
     SOFTWARE.
  */
 
-#include "libwchar.h"
-#include <sys/cdefs.h>
+#include "libbuild.h"
+
+#if defined(OS_WIN)
+#   include "libwcharext.h"
+
+#else
+#   include "libwchar.h"
+#   include <sys/cdefs.h>
+
+#endif
+
 #include <time.h>
 
 /*!
@@ -59,11 +67,15 @@ size_t _wcsftime(wchar_t *w, size_t sz, const wchar_t *fmt, const void *v)
             (!wstring_wstocs(fb, bsz, fmt, 0))    ||
             (!(osz = strftime(cb, sz, fb, ptm)))  ||
             (!(osz = wstring_cstows(w, sz, cb, osz)))
-           ) { break; }
+        )
+        {
+            break;
+        }
 
         return osz;
 
-    } while (0);
+    }
+    while (0);
 
     return 0U;
 }

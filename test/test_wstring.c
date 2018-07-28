@@ -12,6 +12,7 @@ START_TEST(test_wstring)
             src2[] = L"_this_other_string_",
             src3[] = L".",
             endw[] = L"_this_one_string_._this_other_string_";
+    wchar_t *tout, tstr[] = L"2018-07-24T19:03:18Z", tres[] = L"07:03PM";
     string_ws  dst = {NULL, 0};
 
     ret = wstring_append(&dst, src1, 0);
@@ -38,5 +39,10 @@ START_TEST(test_wstring)
     ck_assert(_wcscmp(dst.str, endw) == 0);
     wstring_free(&dst);
 
+    tout = wstring_timeformat(tstr, 0, L"%Y-%m-%dT%H:%M:%S%Ez", L"%I:%M%p");
+    ck_assert(tout != NULL);
+    _fprintf (stdout,  "\tTest wstring_timeformat:%d\t-> wide: [%ls] <-> [%ls]\n", __LINE__, tstr, tout);
+    ck_assert(_wcscmp(tout, tres) == 0);
+    free(tout);
 }
 END_TEST

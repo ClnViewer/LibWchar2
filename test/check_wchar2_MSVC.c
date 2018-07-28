@@ -183,6 +183,19 @@ int main(int argc, char *argv[])
     }
     while (0);
 
+    do
+    {
+        wchar_t *tout, tstr[] = L"2018-07-24T19:03:18Z";
+
+        if ((tout = wstring_timeformat(tstr, 0, L"%Y-%m-%dT%H:%M:%S%Ez", L"%I:%M%p")) == NULL)
+            break;
+
+        printf("\n\t*(%d) wstring_timeformat -> [%ls] -> [%ls]\n", __LINE__, tstr, tout);
+        free(tout);
+
+    }
+    while (0);
+
     (void) getchar();
     return 0;
 }

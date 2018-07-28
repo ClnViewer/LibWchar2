@@ -156,6 +156,11 @@ size_t    wstring_wstocs(char [], size_t, const wchar_t *restrict, size_t);
 size_t    wstring_wstocs_ws(char [], size_t, const string_ws *restrict);
 size_t    wstring_cstows(wchar_t [], size_t, const char *restrict, size_t);
 
+__CHKRET
+wchar_t * wstring_timeformat(const wchar_t *restrict, size_t, const wchar_t *restrict, const wchar_t *restrict);
+__CHKRET
+wchar_t * wstring_timeformat_ws(const string_ws *restrict, const wchar_t *restrict, const wchar_t *restrict);
+
 size_t    u8stowcs(wchar_t*, const char*);
 size_t    wcstou8s(char*, const wchar_t*);
 int       u8sverify(const char*);

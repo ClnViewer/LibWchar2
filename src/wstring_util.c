@@ -27,6 +27,7 @@
 
 #if defined(OS_WIN)
 #   include "libwcharext.h"
+#   define _wcsftime wcsftime
 
 #else
 #   include <stdio.h>
@@ -34,6 +35,8 @@
 #   include "libwchar.h"
 
 #endif
+
+#include <time.h>
 
 const unsigned char c_strip[0x100] =
 {
@@ -81,7 +84,7 @@ string_ws wstring_trunc(const wchar_t *ws, int sz)
 {
     int            osz = 0;
     const wchar_t *c   = ws,
-                  *cc  = NULL;
+                   *cc  = NULL;
     string_ws ss = { NULL, 0U };
 
     do
@@ -306,12 +309,12 @@ size_t wstring_cstows(wchar_t dst[], size_t dsz, const char *src, size_t ssz)
 
     ssz = ((!ssz) ? strlen(src) : ssz);
     dsz = ((ssz >= dsz) ? (dsz - 1) : dsz);
-    if ((ssz = _mbstowcs(dst, src, dsz)) == 0)
+    if ((dsz = _mbstowcs(dst, src, dsz)) == 0)
     {
         return 0U;
     }
-    dst[ssz] = L'\0';
-    return ssz;
+    dst[dsz] = L'\0';
+    return dsz;
 }
 
 size_t wstring_append(string_ws *dst, const wchar_t *s, size_t sz)
@@ -521,6 +524,88 @@ size_t wstring_format(string_ws *dst, const wchar_t *fmt, ...)
 
     va_end(ap);
     return ret;
+}
+
+wchar_t * wstring_timeformat(const wchar_t *src, size_t sz, const wchar_t *fmtin, const wchar_t *fmtout)
+{
+    wchar_t __AUTO *p = NULL, *s = NULL;
+    sz = ((!sz) ? _wcslen(src) : sz);
+
+    if ((!src) || (!sz) || (!fmtin) || (!fmtout))
+    {
+        errno = EINVAL;
+        return NULL;
+    }
+
+    do
+    {
+        size_t   osz;
+        wchar_t *out;
+        struct tm tms = {0};
+
+#       if defined(_MSC_VER)
+        __try
+        {
+#       endif
+
+            if (
+                ((p = calloc(sizeof(wchar_t), 150)) == NULL)      ||
+                ((s = calloc(sizeof(wchar_t), (sz + 1))) == NULL) ||
+                (_wmemcpy(s, src, sz) == NULL)
+            )
+            {
+                break;
+            }
+
+            s[sz] = L'\0';
+
+            if (
+                (_wcsptime(s, fmtin, &tms) != NULL) ||
+                (!(osz = _wcsftime(p, (150 * sizeof(wchar_t)), fmtout, &tms)))
+            )
+            {
+                break;
+            }
+
+            if (!(p = realloc(p, ((osz + 1) * sizeof(wchar_t)))))
+            {
+                break;
+            }
+            out = p;
+            out[osz] = L'\0';
+
+#       if !defined(_MSC_VER)
+            p = NULL;
+#       endif
+            return out;
+
+#       if defined(_MSC_VER)
+        }
+        __finally
+        {
+            if (s != NULL)
+                free(s);
+        }
+#       endif
+
+    }
+    while (0);
+
+#   if defined(_MSC_VER)
+    if (p != NULL)
+        free(p);
+#   endif
+    return NULL;
+}
+
+wchar_t * wstring_timeformat_ws(const string_ws *src, const wchar_t *fmtin, const wchar_t *fmtout)
+{
+    if (!src)
+    {
+        errno = EINVAL;
+        return NULL;
+    }
+    return wstring_timeformat(src->str, src->sz, fmtin, fmtout);
 }
 
 void wstring_free(string_ws *dst)

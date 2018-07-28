@@ -973,6 +973,23 @@ size_t    wstring_wstocs(char [], size_t, const wchar_t *restrict, size_t);
           /*! \brief Converting string, struct string_ws input, char array output, to alloc buffer write */
 size_t    wstring_wstocs_ws(char [], size_t, const string_ws *restrict);
 
+          /*!
+           *  \paragraph wstring time function
+           */
+
+          /*!
+           *  \brief Converting time format string to string, wchar_t and size_t input
+           *  \attention function wstring_timeformat required free result
+           */
+wchar_t * wstring_timeformat(const wchar_t *restrict, size_t, const wchar_t *restrict, const wchar_t *restrict)
+                __attribute__((warn_unused_result));
+
+          /*!
+           *  \brief Converting time format string to string, string_ws input
+           *  \attention function wstring_timeformat_ws required free result
+           */
+wchar_t * wstring_timeformat_ws(const string_ws *restrict, const wchar_t *restrict, const wchar_t *restrict)
+                __attribute__((warn_unused_result));
 
           /*!
            *  \paragraph misc function
@@ -990,6 +1007,7 @@ string_ws wstring_trunc(const wchar_t *ws, int);
            *  \brief Truncation string, wchar_t input, return pointer to struct string_ws and lenght
            */
 size_t    wstring_trunc_alloc(string_ws *restrict, const wchar_t*, int);
+
 
 /*! \cond NOTINDOC */
 
