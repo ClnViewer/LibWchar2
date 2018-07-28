@@ -76,14 +76,14 @@ $(function() {
 <p>If dest is <code>NULL</code>, len is ignored, and the conversion proceeds as above, except that the converted bytes are not written out to memory, and that no length limit exists.</p>
 <p>In both of the above cases, if ps is <code>NULL</code>, a static anonymous state known only to the wcsrtombs() function is used instead.</p>
 <p>The programmer must ensure that there is room for at least len bytes at dest.</p>
-<h1><a class="anchor" id="autotoc_md121"></a>
+<h1><a class="anchor" id="autotoc_md123"></a>
 Return Value</h1>
 <p>The wcsrtombs() function returns the number of bytes that make up the converted part of multibyte sequence, not including the terminating null byte. If a wide character was encountered which could not be con- verted, <code>(size_t) -1</code> is returned, and errno set to <code>EILSEQ</code>.</p>
-<h1><a class="anchor" id="autotoc_md122"></a>
+<h1><a class="anchor" id="autotoc_md124"></a>
 Notes</h1>
 <p>The behavior of wcsrtombs() depends on the <code>LC_CTYPE</code> category of the current locale.</p>
 <p>Passing <code>NULL</code> as ps is not multithread safe.</p>
-<h1><a class="anchor" id="autotoc_md123"></a>
+<h1><a class="anchor" id="autotoc_md125"></a>
 See example</h1>
 <dl class="section see"><dt>See also</dt><dd><a href="https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcsrtombs.c">https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcsrtombs.c</a></dd></dl>
 <p><dl class="section user"><dt>LibWchar2 information</dt><dd></dd></dl>
@@ -96,7 +96,7 @@ See example</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 28 2018 03:45:33 for libwchar2 0.0.6 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jul 28 2018 08:04:13 for libwchar2 0.0.6 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

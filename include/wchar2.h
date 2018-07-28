@@ -685,6 +685,17 @@ wchar_t   _fputwc(wchar_t, FILE *restrict);
 size_t    _wcsftime(wchar_t *restrict, size_t sz, const wchar_t *restrict, const void *restrict);
 
           /*!
+           * \brief Convert a wide-character string representation of time to a time tm structure.
+           *
+           * \details The `wcsptime()` function equivalent to `strptime()` function.
+           * The `strptime()` function it converts the character string pointed to by s, preserving the values in the tm structure,
+           * describes the time as a component, broken-down time, according to the format specified in the format.
+           *
+           * - \subpage 
+           */
+wchar_t * _wcsptime(const wchar_t*, const wchar_t*, void*);
+
+          /*!
            *  \paragraph Open file stream
            *  \note The wfopen* function opens the file whose name is the string pointed
            *        to by pathname and associates a stream with it, standart returned.
@@ -1309,6 +1320,7 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
 #define wcstok _wcstok
 #define wcscmp _wcscmp
 #define wcsftime _wcsftime
+#define wcsptime _wcsptime
 #define wmemchr _wmemchr
 #define wmemcpy _wmemcpy
 #define wmemmove _wmemmove

@@ -66,7 +66,7 @@ $(function() {
 <div class="title">wprintf manual </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="autotoc_md165"></a>
+<div class="textblock"><h1><a class="anchor" id="autotoc_md167"></a>
 Family</h1>
 <p><code>wprintf</code>, <code>fwprintf</code>, <code>swprintf</code>, <code>vwprintf</code>, <code>vfwprintf</code>, <code>vswprintf</code></p>
 <p><b>wprintf - <code>formatted wide-character output conversion</code></b></p>
@@ -88,10 +88,10 @@ Family</h1>
  If an l modifier is present: the <code>const wchar_t *</code> argument is expected to be a pointer to an array of wide characters. Wide characters from the array are written up to (but not including) a terminating <code>null</code> wide character. <br />
  If a precision is specified, no more than the number specified are written. <br />
  The array must contain a terminating <code>null</code> wide character, unless a precision is given and it is smaller than or equal to the number of wide characters in the array.</p>
-<h1><a class="anchor" id="autotoc_md166"></a>
+<h1><a class="anchor" id="autotoc_md168"></a>
 Return Value</h1>
 <p>The functions return the number of wide characters written, excluding the terminating null wide character in case of the functions swprintf() and vswprintf(). They return -1 when an error occurs.</p>
-<h1><a class="anchor" id="autotoc_md167"></a>
+<h1><a class="anchor" id="autotoc_md169"></a>
 Notes</h1>
 <p>The behavior of wprintf() et al. depends on the <code>LC_CTYPE</code> category of the current locale.</p>
 <p>If the format string contains <code>non-ASCII</code> wide characters, the program will work correctly only if the <code>LC_CTYPE</code> category of the current locale at run time is the same as the <code>LC_CTYPE</code> category of the current locale at compile time. This is because the wchar_t representation is plat- form- and locale-dependent. (The glibc represents wide characters using their Unicode (<code>ISO-10646</code>) code point, but other platforms don't do this. Also, the use of <code>C99</code> universal character names of the form <code>\unnnn</code> does not solve this problem.) Therefore, in internationalized programs, the format string should consist of <code>ASCII</code> wide characters only, or should be constructed at run time in an internationalized way (e.g., using gettext(3) or iconv(3), followed by mbstowcs(3)).</p>
@@ -105,7 +105,7 @@ Notes</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 28 2018 03:45:33 for libwchar2 0.0.6 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jul 28 2018 08:04:13 for libwchar2 0.0.6 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

@@ -1,0 +1,36 @@
+/*!
+  \page wcsptime wcsptime manual
+
+    __wcsptime() - `Convert a wide-character string representation of time to a time tm structure`__
+
+    The `wcsptime()` function equivalent to `strptime()` function.
+
+    The `wcsptime()` function it converts the character string pointed to by `s`,
+    preserving the values in the tm structure, describes the time as a component,
+    broken-down time, according to the format specified in the format.
+
+    The `wcsptime()` function handles the input string from left to right. 
+    Each of the three possible input elements: space, letter or formatting characters.  
+    Is processed one by one.  
+    If the input does not match the format string, then the function stops.  
+    The remaining parts of the format and data are not processed.
+
+    The format argument is a character string, consisting of field descriptors and text characters, reminiscent of `scanf()`.  
+    Each field descriptor consists of a `%` character followed by a character that indicates the replacement of the field descriptor.  
+    The remaining characters in the format string must match the input data string.  
+    Exceptions are spaces that match any number of spaces in the input string.  
+    Between any two field descriptors there must be an empty space/spaces or other alphanumeric characters.
+
+    # Return Value
+
+    The **wcsptime**() function returns `NULL` is success.  
+    Otherwise, returned `wchar_t*` pointer.
+
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcsptime.c
+
+
+    \includedoc docs/man-license.dox
+
+*/

@@ -391,6 +391,10 @@ include/wchar2.h
 .br
 .RI "Convert date and time to a formatted wide-character string\&. "
 .ti -1c
+.RI "wchar_t * \fB_wcsptime\fP (const wchar_t *, const wchar_t *, void *)"
+.br
+.RI "Convert a wide-character string representation of time to a time tm structure\&. "
+.ti -1c
 .RI "FILE * \fB_wfopen\fP (const wchar_t *, const wchar_t *)"
 .br
 .RI "Open file stream, accepts file name and mode as wide characters\&. "
@@ -1054,7 +1058,9 @@ Wide-character string compare\&.
 .SS "size_t _wcsftime (wchar_t * restrict, size_t sz, const wchar_t * restrict, const void * restrict)"
 
 .PP
-Convert date and time to a formatted wide-character string\&. This is the wide-character counterpart of strftime()\&. So that we do not have to duplicate the code of strftime(), we convert the format string to multibyte, call strftime(), then convert the result back into wide characters\&.
+Convert date and time to a formatted wide-character string\&. This is the wide-character counterpart of \fCstrftime()\fP\&. 
+.br
+So that we do not have to duplicate the code of \fCstrftime()\fP, we convert the format string to multibyte, call \fCstrftime()\fP, then convert the result back into wide characters\&.
 .PP
 .IP "\(bu" 2
 \fBwcsftime manual\fP 
@@ -1123,6 +1129,15 @@ Convert a wide-character string to a character string\&.
 Find wide characters in string\&. 
 .IP "\(bu" 2
 \fBwcspbrk manual\fP 
+.PP
+
+.SS "wchar_t* _wcsptime (const wchar_t *, const wchar_t *, void *)"
+
+.PP
+Convert a wide-character string representation of time to a time tm structure\&. The \fCwcsptime()\fP function equivalent to \fCstrptime()\fP function\&. The \fCstrptime()\fP function it converts the character string pointed to by s, preserving the values in the tm structure, describes the time as a component, broken-down time, according to the format specified in the format\&.
+.PP
+.IP "\(bu" 2
+
 .PP
 
 .SS "wchar_t* _wcsrchr (const wchar_t *, wchar_t)"

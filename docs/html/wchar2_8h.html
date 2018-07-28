@@ -390,6 +390,9 @@ wchar_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="w
 <tr class="memitem:adf6e26da7bd1c30ad18ddaffaba1ae46"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#adf6e26da7bd1c30ad18ddaffaba1ae46">_wcsftime</a> (wchar_t *restrict, size_t sz, const wchar_t *restrict, const void *restrict)</td></tr>
 <tr class="memdesc:adf6e26da7bd1c30ad18ddaffaba1ae46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert date and time to a formatted wide-character string.  <a href="#adf6e26da7bd1c30ad18ddaffaba1ae46">More...</a><br /></td></tr>
 <tr class="separator:adf6e26da7bd1c30ad18ddaffaba1ae46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa85030a8b68f0acce3cf5117b30594a"><td class="memItemLeft" align="right" valign="top">wchar_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#afa85030a8b68f0acce3cf5117b30594a">_wcsptime</a> (const wchar_t *, const wchar_t *, void *)</td></tr>
+<tr class="memdesc:afa85030a8b68f0acce3cf5117b30594a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a wide-character string representation of time to a time tm structure.  <a href="#afa85030a8b68f0acce3cf5117b30594a">More...</a><br /></td></tr>
+<tr class="separator:afa85030a8b68f0acce3cf5117b30594a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc7c3067c70b376b9ae51976442427f6"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#abc7c3067c70b376b9ae51976442427f6">_wfopen</a> (const wchar_t *, const wchar_t *)</td></tr>
 <tr class="memdesc:abc7c3067c70b376b9ae51976442427f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open file stream, accepts file name and mode as wide characters.  <a href="#abc7c3067c70b376b9ae51976442427f6">More...</a><br /></td></tr>
 <tr class="separator:abc7c3067c70b376b9ae51976442427f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -2062,7 +2065,8 @@ size wide string </td></tr>
 </div><div class="memdoc">
 
 <p>Convert date and time to a formatted wide-character string. </p>
-<p>This is the wide-character counterpart of strftime(). So that we do not have to duplicate the code of strftime(), we convert the format string to multibyte, call strftime(), then convert the result back into wide characters.</p>
+<p>This is the wide-character counterpart of <code>strftime()</code>. <br />
+So that we do not have to duplicate the code of <code>strftime()</code>, we convert the format string to multibyte, call <code>strftime()</code>, then convert the result back into wide characters.</p>
 <ul>
 <li><a class="el" href="wcsftime.html">wcsftime manual</a> </li>
 </ul>
@@ -2362,6 +2366,46 @@ size wide string </td></tr>
 <p>Find wide characters in string. </p>
 <ul>
 <li><a class="el" href="wcspbrk.html">wcspbrk manual</a> </li>
+</ul>
+
+</div>
+</div>
+<a id="afa85030a8b68f0acce3cf5117b30594a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa85030a8b68f0acce3cf5117b30594a">&#9670;&nbsp;</a></span>_wcsptime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">wchar_t* _wcsptime </td>
+          <td>(</td>
+          <td class="paramtype">const wchar_t *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const wchar_t *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert a wide-character string representation of time to a time tm structure. </p>
+<p>The <code>wcsptime()</code> function equivalent to <code>strptime()</code> function. The <code>strptime()</code> function it converts the character string pointed to by s, preserving the values in the tm structure, describes the time as a component, broken-down time, according to the format specified in the format.</p>
+<ul>
+<li></li>
 </ul>
 
 </div>
@@ -3792,7 +3836,7 @@ size wide string </td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jul 28 2018 03:45:33 for libwchar2 0.0.6 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jul 28 2018 08:04:13 for libwchar2 0.0.6 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

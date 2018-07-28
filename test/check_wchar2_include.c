@@ -68,6 +68,7 @@
 #include "test_wcscmp.c"
 #include "test_wcsncmp.c"
 #include "test_wcsftime.c"
+#include "test_wcsptime.c"
 #include "test_wmemcmp.c"
 #include "test_wbasename.c"
 #include "test_wpathnormalize.c"
