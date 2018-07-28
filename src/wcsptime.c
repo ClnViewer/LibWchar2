@@ -1,4 +1,3 @@
-
 /*
     MIT License
 
@@ -24,8 +23,20 @@
     SOFTWARE.
  */
 
-#include "libwchar.h"
-#include <sys/cdefs.h>
+#include "libbuild.h"
+
+#if defined(OS_WIN)
+#   include "libwcharext.h"
+const char * _strptime(const char*, const char*, struct tm*);
+#   include "strptime_w32.c"
+#   define strptime _strptime
+
+#else
+#   include "libwchar.h"
+#   include <sys/cdefs.h>
+
+#endif
+
 #include <time.h>
 
 /*!
@@ -49,7 +60,7 @@ wchar_t * _wcsptime(const wchar_t *w, const wchar_t *fmt, void *v)
     if (
         (!(bsz = _wcslen(w))) ||
         (!(fsz = _wcslen(fmt)))
-       )
+    )
     {
         errno = EINVAL;
         return NULL;
@@ -58,22 +69,51 @@ wchar_t * _wcsptime(const wchar_t *w, const wchar_t *fmt, void *v)
     fsz = (fsz + 1 * sizeof(wchar_t));
     bsz = (bsz + 1 * sizeof(wchar_t));
 
+    memset(v, 0, sizeof(struct tm));
+
     do
     {
-        char    fb[fsz];
-        char    cb[bsz];
-        errno = 0;
+#       if defined(_MSC_VER)
+        char *fb = NULL, *cb = NULL;
+        __try
+        {
+            if (
+                ((fb = calloc(1, fsz)) == NULL) ||
+                ((cb = calloc(1, bsz)) == NULL)
+            )
+            {
+                break;
+            }
+#       else
+        char    fb[fsz], cb[bsz];
+#       endif
 
-        if (
-            (!wstring_wstocs(fb, fsz, fmt, 0)) ||
-            (!wstring_wstocs(cb, bsz, w,   0)) ||
-            (strptime(cb, fb, ptm) != NULL)
-           ) { break; }
+            errno = 0;
 
-        return NULL;
+            if (
+                (!wstring_wstocs(fb, fsz, fmt, 0)) ||
+                (!wstring_wstocs(cb, bsz, w,   0))
+            )
+            {
+                break;
+            }
 
-    } while (0);
+            (void) strptime(cb, fb, ptm);
+            return NULL;
 
-    memset(v, 0, sizeof(struct tm));
+#       if defined(_MSC_VER)
+        }
+        __finally
+        {
+            if (fb != NULL)
+                free(fb);
+            if (cb != NULL)
+                free(cb);
+        }
+#       endif
+
+    }
+    while (0);
+
     return (wchar_t*)&__WS("");
 }

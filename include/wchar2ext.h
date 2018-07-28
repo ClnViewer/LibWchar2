@@ -160,6 +160,8 @@ size_t    u8stowcs(wchar_t*, const char*);
 size_t    wcstou8s(char*, const wchar_t*);
 int       u8sverify(const char*);
 
+wchar_t * _wcsptime(const wchar_t*, const wchar_t*, void*);
+
 __CHKRET
 wchar_t * _wpathnormalize(const wchar_t*, int);
 __CHKRET
@@ -252,6 +254,8 @@ wchar_t * _wbasedir_ws(const string_ws*, int);
 #define wfopen(A,B) _wfopen_s_(A,0,B)
 #define wfopen_s _wfopen_s_
 #define wfopen_ws _wfopen_ws
+
+#define wcsptime _wcsptime
 
 #endif
 

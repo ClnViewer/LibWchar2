@@ -2,6 +2,7 @@
 #include <conio.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#include <time.h>
 #include <errno.h>
 #include <string.h>
 #include <wchar.h>
@@ -138,6 +139,42 @@ int main(int argc, char *argv[])
         ret = fwrite((void*)wtext, sizeof(char), sizeof(wtext), fp);
         printf("\n\t*(%d) fwrite: [status]  -> [%d/%d][%s]\n", __LINE__, ret, errno, __get_error(errstr, errno));
         fclose(fp);
+
+    }
+    while (0);
+
+    do
+    {
+        time_t t;
+        struct tm *tmi = NULL, tms = {0};
+        wchar_t buffer [180] = {0};
+
+        t = time(NULL);
+
+#       if defined(_MSC_VER)
+        if (localtime_s(&tms, &t))
+            break;
+        tmi = &tms;
+#       else
+        tmi = localtime(&t);
+#       endif
+
+        wcsftime(buffer, 180, L"%Y-%m-%d %H:%M:%S", tmi);
+        printf("\n\t*(%d) wcsftime -> %ls\n", __LINE__, buffer);
+
+        wcsptime(buffer, L"%Y-%m-%d %H:%M:%S", &tms);
+        t = mktime(&tms);
+
+#       if defined(_MSC_VER)
+        {
+            char cbuf[256];
+            if (ctime_s(cbuf, sizeof(cbuf), &t))
+                break;
+            printf("\n\t*(%d) wcsptime -> %s\n", __LINE__, cbuf);
+        }
+#       else
+        printf("\n\t*(%d) wcsptime -> %s\n", __LINE__, ctime(&t));
+#       endif
 
     }
     while (0);
