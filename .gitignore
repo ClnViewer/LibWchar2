@@ -24,6 +24,8 @@ libwchar2.pc
 /example/fs-redifine.wchar2
 
 !/example/Makefile
+!/winext/cmake-build-debug.cmd
+!/winext/cmake-build-release.cmd
 
 /docs/mansrc
 /build/doxymd
