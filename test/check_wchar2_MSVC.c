@@ -11,6 +11,10 @@
 // #include "../libwcha2-extension/src/libbuild.h"
 // #include "../libwcha2-extension/src/libwcharext.h"
 
+#if !defined(WCHAR2EXT_MSVC_ORIGIN)
+#   undef WCHAR2EXT_MSVC_ORIGIN
+#endif
+
 #include "../include/wchar2ext.h"
 
 #if defined(_MSC_VER)
@@ -52,7 +56,7 @@ int main(int argc, char *argv[])
               a   = { L"_one_string_", 0U},
               aa  = { L"_two_string_", 0U },
               aaa  = { L".", 0U };
-    const char wtext[] = "write text UTF8 - тест текст";
+    const char wtext[] = "write text UTF8 -  РїСЂРѕСЃС‚Рѕ С‚РµРєСЃС‚";
     wchar_t wout[256];
     char    cout[(sizeof(wout) * 2)];
 
