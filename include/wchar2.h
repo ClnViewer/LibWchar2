@@ -675,11 +675,10 @@ wchar_t   _fputwc(wchar_t, FILE *restrict);
 
           /*! \brief Convert date and time to a formatted wide-character string.
            *
-           * \details This is the wide-character counterpart of strftime(). So that we do not
-           * have to duplicate the code of strftime(), we convert the format string to
-           * multibyte, call strftime(), then convert the result back into wide
+           * \details This is the wide-character counterpart of `strftime()`.  
+           * So that we do not have to duplicate the code of `strftime()`, we convert the format string to
+           * multibyte, call `strftime()`, then convert the result back into wide
            * characters.
-           *
            *
            * - \subpage wcsftime
            */

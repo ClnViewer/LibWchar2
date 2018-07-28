@@ -41,23 +41,24 @@ size_t _wcsftime(wchar_t *w, size_t sz, const wchar_t *fmt, const void *v)
 {
     int bsz = (sz + 1 * sizeof(wchar_t));
     const struct tm *ptm = (const struct tm*)v;
-    errno = 0;
+
+    if ((!w) || (!fmt) || (!sz) || (!v))
+    {
+        errno = EINVAL;
+        return 0U;
+    }
 
     do
     {
         char    fb[bsz];
         char    cb[sz];
         size_t  osz = 0U;
+        errno = 0;
 
-        if ((!w) || (!fmt) || (!sz) || (!v))
-        {
-            errno = EINVAL;
-            break;
-        }
         if (
-            (!wstring_wstocs(fb, (sz + 1 * sizeof(wchar_t)), fmt, 0)) ||
-            ((osz = strftime(cb, sz, fb, ptm)) <= 0)                 ||
-            ((osz = wstring_cstows(w, sz, cb, osz)))
+            (!wstring_wstocs(fb, bsz, fmt, 0))    ||
+            (!(osz = strftime(cb, sz, fb, ptm)))  ||
+            (!(osz = wstring_cstows(w, sz, cb, osz)))
            ) { break; }
 
         return osz;

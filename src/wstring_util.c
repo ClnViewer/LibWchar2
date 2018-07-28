@@ -306,12 +306,12 @@ size_t wstring_cstows(wchar_t dst[], size_t dsz, const char *src, size_t ssz)
 
     ssz = ((!ssz) ? strlen(src) : ssz);
     dsz = ((ssz >= dsz) ? (dsz - 1) : dsz);
-    if ((dsz = _mbstowcs(dst, src, dsz)) == 0)
+    if ((ssz = _mbstowcs(dst, src, dsz)) == 0)
     {
         return 0U;
     }
-    dst[dsz] = L'\0';
-    return dsz;
+    dst[ssz] = L'\0';
+    return ssz;
 }
 
 size_t wstring_append(string_ws *dst, const wchar_t *s, size_t sz)
