@@ -528,6 +528,8 @@ size_t wstring_format(string_ws *dst, const wchar_t *fmt, ...)
 
 wchar_t * wstring_timeformat(const wchar_t *src, size_t sz, const wchar_t *fmtin, const wchar_t *fmtout)
 {
+#   define __TMF_OUT_SIZE 250
+
     wchar_t __AUTO *p = NULL, *s = NULL;
     sz = ((!sz) ? _wcslen(src) : sz);
 
@@ -549,8 +551,8 @@ wchar_t * wstring_timeformat(const wchar_t *src, size_t sz, const wchar_t *fmtin
 #       endif
 
             if (
-                ((p = calloc(sizeof(wchar_t), 150)) == NULL)      ||
-                ((s = calloc(sizeof(wchar_t), (sz + 1))) == NULL) ||
+                ((p = calloc(sizeof(wchar_t), __TMF_OUT_SIZE)) == NULL) ||
+                ((s = calloc(sizeof(wchar_t), (sz + 1))) == NULL)       ||
                 (_wmemcpy(s, src, sz) == NULL)
             )
             {
@@ -561,18 +563,19 @@ wchar_t * wstring_timeformat(const wchar_t *src, size_t sz, const wchar_t *fmtin
 
             if (
                 (_wcsptime(s, fmtin, &tms) != NULL) ||
-                (!(osz = _wcsftime(p, (150 * sizeof(wchar_t)), fmtout, &tms)))
+                (!(osz = _wcsftime(p, (__TMF_OUT_SIZE * sizeof(wchar_t)), fmtout, &tms)))
             )
             {
                 break;
             }
 
-            if (!(p = realloc(p, ((osz + 1) * sizeof(wchar_t)))))
+            if (!(p = realloc(p, (osz + 1 * sizeof(wchar_t)))))
             {
                 break;
             }
+
+			p[osz] = L'\0';
             out = p;
-            out[osz] = L'\0';
 
 #       if !defined(_MSC_VER)
             p = NULL;
@@ -584,7 +587,7 @@ wchar_t * wstring_timeformat(const wchar_t *src, size_t sz, const wchar_t *fmtin
         __finally
         {
             if (s != NULL)
-                free(s);
+                free(s); s = NULL;
         }
 #       endif
 

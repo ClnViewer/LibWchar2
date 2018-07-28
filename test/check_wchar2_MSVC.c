@@ -185,7 +185,7 @@ int main(int argc, char *argv[])
 
     do
     {
-        wchar_t *tout, tstr[] = L"2018-07-24T19:03:18Z";
+        wchar_t *tout = NULL, tstr[] = L"2018-07-24T19:03:18Z";
 
         if ((tout = wstring_timeformat(tstr, 0, L"%Y-%m-%dT%H:%M:%S%Ez", L"%I:%M%p")) == NULL)
             break;
