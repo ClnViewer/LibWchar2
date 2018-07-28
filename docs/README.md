@@ -1,4 +1,4 @@
-
+﻿
 [![Git HOME](https://img.shields.io/badge/Home-Git-brightgreen.svg?style=flat)](https://github.com/ClnViewer/LibWchar2)
 [![Readme RU](https://img.shields.io/badge/Readme-RU-brightgreen.svg?style=flat)](https://github.com/ClnViewer/LibWchar2/blob/master/docs/README.RU.md)
 [![Documentation](https://img.shields.io/badge/Documentation-DOC-brightgreen.svg?style=flat)](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html)
@@ -162,6 +162,7 @@ The project uses the revised code of the authors:
 - [Fredrik Fornwall/Rich Felker](https://github.com/fornwall)
 - [Angel Ortega](http://triptico.com/)
 - [Mayu Laierlence](https://github.com/minacle)
+- [Nodir Temirkhodjaev](https://github.com/tnodir)
 
 for which they have a special thank you :)
 

@@ -164,6 +164,7 @@ string_ws* | const string_ws* ||
 - [Fredrik Fornwall/Rich Felker](https://github.com/fornwall)
 - [Angel Ortega](http://triptico.com/)
 - [Mayu Laierlence](https://github.com/minacle)
+- [Nodir Temirkhodjaev](https://github.com/tnodir)
 
 за что им отдельное спасибо :)
 
