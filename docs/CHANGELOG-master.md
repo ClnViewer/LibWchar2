@@ -14,4 +14,3 @@
 - [#9](https://github.com/ClnViewer/LibWchar2/commit/0aef1bad7ed349d144334cea28d1c9453e510ab2)  	update tests 2018-07-28 (*2018-07-28T15:24:34Z*)
 - [#10](https://github.com/ClnViewer/LibWchar2/commit/39e5529700a8e646afb071586e1ae505ac70a8e0)  	add update ChangeLog 2018-07-28 (*2018-07-28T15:21:27Z*)
 - [#11](https://github.com/ClnViewer/LibWchar2/commit/92e965d739369cec96e6d3c468dfe5e2c508f833)  	add strptime for WINxx platform 2018-07-28 (*2018-07-28T15:20:37Z*)
-- [#12](https://github.com/ClnViewer/LibWchar2/commit/b7309c5a472ab7cb782dc6498fb0ce101fe725ff)  	add function wcsptime 2018-07-28 (*2018-07-28T04:04:34Z*)

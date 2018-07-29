@@ -84,9 +84,10 @@
 
 #   define __MACRO_WCHAR_END                                                     \
         if (                                                                     \
-            (wo)           &&                                                    \
-            (cret != NULL) &&                                                    \
-            ((rsz = strlen(cret)))                                               \
+            (wo)                   &&                                            \
+            (cret != NULL)         &&                                            \
+            ((rsz = strlen(cret))) &&                                            \
+            (rsz < ssz)                                                          \
            )                                                                     \
         {                                                                        \
             *wo  = (wchar_t*)ws;                                                 \
