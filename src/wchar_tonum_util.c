@@ -142,6 +142,6 @@ __MACRO_WCHAR_TO_NUM3(long int, l)
 __MACRO_WCHAR_TO_NUM3(long long int, ll)
 __MACRO_WCHAR_TO_NUM3(unsigned long int, ul)
 __MACRO_WCHAR_TO_NUM3(unsigned long long int, ull)
-//__MACRO_WCHAR_TO_NUM3(intmax_t, imax)
-//__MACRO_WCHAR_TO_NUM3(uintmax_t, umax)
+__MACRO_WCHAR_TO_NUM3(intmax_t, imax)
+__MACRO_WCHAR_TO_NUM3(uintmax_t, umax)
 
