@@ -1,9 +1,28 @@
 /*!
   \page wcstoimax wcstoimax manual
 
-    __wcstoimax() - `convert wide-character string to integer`__
+    __wcstoimax() - `Convert wide string to a intmax_t integer`__
 
-    These functions are just like **wcstol**(3) and **wcstoul**(3), except that they return a value of type *intmax_t* and *uintmax_t*, respectively.
+    The `wcstoimax()` function are  just  like \ref wcstol, except that
+    they return a value of type `intmax_t`, respectively.
+
+    # Return Value
+
+    The `wcstoimax()` function returns on success, the converted value is returned.  
+
+    If nothing was found to convert, `zero` is returned.  
+    On overflow or underflow `INTMAX_MAX` or `INTMAX_MIN` is returned, and errno is set to ERANGE.
+
+    # Notes
+
+    Since `0` can legitimately be returned on both success and failure, the
+    calling  program not needed set `errno` to `0` before the call.
+
+
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcstonum.c
+
 
     \includedoc docs/man-license.dox
 

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libwchar2 0.0.6: wcsnrtombs manual</title>
+<title>libwchar2 0.0.6: wcstoumax manual</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -63,30 +63,22 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">wcsnrtombs manual </div>  </div>
+<div class="title">wcstoumax manual </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><b>wcsnrtombs - <code>convert a wide-character string to a multibyte string</code></b></p>
-<p>The wcsnrtombs() function is like the wcsrtombs(3) function, except that the number of wide characters to be converted, starting at *src, is limited to nwc.</p>
-<p>If dest is not <code>NULL</code>, the wcsnrtombs() function converts at most nwc wide characters from the wide-character string *src to a multibyte string starting at dest. At most len bytes are written to dest. The shift state *ps is updated. The conversion is effectively performed by repeatedly calling wcrtomb(dest, *src, ps), as long as this call suc- ceeds, and then incrementing dest by the number of bytes written and src by one. The conversion can stop for three reasons:</p>
-<ol type="1">
-<li>A wide character has been encountered that can not be represented as a multibyte sequence (according to the current locale). In this case, *src is left pointing to the invalid wide character, <code>(size_t) -1</code> is returned, and errno is set to <code>EILSEQ</code>.</li>
-<li>nwc wide characters have been converted without encountering a null wide character <code>L</code>'\0', or the length limit forces a stop. In this case, *src is left pointing to the next wide character to be con- verted, and the number of bytes written to dest is returned.</li>
-<li>The wide-character string has been completely converted, including the terminating null wide character (which has the side effect of bringing back *ps to the initial state). In this case, *src is set to <code>NULL</code>, and the number of bytes written to dest, excluding the ter- minating null byte '\0', is returned.</li>
-</ol>
-<p>If dest is <code>NULL</code>, len is ignored, and the conversion proceeds as above, except that the converted bytes are not written out to memory, and that no destination length limit exists.</p>
-<p>In both of the above cases, if ps is <code>NULL</code>, a static anonymous state known only to the wcsnrtombs() function is used instead.</p>
-<p>The programmer must ensure that there is room for at least len bytes at dest.</p>
-<h1><a class="anchor" id="autotoc_md114"></a>
+<div class="textblock"><p><b>wcstoumax() - <code>Convert wide string to a uintmax_t integer</code></b></p>
+<p>The <code>wcstoumax()</code> function are just like <a class="el" href="wcstoul.html">wcstoul manual</a>, except that they return a value of type <code>uintmax_t</code>, respectively.</p>
+<h1><a class="anchor" id="autotoc_md160"></a>
 Return Value</h1>
-<p>The wcsnrtombs() function returns the number of bytes that make up the converted part of multibyte sequence, not including the terminating null byte. If a wide character was encountered which could not be con- verted, <code>(size_t) -1</code> is returned, and errno set to <code>EILSEQ</code>.</p>
-<h1><a class="anchor" id="autotoc_md115"></a>
+<p>The <code>wcstoumax()</code> function returns on success, the converted value is returned. <br />
+ If nothing was found to convert, <code>zero</code> is returned. <br />
+ On overflow or underflow <code>UINTMAX_MAX</code> or <code>UINTMAX_MIN</code> is returned, and errno is set to ERANGE.</p>
+<h1><a class="anchor" id="autotoc_md161"></a>
 Notes</h1>
-<p>The behavior of wcsnrtombs() depends on the <code>LC_CTYPE</code> category of the current locale.</p>
-<p>Passing <code>NULL</code> as ps is not multithread safe.</p>
-<h1><a class="anchor" id="autotoc_md116"></a>
+<p>Since <code>0</code> can legitimately be returned on both success and failure, the calling program not needed set <code>errno</code> to <code>0</code> before the call.</p>
+<h1><a class="anchor" id="autotoc_md162"></a>
 See example</h1>
-<dl class="section see"><dt>See also</dt><dd><a href="https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcsnrtombs.c">https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcsnrtombs.c</a></dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a href="https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcstonum.c">https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcstonum.c</a></dd></dl>
 <p><dl class="section user"><dt>LibWchar2 information</dt><dd></dd></dl>
 <dl class="section version"><dt>Version</dt><dd>libwchar2 0.0.6 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>Sun Jul 29 2018 </dd></dl>

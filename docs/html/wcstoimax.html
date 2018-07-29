@@ -66,8 +66,19 @@ $(function() {
 <div class="title">wcstoimax manual </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><b>wcstoimax() - <code>convert wide-character string to integer</code></b></p>
-<p>These functions are just like <b>wcstol</b>(3) and <b>wcstoul</b>(3), except that they return a value of type <em>intmax_t</em> and <em>uintmax_t</em>, respectively.</p>
+<div class="textblock"><p><b>wcstoimax() - <code>Convert wide string to a intmax_t integer</code></b></p>
+<p>The <code>wcstoimax()</code> function are just like <a class="el" href="wcstol.html">wcstol manual</a>, except that they return a value of type <code>intmax_t</code>, respectively.</p>
+<h1><a class="anchor" id="autotoc_md136"></a>
+Return Value</h1>
+<p>The <code>wcstoimax()</code> function returns on success, the converted value is returned. <br />
+ If nothing was found to convert, <code>zero</code> is returned. <br />
+ On overflow or underflow <code>INTMAX_MAX</code> or <code>INTMAX_MIN</code> is returned, and errno is set to ERANGE.</p>
+<h1><a class="anchor" id="autotoc_md137"></a>
+Notes</h1>
+<p>Since <code>0</code> can legitimately be returned on both success and failure, the calling program not needed set <code>errno</code> to <code>0</code> before the call.</p>
+<h1><a class="anchor" id="autotoc_md138"></a>
+See example</h1>
+<dl class="section see"><dt>See also</dt><dd><a href="https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcstonum.c">https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcstonum.c</a></dd></dl>
 <p><dl class="section user"><dt>LibWchar2 information</dt><dd></dd></dl>
 <dl class="section version"><dt>Version</dt><dd>libwchar2 0.0.6 </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>Sun Jul 29 2018 </dd></dl>
@@ -78,7 +89,7 @@ $(function() {
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jul 29 2018 21:57:34 for libwchar2 0.0.6 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 30 2018 01:55:37 for libwchar2 0.0.6 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

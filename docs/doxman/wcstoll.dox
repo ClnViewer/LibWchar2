@@ -1,7 +1,7 @@
 /*!
   \page wcstoll wcstoll manual
 
-    __wcstoll() - `Convert wide a string to a long long integer`__
+    __wcstoll() - `Convert wide string to a long long integer`__
 
     The  `wcstoll()`  function converts the initial part of the in wide string to a `long long` integer value according
     to the  given  base,  which  must  be between `2` and `36` inclusive, or be the special value `0`.

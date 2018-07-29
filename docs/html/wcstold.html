@@ -76,17 +76,17 @@ $(function() {
  At least one of radix character and binary exponent must be present. <br />
  An infinity is either <code>INF</code> or <code>INFINITY</code>, disregarding case. <br />
  A NAN is "NAN" (disregarding case) optionally followed by a string, where char-sequence specifies in an implementation-dependent way the type of <code>NAN</code>.</p>
-<h1><a class="anchor" id="autotoc_md142"></a>
+<h1><a class="anchor" id="autotoc_md145"></a>
 Return Value</h1>
 <p>These functions return the converted value, if any.</p>
 <p>If <code>endptr</code> is not <code>NULL</code>, a pointer to the character after the last wide character used in the conversion is stored in the location referenced by <code>endptr</code>. <br />
  If no conversion is performed, <code>zero</code> is returned and value of <code>ptr</code> is stored in the location referenced by <code>endptr</code>.</p>
 <p>If the correct value would cause overflow, plus or minus <code>HUGE_VALL</code> is returned according to the sign of the value, and <code>ERANGE</code> is stored in <code>errno</code>. <br />
  If the correct value would cause underflow, zero is returned and <code>ERANGE</code> is stored in <code>errno</code>.</p>
-<h1><a class="anchor" id="autotoc_md143"></a>
+<h1><a class="anchor" id="autotoc_md146"></a>
 Notes</h1>
 <p>Since <code>0</code> can legitimately be returned on both success and failure, the calling program not needed set <code>errno</code> to <code>0</code> before the call.</p>
-<h1><a class="anchor" id="autotoc_md144"></a>
+<h1><a class="anchor" id="autotoc_md147"></a>
 See example</h1>
 <dl class="section see"><dt>See also</dt><dd><a href="https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcstonum.c">https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcstonum.c</a></dd></dl>
 <p><dl class="section user"><dt>LibWchar2 information</dt><dd></dd></dl>
@@ -99,7 +99,7 @@ See example</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jul 29 2018 21:57:34 for libwchar2 0.0.6 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 30 2018 01:55:37 for libwchar2 0.0.6 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

@@ -40,6 +40,7 @@ var searchData=
   ['wcstou8s',['wcstou8s',['../wchar2_8h.html#a59ca46dae06e5f4952fed90a47893c27',1,'wchar2.h']]],
   ['wcstoul_20manual',['wcstoul manual',['../wcstoul.html',1,'']]],
   ['wcstoull_20manual',['wcstoull manual',['../wcstoull.html',1,'']]],
+  ['wcstoumax_20manual',['wcstoumax manual',['../wcstoumax.html',1,'']]],
   ['wcswidth_20manual',['wcswidth manual',['../wcswidth.html',1,'']]],
   ['wctob_20manual',['wctob manual',['../wctob.html',1,'']]],
   ['wctomb_20manual',['wctomb manual',['../wctomb.html',1,'']]],

@@ -35,6 +35,7 @@ var searchData=
   ['wcstombs_20manual',['wcstombs manual',['../wcstombs.html',1,'']]],
   ['wcstoul_20manual',['wcstoul manual',['../wcstoul.html',1,'']]],
   ['wcstoull_20manual',['wcstoull manual',['../wcstoull.html',1,'']]],
+  ['wcstoumax_20manual',['wcstoumax manual',['../wcstoumax.html',1,'']]],
   ['wcswidth_20manual',['wcswidth manual',['../wcswidth.html',1,'']]],
   ['wctob_20manual',['wctob manual',['../wctob.html',1,'']]],
   ['wctomb_20manual',['wctomb manual',['../wctomb.html',1,'']]],
