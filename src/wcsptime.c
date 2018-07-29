@@ -66,9 +66,6 @@ wchar_t * _wcsptime(const wchar_t *w, const wchar_t *fmt, void *v)
         return NULL;
     }
 
-    fsz = ((fsz + 1) * sizeof(wchar_t));
-    bsz = ((bsz + 1) * sizeof(wchar_t));
-
     memset(v, 0, sizeof(struct tm));
 
     do
@@ -78,21 +75,22 @@ wchar_t * _wcsptime(const wchar_t *w, const wchar_t *fmt, void *v)
         __try
         {
             if (
-                ((fb = calloc(1, fsz)) == NULL) ||
-                ((cb = calloc(1, bsz)) == NULL)
+                ((fb = calloc(1, ((fsz + 2) * sizeof(wchar_t)))) == NULL) ||
+                ((cb = calloc(1, ((bsz + 2) * sizeof(wchar_t)))) == NULL)
             )
             {
                 break;
             }
 #       else
-        char    fb[fsz], cb[bsz];
+        char    fb[((fsz + 2) * sizeof(wchar_t))],
+                cb[((bsz + 2) * sizeof(wchar_t))];
 #       endif
 
             errno = 0;
 
             if (
-                (!wstring_wstocs(fb, fsz, fmt, 0)) ||
-                (!wstring_wstocs(cb, bsz, w,   0))
+                (!wstring_wstocs(fb, ((fsz + 1) * sizeof(wchar_t)), fmt, fsz)) ||
+                (!wstring_wstocs(cb, ((bsz + 1) * sizeof(wchar_t)), w,   bsz))
             )
             {
                 break;

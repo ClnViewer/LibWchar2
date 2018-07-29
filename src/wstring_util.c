@@ -284,7 +284,7 @@ size_t wstring_wstocs(char dst[], size_t dsz, const wchar_t *src, size_t ssz)
     }
 
     ssz = ((!ssz) ? _wcslen(src) : ssz);
-    dsz = ((ssz >= dsz) ? (dsz - 1) : dsz);
+    dsz = (((ssz * sizeof(wchar_t)) >= dsz) ? (dsz - 1) : dsz);
     if ((dsz = _wcstombs(dst, src, dsz)) == 0)
     {
         return 0U;
@@ -542,7 +542,7 @@ wchar_t * wstring_timeformat(const wchar_t *src, size_t sz, const wchar_t *fmtin
     {
         size_t   osz;
         wchar_t *out;
-        struct tm tms = {0};
+        struct tm tms;
 
 #       if defined(_MSC_VER)
         __try

@@ -41,7 +41,7 @@ START_TEST(test_wstring)
 
     tout = wstring_timeformat(tstr, 0, L"%Y-%m-%dT%H:%M:%S%Ez", L"%I:%M%p");
     ck_assert(tout != NULL);
-    _fprintf (stdout,  "\tTest wstring_timeformat:%d\t-> wide: [%ls] <-> [%ls]\n", __LINE__, tstr, tout);
+    _fprintf (stdout,  "\tTest wstring_time:%d\t-> wide: [%ls] <-> [%ls]\n", __LINE__, tstr, tout);
     ck_assert(_wcscmp(tout, tres) == 0);
     free(tout);
 }

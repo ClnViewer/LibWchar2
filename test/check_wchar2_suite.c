@@ -74,3 +74,5 @@
 	tcase_add_test(t, test_wpathnormalize);
 	tcase_add_test(t, test_waccess);
 	tcase_add_test(t, test_wstring);
+	tcase_add_test(t, test_wcstonum);
+

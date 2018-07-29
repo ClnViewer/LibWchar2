@@ -50,7 +50,6 @@
 
   /*
     Missing curent, TODO ?:
-        wcstoimax Convert wide-character string to integer (? who is this)
         wcscoll   Locale-specific wide-character string compare
         wcscpy    Copy wide-character string
         wcscspn   Count wide characters not in string
@@ -265,6 +264,78 @@ int       _iswalpha(wchar_t);
            * - \subpage iswalnum
            */
 int       _iswalnum(wchar_t);
+
+          /*!
+           *  \paragraph `wchar_t` to number function
+           */
+
+          /*!
+           * \brief Convert wide character ASCII string to `double` number
+           *
+           * - \subpage wcstod
+           */
+double                 _wcstod(const wchar_t*, wchar_t**);
+
+          /*!
+           * \brief Convert wide character ASCII string to `float` number
+           *
+           * - \subpage wcstof
+           */
+float                  _wcstof(const wchar_t*, wchar_t**);
+
+          /*!
+           * \brief Convert wide character ASCII string to `long double` number
+           *
+           * - \subpage wcstold
+           */
+long double            _wcstold(const wchar_t*, wchar_t**);
+
+          /*!
+           * \brief Convert wide character ASCII string to `long int` number
+           *
+           * - \subpage wcstol
+           */
+long int               _wcstol(const wchar_t*, wchar_t**, int);
+
+          /*!
+           * \brief Convert wide character ASCII string to `long long int` number
+           *
+           * - \subpage wcstoll
+           */
+long long int          _wcstoll(const wchar_t*, wchar_t**, int);
+
+          /*!
+           * \brief Convert wide character ASCII string to `unsigned long int` number
+           *
+           * - \subpage wcstoul
+           */
+unsigned long int      _wcstoul(const wchar_t*, wchar_t**, int);
+
+          /*!
+           * \brief Convert wide character ASCII string to `unsigned long long int` number
+           *
+           * - \subpage wcstoull
+           */
+unsigned long long int _wcstoull(const wchar_t*, wchar_t**, int);
+
+          /*!
+           * \brief Convert wide character ASCII string to `intmax_t` integer
+           *
+           * - \subpage wcstoimax
+           */
+intmax_t               _wcstoimax(const wchar_t*, wchar_t**, int);
+
+          /*!
+           * \brief Convert wide character ASCII string to `uintmax_t` integer
+           *
+           * - \subpage wcstoumax
+           */
+uintmax_t              _wcstoumax(const wchar_t*, wchar_t**, int);
+
+
+          /*!
+           *  \paragraph `Multibyte String` functions
+           */
 
           /*!
            * \brief Minimal wide string to multibyte string converter
@@ -1296,6 +1367,7 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
 #define wctrans _wctrans
 #define wcwidth _wcwidth
 #define wcswidth _wcswidth
+
 #define iswctype _iswctype
 #define iswxdigit _iswxdigit
 #define iswupper _iswupper
@@ -1309,6 +1381,16 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
 #define iswblank _iswblank
 #define iswalpha _iswalpha
 #define iswalnum _iswalnum
+
+#define wcstod _wcstod
+#define wcstof _wcstof
+#define wcstold _wcstold
+#define wcstol _wcstol
+#define wcstoll _wcstoll
+#define wcstoul _wcstoul
+#define wcstoull _wcstoull
+#define wcstoimax _wcstoimax
+#define wcstoumax _wcstoumax
 
 #define wcstombs _wcstombs
 #define wcstombs_s _wcstombs_s

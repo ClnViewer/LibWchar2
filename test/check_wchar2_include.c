@@ -73,4 +73,5 @@
 #include "test_wbasename.c"
 #include "test_wpathnormalize.c"
 #include "test_waccess.c"
+#include "test_wcstonum.c"
 #include "test_wstring.c"
