@@ -1,4 +1,4 @@
-.TH "include/wchar2.h" 3 "Sat Jul 28 2018" "libwchar2 0.0.6" \" -*- nroff -*-
+.TH "include/wchar2.h" 3 "Sun Jul 29 2018" "libwchar2 0.0.6" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -154,6 +154,42 @@ include/wchar2.h
 .RI "int \fB_iswalnum\fP (wchar_t)"
 .br
 .RI "Test for alphanumeric wide character, alphabetic wide character predicate\&. "
+.ti -1c
+.RI "double \fB_wcstod\fP (const wchar_t *, wchar_t **)"
+.br
+.RI "Convert wide character ASCII string to \fCdouble\fP number\&. "
+.ti -1c
+.RI "float \fB_wcstof\fP (const wchar_t *, wchar_t **)"
+.br
+.RI "Convert wide character ASCII string to \fCfloat\fP number\&. "
+.ti -1c
+.RI "long double \fB_wcstold\fP (const wchar_t *, wchar_t **)"
+.br
+.RI "Convert wide character ASCII string to \fClong double\fP number\&. "
+.ti -1c
+.RI "long int \fB_wcstol\fP (const wchar_t *, wchar_t **, int)"
+.br
+.RI "Convert wide character ASCII string to \fClong int\fP number\&. "
+.ti -1c
+.RI "long long int \fB_wcstoll\fP (const wchar_t *, wchar_t **, int)"
+.br
+.RI "Convert wide character ASCII string to \fClong long int\fP number\&. "
+.ti -1c
+.RI "unsigned long int \fB_wcstoul\fP (const wchar_t *, wchar_t **, int)"
+.br
+.RI "Convert wide character ASCII string to \fCunsigned long int\fP number\&. "
+.ti -1c
+.RI "unsigned long long int \fB_wcstoull\fP (const wchar_t *, wchar_t **, int)"
+.br
+.RI "Convert wide character ASCII string to \fCunsigned long long int\fP number\&. "
+.ti -1c
+.RI "intmax_t \fB_wcstoimax\fP (const wchar_t *, wchar_t **, int)"
+.br
+.RI "Convert wide character ASCII string to \fCintmax_t\fP integer\&. "
+.ti -1c
+.RI "uintmax_t \fB_wcstoumax\fP (const wchar_t *, wchar_t **, int)"
+.br
+.RI "Convert wide character ASCII string to \fCuintmax_t\fP integer\&. "
 .ti -1c
 .RI "size_t \fB_wcstombs\fP (char *restrict, const wchar_t *restrict, size_t)"
 .br
@@ -614,6 +650,14 @@ include/wchar2.h
 .RI "size_t \fBwstring_wstocs_ws\fP (char [], size_t, const \fBstring_ws\fP *restrict)"
 .br
 .RI "Converting string, struct \fBstring_ws\fP input, char array output, to alloc buffer write\&. "
+.ti -1c
+.RI "wchar_t * \fBwstring_timeformat\fP (const wchar_t *restrict, size_t, const wchar_t *restrict, const wchar_t *restrict)"
+.br
+.RI "Converting time format string to string, wchar_t and size_t input\&. "
+.ti -1c
+.RI "wchar_t * \fBwstring_timeformat_ws\fP (const \fBstring_ws\fP *restrict, const wchar_t *restrict, const wchar_t *restrict)"
+.br
+.RI "Converting time format string to string, \fBstring_ws\fP input\&. "
 .ti -1c
 .RI "int \fBwstring_isempty\fP (const wchar_t *restrict s, int)"
 .br
@@ -1173,12 +1217,60 @@ Find wide-character string segment\&.
 \fBwcsstr manual\fP 
 .PP
 
+.SS "double _wcstod (const wchar_t *, wchar_t **)"
+
+.PP
+Convert wide character ASCII string to \fCdouble\fP number\&. 
+.IP "\(bu" 2
+\fBwcstod\fP 
+.PP
+
+.SS "float _wcstof (const wchar_t *, wchar_t **)"
+
+.PP
+Convert wide character ASCII string to \fCfloat\fP number\&. 
+.IP "\(bu" 2
+\fBwcstof\fP 
+.PP
+
+.SS "intmax_t _wcstoimax (const wchar_t *, wchar_t **, int)"
+
+.PP
+Convert wide character ASCII string to \fCintmax_t\fP integer\&. 
+.IP "\(bu" 2
+\fBwcstoimax manual\fP 
+.PP
+
 .SS "wchar_t* _wcstok (wchar_t *, const wchar_t *, wchar_t **)"
 
 .PP
 Tokenize wide-character string\&. 
 .IP "\(bu" 2
 \fBwcstok manual\fP 
+.PP
+
+.SS "long int _wcstol (const wchar_t *, wchar_t **, int)"
+
+.PP
+Convert wide character ASCII string to \fClong int\fP number\&. 
+.IP "\(bu" 2
+\fBwcstol\fP 
+.PP
+
+.SS "long double _wcstold (const wchar_t *, wchar_t **)"
+
+.PP
+Convert wide character ASCII string to \fClong double\fP number\&. 
+.IP "\(bu" 2
+\fBwcstold\fP 
+.PP
+
+.SS "long long int _wcstoll (const wchar_t *, wchar_t **, int)"
+
+.PP
+Convert wide character ASCII string to \fClong long int\fP number\&. 
+.IP "\(bu" 2
+\fBwcstoll\fP 
 .PP
 
 .SS "size_t _wcstombs (char * restrict, const wchar_t * restrict, size_t)"
@@ -1195,6 +1287,30 @@ Minimal wide string to multibyte string converter\&.
 Minimal wide string to multibyte string converter + double size out buffer\&. 
 .IP "\(bu" 2
 \fBwcstombs manual\fP 
+.PP
+
+.SS "unsigned long int _wcstoul (const wchar_t *, wchar_t **, int)"
+
+.PP
+Convert wide character ASCII string to \fCunsigned long int\fP number\&. 
+.IP "\(bu" 2
+\fBwcstoul\fP 
+.PP
+
+.SS "unsigned long long int _wcstoull (const wchar_t *, wchar_t **, int)"
+
+.PP
+Convert wide character ASCII string to \fCunsigned long long int\fP number\&. 
+.IP "\(bu" 2
+\fBwcstoull\fP 
+.PP
+
+.SS "uintmax_t _wcstoumax (const wchar_t *, wchar_t **, int)"
+
+.PP
+Convert wide character ASCII string to \fCuintmax_t\fP integer\&. 
+.IP "\(bu" 2
+\fBwcstoumax\fP 
 .PP
 
 .SS "int _wcswidth (const wchar_t *, size_t)"
@@ -1575,6 +1691,28 @@ Converting string, \fBstring_ws\fP input, char allocate output\&.
 \fBAttention:\fP
 .RS 4
 function wstring_swstocs_alloc required free result 
+.RE
+.PP
+
+.SS "wchar_t* wstring_timeformat (const wchar_t * restrict, size_t, const wchar_t * restrict, const wchar_t * restrict)"
+
+.PP
+Converting time format string to string, wchar_t and size_t input\&. 
+.PP
+\fBAttention:\fP
+.RS 4
+function wstring_timeformat required free result 
+.RE
+.PP
+
+.SS "wchar_t* wstring_timeformat_ws (const \fBstring_ws\fP * restrict, const wchar_t * restrict, const wchar_t * restrict)"
+
+.PP
+Converting time format string to string, \fBstring_ws\fP input\&. 
+.PP
+\fBAttention:\fP
+.RS 4
+function wstring_timeformat_ws required free result 
 .RE
 .PP
 

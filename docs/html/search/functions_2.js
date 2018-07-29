@@ -15,6 +15,8 @@ var searchData=
   ['wstring_5ffree',['wstring_free',['../wchar2_8h.html#a3e10e87e540176b77eb3c73db0d36612',1,'wchar2.h']]],
   ['wstring_5fisempty',['wstring_isempty',['../wchar2_8h.html#a31488123da3cd7e2e3cb4eb0a03509c9',1,'wchar2.h']]],
   ['wstring_5fswstocs_5falloc',['wstring_swstocs_alloc',['../wchar2_8h.html#a65673d494af05df3881f1caf0a61c3a0',1,'wchar2.h']]],
+  ['wstring_5ftimeformat',['wstring_timeformat',['../wchar2_8h.html#a1b604b3927115eeb7699fcf2ae96ba06',1,'wchar2.h']]],
+  ['wstring_5ftimeformat_5fws',['wstring_timeformat_ws',['../wchar2_8h.html#a95b45f97084f630e96921e8b7efad2a0',1,'wchar2.h']]],
   ['wstring_5ftrunc',['wstring_trunc',['../wchar2_8h.html#a741c3f78c098a2f1b1bcfabff95bb318',1,'wchar2.h']]],
   ['wstring_5ftrunc_5falloc',['wstring_trunc_alloc',['../wchar2_8h.html#af93b37ba9262b389b26d833265c2d97d',1,'wchar2.h']]],
   ['wstring_5fwstocs',['wstring_wstocs',['../wchar2_8h.html#a95083af974df5717ec773e5b382c090d',1,'wchar2.h']]],
