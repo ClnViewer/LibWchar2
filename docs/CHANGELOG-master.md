@@ -12,4 +12,3 @@
 - [#7](https://github.com/ClnViewer/LibWchar2/commit/fffb546b29c9360f2f3876bcae597a561c079eb6)  	reorganizing CMakeList 2018-07-28 (*2018-07-28T18:55:06Z*)
 - [#8](https://github.com/ClnViewer/LibWchar2/commit/af48511d1c94d0f0fdef0f56452d6e8515a2df20)  	update docs 2018-07-28 (*2018-07-28T15:52:12Z*)
 - [#9](https://github.com/ClnViewer/LibWchar2/commit/0aef1bad7ed349d144334cea28d1c9453e510ab2)  	update tests 2018-07-28 (*2018-07-28T15:24:34Z*)
-- [#10](https://github.com/ClnViewer/LibWchar2/commit/39e5529700a8e646afb071586e1ae505ac70a8e0)  	add update ChangeLog 2018-07-28 (*2018-07-28T15:21:27Z*)

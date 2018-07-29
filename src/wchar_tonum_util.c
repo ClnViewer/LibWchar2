@@ -74,8 +74,12 @@
         {                                                                        \
             errno = EINVAL;                                                      \
             return out;                                                          \
+        }                                                                        \
+        if (ssz > 16384UL)                                                       \
+        {                                                                        \
+            errno = EOVERFLOW;                                                   \
+            return out;                                                          \
         }
-
 
 #   define __MACRO_WCHAR_CVT                                                     \
         if (!wstring_wstocs(b, ((ssz + 1) * sizeof(wchar_t)), ws, ssz))          \
