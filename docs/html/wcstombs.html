@@ -76,14 +76,14 @@ $(function() {
 <p>The programmer must ensure that there is room for at least n bytes at dest.</p>
 <p>If dest is <code>NULL</code>, n is ignored, and the conversion proceeds as above, except that the converted bytes are not written out to memory, and no length limit exists.</p>
 <p>In order to avoid the case 2 above, the programmer should make sure n is greater than or equal to wcstombs(<code>NULL</code>,src,0)+1.</p>
-<h1><a class="anchor" id="autotoc_md133"></a>
+<h1><a class="anchor" id="autotoc_md148"></a>
 Return Value</h1>
 <p>The wcstombs() function returns the number of bytes that make up the converted part of a multibyte sequence, not including the terminating null byte. If a wide character was encountered which could not be con- verted, <code>(size_t) -1</code> is returned.</p>
-<h1><a class="anchor" id="autotoc_md134"></a>
+<h1><a class="anchor" id="autotoc_md149"></a>
 Notes</h1>
 <p>The behavior of wcstombs() depends on the <code>LC_CTYPE</code> category of the current locale.</p>
 <p>The function wcsrtombs(3) provides a better interface to the same functionality.</p>
-<h1><a class="anchor" id="autotoc_md135"></a>
+<h1><a class="anchor" id="autotoc_md150"></a>
 See example</h1>
 <dl class="section see"><dt>See also</dt><dd><a href="https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcstombs.c">https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcstombs.c</a></dd></dl>
 <p><dl class="section user"><dt>LibWchar2 information</dt><dd></dd></dl>
@@ -96,7 +96,7 @@ See example</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Jul 29 2018 19:50:19 for libwchar2 0.0.6 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Jul 29 2018 21:57:34 for libwchar2 0.0.6 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

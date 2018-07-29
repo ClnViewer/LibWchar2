@@ -1,0 +1,60 @@
+/*!
+  \page wcstod wcstod manual
+
+    __wcstod() - `Convert wide string to double (floating-point) number`__
+
+    The `wcstod()` function convert  the  initial portion of the wide characters string to double representation.
+
+    The expected form of the (initial portion of the) wide string  is  optional
+    leading white space as recognized by `isspace()`, an optional plus `+`
+    or minus sign `-` and then either `base` a decimal  number,  or hexadecimal number,
+    or an infinity, or a NAN not-a-number.
+
+    A decimal number consists of a nonempty sequence of decimal digits possibly containing a radix character,
+    optionally followed by a  decimal  exponent.  
+
+    A  decimal  exponent  consists  of  an  `E` or `e`, followed by an optional plus or
+    minus sign, followed by a nonempty  sequence  of  decimal  digits,  and
+    indicates multiplication by a power of `10`.
+
+    A hexadecimal number consists of a `0x` or `0X` followed by a nonempty
+    sequence of hexadecimal digits possibly containing a  radix  character,
+    optionally  followed  by a binary exponent.  
+
+    A binary exponent consists of a `P` or `p`, followed by an optional plus or minus  sign,  followed
+    by  a nonempty sequence of decimal digits, and indicates multiplication by a power of `2`.  
+    At least one of radix character and  binary  exponent must be present.  
+
+    An infinity is either `INF` or `INFINITY`, disregarding case.  
+
+    A NAN is "NAN" (disregarding case) optionally followed by a string, where char-sequence specifies in
+    an  implementation-dependent way the type of `NAN`.
+
+    # Return Value
+
+    These functions return the converted value, if any.
+
+    If `endptr` is not `NULL`, a pointer to the character after the last wide character used in the conversion
+    is stored in the  location  referenced  by `endptr`.  
+
+    If  no  conversion is performed, `zero` is returned and value of `ptr` is stored in the location referenced by `endptr`.
+
+    If  the  correct  value  would  cause  overflow, plus or minus `HUGE_VALF` is  returned
+    according  to  the  sign  of  the value,  and  `ERANGE`  is  stored  in `errno`.  
+
+    If the correct value would  cause underflow, zero is returned and `ERANGE` is stored in `errno`.
+
+    # Notes
+
+    Since `0` can legitimately be returned on both success and  failure,  the
+    calling  program not needed set `errno` to `0` before the call.
+
+
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcstonum.c
+
+
+    \includedoc docs/man-license.dox
+
+*/

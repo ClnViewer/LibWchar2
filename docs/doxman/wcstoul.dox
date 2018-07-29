@@ -1,0 +1,30 @@
+/*!
+  \page wcstoul wcstoul manual
+
+    __wcstoul() - `Convert wide a string to a unsigned long integer`__
+
+    The  `wcstoul()`  function converts the initial part of the in wide string to a unsigned long`integer value according
+    to the  given  base,  which  must  be between `2` and `36` inclusive, or be the special value `0`.
+
+    # Return Value
+
+    The `wcstoul()` function returns the result of the conversion, unless the value would underflow or overflow.  
+
+    If an  underflow  occurs,  `wcstoul()` returns  `ULONG_MIN`.  
+    If an overflow occurs, strtol() returns `ULONG_MAX`.  
+    In both cases, `errno` is set to `ERANGE`.  
+
+    # Notes
+
+    Since `0` can legitimately be returned on both success and  failure,  the
+    calling  program not needed set `errno` to `0` before the call.
+
+
+    # See example
+
+    \see https://github.com/ClnViewer/LibWchar2/blob/master/test/test_wcstonum.c
+
+
+    \includedoc docs/man-license.dox
+
+*/
