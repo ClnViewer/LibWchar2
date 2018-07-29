@@ -27,7 +27,6 @@
 
 #if defined(OS_WIN)
 #   include "libwcharext.h"
-#   define _wcsftime wcsftime
 
 #else
 #   include <stdio.h>
@@ -563,7 +562,7 @@ wchar_t * wstring_timeformat(const wchar_t *src, size_t sz, const wchar_t *fmtin
 
             if (
                 (_wcsptime(s, fmtin, &tms) != NULL) ||
-                (!(osz = _wcsftime(p, (__TMF_OUT_SIZE * sizeof(wchar_t)), fmtout, &tms)))
+                (!(osz = _wcsftime(p, __TMF_OUT_SIZE, fmtout, &tms)))
             )
             {
                 break;

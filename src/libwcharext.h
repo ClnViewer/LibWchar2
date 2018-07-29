@@ -1,4 +1,4 @@
-﻿/*
+/*
     MIT License
 
     Copyright (c) 2018 PS
@@ -72,6 +72,7 @@
 #   define _wcslen wcslen
 #   define _wcsrchr wcsrchr
 #   define _vswprintf vswprintf
+#   define _wcsftime wcsftime
 
 #   if defined(_MSC_VER)
 #      define _wcstombs __wcstombs_s

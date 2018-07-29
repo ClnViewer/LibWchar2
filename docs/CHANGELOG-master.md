@@ -15,4 +15,3 @@
 - [#10](https://github.com/ClnViewer/LibWchar2/commit/f6ab66ca1faa9c98a40c1651409f9a381cd5a065)  	add test wcsftime function 2018-07-28 (*2018-07-28T01:35:06Z*)
 - [#11](https://github.com/ClnViewer/LibWchar2/commit/a62e6c7e27eefaa743449f5cda486434d327a2dc)  	add wcsftime function 2018-07-28 (*2018-07-27T23:46:23Z*)
 - [#12](https://github.com/ClnViewer/LibWchar2/commit/b34f2351f6232d7c4c6b08a143d1e36a1dbb2090)  	docs update 2018-07-28 (*2018-07-27T22:20:41Z*)
-- [#13](https://github.com/ClnViewer/LibWchar2/commit/e36b6dea30ee7758bf1b5bf054be713348e96681)  	docs update 2018-07-27 (*2018-07-27T14:23:47Z*)
