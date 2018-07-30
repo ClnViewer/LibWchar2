@@ -445,7 +445,7 @@ include/wchar2.h
 .ti -1c
 .RI "FILE * \fB_wfopen_selector\fP (int, const void *, size_t, const void *)"
 .br
-.RI "Automatic type selector for wfopen* functions\&. "
+.RI "Automatic type selector for \fCwfopen*\fP functions\&. "
 .ti -1c
 .RI "FILE * \fBu8wfopen\fP (const wchar_t *, const wchar_t *)"
 .br
@@ -473,23 +473,23 @@ include/wchar2.h
 .ti -1c
 .RI "int \fB_wrename\fP (const wchar_t *, const wchar_t *)"
 .br
-.RI "Rename file, wide char input\&. "
+.RI "The \fCwrename()\fP function changes the file name to a new one\&. The new name must not be the same as the names in the directory\&. "
 .ti -1c
 .RI "int \fB_wrename_s\fP (const wchar_t *, size_t, const wchar_t *, size_t)"
 .br
-.RI "Rename file, wide char input with size\&. "
+.RI "The same as \fCwrename\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. "
 .ti -1c
 .RI "int \fB_wrename_ws\fP (const \fBstring_ws\fP *, const \fBstring_ws\fP *)"
 .br
-.RI "Rename file, struct \fBstring_ws\fP input\&. "
+.RI "The same as \fCwrename\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. "
 .ti -1c
 .RI "int \fB_wrename_selector\fP (int, const void *, size_t, const void *, size_t)"
 .br
-.RI "Automatic type selector for wrename* functions\&. "
+.RI "Automatic type selector for \fCwrename*\fP functions\&. "
 .ti -1c
 .RI "int \fBu8wrename\fP (const wchar_t *, const wchar_t *)"
 .br
-.RI "Rename file, convert file name from wide characters to UTF-8\&. "
+.RI "Rename file, after converting the file name from wide characters to UTF-8\&. "
 .ti -1c
 .RI "int \fB_wremove\fP (const wchar_t *)"
 .br
@@ -1398,7 +1398,7 @@ The same as \fCwfopen\fP, the \fCsize_t\fP parameter must contain the length of 
 .SS "FILE* _wfopen_selector (int, const void *, size_t, const void *)"
 
 .PP
-Automatic type selector for wfopen* functions\&. 
+Automatic type selector for \fCwfopen*\fP functions\&. 
 .IP "\(bu" 2
 \fBwfopen manual\fP 
 .PP
@@ -1506,13 +1506,46 @@ Deletes a name from the file system, standart returned
 .SS "int _wrename (const wchar_t *, const wchar_t *)"
 
 .PP
-Rename file, wide char input\&. 
+The \fCwrename()\fP function changes the file name to a new one\&. The new name must not be the same as the names in the directory\&. 
 .PP
 \fBNote:\fP
 .RS 4
 The \fCwrename*()\fP function changes the name or location of the file, returns a standard response as a function of \fCrename()\fP\&.
 .RE
 .PP
+.IP "\(bu" 2
+\fBwrename manual\fP
+.PP
+.PP
+\fBReturns:\fP
+.RS 4
+The function \fCwrename()\fP returns \fC0\fP in case of success and a nonzero value in case of an error\&. On error, \fCerrno\fP is set, indicating an error\&.
+.RE
+.PP
+.IP "\(bu" 2
+\fBwrename manual\fP 
+.PP
+
+.SS "int _wrename_s (const wchar_t *, size_t, const wchar_t *, size_t)"
+
+.PP
+The same as \fCwrename\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. 
+.IP "\(bu" 2
+\fBwrename manual\fP 
+.PP
+
+.SS "int _wrename_selector (int, const void *, size_t, const void *, size_t)"
+
+.PP
+Automatic type selector for \fCwrename*\fP functions\&. 
+.IP "\(bu" 2
+\fBwrename manual\fP 
+.PP
+
+.SS "int _wrename_ws (const \fBstring_ws\fP *, const \fBstring_ws\fP *)"
+
+.PP
+The same as \fCwrename\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. 
 .IP "\(bu" 2
 \fBwrename manual\fP 
 .PP
@@ -1589,7 +1622,7 @@ Open file stream, after converting the file name from wide characters to UTF-8\&
 .PP
 \fBAttention:\fP
 .RS 4
-function u8wfopen requires to free the returned result 
+function \fCu8wfopen\fP requires to free the returned result 
 .RE
 .PP
 
@@ -1629,11 +1662,11 @@ function u8wremove requires to free the returned result
 .SS "int u8wrename (const wchar_t *, const wchar_t *)"
 
 .PP
-Rename file, convert file name from wide characters to UTF-8\&. 
+Rename file, after converting the file name from wide characters to UTF-8\&. 
 .PP
 \fBAttention:\fP
 .RS 4
-function u8wrename requires to free the returned result 
+function \fCu8wrename\fP requires to free the returned result 
 .RE
 .PP
 
@@ -1644,7 +1677,7 @@ Get file statistics by first converting the file name from wide characters to UT
 .PP
 \fBAttention:\fP
 .RS 4
-Function u8wfopen requires to free the returned result 
+Function \fCu8wstat\fP requires to free the returned result 
 .RE
 .PP
 

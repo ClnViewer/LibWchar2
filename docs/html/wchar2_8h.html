@@ -428,7 +428,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wc
 <tr class="memdesc:adb3ffaef63d01b11f917537d567c9643"><td class="mdescLeft">&#160;</td><td class="mdescRight">The same as <code>wfopen</code>, the input parameter filename is passed in the <code><a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a></code> structure.  <a href="#adb3ffaef63d01b11f917537d567c9643">More...</a><br /></td></tr>
 <tr class="separator:adb3ffaef63d01b11f917537d567c9643"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4183bbfcc5877c9257098eed76c00245"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a4183bbfcc5877c9257098eed76c00245">_wfopen_selector</a> (int, const void *, size_t, const void *)</td></tr>
-<tr class="memdesc:a4183bbfcc5877c9257098eed76c00245"><td class="mdescLeft">&#160;</td><td class="mdescRight">Automatic type selector for wfopen* functions.  <a href="#a4183bbfcc5877c9257098eed76c00245">More...</a><br /></td></tr>
+<tr class="memdesc:a4183bbfcc5877c9257098eed76c00245"><td class="mdescLeft">&#160;</td><td class="mdescRight">Automatic type selector for <code>wfopen*</code> functions.  <a href="#a4183bbfcc5877c9257098eed76c00245">More...</a><br /></td></tr>
 <tr class="separator:a4183bbfcc5877c9257098eed76c00245"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a0616a33fd410ab523d044b676c9e76"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a0a0616a33fd410ab523d044b676c9e76">u8wfopen</a> (const wchar_t *, const wchar_t *)</td></tr>
 <tr class="memdesc:a0a0616a33fd410ab523d044b676c9e76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open file stream, after converting the file name from wide characters to UTF-8.  <a href="#a0a0616a33fd410ab523d044b676c9e76">More...</a><br /></td></tr>
@@ -449,22 +449,19 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wc
 <tr class="memdesc:a0aebfaa71308604cf26968873f2e6fc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get file statistics by first converting the file name from wide characters to UTF-8.  <a href="#a0aebfaa71308604cf26968873f2e6fc3">More...</a><br /></td></tr>
 <tr class="separator:a0aebfaa71308604cf26968873f2e6fc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a894561bb3b4c319164bff726cbad5ddf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a894561bb3b4c319164bff726cbad5ddf">_wrename</a> (const wchar_t *, const wchar_t *)</td></tr>
-<tr class="memdesc:a894561bb3b4c319164bff726cbad5ddf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rename file, wide char input.  <a href="#a894561bb3b4c319164bff726cbad5ddf">More...</a><br /></td></tr>
+<tr class="memdesc:a894561bb3b4c319164bff726cbad5ddf"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <code>wrename()</code> function changes the file name to a new one. The new name must not be the same as the names in the directory.  <a href="#a894561bb3b4c319164bff726cbad5ddf">More...</a><br /></td></tr>
 <tr class="separator:a894561bb3b4c319164bff726cbad5ddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81bed8663953257db49072b9f9a05c52"><td class="memItemLeft" align="right" valign="top"><a id="a81bed8663953257db49072b9f9a05c52"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a81bed8663953257db49072b9f9a05c52">_wrename_s</a> (const wchar_t *, size_t, const wchar_t *, size_t)</td></tr>
-<tr class="memdesc:a81bed8663953257db49072b9f9a05c52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rename file, wide char input with size. <br /></td></tr>
+<tr class="memitem:a81bed8663953257db49072b9f9a05c52"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a81bed8663953257db49072b9f9a05c52">_wrename_s</a> (const wchar_t *, size_t, const wchar_t *, size_t)</td></tr>
+<tr class="memdesc:a81bed8663953257db49072b9f9a05c52"><td class="mdescLeft">&#160;</td><td class="mdescRight">The same as <code>wrename</code>, the <code>size_t</code> parameter must contain the length of the variable of the file name, or zero.  <a href="#a81bed8663953257db49072b9f9a05c52">More...</a><br /></td></tr>
 <tr class="separator:a81bed8663953257db49072b9f9a05c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca49f426821e020d3d8c0ef23b5a2d47"><td class="memItemLeft" align="right" valign="top"><a id="aca49f426821e020d3d8c0ef23b5a2d47"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#aca49f426821e020d3d8c0ef23b5a2d47">_wrename_ws</a> (const <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *, const <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *)</td></tr>
-<tr class="memdesc:aca49f426821e020d3d8c0ef23b5a2d47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rename file, struct <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a> input. <br /></td></tr>
+<tr class="memitem:aca49f426821e020d3d8c0ef23b5a2d47"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#aca49f426821e020d3d8c0ef23b5a2d47">_wrename_ws</a> (const <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *, const <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *)</td></tr>
+<tr class="memdesc:aca49f426821e020d3d8c0ef23b5a2d47"><td class="mdescLeft">&#160;</td><td class="mdescRight">The same as <code>wrename</code>, the input parameter filename is passed in the <code><a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a></code> structure.  <a href="#aca49f426821e020d3d8c0ef23b5a2d47">More...</a><br /></td></tr>
 <tr class="separator:aca49f426821e020d3d8c0ef23b5a2d47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7257479f9dd1a791bde1f6a87a336f64"><td class="memItemLeft" align="right" valign="top"><a id="a7257479f9dd1a791bde1f6a87a336f64"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a7257479f9dd1a791bde1f6a87a336f64">_wrename_selector</a> (int, const void *, size_t, const void *, size_t)</td></tr>
-<tr class="memdesc:a7257479f9dd1a791bde1f6a87a336f64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Automatic type selector for wrename* functions. <br /></td></tr>
+<tr class="memitem:a7257479f9dd1a791bde1f6a87a336f64"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a7257479f9dd1a791bde1f6a87a336f64">_wrename_selector</a> (int, const void *, size_t, const void *, size_t)</td></tr>
+<tr class="memdesc:a7257479f9dd1a791bde1f6a87a336f64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Automatic type selector for <code>wrename*</code> functions.  <a href="#a7257479f9dd1a791bde1f6a87a336f64">More...</a><br /></td></tr>
 <tr class="separator:a7257479f9dd1a791bde1f6a87a336f64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e96a6c46300a30a0b052c44a191a15e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a2e96a6c46300a30a0b052c44a191a15e">u8wrename</a> (const wchar_t *, const wchar_t *)</td></tr>
-<tr class="memdesc:a2e96a6c46300a30a0b052c44a191a15e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rename file, convert file name from wide characters to UTF-8.  <a href="#a2e96a6c46300a30a0b052c44a191a15e">More...</a><br /></td></tr>
+<tr class="memdesc:a2e96a6c46300a30a0b052c44a191a15e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rename file, after converting the file name from wide characters to UTF-8.  <a href="#a2e96a6c46300a30a0b052c44a191a15e">More...</a><br /></td></tr>
 <tr class="separator:a2e96a6c46300a30a0b052c44a191a15e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acee6e22080b370e0e83da7d814c9f06d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#acee6e22080b370e0e83da7d814c9f06d">_wremove</a> (const wchar_t *)</td></tr>
 <tr class="memdesc:acee6e22080b370e0e83da7d814c9f06d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete (remove) file, wide char input.  <a href="#acee6e22080b370e0e83da7d814c9f06d">More...</a><br /></td></tr>
@@ -3363,7 +3360,7 @@ size wide string </td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Automatic type selector for wfopen* functions. </p>
+<p>Automatic type selector for <code>wfopen*</code> functions. </p>
 <ul>
 <li><a class="el" href="wfopen.html">wfopen manual</a> </li>
 </ul>
@@ -3747,8 +3744,141 @@ size wide string </td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Rename file, wide char input. </p>
+<p>The <code>wrename()</code> function changes the file name to a new one. The new name must not be the same as the names in the directory. </p>
 <dl class="section note"><dt>Note</dt><dd>The <code>wrename*()</code> function changes the name or location of the file, returns a standard response as a function of <code>rename()</code>.</dd></dl>
+<ul>
+<li><a class="el" href="wrename.html">wrename manual</a></li>
+</ul>
+<dl class="section return"><dt>Returns</dt><dd>The function <code>wrename()</code> returns <code>0</code> in case of success and a nonzero value in case of an error. On error, <code>errno</code> is set, indicating an error.</dd></dl>
+<ul>
+<li><a class="el" href="wrename.html">wrename manual</a> </li>
+</ul>
+
+</div>
+</div>
+<a id="a81bed8663953257db49072b9f9a05c52"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81bed8663953257db49072b9f9a05c52">&#9670;&nbsp;</a></span>_wrename_s()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int _wrename_s </td>
+          <td>(</td>
+          <td class="paramtype">const wchar_t *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const wchar_t *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The same as <code>wrename</code>, the <code>size_t</code> parameter must contain the length of the variable of the file name, or zero. </p>
+<ul>
+<li><a class="el" href="wrename.html">wrename manual</a> </li>
+</ul>
+
+</div>
+</div>
+<a id="a7257479f9dd1a791bde1f6a87a336f64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7257479f9dd1a791bde1f6a87a336f64">&#9670;&nbsp;</a></span>_wrename_selector()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int _wrename_selector </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Automatic type selector for <code>wrename*</code> functions. </p>
+<ul>
+<li><a class="el" href="wrename.html">wrename manual</a> </li>
+</ul>
+
+</div>
+</div>
+<a id="aca49f426821e020d3d8c0ef23b5a2d47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca49f426821e020d3d8c0ef23b5a2d47">&#9670;&nbsp;</a></span>_wrename_ws()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int _wrename_ws </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The same as <code>wrename</code>, the input parameter filename is passed in the <code><a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a></code> structure. </p>
 <ul>
 <li><a class="el" href="wrename.html">wrename manual</a> </li>
 </ul>
@@ -3996,7 +4126,7 @@ size wide string </td></tr>
 </div><div class="memdoc">
 
 <p>Open file stream, after converting the file name from wide characters to UTF-8. </p>
-<dl class="section attention"><dt>Attention</dt><dd>function u8wfopen requires to free the returned result </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>function <code>u8wfopen</code> requires to free the returned result </dd></dl>
 
 </div>
 </div>
@@ -4099,8 +4229,8 @@ size wide string </td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Rename file, convert file name from wide characters to UTF-8. </p>
-<dl class="section attention"><dt>Attention</dt><dd>function u8wrename requires to free the returned result </dd></dl>
+<p>Rename file, after converting the file name from wide characters to UTF-8. </p>
+<dl class="section attention"><dt>Attention</dt><dd>function <code>u8wrename</code> requires to free the returned result </dd></dl>
 
 </div>
 </div>
@@ -4131,7 +4261,7 @@ size wide string </td></tr>
 </div><div class="memdoc">
 
 <p>Get file statistics by first converting the file name from wide characters to UTF-8. </p>
-<dl class="section attention"><dt>Attention</dt><dd>Function u8wfopen requires to free the returned result </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>Function <code>u8wstat</code> requires to free the returned result </dd></dl>
 
 </div>
 </div>
@@ -4682,7 +4812,7 @@ size wide string </td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jul 31 2018 03:08:30 for libwchar2 0.0.7 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jul 31 2018 03:29:45 for libwchar2 0.0.7 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

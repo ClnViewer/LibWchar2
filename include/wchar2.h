@@ -869,7 +869,7 @@ FILE    * _wfopen_ws(const string_ws*, const wchar_t*)
 
           /*!
            * \~English
-           * \brief Automatic type selector for wfopen* functions
+           * \brief Automatic type selector for `wfopen*` functions
            *
            * \~Russian
            * \brief Автоматический селектор типов для функций `wfopen*`
@@ -884,12 +884,12 @@ FILE    * _wfopen_selector(int, const void*, size_t, const void*)
            * \~English
            * \brief Open file stream, after converting the file name from wide characters to UTF-8
            *
-           * \attention function u8wfopen requires to free the returned result
+           * \attention function `u8wfopen` requires to free the returned result
            *
            * \~Russian
            * \brief Открыть поток для файла, предварительно преобразовав имя файла из широких символов в UTF-8
            *
-           * \attention Функция u8wfopen требует освободить возвращаемый результат
+           * \attention Функция `u8wfopen` требует освободить возвращаемый результат
            *
            */
 FILE    * u8wfopen(const wchar_t*, const wchar_t*)
@@ -965,12 +965,12 @@ int       _wstat_selector(int, const void*, size_t, const void*);
            * \~English
            * \brief Get file statistics by first converting the file name from wide characters to UTF-8.
            *
-           * \attention Function u8wfopen requires to free the returned result
+           * \attention Function `u8wstat` requires to free the returned result
            *
            * \~Russian
            * \brief Получить статистику файла, предварительно преобразовав имя файла из широких символов в UTF-8
            *
-           * \attention Функция u8wfopen требует освободить возвращаемый результат
+           * \attention Функция `u8wstat` требует освободить возвращаемый результат
            */
 int       u8wstat(const wchar_t*, void*);
 
@@ -989,21 +989,81 @@ int       u8wstat(const wchar_t*, void*);
            * - \subpage wrename
            */
 
-          /*! \brief Rename file, wide char input */
-int       _wrename(const wchar_t*, const wchar_t*);
-          /*! \brief Rename file, wide char input with size */
-int       _wrename_s(const wchar_t*, size_t, const wchar_t*, size_t);
-          /*! \brief Rename file, struct string_ws input */
-int       _wrename_ws(const string_ws*, const string_ws*);
-          /*! \brief Automatic type selector for wrename* functions */
-int       _wrename_selector(int, const void*, size_t, const void*, size_t);
           /*!
-           *  \brief Rename file, convert file name from wide characters to UTF-8
-           *  \attention function u8wrename requires to free the returned result
+           * \~English
+           * \brief The `wrename()` function changes the file name to a new one.
+           *        The new name must not be the same as the names in the directory.
+           *
+           * \return The function `wrename()` returns `0` in case of success and a
+           *         nonzero value in case of an error.
+           *         On error, `errno` is set, indicating an error.
+           *
+           * \~Russian
+           * \brief Функция `wrename()` изменяет название файла на новое.
+           *        Новое имя не должно совпадать с именами, имеющимися в каталоге.
+           *
+           * \return Функция `wrename()` возвращает `0` в случае успеха и ненулевую величину — в случае ошибки.
+           *         При ошибке устанавливается errno с указанием ошибки.
+           *
+           * \~
+           * - \subpage wrename
+           */
+int       _wrename(const wchar_t*, const wchar_t*);
+
+          /*!
+           * \~English
+           * \brief The same as `wrename`, the `size_t` parameter must contain the length
+           *        of the variable of the file name, or zero.
+           *
+           * \~Russian
+           * \brief То же, что и `wrename`, параметр `size_t` должен содержать длинну переменной
+           *        имени файла, или ноль.
+           *
+           * \~
+           * - \subpage wrename
+           */
+int       _wrename_s(const wchar_t*, size_t, const wchar_t*, size_t);
+
+          /*!
+           * \~English
+           * \brief The same as `wrename`, the input parameter filename is passed in the `string_ws` structure.
+           *
+           * \~Russian
+           * \brief То же, что и `wrename`, входной параметр имя файла передаеться в структуре `string_ws`.
+           *
+           * \~
+           * - \subpage wrename
+           */
+int       _wrename_ws(const string_ws*, const string_ws*);
+
+          /*!
+           * \~English
+           * \brief Automatic type selector for `wrename*` functions
+           *
+           * \~Russian
+           * \brief Автоматический селектор типов для функций `wrename*`
+           *
+           * \~
+           * - \subpage wrename
+           */
+int       _wrename_selector(int, const void*, size_t, const void*, size_t);
+
+          /*!
+           * \~English
+           * \brief Rename file, after converting the file name from wide characters to UTF-8
+           *
+           * \attention function `u8wrename` requires to free the returned result
+           *
+           * \~Russian
+           * \brief Переименовать файл, предварительно преобразовав имя файла из широких символов в UTF-8
+           *
+           * \attention Функция `u8wrename` требует освободить возвращаемый результат
+           *
            */
 int       u8wrename(const wchar_t*, const wchar_t*);
 
           /*!
+           * \~
            *  \paragraph Delete (remove) file or directory
            *  \note Deletes a name from the file system, standart returned
            *
