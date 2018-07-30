@@ -1063,24 +1063,70 @@ int       _wrename_selector(int, const void*, size_t, const void*, size_t);
 int       u8wrename(const wchar_t*, const wchar_t*);
 
           /*!
-           * \~
-           *  \paragraph Delete (remove) file or directory
-           *  \note Deletes a name from the file system, standart returned
+           * \~English
+           * \paragraph Delete (remove) file or directory
+           * \note The `wremove*()` function deletes a name from the file system,
+           *       returns a standard response as a function of `remove()`.
            *
+           * \~Russian
+           * \paragraph Удалить файл или дерикторию
+           * \note Функция `цremove*()` удаляет файла или дерикторию по имени, возвращает стандартный ответ,
+           *       как функция `remove()`
+           *
+           * \~
            * - \subpage wremove
            */
-
-          /*! \brief Delete (remove) file, wide char input */
 int       _wremove(const wchar_t*);
-          /*! \brief Delete (remove) file, wide char input with size */
-int       _wremove_s(const wchar_t*, size_t);
-          /*! \brief Delete (remove) file, struct string_ws input */
-int       _wremove_ws(const string_ws*);
-          /*! \brief Automatic type selector for wremove* functions */
-int       _wremove_selector(int, const void*, size_t);
+
           /*!
-           *  \brief Delete (remove) file, convert file name from wide characters to UTF-8
-           *  \attention function u8wremove requires to free the returned result
+           * \~English
+           * \brief The same as `wremove`, the `size_t` parameter must contain the length
+           *        of the variable of the file name, or zero.
+           *
+           * \~Russian
+           * \brief То же, что и `wremove`, параметр `size_t` должен содержать длинну переменной
+           *        имени файла, или ноль.
+           *
+           * \~
+           * - \subpage wremove
+           */
+int       _wremove_s(const wchar_t*, size_t);
+
+          /*!
+           * \~English
+           * \brief The same as `wremove`, the input parameter filename is passed in the `string_ws` structure.
+           *
+           * \~Russian
+           * \brief То же, что и `wremove`, входной параметр имя файла передаеться в структуре `string_ws`.
+           *
+           * \~
+           * - \subpage wremove
+           */
+int       _wremove_ws(const string_ws*);
+
+          /*!
+           * \~English
+           * \brief Automatic type selector for `wremove*` functions
+           *
+           * \~Russian
+           * \brief Автоматический селектор типов для функций `wremove*`
+           *
+           * \~
+           * - \subpage wremove
+           */
+int       _wremove_selector(int, const void*, size_t);
+
+          /*!
+           * \~English
+           * \brief Delete (remove) file or directory, after converting the file name from wide characters to UTF-8
+           *
+           * \attention function `u8wremove` requires to free the returned result
+           *
+           * \~Russian
+           * \brief Удаляет файла или дерикторию, предварительно преобразовав имя файла из широких символов в UTF-8
+           *
+           * \attention Функция `u8wremove` требует освободить возвращаемый результат
+           *
            */
 int       u8wremove(const wchar_t*);
 
@@ -1094,21 +1140,89 @@ int       u8wremove(const wchar_t*);
            */
 
           /*! \brief Make directory, wide char input */
-int       _wmkdir(const wchar_t*, mode_t);
-          /*! \brief Make directory, wide char input with size */
-int       _wmkdir_s(const wchar_t*, size_t, mode_t);
-          /*! \brief Make directory, struct string_ws input */
-int       _wmkdir_ws(const string_ws*, mode_t);
-          /*! \brief Automatic type selector for wmkdir* functions */
-int       _wmkdir_selector(int, const void*, size_t, mode_t);
+
+
           /*!
-           *  \brief Make directory, convert file name from wide characters to UTF-8
-           *  \attention function u8wmkdir requires to free the returned result
+           * \~English
+           * \paragraph Creates a directory or a chain of directories specified in the path
+           * \note The equivalent of using the `mkdir` command with the -p switch for all functions `wmkdir*()`
+           *       If the internal flag `EXIST` is received while creating the directory, the function continues execution,
+           *       if this is the last one from the list of created directories, it returns `0`.
+           *       In other cases, returns a standard response as a function of `mkdir()`.
+           *       If the directory exists from the specified path, the function continues execution,
+           *       proceeding to create the next directory.
+           *
+           * \~Russian
+           * \paragraph Создает дерикторию или цепочку директорий указанных в пути
+           * \note Эквивалент использования команды `mkdir` с ключом `-p` для всех функций `_wmkdir*()`.
+           *       Если внутренний флаг `EXIST` получен при создании каталога, функция продолжает выполнение,
+           *       если это последний из списка создаваемых каталогов, возвращаеться `0`.
+           *       В других случаях, возвращает стандартный ответ, как функция `mkdir()`.
+           *       В случае существования каталога из указанного пути, функция продолжает выполнение,
+           *       переходя к созданию следующего каталога.
+           *
+           * \~
+           * - \subpage wmkdir
+           */
+int       _wmkdir(const wchar_t*, mode_t);
+
+          /*!
+           * \~English
+           * \brief The same as `wmkdir`, the `size_t` parameter must contain the length
+           *        of the variable of the file name, or zero.
+           *
+           * \~Russian
+           * \brief То же, что и `wmkdir`, параметр `size_t` должен содержать длинну переменной
+           *        имени файла, или ноль.
+           *
+           * \~
+           * - \subpage wmkdir
+           */
+int       _wmkdir_s(const wchar_t*, size_t, mode_t);
+
+          /*!
+           * \~English
+           * \brief The same as `wmkdir`, the input parameter filename is passed in the `string_ws` structure.
+           *
+           * \~Russian
+           * \brief То же, что и `wmkdir`, входной параметр имя файла передаеться в структуре `string_ws`.
+           *
+           * \~
+           * - \subpage wmkdir
+           */
+int       _wmkdir_ws(const string_ws*, mode_t);
+
+          /*!
+           * \~English
+           * \brief Automatic type selector for `wmkdir*` functions
+           *
+           * \~Russian
+           * \brief Автоматический селектор типов для функций `wmkdir*`
+           *
+           * \~
+           * - \subpage wmkdir
+           */
+int       _wmkdir_selector(int, const void*, size_t, mode_t);
+
+          /*!
+           * \~English
+           * \brief Creates a directory or a chain of directories specified in the path,
+           *        after converting the file name from wide characters to UTF-8
+           *
+           * \attention function `u8wmkdir` requires to free the returned result
+           *
+           * \~Russian
+           * \brief Создает дерикторию или цепочку директорий указанных в пути,
+           *        предварительно преобразовав имя файла из широких символов в UTF-8
+           *
+           * \attention Функция `u8wmkdir` требует освободить возвращаемый результат
+           *
            */
 int       u8wmkdir(const wchar_t*, mode_t);
 
 
           /*!
+           * \~
            *  \paragraph Check permissions for a file or directory
            *  \note All waccess* function return extended status, see access_e enum value,
            *        if error return standart -1
