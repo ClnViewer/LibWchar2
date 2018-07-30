@@ -495,7 +495,7 @@ wchar_t * wcsregexp(wchar_t *restrict, wchar_t *restrict, int*);
            *  const char*       - input
            *  return size_t     - size
            *
-           *  \note function u8stowcs required free result
+           *  \note function u8stowcs requires to free the returned result
            */
 size_t    u8stowcs(wchar_t*, const char*);
 
@@ -505,7 +505,7 @@ size_t    u8stowcs(wchar_t*, const char*);
            *  const wchar_t*    - input
            *  return size_t     - size
            *
-           *  \note function wcstou8s required free result
+           *  \note function wcstou8s requires to free the returned result
            */
 size_t    wcstou8s(char*, const wchar_t*);
 
@@ -746,7 +746,7 @@ wchar_t   _fputwc(wchar_t, FILE *restrict);
 
           /*! \brief Convert date and time to a formatted wide-character string.
            *
-           * \details This is the wide-character counterpart of `strftime()`.  
+           * \details This is the wide-character counterpart of `strftime()`.
            * So that we do not have to duplicate the code of `wcsftime()`, we convert the format string to
            * multibyte, call `wcsftime()`, then convert the result back into wide
            * characters.
@@ -790,15 +790,42 @@ FILE    * _wfopen_selector(int, const void*, size_t, const void*)
                 __attribute__((warn_unused_result));
 
           /*!
-           *  \brief Open file stream, convert file name from wide characters to UTF-8
-           *  \attention function u8wfopen required free result
+           *  \~English
+           *  \brief Open file stream, after converting the file name from wide characters to UTF-8
+           *
+           *  \attention function u8wfopen requires to free the returned result
+           *
+           *  \~Russian
+           *  \brief Открыть поток для файла, предварительно преобразовав имя файла из широких символов в UTF-8
+           *
+           *  \attention Функция u8wfopen требует освободить возвращаемый результат
            */
 FILE    * u8wfopen(const wchar_t*, const wchar_t*)
                 __attribute__((warn_unused_result));
 
           /*!
+           *  \~English
            *  \paragraph Statistic from file
-           *  \note These functions return information about a file, standart returned
+           *
+           *  \brief Functions `wstat*()` fill the structure with data about the file pointed to by `struct stat`,
+           *         associated with the file name.
+           *
+           *  \return If stat is successfully populated, `0` is returned.
+           *          In case of failure, `-1` is returned, and `errno` is set to `ENOENT`.
+           *
+           *  \note The operation of the functions `wstat*()` is completely analogous to the function `stat()`
+           *
+           *
+           *  \~Russian
+           *  \paragraph Статисика параметров файла
+           *
+           *  \brief Функции `wstat*()` запоняют структуру данными о файле, на которую указывает `struct stat`,
+           *         связанном с именем файла.
+           *
+           *  \return При успешном заполнении структуры stat возвращается `0`.
+           *          В случае неудачи возвращается `—1`, а `errno` устанавливается в `ENOENT`.
+           *
+           *  \note Работа функций `wstat*()` полностью аналогична функции `stat()`
            *
            * - \subpage wstat
            */
@@ -811,9 +838,9 @@ int       _wstat_s(const wchar_t*, size_t, struct stat*);
 int       _wstat_ws(const string_ws*, struct stat*);
           /*! \brief Automatic type selector for wstat* functions */
 int       _wstat_selector(int, const void*, size_t, const void*);
-          /*! 
+          /*!
            *  \brief Statistic from file, convert file name from wide characters to UTF-8
-           *  \attention function u8wstat required free result
+           *  \attention function u8wstat requires to free the returned result
            */
 int       u8wstat(const wchar_t*, void*);
 
@@ -834,7 +861,7 @@ int       _wrename_ws(const string_ws*, const string_ws*);
 int       _wrename_selector(int, const void*, size_t, const void*, size_t);
           /*!
            *  \brief Rename file, convert file name from wide characters to UTF-8
-           *  \attention function u8wrename required free result
+           *  \attention function u8wrename requires to free the returned result
            */
 int       u8wrename(const wchar_t*, const wchar_t*);
 
@@ -855,7 +882,7 @@ int       _wremove_ws(const string_ws*);
 int       _wremove_selector(int, const void*, size_t);
           /*!
            *  \brief Delete (remove) file, convert file name from wide characters to UTF-8
-           *  \attention function u8wremove required free result
+           *  \attention function u8wremove requires to free the returned result
            */
 int       u8wremove(const wchar_t*);
 
@@ -878,7 +905,7 @@ int       _wmkdir_ws(const string_ws*, mode_t);
 int       _wmkdir_selector(int, const void*, size_t, mode_t);
           /*!
            *  \brief Make directory, convert file name from wide characters to UTF-8
-           *  \attention function u8wmkdir required free result
+           *  \attention function u8wmkdir requires to free the returned result
            */
 int       u8wmkdir(const wchar_t*, mode_t);
 
@@ -901,7 +928,7 @@ access_e  _waccess_ws(const string_ws*, int);
 access_e  _waccess_selector(int, const void*, size_t, int);
           /*!
            *  \brief Check permissions for a file or directory, convert file name from wide characters to UTF-8
-           *  \attention function u8waccess required free result
+           *  \attention function u8waccess requires to free the returned result
            */
 access_e  u8waccess(const wchar_t*, int);
 
@@ -932,7 +959,7 @@ void *    _wbaseext_selector(int, const void*);
           /*!
            *  \paragraph Parse path directory
            *  \note If Success return substring of path, else return NULL
-           *  \attention all functions _wbasedir* required free result, use type __WSTRFREE for auto free
+           *  \attention all functions _wbasedir* requires to free the returned result, use type __WSTRFREE for auto free
            */
 
           /*! \brief Parse path directory + normalize slash from path, wide char input */
@@ -948,7 +975,7 @@ void *    _wbasedir_selector(int, const void*, int)
           /*!
            *  \paragraph Normalize slash from path
            *  \note If Success return modified path, else return NULL
-           *  \attention all functions _wpathnormalize* required free result, use type __WSTRFREE for auto free
+           *  \attention all functions _wpathnormalize* requires to free the returned result, use type __WSTRFREE for auto free
            */
 
           /*! \brief Normalize slash from path, wide char input, int is string size, default 0 */
@@ -960,7 +987,7 @@ wchar_t * _wpathnormalize_ws(const string_ws*)
 
           /*!
            *  \brief Normalize slash from path, convert file name from wide characters to UTF-8
-           *  \attention function u8wpathnormalize required free result
+           *  \attention function u8wpathnormalize requires to free the returned result
            */
 char *    u8wpathnormalize(const wchar_t*)
                 __attribute__((warn_unused_result));
@@ -983,28 +1010,28 @@ size_t    wstring_alloc(string_ws *restrict, size_t);
 
           /*!
            *  \brief Converting string, wchar_t input, char allocate output
-           *  \attention function wstring_wstocs_alloc required free result
+           *  \attention function wstring_wstocs_alloc requires to free the returned result
            */
 char    * wstring_wstocs_alloc(const wchar_t *restrict)
                 __attribute__((warn_unused_result));
 
           /*!
            *  \brief Converting string, string_ws input, char allocate output
-           *  \attention function wstring_swstocs_alloc required free result
+           *  \attention function wstring_swstocs_alloc requires to free the returned result
            */
 char    * wstring_swstocs_alloc(const string_ws *restrict)
                 __attribute__((warn_unused_result));
 
           /*!
            *  \brief Converting string, char input, wchar_t allocate output
-           *  \attention function wstring_cstows_alloc required free result
+           *  \attention function wstring_cstows_alloc requires to free the returned result
            */
 wchar_t * wstring_cstows_alloc(const char *restrict)
                 __attribute__((warn_unused_result));
 
           /*!
            *  \brief Converting string, string_ws input, length output
-           *  \attention function wstring_cstows_alloc required free result
+           *  \attention function wstring_cstows_alloc requires to free the returned result
            */
 size_t    wstring_cstows_ws_alloc(string_ws *restrict, const char *restrict);
 
@@ -1031,7 +1058,7 @@ size_t    wstring_format(string_ws*, const wchar_t *restrict, ...);
            *  \param lenght  Lenght of `source` string.
            *  \return lenght of `output` produced.
            *
-           *  \attention function `wstring_append()` required free result
+           *  \attention function `wstring_append()` requires to free the returned result
            *
            */
 size_t    wstring_append(string_ws*, const wchar_t *restrict, size_t);
@@ -1045,7 +1072,7 @@ size_t    wstring_append(string_ws*, const wchar_t *restrict, size_t);
            *
            *  \note Do not use this function directly, first use the `wstring_appends()` macro,
            *        or end the last function's parameters with a value of NULL.
-           *  \attention function `wstring_appends_()` required free result
+           *  \attention function `wstring_appends_()` requires to free the returned result
            *
            */
 size_t    wstring_appends_(string_ws*, ...);
@@ -1063,7 +1090,7 @@ size_t    wstring_appends_(string_ws*, ...);
            *  \param lenght  Lenght of `source` string.
            *  \return lenght of `output` produced.
            *
-           *  \attention function `wstring_append_cvt()` required free result
+           *  \attention function `wstring_append_cvt()` requires to free the returned result
            *
            */
 size_t    wstring_append_cvt(string_ws*, const char *restrict, size_t);
@@ -1085,14 +1112,14 @@ size_t    wstring_wstocs_ws(char [], size_t, const string_ws *restrict);
 
           /*!
            *  \brief Converting time format string to string, wchar_t and size_t input
-           *  \attention function wstring_timeformat required free result
+           *  \attention function wstring_timeformat requires to free the returned result
            */
 wchar_t * wstring_timeformat(const wchar_t *restrict, size_t, const wchar_t *restrict, const wchar_t *restrict)
                 __attribute__((warn_unused_result));
 
           /*!
            *  \brief Converting time format string to string, string_ws input
-           *  \attention function wstring_timeformat_ws required free result
+           *  \attention function wstring_timeformat_ws requires to free the returned result
            */
 wchar_t * wstring_timeformat_ws(const string_ws *restrict, const wchar_t *restrict, const wchar_t *restrict)
                 __attribute__((warn_unused_result));

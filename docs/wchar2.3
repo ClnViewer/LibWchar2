@@ -449,11 +449,11 @@ include/wchar2.h
 .ti -1c
 .RI "FILE * \fBu8wfopen\fP (const wchar_t *, const wchar_t *)"
 .br
-.RI "Open file stream, convert file name from wide characters to UTF-8\&. "
+.RI "Open file stream, after converting the file name from wide characters to UTF-8\&. "
 .ti -1c
 .RI "int \fB_wstat\fP (const wchar_t *, struct stat *)"
 .br
-.RI "Statistic from file, wide char input\&. "
+.RI "Functions \fCwstat*()\fP fill the structure with data about the file pointed to by \fCstruct stat\fP, associated with the file name\&. "
 .ti -1c
 .RI "int \fB_wstat_s\fP (const wchar_t *, size_t, struct stat *)"
 .br
@@ -1017,7 +1017,7 @@ If Success return substring of path, else return NULL
 .PP
 \fBAttention:\fP
 .RS 4
-all functions _wbasedir* required free result, use type __WSTRFREE for auto free 
+all functions _wbasedir* requires to free the returned result, use type __WSTRFREE for auto free 
 .RE
 .PP
 
@@ -1102,9 +1102,7 @@ Wide-character string compare\&.
 .SS "size_t _wcsftime (wchar_t * restrict, size_t sz, const wchar_t * restrict, const void * restrict)"
 
 .PP
-Convert date and time to a formatted wide-character string\&. This is the wide-character counterpart of \fCstrftime()\fP\&. 
-.br
-So that we do not have to duplicate the code of \fCwcsftime()\fP, we convert the format string to multibyte, call \fCwcsftime()\fP, then convert the result back into wide characters\&.
+Convert date and time to a formatted wide-character string\&. This is the wide-character counterpart of \fCstrftime()\fP\&. So that we do not have to duplicate the code of \fCwcsftime()\fP, we convert the format string to multibyte, call \fCwcsftime()\fP, then convert the result back into wide characters\&.
 .PP
 .IP "\(bu" 2
 \fBwcsftime manual\fP
@@ -1445,7 +1443,7 @@ If Success return modified path, else return NULL
 .PP
 \fBAttention:\fP
 .RS 4
-all functions _wpathnormalize* required free result, use type __WSTRFREE for auto free 
+all functions _wpathnormalize* requires to free the returned result, use type __WSTRFREE for auto free 
 .RE
 .PP
 
@@ -1488,17 +1486,19 @@ The wrename* function shall change the name or location of a file, standart retu
 .SS "int _wstat (const wchar_t *, struct stat *)"
 
 .PP
-Statistic from file, wide char input\&. 
+Functions \fCwstat*()\fP fill the structure with data about the file pointed to by \fCstruct stat\fP, associated with the file name\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+If stat is successfully populated, \fC0\fP is returned\&. In case of failure, \fC-1\fP is returned, and \fCerrno\fP is set to \fCENOENT\fP\&.
+.RE
 .PP
 \fBNote:\fP
 .RS 4
-These functions return information about a file, standart returned
+The operation of the functions \fCwstat*()\fP is completely analogous to the function \fCstat()\fP
 .RE
 .PP
-.IP "\(bu" 2
-\fBwstat manual\fP 
-.PP
-
+Statistic from file, wide char input 
 .SS "size_t u8stowcs (wchar_t *, const char *)"
 
 .PP
@@ -1506,7 +1506,7 @@ Covert utf-8 char* to wchar_t* wchar_t* - output const char* - input return size
 .PP
 \fBNote:\fP
 .RS 4
-function u8stowcs required free result 
+function u8stowcs requires to free the returned result 
 .RE
 .PP
 
@@ -1517,18 +1517,18 @@ Check permissions for a file or directory, convert file name from wide character
 .PP
 \fBAttention:\fP
 .RS 4
-function u8waccess required free result 
+function u8waccess requires to free the returned result 
 .RE
 .PP
 
 .SS "FILE* u8wfopen (const wchar_t *, const wchar_t *)"
 
 .PP
-Open file stream, convert file name from wide characters to UTF-8\&. 
+Open file stream, after converting the file name from wide characters to UTF-8\&. 
 .PP
 \fBAttention:\fP
 .RS 4
-function u8wfopen required free result 
+function u8wfopen requires to free the returned result 
 .RE
 .PP
 
@@ -1539,7 +1539,7 @@ Make directory, convert file name from wide characters to UTF-8\&.
 .PP
 \fBAttention:\fP
 .RS 4
-function u8wmkdir required free result 
+function u8wmkdir requires to free the returned result 
 .RE
 .PP
 
@@ -1550,7 +1550,7 @@ Normalize slash from path, convert file name from wide characters to UTF-8\&.
 .PP
 \fBAttention:\fP
 .RS 4
-function u8wpathnormalize required free result 
+function u8wpathnormalize requires to free the returned result 
 .RE
 .PP
 
@@ -1561,7 +1561,7 @@ Delete (remove) file, convert file name from wide characters to UTF-8\&.
 .PP
 \fBAttention:\fP
 .RS 4
-function u8wremove required free result 
+function u8wremove requires to free the returned result 
 .RE
 .PP
 
@@ -1572,7 +1572,7 @@ Rename file, convert file name from wide characters to UTF-8\&.
 .PP
 \fBAttention:\fP
 .RS 4
-function u8wrename required free result 
+function u8wrename requires to free the returned result 
 .RE
 .PP
 
@@ -1583,7 +1583,7 @@ Statistic from file, convert file name from wide characters to UTF-8\&.
 .PP
 \fBAttention:\fP
 .RS 4
-function u8wstat required free result 
+function u8wstat requires to free the returned result 
 .RE
 .PP
 
@@ -1622,7 +1622,7 @@ Convert wchar_t* to utf-8 char* char* - output const wchar_t* - input return siz
 .PP
 \fBNote:\fP
 .RS 4
-function wcstou8s required free result 
+function wcstou8s requires to free the returned result 
 .RE
 .PP
 
@@ -1647,7 +1647,7 @@ lenght of \fCoutput\fP produced\&.
 .PP
 \fBAttention:\fP
 .RS 4
-function \fC\fBwstring_append()\fP\fP required free result 
+function \fC\fBwstring_append()\fP\fP requires to free the returned result 
 .RE
 .PP
 
@@ -1672,7 +1672,7 @@ lenght of \fCoutput\fP produced\&.
 .PP
 \fBAttention:\fP
 .RS 4
-function \fC\fBwstring_append_cvt()\fP\fP required free result 
+function \fC\fBwstring_append_cvt()\fP\fP requires to free the returned result 
 .RE
 .PP
 
@@ -1700,7 +1700,7 @@ Do not use this function directly, first use the \fC\fBwstring_appends()\fP\fP m
 .PP
 \fBAttention:\fP
 .RS 4
-function \fC\fBwstring_appends_()\fP\fP required free result 
+function \fC\fBwstring_appends_()\fP\fP requires to free the returned result 
 .RE
 .PP
 
@@ -1715,7 +1715,7 @@ Converting string, char input, wchar_t allocate output\&.
 .PP
 \fBAttention:\fP
 .RS 4
-function wstring_cstows_alloc required free result 
+function wstring_cstows_alloc requires to free the returned result 
 .RE
 .PP
 
@@ -1726,7 +1726,7 @@ Converting string, \fBstring_ws\fP input, length output\&.
 .PP
 \fBAttention:\fP
 .RS 4
-function wstring_cstows_alloc required free result 
+function wstring_cstows_alloc requires to free the returned result 
 .RE
 .PP
 
@@ -1770,7 +1770,7 @@ Converting string, \fBstring_ws\fP input, char allocate output\&.
 .PP
 \fBAttention:\fP
 .RS 4
-function wstring_swstocs_alloc required free result 
+function wstring_swstocs_alloc requires to free the returned result 
 .RE
 .PP
 
@@ -1781,7 +1781,7 @@ Converting time format string to string, wchar_t and size_t input\&.
 .PP
 \fBAttention:\fP
 .RS 4
-function wstring_timeformat required free result 
+function wstring_timeformat requires to free the returned result 
 .RE
 .PP
 
@@ -1792,7 +1792,7 @@ Converting time format string to string, \fBstring_ws\fP input\&.
 .PP
 \fBAttention:\fP
 .RS 4
-function wstring_timeformat_ws required free result 
+function wstring_timeformat_ws requires to free the returned result 
 .RE
 .PP
 
@@ -1803,7 +1803,7 @@ Converting string, wchar_t input, char allocate output\&.
 .PP
 \fBAttention:\fP
 .RS 4
-function wstring_wstocs_alloc required free result 
+function wstring_wstocs_alloc requires to free the returned result 
 .RE
 .PP
 

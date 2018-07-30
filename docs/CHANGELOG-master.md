@@ -10,4 +10,3 @@
 - [#5](https://github.com/ClnViewer/LibWchar2/commit/b157bc72031c03409f53c738671cb44477ee365b)  	add functions wcs to number 2018-07-29 (*29 July 2018 15:50*)
 - [#6](https://github.com/ClnViewer/LibWchar2/commit/237aa7bf73f67adcdce7213e3e9cf49ee6df940c)  	add wstring_timeformat function 2018-07-29 (*28 July 2018 22:56*)
 - [#7](https://github.com/ClnViewer/LibWchar2/commit/d56aa5b322a3054cb2267aaf92980b6549884321)  	reorganizing CMakeList 2018-07-28 (*28 July 2018 18:56*)
-- [#8](https://github.com/ClnViewer/LibWchar2/commit/fffb546b29c9360f2f3876bcae597a561c079eb6)  	reorganizing CMakeList 2018-07-28 (*28 July 2018 18:55*)

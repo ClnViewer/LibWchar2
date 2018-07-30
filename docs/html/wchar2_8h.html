@@ -436,10 +436,10 @@ FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wc
 <tr class="memdesc:a4183bbfcc5877c9257098eed76c00245"><td class="mdescLeft">&#160;</td><td class="mdescRight">Automatic type selector for wfopen* functions. <br /></td></tr>
 <tr class="separator:a4183bbfcc5877c9257098eed76c00245"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a0616a33fd410ab523d044b676c9e76"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a0a0616a33fd410ab523d044b676c9e76">u8wfopen</a> (const wchar_t *, const wchar_t *)</td></tr>
-<tr class="memdesc:a0a0616a33fd410ab523d044b676c9e76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open file stream, convert file name from wide characters to UTF-8.  <a href="#a0a0616a33fd410ab523d044b676c9e76">More...</a><br /></td></tr>
+<tr class="memdesc:a0a0616a33fd410ab523d044b676c9e76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open file stream, after converting the file name from wide characters to UTF-8.  <a href="#a0a0616a33fd410ab523d044b676c9e76">More...</a><br /></td></tr>
 <tr class="separator:a0a0616a33fd410ab523d044b676c9e76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d598260cda24871e932acd0851451f0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a6d598260cda24871e932acd0851451f0">_wstat</a> (const wchar_t *, struct stat *)</td></tr>
-<tr class="memdesc:a6d598260cda24871e932acd0851451f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Statistic from file, wide char input.  <a href="#a6d598260cda24871e932acd0851451f0">More...</a><br /></td></tr>
+<tr class="memdesc:a6d598260cda24871e932acd0851451f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functions <code>wstat*()</code> fill the structure with data about the file pointed to by <code>struct stat</code>, associated with the file name.  <a href="#a6d598260cda24871e932acd0851451f0">More...</a><br /></td></tr>
 <tr class="separator:a6d598260cda24871e932acd0851451f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c802f5053dca163e445794befea1053"><td class="memItemLeft" align="right" valign="top"><a id="a1c802f5053dca163e445794befea1053"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a1c802f5053dca163e445794befea1053">_wstat_s</a> (const wchar_t *, size_t, struct stat *)</td></tr>
@@ -1768,7 +1768,7 @@ size wide string </td></tr>
 
 <p>Parse path directory + normalize slash from path, wide char input. </p>
 <dl class="section note"><dt>Note</dt><dd>If Success return substring of path, else return NULL </dd></dl>
-<dl class="section attention"><dt>Attention</dt><dd>all functions _wbasedir* required free result, use type __WSTRFREE for auto free </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>all functions _wbasedir* requires to free the returned result, use type __WSTRFREE for auto free </dd></dl>
 
 </div>
 </div>
@@ -2096,8 +2096,7 @@ size wide string </td></tr>
 </div><div class="memdoc">
 
 <p>Convert date and time to a formatted wide-character string. </p>
-<p>This is the wide-character counterpart of <code>strftime()</code>. <br />
-So that we do not have to duplicate the code of <code>wcsftime()</code>, we convert the format string to multibyte, call <code>wcsftime()</code>, then convert the result back into wide characters.</p>
+<p>This is the wide-character counterpart of <code>strftime()</code>. So that we do not have to duplicate the code of <code>wcsftime()</code>, we convert the format string to multibyte, call <code>wcsftime()</code>, then convert the result back into wide characters.</p>
 <ul>
 <li><a class="el" href="wcsftime.html">wcsftime manual</a></li>
 <li><a class="el" href="wcsptime.html">wcsptime manual</a> related <code>wcsptime(..)</code> </li>
@@ -3487,7 +3486,7 @@ So that we do not have to duplicate the code of <code>wcsftime()</code>, we conv
 
 <p>Normalize slash from path, wide char input, int is string size, default 0. </p>
 <dl class="section note"><dt>Note</dt><dd>If Success return modified path, else return NULL </dd></dl>
-<dl class="section attention"><dt>Attention</dt><dd>all functions _wpathnormalize* required free result, use type __WSTRFREE for auto free </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>all functions _wpathnormalize* requires to free the returned result, use type __WSTRFREE for auto free </dd></dl>
 
 </div>
 </div>
@@ -3608,11 +3607,10 @@ So that we do not have to duplicate the code of <code>wcsftime()</code>, we conv
       </table>
 </div><div class="memdoc">
 
-<p>Statistic from file, wide char input. </p>
-<dl class="section note"><dt>Note</dt><dd>These functions return information about a file, standart returned</dd></dl>
-<ul>
-<li><a class="el" href="wstat.html">wstat manual</a> </li>
-</ul>
+<p>Functions <code>wstat*()</code> fill the structure with data about the file pointed to by <code>struct stat</code>, associated with the file name. </p>
+<dl class="section return"><dt>Returns</dt><dd>If stat is successfully populated, <code>0</code> is returned. In case of failure, <code>-1</code> is returned, and <code>errno</code> is set to <code>ENOENT</code>.</dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The operation of the functions <code>wstat*()</code> is completely analogous to the function <code>stat()</code></dd></dl>
+<p>Statistic from file, wide char input </p>
 
 </div>
 </div>
@@ -3643,7 +3641,7 @@ So that we do not have to duplicate the code of <code>wcsftime()</code>, we conv
 </div><div class="memdoc">
 
 <p>Covert utf-8 char* to wchar_t* wchar_t* - output const char* - input return size_t - size. </p>
-<dl class="section note"><dt>Note</dt><dd>function u8stowcs required free result </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>function u8stowcs requires to free the returned result </dd></dl>
 
 </div>
 </div>
@@ -3674,7 +3672,7 @@ So that we do not have to duplicate the code of <code>wcsftime()</code>, we conv
 </div><div class="memdoc">
 
 <p>Check permissions for a file or directory, convert file name from wide characters to UTF-8. </p>
-<dl class="section attention"><dt>Attention</dt><dd>function u8waccess required free result </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>function u8waccess requires to free the returned result </dd></dl>
 
 </div>
 </div>
@@ -3704,8 +3702,8 @@ So that we do not have to duplicate the code of <code>wcsftime()</code>, we conv
       </table>
 </div><div class="memdoc">
 
-<p>Open file stream, convert file name from wide characters to UTF-8. </p>
-<dl class="section attention"><dt>Attention</dt><dd>function u8wfopen required free result </dd></dl>
+<p>Open file stream, after converting the file name from wide characters to UTF-8. </p>
+<dl class="section attention"><dt>Attention</dt><dd>function u8wfopen requires to free the returned result </dd></dl>
 
 </div>
 </div>
@@ -3736,7 +3734,7 @@ So that we do not have to duplicate the code of <code>wcsftime()</code>, we conv
 </div><div class="memdoc">
 
 <p>Make directory, convert file name from wide characters to UTF-8. </p>
-<dl class="section attention"><dt>Attention</dt><dd>function u8wmkdir required free result </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>function u8wmkdir requires to free the returned result </dd></dl>
 
 </div>
 </div>
@@ -3757,7 +3755,7 @@ So that we do not have to duplicate the code of <code>wcsftime()</code>, we conv
 </div><div class="memdoc">
 
 <p>Normalize slash from path, convert file name from wide characters to UTF-8. </p>
-<dl class="section attention"><dt>Attention</dt><dd>function u8wpathnormalize required free result </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>function u8wpathnormalize requires to free the returned result </dd></dl>
 
 </div>
 </div>
@@ -3778,7 +3776,7 @@ So that we do not have to duplicate the code of <code>wcsftime()</code>, we conv
 </div><div class="memdoc">
 
 <p>Delete (remove) file, convert file name from wide characters to UTF-8. </p>
-<dl class="section attention"><dt>Attention</dt><dd>function u8wremove required free result </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>function u8wremove requires to free the returned result </dd></dl>
 
 </div>
 </div>
@@ -3809,7 +3807,7 @@ So that we do not have to duplicate the code of <code>wcsftime()</code>, we conv
 </div><div class="memdoc">
 
 <p>Rename file, convert file name from wide characters to UTF-8. </p>
-<dl class="section attention"><dt>Attention</dt><dd>function u8wrename required free result </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>function u8wrename requires to free the returned result </dd></dl>
 
 </div>
 </div>
@@ -3840,7 +3838,7 @@ So that we do not have to duplicate the code of <code>wcsftime()</code>, we conv
 </div><div class="memdoc">
 
 <p>Statistic from file, convert file name from wide characters to UTF-8. </p>
-<dl class="section attention"><dt>Attention</dt><dd>function u8wstat required free result </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>function u8wstat requires to free the returned result </dd></dl>
 
 </div>
 </div>
@@ -3939,7 +3937,7 @@ So that we do not have to duplicate the code of <code>wcsftime()</code>, we conv
 </div><div class="memdoc">
 
 <p>Convert wchar_t* to utf-8 char* char* - output const wchar_t* - input return size_t - size. </p>
-<dl class="section note"><dt>Note</dt><dd>function wcstou8s required free result </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>function wcstou8s requires to free the returned result </dd></dl>
 
 </div>
 </div>
@@ -3985,7 +3983,7 @@ So that we do not have to duplicate the code of <code>wcsftime()</code>, we conv
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>lenght of <code>output</code> produced.</dd></dl>
-<dl class="section attention"><dt>Attention</dt><dd>function <code><a class="el" href="wchar2_8h.html#a6ea51e2ed496d7622890d90021d78ed3" title="Append string: wchar_t*, lenght input, struct string_ws output. ">wstring_append()</a></code> required free result </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>function <code><a class="el" href="wchar2_8h.html#a6ea51e2ed496d7622890d90021d78ed3" title="Append string: wchar_t*, lenght input, struct string_ws output. ">wstring_append()</a></code> requires to free the returned result </dd></dl>
 
 </div>
 </div>
@@ -4031,7 +4029,7 @@ So that we do not have to duplicate the code of <code>wcsftime()</code>, we conv
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>lenght of <code>output</code> produced.</dd></dl>
-<dl class="section attention"><dt>Attention</dt><dd>function <code><a class="el" href="wchar2_8h.html#ad1955a431f93440fceb9a493e3f1a48e" title="Append string: source type char*, lenght input, struct string_ws output. ">wstring_append_cvt()</a></code> required free result </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>function <code><a class="el" href="wchar2_8h.html#ad1955a431f93440fceb9a493e3f1a48e" title="Append string: source type char*, lenght input, struct string_ws output. ">wstring_append_cvt()</a></code> requires to free the returned result </dd></dl>
 
 </div>
 </div>
@@ -4071,7 +4069,7 @@ So that we do not have to duplicate the code of <code>wcsftime()</code>, we conv
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>lenght of <code>output</code> produced.</dd></dl>
 <dl class="section note"><dt>Note</dt><dd>Do not use this function directly, first use the <code><a class="el" href="wchar2_8h.html#af8d4aaae7e0bf61359c5428c485c938b" title="Macro to function wstring_appends_(), see notes. ">wstring_appends()</a></code> macro, or end the last function's parameters with a value of NULL. </dd></dl>
-<dl class="section attention"><dt>Attention</dt><dd>function <code><a class="el" href="wchar2_8h.html#ac1bca3b3e0201e5a928fc06f83df994e" title="Append strings, only wchar_t* strings args inputs, struct string_ws output. ">wstring_appends_()</a></code> required free result </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>function <code><a class="el" href="wchar2_8h.html#ac1bca3b3e0201e5a928fc06f83df994e" title="Append strings, only wchar_t* strings args inputs, struct string_ws output. ">wstring_appends_()</a></code> requires to free the returned result </dd></dl>
 
 </div>
 </div>
@@ -4134,7 +4132,7 @@ So that we do not have to duplicate the code of <code>wcsftime()</code>, we conv
 </div><div class="memdoc">
 
 <p>Converting string, char input, wchar_t allocate output. </p>
-<dl class="section attention"><dt>Attention</dt><dd>function wstring_cstows_alloc required free result </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>function wstring_cstows_alloc requires to free the returned result </dd></dl>
 
 </div>
 </div>
@@ -4165,7 +4163,7 @@ So that we do not have to duplicate the code of <code>wcsftime()</code>, we conv
 </div><div class="memdoc">
 
 <p>Converting string, <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a> input, length output. </p>
-<dl class="section attention"><dt>Attention</dt><dd>function wstring_cstows_alloc required free result </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>function wstring_cstows_alloc requires to free the returned result </dd></dl>
 
 </div>
 </div>
@@ -4283,7 +4281,7 @@ So that we do not have to duplicate the code of <code>wcsftime()</code>, we conv
 </div><div class="memdoc">
 
 <p>Converting string, <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a> input, char allocate output. </p>
-<dl class="section attention"><dt>Attention</dt><dd>function wstring_swstocs_alloc required free result </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>function wstring_swstocs_alloc requires to free the returned result </dd></dl>
 
 </div>
 </div>
@@ -4326,7 +4324,7 @@ So that we do not have to duplicate the code of <code>wcsftime()</code>, we conv
 </div><div class="memdoc">
 
 <p>Converting time format string to string, wchar_t and size_t input. </p>
-<dl class="section attention"><dt>Attention</dt><dd>function wstring_timeformat required free result </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>function wstring_timeformat requires to free the returned result </dd></dl>
 
 </div>
 </div>
@@ -4363,7 +4361,7 @@ So that we do not have to duplicate the code of <code>wcsftime()</code>, we conv
 </div><div class="memdoc">
 
 <p>Converting time format string to string, <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a> input. </p>
-<dl class="section attention"><dt>Attention</dt><dd>function wstring_timeformat_ws required free result </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>function wstring_timeformat_ws requires to free the returned result </dd></dl>
 
 </div>
 </div>
@@ -4384,14 +4382,14 @@ So that we do not have to duplicate the code of <code>wcsftime()</code>, we conv
 </div><div class="memdoc">
 
 <p>Converting string, wchar_t input, char allocate output. </p>
-<dl class="section attention"><dt>Attention</dt><dd>function wstring_wstocs_alloc required free result </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>function wstring_wstocs_alloc requires to free the returned result </dd></dl>
 
 </div>
 </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 30 2018 04:47:00 for libwchar2 0.0.7 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 30 2018 22:43:43 for libwchar2 0.0.7 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>
