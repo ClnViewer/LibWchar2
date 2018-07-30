@@ -8,7 +8,7 @@
 #projectname{font: 300% monospace,Tahoma, Arial,sans-serif;padding: 6px 4px;}
 .memtitle {font-size: 28px;font-family: cursive;}
 .paramname {padding: 0px 15px 0px 10px;}
-.textblock {padding-bottom: 10px;}
+.textblock {padding: 5px 0px 10px 0px;}
 dl.warning, dl.attention, dl.note {margin: 15px 0px 15px 12px;padding-left:10px;}
 dl.note {border-color: #FFC107;}
 dl.warning {border-color: #FF5722;}
