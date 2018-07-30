@@ -1104,8 +1104,10 @@ Wide-character string compare\&.
 .PP
 Convert date and time to a formatted wide-character string\&. This is the wide-character counterpart of \fCstrftime()\fP\&. 
 .br
-So that we do not have to duplicate the code of \fCstrftime()\fP, we convert the format string to multibyte, call \fCstrftime()\fP, then convert the result back into wide characters\&.
+So that we do not have to duplicate the code of \fCwcsftime()\fP, we convert the format string to multibyte, call \fCwcsftime()\fP, then convert the result back into wide characters\&.
 .PP
+.IP "\(bu" 2
+\fBwcsptime manual\fP see \fCwcsptime(\&.\&.)\fP
 .IP "\(bu" 2
 \fBwcsftime manual\fP 
 .PP
@@ -1178,10 +1180,12 @@ Find wide characters in string\&.
 .SS "wchar_t* _wcsptime (const wchar_t *, const wchar_t *, void *)"
 
 .PP
-Convert a wide-character string representation of time to a time tm structure\&. The \fCwcsptime()\fP function equivalent to \fCstrptime()\fP function\&. The \fCstrptime()\fP function it converts the character string pointed to by s, preserving the values in the tm structure, describes the time as a component, broken-down time, according to the format specified in the format\&.
+Convert a wide-character string representation of time to a time tm structure\&. The \fCwcsptime()\fP function equivalent to \fCstrptime()\fP function\&. The \fCwcsptime()\fP function it converts the character string pointed to by s, preserving the values in the tm structure, describes the time as a component, broken-down time, according to the format specified in the format\&.
 .PP
 .IP "\(bu" 2
-
+\fBwcsftime manual\fP see \fCwcsftime\&.(\&.\&.)\fP
+.IP "\(bu" 2
+\fBwcsptime manual\fP 
 .PP
 
 .SS "wchar_t* _wcsrchr (const wchar_t *, wchar_t)"

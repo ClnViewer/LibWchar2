@@ -2099,8 +2099,9 @@ size wide string </td></tr>
 
 <p>Convert date and time to a formatted wide-character string. </p>
 <p>This is the wide-character counterpart of <code>strftime()</code>. <br />
-So that we do not have to duplicate the code of <code>strftime()</code>, we convert the format string to multibyte, call <code>strftime()</code>, then convert the result back into wide characters.</p>
+So that we do not have to duplicate the code of <code>wcsftime()</code>, we convert the format string to multibyte, call <code>wcsftime()</code>, then convert the result back into wide characters.</p>
 <ul>
+<li><a class="el" href="wcsptime.html">wcsptime manual</a> see <code>wcsptime(..)</code></li>
 <li><a class="el" href="wcsftime.html">wcsftime manual</a> </li>
 </ul>
 
@@ -2436,9 +2437,10 @@ So that we do not have to duplicate the code of <code>strftime()</code>, we conv
 </div><div class="memdoc">
 
 <p>Convert a wide-character string representation of time to a time tm structure. </p>
-<p>The <code>wcsptime()</code> function equivalent to <code>strptime()</code> function. The <code>strptime()</code> function it converts the character string pointed to by s, preserving the values in the tm structure, describes the time as a component, broken-down time, according to the format specified in the format.</p>
+<p>The <code>wcsptime()</code> function equivalent to <code>strptime()</code> function. The <code>wcsptime()</code> function it converts the character string pointed to by s, preserving the values in the tm structure, describes the time as a component, broken-down time, according to the format specified in the format.</p>
 <ul>
-<li></li>
+<li><a class="el" href="wcsftime.html">wcsftime manual</a> see <code>wcsftime.(..)</code></li>
+<li><a class="el" href="wcsptime.html">wcsptime manual</a> </li>
 </ul>
 
 </div>
@@ -4282,7 +4284,7 @@ So that we do not have to duplicate the code of <code>strftime()</code>, we conv
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jul 30 2018 02:03:08 for libwchar2 0.0.7 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jul 30 2018 04:21:32 for libwchar2 0.0.7 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

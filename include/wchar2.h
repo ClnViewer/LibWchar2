@@ -747,10 +747,11 @@ wchar_t   _fputwc(wchar_t, FILE *restrict);
           /*! \brief Convert date and time to a formatted wide-character string.
            *
            * \details This is the wide-character counterpart of `strftime()`.  
-           * So that we do not have to duplicate the code of `strftime()`, we convert the format string to
-           * multibyte, call `strftime()`, then convert the result back into wide
+           * So that we do not have to duplicate the code of `wcsftime()`, we convert the format string to
+           * multibyte, call `wcsftime()`, then convert the result back into wide
            * characters.
            *
+           * - \ref wcsptime see `wcsptime(..)`
            * - \subpage wcsftime
            */
 size_t    _wcsftime(wchar_t *restrict, size_t sz, const wchar_t *restrict, const void *restrict);
@@ -759,10 +760,11 @@ size_t    _wcsftime(wchar_t *restrict, size_t sz, const wchar_t *restrict, const
            * \brief Convert a wide-character string representation of time to a time tm structure.
            *
            * \details The `wcsptime()` function equivalent to `strptime()` function.
-           * The `strptime()` function it converts the character string pointed to by s, preserving the values in the tm structure,
+           * The `wcsptime()` function it converts the character string pointed to by s, preserving the values in the tm structure,
            * describes the time as a component, broken-down time, according to the format specified in the format.
            *
-           * - \subpage 
+           * - \ref wcsftime see `wcsftime.(..)`
+           * - \subpage wcsptime
            */
 wchar_t * _wcsptime(const wchar_t*, const wchar_t*, void*);
 
