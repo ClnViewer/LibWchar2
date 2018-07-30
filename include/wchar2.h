@@ -751,8 +751,8 @@ wchar_t   _fputwc(wchar_t, FILE *restrict);
            * multibyte, call `wcsftime()`, then convert the result back into wide
            * characters.
            *
-           * - \ref wcsptime see `wcsptime(..)`
            * - \subpage wcsftime
+           * - \ref wcsptime related `wcsptime(..)`
            */
 size_t    _wcsftime(wchar_t *restrict, size_t sz, const wchar_t *restrict, const void *restrict);
 
@@ -763,8 +763,8 @@ size_t    _wcsftime(wchar_t *restrict, size_t sz, const wchar_t *restrict, const
            * The `wcsptime()` function it converts the character string pointed to by s, preserving the values in the tm structure,
            * describes the time as a component, broken-down time, according to the format specified in the format.
            *
-           * - \ref wcsftime see `wcsftime.(..)`
            * - \subpage wcsptime
+           * - \ref wcsftime related `wcsftime.(..)`
            */
 wchar_t * _wcsptime(const wchar_t*, const wchar_t*, void*);
 
@@ -957,6 +957,7 @@ wchar_t * _wpathnormalize(const wchar_t*, int)
           /*! \brief Normalize slash from path, struct string_ws input */
 wchar_t * _wpathnormalize_ws(const string_ws*)
                 __attribute__((warn_unused_result));
+
           /*!
            *  \brief Normalize slash from path, convert file name from wide characters to UTF-8
            *  \attention function u8wpathnormalize required free result
@@ -973,8 +974,10 @@ char *    u8wpathnormalize(const wchar_t*)
            *  \paragraph Allocate memory functions
            */
 
+
           /*! \brief Memory free string, empty and clear struct string_ws */
 void      wstring_free(string_ws *restrict);
+
           /*! \brief Memory allocation string, struct string_ws->str output */
 size_t    wstring_alloc(string_ws *restrict, size_t);
 
@@ -1006,7 +1009,13 @@ wchar_t * wstring_cstows_alloc(const char *restrict)
 size_t    wstring_cstows_ws_alloc(string_ws *restrict, const char *restrict);
 
           /*!
-           *  \brief Append string, format vargs input, struct string_ws output
+           *  \brief Append string, format `vargs` support input, `struct string_ws` output
+           *
+           *  \param destination \ref string_ws
+           *  \param format  String type `wchar_t*`.
+           *  \param arguments  Arguments support to `vargs` types, 125 max.
+           *  \return lenght of `output` produced.
+           *
            *  \attention curent status: broken, if out data large 8192 byte!
            *             Now, fixing output buffer size 8192 byte for *nix version.
            *             For MinGW32 always fixing output buffer size 8192 byte.
@@ -1014,15 +1023,29 @@ size_t    wstring_cstows_ws_alloc(string_ws *restrict, const char *restrict);
            */
 size_t    wstring_format(string_ws*, const wchar_t *restrict, ...);
 
-          /*! \brief Append string, wchar_t input, struct string_ws output */
+          /*!
+           *  \brief Append string: `wchar_t*`, lenght input, `struct string_ws` output
+           *
+           *  \param destination \ref string_ws
+           *  \param source  String type `wchar_t*`.
+           *  \param lenght  Lenght of `source` string.
+           *  \return lenght of `output` produced.
+           *
+           *  \attention function `wstring_append()` required free result
+           *
+           */
 size_t    wstring_append(string_ws*, const wchar_t *restrict, size_t);
 
           /*!
-           *  \brief Append string, only wchar_t* args inputs, struct string_ws output
+           *  \brief Append strings, only `wchar_t*` strings args inputs, `struct string_ws` output
            *
-           *  \note Do not use this function directly, first use the wstring_appends() macro,
+           *  \param destination \ref string_ws
+           *  \param arguments  Strings type `wchar_t*`, 126 max.
+           *  \return lenght of `output` produced.
+           *
+           *  \note Do not use this function directly, first use the `wstring_appends()` macro,
            *        or end the last function's parameters with a value of NULL.
-           *  \attention function wstring_appends_() required free result
+           *  \attention function `wstring_appends_()` required free result
            *
            */
 size_t    wstring_appends_(string_ws*, ...);
@@ -1032,7 +1055,17 @@ size_t    wstring_appends_(string_ws*, ...);
            */
 #define   wstring_appends(A,...) wstring_appends_(A,__VA_ARGS__,NULL)
 
-          /*! \brief Append string, char input, struct string_ws output */
+          /*!
+           *  \brief Append string: source type `char*`, lenght input, `struct string_ws` output
+           *
+           *  \param destination \ref string_ws
+           *  \param source  String type `char*`.
+           *  \param lenght  Lenght of `source` string.
+           *  \return lenght of `output` produced.
+           *
+           *  \attention function `wstring_append_cvt()` required free result
+           *
+           */
 size_t    wstring_append_cvt(string_ws*, const char *restrict, size_t);
 
           /*!

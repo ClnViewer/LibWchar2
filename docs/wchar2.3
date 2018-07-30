@@ -625,19 +625,19 @@ include/wchar2.h
 .ti -1c
 .RI "size_t \fBwstring_format\fP (\fBstring_ws\fP *, const wchar_t *restrict,\&.\&.\&.)"
 .br
-.RI "Append string, format vargs input, struct \fBstring_ws\fP output\&. "
+.RI "Append string, format \fCvargs\fP support input, \fCstruct \fBstring_ws\fP\fP output\&. "
 .ti -1c
 .RI "size_t \fBwstring_append\fP (\fBstring_ws\fP *, const wchar_t *restrict, size_t)"
 .br
-.RI "Append string, wchar_t input, struct \fBstring_ws\fP output\&. "
+.RI "Append string: \fCwchar_t*\fP, lenght input, \fCstruct \fBstring_ws\fP\fP output\&. "
 .ti -1c
 .RI "size_t \fBwstring_appends_\fP (\fBstring_ws\fP *,\&.\&.\&.)"
 .br
-.RI "Append string, only wchar_t* args inputs, struct \fBstring_ws\fP output\&. "
+.RI "Append strings, only \fCwchar_t*\fP strings args inputs, \fCstruct \fBstring_ws\fP\fP output\&. "
 .ti -1c
 .RI "size_t \fBwstring_append_cvt\fP (\fBstring_ws\fP *, const char *restrict, size_t)"
 .br
-.RI "Append string, char input, struct \fBstring_ws\fP output\&. "
+.RI "Append string: source type \fCchar*\fP, lenght input, \fCstruct \fBstring_ws\fP\fP output\&. "
 .ti -1c
 .RI "size_t \fBwstring_cstows\fP (wchar_t [], size_t, const char *restrict, size_t)"
 .br
@@ -1107,9 +1107,9 @@ Convert date and time to a formatted wide-character string\&. This is the wide-c
 So that we do not have to duplicate the code of \fCwcsftime()\fP, we convert the format string to multibyte, call \fCwcsftime()\fP, then convert the result back into wide characters\&.
 .PP
 .IP "\(bu" 2
-\fBwcsptime manual\fP see \fCwcsptime(\&.\&.)\fP
+\fBwcsftime manual\fP
 .IP "\(bu" 2
-\fBwcsftime manual\fP 
+\fBwcsptime manual\fP related \fCwcsptime(\&.\&.)\fP 
 .PP
 
 .SS "size_t _wcslen (const wchar_t *)"
@@ -1183,9 +1183,9 @@ Find wide characters in string\&.
 Convert a wide-character string representation of time to a time tm structure\&. The \fCwcsptime()\fP function equivalent to \fCstrptime()\fP function\&. The \fCwcsptime()\fP function it converts the character string pointed to by s, preserving the values in the tm structure, describes the time as a component, broken-down time, according to the format specified in the format\&.
 .PP
 .IP "\(bu" 2
-\fBwcsftime manual\fP see \fCwcsftime\&.(\&.\&.)\fP
+\fBwcsptime manual\fP
 .IP "\(bu" 2
-\fBwcsptime manual\fP 
+\fBwcsftime manual\fP related \fCwcsftime\&.(\&.\&.)\fP 
 .PP
 
 .SS "wchar_t* _wcsrchr (const wchar_t *, wchar_t)"
@@ -1626,19 +1626,81 @@ function wcstou8s required free result
 .RE
 .PP
 
-.SS "size_t wstring_appends_ (\fBstring_ws\fP *,  \&.\&.\&.)"
+.SS "size_t wstring_append (\fBstring_ws\fP *, const wchar_t * restrict, size_t)"
 
 .PP
-Append string, only wchar_t* args inputs, struct \fBstring_ws\fP output\&. 
+Append string: \fCwchar_t*\fP, lenght input, \fCstruct \fBstring_ws\fP\fP output\&. 
 .PP
-\fBNote:\fP
+\fBParameters:\fP
 .RS 4
-Do not use this function directly, first use the \fBwstring_appends()\fP macro, or end the last function's parameters with a value of NULL\&. 
+\fIdestination\fP \fBstring_ws\fP 
+.br
+\fIsource\fP String type \fCwchar_t*\fP\&. 
+.br
+\fIlenght\fP Lenght of \fCsource\fP string\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+lenght of \fCoutput\fP produced\&.
 .RE
 .PP
 \fBAttention:\fP
 .RS 4
-function \fBwstring_appends_()\fP required free result 
+function \fC\fBwstring_append()\fP\fP required free result 
+.RE
+.PP
+
+.SS "size_t wstring_append_cvt (\fBstring_ws\fP *, const char * restrict, size_t)"
+
+.PP
+Append string: source type \fCchar*\fP, lenght input, \fCstruct \fBstring_ws\fP\fP output\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdestination\fP \fBstring_ws\fP 
+.br
+\fIsource\fP String type \fCchar*\fP\&. 
+.br
+\fIlenght\fP Lenght of \fCsource\fP string\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+lenght of \fCoutput\fP produced\&.
+.RE
+.PP
+\fBAttention:\fP
+.RS 4
+function \fC\fBwstring_append_cvt()\fP\fP required free result 
+.RE
+.PP
+
+.SS "size_t wstring_appends_ (\fBstring_ws\fP *,  \&.\&.\&.)"
+
+.PP
+Append strings, only \fCwchar_t*\fP strings args inputs, \fCstruct \fBstring_ws\fP\fP output\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdestination\fP \fBstring_ws\fP 
+.br
+\fIarguments\fP Strings type \fCwchar_t*\fP, 126 max\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+lenght of \fCoutput\fP produced\&.
+.RE
+.PP
+\fBNote:\fP
+.RS 4
+Do not use this function directly, first use the \fC\fBwstring_appends()\fP\fP macro, or end the last function's parameters with a value of NULL\&. 
+.RE
+.PP
+\fBAttention:\fP
+.RS 4
+function \fC\fBwstring_appends_()\fP\fP required free result 
 .RE
 .PP
 
@@ -1671,7 +1733,21 @@ function wstring_cstows_alloc required free result
 .SS "size_t wstring_format (\fBstring_ws\fP *, const wchar_t * restrict,  \&.\&.\&.)"
 
 .PP
-Append string, format vargs input, struct \fBstring_ws\fP output\&. 
+Append string, format \fCvargs\fP support input, \fCstruct \fBstring_ws\fP\fP output\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdestination\fP \fBstring_ws\fP 
+.br
+\fIformat\fP String type \fCwchar_t*\fP\&. 
+.br
+\fIarguments\fP Arguments support to \fCvargs\fP types, 125 max\&. 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+lenght of \fCoutput\fP produced\&.
+.RE
 .PP
 \fBAttention:\fP
 .RS 4
