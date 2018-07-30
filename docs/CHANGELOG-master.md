@@ -11,4 +11,3 @@
 - [#6](https://github.com/ClnViewer/LibWchar2/commit/237aa7bf73f67adcdce7213e3e9cf49ee6df940c)  	add wstring_timeformat function 2018-07-29 (*28 July 2018 22:56*)
 - [#7](https://github.com/ClnViewer/LibWchar2/commit/d56aa5b322a3054cb2267aaf92980b6549884321)  	reorganizing CMakeList 2018-07-28 (*28 July 2018 18:56*)
 - [#8](https://github.com/ClnViewer/LibWchar2/commit/fffb546b29c9360f2f3876bcae597a561c079eb6)  	reorganizing CMakeList 2018-07-28 (*28 July 2018 18:55*)
-- [#9](https://github.com/ClnViewer/LibWchar2/commit/af48511d1c94d0f0fdef0f56452d6e8515a2df20)  	update docs 2018-07-28 (*28 July 2018 15:52*)

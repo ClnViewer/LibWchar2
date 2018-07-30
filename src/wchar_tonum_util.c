@@ -88,9 +88,9 @@
 
 #   define __MACRO_WCHAR_END                                                     \
         if (                                                                     \
-            (wo)                   &&                                            \
-            (cret != NULL)         &&                                            \
-            ((rsz = strlen(cret))) &&                                            \
+            (wo)                               &&                                \
+            (cret != NULL)                     &&                                \
+            ((rsz = _mbstowcs(NULL, cret, 0))) &&                                \
             (rsz < ssz)                                                          \
            )                                                                     \
         {                                                                        \
