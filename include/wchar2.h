@@ -449,7 +449,11 @@ int       _wctob(wchar_t);
            */
 wchar_t   _btowc(int);
 
-/*! \par Other non standart functions */
+          /*!
+           * \~
+           * \par Other non standart functions
+           *
+           */
 
           /*!
            * \brief wchar_t* print
@@ -732,239 +736,256 @@ size_t    _swprintf(wchar_t *restrict, size_t, const wchar_t *restrict, ...)
                 /* __attribute__((__format__(__wprintf__, 3, 0))) */ ;
 
           /*!
-           *  \~English
-           *  \brief Write a formatted wide character string to 'stdout'.
+           * \~English
+           * \brief Write a formatted wide character string to 'stdout'.
            *
-           *  \~Russian
-           *  \brief Записать согласно формату широкий строку символов в консоль, поток 'stdout'.
+           * \~Russian
+           * \brief Записать согласно формату широкий строку символов в консоль, поток 'stdout'.
            *
+           * \~
            * - \subpage wprintf
            */
 size_t    _wprintf(const wchar_t *restrict fmt, ...)
                 /* __attribute__((__format__(__wprintf__, 1, 0))) */ ;
 
           /*!
-           *  \~English
-           *  \brief Write a wide character string to a file or stream.
+           * \~English
+           * \brief Write a wide character string to a file or stream.
            *
-           *  \~Russian
-           *  \brief Записать широкий строку символов в поток открытого файла.
+           * \~Russian
+           * \brief Записать широкий строку символов в поток открытого файла.
            *
+           * \~
            * - \subpage fputws
            */
 int       _fputws(const wchar_t *restrict, FILE *restrict);
 
           /*!
-           *  \~English
-           *  \brief Write a wide character to a file or stream.
+           * \~English
+           * \brief Write a wide character to a file or stream.
            *
-           *  \~Russian
-           *  \brief Записать широкий символ в поток открытого файла.
+           * \~Russian
+           * \brief Записать широкий символ в поток открытого файла.
            *
+           * \~
            * - \subpage fputwc
            */
 wchar_t   _fputwc(wchar_t, FILE *restrict);
 
           /*!
+           * \~English
+           * \brief Convert date and time to a formatted wide-character string.
            *
-           *  \~English
-           *  \brief Convert date and time to a formatted wide-character string.
+           * \details The original version of the `strftime ()` function is used for the conversion.
+           *          The `wcsftime()` function converts the results from wide characters to a multibyte
+           *          string and back.
            *
-           *  \details The original version of the `strftime ()` function is used for the conversion.
-           *           The `wcsftime()` function converts the results from wide characters to a multibyte
-           *           string and back.
+           * \~Russian
+           * \brief Преобразование даты и времени в форматированную строку с широкими символоми.
            *
-           *  \~Russian
-           *  \brief Преобразование даты и времени в форматированную строку с широкими символоми.
+           * \details Это широкосимвольный аналог `strftime()`.
+           *          Для преобразования используется оригинальная версия функции `strftime()`.
+           *          Функция преобразовывает результаты из строки широких символов в многобайтовую
+           *          строку и обратно.
            *
-           *  \details Это широкосимвольный аналог `strftime()`.
-           *           Для преобразования используется оригинальная версия функции `strftime()`.
-           *           Функция преобразовывает результаты из строки широких символов в многобайтовую
-           *           строку и обратно.
-           *
+           * \~
            * - \subpage wcsftime
            * - \ref wcsptime related `wcsptime(..)`
            */
 size_t    _wcsftime(wchar_t *restrict, size_t sz, const wchar_t *restrict, const void *restrict);
 
           /*!
+           * \~English
+           * \brief Convert a wide-character string representation of time to a time `tm` structure.
            *
-           *  \~English
-           *  \brief Convert a wide-character string representation of time to a time `tm` structure.
+           * \details The function `wcsptime ()` is equivalent to the function `strptime()`.
+           *          The `wcsptime()` function converts a wide character string into a `tm`
+           *          structure format, according to the format specified in the parameters.
            *
-           *  \details The function `wcsptime ()` is equivalent to the function `strptime()`.
-           *           The `wcsptime()` function converts a wide character string into a `tm`
-           *           structure format, according to the format specified in the parameters.
+           * \~Russian
+           * \brief Преобразование широкоформатного строкового представления времени в структуру `tm`.
            *
-           *  \~Russian
-           *  \brief Преобразование широкоформатного строкового представления времени в структуру `tm`.
+           * \details Функция `wcsptime()` эквивалентна функции `strptime()`.
+           *          Функция `wcsptime()` преобразует строку широких символов в формат структуры `tm`,
+           *          в соответствии с форматом, указанным в параметрах.
            *
-           *  \details Функция `wcsptime()` эквивалентна функции `strptime()`.
-           *           Функция `wcsptime()` преобразует строку широких символов в формат структуры `tm`,
-           *           в соответствии с форматом, указанным в параметрах.
-           *
+           * \~
            * - \subpage wcsptime
            * - \ref wcsftime related `wcsftime.(..)`
            */
 wchar_t * _wcsptime(const wchar_t*, const wchar_t*, void*);
 
           /*!
-           *  \~English
-           *  \paragraph Open file stream
+           * \~English
+           * \paragraph Open file stream
            *
-           *  \~Russian
-           *  \paragraph Открыть поток для файла
+           * \~Russian
+           * \paragraph Открыть поток для файла
            *
            */
 
           /*!
-           *  \~English
-           *  \brief Open the stream for the file, takes as the first parameter the file name
-           *         and the second parameter the opening mode in the form of wide characters.
+           * \~English
+           * \brief Open the stream for the file, takes as the first parameter the file name
+           *        and the second parameter the opening mode in the form of wide characters.
            *
-           *  \~Russian
-           *  \brief Открыть поток для файла, принимает в качестве первого параметра имя файла
-           *         и второго параметра режим открытия в виде широких символов.
+           * \~Russian
+           * \brief Открыть поток для файла, принимает в качестве первого параметра имя файла
+           *        и второго параметра режим открытия в виде широких символов.
            *
+           * \~
            * - \subpage wfopen
            */
 FILE    * _wfopen(const wchar_t*, const wchar_t*)
                 __attribute__((warn_unused_result));
 
           /*!
-           *  \~English
-           *  \brief The same as `wfopen`, the `size_t` parameter must contain the length
-           *         of the variable of the file name, or zero.
+           * \~English
+           * \brief The same as `wfopen`, the `size_t` parameter must contain the length
+           *        of the variable of the file name, or zero.
            *
-           *  \~Russian
-           *  \brief То же, что и `wfopen`, параметр `size_t` должен содержать длинну переменной
-           *         имени файла, или ноль.
+           * \~Russian
+           * \brief То же, что и `wfopen`, параметр `size_t` должен содержать длинну переменной
+           *        имени файла, или ноль.
            *
+           * \~
            * - \subpage wfopen
            */
 FILE    * _wfopen_s(const wchar_t*, size_t, const wchar_t*)
                 __attribute__((warn_unused_result));
 
           /*!
-           *  \~English
-           *  \brief The same as `wfopen`, the input parameter filename is passed in the `string_ws` structure.
+           * \~English
+           * \brief The same as `wfopen`, the input parameter filename is passed in the `string_ws` structure.
            *
-           *  \~Russian
-           *  \brief То же, что и `wfopen`, входной параметр имя файла передаеться в структуре `string_ws`.
+           * \~Russian
+           * \brief То же, что и `wfopen`, входной параметр имя файла передаеться в структуре `string_ws`.
            *
+           * \~
            * - \subpage wfopen
            */
 FILE    * _wfopen_ws(const string_ws*, const wchar_t*)
                 __attribute__((warn_unused_result));
 
           /*!
-           *  \~English
-           *  \brief Automatic type selector for wfopen* functions
+           * \~English
+           * \brief Automatic type selector for wfopen* functions
            *
-           *  \~Russian
-           *  \brief Автоматический селектор типов для функций `wfopen*`
+           * \~Russian
+           * \brief Автоматический селектор типов для функций `wfopen*`
            *
+           * \~
            * - \subpage wfopen
            */
 FILE    * _wfopen_selector(int, const void*, size_t, const void*)
                 __attribute__((warn_unused_result));
 
           /*!
-           *  \~English
-           *  \brief Open file stream, after converting the file name from wide characters to UTF-8
+           * \~English
+           * \brief Open file stream, after converting the file name from wide characters to UTF-8
            *
-           *  \attention function u8wfopen requires to free the returned result
+           * \attention function u8wfopen requires to free the returned result
            *
-           *  \~Russian
-           *  \brief Открыть поток для файла, предварительно преобразовав имя файла из широких символов в UTF-8
+           * \~Russian
+           * \brief Открыть поток для файла, предварительно преобразовав имя файла из широких символов в UTF-8
            *
-           *  \attention Функция u8wfopen требует освободить возвращаемый результат
+           * \attention Функция u8wfopen требует освободить возвращаемый результат
+           *
            */
 FILE    * u8wfopen(const wchar_t*, const wchar_t*)
                 __attribute__((warn_unused_result));
 
           /*!
-           *  \~English
-           *  \paragraph Statistic from file
+           * \~English
+           * \paragraph Statistic from file
            *
-           *  \brief Functions `wstat*()` fill the structure with data about the file pointed to by `struct stat`,
-           *         associated with the file name.
+           * \brief Functions `wstat*()` fill the structure with data about the file pointed to by `struct stat`,
+           *        associated with the file name.
            *
-           *  \return If stat is successfully populated, `0` is returned.
-           *          In case of failure, `-1` is returned, and `errno` is set to `ENOENT`.
+           * \return If stat is successfully populated, `0` is returned.
+           *         In case of failure, `-1` is returned, and `errno` is set to `ENOENT`.
            *
-           *  \note The operation of the functions `wstat*()` is completely analogous to the function `stat()`
+           * \note The operation of the functions `wstat*()` is completely analogous to the function `stat()`
            *
+           * \~Russian
+           * \paragraph Статисика параметров файла
            *
-           *  \~Russian
-           *  \paragraph Статисика параметров файла
+           * \brief Функции `wstat*()` запоняют структуру данными о файле, на которую указывает `struct stat`,
+           *        связанном с именем файла.
            *
-           *  \brief Функции `wstat*()` запоняют структуру данными о файле, на которую указывает `struct stat`,
-           *         связанном с именем файла.
+           * \return При успешном заполнении структуры stat возвращается `0`.
+           *         В случае неудачи возвращается `—1`, а `errno` устанавливается в `ENOENT`.
            *
-           *  \return При успешном заполнении структуры stat возвращается `0`.
-           *          В случае неудачи возвращается `—1`, а `errno` устанавливается в `ENOENT`.
+           * \note Работа функций `wstat*()` полностью аналогична функции `stat()`
            *
-           *  \note Работа функций `wstat*()` полностью аналогична функции `stat()`
-           *
+           * \~
            * - \subpage wstat
            */
 int       _wstat(const wchar_t*, struct stat*);
 
           /*!
-           *  \~English
-           *  \brief The same as `wstat`, the `size_t` parameter must contain the length
-           *         of the variable of the file name, or zero.
+           * \~English
+           * \brief The same as `wstat`, the `size_t` parameter must contain the length
+           *        of the variable of the file name, or zero.
            *
-           *  \~Russian
-           *  \brief То же, что и `wstat`, параметр `size_t` должен содержать длинну переменной
-           *         имени файла, или ноль.
+           * \~Russian
+           * \brief То же, что и `wstat`, параметр `size_t` должен содержать длинну переменной
+           *        имени файла, или ноль.
            *
+           * \~
            * - \subpage wstat
            */
 int       _wstat_s(const wchar_t*, size_t, struct stat*);
-          /*! \brief Statistic from file, struct string_ws input */
 
           /*!
-           *  \~English
-           *  \brief The same as `wstat`, the input parameter filename is passed in the `string_ws` structure.
+           * \~English
+           * \brief The same as `wstat`, the input parameter filename is passed in the `string_ws` structure.
            *
-           *  \~Russian
-           *  \brief То же, что и `wfopen`, входной параметр имя файла передаеться в структуре `string_ws`.
+           * \~Russian
+           * \brief То же, что и `wfopen`, входной параметр имя файла передаеться в структуре `string_ws`.
            *
+           * \~
            * - \subpage wstat
            */
 int       _wstat_ws(const string_ws*, struct stat*);
-          /*! \brief Automatic type selector for wstat* functions */
 
           /*!
-           *  \~English
-           *  \brief Automatic type selector for `wstat*` functions
+           * \~English
+           * \brief Automatic type selector for `wstat*` functions
            *
-           *  \~Russian
-           *  \brief Автоматический селектор типов для функций `wstat*`
+           * \~Russian
+           * \brief Автоматический селектор типов для функций `wstat*`
            *
+           * \~
            * - \subpage wstat
            */
 int       _wstat_selector(int, const void*, size_t, const void*);
 
           /*!
-           *  \~English
-           *  \brief Get file statistics by first converting the file name from wide characters to UTF-8.
+           * \~English
+           * \brief Get file statistics by first converting the file name from wide characters to UTF-8.
            *
-           *  \attention Function u8wfopen requires to free the returned result
+           * \attention Function u8wfopen requires to free the returned result
            *
-           *  \~Russian
-           *  \brief Получить статистику файла, предварительно преобразовав имя файла из широких символов в UTF-8
+           * \~Russian
+           * \brief Получить статистику файла, предварительно преобразовав имя файла из широких символов в UTF-8
            *
-           *  \attention Функция u8wfopen требует освободить возвращаемый результат
+           * \attention Функция u8wfopen требует освободить возвращаемый результат
            */
 int       u8wstat(const wchar_t*, void*);
 
           /*!
-           *  \paragraph Rename (move) file
-           *  \note The wrename* function shall change the name or location of a file, standart returned
+           * \~English
+           * \paragraph Rename (move) file
+           * \note The `wrename*()` function changes the name or location of the file,
+           *       returns a standard response as a function of `rename()`.
            *
+           * \~Russian
+           * \paragraph Переименовать (переместить) файл
+           * \note Функция `wrename*()` изменяет имя или местоположение файла, возвращает стандартный ответ,
+           *       как функция `rename()`
+           *
+           * \~
            * - \subpage wrename
            */
 
