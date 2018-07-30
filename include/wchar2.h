@@ -732,24 +732,55 @@ size_t    _swprintf(wchar_t *restrict, size_t, const wchar_t *restrict, ...)
                 /* __attribute__((__format__(__wprintf__, 3, 0))) */ ;
 
           /*!
-           * \brief Write formatted wide character to `stdout` `IO`
+           *  \~English
+           *  \brief Write a formatted wide character string to 'stdout'.
+           *
+           *  \~Russian
+           *  \brief Записать согласно формату широкий строку символов в консоль, поток 'stdout'.
            *
            * - \subpage wprintf
            */
 size_t    _wprintf(const wchar_t *restrict fmt, ...)
                 /* __attribute__((__format__(__wprintf__, 1, 0))) */ ;
 
-          /*! \brief Write a wide character string to a file or stream */
+          /*!
+           *  \~English
+           *  \brief Write a wide character string to a file or stream.
+           *
+           *  \~Russian
+           *  \brief Записать широкий строку символов в поток открытого файла.
+           *
+           * - \subpage fputws
+           */
 int       _fputws(const wchar_t *restrict, FILE *restrict);
-          /*! \brief Write a wide character to a file or stream */
+
+          /*!
+           *  \~English
+           *  \brief Write a wide character to a file or stream.
+           *
+           *  \~Russian
+           *  \brief Записать широкий символ в поток открытого файла.
+           *
+           * - \subpage fputwc
+           */
 wchar_t   _fputwc(wchar_t, FILE *restrict);
 
-          /*! \brief Convert date and time to a formatted wide-character string.
+          /*!
            *
-           * \details This is the wide-character counterpart of `strftime()`.
-           * So that we do not have to duplicate the code of `wcsftime()`, we convert the format string to
-           * multibyte, call `wcsftime()`, then convert the result back into wide
-           * characters.
+           *  \~English
+           *  \brief Convert date and time to a formatted wide-character string.
+           *
+           *  \details The original version of the `strftime ()` function is used for the conversion.
+           *           The `wcsftime()` function converts the results from wide characters to a multibyte
+           *           string and back.
+           *
+           *  \~Russian
+           *  \brief Преобразование даты и времени в форматированную строку с широкими символоми.
+           *
+           *  \details Это широкосимвольный аналог `strftime()`.
+           *           Для преобразования используется оригинальная версия функции `strftime()`.
+           *           Функция преобразовывает результаты из строки широких символов в многобайтовую
+           *           строку и обратно.
            *
            * - \subpage wcsftime
            * - \ref wcsptime related `wcsptime(..)`
@@ -757,11 +788,20 @@ wchar_t   _fputwc(wchar_t, FILE *restrict);
 size_t    _wcsftime(wchar_t *restrict, size_t sz, const wchar_t *restrict, const void *restrict);
 
           /*!
-           * \brief Convert a wide-character string representation of time to a time tm structure.
            *
-           * \details The `wcsptime()` function equivalent to `strptime()` function.
-           * The `wcsptime()` function it converts the character string pointed to by s, preserving the values in the tm structure,
-           * describes the time as a component, broken-down time, according to the format specified in the format.
+           *  \~English
+           *  \brief Convert a wide-character string representation of time to a time `tm` structure.
+           *
+           *  \details The function `wcsptime ()` is equivalent to the function `strptime()`.
+           *           The `wcsptime()` function converts a wide character string into a `tm`
+           *           structure format, according to the format specified in the parameters.
+           *
+           *  \~Russian
+           *  \brief Преобразование широкоформатного строкового представления времени в структуру `tm`.
+           *
+           *  \details Функция `wcsptime()` эквивалентна функции `strptime()`.
+           *           Функция `wcsptime()` преобразует строку широких символов в формат структуры `tm`,
+           *           в соответствии с форматом, указанным в параметрах.
            *
            * - \subpage wcsptime
            * - \ref wcsftime related `wcsftime.(..)`
@@ -769,23 +809,63 @@ size_t    _wcsftime(wchar_t *restrict, size_t sz, const wchar_t *restrict, const
 wchar_t * _wcsptime(const wchar_t*, const wchar_t*, void*);
 
           /*!
+           *  \~English
            *  \paragraph Open file stream
-           *  \note The wfopen* function opens the file whose name is the string pointed
-           *        to by pathname and associates a stream with it, standart returned.
+           *
+           *  \~Russian
+           *  \paragraph Открыть поток для файла
+           *
+           */
+
+          /*!
+           *  \~English
+           *  \brief Open the stream for the file, takes as the first parameter the file name
+           *         and the second parameter the opening mode in the form of wide characters.
+           *
+           *  \~Russian
+           *  \brief Открыть поток для файла, принимает в качестве первого параметра имя файла
+           *         и второго параметра режим открытия в виде широких символов.
            *
            * - \subpage wfopen
            */
-
-          /*! \brief Open file stream, accepts file name and mode as wide characters */
 FILE    * _wfopen(const wchar_t*, const wchar_t*)
                 __attribute__((warn_unused_result));
-          /*! \brief Same as wfopen, include size file name variable */
+
+          /*!
+           *  \~English
+           *  \brief The same as `wfopen`, the `size_t` parameter must contain the length
+           *         of the variable of the file name, or zero.
+           *
+           *  \~Russian
+           *  \brief То же, что и `wfopen`, параметр `size_t` должен содержать длинну переменной
+           *         имени файла, или ноль.
+           *
+           * - \subpage wfopen
+           */
 FILE    * _wfopen_s(const wchar_t*, size_t, const wchar_t*)
                 __attribute__((warn_unused_result));
-          /*! \brief Same as wfopen, file name as structure string_ws */
+
+          /*!
+           *  \~English
+           *  \brief The same as `wfopen`, the input parameter filename is passed in the `string_ws` structure.
+           *
+           *  \~Russian
+           *  \brief То же, что и `wfopen`, входной параметр имя файла передаеться в структуре `string_ws`.
+           *
+           * - \subpage wfopen
+           */
 FILE    * _wfopen_ws(const string_ws*, const wchar_t*)
                 __attribute__((warn_unused_result));
-          /*! \brief Automatic type selector for wfopen* functions */
+
+          /*!
+           *  \~English
+           *  \brief Automatic type selector for wfopen* functions
+           *
+           *  \~Russian
+           *  \brief Автоматический селектор типов для функций `wfopen*`
+           *
+           * - \subpage wfopen
+           */
 FILE    * _wfopen_selector(int, const void*, size_t, const void*)
                 __attribute__((warn_unused_result));
 
@@ -829,18 +909,55 @@ FILE    * u8wfopen(const wchar_t*, const wchar_t*)
            *
            * - \subpage wstat
            */
-
-          /*! \brief Statistic from file, wide char input */
 int       _wstat(const wchar_t*, struct stat*);
-          /*! \brief Statistic from file, wide char input with size */
+
+          /*!
+           *  \~English
+           *  \brief The same as `wstat`, the `size_t` parameter must contain the length
+           *         of the variable of the file name, or zero.
+           *
+           *  \~Russian
+           *  \brief То же, что и `wstat`, параметр `size_t` должен содержать длинну переменной
+           *         имени файла, или ноль.
+           *
+           * - \subpage wstat
+           */
 int       _wstat_s(const wchar_t*, size_t, struct stat*);
           /*! \brief Statistic from file, struct string_ws input */
+
+          /*!
+           *  \~English
+           *  \brief The same as `wstat`, the input parameter filename is passed in the `string_ws` structure.
+           *
+           *  \~Russian
+           *  \brief То же, что и `wfopen`, входной параметр имя файла передаеться в структуре `string_ws`.
+           *
+           * - \subpage wstat
+           */
 int       _wstat_ws(const string_ws*, struct stat*);
           /*! \brief Automatic type selector for wstat* functions */
-int       _wstat_selector(int, const void*, size_t, const void*);
+
           /*!
-           *  \brief Statistic from file, convert file name from wide characters to UTF-8
-           *  \attention function u8wstat requires to free the returned result
+           *  \~English
+           *  \brief Automatic type selector for `wstat*` functions
+           *
+           *  \~Russian
+           *  \brief Автоматический селектор типов для функций `wstat*`
+           *
+           * - \subpage wstat
+           */
+int       _wstat_selector(int, const void*, size_t, const void*);
+
+          /*!
+           *  \~English
+           *  \brief Get file statistics by first converting the file name from wide characters to UTF-8.
+           *
+           *  \attention Function u8wfopen requires to free the returned result
+           *
+           *  \~Russian
+           *  \brief Получить статистику файла, предварительно преобразовав имя файла из широких символов в UTF-8
+           *
+           *  \attention Функция u8wfopen требует освободить возвращаемый результат
            */
 int       u8wstat(const wchar_t*, void*);
 

@@ -1,4 +1,4 @@
-.TH "include/wchar2.h" 3 "Mon Jul 30 2018" "libwchar2 0.0.7" \" -*- nroff -*-
+.TH "include/wchar2.h" 3 "Tue Jul 31 2018" "libwchar2 0.0.7" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -413,7 +413,7 @@ include/wchar2.h
 .ti -1c
 .RI "size_t \fB_wprintf\fP (const wchar_t *restrict fmt,\&.\&.\&.)"
 .br
-.RI "Write formatted wide character to \fCstdout\fP \fCIO\fP "
+.RI "Write a formatted wide character string to 'stdout'\&. "
 .ti -1c
 .RI "int \fB_fputws\fP (const wchar_t *restrict, FILE *restrict)"
 .br
@@ -429,19 +429,19 @@ include/wchar2.h
 .ti -1c
 .RI "wchar_t * \fB_wcsptime\fP (const wchar_t *, const wchar_t *, void *)"
 .br
-.RI "Convert a wide-character string representation of time to a time tm structure\&. "
+.RI "Convert a wide-character string representation of time to a time \fCtm\fP structure\&. "
 .ti -1c
 .RI "FILE * \fB_wfopen\fP (const wchar_t *, const wchar_t *)"
 .br
-.RI "Open file stream, accepts file name and mode as wide characters\&. "
+.RI "Open the stream for the file, takes as the first parameter the file name and the second parameter the opening mode in the form of wide characters\&. "
 .ti -1c
 .RI "FILE * \fB_wfopen_s\fP (const wchar_t *, size_t, const wchar_t *)"
 .br
-.RI "Same as wfopen, include size file name variable\&. "
+.RI "The same as \fCwfopen\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. "
 .ti -1c
 .RI "FILE * \fB_wfopen_ws\fP (const \fBstring_ws\fP *, const wchar_t *)"
 .br
-.RI "Same as wfopen, file name as structure \fBstring_ws\fP\&. "
+.RI "The same as \fCwfopen\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. "
 .ti -1c
 .RI "FILE * \fB_wfopen_selector\fP (int, const void *, size_t, const void *)"
 .br
@@ -457,7 +457,7 @@ include/wchar2.h
 .ti -1c
 .RI "int \fB_wstat_s\fP (const wchar_t *, size_t, struct stat *)"
 .br
-.RI "Statistic from file, wide char input with size\&. "
+.RI "The same as \fCwstat\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. "
 .ti -1c
 .RI "int \fB_wstat_ws\fP (const \fBstring_ws\fP *, struct stat *)"
 .br
@@ -469,7 +469,7 @@ include/wchar2.h
 .ti -1c
 .RI "int \fBu8wstat\fP (const wchar_t *, void *)"
 .br
-.RI "Statistic from file, convert file name from wide characters to UTF-8\&. "
+.RI "Get file statistics by first converting the file name from wide characters to UTF-8\&. "
 .ti -1c
 .RI "int \fB_wrename\fP (const wchar_t *, const wchar_t *)"
 .br
@@ -1102,14 +1102,7 @@ Wide-character string compare\&.
 .SS "size_t _wcsftime (wchar_t * restrict, size_t sz, const wchar_t * restrict, const void * restrict)"
 
 .PP
-Convert date and time to a formatted wide-character string\&. This is the wide-character counterpart of \fCstrftime()\fP\&. So that we do not have to duplicate the code of \fCwcsftime()\fP, we convert the format string to multibyte, call \fCwcsftime()\fP, then convert the result back into wide characters\&.
-.PP
-.IP "\(bu" 2
-\fBwcsftime manual\fP
-.IP "\(bu" 2
-\fBwcsptime manual\fP related \fCwcsptime(\&.\&.)\fP 
-.PP
-
+Convert date and time to a formatted wide-character string\&. The original version of the \fCstrftime ()\fP function is used for the conversion\&. The \fCwcsftime()\fP function converts the results from wide characters to a multibyte string and back\&. 
 .SS "size_t _wcslen (const wchar_t *)"
 
 .PP
@@ -1178,14 +1171,7 @@ Find wide characters in string\&.
 .SS "wchar_t* _wcsptime (const wchar_t *, const wchar_t *, void *)"
 
 .PP
-Convert a wide-character string representation of time to a time tm structure\&. The \fCwcsptime()\fP function equivalent to \fCstrptime()\fP function\&. The \fCwcsptime()\fP function it converts the character string pointed to by s, preserving the values in the tm structure, describes the time as a component, broken-down time, according to the format specified in the format\&.
-.PP
-.IP "\(bu" 2
-\fBwcsptime manual\fP
-.IP "\(bu" 2
-\fBwcsftime manual\fP related \fCwcsftime\&.(\&.\&.)\fP 
-.PP
-
+Convert a wide-character string representation of time to a time \fCtm\fP structure\&. The function \fCwcsptime ()\fP is equivalent to the function \fCstrptime()\fP\&. The \fCwcsptime()\fP function converts a wide character string into a \fCtm\fP structure format, according to the format specified in the parameters\&. 
 .SS "wchar_t* _wcsrchr (const wchar_t *, wchar_t)"
 
 .PP
@@ -1366,17 +1352,7 @@ Number of column positions of a wide-character code\&.
 .SS "FILE* _wfopen (const wchar_t *, const wchar_t *)"
 
 .PP
-Open file stream, accepts file name and mode as wide characters\&. 
-.PP
-\fBNote:\fP
-.RS 4
-The wfopen* function opens the file whose name is the string pointed to by pathname and associates a stream with it, standart returned\&.
-.RE
-.PP
-.IP "\(bu" 2
-\fBwfopen manual\fP 
-.PP
-
+Open the stream for the file, takes as the first parameter the file name and the second parameter the opening mode in the form of wide characters\&. 
 .SS "wchar_t* _wmemchr (const wchar_t *, wchar_t, size_t)"
 
 .PP
@@ -1447,14 +1423,6 @@ all functions _wpathnormalize* requires to free the returned result, use type __
 .RE
 .PP
 
-.SS "size_t _wprintf (const wchar_t *restrict fmt,  \&.\&.\&.)"
-
-.PP
-Write formatted wide character to \fCstdout\fP \fCIO\fP 
-.IP "\(bu" 2
-\fBwprintf manual\fP 
-.PP
-
 .SS "int _wremove (const wchar_t *)"
 
 .PP
@@ -1495,10 +1463,18 @@ If stat is successfully populated, \fC0\fP is returned\&. In case of failure, \f
 .PP
 \fBNote:\fP
 .RS 4
-The operation of the functions \fCwstat*()\fP is completely analogous to the function \fCstat()\fP
+The operation of the functions \fCwstat*()\fP is completely analogous to the function \fCstat()\fP 
 .RE
 .PP
-Statistic from file, wide char input 
+
+.SS "int _wstat_selector (int, const void *, size_t, const void *)"
+
+.PP
+Automatic type selector for wstat* functions\&. Automatic type selector for \fCwstat*\fP functions 
+.SS "int _wstat_ws (const \fBstring_ws\fP *, struct stat *)"
+
+.PP
+Statistic from file, struct \fBstring_ws\fP input\&. The same as \fCwstat\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. 
 .SS "size_t u8stowcs (wchar_t *, const char *)"
 
 .PP
@@ -1579,11 +1555,11 @@ function u8wrename requires to free the returned result
 .SS "int u8wstat (const wchar_t *, void *)"
 
 .PP
-Statistic from file, convert file name from wide characters to UTF-8\&. 
+Get file statistics by first converting the file name from wide characters to UTF-8\&. 
 .PP
 \fBAttention:\fP
 .RS 4
-function u8wstat requires to free the returned result 
+Function u8wfopen requires to free the returned result 
 .RE
 .PP
 
