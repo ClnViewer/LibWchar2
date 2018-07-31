@@ -1003,13 +1003,6 @@ int       u8wstat(const wchar_t*, void*);
            * \~
            * - \subpage wrename
            */
-
-          /*!
-           * \~English
-           * \~Russian
-           * \~
-           * - \subpage wrename
-           */
 int       _wrename(const wchar_t*, const wchar_t*);
 
           /*!

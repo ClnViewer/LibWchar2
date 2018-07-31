@@ -4,4 +4,3 @@
 
 #### [Recent Commits to LibWchar2:master](https://github.com/ClnViewer/LibWchar2/commits/master.atom)
 
-- [#2](https://github.com/ClnViewer/LibWchar2/commit/b09e74b47b867e611257a0d48b96598a2dfea1f8)  	initial 0.0.7 version 2018-07-30 (*29 July 2018 22:03*)
