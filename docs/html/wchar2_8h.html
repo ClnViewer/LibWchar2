@@ -479,6 +479,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wc
 <tr class="memdesc:ad8dcd1716a3a33693b64d1af4cd4c15a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete (remove) file or directory, after converting the file name from wide characters to UTF-8.  <a href="#ad8dcd1716a3a33693b64d1af4cd4c15a">More...</a><br /></td></tr>
 <tr class="separator:ad8dcd1716a3a33693b64d1af4cd4c15a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf1d30c5bcf1bb610032eb22d4c97c7f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#acf1d30c5bcf1bb610032eb22d4c97c7f">_wmkdir</a> (const wchar_t *, mode_t)</td></tr>
+<tr class="memdesc:acf1d30c5bcf1bb610032eb22d4c97c7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a directory or a chain of directories specified in the path.  <a href="#acf1d30c5bcf1bb610032eb22d4c97c7f">More...</a><br /></td></tr>
 <tr class="separator:acf1d30c5bcf1bb610032eb22d4c97c7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19244541026a99536a7eb251be6afe81"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a19244541026a99536a7eb251be6afe81">_wmkdir_s</a> (const wchar_t *, size_t, mode_t)</td></tr>
 <tr class="memdesc:a19244541026a99536a7eb251be6afe81"><td class="mdescLeft">&#160;</td><td class="mdescRight">The same as <a class="el" href="wchar2_8h.html#acf1d30c5bcf1bb610032eb22d4c97c7f">_wmkdir</a>, the <code>size_t</code> parameter must contain the length of the variable of the file name, or zero.  <a href="#a19244541026a99536a7eb251be6afe81">More...</a><br /></td></tr>
@@ -3613,6 +3614,8 @@ size wide string </td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Creates a directory or a chain of directories specified in the path. </p>
 <dl class="section note"><dt>Note</dt><dd>The equivalent of using the <code>mkdir</code> command with the -p switch for all functions <code>wmkdir*()</code> If the internal flag <code>EXIST</code> is received while creating the directory, the function continues execution, if this is the last one from the list of created directories, it returns <code>0</code>. In other cases, returns a standard response as a function of <code>mkdir()</code>. If the directory exists from the specified path, the function continues execution, proceeding to create the next directory.</dd></dl>
 <ul>
 <li><a class="el" href="wmkdir.html">wmkdir manual</a> </li>
@@ -5013,7 +5016,7 @@ size wide string </td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jul 31 2018 04:26:45 for libwchar2 0.0.7 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jul 31 2018 04:36:08 for libwchar2 0.0.7 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

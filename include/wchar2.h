@@ -1142,7 +1142,7 @@ int       u8wremove(const wchar_t*);
 
           /*!
            * \~English
-           * \paragraph Creates a directory or a chain of directories specified in the path
+           * \brief Creates a directory or a chain of directories specified in the path
            * \note The equivalent of using the `mkdir` command with the -p switch for all functions `wmkdir*()`
            *       If the internal flag `EXIST` is received while creating the directory, the function continues execution,
            *       if this is the last one from the list of created directories, it returns `0`.
@@ -1151,7 +1151,7 @@ int       u8wremove(const wchar_t*);
            *       proceeding to create the next directory.
            *
            * \~Russian
-           * \paragraph Создает дерикторию или цепочку директорий указанных в пути
+           * \brief Создает дерикторию или цепочку директорий указанных в пути
            * \note Эквивалент использования команды `mkdir` с ключом `-p` для всех функций `_wmkdir*()`.
            *       Если внутренний флаг `EXIST` получен при создании каталога, функция продолжает выполнение,
            *       если это последний из списка создаваемых каталогов, возвращаеться `0`.
