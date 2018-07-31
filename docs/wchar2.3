@@ -429,7 +429,6 @@ include/wchar2.h
 .ti -1c
 .RI "size_t \fB_wcsftime\fP (wchar_t *restrict, size_t sz, const wchar_t *restrict, const void *restrict)"
 .br
-.RI "Convert date and time to a formatted wide-character string\&. "
 .ti -1c
 .RI "wchar_t * \fB_wcsptime\fP (const wchar_t *, const wchar_t *, void *)"
 .br
@@ -1120,16 +1119,20 @@ Wide-character string compare\&.
 .PP
 
 .SS "size_t _wcsftime (wchar_t * restrict, size_t sz, const wchar_t * restrict, const void * restrict)"
-
+English  Convert date and time to a formatted wide-character string\&.
 .PP
-Convert date and time to a formatted wide-character string\&. The original version of the \fCstrftime ()\fP function is used for the conversion\&. The \fCwcsftime()\fP function converts the results from wide characters to a multibyte string and back\&.
+The original version of the `strftime ()` function is used for the conversion\&. The `wcsftime()` function converts the results from wide characters to a multibyte string and back\&.
+.PP
+Russian  Преобразование даты и времени в форматированную строку с широкими символоми\&.
+.PP
+Это широкосимвольный аналог `strftime()`\&. Для преобразования используется оригинальная версия функции `strftime()`\&. Функция преобразовывает результаты из строки широких символов в многобайтовую строку и обратно\&.
 .PP
 .IP "\(bu" 2
 \fBwcsftime manual\fP
 .IP "\(bu" 2
-\fBwcsptime manual\fP related \fCwcsptime(\&.\&.)\fP 
+\fBwcsptime manual\fP related `wcsptime(\&.\&.)` 
 .PP
-
+ 
 .SS "size_t _wcslen (const wchar_t *)"
 
 .PP
