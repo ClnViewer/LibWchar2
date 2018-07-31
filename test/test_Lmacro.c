@@ -9,6 +9,8 @@ START_TEST (test_Lmacro)
 {
     /* g++ -E -dD -fshort-wchar -xc++ /dev/null | grep WCHAR */
 
+    _fwprintf(stdout, L"\n\tLibrary wchar2 version:%d -> %s\n\n", __LINE__, wchar2version());
+
 #   if defined(__WCHAR_TYPE__)
     wchar_t a = L'a';
     if (!__builtin_types_compatible_p(typeof(a), __WCHAR_TYPE__))

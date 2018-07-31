@@ -113,6 +113,12 @@ int __seh_except_(unsigned int code, unsigned int line, const char *file, const 
     return ret;
 }
 
+const char * wchar2version(void)
+{
+    static char libinfo[] = "libwchar2ext compiled on " __DATE__ " at " __TIME__;
+    return (const char*)libinfo;
+}
+
 #else
 
 char libinfo[]
@@ -122,6 +128,11 @@ __attribute__((section("__SEGMENT,__LIBINFO")))
 __attribute__ ((section ("LIBINFO")))
 #   endif
     = "libwchar2ext compiled on " __DATE__ " at " __TIME__;
+
+const char * wchar2version(void)
+{
+    return (const char*)libinfo;
+}
 
 #endif
 

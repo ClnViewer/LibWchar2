@@ -2,6 +2,7 @@ var searchData=
 [
   ['waccess_20manual',['waccess manual',['../waccess.html',1,'']]],
   ['wchar2_2eh',['wchar2.h',['../wchar2_8h.html',1,'']]],
+  ['wchar2version',['wchar2version',['../wchar2_8h.html#a58746df8059dee6ebf9d3453dc62eae1',1,'wchar2.h']]],
   ['wcpcpy_20manual',['wcpcpy manual',['../wcpcpy.html',1,'']]],
   ['wcpncpy_20manual',['wcpncpy manual',['../wcpncpy.html',1,'']]],
   ['wcprint',['wcprint',['../wchar2_8h.html#ae3cbd2aee452472d1b04a4a4817ee4a0',1,'wchar2.h']]],

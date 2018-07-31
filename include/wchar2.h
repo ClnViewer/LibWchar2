@@ -126,6 +126,11 @@ typedef enum {
 } access_e;
 
           /*!
+           * \brief Library curent version
+           */
+const char * wchar2version(void);
+
+          /*!
            * \brief Translate wide characters to uppercase
            *
            * - \subpage towupper

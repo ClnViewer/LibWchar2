@@ -68,4 +68,9 @@ const uint32_t bittab[] = {
     F(0x0),F(0x1),F(0x2),F(0x3),F(0x4)
 };
 
+const char * wchar2version(void)
+{
+    return (const char*)libinfo;
+}
+
 #undef __WCHAR_INTERNAL_LIB

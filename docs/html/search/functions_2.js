@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['wchar2version',['wchar2version',['../wchar2_8h.html#a58746df8059dee6ebf9d3453dc62eae1',1,'wchar2.h']]],
   ['wcprint',['wcprint',['../wchar2_8h.html#ae3cbd2aee452472d1b04a4a4817ee4a0',1,'wchar2.h']]],
   ['wcsregexp',['wcsregexp',['../wchar2_8h.html#a000f12520ab4f2027d068c804797d488',1,'wchar2.h']]],
   ['wcstocscmp',['wcstocscmp',['../wchar2_8h.html#a796fc46df7a28111338f7f8c7fe25788',1,'wchar2.h']]],

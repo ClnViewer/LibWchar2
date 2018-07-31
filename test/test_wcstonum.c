@@ -44,6 +44,6 @@ START_TEST(test_wcstonum)
     ck_assert_msg((&wcstoul == &_wcstoul), 0, "wcstoul NO equals! libc used!");
     ck_assert_msg((&wcstoull == &_wcstoull), 0, "wcstoull NO equals! libc used!");
     ck_assert_msg((&wcstoimax == &_wcstoimax), 0, "wcstoimax NO equals! libc used!");
-    ck_assert_msg((&wcstoumax == &_wcstoumax), 0, " NO equals! libc used!");
+    ck_assert_msg((&wcstoumax == &_wcstoumax), 0, "wcstoumax NO equals! libc used!");
 }
 END_TEST
