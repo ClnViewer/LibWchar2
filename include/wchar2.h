@@ -1143,7 +1143,7 @@ int       u8wremove(const wchar_t*);
           /*!
            * \~English
            * \brief Creates a directory or a chain of directories specified in the path
-           * \note The equivalent of using the `mkdir` command with the -p switch for all functions `wmkdir*()`
+           * \note The equivalent of using the `mkdir` command with the `-p` switch for all functions `wmkdir*()`
            *       If the internal flag `EXIST` is received while creating the directory, the function continues execution,
            *       if this is the last one from the list of created directories, it returns `0`.
            *       In other cases, returns a standard response as a function of `mkdir()`.
