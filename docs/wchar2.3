@@ -437,11 +437,11 @@ include/wchar2.h
 .ti -1c
 .RI "FILE * \fB_wfopen_s\fP (const wchar_t *, size_t, const wchar_t *)"
 .br
-.RI "The same as \fCwfopen\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. "
+.RI "The same as \fB_wfopen\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. "
 .ti -1c
 .RI "FILE * \fB_wfopen_ws\fP (const \fBstring_ws\fP *, const wchar_t *)"
 .br
-.RI "The same as \fCwfopen\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. "
+.RI "The same as \fB_wfopen\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. "
 .ti -1c
 .RI "FILE * \fB_wfopen_selector\fP (int, const void *, size_t, const void *)"
 .br
@@ -457,11 +457,11 @@ include/wchar2.h
 .ti -1c
 .RI "int \fB_wstat_s\fP (const wchar_t *, size_t, struct stat *)"
 .br
-.RI "The same as \fCwstat\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. "
+.RI "The same as \fB_wstat\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. "
 .ti -1c
 .RI "int \fB_wstat_ws\fP (const \fBstring_ws\fP *, struct stat *)"
 .br
-.RI "The same as \fCwstat\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. "
+.RI "The same as \fB_wstat\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. "
 .ti -1c
 .RI "int \fB_wstat_selector\fP (int, const void *, size_t, const void *)"
 .br
@@ -473,15 +473,15 @@ include/wchar2.h
 .ti -1c
 .RI "int \fB_wrename\fP (const wchar_t *, const wchar_t *)"
 .br
-.RI "The \fCwrename()\fP function changes the file name to a new one\&. The new name must not be the same as the names in the directory\&. "
+.RI "The \fCwrename()\fP function changes the file name to a new one\&. "
 .ti -1c
 .RI "int \fB_wrename_s\fP (const wchar_t *, size_t, const wchar_t *, size_t)"
 .br
-.RI "The same as \fCwrename\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. "
+.RI "The same as \fB_wrename\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. "
 .ti -1c
 .RI "int \fB_wrename_ws\fP (const \fBstring_ws\fP *, const \fBstring_ws\fP *)"
 .br
-.RI "The same as \fCwrename\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. "
+.RI "The same as \fB_wrename\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. "
 .ti -1c
 .RI "int \fB_wrename_selector\fP (int, const void *, size_t, const void *, size_t)"
 .br
@@ -493,14 +493,15 @@ include/wchar2.h
 .ti -1c
 .RI "int \fB_wremove\fP (const wchar_t *)"
 .br
+.RI "The \fCwremove*()\fP function deletes a name from the file system\&. "
 .ti -1c
 .RI "int \fB_wremove_s\fP (const wchar_t *, size_t)"
 .br
-.RI "The same as \fCwremove\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. "
+.RI "The same as \fB_wremove\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. "
 .ti -1c
 .RI "int \fB_wremove_ws\fP (const \fBstring_ws\fP *)"
 .br
-.RI "The same as \fCwremove\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. "
+.RI "The same as \fB_wremove\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. "
 .ti -1c
 .RI "int \fB_wremove_selector\fP (int, const void *, size_t)"
 .br
@@ -512,15 +513,14 @@ include/wchar2.h
 .ti -1c
 .RI "int \fB_wmkdir\fP (const wchar_t *, mode_t)"
 .br
-.RI "Make directory, wide char input\&. "
 .ti -1c
 .RI "int \fB_wmkdir_s\fP (const wchar_t *, size_t, mode_t)"
 .br
-.RI "The same as \fCwmkdir\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. "
+.RI "The same as \fB_wmkdir\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. "
 .ti -1c
 .RI "int \fB_wmkdir_ws\fP (const \fBstring_ws\fP *, mode_t)"
 .br
-.RI "The same as \fCwmkdir\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. "
+.RI "The same as \fB_wmkdir\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. "
 .ti -1c
 .RI "int \fB_wmkdir_selector\fP (int, const void *, size_t, mode_t)"
 .br
@@ -1389,7 +1389,7 @@ Open the stream for the file, takes as the first parameter the file name and the
 .SS "FILE* _wfopen_s (const wchar_t *, size_t, const wchar_t *)"
 
 .PP
-The same as \fCwfopen\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. 
+The same as \fB_wfopen\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. 
 .IP "\(bu" 2
 \fBwfopen manual\fP 
 .PP
@@ -1405,7 +1405,7 @@ Automatic type selector for \fCwfopen*\fP functions\&.
 .SS "FILE* _wfopen_ws (const \fBstring_ws\fP *, const wchar_t *)"
 
 .PP
-The same as \fCwfopen\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. 
+The same as \fB_wfopen\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. 
 .IP "\(bu" 2
 \fBwfopen manual\fP 
 .PP
@@ -1453,17 +1453,6 @@ Set wide characters in memory\&.
 .SS "int _wmkdir (const wchar_t *, mode_t)"
 
 .PP
-Make directory, wide char input\&. 
-.PP
-\fBNote:\fP
-.RS 4
-The equivalent of using the mkdir command with the -p switch for all functions _wmkdir* If the internal EXIST flag is received when creating the directory, return 0, otherwise the standard is returned\&.
-.RE
-.PP
-.IP "\(bu" 2
-\fBwmkdir manual\fP
-.PP
-.PP
 \fBNote:\fP
 .RS 4
 The equivalent of using the \fCmkdir\fP command with the -p switch for all functions \fCwmkdir*()\fP If the internal flag \fCEXIST\fP is received while creating the directory, the function continues execution, if this is the last one from the list of created directories, it returns \fC0\fP\&. In other cases, returns a standard response as a function of \fCmkdir()\fP\&. If the directory exists from the specified path, the function continues execution, proceeding to create the next directory\&.
@@ -1476,7 +1465,7 @@ The equivalent of using the \fCmkdir\fP command with the -p switch for all funct
 .SS "int _wmkdir_s (const wchar_t *, size_t, mode_t)"
 
 .PP
-The same as \fCwmkdir\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. 
+The same as \fB_wmkdir\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. 
 .IP "\(bu" 2
 \fBwmkdir manual\fP 
 .PP
@@ -1492,7 +1481,7 @@ Automatic type selector for \fCwmkdir*\fP functions\&.
 .SS "int _wmkdir_ws (const \fBstring_ws\fP *, mode_t)"
 
 .PP
-The same as \fCwmkdir\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. 
+The same as \fB_wmkdir\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. 
 .IP "\(bu" 2
 \fBwmkdir manual\fP 
 .PP
@@ -1524,9 +1513,11 @@ Write a formatted wide character string to 'stdout'\&.
 .SS "int _wremove (const wchar_t *)"
 
 .PP
-\fBNote:\fP
+The \fCwremove*()\fP function deletes a name from the file system\&. 
+.PP
+\fBReturns:\fP
 .RS 4
-The \fCwremove*()\fP function deletes a name from the file system, returns a standard response as a function of \fCremove()\fP\&.
+If the file was safely deleted, \fC0\fP is returned, in the event of a \fC-1\fP error\&. On error, \fCerrno\fP is set to: \fCENOENT\fP - the file does not exist, or in \fCEACESS\fP - access is denied\&.
 .RE
 .PP
 .IP "\(bu" 2
@@ -1536,7 +1527,7 @@ The \fCwremove*()\fP function deletes a name from the file system, returns a sta
 .SS "int _wremove_s (const wchar_t *, size_t)"
 
 .PP
-The same as \fCwremove\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. 
+The same as \fB_wremove\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. 
 .IP "\(bu" 2
 \fBwremove manual\fP 
 .PP
@@ -1552,7 +1543,7 @@ Automatic type selector for \fCwremove*\fP functions\&.
 .SS "int _wremove_ws (const \fBstring_ws\fP *)"
 
 .PP
-The same as \fCwremove\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. 
+The same as \fB_wremove\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. 
 .IP "\(bu" 2
 \fBwremove manual\fP 
 .PP
@@ -1560,16 +1551,7 @@ The same as \fCwremove\fP, the input parameter filename is passed in the \fC\fBs
 .SS "int _wrename (const wchar_t *, const wchar_t *)"
 
 .PP
-The \fCwrename()\fP function changes the file name to a new one\&. The new name must not be the same as the names in the directory\&. 
-.PP
-\fBNote:\fP
-.RS 4
-The \fCwrename*()\fP function changes the name or location of the file, returns a standard response as a function of \fCrename()\fP\&.
-.RE
-.PP
-.IP "\(bu" 2
-\fBwrename manual\fP
-.PP
+The \fCwrename()\fP function changes the file name to a new one\&. The \fCwrename*()\fP function changes the name or location of the file, returns a standard response as a function of \fCrename()\fP\&. The new name must not be the same as the names in the directory\&.
 .PP
 \fBReturns:\fP
 .RS 4
@@ -1577,13 +1559,15 @@ The function \fCwrename()\fP returns \fC0\fP in case of success and a nonzero va
 .RE
 .PP
 .IP "\(bu" 2
+\fBwrename manual\fP
+.IP "\(bu" 2
 \fBwrename manual\fP 
 .PP
 
 .SS "int _wrename_s (const wchar_t *, size_t, const wchar_t *, size_t)"
 
 .PP
-The same as \fCwrename\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. 
+The same as \fB_wrename\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. 
 .IP "\(bu" 2
 \fBwrename manual\fP 
 .PP
@@ -1599,7 +1583,7 @@ Automatic type selector for \fCwrename*\fP functions\&.
 .SS "int _wrename_ws (const \fBstring_ws\fP *, const \fBstring_ws\fP *)"
 
 .PP
-The same as \fCwrename\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. 
+The same as \fB_wrename\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. 
 .IP "\(bu" 2
 \fBwrename manual\fP 
 .PP
@@ -1626,7 +1610,7 @@ The operation of the functions \fCwstat*()\fP is completely analogous to the fun
 .SS "int _wstat_s (const wchar_t *, size_t, struct stat *)"
 
 .PP
-The same as \fCwstat\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. 
+The same as \fB_wstat\fP, the \fCsize_t\fP parameter must contain the length of the variable of the file name, or zero\&. 
 .IP "\(bu" 2
 \fBwstat manual\fP 
 .PP
@@ -1642,7 +1626,7 @@ Automatic type selector for \fCwstat*\fP functions\&.
 .SS "int _wstat_ws (const \fBstring_ws\fP *, struct stat *)"
 
 .PP
-The same as \fCwstat\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. 
+The same as \fB_wstat\fP, the input parameter filename is passed in the \fC\fBstring_ws\fP\fP structure\&. 
 .IP "\(bu" 2
 \fBwstat manual\fP 
 .PP

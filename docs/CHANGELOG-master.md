@@ -6,4 +6,3 @@
 
 - [#2](https://github.com/ClnViewer/LibWchar2/commit/b09e74b47b867e611257a0d48b96598a2dfea1f8)  	initial 0.0.7 version 2018-07-30 (*29 July 2018 22:03*)
 - [#3](https://github.com/ClnViewer/LibWchar2/commit/5118fb443a69c146d3af4eefd45ce2c39daee478)  	add functions wcsimax wcsumax 2018-07-29 (*29 July 2018 15:56*)
-- [#4](https://github.com/ClnViewer/LibWchar2/commit/38fbb16ce2d01d8164e366ad3b0a958ca9349daa)  	update docs 2018-07-29 (*29 July 2018 15:50*)

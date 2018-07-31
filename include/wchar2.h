@@ -841,11 +841,11 @@ FILE    * _wfopen(const wchar_t*, const wchar_t*)
 
           /*!
            * \~English
-           * \brief The same as `wfopen`, the `size_t` parameter must contain the length
+           * \brief The same as \ref _wfopen, the `size_t` parameter must contain the length
            *        of the variable of the file name, or zero.
            *
            * \~Russian
-           * \brief То же, что и `wfopen`, параметр `size_t` должен содержать длинну переменной
+           * \brief То же, что и \ref _wfopen, параметр `size_t` должен содержать длинну переменной
            *        имени файла, или ноль.
            *
            * \~
@@ -856,10 +856,10 @@ FILE    * _wfopen_s(const wchar_t*, size_t, const wchar_t*)
 
           /*!
            * \~English
-           * \brief The same as `wfopen`, the input parameter filename is passed in the `string_ws` structure.
+           * \brief The same as \ref _wfopen, the input parameter filename is passed in the `string_ws` structure.
            *
            * \~Russian
-           * \brief То же, что и `wfopen`, входной параметр имя файла передаеться в структуре `string_ws`.
+           * \brief То же, что и \ref _wfopen, входной параметр имя файла передаеться в структуре `string_ws`.
            *
            * \~
            * - \subpage wfopen
@@ -925,11 +925,11 @@ int       _wstat(const wchar_t*, struct stat*);
 
           /*!
            * \~English
-           * \brief The same as `wstat`, the `size_t` parameter must contain the length
+           * \brief The same as \ref _wstat, the `size_t` parameter must contain the length
            *        of the variable of the file name, or zero.
            *
            * \~Russian
-           * \brief То же, что и `wstat`, параметр `size_t` должен содержать длинну переменной
+           * \brief То же, что и \ref _wstat, параметр `size_t` должен содержать длинну переменной
            *        имени файла, или ноль.
            *
            * \~
@@ -939,10 +939,10 @@ int       _wstat_s(const wchar_t*, size_t, struct stat*);
 
           /*!
            * \~English
-           * \brief The same as `wstat`, the input parameter filename is passed in the `string_ws` structure.
+           * \brief The same as \ref _wstat, the input parameter filename is passed in the `string_ws` structure.
            *
            * \~Russian
-           * \brief То же, что и `wfopen`, входной параметр имя файла передаеться в структуре `string_ws`.
+           * \brief То же, что и \ref _wstat, входной параметр имя файла передаеться в структуре `string_ws`.
            *
            * \~
            * - \subpage wstat
@@ -977,13 +977,28 @@ int       u8wstat(const wchar_t*, void*);
           /*!
            * \~English
            * \paragraph Rename (move) file
-           * \note The `wrename*()` function changes the name or location of the file,
-           *       returns a standard response as a function of `rename()`.
+           *
+           * \brief The `wrename()` function changes the file name to a new one.
+           *
+           * \details The `wrename*()` function changes the name or location of the file,
+           *          returns a standard response as a function of `rename()`.
+           *          The new name must not be the same as the names in the directory.
+           *
+           * \return The function `wrename()` returns `0` in case of success and a
+           *         nonzero value in case of an error.
+           *         On error, `errno` is set, indicating an error.
            *
            * \~Russian
            * \paragraph Переименовать (переместить) файл
-           * \note Функция `wrename*()` изменяет имя или местоположение файла, возвращает стандартный ответ,
-           *       как функция `rename()`
+           *
+           * \brief Функция `wrename()` изменяет название файла на новое.
+           *
+           * \details Функция `wrename*()` изменяет имя или местоположение файла, возвращает стандартный ответ,
+           *          как функция `rename()`.
+           *          Новое имя не должно совпадать с именами, имеющимися в каталоге.
+           *
+           * \return Функция `wrename()` возвращает `0` в случае успеха и ненулевую величину — в случае ошибки.
+           *         При ошибке устанавливается `errno` с указанием ошибки.
            *
            * \~
            * - \subpage wrename
@@ -991,20 +1006,7 @@ int       u8wstat(const wchar_t*, void*);
 
           /*!
            * \~English
-           * \brief The `wrename()` function changes the file name to a new one.
-           *        The new name must not be the same as the names in the directory.
-           *
-           * \return The function `wrename()` returns `0` in case of success and a
-           *         nonzero value in case of an error.
-           *         On error, `errno` is set, indicating an error.
-           *
            * \~Russian
-           * \brief Функция `wrename()` изменяет название файла на новое.
-           *        Новое имя не должно совпадать с именами, имеющимися в каталоге.
-           *
-           * \return Функция `wrename()` возвращает `0` в случае успеха и ненулевую величину — в случае ошибки.
-           *         При ошибке устанавливается errno с указанием ошибки.
-           *
            * \~
            * - \subpage wrename
            */
@@ -1012,11 +1014,11 @@ int       _wrename(const wchar_t*, const wchar_t*);
 
           /*!
            * \~English
-           * \brief The same as `wrename`, the `size_t` parameter must contain the length
+           * \brief The same as \ref _wrename, the `size_t` parameter must contain the length
            *        of the variable of the file name, or zero.
            *
            * \~Russian
-           * \brief То же, что и `wrename`, параметр `size_t` должен содержать длинну переменной
+           * \brief То же, что и \ref _wrename, параметр `size_t` должен содержать длинну переменной
            *        имени файла, или ноль.
            *
            * \~
@@ -1026,10 +1028,10 @@ int       _wrename_s(const wchar_t*, size_t, const wchar_t*, size_t);
 
           /*!
            * \~English
-           * \brief The same as `wrename`, the input parameter filename is passed in the `string_ws` structure.
+           * \brief The same as \ref _wrename, the input parameter filename is passed in the `string_ws` structure.
            *
            * \~Russian
-           * \brief То же, что и `wrename`, входной параметр имя файла передаеться в структуре `string_ws`.
+           * \brief То же, что и \ref _wrename, входной параметр имя файла передаеться в структуре `string_ws`.
            *
            * \~
            * - \subpage wrename
@@ -1065,13 +1067,21 @@ int       u8wrename(const wchar_t*, const wchar_t*);
           /*!
            * \~English
            * \paragraph Delete (remove) file or directory
-           * \note The `wremove*()` function deletes a name from the file system,
-           *       returns a standard response as a function of `remove()`.
+           *
+           * \brief The `wremove*()` function deletes a name from the file system.
+           *
+           * \return  If the file was safely deleted, `0` is returned, in the event of a `-1` error.
+           *          On error, `errno` is set to: `ENOENT` - the file does not exist,
+           *          or in `EACESS` - access is denied.
            *
            * \~Russian
            * \paragraph Удалить файл или дерикторию
-           * \note Функция `цremove*()` удаляет файла или дерикторию по имени, возвращает стандартный ответ,
-           *       как функция `remove()`
+           *
+           * \brief Функция `цremove*()` удаляет файла или дерикторию по имени.
+           *
+           * \return Если файл был благополучно удален, возвращается `0`, в случае ошибки `-1`.
+           *         При ошибке `errno` устанавливается в: `ENOENT` - Файл не существует,
+           *         или в `EACESS` - доступ запрещен.
            *
            * \~
            * - \subpage wremove
@@ -1080,11 +1090,11 @@ int       _wremove(const wchar_t*);
 
           /*!
            * \~English
-           * \brief The same as `wremove`, the `size_t` parameter must contain the length
+           * \brief The same as \ref _wremove, the `size_t` parameter must contain the length
            *        of the variable of the file name, or zero.
            *
            * \~Russian
-           * \brief То же, что и `wremove`, параметр `size_t` должен содержать длинну переменной
+           * \brief То же, что и \ref _wremove, параметр `size_t` должен содержать длинну переменной
            *        имени файла, или ноль.
            *
            * \~
@@ -1094,10 +1104,10 @@ int       _wremove_s(const wchar_t*, size_t);
 
           /*!
            * \~English
-           * \brief The same as `wremove`, the input parameter filename is passed in the `string_ws` structure.
+           * \brief The same as \ref _wremove, the input parameter filename is passed in the `string_ws` structure.
            *
            * \~Russian
-           * \brief То же, что и `wremove`, входной параметр имя файла передаеться в структуре `string_ws`.
+           * \brief То же, что и \ref _wremove, входной параметр имя файла передаеться в структуре `string_ws`.
            *
            * \~
            * - \subpage wremove
@@ -1131,18 +1141,6 @@ int       _wremove_selector(int, const void*, size_t);
 int       u8wremove(const wchar_t*);
 
           /*!
-           *  \paragraph Make directory
-           *  \note The equivalent of using the mkdir command with the -p switch for all functions _wmkdir*
-           *        If the internal EXIST flag is received when creating the directory, return 0, otherwise
-           *        the standard is returned.
-           *
-           * - \subpage wmkdir
-           */
-
-          /*! \brief Make directory, wide char input */
-
-
-          /*!
            * \~English
            * \paragraph Creates a directory or a chain of directories specified in the path
            * \note The equivalent of using the `mkdir` command with the -p switch for all functions `wmkdir*()`
@@ -1168,11 +1166,11 @@ int       _wmkdir(const wchar_t*, mode_t);
 
           /*!
            * \~English
-           * \brief The same as `wmkdir`, the `size_t` parameter must contain the length
+           * \brief The same as \ref _wmkdir, the `size_t` parameter must contain the length
            *        of the variable of the file name, or zero.
            *
            * \~Russian
-           * \brief То же, что и `wmkdir`, параметр `size_t` должен содержать длинну переменной
+           * \brief То же, что и \ref _wmkdir, параметр `size_t` должен содержать длинну переменной
            *        имени файла, или ноль.
            *
            * \~
@@ -1182,10 +1180,10 @@ int       _wmkdir_s(const wchar_t*, size_t, mode_t);
 
           /*!
            * \~English
-           * \brief The same as `wmkdir`, the input parameter filename is passed in the `string_ws` structure.
+           * \brief The same as \ref _wmkdir, the input parameter filename is passed in the `string_ws` structure.
            *
            * \~Russian
-           * \brief То же, что и `wmkdir`, входной параметр имя файла передаеться в структуре `string_ws`.
+           * \brief То же, что и \ref _wmkdir, входной параметр имя файла передаеться в структуре `string_ws`.
            *
            * \~
            * - \subpage wmkdir
