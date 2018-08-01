@@ -1,4 +1,4 @@
-.TH "include/wchar2.h" 3 "Tue Jul 31 2018" "libwchar2 0.0.7" \" -*- nroff -*-
+.TH "include/wchar2.h" 3 "Thu Aug 2 2018" "libwchar2 0.0.7" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -18,6 +18,10 @@ include/wchar2.h
 .RI "struct \fBstring_ws\fP"
 .br
 .RI "Base wide string structure\&. "
+.ti -1c
+.RI "struct \fB_wdirent\fP"
+.br
+.RI "the contains constructs that facilitate directory traversing "
 .in -1c
 .SS "Macros"
 
@@ -62,6 +66,18 @@ include/wchar2.h
 .RI "#define \fBwstrtocscvt\fP(A,  B,  D)"
 .br
 .RI "\fBstring_ws\fP type to char[] this struct defined on top of this file A char[] - array name B string_ws* - source D - function return value if error "
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fB_wdirent\fP \fBwdirent_t\fP"
+.br
+.RI "the contains constructs that facilitate directory traversing "
+.ti -1c
+.RI "typedef void \fBWDIR_t\fP"
+.br
+.RI "Main structure directory traversing, reference to \fCvoid\fP "
 .in -1c
 .SS "Enumerations"
 
@@ -674,6 +690,34 @@ include/wchar2.h
 .RI "size_t \fBwstring_trunc_alloc\fP (\fBstring_ws\fP *restrict, const wchar_t *, int)"
 .br
 .RI "Truncation string, wchar_t input, return pointer to struct \fBstring_ws\fP and lenght\&. "
+.ti -1c
+.RI "int \fB_wclosedir\fP (\fBWDIR_t\fP *)"
+.br
+.RI "Closes the directory stream\&. "
+.ti -1c
+.RI "\fBWDIR_t\fP * \fB_wopendir\fP (const wchar_t *)"
+.br
+.RI "Opens a directory stream and returns a pointer to the stream\&. The stream is set to the first entry in the directory\&. "
+.ti -1c
+.RI "\fBwdirent_t\fP * \fB_wreaddir\fP (\fBWDIR_t\fP *)"
+.br
+.RI "Reads the directory stream\&. "
+.ti -1c
+.RI "int \fB_wreaddir_r\fP (\fBWDIR_t\fP *, \fBwdirent_t\fP *, \fBwdirent_t\fP **)"
+.br
+.RI "Reads the directory stream extended\&. "
+.ti -1c
+.RI "void \fB_wrewinddir\fP (\fBWDIR_t\fP *)"
+.br
+.RI "Sets the beginning in the directory stream\&. "
+.ti -1c
+.RI "void \fB_wseekdir\fP (\fBWDIR_t\fP *, long int)"
+.br
+.RI "Sets the position in the directory stream\&. "
+.ti -1c
+.RI "long int \fB_wtelldir\fP (\fBWDIR_t\fP *)"
+.br
+.RI "Returns the current position of the directory stream\&. "
 .in -1c
 .SH "Data Structure Documentation"
 .PP 
@@ -687,6 +731,29 @@ wchar_t * \fIstr\fP wide string pointer
 .br
 .PP
 size_t \fIsz\fP size wide string 
+.br
+.PP
+.RE
+.PP
+.SH "struct _wdirent"
+.PP 
+the contains constructs that facilitate directory traversing 
+.PP
+\fBData Fields:\fP
+.RS 4
+unsigned int \fId_ino\fP Inode number\&. 
+.br
+.PP
+wchar_t \fId_name[256]\fP Null-terminated filename\&. 
+.br
+.PP
+long int \fId_off\fP Offset\&. 
+.br
+.PP
+unsigned short \fId_reclen\fP Length of this record\&. 
+.br
+.PP
+unsigned char \fId_type\fP Type of file\&. 
 .br
 .PP
 .RE
@@ -1063,6 +1130,10 @@ If Success return substring of path, else return NULL
 .RE
 .PP
 
+.SS "int _wclosedir (\fBWDIR_t\fP *)"
+
+.PP
+Closes the directory stream\&. The \fCwclosedir()\fP function closes the directory stream\&. If the function is successfully called, the file descriptor associated with the directory is also closed\&. The descriptor of the directory stream opened in the past will be unavailable after this call\&. 
 .SS "wchar_t* _wcpcpy (wchar_t *, const wchar_t *)"
 
 .PP
@@ -1493,6 +1564,10 @@ The same as \fB_wmkdir\fP, the input parameter filename is passed in the \fC\fBs
 \fBwmkdir manual\fP 
 .PP
 
+.SS "\fBWDIR_t\fP* _wopendir (const wchar_t *)"
+
+.PP
+Opens a directory stream and returns a pointer to the stream\&. The stream is set to the first entry in the directory\&. After a successful call, the file descriptor of the open directory is used only within the implementation and should not be used in the application\&. The function sets the \fCclose-on-exec\fP flag for the file descriptor that points to the directory\&. 
 .SS "wchar_t* _wpathnormalize (const wchar_t *, int)"
 
 .PP
@@ -1517,6 +1592,14 @@ Write a formatted wide character string to 'stdout'\&.
 \fBwprintf manual\fP 
 .PP
 
+.SS "\fBwdirent_t\fP* _wreaddir (\fBWDIR_t\fP *)"
+
+.PP
+Reads the directory stream\&. It reads the directory stream, returns a pointer to the \fCwdirent_t\fP structure, which represents the next element in the catalog stream\&. The function returns \fCNULL\fP when the last record in the directory stream is reached or if an error occurred\&. 
+.SS "int _wreaddir_r (\fBWDIR_t\fP *, \fBwdirent_t\fP *, \fBwdirent_t\fP **)"
+
+.PP
+Reads the directory stream extended\&. The function \fCwreaddir_r()\fP is a reentrant version\&. It reads the next entry from the open catalog stream and returns it in the created call buffer pointed to by the second parameter of the function\&. The pointer to the returned element is placed in the third parameter of the function, if the end of the directory stream is reached, \fCNULL\fP is returned instead of the value\&. 
 .SS "int _wremove (const wchar_t *)"
 
 .PP
@@ -1593,6 +1676,14 @@ The same as \fB_wrename\fP, the input parameter filename is passed in the \fC\fB
 \fBwrename manual\fP 
 .PP
 
+.SS "void _wrewinddir (\fBWDIR_t\fP *)"
+
+.PP
+Sets the beginning in the directory stream\&. The \fCwrewinddir()\fP function flushes the current position of the stream to the beginning of the directory\&. 
+.SS "void _wseekdir (\fBWDIR_t\fP *, long int)"
+
+.PP
+Sets the position in the directory stream\&. The \fB_wseekdir\fP function sets the position in the directory stream from which the next call to \fB_wreaddir\fP will begin\&. The position argument must be a value that is returned by the previously called \fB_wtelldir\fP function\&. 
 .SS "int _wstat (const wchar_t *, struct stat *)"
 
 .PP
@@ -1636,6 +1727,10 @@ The same as \fB_wstat\fP, the input parameter filename is passed in the \fC\fBst
 \fBwstat manual\fP 
 .PP
 
+.SS "long int _wtelldir (\fBWDIR_t\fP *)"
+
+.PP
+Returns the current position of the directory stream\&. If successful, the \fCwtelldir()\fP function returns the current location in the directory stream\&. In case of an error, \fC-1\fP is returned, and the corresponding value of \fCerrno\fP is set\&. 
 .SS "size_t u8stowcs (wchar_t *, const char *)"
 
 .PP

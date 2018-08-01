@@ -5,7 +5,7 @@
     GitHub: https://github.com/ClnViewer/LibWchar2
  */
 
-START_TEST(test_wstat)
+START_TEST(test_wdir)
 {
     // TODO: wrie test :)
     //ck_assert_msg((&wstat == &_wstat), 0, "wstat NO equals! libc used!");

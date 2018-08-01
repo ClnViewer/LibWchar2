@@ -111,10 +111,25 @@ extern "C" {
 
 /*! \brief Base wide string structure */
 typedef struct {
-    wchar_t *str; /**<  wide string pointer */
-    size_t   sz;  /**<  size wide string */
+    wchar_t *str; /**<  \~English wide string pointer \~Russian указатель на строку широких символов */
+    size_t   sz;  /**<  \~English size wide string \~Russian размер строки широких символов */
 
 } string_ws;
+
+/*! \~ \brief the contains constructs that facilitate directory traversing */
+typedef struct _wdirent {
+    unsigned int   d_ino;        /**<  \~English Inode number \~Russian номер файла */
+    long int       d_off;        /**<  \~English Offset \~Russian текущее положение */
+    unsigned short d_reclen;     /**<  \~English Length of this record \~Russian длинна данных */
+    unsigned char  d_type;       /**<  \~English Type of file \~Russian тип данных */
+#   if defined(_DIRENT_HAVE_D_NAMLEN)
+    unsigned char  d_namlen;     /**<  \~English Filename length \~Russian длинна поля имени файла */
+#   endif
+    wchar_t        d_name[256];  /**<  \~English Null-terminated filename \~Russian поле имени файла */
+} wdirent_t;
+
+/*! \~ \brief Main structure directory traversing, reference to `void` */
+typedef void WDIR_t;
 
 /*! \brief enumeration for return waccess function */
 typedef enum {
@@ -1449,7 +1464,148 @@ string_ws wstring_trunc(const wchar_t *ws, int);
            */
 size_t    wstring_trunc_alloc(string_ws *restrict, const wchar_t*, int);
 
+          /*!
+           * \~English
+           * \paragraph Directory function
+           *
+           * \~Russian
+           * \paragraph Работа с каталогами
+           */
 
+          /*!
+           * \~English
+           * \brief Closes the directory stream
+           *
+           * \details The `wclosedir()` function closes the directory stream.
+           *          If the function is successfully called, the file descriptor associated with the directory is also closed.
+           *          The descriptor of the directory stream opened in the past will be unavailable after this call.
+           *
+           * \~Russian
+           * \brief Закрывает поток каталога
+           *
+           * \details Функция `wclosedir()` закрывает поток каталога.
+           *          При успешном вызове функции также закрывается файловый дескриптор, связанный с директорией.
+           *          Дескриптор открытого в прошлом потока каталога будет недоступен после данного вызова.
+           *
+           */
+int        _wclosedir(WDIR_t*);
+
+          /*!
+           * \~English
+           * \brief Opens a directory stream and returns a pointer to the stream.
+           *        The stream is set to the first entry in the directory.
+           *
+           * \details After a successful call, the file descriptor of the open directory is used only within
+           *          the implementation and should not be used in the application.
+           *          The function sets the `close-on-exec` flag for the file descriptor that points to the directory.
+           *
+           * \~Russian
+           * \brief Открывает поток каталога и возвращает указатель на поток.
+           *        Поток устанавливается на первую запись в каталоге.
+           *
+           * \details После успешного вызова, файловый дескриптор открытой директории используется только
+           *          внутри реализации и не должен использоваться в приложении.
+           *          Функция  устанавливает флаг `close-on-exec` для файлового дескриптора, указывающего на директорию.
+           *
+           */
+WDIR_t    *_wopendir(const wchar_t*);
+
+          /*!
+           * \~English
+           * \brief Reads the directory stream
+           *
+           * \details It reads the directory stream, returns a pointer to the `wdirent_t` structure,
+           *          which represents the next element in the catalog stream.
+           *          The function returns `NULL` when the last record in the directory stream is reached
+           *          or if an error occurred.
+           *
+           * \~Russian
+           * \brief Читает поток каталога
+           *
+           * \details Читает поток каталога, возвращает указатель на структуру `wdirent_t`, представляющую
+           *          следующий элемент в потоке каталога.
+           *          Функция возвращает `NULL` по достижении последней записи в потоке каталога или если
+           *          произошла ошибка.
+           *
+           */
+wdirent_t *_wreaddir(WDIR_t*);
+
+          /*!
+           * \~English
+           * \brief Reads the directory stream extended
+           *
+           * \details The function `wreaddir_r()` is a reentrant version.
+           *          It reads the next entry from the open catalog stream and returns it in the created call buffer
+           *          pointed to by the second parameter of the function.
+           *          The pointer to the returned element is placed in the third parameter of the function,
+           *          if the end of the directory stream is reached, `NULL` is returned instead of the value.
+           *
+           * \~Russian
+           * \brief Читает поток каталога, расширенная функция
+           *
+           * \details Функция `wreaddir_r()`является реентерабельной версией.
+           *          Она читает следующую запись из открытого потока каталога и возвращает её в созданном
+           *          вызывающим буфере, на который указывает второй параметр функции.
+           *          Указатель на возвращаемый элемент помещается в третий параметр функции,
+           *          если достигнут конец потока каталога, то возвращается `NULL` вместо значения.
+
+           *
+           */
+int        _wreaddir_r(WDIR_t*, wdirent_t*, wdirent_t**);
+
+          /*!
+           * \~English
+           * \brief Sets the beginning in the directory stream
+           *
+           * \details The `wrewinddir()` function flushes the current position of the stream
+           *          to the beginning of the directory.
+           *
+           * \~Russian
+           * \brief Устанавливает начало в потоке каталога
+           *
+           * \details Функция `wrewinddir()` сбрасывает текущее положение потока в начало каталога.
+           *
+           */
+void       _wrewinddir(WDIR_t*);
+
+          /*!
+           * \~English
+           * \brief Sets the position in the directory stream
+           *
+           * \details The \ref _wseekdir function sets the position in the directory stream from
+           *          which the next call to \ref _wreaddir will begin.
+           *          The position argument must be a value that is returned by the previously
+           *          called \ref _wtelldir function.
+           *
+           * \~Russian
+           * \brief Устанавливает позицию в потоке каталога
+           *
+           * \details Функция \ref _wseekdir устанавливает в потоке каталога позицию, с которой
+           *          начнёт работу следующий вызов \ref _wreaddir().
+           *          Аргумент позиции должен быть значением, которое возвращается ранее вызванной
+           *          функцией \ref _wtelldir .
+           *
+           */
+void       _wseekdir(WDIR_t*, long int);
+
+          /*!
+           * \~English
+           * \brief Returns the current position of the directory stream
+           *
+           * \details If successful, the `wtelldir()` function returns the current location in the directory stream.
+           *          In case of an error, `-1` is returned, and the corresponding value of `errno` is set.
+           *
+           * \~Russian
+           * \brief Возвращает текущее положение потока каталога
+           *
+           * \details При успешном выполнении функция `wtelldir()` возвращает текущее расположение в потоке каталога.
+           *          В случае ошибки возвращается `-1`, и устанавливается соответствующее значение `errno`.
+           *
+           */
+long int   _wtelldir(WDIR_t*);
+
+
+/*! \~ */
 /*! \cond NOTINDOC */
 
 /* declaration from stdlib.h */
@@ -1729,6 +1885,14 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
 #define _u8wrename u8wrename
 #define _u8wstat u8wstat
 #define _u8sverify u8sverify
+
+#define wclosedir _wclosedir
+#define wopendir _wopendir
+#define wreaddir _wreaddir
+#define wreaddir_r _wreaddir_r
+#define wrewinddir _wrewinddir
+#define wseekdir _wseekdir
+#define wtelldir _wtelldir
 
 #define towupper _towupper
 #define towlower _towlower

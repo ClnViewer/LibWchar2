@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['string_5fws',['string_ws',['../wchar2_8h.html#structstring__ws',1,'']]]
+  ['_5fwdirent',['_wdirent',['../wchar2_8h.html#struct__wdirent',1,'']]]
 ];

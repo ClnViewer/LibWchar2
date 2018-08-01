@@ -69,6 +69,7 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
@@ -85,6 +86,9 @@ Data Structures</h2></td></tr>
 <tr class="memitem:structstring__ws"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a></td></tr>
 <tr class="memdesc:structstring__ws"><td class="mdescLeft">&#160;</td><td class="mdescRight">Base wide string structure.  <a href="wchar2_8h.html#structstring__ws">More...</a><br /></td></tr>
 <tr class="separator:structstring__ws"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:struct__wdirent"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#struct__wdirent">_wdirent</a></td></tr>
+<tr class="memdesc:struct__wdirent"><td class="mdescLeft">&#160;</td><td class="mdescRight">the contains constructs that facilitate directory traversing  <a href="wchar2_8h.html#struct__wdirent">More...</a><br /></td></tr>
+<tr class="separator:struct__wdirent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
@@ -125,6 +129,17 @@ Macros</h2></td></tr>
 <tr class="memitem:a674a7950e9f83d924109688e15565e93"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a674a7950e9f83d924109688e15565e93">wstrtocscvt</a>(A,  B,  D)</td></tr>
 <tr class="memdesc:a674a7950e9f83d924109688e15565e93"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a> type to char[] this struct defined on top of this file A char[] - array name B string_ws* - source D - function return value if error  <a href="#a674a7950e9f83d924109688e15565e93">More...</a><br /></td></tr>
 <tr class="separator:a674a7950e9f83d924109688e15565e93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a308d32a6626925c2178f94e68d01f123"><td class="memItemLeft" align="right" valign="top"><a id="a308d32a6626925c2178f94e68d01f123"></a>
+typedef struct <a class="el" href="wchar2_8h.html#struct__wdirent">_wdirent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a308d32a6626925c2178f94e68d01f123">wdirent_t</a></td></tr>
+<tr class="memdesc:a308d32a6626925c2178f94e68d01f123"><td class="mdescLeft">&#160;</td><td class="mdescRight">the contains constructs that facilitate directory traversing <br /></td></tr>
+<tr class="separator:a308d32a6626925c2178f94e68d01f123"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b416445955b87e37a37b78591c1115f"><td class="memItemLeft" align="right" valign="top"><a id="a4b416445955b87e37a37b78591c1115f"></a>
+typedef void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a4b416445955b87e37a37b78591c1115f">WDIR_t</a></td></tr>
+<tr class="memdesc:a4b416445955b87e37a37b78591c1115f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main structure directory traversing, reference to <code>void</code> <br /></td></tr>
+<tr class="separator:a4b416445955b87e37a37b78591c1115f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -617,6 +632,27 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wc
 size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#af93b37ba9262b389b26d833265c2d97d">wstring_trunc_alloc</a> (<a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *restrict, const wchar_t *, int)</td></tr>
 <tr class="memdesc:af93b37ba9262b389b26d833265c2d97d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Truncation string, wchar_t input, return pointer to struct <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a> and lenght. <br /></td></tr>
 <tr class="separator:af93b37ba9262b389b26d833265c2d97d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f1b96094a2839fa5bd5da2139b0fdce"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a3f1b96094a2839fa5bd5da2139b0fdce">_wclosedir</a> (<a class="el" href="wchar2_8h.html#a4b416445955b87e37a37b78591c1115f">WDIR_t</a> *)</td></tr>
+<tr class="memdesc:a3f1b96094a2839fa5bd5da2139b0fdce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes the directory stream.  <a href="#a3f1b96094a2839fa5bd5da2139b0fdce">More...</a><br /></td></tr>
+<tr class="separator:a3f1b96094a2839fa5bd5da2139b0fdce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c273d497b5b80546bf1d88be30ab23a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="wchar2_8h.html#a4b416445955b87e37a37b78591c1115f">WDIR_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a4c273d497b5b80546bf1d88be30ab23a">_wopendir</a> (const wchar_t *)</td></tr>
+<tr class="memdesc:a4c273d497b5b80546bf1d88be30ab23a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Opens a directory stream and returns a pointer to the stream. The stream is set to the first entry in the directory.  <a href="#a4c273d497b5b80546bf1d88be30ab23a">More...</a><br /></td></tr>
+<tr class="separator:a4c273d497b5b80546bf1d88be30ab23a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6585f453ec859183d20623155beb640"><td class="memItemLeft" align="right" valign="top"><a class="el" href="wchar2_8h.html#a308d32a6626925c2178f94e68d01f123">wdirent_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#aa6585f453ec859183d20623155beb640">_wreaddir</a> (<a class="el" href="wchar2_8h.html#a4b416445955b87e37a37b78591c1115f">WDIR_t</a> *)</td></tr>
+<tr class="memdesc:aa6585f453ec859183d20623155beb640"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the directory stream.  <a href="#aa6585f453ec859183d20623155beb640">More...</a><br /></td></tr>
+<tr class="separator:aa6585f453ec859183d20623155beb640"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2718ba8ae6813702d12e6f6c7010937c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a2718ba8ae6813702d12e6f6c7010937c">_wreaddir_r</a> (<a class="el" href="wchar2_8h.html#a4b416445955b87e37a37b78591c1115f">WDIR_t</a> *, <a class="el" href="wchar2_8h.html#a308d32a6626925c2178f94e68d01f123">wdirent_t</a> *, <a class="el" href="wchar2_8h.html#a308d32a6626925c2178f94e68d01f123">wdirent_t</a> **)</td></tr>
+<tr class="memdesc:a2718ba8ae6813702d12e6f6c7010937c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the directory stream extended.  <a href="#a2718ba8ae6813702d12e6f6c7010937c">More...</a><br /></td></tr>
+<tr class="separator:a2718ba8ae6813702d12e6f6c7010937c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31bf58eefa6f368d9cbdabfd78075380"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a31bf58eefa6f368d9cbdabfd78075380">_wrewinddir</a> (<a class="el" href="wchar2_8h.html#a4b416445955b87e37a37b78591c1115f">WDIR_t</a> *)</td></tr>
+<tr class="memdesc:a31bf58eefa6f368d9cbdabfd78075380"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the beginning in the directory stream.  <a href="#a31bf58eefa6f368d9cbdabfd78075380">More...</a><br /></td></tr>
+<tr class="separator:a31bf58eefa6f368d9cbdabfd78075380"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86ee9bb2e19f47cbcc86d505350dced7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a86ee9bb2e19f47cbcc86d505350dced7">_wseekdir</a> (<a class="el" href="wchar2_8h.html#a4b416445955b87e37a37b78591c1115f">WDIR_t</a> *, long int)</td></tr>
+<tr class="memdesc:a86ee9bb2e19f47cbcc86d505350dced7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the position in the directory stream.  <a href="#a86ee9bb2e19f47cbcc86d505350dced7">More...</a><br /></td></tr>
+<tr class="separator:a86ee9bb2e19f47cbcc86d505350dced7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22705b134af83afcefc9033a3230a3e4"><td class="memItemLeft" align="right" valign="top">long int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a22705b134af83afcefc9033a3230a3e4">_wtelldir</a> (<a class="el" href="wchar2_8h.html#a4b416445955b87e37a37b78591c1115f">WDIR_t</a> *)</td></tr>
+<tr class="memdesc:a22705b134af83afcefc9033a3230a3e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current position of the directory stream.  <a href="#a22705b134af83afcefc9033a3230a3e4">More...</a><br /></td></tr>
+<tr class="separator:a22705b134af83afcefc9033a3230a3e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/><h2 class="groupheader">Data Structure Documentation</h2>
 <a name="structstring__ws" id="structstring__ws"></a>
@@ -645,6 +681,54 @@ wide string pointer </td></tr>
 sz</td>
 <td class="fielddoc">
 size wide string </td></tr>
+</table>
+
+</div>
+</div>
+<a name="struct__wdirent" id="struct__wdirent"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#struct__wdirent">&#9670;&nbsp;</a></span>_wdirent</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct _wdirent</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="textblock"><p>the contains constructs that facilitate directory traversing </p>
+</div><table class="fieldtable">
+<tr><th colspan="3">Data Fields</th></tr>
+<tr><td class="fieldtype">
+<a id="a6b780f568c9ab5bc752ce291b4d6b3e6"></a>unsigned int</td>
+<td class="fieldname">
+d_ino</td>
+<td class="fielddoc">
+Inode number. </td></tr>
+<tr><td class="fieldtype">
+<a id="ab177dbf002ff62e80fdd4bb8260102ca"></a>wchar_t</td>
+<td class="fieldname">
+d_name[256]</td>
+<td class="fielddoc">
+Null-terminated filename. </td></tr>
+<tr><td class="fieldtype">
+<a id="ad7eb8c7c96fb3e02f7c065440cdf4de8"></a>long int</td>
+<td class="fieldname">
+d_off</td>
+<td class="fielddoc">
+Offset. </td></tr>
+<tr><td class="fieldtype">
+<a id="aff7f360608e576cd18cf11f2caf13ef3"></a>unsigned short</td>
+<td class="fieldname">
+d_reclen</td>
+<td class="fielddoc">
+Length of this record. </td></tr>
+<tr><td class="fieldtype">
+<a id="a42f9348a1018f1c746f048ca92a1a08f"></a>unsigned char</td>
+<td class="fieldname">
+d_type</td>
+<td class="fielddoc">
+Type of file. </td></tr>
 </table>
 
 </div>
@@ -1864,6 +1948,27 @@ size wide string </td></tr>
 
 <p>Parse path file name, wide char input. </p>
 <dl class="section note"><dt>Note</dt><dd>If Success return substring of path, else return NULL </dd></dl>
+
+</div>
+</div>
+<a id="a3f1b96094a2839fa5bd5da2139b0fdce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f1b96094a2839fa5bd5da2139b0fdce">&#9670;&nbsp;</a></span>_wclosedir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int _wclosedir </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="wchar2_8h.html#a4b416445955b87e37a37b78591c1115f">WDIR_t</a> *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Closes the directory stream. </p>
+<p>The <code>wclosedir()</code> function closes the directory stream. If the function is successfully called, the file descriptor associated with the directory is also closed. The descriptor of the directory stream opened in the past will be unavailable after this call. </p>
 
 </div>
 </div>
@@ -3744,6 +3849,27 @@ size wide string </td></tr>
 
 </div>
 </div>
+<a id="a4c273d497b5b80546bf1d88be30ab23a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c273d497b5b80546bf1d88be30ab23a">&#9670;&nbsp;</a></span>_wopendir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="wchar2_8h.html#a4b416445955b87e37a37b78591c1115f">WDIR_t</a>* _wopendir </td>
+          <td>(</td>
+          <td class="paramtype">const wchar_t *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Opens a directory stream and returns a pointer to the stream. The stream is set to the first entry in the directory. </p>
+<p>After a successful call, the file descriptor of the open directory is used only within the implementation and should not be used in the application. The function sets the <code>close-on-exec</code> flag for the file descriptor that points to the directory. </p>
+
+</div>
+</div>
 <a id="a14c73e5e9b82693f1042999c1598be30"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a14c73e5e9b82693f1042999c1598be30">&#9670;&nbsp;</a></span>_wpathnormalize()</h2>
 
@@ -3806,6 +3932,64 @@ size wide string </td></tr>
 <ul>
 <li><a class="el" href="wprintf.html">wprintf manual</a> </li>
 </ul>
+
+</div>
+</div>
+<a id="aa6585f453ec859183d20623155beb640"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6585f453ec859183d20623155beb640">&#9670;&nbsp;</a></span>_wreaddir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="wchar2_8h.html#a308d32a6626925c2178f94e68d01f123">wdirent_t</a>* _wreaddir </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="wchar2_8h.html#a4b416445955b87e37a37b78591c1115f">WDIR_t</a> *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reads the directory stream. </p>
+<p>It reads the directory stream, returns a pointer to the <code>wdirent_t</code> structure, which represents the next element in the catalog stream. The function returns <code>NULL</code> when the last record in the directory stream is reached or if an error occurred. </p>
+
+</div>
+</div>
+<a id="a2718ba8ae6813702d12e6f6c7010937c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2718ba8ae6813702d12e6f6c7010937c">&#9670;&nbsp;</a></span>_wreaddir_r()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int _wreaddir_r </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="wchar2_8h.html#a4b416445955b87e37a37b78591c1115f">WDIR_t</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="wchar2_8h.html#a308d32a6626925c2178f94e68d01f123">wdirent_t</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="wchar2_8h.html#a308d32a6626925c2178f94e68d01f123">wdirent_t</a> **&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reads the directory stream extended. </p>
+<p>The function <code>wreaddir_r()</code> is a reentrant version. It reads the next entry from the open catalog stream and returns it in the created call buffer pointed to by the second parameter of the function. The pointer to the returned element is placed in the third parameter of the function, if the end of the directory stream is reached, <code>NULL</code> is returned instead of the value. </p>
 
 </div>
 </div>
@@ -4092,6 +4276,58 @@ size wide string </td></tr>
 
 </div>
 </div>
+<a id="a31bf58eefa6f368d9cbdabfd78075380"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31bf58eefa6f368d9cbdabfd78075380">&#9670;&nbsp;</a></span>_wrewinddir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void _wrewinddir </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="wchar2_8h.html#a4b416445955b87e37a37b78591c1115f">WDIR_t</a> *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the beginning in the directory stream. </p>
+<p>The <code>wrewinddir()</code> function flushes the current position of the stream to the beginning of the directory. </p>
+
+</div>
+</div>
+<a id="a86ee9bb2e19f47cbcc86d505350dced7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86ee9bb2e19f47cbcc86d505350dced7">&#9670;&nbsp;</a></span>_wseekdir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void _wseekdir </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="wchar2_8h.html#a4b416445955b87e37a37b78591c1115f">WDIR_t</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname"><em>int</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the position in the directory stream. </p>
+<p>The <a class="el" href="wchar2_8h.html#a86ee9bb2e19f47cbcc86d505350dced7">_wseekdir</a> function sets the position in the directory stream from which the next call to <a class="el" href="wchar2_8h.html#aa6585f453ec859183d20623155beb640">_wreaddir</a> will begin. The position argument must be a value that is returned by the previously called <a class="el" href="wchar2_8h.html#a22705b134af83afcefc9033a3230a3e4">_wtelldir</a> function. </p>
+
+</div>
+</div>
 <a id="a6d598260cda24871e932acd0851451f0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6d598260cda24871e932acd0851451f0">&#9670;&nbsp;</a></span>_wstat()</h2>
 
@@ -4241,6 +4477,27 @@ size wide string </td></tr>
 <ul>
 <li><a class="el" href="wstat.html">wstat manual</a> </li>
 </ul>
+
+</div>
+</div>
+<a id="a22705b134af83afcefc9033a3230a3e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22705b134af83afcefc9033a3230a3e4">&#9670;&nbsp;</a></span>_wtelldir()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long int _wtelldir </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="wchar2_8h.html#a4b416445955b87e37a37b78591c1115f">WDIR_t</a> *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the current position of the directory stream. </p>
+<p>If successful, the <code>wtelldir()</code> function returns the current location in the directory stream. In case of an error, <code>-1</code> is returned, and the corresponding value of <code>errno</code> is set. </p>
 
 </div>
 </div>
@@ -5019,7 +5276,7 @@ size wide string </td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jul 31 2018 11:38:34 for libwchar2 0.0.7 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 2 2018 03:34:39 for libwchar2 0.0.7 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

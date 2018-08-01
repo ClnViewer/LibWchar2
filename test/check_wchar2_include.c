@@ -75,3 +75,5 @@
 #include "test_waccess.c"
 #include "test_wcstonum.c"
 #include "test_wstring.c"
+#include "test_wdir.c"
+
