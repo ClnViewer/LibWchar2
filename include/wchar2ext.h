@@ -262,6 +262,15 @@ wchar_t * _wbasedir_ws(const string_ws*, int);
 
 #define wcsptime _wcsptime
 
+/*! Compatible declarations */
+#define wclosedir _wclosedir
+#define wopendir _wopendir
+#define wreaddir _wreaddir
+#define wreaddir_r _wreaddir_r
+#define wrewinddir _wrewinddir
+#define wseekdir _wseekdir
+#define wtelldir _wtelldir
+
 #endif
 
 /*! \endcond */

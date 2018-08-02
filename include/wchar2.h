@@ -76,6 +76,7 @@
 #  error "size of 'wchar_t' != '2'; Use gcc key: '-fshort-wchar', or clang key: '-fwchar-type=short' '-fno-signed-wchar'"
 #endif
 
+/*! Define this flag for other software, indicate enable `libwchar2.*` in you project */
 #define USED_WCHAR2LIB 1
 
 #define __WS(x) __WS_(x) /**< static string to wide type macro */
