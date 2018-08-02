@@ -27,6 +27,9 @@ include/wchar2.h
 
 .in +1c
 .ti -1c
+.RI "#define \fBUSED_WCHAR2LIB\fP   1"
+.br
+.ti -1c
 .RI "#define \fB__WS\fP(x)   __WS_(x)"
 .br
 .RI "static string to wide type macro "
@@ -1193,12 +1196,12 @@ Wide-character string compare\&.
 .SS "size_t _wcsftime (wchar_t * restrict, size_t sz, const wchar_t * restrict, const void * restrict)"
 
 .PP
-Convert date and time to a formatted wide-character string\&. The original version of the \fCstrftime ()\fP function is used for the conversion\&. The \fCwcsftime()\fP function converts the results from wide characters to a multibyte string and back\&.
+Convert date and time to a formatted wide-character string\&. The original version of the \fCstrftime()\fP function is used for the conversion\&. The \fCwcsftime()\fP function converts the results from wide characters to a multibyte string and back\&.
 .PP
 .IP "\(bu" 2
 \fBwcsftime manual\fP
 .IP "\(bu" 2
-\fBwcsptime manual\fP related \fCwcsptime(\&.\&.)\fP 
+\fB_wcsptime\fP related \fB_wcsftime\fP 
 .PP
 
 .SS "size_t _wcslen (const wchar_t *)"
@@ -1269,12 +1272,12 @@ Find wide characters in string\&.
 .SS "wchar_t* _wcsptime (const wchar_t *, const wchar_t *, void *)"
 
 .PP
-Convert a wide-character string representation of time to a time \fCtm\fP structure\&. The function \fCwcsptime ()\fP is equivalent to the function \fCstrptime()\fP\&. The \fCwcsptime()\fP function converts a wide character string into a \fCtm\fP structure format, according to the format specified in the parameters\&.
+Convert a wide-character string representation of time to a time \fCtm\fP structure\&. The function \fCwcsptime()\fP is equivalent to the function \fCstrptime()\fP\&. The \fCwcsptime()\fP function converts a wide character string into a \fCtm\fP structure format, according to the format specified in the parameters\&.
 .PP
 .IP "\(bu" 2
 \fBwcsptime manual\fP
 .IP "\(bu" 2
-\fBwcsftime manual\fP related \fCwcsftime\&.(\&.\&.)\fP 
+\fB_wcsptime\fP related \fB_wcsftime\fP 
 .PP
 
 .SS "wchar_t* _wcsrchr (const wchar_t *, wchar_t)"
@@ -1990,7 +1993,11 @@ curent status: broken, if out data large 8192 byte! Now, fixing output buffer si
 .SS "void wstring_free (\fBstring_ws\fP * restrict)"
 
 .PP
-Memory free string, empty and clear struct \fBstring_ws\fP\&. API use struct \fBstring_ws\fP
+Memory free string, empty and clear struct \fBstring_ws\fP\&. 
+.SH "API use structure string_ws"
+.PP
+.SS "Allocate memory functions"
+
 .SS "int wstring_isempty (const wchar_t *restrict s, int)"
 
 .PP

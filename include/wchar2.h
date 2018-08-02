@@ -36,6 +36,8 @@
   * \par LibWchar2 Related manual pages
   * https://clnviewer.github.io/LibWchar2/docs/html/pages.html
   *
+  * \tableofcontents
+  *
   * \par Using
   * Using compilation keys to build your program with this library:
   *  - gcc as key:   `-fshort-wchar`
@@ -73,6 +75,8 @@
 #if defined(__SIZEOF_WCHAR_T__) && (__SIZEOF_WCHAR_T__ != 2)
 #  error "size of 'wchar_t' != '2'; Use gcc key: '-fshort-wchar', or clang key: '-fwchar-type=short' '-fno-signed-wchar'"
 #endif
+
+#define USED_WCHAR2LIB 1
 
 #define __WS(x) __WS_(x) /**< static string to wide type macro */
 #define __WSTR wchar_t   /**< definition wchar_t string macro */
@@ -796,7 +800,7 @@ wchar_t   _fputwc(wchar_t, FILE *restrict);
            * \~English
            * \brief Convert date and time to a formatted wide-character string.
            *
-           * \details The original version of the `strftime ()` function is used for the conversion.
+           * \details The original version of the `strftime()` function is used for the conversion.
            *          The `wcsftime()` function converts the results from wide characters to a multibyte
            *          string and back.
            *
@@ -810,7 +814,7 @@ wchar_t   _fputwc(wchar_t, FILE *restrict);
            *
            * \~
            * - \subpage wcsftime
-           * - \ref wcsptime related `wcsptime(..)`
+           * - \ref _wcsptime related \ref _wcsftime
            */
 size_t    _wcsftime(wchar_t *restrict, size_t sz, const wchar_t *restrict, const void *restrict);
 
@@ -818,7 +822,7 @@ size_t    _wcsftime(wchar_t *restrict, size_t sz, const wchar_t *restrict, const
            * \~English
            * \brief Convert a wide-character string representation of time to a time `tm` structure.
            *
-           * \details The function `wcsptime ()` is equivalent to the function `strptime()`.
+           * \details The function `wcsptime()` is equivalent to the function `strptime()`.
            *          The `wcsptime()` function converts a wide character string into a `tm`
            *          structure format, according to the format specified in the parameters.
            *
@@ -831,7 +835,7 @@ size_t    _wcsftime(wchar_t *restrict, size_t sz, const wchar_t *restrict, const
            *
            * \~
            * - \subpage wcsptime
-           * - \ref wcsftime related `wcsftime.(..)`
+           * - \ref _wcsptime related \ref _wcsftime
            */
 wchar_t * _wcsptime(const wchar_t*, const wchar_t*, void*);
 
@@ -1317,11 +1321,22 @@ char *    u8wpathnormalize(const wchar_t*)
 
 
           /*!
-           *  API use struct string_ws
+           * \~English
+           * \section wchar2wstring API use structure string_ws
+           *
+           * \~Russian
+           * \section wchar2wstring API - Работа со структорой string_ws
+           *
            */
 
           /*!
-           *  \paragraph Allocate memory functions
+           * \~English
+           * \subsection wchar2wsalloc Allocate memory functions
+           *
+           * \~Russian
+           * \subsection wchar2wsalloc Функции работы с динамической памятью
+           *
+           * \~
            */
 
 
@@ -1430,8 +1445,15 @@ size_t    wstring_wstocs(char [], size_t, const wchar_t *restrict, size_t);
 size_t    wstring_wstocs_ws(char [], size_t, const string_ws *restrict);
 
           /*!
-           *  \paragraph wstring time function
+           * \~English
+           * \subsection wchar2wstime Time format functions
+           *
+           * \~Russian
+           * \subsection wchar2wstime Функции работы с датой и временем
+           *
+           * \~
            */
+
 
           /*!
            *  \brief Converting time format string to string, wchar_t and size_t input
@@ -1448,7 +1470,13 @@ wchar_t * wstring_timeformat_ws(const string_ws *restrict, const wchar_t *restri
                 __attribute__((warn_unused_result));
 
           /*!
-           *  \paragraph misc function
+           * \~English
+           * \subsection wchar2wsalloc Other misc functions
+           *
+           * \~Russian
+           * \subsection wchar2wsalloc Функции теста строк и их преобразования
+           *
+           * \~
            */
 
           /*! \brief Check wchar_t input string is empty, bool return */
@@ -1466,10 +1494,11 @@ size_t    wstring_trunc_alloc(string_ws *restrict, const wchar_t*, int);
 
           /*!
            * \~English
-           * \paragraph Directory function
+           * \subsection wchar2dir Directory function
            *
            * \~Russian
-           * \paragraph Работа с каталогами
+           * \subsection wchar2dir Работа с каталогами
+           *
            */
 
           /*!

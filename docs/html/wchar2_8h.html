@@ -92,6 +92,9 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
+<tr class="memitem:ac889184e446b772d52c85cb037742444"><td class="memItemLeft" align="right" valign="top"><a id="ac889184e446b772d52c85cb037742444"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>USED_WCHAR2LIB</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:ac889184e446b772d52c85cb037742444"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a40ff1ee5db10dfcfbd0b7475b108c586"><td class="memItemLeft" align="right" valign="top"><a id="a40ff1ee5db10dfcfbd0b7475b108c586"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a40ff1ee5db10dfcfbd0b7475b108c586">__WS</a>(x)&#160;&#160;&#160;__WS_(x)</td></tr>
 <tr class="memdesc:a40ff1ee5db10dfcfbd0b7475b108c586"><td class="mdescLeft">&#160;</td><td class="mdescRight">static string to wide type macro <br /></td></tr>
@@ -2254,10 +2257,10 @@ Type of file. </td></tr>
 </div><div class="memdoc">
 
 <p>Convert date and time to a formatted wide-character string. </p>
-<p>The original version of the <code>strftime ()</code> function is used for the conversion. The <code>wcsftime()</code> function converts the results from wide characters to a multibyte string and back.</p>
+<p>The original version of the <code>strftime()</code> function is used for the conversion. The <code>wcsftime()</code> function converts the results from wide characters to a multibyte string and back.</p>
 <ul>
 <li><a class="el" href="wcsftime.html">wcsftime manual</a></li>
-<li><a class="el" href="wcsptime.html">wcsptime manual</a> related <code>wcsptime(..)</code> </li>
+<li><a class="el" href="wchar2_8h.html#afa85030a8b68f0acce3cf5117b30594a">_wcsptime</a> related <a class="el" href="wchar2_8h.html#adf6e26da7bd1c30ad18ddaffaba1ae46">_wcsftime</a> </li>
 </ul>
 
 </div>
@@ -2592,10 +2595,10 @@ Type of file. </td></tr>
 </div><div class="memdoc">
 
 <p>Convert a wide-character string representation of time to a time <code>tm</code> structure. </p>
-<p>The function <code>wcsptime ()</code> is equivalent to the function <code>strptime()</code>. The <code>wcsptime()</code> function converts a wide character string into a <code>tm</code> structure format, according to the format specified in the parameters.</p>
+<p>The function <code>wcsptime()</code> is equivalent to the function <code>strptime()</code>. The <code>wcsptime()</code> function converts a wide character string into a <code>tm</code> structure format, according to the format specified in the parameters.</p>
 <ul>
 <li><a class="el" href="wcsptime.html">wcsptime manual</a></li>
-<li><a class="el" href="wcsftime.html">wcsftime manual</a> related <code>wcsftime.(..)</code> </li>
+<li><a class="el" href="wchar2_8h.html#afa85030a8b68f0acce3cf5117b30594a">_wcsptime</a> related <a class="el" href="wchar2_8h.html#adf6e26da7bd1c30ad18ddaffaba1ae46">_wcsftime</a> </li>
 </ul>
 
 </div>
@@ -5117,7 +5120,10 @@ Type of file. </td></tr>
 </div><div class="memdoc">
 
 <p>Memory free string, empty and clear struct <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a>. </p>
-<p>API use struct <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a></p>
+<h1><a class="anchor" id="wchar2wstring"></a>
+API use structure string_ws</h1>
+<h2><a class="anchor" id="wchar2wsalloc"></a>
+Allocate memory functions</h2>
 
 </div>
 </div>
@@ -5276,7 +5282,7 @@ Type of file. </td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Aug 2 2018 03:34:39 for libwchar2 0.0.7 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Aug 2 2018 09:17:07 for libwchar2 0.0.7 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>
