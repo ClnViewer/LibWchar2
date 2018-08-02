@@ -77,7 +77,7 @@
 #endif
 
 /*! Define this flag for other software, indicate enable `libwchar2.*` in you project */
-#define USED_WCHAR2LIB 1
+#define USED_WCHAR2LIB 1 /**< flag indicate enable `libwchar2.*` */
 
 #define __WS(x) __WS_(x) /**< static string to wide type macro */
 #define __WSTR wchar_t   /**< definition wchar_t string macro */
