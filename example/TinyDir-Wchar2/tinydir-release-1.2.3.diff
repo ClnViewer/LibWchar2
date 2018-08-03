@@ -1,5 +1,5 @@
 --- tinydir-orig.h	2018-08-03 10:29:32.000000000 +0400
-+++ tinydir.h	2018-08-03 10:57:53.790992269 +0400
++++ tinydir.h	2018-08-03 11:01:18.814992108 +0400
 @@ -1,5 +1,6 @@
  /*
  Copyright (c) 2013-2018, tinydir authors:
@@ -404,7 +404,7 @@
 +    _tinydir_char_t *extension;
 +    int is_dir;
 +    int is_reg;
-+	struct _tinydir_sstat _s;
++    struct _tinydir_sstat _s;
  } tinydir_file;
  
  typedef struct tinydir_dir
@@ -436,7 +436,7 @@
 +    _tinydir_dirent *_e;
 +
 +#   ifndef _TINYDIR_USE_READDIR
-+    struct _tinydir_dirent *_ep;
++    _tinydir_dirent *_ep;
 +#   endif
  #endif
  } tinydir_dir;
