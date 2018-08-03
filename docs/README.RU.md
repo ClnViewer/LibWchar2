@@ -157,6 +157,7 @@ string_ws* | const string_ws* ||
 
 ### Проекты адаптированные к библиотеке
 
+- [libexpat](https://github.com/libexpat/libexpat) - Быстрый потоковый XML-парсер, написан на `C`. Автор: [Expat development team](https://libexpat.github.io/)  
 - [tinydir](https://github.com/ClnViewer/tinydir/tree/libwchar2support) - [patch v.1.2.3](https://github.com/ClnViewer/tinydir/blob/master/tinydir-release-1.2.3.diff) - Легкий, портативный и простой в использовании просмотрщик директорий и файлов. Автор: [cxong](https://github.com/cxong)
 
 

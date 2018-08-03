@@ -155,6 +155,7 @@ This way you will take part in the testing.
 
 ### Projects adapted to the library
 
+- [libexpat](https://github.com/libexpat/libexpat) - Fast streaming XML parser written in `C`. Author: [Expat development team](https://libexpat.github.io/)  
 - [tinydir](https://github.com/ClnViewer/tinydir/tree/libwchar2support) - [patch v.1.2.3](https://github.com/ClnViewer/tinydir/blob/master/tinydir-release-1.2.3.diff) - Lightweight, portable and easy to integrate C directory and file reader. Author: [cxong](https://github.com/cxong) 
 
 ### Source & Materials used:
