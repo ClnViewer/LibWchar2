@@ -6,6 +6,8 @@
     gcc -E -fshort-wchar -I../../include tinydir-test.c
 */
 
+#define UNICODE 1
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -19,21 +21,32 @@
 #  include <wchar2.h>
 #endif
 
-#include "tinydir.h"
-
+/*
+    Sample selector, not fully
+    See and use: https://github.com/ClnViewer/LibWchar2/blob/master/src/libbuild.h
+ */
 #if defined(UNICODE)
-#  if !defined(USED_WCHAR2LIB)
-#    define __WS _T
-#    define __WSTR_FMT "l"
+#  if (!defined(USED_WCHAR2LIB) && defined(__linux))
+#   define __WS(x) x
+#   define __WSTR_FMT "s"
+#   undef UNICODE
+#  elif (!defined(USED_WCHAR2LIB) && defined(_WIN32))
+#   define __WS _T
+#   define __WSTR_FMT "ls"
+#  else
+    /* enable libchar2 */
 #  endif
 #else
 #   define __WS(x) x
-#   define __WSTR_FMT ""
+#   define __WSTR_FMT "s"
+#   define __FOPEN fopen
 #endif
+
+#include "tinydir.h"
 
 /*
     Create core is crush, debug mode.
-	Linux only.
+    Linux only.
 */
 #if defined(USE_COREDUMP)
 #include <sys/resource.h>
@@ -47,10 +60,10 @@ void proc_coredump(void)
 
 int main(void)
 {
-	tinydir_dir dir;
+    tinydir_dir dir;
 
 #   if defined(USE_COREDUMP)
-	proc_coredump();
+    proc_coredump();
 #   endif
 
 #   if defined(USE_WCHAR2LIB)
@@ -80,7 +93,7 @@ int main(void)
 			goto bail;
 		}
 
-		printf("\t- %" __WSTR_FMT "s", file.name);
+		printf("\t- %" __WSTR_FMT, file.name);
 		if (file.is_dir)
 		{
 			printf("/");
