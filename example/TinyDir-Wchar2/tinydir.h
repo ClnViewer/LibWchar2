@@ -34,10 +34,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 extern "C" {
 #endif
 
-// For edits only
-// #define __MINGW32__ 1
-// #define UNICODE 1
-
 #if ( \
         defined(_WIN32) || defined(__WIN32__) || defined(_Windows) || \
         defined(_WIN64) || defined(__WIN64__) || \
@@ -286,7 +282,7 @@ typedef struct tinydir_file
     _tinydir_char_t *extension;
     int is_dir;
     int is_reg;
-	struct _tinydir_sstat _s;
+    struct _tinydir_sstat _s;
 } tinydir_file;
 
 typedef struct tinydir_dir
@@ -304,7 +300,7 @@ typedef struct tinydir_dir
     _tinydir_dirent *_e;
 
 #   ifndef _TINYDIR_USE_READDIR
-    struct _tinydir_dirent *_ep;
+    _tinydir_dirent *_ep;
 #   endif
 #endif
 } tinydir_dir;
@@ -418,11 +414,11 @@ int tinydir_open(tinydir_dir *dir, const _tinydir_char_t *path)
 #   if defined(_TINYDIR_USE_READDIR)
 
 #      if defined(USED_WCHAR2LIB)
-       if (dir->_e)
-       {
-            _TINYDIR_FREE(dir->_e);
-            dir->_e = NULL;
-       }
+    if (dir->_e)
+    {
+        _TINYDIR_FREE(dir->_e);
+        dir->_e = NULL;
+    }
 #      endif
 
     dir->_e = _tinydir_readdir(dir->_d);
@@ -432,7 +428,7 @@ int tinydir_open(tinydir_dir *dir, const _tinydir_char_t *path)
     if (
         ((size = _tinydir_dirent_buf_size(dir->_d)) == -1) ||
         ((dir->_ep = (struct _tinydir_dirent*)_TINYDIR_MALLOC(size)) == NULL)
-       )
+    )
     {
         return -1;
     }
@@ -659,17 +655,17 @@ int tinydir_readfile(const tinydir_dir *dir, tinydir_file *file)
     _tinydir_strcat(file->path, _TINYDIR_STRING("/"));
     _tinydir_strcpy(file->name,
 #       if defined(BUILD_MSVC)
-        dir->_f.cFileName
+                    dir->_f.cFileName
 #       else
-        dir->_e->d_name
+                    dir->_e->d_name
 #       endif
-    );
+                   );
     _tinydir_strcat(file->path, file->name);
 #if !defined(BUILD_MSVC)
     if (_tinydir_stat(
-        file->path, &file->_s) == -1)
+                file->path, &file->_s) == -1)
     {
-printf("\t%d)\n", __LINE__);
+        printf("\t%d)\n", __LINE__);
         return -1;
     }
 #endif
@@ -913,13 +909,13 @@ size_t _tinydir_dirent_buf_size(_TINYDIR_DIR *dirp)
 #   if defined _TINYDIR_USE_FPATHCONF
     name_max = fpathconf(dirfd(dirp), _PC_NAME_MAX);
     if (name_max == -1)
-	{
+    {
 #       if defined(NAME_MAX)
         name_max = (NAME_MAX > 255) ? NAME_MAX : 255;
 #       else
         return (size_t)(-1);
 #       endif
-	}
+    }
 #   elif defined(NAME_MAX)
     name_max = (NAME_MAX > 255) ? NAME_MAX : 255;
 #   else

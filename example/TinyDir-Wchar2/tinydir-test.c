@@ -20,8 +20,6 @@
 #endif
 
 #include "tinydir.h"
-// for test compare
-// #include "tinydir-orig.h"
 
 #if defined(UNICODE)
 #  if !defined(USED_WCHAR2LIB)
