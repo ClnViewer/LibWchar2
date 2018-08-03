@@ -1,5 +1,5 @@
 --- tinydir-orig.h	2018-08-03 10:29:32.000000000 +0400
-+++ tinydir.h	2018-08-03 11:01:18.814992108 +0400
++++ tinydir.h	2018-08-03 11:06:37.000000000 +0400
 @@ -1,5 +1,6 @@
  /*
  Copyright (c) 2013-2018, tinydir authors:
@@ -464,6 +464,81 @@
 -#ifndef _TINYDIR_USE_READDIR
 -	int error;
 -	int size;	/* using int size */
+-#endif
+-#else
+-	_tinydir_char_t path_buf[_TINYDIR_PATH_MAX];
+-#endif
+-	_tinydir_char_t *pathp;
+-
+-	if (dir == NULL || path == NULL || _tinydir_strlen(path) == 0)
+-	{
+-		errno = EINVAL;
+-		return -1;
+-	}
+-	if (_tinydir_strlen(path) + _TINYDIR_PATH_EXTRA >= _TINYDIR_PATH_MAX)
+-	{
+-		errno = ENAMETOOLONG;
+-		return -1;
+-	}
+-
+-	/* initialise dir */
+-	dir->_files = NULL;
+-#ifdef _MSC_VER
+-	dir->_h = INVALID_HANDLE_VALUE;
+-#else
+-	dir->_d = NULL;
+-#ifndef _TINYDIR_USE_READDIR
+-	dir->_ep = NULL;
+-#endif
+-#endif
+-	tinydir_close(dir);
+-
+-	_tinydir_strcpy(dir->path, path);
+-	/* Remove trailing slashes */
+-	pathp = &dir->path[_tinydir_strlen(dir->path) - 1];
+-	while (pathp != dir->path && (*pathp == TINYDIR_STRING('\\') || *pathp == TINYDIR_STRING('/')))
+-	{
+-		*pathp = TINYDIR_STRING('\0');
+-		pathp++;
+-	}
+-#ifdef _MSC_VER
+-	_tinydir_strcpy(path_buf, dir->path);
+-	_tinydir_strcat(path_buf, TINYDIR_STRING("\\*"));
+-#if (defined WINAPI_FAMILY) && (WINAPI_FAMILY != WINAPI_FAMILY_DESKTOP_APP)
+-	dir->_h = FindFirstFileEx(path_buf, FindExInfoStandard, &dir->_f, FindExSearchNameMatch, NULL, 0);
+-#else
+-	dir->_h = FindFirstFile(path_buf, &dir->_f);
+-#endif
+-	if (dir->_h == INVALID_HANDLE_VALUE)
+-	{
+-		errno = ENOENT;
+-#else
+-	dir->_d = _tinydir_opendir(path);
+-	if (dir->_d == NULL)
+-	{
+-#endif
+-		goto bail;
+-	}
+-
+-	/* read first file */
+-	dir->has_next = 1;
+-#ifndef _MSC_VER
+-#ifdef _TINYDIR_USE_READDIR
+-	dir->_e = _tinydir_readdir(dir->_d);
+-#else
+-	/* allocate dirent buffer for readdir_r */
+-	size = _tinydir_dirent_buf_size(dir->_d); /* conversion to int */
+-	if (size == -1) return -1;
+-	dir->_ep = (struct _tinydir_dirent*)_TINYDIR_MALLOC(size);
+-	if (dir->_ep == NULL) return -1;
+-
+-	error = readdir_r(dir->_d, dir->_ep, &dir->_e);
+-	if (error != 0) return -1;
+-#endif
+-	if (dir->_e == NULL)
+-	{
+-		dir->has_next = 0;
+-	}
 +#if !defined(BUILD_MSVC)
 +#   if !defined(_TINYDIR_USE_READDIR)
 +    int error;
@@ -535,11 +610,11 @@
 +#   if defined(_TINYDIR_USE_READDIR)
 +
 +#      if defined(USED_WCHAR2LIB)
-+       if (dir->_e)
-+       {
-+            _TINYDIR_FREE(dir->_e);
-+            dir->_e = NULL;
-+       }
++    if (dir->_e)
++    {
++        _TINYDIR_FREE(dir->_e);
++        dir->_e = NULL;
++    }
 +#      endif
 +
 +    dir->_e = _tinydir_readdir(dir->_d);
@@ -549,7 +624,7 @@
 +    if (
 +        ((size = _tinydir_dirent_buf_size(dir->_d)) == -1) ||
 +        ((dir->_ep = (struct _tinydir_dirent*)_TINYDIR_MALLOC(size)) == NULL)
-+       )
++    )
 +    {
 +        return -1;
 +    }
@@ -566,82 +641,7 @@
 +        dir->has_next = 0;
 +    }
  #endif
--#else
--	_tinydir_char_t path_buf[_TINYDIR_PATH_MAX];
--#endif
--	_tinydir_char_t *pathp;
  
--	if (dir == NULL || path == NULL || _tinydir_strlen(path) == 0)
--	{
--		errno = EINVAL;
--		return -1;
--	}
--	if (_tinydir_strlen(path) + _TINYDIR_PATH_EXTRA >= _TINYDIR_PATH_MAX)
--	{
--		errno = ENAMETOOLONG;
--		return -1;
--	}
--
--	/* initialise dir */
--	dir->_files = NULL;
--#ifdef _MSC_VER
--	dir->_h = INVALID_HANDLE_VALUE;
--#else
--	dir->_d = NULL;
--#ifndef _TINYDIR_USE_READDIR
--	dir->_ep = NULL;
--#endif
--#endif
--	tinydir_close(dir);
--
--	_tinydir_strcpy(dir->path, path);
--	/* Remove trailing slashes */
--	pathp = &dir->path[_tinydir_strlen(dir->path) - 1];
--	while (pathp != dir->path && (*pathp == TINYDIR_STRING('\\') || *pathp == TINYDIR_STRING('/')))
--	{
--		*pathp = TINYDIR_STRING('\0');
--		pathp++;
--	}
--#ifdef _MSC_VER
--	_tinydir_strcpy(path_buf, dir->path);
--	_tinydir_strcat(path_buf, TINYDIR_STRING("\\*"));
--#if (defined WINAPI_FAMILY) && (WINAPI_FAMILY != WINAPI_FAMILY_DESKTOP_APP)
--	dir->_h = FindFirstFileEx(path_buf, FindExInfoStandard, &dir->_f, FindExSearchNameMatch, NULL, 0);
--#else
--	dir->_h = FindFirstFile(path_buf, &dir->_f);
--#endif
--	if (dir->_h == INVALID_HANDLE_VALUE)
--	{
--		errno = ENOENT;
--#else
--	dir->_d = _tinydir_opendir(path);
--	if (dir->_d == NULL)
--	{
--#endif
--		goto bail;
--	}
--
--	/* read first file */
--	dir->has_next = 1;
--#ifndef _MSC_VER
--#ifdef _TINYDIR_USE_READDIR
--	dir->_e = _tinydir_readdir(dir->_d);
--#else
--	/* allocate dirent buffer for readdir_r */
--	size = _tinydir_dirent_buf_size(dir->_d); /* conversion to int */
--	if (size == -1) return -1;
--	dir->_ep = (struct _tinydir_dirent*)_TINYDIR_MALLOC(size);
--	if (dir->_ep == NULL) return -1;
--
--	error = readdir_r(dir->_d, dir->_ep, &dir->_e);
--	if (error != 0) return -1;
--#endif
--	if (dir->_e == NULL)
--	{
--		dir->has_next = 0;
--	}
--#endif
--
 -	return 0;
 +    return 0;
  
@@ -776,6 +776,29 @@
 -	{
 -		return;
 -	}
+-
+-	memset(dir->path, 0, sizeof(dir->path));
+-	dir->has_next = 0;
+-	dir->n_files = 0;
+-	_TINYDIR_FREE(dir->_files);
+-	dir->_files = NULL;
+-#ifdef _MSC_VER
+-	if (dir->_h != INVALID_HANDLE_VALUE)
+-	{
+-		FindClose(dir->_h);
+-	}
+-	dir->_h = INVALID_HANDLE_VALUE;
+-#else
+-	if (dir->_d)
+-	{
+-		_tinydir_closedir(dir->_d);
+-	}
+-	dir->_d = NULL;
+-	dir->_e = NULL;
+-#ifndef _TINYDIR_USE_READDIR
+-	_TINYDIR_FREE(dir->_ep);
+-	dir->_ep = NULL;
+-#endif
 +    if (dir == NULL)
 +    {
 +        return;
@@ -812,29 +835,7 @@
 +    _TINYDIR_FREE(dir->_ep);
 +    dir->_ep = NULL;
 +#   endif
- 
--	memset(dir->path, 0, sizeof(dir->path));
--	dir->has_next = 0;
--	dir->n_files = 0;
--	_TINYDIR_FREE(dir->_files);
--	dir->_files = NULL;
--#ifdef _MSC_VER
--	if (dir->_h != INVALID_HANDLE_VALUE)
--	{
--		FindClose(dir->_h);
--	}
--	dir->_h = INVALID_HANDLE_VALUE;
--#else
--	if (dir->_d)
--	{
--		_tinydir_closedir(dir->_d);
--	}
--	dir->_d = NULL;
--	dir->_e = NULL;
--#ifndef _TINYDIR_USE_READDIR
--	_TINYDIR_FREE(dir->_ep);
--	dir->_ep = NULL;
--#endif
++
  #endif
  }
  
@@ -1058,17 +1059,17 @@
 +    _tinydir_strcat(file->path, _TINYDIR_STRING("/"));
 +    _tinydir_strcpy(file->name,
 +#       if defined(BUILD_MSVC)
-+        dir->_f.cFileName
++                    dir->_f.cFileName
 +#       else
-+        dir->_e->d_name
++                    dir->_e->d_name
 +#       endif
-+    );
++                   );
 +    _tinydir_strcat(file->path, file->name);
 +#if !defined(BUILD_MSVC)
 +    if (_tinydir_stat(
-+        file->path, &file->_s) == -1)
++                file->path, &file->_s) == -1)
 +    {
-+printf("\t%d)\n", __LINE__);
++        printf("\t%d)\n", __LINE__);
 +        return -1;
 +    }
 +#endif
@@ -1483,13 +1484,13 @@
 +#   if defined _TINYDIR_USE_FPATHCONF
 +    name_max = fpathconf(dirfd(dirp), _PC_NAME_MAX);
 +    if (name_max == -1)
-+	{
++    {
 +#       if defined(NAME_MAX)
 +        name_max = (NAME_MAX > 255) ? NAME_MAX : 255;
 +#       else
 +        return (size_t)(-1);
 +#       endif
-+	}
++    }
 +#   elif defined(NAME_MAX)
 +    name_max = (NAME_MAX > 255) ? NAME_MAX : 255;
 +#   else

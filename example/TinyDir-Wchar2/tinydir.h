@@ -1,6 +1,6 @@
 /*
 Copyright (c) 2013-2018, tinydir authors:
-- PS (20018)
+- PS (2018)
 - Cong Xu
 - Lautis Sun
 - Baudouin Feildel
