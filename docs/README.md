@@ -1,4 +1,4 @@
-﻿
+
 [![Git HOME](https://img.shields.io/badge/Home-Git-brightgreen.svg?style=flat)](https://github.com/ClnViewer/LibWchar2)
 [![Readme RU](https://img.shields.io/badge/Readme-RU-brightgreen.svg?style=flat)](https://github.com/ClnViewer/LibWchar2/blob/master/docs/README.RU.md)
 [![Documentation](https://img.shields.io/badge/Documentation-DOC-brightgreen.svg?style=flat)](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html)
@@ -152,6 +152,10 @@ string_ws* | const string_ws* ||
 
 If you have the time and the desire or the opportunity to help make the library better, you can take part in writing tests for library functions.
 This way you will take part in the testing.
+
+### Projects adapted to the library
+
+- [tinydir](https://github.com/ClnViewer/tinydir/tree/libwchar2support) - [patch v.1.2.3](https://github.com/ClnViewer/tinydir/blob/master/tinydir-release-1.2.3.diff) - Lightweight, portable and easy to integrate C directory and file reader. Author: [cxong](https://github.com/cxong) 
 
 ### Source & Materials used:
 

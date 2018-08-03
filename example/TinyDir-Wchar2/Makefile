@@ -8,9 +8,14 @@ all: clean exelibc exewchar2
 
 exelibc:
 	gcc $(CFLAGS) $(CFLAGSCD) tinydir-test.c -o tinydir-test-wchar2lib.libc
+	gcc $(CFLAGS) $(CFLAGSCD) tinydir-test-list.c -o tinydir-test-wchar2lib-list.libc
 
 exewchar2:
 	gcc $(CFLAGS) $(CFLAGSCD) $(CFLAGSW2) $(LDDFLAGSW2) tinydir-test.c -o tinydir-test-wchar2lib.wchar2
+	gcc $(CFLAGS) $(CFLAGSCD) $(CFLAGSW2) $(LDDFLAGSW2) tinydir-test-list.c -o tinydir-test-wchar2lib-list.wchar2
+
+diff:
+	diff -u tinydir-orig.h tinydir.h >tinydir-release-1.2.3.diff
 
 clean:
 	@rm -f tinydir-test-wchar2lib.libc tinydir-test-wchar2lib.wchar2 ./core.*

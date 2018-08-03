@@ -279,6 +279,8 @@ extern "C" {
 #   define _TINYDIR_FREE(x)   free(x)
 #endif
 
+/* Public interface */
+#define TINYDIR_STRING _TINYDIR_STRING
 
 typedef struct tinydir_file
 {
