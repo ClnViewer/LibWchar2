@@ -76,6 +76,21 @@
 #  error "size of 'wchar_t' != '2'; Use gcc key: '-fshort-wchar', or clang key: '-fwchar-type=short' '-fno-signed-wchar'"
 #endif
 
+#if ( \
+        defined(_WIN32) || defined(__WIN32__) || defined(_Windows) || \
+        defined(_WIN64) || defined(__WIN64__) || \
+        defined(__CYGWIN__) || defined(__MINGW32__) || defined(__MINGW64__))
+
+#  error "NOT include <wchar2.h>, for WINxx platform! use <wchar2ext.h> and libwchar2ext.* instead"
+#endif
+
+#if !defined(UINTMAX_MAX)
+typedef unsigned long long int uintmax_t;
+#endif
+#if !defined(INTMAX_MAX)
+typedef long long int intmax_t;
+#endif
+
 /*! \brief Define this flag for other software, indicate enable `libwchar2` in you project */
 #define USED_WCHAR2LIB 1 /**< flag indicate enable libwchar2 */
 
@@ -946,7 +961,7 @@ FILE    * u8wfopen(const wchar_t*, const wchar_t*)
            * \~
            * - \subpage wstat
            */
-int       _wstat(const wchar_t*, struct stat*);
+int       _wstat(const wchar_t*, void*);
 
           /*!
            * \~English
@@ -960,7 +975,7 @@ int       _wstat(const wchar_t*, struct stat*);
            * \~
            * - \subpage wstat
            */
-int       _wstat_s(const wchar_t*, size_t, struct stat*);
+int       _wstat_s(const wchar_t*, size_t, void*);
 
           /*!
            * \~English
@@ -972,7 +987,7 @@ int       _wstat_s(const wchar_t*, size_t, struct stat*);
            * \~
            * - \subpage wstat
            */
-int       _wstat_ws(const string_ws*, struct stat*);
+int       _wstat_ws(const string_ws*, void*);
 
           /*!
            * \~English

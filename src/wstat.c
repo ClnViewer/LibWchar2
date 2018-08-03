@@ -87,20 +87,23 @@ int _wstat_ws(const string_ws *ws, void *v)
 
 #else
 
-int _wstat(const wchar_t *w, struct stat *st)
+int _wstat(const wchar_t *w, void *v)
 {
+    struct __sstat *st = (struct __sstat*)v;
     wstocscvt(b, w, -1);
     return stat(b, st);
 }
 
-int _wstat_s(const wchar_t *w, size_t sz, struct stat *st)
+int _wstat_s(const wchar_t *w, size_t sz, void *v)
 {
+    struct __sstat *st = (struct __sstat*)v;
     wstocsncvt(b, w, sz, -1);
     return stat(b, st);
 }
 
-int _wstat_ws(const string_ws *ws, struct stat *st)
+int _wstat_ws(const string_ws *ws, void *v)
 {
+    struct __sstat *st = (struct __sstat*)v;
     return _wstat(ws->str, st);
 }
 

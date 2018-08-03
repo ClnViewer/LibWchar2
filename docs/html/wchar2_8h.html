@@ -135,6 +135,12 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:ac407865c0580861a04a40e2f6fc2ba1f"><td class="memItemLeft" align="right" valign="top"><a id="ac407865c0580861a04a40e2f6fc2ba1f"></a>
+typedef unsigned long long int&#160;</td><td class="memItemRight" valign="bottom"><b>uintmax_t</b></td></tr>
+<tr class="separator:ac407865c0580861a04a40e2f6fc2ba1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afabef5dc88743cb0f8c7f5acb3509d0e"><td class="memItemLeft" align="right" valign="top"><a id="afabef5dc88743cb0f8c7f5acb3509d0e"></a>
+typedef long long int&#160;</td><td class="memItemRight" valign="bottom"><b>intmax_t</b></td></tr>
+<tr class="separator:afabef5dc88743cb0f8c7f5acb3509d0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a308d32a6626925c2178f94e68d01f123"><td class="memItemLeft" align="right" valign="top"><a id="a308d32a6626925c2178f94e68d01f123"></a>
 typedef struct <a class="el" href="wchar2_8h.html#struct__wdirent">_wdirent</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a308d32a6626925c2178f94e68d01f123">wdirent_t</a></td></tr>
 <tr class="memdesc:a308d32a6626925c2178f94e68d01f123"><td class="mdescLeft">&#160;</td><td class="mdescRight">the contains constructs that facilitate directory traversing <br /></td></tr>
@@ -455,15 +461,15 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wc
 <tr class="memitem:a0a0616a33fd410ab523d044b676c9e76"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a0a0616a33fd410ab523d044b676c9e76">u8wfopen</a> (const wchar_t *, const wchar_t *)</td></tr>
 <tr class="memdesc:a0a0616a33fd410ab523d044b676c9e76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open file stream, after converting the file name from wide characters to UTF-8.  <a href="#a0a0616a33fd410ab523d044b676c9e76">More...</a><br /></td></tr>
 <tr class="separator:a0a0616a33fd410ab523d044b676c9e76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d598260cda24871e932acd0851451f0"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a6d598260cda24871e932acd0851451f0">_wstat</a> (const wchar_t *, struct stat *)</td></tr>
-<tr class="memdesc:a6d598260cda24871e932acd0851451f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functions <code>wstat*()</code> fill the structure with data about the file pointed to by <code>struct stat</code>, associated with the file name.  <a href="#a6d598260cda24871e932acd0851451f0">More...</a><br /></td></tr>
-<tr class="separator:a6d598260cda24871e932acd0851451f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c802f5053dca163e445794befea1053"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a1c802f5053dca163e445794befea1053">_wstat_s</a> (const wchar_t *, size_t, struct stat *)</td></tr>
-<tr class="memdesc:a1c802f5053dca163e445794befea1053"><td class="mdescLeft">&#160;</td><td class="mdescRight">The same as <a class="el" href="wchar2_8h.html#a6d598260cda24871e932acd0851451f0">_wstat</a>, the <code>size_t</code> parameter must contain the length of the variable of the file name, or zero.  <a href="#a1c802f5053dca163e445794befea1053">More...</a><br /></td></tr>
-<tr class="separator:a1c802f5053dca163e445794befea1053"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd2807ac836ba67125cecef1ae1f72c7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#abd2807ac836ba67125cecef1ae1f72c7">_wstat_ws</a> (const <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *, struct stat *)</td></tr>
-<tr class="memdesc:abd2807ac836ba67125cecef1ae1f72c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The same as <a class="el" href="wchar2_8h.html#a6d598260cda24871e932acd0851451f0">_wstat</a>, the input parameter filename is passed in the <code><a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a></code> structure.  <a href="#abd2807ac836ba67125cecef1ae1f72c7">More...</a><br /></td></tr>
-<tr class="separator:abd2807ac836ba67125cecef1ae1f72c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e446ab85419147c23e6d24892108be7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a9e446ab85419147c23e6d24892108be7">_wstat</a> (const wchar_t *, void *)</td></tr>
+<tr class="memdesc:a9e446ab85419147c23e6d24892108be7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Functions <code>wstat*()</code> fill the structure with data about the file pointed to by <code>struct stat</code>, associated with the file name.  <a href="#a9e446ab85419147c23e6d24892108be7">More...</a><br /></td></tr>
+<tr class="separator:a9e446ab85419147c23e6d24892108be7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae98d71312bff8d15a755d45f67546e6f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#ae98d71312bff8d15a755d45f67546e6f">_wstat_s</a> (const wchar_t *, size_t, void *)</td></tr>
+<tr class="memdesc:ae98d71312bff8d15a755d45f67546e6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The same as <a class="el" href="wchar2_8h.html#a9e446ab85419147c23e6d24892108be7">_wstat</a>, the <code>size_t</code> parameter must contain the length of the variable of the file name, or zero.  <a href="#ae98d71312bff8d15a755d45f67546e6f">More...</a><br /></td></tr>
+<tr class="separator:ae98d71312bff8d15a755d45f67546e6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05941dfb89a4f9a08d4491743fed6431"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a05941dfb89a4f9a08d4491743fed6431">_wstat_ws</a> (const <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *, void *)</td></tr>
+<tr class="memdesc:a05941dfb89a4f9a08d4491743fed6431"><td class="mdescLeft">&#160;</td><td class="mdescRight">The same as <a class="el" href="wchar2_8h.html#a9e446ab85419147c23e6d24892108be7">_wstat</a>, the input parameter filename is passed in the <code><a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a></code> structure.  <a href="#a05941dfb89a4f9a08d4491743fed6431">More...</a><br /></td></tr>
+<tr class="separator:a05941dfb89a4f9a08d4491743fed6431"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc25d00a5aa55cc7a013171681d6e8b1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#afc25d00a5aa55cc7a013171681d6e8b1">_wstat_selector</a> (int, const void *, size_t, const void *)</td></tr>
 <tr class="memdesc:afc25d00a5aa55cc7a013171681d6e8b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Automatic type selector for <code>wstat*</code> functions.  <a href="#afc25d00a5aa55cc7a013171681d6e8b1">More...</a><br /></td></tr>
 <tr class="separator:afc25d00a5aa55cc7a013171681d6e8b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -4348,8 +4354,8 @@ Type of file. </td></tr>
 
 </div>
 </div>
-<a id="a6d598260cda24871e932acd0851451f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d598260cda24871e932acd0851451f0">&#9670;&nbsp;</a></span>_wstat()</h2>
+<a id="a9e446ab85419147c23e6d24892108be7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e446ab85419147c23e6d24892108be7">&#9670;&nbsp;</a></span>_wstat()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -4363,7 +4369,7 @@ Type of file. </td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">struct stat *&#160;</td>
+          <td class="paramtype">void *&#160;</td>
           <td class="paramname">&#160;</td>
         </tr>
         <tr>
@@ -4383,8 +4389,8 @@ Type of file. </td></tr>
 
 </div>
 </div>
-<a id="a1c802f5053dca163e445794befea1053"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c802f5053dca163e445794befea1053">&#9670;&nbsp;</a></span>_wstat_s()</h2>
+<a id="ae98d71312bff8d15a755d45f67546e6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae98d71312bff8d15a755d45f67546e6f">&#9670;&nbsp;</a></span>_wstat_s()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -4404,7 +4410,7 @@ Type of file. </td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">struct stat *&#160;</td>
+          <td class="paramtype">void *&#160;</td>
           <td class="paramname">&#160;</td>
         </tr>
         <tr>
@@ -4415,7 +4421,7 @@ Type of file. </td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The same as <a class="el" href="wchar2_8h.html#a6d598260cda24871e932acd0851451f0">_wstat</a>, the <code>size_t</code> parameter must contain the length of the variable of the file name, or zero. </p>
+<p>The same as <a class="el" href="wchar2_8h.html#a9e446ab85419147c23e6d24892108be7">_wstat</a>, the <code>size_t</code> parameter must contain the length of the variable of the file name, or zero. </p>
 <ul>
 <li><a class="el" href="wstat.html">wstat manual</a> </li>
 </ul>
@@ -4467,8 +4473,8 @@ Type of file. </td></tr>
 
 </div>
 </div>
-<a id="abd2807ac836ba67125cecef1ae1f72c7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd2807ac836ba67125cecef1ae1f72c7">&#9670;&nbsp;</a></span>_wstat_ws()</h2>
+<a id="a05941dfb89a4f9a08d4491743fed6431"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05941dfb89a4f9a08d4491743fed6431">&#9670;&nbsp;</a></span>_wstat_ws()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -4482,7 +4488,7 @@ Type of file. </td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">struct stat *&#160;</td>
+          <td class="paramtype">void *&#160;</td>
           <td class="paramname">&#160;</td>
         </tr>
         <tr>
@@ -4493,7 +4499,7 @@ Type of file. </td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>The same as <a class="el" href="wchar2_8h.html#a6d598260cda24871e932acd0851451f0">_wstat</a>, the input parameter filename is passed in the <code><a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a></code> structure. </p>
+<p>The same as <a class="el" href="wchar2_8h.html#a9e446ab85419147c23e6d24892108be7">_wstat</a>, the input parameter filename is passed in the <code><a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a></code> structure. </p>
 <ul>
 <li><a class="el" href="wstat.html">wstat manual</a> </li>
 </ul>
@@ -5299,7 +5305,7 @@ Allocate memory functions</h2>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Aug 2 2018 22:24:06 for libwchar2 0.0.7 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Aug 3 2018 10:47:41 for libwchar2 0.0.7 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>
