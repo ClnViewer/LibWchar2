@@ -17,6 +17,7 @@ EXTRA_DIST = \
     test/check_wchar2_MSVC.c \
     src/libwcharext.c \
     src/strptime_w32.c \
+    src/wdir_msvc.c \
     README.md
 
 EXTRA_HEADERS = \

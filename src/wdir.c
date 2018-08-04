@@ -218,6 +218,8 @@ static access_e __dir_entry_type(WIN32_FIND_DATAW *we)
     }
 }
 
+#include "wdir_msvc.c"
+
 int _wreaddir_cb(wchar_t *dirpath, long opt, wdir_cb fun, void *data)
 {
     long               cnt      = 0L;
@@ -474,7 +476,7 @@ int _wreaddir_cb(wchar_t *dirpath, long opt, wdir_cb fun, void *data)
     int        ret      = 0;
     long       cnt      = 0L;
     wdirent_t  wentry,
-               *we       = NULL;
+              *we       = NULL;
     WDIR_t    *dp       = NULL;
     fun                 = ((fun) ? fun : __dir_default_cb);
     errno               = 0;

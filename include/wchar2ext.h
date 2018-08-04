@@ -120,6 +120,24 @@ typedef struct
 
 } string_ws;
 
+#if defined(_MSC_VER)
+
+typedef struct
+{
+    unsigned int   d_ino;        /**<  \~English Inode number \~Russian номер файла */
+    long int       d_off;        /**<  \~English Offset \~Russian текущее положение */
+    unsigned short d_reclen;     /**<  \~English Length of this record \~Russian длинна данных */
+    unsigned char  d_type;       /**<  \~English Type of file \~Russian тип данных */
+#   if defined(_DIRENT_HAVE_D_NAMLEN)
+    unsigned char  d_namlen;     /**<  \~English Filename length \~Russian длинна поля имени файла */
+#   endif
+    wchar_t        d_name[256 + 1];  /**<  \~English Null-terminated filename \~Russian поле имени файла */
+} wdirent_t;
+
+typedef void WDIR_t;
+
+#endif
+
 /*! \brief enumeration for return waccess function */
 typedef enum
 {
@@ -242,6 +260,26 @@ wchar_t * _wbasedir_ws(const string_ws*, int);
 int       _wreaddir_cb(wchar_t*, long, wdir_cb, void*);
 
 #define   wreaddir_cb_opt(opt,val) ((opt) | (1L << (val)))
+
+#if defined(_MSC_VER)
+
+WDIR_t    * wopendir(const wchar_t*);
+wdirent_t * wreaddir(WDIR_t*);
+int         wreaddir_r(WDIR_t*, wdirent_t*, wdirent_t**);
+int         wclosedir(WDIR_t*);
+void        wrewinddir(WDIR_t*);
+
+/*! \cond NOTINDOC */
+
+#define _wopendir wopendir
+#define _wreaddir wreaddir
+#define _wreaddir_r wreaddir_r
+#define _wclosedir wclosedir
+#define _wrewinddir wrewinddir
+
+/*! \endcond */
+
+#endif
 
 /*! \cond NOTINDOC */
 
