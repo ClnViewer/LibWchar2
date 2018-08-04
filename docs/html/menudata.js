@@ -33,6 +33,7 @@ var menudata={children:[
 {text:"All",url:"globals.html",children:[
 {text:"_",url:"globals.html#index__"},
 {text:"a",url:"globals.html#index_a"},
+{text:"d",url:"globals.html#index_d"},
 {text:"i",url:"globals.html#index_i"},
 {text:"u",url:"globals.html#index_u"},
 {text:"w",url:"globals.html#index_w"}]},

@@ -1552,6 +1552,9 @@ size_t    wstring_trunc_alloc(string_ws *restrict, const wchar_t*, int);
  *          При успешном вызове функции также закрывается файловый дескриптор, связанный с директорией.
  *          Дескриптор открытого в прошлом потока каталога будет недоступен после данного вызова.
  *
+ * \~
+ * \b support: `LINUX`, `MSVC/MSVS`, `MinGW` - default include
+ *
  */
 int        _wclosedir(WDIR_t*);
 
@@ -1572,6 +1575,9 @@ int        _wclosedir(WDIR_t*);
  *          внутри реализации и не должен использоваться в приложении.
  *          Функция  устанавливает флаг `close-on-exec` для файлового дескриптора, указывающего на директорию.
  *
+ * \~
+ * \b support: `LINUX`, `MSVC/MSVS`, `MinGW` - default include
+ *
  */
 WDIR_t    *_wopendir(const wchar_t*);
 
@@ -1591,6 +1597,9 @@ WDIR_t    *_wopendir(const wchar_t*);
  *          следующий элемент в потоке каталога.
  *          Функция возвращает `NULL` по достижении последней записи в потоке каталога или если
  *          произошла ошибка.
+ *
+ * \~
+ * \b support: `LINUX`, `MSVC/MSVS`, `MinGW` - default include
  *
  */
 wdirent_t *_wreaddir(WDIR_t*);
@@ -1613,7 +1622,9 @@ wdirent_t *_wreaddir(WDIR_t*);
  *          вызывающим буфере, на который указывает второй параметр функции.
  *          Указатель на возвращаемый элемент помещается в третий параметр функции,
  *          если достигнут конец потока каталога, то возвращается `NULL` вместо значения.
-
+ *
+ * \~
+ * \b support: `LINUX`, `MSVC/MSVS`, `MinGW` - default include
  *
  */
 int        _wreaddir_r(WDIR_t*, wdirent_t*, wdirent_t**);
@@ -1623,11 +1634,14 @@ int        _wreaddir_r(WDIR_t*, wdirent_t*, wdirent_t**);
  * \brief Reads the directory stream callBack
  *
  * \param `wchar_t` - directory path
-* \param `long int` - options, valid `DIRENTRYSIZE`, `DIRNOROOT`, `DIRNODIR` bit mask set
+ * \param `long int` - options, valid `DIRENTRYSIZE`, `DIRNOROOT`, `DIRNODIR` bit mask set
  * \param `wdir_cb` - callback function
  * \param `void` - user data
  *
+ *
  * \~
+ * \b support: `ALL`
+ *
  */
 int        _wreaddir_cb(wchar_t*, long, wdir_cb, void*);
 
@@ -1638,7 +1652,10 @@ int        _wreaddir_cb(wchar_t*, long, wdir_cb, void*);
  * \param opt - `long int` options variable
  * \param val - option value, valid `DIRENTRYSIZE`, `DIRNOROOT`, `DIRNODIR`
  *
+ *
  * \~
+ * \b support: `ALL`
+ *
  */
 #define    wreaddir_cb_opt(opt,val) ((opt) | (1L << (val)))
 
@@ -1653,6 +1670,9 @@ int        _wreaddir_cb(wchar_t*, long, wdir_cb, void*);
  * \brief Устанавливает начало в потоке каталога
  *
  * \details Функция `wrewinddir()` сбрасывает текущее положение потока в начало каталога.
+ *
+ * \~
+ * \b support: `LINUX`, `MSVC/MSVS`
  *
  */
 void       _wrewinddir(WDIR_t*);
@@ -1674,6 +1694,9 @@ void       _wrewinddir(WDIR_t*);
  *          Аргумент позиции должен быть значением, которое возвращается ранее вызванной
  *          функцией \ref _wtelldir .
  *
+ * \~
+ * \b support: `LINUX`
+ *
  */
 void       _wseekdir(WDIR_t*, long int);
 
@@ -1689,6 +1712,9 @@ void       _wseekdir(WDIR_t*, long int);
  *
  * \details При успешном выполнении функция `wtelldir()` возвращает текущее расположение в потоке каталога.
  *          В случае ошибки возвращается `-1`, и устанавливается соответствующее значение `errno`.
+ *
+ * \~
+ * \b support: `LINUX`
  *
  */
 long int   _wtelldir(WDIR_t*);

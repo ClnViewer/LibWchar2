@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libwchar2 0.0.7: include/wchar2.h File Reference</title>
+<title>libwchar2 0.0.8: include/wchar2.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">libwchar2 0.0.7
+   <div id="projectname">libwchar2 0.0.8
    </div>
   </td>
  </tr>
@@ -123,6 +123,9 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#af8d4aaae7e0bf61359c5428c485c938b">wstring_appends</a>(A, ...)&#160;&#160;&#160;<a class="el" href="wchar2_8h.html#ac1bca3b3e0201e5a928fc06f83df994e">wstring_appends_</a>(A,__VA_ARGS__,NULL)</td></tr>
 <tr class="memdesc:af8d4aaae7e0bf61359c5428c485c938b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to function <a class="el" href="wchar2_8h.html#ac1bca3b3e0201e5a928fc06f83df994e" title="Append strings, only wchar_t* strings args inputs, struct string_ws output. ">wstring_appends_()</a>, see notes. <br /></td></tr>
 <tr class="separator:af8d4aaae7e0bf61359c5428c485c938b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad44fc148cdc0f6e0c7456eb4b0f418e3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#ad44fc148cdc0f6e0c7456eb4b0f418e3">wreaddir_cb_opt</a>(opt,  val)&#160;&#160;&#160;((opt) | (1L &lt;&lt; (val)))</td></tr>
+<tr class="memdesc:ad44fc148cdc0f6e0c7456eb4b0f418e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to set options value to function <a class="el" href="wchar2_8h.html#acdb2f4c389d8aa3d3c4daae594c4d6fe">_wreaddir_cb</a>.  <a href="#ad44fc148cdc0f6e0c7456eb4b0f418e3">More...</a><br /></td></tr>
+<tr class="separator:ad44fc148cdc0f6e0c7456eb4b0f418e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a68e9217a61693973cf4301a4f8761150"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a68e9217a61693973cf4301a4f8761150">wstocscvt</a>(A,  B,  D)</td></tr>
 <tr class="memdesc:a68e9217a61693973cf4301a4f8761150"><td class="mdescLeft">&#160;</td><td class="mdescRight">wchar_t* type to char[] A char[] - array name B wchar_t* - source D - function return value if error  <a href="#a68e9217a61693973cf4301a4f8761150">More...</a><br /></td></tr>
 <tr class="separator:a68e9217a61693973cf4301a4f8761150"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,16 +152,29 @@ typedef struct <a class="el" href="wchar2_8h.html#struct__wdirent">_wdirent</a>&
 typedef void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a4b416445955b87e37a37b78591c1115f">WDIR_t</a></td></tr>
 <tr class="memdesc:a4b416445955b87e37a37b78591c1115f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main structure directory traversing, reference to <code>void</code> <br /></td></tr>
 <tr class="separator:a4b416445955b87e37a37b78591c1115f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ea54faf0624f562203a37ff348c2ddc"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a0ea54faf0624f562203a37ff348c2ddc">wdir_cb</a>) (long, <a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49">access_e</a>, long long, <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *, void *)</td></tr>
+<tr class="memdesc:a0ea54faf0624f562203a37ff348c2ddc"><td class="mdescLeft">&#160;</td><td class="mdescRight">CallBack for <code>_wreaddir_cb</code>  <a href="#a0ea54faf0624f562203a37ff348c2ddc">More...</a><br /></td></tr>
+<tr class="separator:a0ea54faf0624f562203a37ff348c2ddc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:a85e87ac46824cfc9cd00480974e2ca49"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49">access_e</a> { <br />
-&#160;&#160;<a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49a8b8365fb9e8ddaf95e1440ea3f1c983b">ISERROR</a> = -1, 
+&#160;&#160;<a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49adf34f51a7400b0f698aa0e23f377455a">ISERR</a> = -1, 
 <a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49a8d7172513c0d9ba08f59fe9765fd8fed">ISUNK</a> = 0, 
 <a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49acdb727b04e3f577e32b7e66e5f9d4ade">ISFIL</a> = 1, 
 <a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49ad1b612ed7f9f99dbf12cd96f6e5773a5">ISLNK</a> = 2, 
 <br />
-&#160;&#160;<a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49ae3bba0027c803f044a6393b067bdf961">ISDIR</a> = 3
+&#160;&#160;<a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49ae3bba0027c803f044a6393b067bdf961">ISDIR</a> = 3, 
+<a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49a69f62365d236284c9779084d4738513e">ISCHR</a> = 4, 
+<a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49a751fafaac26235204fdc59fcadce35a2">ISBLK</a> = 5, 
+<a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49af799a4c27fd85645cab31a0a8cb3e557">ISSOCK</a> = 6, 
+<br />
+&#160;&#160;<a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49a9d63c44c5730a51778f3d17360620e68">ISFIFO</a> = 7, 
+<a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49a1b55bb0df7990bb8eb9d2f4248c27baa">ISWHT</a> = 8, 
+<a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49ab58ccbd11e33ee6b8ca6442fd8c797a1">DIRNODIR</a> = 9, 
+<a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49a748de6bbb36734e22b2fcd980b2104e1">DIRNOROOT</a> = 10, 
+<br />
+&#160;&#160;<a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49a7df00b612f047c04248f23a99423e9e5">DIRENTRYSIZE</a> = 11
 <br />
  }</td></tr>
 <tr class="memdesc:a85e87ac46824cfc9cd00480974e2ca49"><td class="mdescLeft">&#160;</td><td class="mdescRight">enumeration for return waccess function  <a href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49">More...</a><br /></td></tr>
@@ -653,6 +669,9 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wc
 <tr class="memitem:a2718ba8ae6813702d12e6f6c7010937c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a2718ba8ae6813702d12e6f6c7010937c">_wreaddir_r</a> (<a class="el" href="wchar2_8h.html#a4b416445955b87e37a37b78591c1115f">WDIR_t</a> *, <a class="el" href="wchar2_8h.html#a308d32a6626925c2178f94e68d01f123">wdirent_t</a> *, <a class="el" href="wchar2_8h.html#a308d32a6626925c2178f94e68d01f123">wdirent_t</a> **)</td></tr>
 <tr class="memdesc:a2718ba8ae6813702d12e6f6c7010937c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the directory stream extended.  <a href="#a2718ba8ae6813702d12e6f6c7010937c">More...</a><br /></td></tr>
 <tr class="separator:a2718ba8ae6813702d12e6f6c7010937c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acdb2f4c389d8aa3d3c4daae594c4d6fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#acdb2f4c389d8aa3d3c4daae594c4d6fe">_wreaddir_cb</a> (wchar_t *, long, <a class="el" href="wchar2_8h.html#a0ea54faf0624f562203a37ff348c2ddc">wdir_cb</a>, void *)</td></tr>
+<tr class="memdesc:acdb2f4c389d8aa3d3c4daae594c4d6fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the directory stream callBack.  <a href="#acdb2f4c389d8aa3d3c4daae594c4d6fe">More...</a><br /></td></tr>
+<tr class="separator:acdb2f4c389d8aa3d3c4daae594c4d6fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31bf58eefa6f368d9cbdabfd78075380"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a31bf58eefa6f368d9cbdabfd78075380">_wrewinddir</a> (<a class="el" href="wchar2_8h.html#a4b416445955b87e37a37b78591c1115f">WDIR_t</a> *)</td></tr>
 <tr class="memdesc:a31bf58eefa6f368d9cbdabfd78075380"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the beginning in the directory stream.  <a href="#a31bf58eefa6f368d9cbdabfd78075380">More...</a><br /></td></tr>
 <tr class="separator:a31bf58eefa6f368d9cbdabfd78075380"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -757,6 +776,44 @@ Type of file. </td></tr>
 
 <p>Define this flag for other software, indicate enable <code>libwchar2</code> in you project. </p>
 <p>flag indicate enable libwchar2 </p>
+
+</div>
+</div>
+<a id="ad44fc148cdc0f6e0c7456eb4b0f418e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad44fc148cdc0f6e0c7456eb4b0f418e3">&#9670;&nbsp;</a></span>wreaddir_cb_opt</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define wreaddir_cb_opt</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">opt, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">val&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td>&#160;&#160;&#160;((opt) | (1L &lt;&lt; (val)))</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Macro to set options value to function <a class="el" href="wchar2_8h.html#acdb2f4c389d8aa3d3c4daae594c4d6fe">_wreaddir_cb</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">opt</td><td>- <code>long int</code> options variable </td></tr>
+    <tr><td class="paramname">val</td><td>- option value, valid <code>DIRENTRYSIZE</code>, <code>DIRNOROOT</code>, <code>DIRNODIR</code></td></tr>
+  </table>
+  </dd>
+</dl>
+<p><b>support:</b> <code>ALL</code> </p>
 
 </div>
 </div>
@@ -880,6 +937,33 @@ Type of file. </td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="a0ea54faf0624f562203a37ff348c2ddc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ea54faf0624f562203a37ff348c2ddc">&#9670;&nbsp;</a></span>wdir_cb</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(* wdir_cb) (long, <a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49">access_e</a>, long long, <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *, void *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>CallBack for <code>_wreaddir_cb</code> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">&lt;tt&gt;long&lt;/tt&gt;</td><td>- counter </td></tr>
+    <tr><td class="paramname">&lt;tt&gt;access_e&lt;/tt&gt;</td><td>- type of entry </td></tr>
+    <tr><td class="paramname">&lt;tt&gt;long</td><td>long - size of entry </td></tr>
+    <tr><td class="paramname">&lt;tt&gt;string_ws&lt;/tt&gt;</td><td>- entry name (file/directory name) </td></tr>
+    <tr><td class="paramname">&lt;tt&gt;void&lt;/tt&gt;</td><td>- user data </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="a85e87ac46824cfc9cd00480974e2ca49"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a85e87ac46824cfc9cd00480974e2ca49">&#9670;&nbsp;</a></span>access_e</h2>
@@ -895,7 +979,7 @@ Type of file. </td></tr>
 
 <p>enumeration for return waccess function </p>
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a85e87ac46824cfc9cd00480974e2ca49a8b8365fb9e8ddaf95e1440ea3f1c983b"></a>ISERROR&#160;</td><td class="fielddoc"><p>Error check. </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a85e87ac46824cfc9cd00480974e2ca49adf34f51a7400b0f698aa0e23f377455a"></a>ISERR&#160;</td><td class="fielddoc"><p>Error check. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a85e87ac46824cfc9cd00480974e2ca49a8d7172513c0d9ba08f59fe9765fd8fed"></a>ISUNK&#160;</td><td class="fielddoc"><p>is a Unknown </p>
 </td></tr>
@@ -904,6 +988,23 @@ Type of file. </td></tr>
 <tr><td class="fieldname"><a id="a85e87ac46824cfc9cd00480974e2ca49ad1b612ed7f9f99dbf12cd96f6e5773a5"></a>ISLNK&#160;</td><td class="fielddoc"><p>is a Symbolic link </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a85e87ac46824cfc9cd00480974e2ca49ae3bba0027c803f044a6393b067bdf961"></a>ISDIR&#160;</td><td class="fielddoc"><p>is a Directory </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a85e87ac46824cfc9cd00480974e2ca49a69f62365d236284c9779084d4738513e"></a>ISCHR&#160;</td><td class="fielddoc"><p>is a character device </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a85e87ac46824cfc9cd00480974e2ca49a751fafaac26235204fdc59fcadce35a2"></a>ISBLK&#160;</td><td class="fielddoc"><p>is a block device </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a85e87ac46824cfc9cd00480974e2ca49af799a4c27fd85645cab31a0a8cb3e557"></a>ISSOCK&#160;</td><td class="fielddoc"><p>is a UNIX domain socket </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a85e87ac46824cfc9cd00480974e2ca49a9d63c44c5730a51778f3d17360620e68"></a>ISFIFO&#160;</td><td class="fielddoc"><p>is a named pipe </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a85e87ac46824cfc9cd00480974e2ca49a1b55bb0df7990bb8eb9d2f4248c27baa"></a>ISWHT&#160;</td><td class="fielddoc"><p>is a whiteout" from BSD </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a85e87ac46824cfc9cd00480974e2ca49ab58ccbd11e33ee6b8ca6442fd8c797a1"></a>DIRNODIR&#160;</td><td class="fielddoc"><p>options for read derrictory - no print dir </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a85e87ac46824cfc9cd00480974e2ca49a748de6bbb36734e22b2fcd980b2104e1"></a>DIRNOROOT&#160;</td><td class="fielddoc"><p>options for read derrictory - no print root parent `. </p>
+<p><code>or</code>..` dir </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a85e87ac46824cfc9cd00480974e2ca49a7df00b612f047c04248f23a99423e9e5"></a>DIRENTRYSIZE&#160;</td><td class="fielddoc"><p>options for read derrictory - get files size </p>
 </td></tr>
 </table>
 
@@ -1994,7 +2095,8 @@ Type of file. </td></tr>
 </div><div class="memdoc">
 
 <p>Closes the directory stream. </p>
-<p>The <code>wclosedir()</code> function closes the directory stream. If the function is successfully called, the file descriptor associated with the directory is also closed. The descriptor of the directory stream opened in the past will be unavailable after this call. </p>
+<p>The <code>wclosedir()</code> function closes the directory stream. If the function is successfully called, the file descriptor associated with the directory is also closed. The descriptor of the directory stream opened in the past will be unavailable after this call.</p>
+<p><b>support:</b> <code>LINUX</code>, <code>MSVC/MSVS</code>, <code>MinGW</code> - default include </p>
 
 </div>
 </div>
@@ -3892,7 +3994,8 @@ Type of file. </td></tr>
 </div><div class="memdoc">
 
 <p>Opens a directory stream and returns a pointer to the stream. The stream is set to the first entry in the directory. </p>
-<p>After a successful call, the file descriptor of the open directory is used only within the implementation and should not be used in the application. The function sets the <code>close-on-exec</code> flag for the file descriptor that points to the directory. </p>
+<p>After a successful call, the file descriptor of the open directory is used only within the implementation and should not be used in the application. The function sets the <code>close-on-exec</code> flag for the file descriptor that points to the directory.</p>
+<p><b>support:</b> <code>LINUX</code>, <code>MSVC/MSVS</code>, <code>MinGW</code> - default include </p>
 
 </div>
 </div>
@@ -3978,7 +4081,60 @@ Type of file. </td></tr>
 </div><div class="memdoc">
 
 <p>Reads the directory stream. </p>
-<p>It reads the directory stream, returns a pointer to the <code>wdirent_t</code> structure, which represents the next element in the catalog stream. The function returns <code>NULL</code> when the last record in the directory stream is reached or if an error occurred. </p>
+<p>It reads the directory stream, returns a pointer to the <code>wdirent_t</code> structure, which represents the next element in the catalog stream. The function returns <code>NULL</code> when the last record in the directory stream is reached or if an error occurred.</p>
+<p><b>support:</b> <code>LINUX</code>, <code>MSVC/MSVS</code>, <code>MinGW</code> - default include </p>
+
+</div>
+</div>
+<a id="acdb2f4c389d8aa3d3c4daae594c4d6fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acdb2f4c389d8aa3d3c4daae594c4d6fe">&#9670;&nbsp;</a></span>_wreaddir_cb()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int _wreaddir_cb </td>
+          <td>(</td>
+          <td class="paramtype">wchar_t *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">long&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="wchar2_8h.html#a0ea54faf0624f562203a37ff348c2ddc">wdir_cb</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reads the directory stream callBack. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">&lt;tt&gt;wchar_t&lt;/tt&gt;</td><td>- directory path </td></tr>
+    <tr><td class="paramname">&lt;tt&gt;long</td><td>int - options, valid <code>DIRENTRYSIZE</code>, <code>DIRNOROOT</code>, <code>DIRNODIR</code> bit mask set </td></tr>
+    <tr><td class="paramname">&lt;tt&gt;wdir_cb&lt;/tt&gt;</td><td>- callback function </td></tr>
+    <tr><td class="paramname">&lt;tt&gt;void&lt;/tt&gt;</td><td>- user data</td></tr>
+  </table>
+  </dd>
+</dl>
+<p><b>support:</b> <code>ALL</code> </p>
 
 </div>
 </div>
@@ -4015,7 +4171,8 @@ Type of file. </td></tr>
 </div><div class="memdoc">
 
 <p>Reads the directory stream extended. </p>
-<p>The function <code>wreaddir_r()</code> is a reentrant version. It reads the next entry from the open catalog stream and returns it in the created call buffer pointed to by the second parameter of the function. The pointer to the returned element is placed in the third parameter of the function, if the end of the directory stream is reached, <code>NULL</code> is returned instead of the value. </p>
+<p>The function <code>wreaddir_r()</code> is a reentrant version. It reads the next entry from the open catalog stream and returns it in the created call buffer pointed to by the second parameter of the function. The pointer to the returned element is placed in the third parameter of the function, if the end of the directory stream is reached, <code>NULL</code> is returned instead of the value.</p>
+<p><b>support:</b> <code>LINUX</code>, <code>MSVC/MSVS</code>, <code>MinGW</code> - default include </p>
 
 </div>
 </div>
@@ -4319,7 +4476,8 @@ Type of file. </td></tr>
 </div><div class="memdoc">
 
 <p>Sets the beginning in the directory stream. </p>
-<p>The <code>wrewinddir()</code> function flushes the current position of the stream to the beginning of the directory. </p>
+<p>The <code>wrewinddir()</code> function flushes the current position of the stream to the beginning of the directory.</p>
+<p><b>support:</b> <code>LINUX</code>, <code>MSVC/MSVS</code> </p>
 
 </div>
 </div>
@@ -4350,7 +4508,8 @@ Type of file. </td></tr>
 </div><div class="memdoc">
 
 <p>Sets the position in the directory stream. </p>
-<p>The <a class="el" href="wchar2_8h.html#a86ee9bb2e19f47cbcc86d505350dced7">_wseekdir</a> function sets the position in the directory stream from which the next call to <a class="el" href="wchar2_8h.html#aa6585f453ec859183d20623155beb640">_wreaddir</a> will begin. The position argument must be a value that is returned by the previously called <a class="el" href="wchar2_8h.html#a22705b134af83afcefc9033a3230a3e4">_wtelldir</a> function. </p>
+<p>The <a class="el" href="wchar2_8h.html#a86ee9bb2e19f47cbcc86d505350dced7">_wseekdir</a> function sets the position in the directory stream from which the next call to <a class="el" href="wchar2_8h.html#aa6585f453ec859183d20623155beb640">_wreaddir</a> will begin. The position argument must be a value that is returned by the previously called <a class="el" href="wchar2_8h.html#a22705b134af83afcefc9033a3230a3e4">_wtelldir</a> function.</p>
+<p><b>support:</b> <code>LINUX</code> </p>
 
 </div>
 </div>
@@ -4523,7 +4682,8 @@ Type of file. </td></tr>
 </div><div class="memdoc">
 
 <p>Returns the current position of the directory stream. </p>
-<p>If successful, the <code>wtelldir()</code> function returns the current location in the directory stream. In case of an error, <code>-1</code> is returned, and the corresponding value of <code>errno</code> is set. </p>
+<p>If successful, the <code>wtelldir()</code> function returns the current location in the directory stream. In case of an error, <code>-1</code> is returned, and the corresponding value of <code>errno</code> is set.</p>
+<p><b>support:</b> <code>LINUX</code> </p>
 
 </div>
 </div>
@@ -5305,7 +5465,7 @@ Allocate memory functions</h2>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Aug 3 2018 13:25:11 for libwchar2 0.0.7 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Aug 5 2018 02:52:40 for libwchar2 0.0.8 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

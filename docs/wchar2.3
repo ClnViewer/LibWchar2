@@ -1,4 +1,4 @@
-.TH "include/wchar2.h" 3 "Fri Aug 3 2018" "libwchar2 0.0.7" \" -*- nroff -*-
+.TH "include/wchar2.h" 3 "Sun Aug 5 2018" "libwchar2 0.0.8" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -59,6 +59,10 @@ include/wchar2.h
 .br
 .RI "Macro to function \fBwstring_appends_()\fP, see notes\&. "
 .ti -1c
+.RI "#define \fBwreaddir_cb_opt\fP(opt,  val)   ((opt) | (1L << (val)))"
+.br
+.RI "Macro to set options value to function \fB_wreaddir_cb\fP\&. "
+.ti -1c
 .RI "#define \fBwstocscvt\fP(A,  B,  D)"
 .br
 .RI "wchar_t* type to char[] A char[] - array name B wchar_t* - source D - function return value if error "
@@ -88,12 +92,16 @@ include/wchar2.h
 .RI "typedef void \fBWDIR_t\fP"
 .br
 .RI "Main structure directory traversing, reference to \fCvoid\fP "
+.ti -1c
+.RI "typedef void(* \fBwdir_cb\fP) (long, \fBaccess_e\fP, long long, \fBstring_ws\fP *, void *)"
+.br
+.RI "CallBack for \fC_wreaddir_cb\fP "
 .in -1c
 .SS "Enumerations"
 
 .in +1c
 .ti -1c
-.RI "enum \fBaccess_e\fP { \fBISERROR\fP = -1, \fBISUNK\fP = 0, \fBISFIL\fP = 1, \fBISLNK\fP = 2, \fBISDIR\fP = 3 }"
+.RI "enum \fBaccess_e\fP { \fBISERR\fP = -1, \fBISUNK\fP = 0, \fBISFIL\fP = 1, \fBISLNK\fP = 2, \fBISDIR\fP = 3, \fBISCHR\fP = 4, \fBISBLK\fP = 5, \fBISSOCK\fP = 6, \fBISFIFO\fP = 7, \fBISWHT\fP = 8, \fBDIRNODIR\fP = 9, \fBDIRNOROOT\fP = 10, \fBDIRENTRYSIZE\fP = 11 }"
 .br
 .RI "enumeration for return waccess function "
 .in -1c
@@ -717,6 +725,10 @@ include/wchar2.h
 .br
 .RI "Reads the directory stream extended\&. "
 .ti -1c
+.RI "int \fB_wreaddir_cb\fP (wchar_t *, long, \fBwdir_cb\fP, void *)"
+.br
+.RI "Reads the directory stream callBack\&. "
+.ti -1c
 .RI "void \fB_wrewinddir\fP (\fBWDIR_t\fP *)"
 .br
 .RI "Sets the beginning in the directory stream\&. "
@@ -774,6 +786,19 @@ unsigned char \fId_type\fP Type of file\&.
 
 .PP
 Define this flag for other software, indicate enable \fClibwchar2\fP in you project\&. flag indicate enable libwchar2 
+.SS "#define wreaddir_cb_opt(opt, val)   ((opt) | (1L << (val)))"
+
+.PP
+Macro to set options value to function \fB_wreaddir_cb\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIopt\fP - \fClong int\fP options variable 
+.br
+\fIval\fP - option value, valid \fCDIRENTRYSIZE\fP, \fCDIRNOROOT\fP, \fCDIRNODIR\fP
+.RE
+.PP
+\fBsupport:\fP \fCALL\fP 
 .SS "#define wstocscvt(A, B, D)"
 \fBValue:\fP
 .PP
@@ -818,6 +843,27 @@ size_t __WEV(sz,__LINE__); errno = 0;                                           
 .fi
 .PP
 \fBstring_ws\fP type to char[] this struct defined on top of this file A char[] - array name B string_ws* - source D - function return value if error 
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef void(* wdir_cb) (long, \fBaccess_e\fP, long long, \fBstring_ws\fP *, void *)"
+
+.PP
+CallBack for \fC_wreaddir_cb\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI<tt>long</tt>\fP - counter 
+.br
+\fI<tt>access_e</tt>\fP - type of entry 
+.br
+\fI<tt>long\fP long - size of entry 
+.br
+\fI<tt>string_ws</tt>\fP - entry name (file/directory name) 
+.br
+\fI<tt>void</tt>\fP - user data 
+.RE
+.PP
+
 .SH "Enumeration Type Documentation"
 .PP 
 .SS "enum \fBaccess_e\fP"
@@ -828,7 +874,7 @@ enumeration for return waccess function
 \fBEnumerator\fP
 .in +1c
 .TP
-\fB\fIISERROR \fP\fP
+\fB\fIISERR \fP\fP
 Error check\&. 
 .TP
 \fB\fIISUNK \fP\fP
@@ -842,6 +888,30 @@ is a Symbolic link
 .TP
 \fB\fIISDIR \fP\fP
 is a Directory 
+.TP
+\fB\fIISCHR \fP\fP
+is a character device 
+.TP
+\fB\fIISBLK \fP\fP
+is a block device 
+.TP
+\fB\fIISSOCK \fP\fP
+is a UNIX domain socket 
+.TP
+\fB\fIISFIFO \fP\fP
+is a named pipe 
+.TP
+\fB\fIISWHT \fP\fP
+is a whiteout" from BSD 
+.TP
+\fB\fIDIRNODIR \fP\fP
+options for read derrictory - no print dir 
+.TP
+\fB\fIDIRNOROOT \fP\fP
+options for read derrictory - no print root parent `\&. \fCor\fP\&.\&.` dir 
+.TP
+\fB\fIDIRENTRYSIZE \fP\fP
+options for read derrictory - get files size 
 .SH "Function Documentation"
 .PP 
 .SS "wchar_t _btowc (int)"
@@ -1147,7 +1217,9 @@ If Success return substring of path, else return NULL
 .SS "int _wclosedir (\fBWDIR_t\fP *)"
 
 .PP
-Closes the directory stream\&. The \fCwclosedir()\fP function closes the directory stream\&. If the function is successfully called, the file descriptor associated with the directory is also closed\&. The descriptor of the directory stream opened in the past will be unavailable after this call\&. 
+Closes the directory stream\&. The \fCwclosedir()\fP function closes the directory stream\&. If the function is successfully called, the file descriptor associated with the directory is also closed\&. The descriptor of the directory stream opened in the past will be unavailable after this call\&.
+.PP
+\fBsupport:\fP \fCLINUX\fP, \fCMSVC/MSVS\fP, \fCMinGW\fP - default include 
 .SS "wchar_t* _wcpcpy (wchar_t *, const wchar_t *)"
 
 .PP
@@ -1581,7 +1653,9 @@ The same as \fB_wmkdir\fP, the input parameter filename is passed in the \fC\fBs
 .SS "\fBWDIR_t\fP* _wopendir (const wchar_t *)"
 
 .PP
-Opens a directory stream and returns a pointer to the stream\&. The stream is set to the first entry in the directory\&. After a successful call, the file descriptor of the open directory is used only within the implementation and should not be used in the application\&. The function sets the \fCclose-on-exec\fP flag for the file descriptor that points to the directory\&. 
+Opens a directory stream and returns a pointer to the stream\&. The stream is set to the first entry in the directory\&. After a successful call, the file descriptor of the open directory is used only within the implementation and should not be used in the application\&. The function sets the \fCclose-on-exec\fP flag for the file descriptor that points to the directory\&.
+.PP
+\fBsupport:\fP \fCLINUX\fP, \fCMSVC/MSVS\fP, \fCMinGW\fP - default include 
 .SS "wchar_t* _wpathnormalize (const wchar_t *, int)"
 
 .PP
@@ -1609,11 +1683,32 @@ Write a formatted wide character string to 'stdout'\&.
 .SS "\fBwdirent_t\fP* _wreaddir (\fBWDIR_t\fP *)"
 
 .PP
-Reads the directory stream\&. It reads the directory stream, returns a pointer to the \fCwdirent_t\fP structure, which represents the next element in the catalog stream\&. The function returns \fCNULL\fP when the last record in the directory stream is reached or if an error occurred\&. 
+Reads the directory stream\&. It reads the directory stream, returns a pointer to the \fCwdirent_t\fP structure, which represents the next element in the catalog stream\&. The function returns \fCNULL\fP when the last record in the directory stream is reached or if an error occurred\&.
+.PP
+\fBsupport:\fP \fCLINUX\fP, \fCMSVC/MSVS\fP, \fCMinGW\fP - default include 
+.SS "int _wreaddir_cb (wchar_t *, long, \fBwdir_cb\fP, void *)"
+
+.PP
+Reads the directory stream callBack\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fI<tt>wchar_t</tt>\fP - directory path 
+.br
+\fI<tt>long\fP int - options, valid \fCDIRENTRYSIZE\fP, \fCDIRNOROOT\fP, \fCDIRNODIR\fP bit mask set 
+.br
+\fI<tt>wdir_cb</tt>\fP - callback function 
+.br
+\fI<tt>void</tt>\fP - user data
+.RE
+.PP
+\fBsupport:\fP \fCALL\fP 
 .SS "int _wreaddir_r (\fBWDIR_t\fP *, \fBwdirent_t\fP *, \fBwdirent_t\fP **)"
 
 .PP
-Reads the directory stream extended\&. The function \fCwreaddir_r()\fP is a reentrant version\&. It reads the next entry from the open catalog stream and returns it in the created call buffer pointed to by the second parameter of the function\&. The pointer to the returned element is placed in the third parameter of the function, if the end of the directory stream is reached, \fCNULL\fP is returned instead of the value\&. 
+Reads the directory stream extended\&. The function \fCwreaddir_r()\fP is a reentrant version\&. It reads the next entry from the open catalog stream and returns it in the created call buffer pointed to by the second parameter of the function\&. The pointer to the returned element is placed in the third parameter of the function, if the end of the directory stream is reached, \fCNULL\fP is returned instead of the value\&.
+.PP
+\fBsupport:\fP \fCLINUX\fP, \fCMSVC/MSVS\fP, \fCMinGW\fP - default include 
 .SS "int _wremove (const wchar_t *)"
 
 .PP
@@ -1693,11 +1788,15 @@ The same as \fB_wrename\fP, the input parameter filename is passed in the \fC\fB
 .SS "void _wrewinddir (\fBWDIR_t\fP *)"
 
 .PP
-Sets the beginning in the directory stream\&. The \fCwrewinddir()\fP function flushes the current position of the stream to the beginning of the directory\&. 
+Sets the beginning in the directory stream\&. The \fCwrewinddir()\fP function flushes the current position of the stream to the beginning of the directory\&.
+.PP
+\fBsupport:\fP \fCLINUX\fP, \fCMSVC/MSVS\fP 
 .SS "void _wseekdir (\fBWDIR_t\fP *, long int)"
 
 .PP
-Sets the position in the directory stream\&. The \fB_wseekdir\fP function sets the position in the directory stream from which the next call to \fB_wreaddir\fP will begin\&. The position argument must be a value that is returned by the previously called \fB_wtelldir\fP function\&. 
+Sets the position in the directory stream\&. The \fB_wseekdir\fP function sets the position in the directory stream from which the next call to \fB_wreaddir\fP will begin\&. The position argument must be a value that is returned by the previously called \fB_wtelldir\fP function\&.
+.PP
+\fBsupport:\fP \fCLINUX\fP 
 .SS "int _wstat (const wchar_t *, void *)"
 
 .PP
@@ -1744,7 +1843,9 @@ The same as \fB_wstat\fP, the input parameter filename is passed in the \fC\fBst
 .SS "long int _wtelldir (\fBWDIR_t\fP *)"
 
 .PP
-Returns the current position of the directory stream\&. If successful, the \fCwtelldir()\fP function returns the current location in the directory stream\&. In case of an error, \fC-1\fP is returned, and the corresponding value of \fCerrno\fP is set\&. 
+Returns the current position of the directory stream\&. If successful, the \fCwtelldir()\fP function returns the current location in the directory stream\&. In case of an error, \fC-1\fP is returned, and the corresponding value of \fCerrno\fP is set\&.
+.PP
+\fBsupport:\fP \fCLINUX\fP 
 .SS "size_t u8stowcs (wchar_t *, const char *)"
 
 .PP
@@ -2059,4 +2160,4 @@ function wstring_wstocs_alloc requires to free the returned result
 
 .SH "Author"
 .PP 
-Generated automatically by Doxygen for libwchar2 0\&.0\&.7 from the source code\&.
+Generated automatically by Doxygen for libwchar2 0\&.0\&.8 from the source code\&.
