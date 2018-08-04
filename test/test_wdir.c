@@ -7,9 +7,32 @@
 
 START_TEST(test_wstat)
 {
+
+    int ret;
+    long opt = 0L;
     wchar_t    path[] = L"../";
     wdirent_t *entry  = NULL;
     WDIR_t    *dp     = NULL;
+
+    _fwprintf(stdout, L"\n\tTest _wreaddir_cb:%d\t\t-> opt: NONE\n", __LINE__);
+    ret = _wreaddir_cb(path, 0L, NULL, NULL);
+    ck_assert(ret == 1);
+    ck_assert(errno == 0);
+
+    _fwprintf(stdout, L"\n\tTest _wreaddir_cb:%d\t\t-> opt: DIRENTRYSIZE, DIRNOROOT\n", __LINE__);
+    opt = wreaddir_cb_opt(opt, DIRNOROOT);
+    opt = wreaddir_cb_opt(opt, DIRENTRYSIZE);
+    ret = _wreaddir_cb(path, opt, NULL, NULL);
+    ck_assert(ret == 1);
+    ck_assert(errno == 0);
+
+    _fwprintf(stdout, L"\n\tTest _wreaddir_cb:%d\t\t-> opt: DIRENTRYSIZE, DIRNODIR\n", __LINE__);
+    opt = 0L;
+    opt = wreaddir_cb_opt(opt, DIRNODIR);
+    opt = wreaddir_cb_opt(opt, DIRENTRYSIZE);
+    ret = _wreaddir_cb(path, opt, NULL, NULL);
+    ck_assert(ret == 1);
+    ck_assert(errno == 0);
 
     do
     {
@@ -35,6 +58,5 @@ START_TEST(test_wstat)
     if (entry != NULL)  free(entry);
 
     _fwprintf(stdout, L"\tTest wopendir:%d\t-> end directory %ls listing\n", __LINE__, path);
-
 }
 END_TEST

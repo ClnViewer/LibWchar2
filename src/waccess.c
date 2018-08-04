@@ -41,7 +41,7 @@
 
 static access_e __waccess(const wchar_t *s, const char *c, int m)
 {
-    access_e ret = ISERROR;
+    access_e ret = ISERR;
     do
     {
         struct _stat sb = {0};
@@ -75,7 +75,7 @@ static access_e __waccess(const wchar_t *s, const char *c, int m)
                 (((sb.st_mode) & _S_IEXEC)  != _S_IEXEC)
             )
             {
-                ret = ISERROR;
+                ret = ISERR;
             }
             break;
         }
@@ -83,7 +83,7 @@ static access_e __waccess(const wchar_t *s, const char *c, int m)
         {
             if (((sb.st_mode) & _S_IEXEC) != _S_IEXEC)
             {
-                ret = ISERROR;
+                ret = ISERR;
             }
             break;
         }
@@ -91,7 +91,7 @@ static access_e __waccess(const wchar_t *s, const char *c, int m)
         {
             if (((sb.st_mode) & _S_IWRITE) != _S_IWRITE)
             {
-                ret = ISERROR;
+                ret = ISERR;
             }
             break;
         }
@@ -99,7 +99,7 @@ static access_e __waccess(const wchar_t *s, const char *c, int m)
         {
             if (((sb.st_mode) & _S_IREAD) != _S_IREAD)
             {
-                ret = ISERROR;
+                ret = ISERR;
             }
             break;
         }
@@ -110,13 +110,13 @@ static access_e __waccess(const wchar_t *s, const char *c, int m)
                 (((sb.st_mode) & _S_IWRITE) != _S_IWRITE)
             )
             {
-                ret = ISERROR;
+                ret = ISERR;
             }
             break;
         }
         default:
         {
-            ret = ISERROR;
+            ret = ISERR;
             break;
         }
         }
@@ -170,7 +170,7 @@ access_e u8waccess(const wchar_t *w, int m)
 
 static access_e __access(const char *s, int m)
 {
-    access_e ret = ISERROR;
+    access_e ret = ISERR;
     do
     {
         struct stat sb;
@@ -206,7 +206,7 @@ static access_e __access(const char *s, int m)
                 ((ret == ISDIR) && (!((sb.st_mode) & S_IXUSR)))
             )
             {
-                ret = ISERROR;
+                ret = ISERR;
             }
             break;
         }
@@ -214,7 +214,7 @@ static access_e __access(const char *s, int m)
         {
             if (!((sb.st_mode) & S_IXUSR))
             {
-                ret = ISERROR;
+                ret = ISERR;
             }
             break;
         }
@@ -222,7 +222,7 @@ static access_e __access(const char *s, int m)
         {
             if (!((sb.st_mode) & S_IWUSR))
             {
-                ret = ISERROR;
+                ret = ISERR;
             }
             break;
         }
@@ -230,7 +230,7 @@ static access_e __access(const char *s, int m)
         {
             if (!((sb.st_mode) & S_IRUSR))
             {
-                ret = ISERROR;
+                ret = ISERR;
             }
             break;
         }
@@ -242,13 +242,13 @@ static access_e __access(const char *s, int m)
                 (!((sb.st_mode) & S_IXUSR))
             )
             {
-                ret = ISERROR;
+                ret = ISERR;
             }
             break;
         }
         default:
         {
-            ret = ISERROR;
+            ret = ISERR;
             break;
         }
         }

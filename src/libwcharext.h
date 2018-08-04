@@ -85,6 +85,7 @@
 #   else
 #      define _wcstombs wcstombs
 #      define _mbstowcs mbstowcs
+#      define _wcscmp wcscmp
 
 #      if defined(BUILD_MINGW32)
 int vswprintf(wchar_t*, const wchar_t*, va_list);
@@ -118,6 +119,13 @@ int vswprintf(wchar_t*, const wchar_t*, va_list);
 #endif
 
 #define __NELE(a) (sizeof(a) / sizeof(a[0]))
+
+#define __BITBOOL(x) (!(!(x)))
+#define __BITSET(arg,mask) ((arg) | (1L << (mask)))
+#define __BITCLR(arg,mask) ((arg) & ~(1L << (mask)))
+#define __BITTST(arg,mask) __BITBOOL((arg) & (1L << (mask)))
+#define __BITFLP(arg,mask) ((arg) ^ (1L << (mask)))
+
 #define __ARGMAX 127
 #define WCHAR2EXT_MSVC_ORIGIN 1
 

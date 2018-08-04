@@ -73,6 +73,12 @@
 #include "../include/wchar2.h"
 
 #define __NELE(A) (sizeof(A) / sizeof(A[0]))
+#define __BITBOOL(x) (!(!(x)))
+#define __BITSET(arg,mask) ((arg) | (1ULL << (mask)))
+#define __BITCLR(arg,mask) ((arg) & ~(1ULL << (mask)))
+#define __BITTST(arg,mask) __BITBOOL((arg) & (1ULL << (mask)))
+#define __BITFLP(arg,mask) ((arg) ^ (1ULL << (mask)))
+
 
 #if defined(PACKAGE_STRING)
     char testinfo[]

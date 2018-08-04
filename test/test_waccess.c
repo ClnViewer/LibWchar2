@@ -7,7 +7,7 @@
 
 static const char * __access_error(access_e x)
 {
-    return (const char *)((x == ISERROR) ? "Error check" :
+    return (const char *)((x == ISERR) ? "Error check" :
             ((x == ISFIL) ? "is a Regular file" :
              ((x == ISLNK) ? "is a Symbolic link" :
               ((x == ISDIR) ? "is a Directory" : "Unknown result"))));
@@ -38,7 +38,7 @@ START_TEST(test_waccess)
     _fprintf (stdout,  "\tTest _waccess:%d\t-> return: [%d][%s]\n",  __LINE__,
         ret, __access_error(ret)
     );
-    ck_assert_int_eq(ret, ISERROR);
+    ck_assert_int_eq(ret, ISERR);
 
 }
 END_TEST

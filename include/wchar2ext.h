@@ -123,12 +123,30 @@ typedef struct
 /*! \brief enumeration for return waccess function */
 typedef enum
 {
-    ISERROR = -1, /**<  Error check */
-    ISUNK   =  0, /**<  is a Unknown */
-    ISFIL   =  1, /**<  is a Regular file */
-    ISLNK   =  2, /**<  is a Symbolic link */
-    ISDIR   =  3  /**<  is a Directory */
+    ISERR        = -1, /**<  Error check */
+    ISUNK        =  0, /**<  is a Unknown */
+    ISFIL        =  1, /**<  is a Regular file */
+    ISLNK        =  2, /**<  is a Symbolic link */
+    ISDIR        =  3, /**<  is a Directory */
+    ISCHR        =  4, /**<  is a character device */
+    ISBLK        =  5, /**<  is a block device */
+    ISSOCK       =  6, /**<  is a UNIX domain socket */
+    ISFIFO       =  7, /**<  is a named pipe */
+    ISWHT        =  8, /**<  is a whiteout" from BSD */
+    DIRNODIR     =  9, /**<  options for read derrictory  - no print dir */
+    DIRNOROOT    = 10, /**<  options for read derrictory  - no print root parent `.` or `..` dir */
+    DIRENTRYSIZE = 11  /**<  options for read derrictory  - get files size */
 } access_e;
+
+/*! \~
+ *  \brief CallBack for `_wreaddir_cb`
+ *  \param `long` - counter
+ *  \param `access_e` - type of entry
+ *  \param `long long` - size of entry
+ *  \param `string_ws` - entry name (file/directory name)
+ *  \param `void` - user data
+ */
+typedef void (*wdir_cb)(long, access_e, long long, string_ws*, void*);
 
 void      wstring_free(string_ws *restrict);
 void      wcprint(wchar_t *restrict);
@@ -138,6 +156,7 @@ int       wstring_isempty(const wchar_t *restrict s, int);
 size_t    wstring_alloc(string_ws *restrict, size_t);
 size_t    wstring_append_cvt(string_ws*, const char *restrict, size_t);
 size_t    wstring_appends_(string_ws*, ...);
+#define   wstring_appends(A,...) wstring_appends_(A,__VA_ARGS__,NULL)
 size_t    wstring_append(string_ws*, const wchar_t *restrict, size_t);
 size_t    wstring_format(string_ws*, const wchar_t *restrict, ...);
 
@@ -220,6 +239,10 @@ wchar_t * _wbasedir(const wchar_t*, int);
 __CHKRET
 wchar_t * _wbasedir_ws(const string_ws*, int);
 
+int       _wreaddir_cb(wchar_t*, long, wdir_cb, void*);
+
+#define   wreaddir_cb_opt(opt,val) ((opt) | (1L << (val)))
+
 /*! \cond NOTINDOC */
 
 #if !defined(WCHAR2EXT_MSVC_ORIGIN)
@@ -261,6 +284,8 @@ wchar_t * _wbasedir_ws(const string_ws*, int);
 #define wfopen_ws _wfopen_ws
 
 #define wcsptime _wcsptime
+
+#define wreaddir_cb _wreaddir_cb
 
 /*! Compatible declarations */
 #define wclosedir _wclosedir

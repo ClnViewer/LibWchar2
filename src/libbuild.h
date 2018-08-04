@@ -41,12 +41,16 @@
 #   endif
 
 #   if  (defined(OS_WIN32) && defined(_MSC_VER))
+#       define BUILD_MSVC 1
 #       define BUILD_MSVC32 1
 #   elif  (defined(OS_WIN64) && defined(_MSC_VER))
+#       define BUILD_MSVC 1
 #       define BUILD_MSVC64 1
 #   elif  (defined(OS_WIN32) && defined(__CYGWIN__))
+#       define BUILD_CYGWIN 1
 #       define BUILD_CYGWIN32 1
 #   elif  (defined(OS_WIN64) && defined(__CYGWIN__))
+#       define BUILD_CYGWIN 1
 #       define BUILD_CYGWIN64 1
 #   elif  (defined(OS_WIN32) && defined(__MINGW32__))
 #       define BUILD_MINGW 1

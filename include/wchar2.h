@@ -153,12 +153,30 @@ typedef void WDIR_t;
 
 /*! \brief enumeration for return waccess function */
 typedef enum {
-    ISERROR = -1, /**<  Error check */
-    ISUNK   =  0, /**<  is a Unknown */
-    ISFIL   =  1, /**<  is a Regular file */
-    ISLNK   =  2, /**<  is a Symbolic link */
-    ISDIR   =  3  /**<  is a Directory */
+    ISERR        = -1, /**<  Error check */
+    ISUNK        =  0, /**<  is a Unknown */
+    ISFIL        =  1, /**<  is a Regular file */
+    ISLNK        =  2, /**<  is a Symbolic link */
+    ISDIR        =  3, /**<  is a Directory */
+    ISCHR        =  4, /**<  is a character device */
+    ISBLK        =  5, /**<  is a block device */
+    ISSOCK       =  6, /**<  is a UNIX domain socket */
+    ISFIFO       =  7, /**<  is a named pipe */
+    ISWHT        =  8, /**<  is a whiteout" from BSD */
+    DIRNODIR     =  9, /**<  options for read derrictory  - no print dir */
+    DIRNOROOT    = 10, /**<  options for read derrictory  - no print root parent `.` or `..` dir */
+    DIRENTRYSIZE = 11  /**<  options for read derrictory  - get files size */
 } access_e;
+
+/*! \~
+ *  \brief CallBack for `_wreaddir_cb`
+ *  \param `long` - counter
+ *  \param `access_e` - type of entry
+ *  \param `long long` - size of entry
+ *  \param `string_ws` - entry name (file/directory name)
+ *  \param `void` - user data
+ */
+typedef void (*wdir_cb)(long, access_e, long long, string_ws*, void*);
 
           /*!
            * \brief Library curent version
@@ -1600,6 +1618,30 @@ int        _wreaddir_r(WDIR_t*, wdirent_t*, wdirent_t**);
 
           /*!
            * \~English
+           * \brief Reads the directory stream callBack
+           *
+           * \param `wchar_t` - directory path
+    * \param `long int` - options, valid `DIRENTRYSIZE`, `DIRNOROOT`, `DIRNODIR` bit mask set
+           * \param `wdir_cb` - callback function
+           * \param `void` - user data
+           *
+           * \~
+           */
+int        _wreaddir_cb(wchar_t*, long, wdir_cb, void*);
+
+          /*!
+           * \~English
+           * \brief Macro to set options value to function \ref _wreaddir_cb
+           *
+           * \param opt - `long int` options variable
+           * \param val - option value, valid `DIRENTRYSIZE`, `DIRNOROOT`, `DIRNODIR`
+           *
+           * \~
+           */
+#define    wreaddir_cb_opt(opt,val) ((opt) | (1L << (val)))
+
+          /*!
+           * \~English
            * \brief Sets the beginning in the directory stream
            *
            * \details The `wrewinddir()` function flushes the current position of the stream
@@ -1935,6 +1977,7 @@ static inline void __attribute__((always_inline)) __wsfree(void *v) {
 #define wopendir _wopendir
 #define wreaddir _wreaddir
 #define wreaddir_r _wreaddir_r
+#define wreaddir_cb _wreaddir_cb
 #define wrewinddir _wrewinddir
 #define wseekdir _wseekdir
 #define wtelldir _wtelldir

@@ -26,7 +26,7 @@
 
 static const char * __access_error(access_e x)
 {
-    return (const char *)((x == ISERROR) ? "Error check" :
+    return (const char *)((x == ISERR) ? "Error check" :
                           ((x == ISFIL) ? "is a Regular file" :
                            ((x == ISLNK) ? "is a Symbolic link" :
                             ((x == ISDIR) ? "is a Directory" : "Unknown result"))));
@@ -191,11 +191,30 @@ int main(int argc, char *argv[])
             break;
 
         printf("\n\t*(%d) wstring_timeformat -> [%ls] -> [%ls]\n", __LINE__, tstr, tout);
-        free(tout); tout = NULL;
+        free(tout);
+        tout = NULL;
 
     }
     while (0);
 
+    do
+    {
+        int ret;
+        long opt = 0L;
+#       if defined(_MSC_VER)
+        wchar_t path[] = L"..\\*";
+#       else
+        wchar_t path[] = L"../";
+#       endif
+
+        opt = wreaddir_cb_opt(opt,DIRNOROOT);
+        printf("\n\tTest _wreaddir_cb:%d\t\t->\n", __LINE__);
+        ret = _wreaddir_cb(path, opt, NULL, NULL);
+        printf("\n\t*(%d) _wreaddir_cb end -> return:[%d] error:[%d] path:[%ls] -> opt: NONE\n", __LINE__, ret, errno, path);
+    }
+    while (0);
+
+
     (void) getchar();
-	return 0;
+    return 0;
 }

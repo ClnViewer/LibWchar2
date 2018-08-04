@@ -57,6 +57,12 @@
 #define __MAX(a,b) ((a) > (b) ? (a) : (b))
 #define __MIN(a,b) ((a) < (b) ? (a) : (b))
 
+#define __BITBOOL(x) (!(!(x)))
+#define __BITSET(arg,mask) ((arg) | (1L << (mask)))
+#define __BITCLR(arg,mask) ((arg) & ~(1L << (mask)))
+#define __BITTST(arg,mask) __BITBOOL((arg) & (1L << (mask)))
+#define __BITFLP(arg,mask) ((arg) ^ (1L << (mask)))
+
 #define __OOP(x) (((unsigned)(x) - 'A') > ('z' - 'A'))
 #define __OOB(c,b) (((((b)>>3)-0x10)|(((b)>>3)+((int32_t)(c)>>26))) & ~7)
 #define R_(a,b) ((uint32_t)(((a == 0x80) ? (0x40U - b) : -a) << 23))

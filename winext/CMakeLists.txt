@@ -47,6 +47,7 @@ set(lib_srcs
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wremove.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wrename.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wstat.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src/wdir.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wstring_util.c
 )
 
