@@ -121,7 +121,7 @@ Macros</h2></td></tr>
 <tr class="separator:a33b0160c4a515fa6dd94f5f55072c964"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af8d4aaae7e0bf61359c5428c485c938b"><td class="memItemLeft" align="right" valign="top"><a id="af8d4aaae7e0bf61359c5428c485c938b"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#af8d4aaae7e0bf61359c5428c485c938b">wstring_appends</a>(A, ...)&#160;&#160;&#160;<a class="el" href="wchar2_8h.html#ac1bca3b3e0201e5a928fc06f83df994e">wstring_appends_</a>(A,__VA_ARGS__,NULL)</td></tr>
-<tr class="memdesc:af8d4aaae7e0bf61359c5428c485c938b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to function <a class="el" href="wchar2_8h.html#ac1bca3b3e0201e5a928fc06f83df994e" title="Append strings, only wchar_t* strings args inputs, struct string_ws output. ">wstring_appends_()</a>, see notes. <br /></td></tr>
+<tr class="memdesc:af8d4aaae7e0bf61359c5428c485c938b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to function <a class="el" href="wchar2_8h.html#ac1bca3b3e0201e5a928fc06f83df994e">wstring_appends_</a>, see notes. <br /></td></tr>
 <tr class="separator:af8d4aaae7e0bf61359c5428c485c938b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad44fc148cdc0f6e0c7456eb4b0f418e3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#ad44fc148cdc0f6e0c7456eb4b0f418e3">wreaddir_cb_opt</a>(opt,  val)&#160;&#160;&#160;((opt) | (1L &lt;&lt; (val)))</td></tr>
 <tr class="memdesc:ad44fc148cdc0f6e0c7456eb4b0f418e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Macro to set options value to function <a class="el" href="wchar2_8h.html#acdb2f4c389d8aa3d3c4daae594c4d6fe">_wreaddir_cb</a>.  <a href="#ad44fc148cdc0f6e0c7456eb4b0f418e3">More...</a><br /></td></tr>
@@ -332,14 +332,13 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar
 <tr class="memdesc:a000f12520ab4f2027d068c804797d488"><td class="mdescLeft">&#160;</td><td class="mdescRight">wcsregexp - Matches a regular expression  <a href="#a000f12520ab4f2027d068c804797d488">More...</a><br /></td></tr>
 <tr class="separator:a000f12520ab4f2027d068c804797d488"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae94a562566dbe283cabb43d34f0ba08a"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#ae94a562566dbe283cabb43d34f0ba08a">u8stowcs</a> (wchar_t *, const char *)</td></tr>
-<tr class="memdesc:ae94a562566dbe283cabb43d34f0ba08a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Covert utf-8 char* to wchar_t* wchar_t* - output const char* - input return size_t - size.  <a href="#ae94a562566dbe283cabb43d34f0ba08a">More...</a><br /></td></tr>
+<tr class="memdesc:ae94a562566dbe283cabb43d34f0ba08a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Covert utf-8 <code>char*</code> to <code>wchar_t*</code>  <a href="#ae94a562566dbe283cabb43d34f0ba08a">More...</a><br /></td></tr>
 <tr class="separator:ae94a562566dbe283cabb43d34f0ba08a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59ca46dae06e5f4952fed90a47893c27"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a59ca46dae06e5f4952fed90a47893c27">wcstou8s</a> (char *, const wchar_t *)</td></tr>
-<tr class="memdesc:a59ca46dae06e5f4952fed90a47893c27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert wchar_t* to utf-8 char* char* - output const wchar_t* - input return size_t - size.  <a href="#a59ca46dae06e5f4952fed90a47893c27">More...</a><br /></td></tr>
+<tr class="memdesc:a59ca46dae06e5f4952fed90a47893c27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert <code>wchar_t*</code> to utf-8 <code>char*</code>  <a href="#a59ca46dae06e5f4952fed90a47893c27">More...</a><br /></td></tr>
 <tr class="separator:a59ca46dae06e5f4952fed90a47893c27"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f3a207d66dff9f6d0a3187b22931407"><td class="memItemLeft" align="right" valign="top"><a id="a0f3a207d66dff9f6d0a3187b22931407"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a0f3a207d66dff9f6d0a3187b22931407">u8sverify</a> (const char *)</td></tr>
-<tr class="memdesc:a0f3a207d66dff9f6d0a3187b22931407"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verify char* to utf-8 valid string const char* - input int (bool) - output. <br /></td></tr>
+<tr class="memitem:a0f3a207d66dff9f6d0a3187b22931407"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a0f3a207d66dff9f6d0a3187b22931407">u8sverify</a> (const char *)</td></tr>
+<tr class="memdesc:a0f3a207d66dff9f6d0a3187b22931407"><td class="mdescLeft">&#160;</td><td class="mdescRight">Verify <code>char*</code> to utf-8 valid string.  <a href="#a0f3a207d66dff9f6d0a3187b22931407">More...</a><br /></td></tr>
 <tr class="separator:a0f3a207d66dff9f6d0a3187b22931407"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3963738dbd73f0d8b73a9b0471e489f"><td class="memItemLeft" align="right" valign="top">wchar_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#ad3963738dbd73f0d8b73a9b0471e489f">_wcpcpy</a> (wchar_t *, const wchar_t *)</td></tr>
 <tr class="memdesc:ad3963738dbd73f0d8b73a9b0471e489f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copy a wide-character string returning a pointer to its end.  <a href="#ad3963738dbd73f0d8b73a9b0471e489f">More...</a><br /></td></tr>
@@ -952,11 +951,11 @@ Type of file. </td></tr>
 <p>CallBack for <a class="el" href="wchar2_8h.html#acdb2f4c389d8aa3d3c4daae594c4d6fe">_wreaddir_cb</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">&lt;tt&gt;long&lt;/tt&gt;</td><td>- counter </td></tr>
-    <tr><td class="paramname">&lt;tt&gt;access_e&lt;/tt&gt;</td><td>- type of entry </td></tr>
-    <tr><td class="paramname">&lt;tt&gt;long</td><td>long - size of entry </td></tr>
-    <tr><td class="paramname">&lt;tt&gt;string_ws&lt;/tt&gt;</td><td>- entry name (file/directory name) </td></tr>
-    <tr><td class="paramname">&lt;tt&gt;void&lt;/tt&gt;</td><td>- user data </td></tr>
+    <tr><td class="paramname">long</td><td>- counter </td></tr>
+    <tr><td class="paramname">access_e</td><td>- type of entry, see <a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49">access_e</a> </td></tr>
+    <tr><td class="paramname">long</td><td>long: - size of entry </td></tr>
+    <tr><td class="paramname"><a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a></td><td>- entry name (file/directory name), see <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> </td></tr>
+    <tr><td class="paramname">void</td><td>- user data </td></tr>
   </table>
   </dd>
 </dl>
@@ -4160,7 +4159,7 @@ Type of file. </td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">wchar_t</td><td>- directory path </td></tr>
-    <tr><td class="paramname">long</td><td>- options, valid <code>DIRENTRYSIZE</code>, <code>DIRNOROOT</code>, <code>DIRNODIR</code> bit mask set, <a class="el" href="wchar2_8h.html#ad44fc148cdc0f6e0c7456eb4b0f418e3">wreaddir_cb_opt</a> </td></tr>
+    <tr><td class="paramname">long</td><td>- options, valid <code>DIRENTRYSIZE</code>, <code>DIRNOROOT</code>, <code>DIRNODIR</code> bit mask set: <a class="el" href="wchar2_8h.html#ad44fc148cdc0f6e0c7456eb4b0f418e3">wreaddir_cb_opt</a> </td></tr>
     <tr><td class="paramname">wdir_cb</td><td>- callback function, see <a class="el" href="wchar2_8h.html#acc3d5b079909816cdbc4b5cba9aaa5ea">wdir_cb</a> </td></tr>
     <tr><td class="paramname">void</td><td>- user data</td></tr>
   </table>
@@ -4786,8 +4785,42 @@ Type of file. </td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Covert utf-8 char* to wchar_t* wchar_t* - output const char* - input return size_t - size. </p>
+<p>Covert utf-8 <code>char*</code> to <code>wchar_t*</code> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wchar_t*</td><td>- output </td></tr>
+    <tr><td class="paramname">const</td><td>char*: - input return size_t - size</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section note"><dt>Note</dt><dd>function u8stowcs requires to free the returned result </dd></dl>
+
+</div>
+</div>
+<a id="a0f3a207d66dff9f6d0a3187b22931407"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0f3a207d66dff9f6d0a3187b22931407">&#9670;&nbsp;</a></span>u8sverify()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int u8sverify </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Verify <code>char*</code> to utf-8 valid string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">const</td><td>char*: - input </td></tr>
+    <tr><td class="paramname">int</td><td>- output (bool) </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -5082,7 +5115,14 @@ Type of file. </td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Convert wchar_t* to utf-8 char* char* - output const wchar_t* - input return size_t - size. </p>
+<p>Convert <code>wchar_t*</code> to utf-8 <code>char*</code> </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">char*</td><td>- output </td></tr>
+    <tr><td class="paramname">const</td><td>wchar_t*: - input return size_t - size</td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section note"><dt>Note</dt><dd>function wcstou8s requires to free the returned result </dd></dl>
 
 </div>
@@ -5129,8 +5169,8 @@ Type of file. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>lenght of <code>output</code> produced.</dd></dl>
-<dl class="section attention"><dt>Attention</dt><dd>function <code><a class="el" href="wchar2_8h.html#a6ea51e2ed496d7622890d90021d78ed3" title="Append string: wchar_t*, lenght input, struct string_ws output. ">wstring_append()</a></code> requires to free the returned result </dd></dl>
-
+<dl class="section attention"><dt>Attention</dt><dd>function <code><a class="el" href="wchar2_8h.html#a6ea51e2ed496d7622890d90021d78ed3" title="Append string: wchar_t*, lenght input, struct string_ws output. ">wstring_append()</a></code> requires to free the returned result</dd></dl>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">    sz = <a class="code" href="wchar2_8h.html#a6ea51e2ed496d7622890d90021d78ed3">wstring_append</a>(&amp;dst, (<span class="keywordtype">wchar_t</span>*)aa.str, 0);</div><div class="line">    printf(<span class="stringliteral">&quot;\n\t*(%d) wstring_append: [%ls][%u] -&gt; [%u]\n&quot;</span>, __LINE__, dst.str, dst.sz, sz);</div><div class="line">    <a class="code" href="wchar2_8h.html#a3e10e87e540176b77eb3c73db0d36612">wstring_free</a>(&amp;dst);</div></div><!-- fragment -->
 </div>
 </div>
 <a id="ad1955a431f93440fceb9a493e3f1a48e"></a>
@@ -5214,9 +5254,9 @@ Type of file. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>lenght of <code>output</code> produced.</dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Do not use this function directly, first use the <code><a class="el" href="wchar2_8h.html#af8d4aaae7e0bf61359c5428c485c938b" title="Macro to function wstring_appends_(), see notes. ">wstring_appends()</a></code> macro, or end the last function's parameters with a value of NULL. </dd></dl>
-<dl class="section attention"><dt>Attention</dt><dd>function <code><a class="el" href="wchar2_8h.html#ac1bca3b3e0201e5a928fc06f83df994e" title="Append strings, only wchar_t* strings args inputs, struct string_ws output. ">wstring_appends_()</a></code> requires to free the returned result </dd></dl>
-
+<dl class="section note"><dt>Note</dt><dd>Do not use this function directly, first use the <code><a class="el" href="wchar2_8h.html#af8d4aaae7e0bf61359c5428c485c938b" title="Macro to function wstring_appends_, see notes. ">wstring_appends()</a></code> macro, or end the last function's parameters with a value of <code>NULL</code>. </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>function <code><a class="el" href="wchar2_8h.html#ac1bca3b3e0201e5a928fc06f83df994e" title="Append strings, only wchar_t* strings args inputs, struct string_ws output. ">wstring_appends_()</a></code> requires to free the returned result</dd></dl>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">    sz = <a class="code" href="wchar2_8h.html#ac1bca3b3e0201e5a928fc06f83df994e">wstring_appends_</a>(&amp;dst, (<span class="keywordtype">wchar_t</span>*)a.str, (<span class="keywordtype">wchar_t</span>*)aaa.str, (<span class="keywordtype">wchar_t</span>*)aa.str, NULL);</div><div class="line">    printf(<span class="stringliteral">&quot;\n\t*(%d) wstring_appends: [%ls][%u] -&gt; [%u]\n&quot;</span>, __LINE__, dst.str, dst.sz, sz);</div><div class="line">    <a class="code" href="wchar2_8h.html#a3e10e87e540176b77eb3c73db0d36612">wstring_free</a>(&amp;dst);</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a33461b356d0fdb60975a873ad8807d4f"></a>
@@ -5355,8 +5395,8 @@ Type of file. </td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>lenght of <code>output</code> produced.</dd></dl>
-<dl class="section attention"><dt>Attention</dt><dd>curent status: broken, if out data large 8192 byte! Now, fixing output buffer size 8192 byte for *nix version. For MinGW32 always fixing output buffer size 8192 byte. TODO: rewrite length detected for *nix </dd></dl>
-
+<dl class="section attention"><dt>Attention</dt><dd>curent status: broken, if out data large 8192 byte! Now, fixing output buffer size 8192 byte for *nix version. For MinGW32 always fixing output buffer size 8192 byte. TODO: rewrite length detected for *nix</dd></dl>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">    sz = <a class="code" href="wchar2_8h.html#a2b63c9c6081ebff0bfa7d862ebd1a87b">wstring_format</a>(&amp;dst, L<span class="stringliteral">&quot;%ls%ls%ls&quot;</span>, a.str, aaa.str, aa.str);</div><div class="line">    printf(<span class="stringliteral">&quot;\n\t*(%d) wstring_format: [%ls][%u] -&gt; [%u]\n&quot;</span>, __LINE__, dst.str, dst.sz, sz);</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a3e10e87e540176b77eb3c73db0d36612"></a>
@@ -5580,7 +5620,7 @@ Allocate memory functions</h2>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Aug 6 2018 02:45:42 for libwchar2 0.0.8 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Aug 6 2018 03:00:32 for libwchar2 0.0.8 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

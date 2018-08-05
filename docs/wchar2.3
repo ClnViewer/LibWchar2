@@ -57,7 +57,7 @@ include/wchar2.h
 .ti -1c
 .RI "#define \fBwstring_appends\fP(A, \&.\&.\&.)   \fBwstring_appends_\fP(A,__VA_ARGS__,NULL)"
 .br
-.RI "Macro to function \fBwstring_appends_()\fP, see notes\&. "
+.RI "Macro to function \fBwstring_appends_\fP, see notes\&. "
 .ti -1c
 .RI "#define \fBwreaddir_cb_opt\fP(opt,  val)   ((opt) | (1L << (val)))"
 .br
@@ -307,15 +307,15 @@ include/wchar2.h
 .ti -1c
 .RI "size_t \fBu8stowcs\fP (wchar_t *, const char *)"
 .br
-.RI "Covert utf-8 char* to wchar_t* wchar_t* - output const char* - input return size_t - size\&. "
+.RI "Covert utf-8 \fCchar*\fP to \fCwchar_t*\fP "
 .ti -1c
 .RI "size_t \fBwcstou8s\fP (char *, const wchar_t *)"
 .br
-.RI "Convert wchar_t* to utf-8 char* char* - output const wchar_t* - input return size_t - size\&. "
+.RI "Convert \fCwchar_t*\fP to utf-8 \fCchar*\fP "
 .ti -1c
 .RI "int \fBu8sverify\fP (const char *)"
 .br
-.RI "Verify char* to utf-8 valid string const char* - input int (bool) - output\&. "
+.RI "Verify \fCchar*\fP to utf-8 valid string\&. "
 .ti -1c
 .RI "wchar_t * \fB_wcpcpy\fP (wchar_t *, const wchar_t *)"
 .br
@@ -852,15 +852,15 @@ CallBack for \fB_wreaddir_cb\fP\&.
 .PP
 \fBParameters:\fP
 .RS 4
-\fI<tt>long</tt>\fP - counter 
+\fIlong\fP - counter 
 .br
-\fI<tt>access_e</tt>\fP - type of entry 
+\fIaccess_e\fP - type of entry, see \fBaccess_e\fP 
 .br
-\fI<tt>long\fP long - size of entry 
+\fIlong\fP long: - size of entry 
 .br
-\fI<tt>string_ws</tt>\fP - entry name (file/directory name) 
+\fI\fBstring_ws\fP\fP - entry name (file/directory name), see \fBstring_ws\fP 
 .br
-\fI<tt>void</tt>\fP - user data 
+\fIvoid\fP - user data 
 .RE
 .PP
 
@@ -1812,7 +1812,7 @@ Reads the directory stream callBack\&.
 .RS 4
 \fIwchar_t\fP - directory path 
 .br
-\fIlong\fP - options, valid \fCDIRENTRYSIZE\fP, \fCDIRNOROOT\fP, \fCDIRNODIR\fP bit mask set, \fBwreaddir_cb_opt\fP 
+\fIlong\fP - options, valid \fCDIRENTRYSIZE\fP, \fCDIRNOROOT\fP, \fCDIRNODIR\fP bit mask set: \fBwreaddir_cb_opt\fP 
 .br
 \fIwdir_cb\fP - callback function, see \fBwdir_cb\fP 
 .br
@@ -2013,11 +2013,31 @@ IBM  GNU  MinGW  MSVC/MSVS   ?  This code  -  -
 .SS "size_t u8stowcs (wchar_t *, const char *)"
 
 .PP
-Covert utf-8 char* to wchar_t* wchar_t* - output const char* - input return size_t - size\&. 
+Covert utf-8 \fCchar*\fP to \fCwchar_t*\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwchar_t*\fP - output 
+.br
+\fIconst\fP char*: - input return size_t - size
+.RE
 .PP
 \fBNote:\fP
 .RS 4
 function u8stowcs requires to free the returned result 
+.RE
+.PP
+
+.SS "int u8sverify (const char *)"
+
+.PP
+Verify \fCchar*\fP to utf-8 valid string\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIconst\fP char*: - input 
+.br
+\fIint\fP - output (bool) 
 .RE
 .PP
 
@@ -2129,7 +2149,14 @@ Returns the address of the match\&.
 .SS "size_t wcstou8s (char *, const wchar_t *)"
 
 .PP
-Convert wchar_t* to utf-8 char* char* - output const wchar_t* - input return size_t - size\&. 
+Convert \fCwchar_t*\fP to utf-8 \fCchar*\fP 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIchar*\fP - output 
+.br
+\fIconst\fP wchar_t*: - input return size_t - size
+.RE
 .PP
 \fBNote:\fP
 .RS 4
@@ -2158,8 +2185,17 @@ lenght of \fCoutput\fP produced\&.
 .PP
 \fBAttention:\fP
 .RS 4
-function \fC\fBwstring_append()\fP\fP requires to free the returned result 
+function \fC\fBwstring_append()\fP\fP requires to free the returned result
 .RE
+.PP
+\fBExample:\fP 
+.PP
+.nf
+    sz = wstring_append(&dst, (wchar_t*)aa\&.str, 0);
+    printf("\n\t*(%d) wstring_append: [%ls][%u] -> [%u]\n", __LINE__, dst\&.str, dst\&.sz, sz);
+    wstring_free(&dst);
+
+.fi
 .PP
 
 .SS "size_t wstring_append_cvt (\fBstring_ws\fP *, const char * restrict, size_t)"
@@ -2206,13 +2242,22 @@ lenght of \fCoutput\fP produced\&.
 .PP
 \fBNote:\fP
 .RS 4
-Do not use this function directly, first use the \fC\fBwstring_appends()\fP\fP macro, or end the last function's parameters with a value of NULL\&. 
+Do not use this function directly, first use the \fC\fBwstring_appends()\fP\fP macro, or end the last function's parameters with a value of \fCNULL\fP\&. 
 .RE
 .PP
 \fBAttention:\fP
 .RS 4
-function \fC\fBwstring_appends_()\fP\fP requires to free the returned result 
+function \fC\fBwstring_appends_()\fP\fP requires to free the returned result
 .RE
+.PP
+\fBExample:\fP 
+.PP
+.nf
+    sz = wstring_appends_(&dst, (wchar_t*)a\&.str, (wchar_t*)aaa\&.str, (wchar_t*)aa\&.str, NULL);
+    printf("\n\t*(%d) wstring_appends: [%ls][%u] -> [%u]\n", __LINE__, dst\&.str, dst\&.sz, sz);
+    wstring_free(&dst);
+
+.fi
 .PP
 
 .SS "size_t wstring_cstows (wchar_t[], size_t, const char * restrict, size_t)"
@@ -2293,8 +2338,16 @@ lenght of \fCoutput\fP produced\&.
 .PP
 \fBAttention:\fP
 .RS 4
-curent status: broken, if out data large 8192 byte! Now, fixing output buffer size 8192 byte for *nix version\&. For MinGW32 always fixing output buffer size 8192 byte\&. TODO: rewrite length detected for *nix 
+curent status: broken, if out data large 8192 byte! Now, fixing output buffer size 8192 byte for *nix version\&. For MinGW32 always fixing output buffer size 8192 byte\&. TODO: rewrite length detected for *nix
 .RE
+.PP
+\fBExample:\fP 
+.PP
+.nf
+    sz = wstring_format(&dst, L"%ls%ls%ls", a\&.str, aaa\&.str, aa\&.str);
+    printf("\n\t*(%d) wstring_format: [%ls][%u] -> [%u]\n", __LINE__, dst\&.str, dst\&.sz, sz);
+
+.fi
 .PP
 
 .SS "void wstring_free (\fBstring_ws\fP * restrict)"

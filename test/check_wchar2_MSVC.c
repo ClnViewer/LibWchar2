@@ -100,16 +100,22 @@ int main(int argc, char *argv[])
     printf("\n\t*(%d) wstring_wstocs: [%s][%d]\n", __LINE__, cout, ret);
     //! [Example use ws-cs convert]
 
+    //! [Example use wstring_appends code]
     sz = wstring_appends_(&dst, (wchar_t*)a.str, (wchar_t*)aaa.str, (wchar_t*)aa.str, NULL);
     printf("\n\t*(%d) wstring_appends: [%ls][%u] -> [%u]\n", __LINE__, dst.str, dst.sz, sz);
     wstring_free(&dst);
+    //! [Example use wstring_appends code]
 
+    //! [Example use wstring_append code]
     sz = wstring_append(&dst, (wchar_t*)aa.str, 0);
     printf("\n\t*(%d) wstring_append: [%ls][%u] -> [%u]\n", __LINE__, dst.str, dst.sz, sz);
     wstring_free(&dst);
+    //! [Example use wstring_append code]
 
+    //! [Example use wstring_format code]
     sz = wstring_format(&dst, L"%ls%ls%ls", a.str, aaa.str, aa.str);
     printf("\n\t*(%d) wstring_format: [%ls][%u] -> [%u]\n", __LINE__, dst.str, dst.sz, sz);
+    //! [Example use wstring_format code]
 
     printf("\n\t*(%d) wcprint: ", __LINE__);
     wcprint(dst.str);

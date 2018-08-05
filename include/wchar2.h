@@ -172,11 +172,11 @@ typedef enum
 
 /*! \~
  *  \brief CallBack for \ref _wreaddir_cb
- *  \param `long` - counter
- *  \param `access_e` - type of entry
- *  \param `long long` - size of entry
- *  \param `string_ws` - entry name (file/directory name)
- *  \param `void` - user data
+ *  \param long: - counter
+ *  \param access_e: - type of entry, see \ref access_e
+ *  \param long long: - size of entry
+ *  \param string_ws: - entry name (file/directory name), see \ref string_ws
+ *  \param void: - user data
  */
 typedef void (*wdir_cb)(unsigned int, access_e, long long, string_ws*, void*);
 
@@ -554,29 +554,29 @@ int       wcstocscmp(const char*, wchar_t*, size_t); // ASCII range only
 wchar_t * wcsregexp(wchar_t *restrict, wchar_t *restrict, int*);
 
 /*!
- *  \brief Covert utf-8 char* to wchar_t*
- *  wchar_t*          - output
- *  const char*       - input
- *  return size_t     - size
+ *  \brief Covert utf-8 `char*` to `wchar_t*`
+ *  \param wchar_t*:    - output
+ *  \param const char*: - input
+ *  return size_t       - size
  *
  *  \note function u8stowcs requires to free the returned result
  */
 size_t    u8stowcs(wchar_t*, const char*);
 
 /*!
- *  \brief Convert wchar_t* to utf-8 char*
- *  char*             - output
- *  const wchar_t*    - input
- *  return size_t     - size
+ *  \brief Convert `wchar_t*` to utf-8 `char*`
+ *  \param char*:          - output
+ *  \param const wchar_t*: - input
+ *  return size_t          - size
  *
  *  \note function wcstou8s requires to free the returned result
  */
 size_t    wcstou8s(char*, const wchar_t*);
 
 /*!
- *  \brief Verify char* to utf-8 valid string
- *  const char* - input
- *  int (bool)  - output
+ *  \brief Verify `char*` to utf-8 valid string
+ *  \param const char*: - input
+ *  \param int:         - output (bool)
  *
  */
 int       u8sverify(const char*);
@@ -1442,27 +1442,34 @@ size_t    wstring_cstows_ws_alloc(string_ws *restrict, const char *restrict);
 /*!
  *  \brief Append string, format `vargs` support input, `struct string_ws` output
  *
- *  \param destination \ref string_ws
- *  \param format  String type `wchar_t*`.
- *  \param arguments  Arguments support to `vargs` types, 125 max.
+ *  \param destination: \ref string_ws
+ *  \param format:  String type `wchar_t*`.
+ *  \param arguments:  Arguments support to `vargs` types, 125 max.
  *  \return lenght of `output` produced.
  *
  *  \attention curent status: broken, if out data large 8192 byte!
  *             Now, fixing output buffer size 8192 byte for *nix version.
  *             For MinGW32 always fixing output buffer size 8192 byte.
  *             TODO: rewrite length detected for *nix
+ *
+ * \b Example:
+ * \snippet ./test/check_wchar2_MSVC.c Example use wstring_format code
+ *
  */
 size_t    wstring_format(string_ws*, const wchar_t *restrict, ...);
 
 /*!
  *  \brief Append string: `wchar_t*`, lenght input, `struct string_ws` output
  *
- *  \param destination \ref string_ws
- *  \param source  String type `wchar_t*`.
- *  \param lenght  Lenght of `source` string.
+ *  \param destination: \ref string_ws
+ *  \param source:  String type `wchar_t*`.
+ *  \param lenght:  Lenght of `source` string.
  *  \return lenght of `output` produced.
  *
  *  \attention function `wstring_append()` requires to free the returned result
+ *
+ * \b Example:
+ * \snippet ./test/check_wchar2_MSVC.c Example use wstring_append code
  *
  */
 size_t    wstring_append(string_ws*, const wchar_t *restrict, size_t);
@@ -1470,28 +1477,31 @@ size_t    wstring_append(string_ws*, const wchar_t *restrict, size_t);
 /*!
  *  \brief Append strings, only `wchar_t*` strings args inputs, `struct string_ws` output
  *
- *  \param destination \ref string_ws
- *  \param arguments  Strings type `wchar_t*`, 126 max.
+ *  \param destination: \ref string_ws
+ *  \param arguments:  Strings type `wchar_t*`, 126 max.
  *  \return lenght of `output` produced.
  *
  *  \note Do not use this function directly, first use the `wstring_appends()` macro,
- *        or end the last function's parameters with a value of NULL.
+ *        or end the last function's parameters with a value of `NULL`.
  *  \attention function `wstring_appends_()` requires to free the returned result
+ *
+ * \b Example:
+ * \snippet ./test/check_wchar2_MSVC.c Example use wstring_appends code
  *
  */
 size_t    wstring_appends_(string_ws*, ...);
 
 /*!
- *  \brief Macro to function wstring_appends_(), see notes
+ *  \brief Macro to function \ref wstring_appends_, see notes
  */
 #define   wstring_appends(A,...) wstring_appends_(A,__VA_ARGS__,NULL)
 
 /*!
  *  \brief Append string: source type `char*`, lenght input, `struct string_ws` output
  *
- *  \param destination \ref string_ws
- *  \param source  String type `char*`.
- *  \param lenght  Lenght of `source` string.
+ *  \param destination: \ref string_ws
+ *  \param source:  String type `char*`.
+ *  \param lenght:  Lenght of `source` string.
  *  \return lenght of `output` produced.
  *
  *  \attention function `wstring_append_cvt()` requires to free the returned result
@@ -1707,10 +1717,10 @@ int        _wreaddir_r(WDIR_t*, wdirent_t*, wdirent_t**);
  * \~English
  * \brief Reads the directory stream callBack
  *
- * \param wchar_t - directory path
- * \param long - options, valid `DIRENTRYSIZE`, `DIRNOROOT`, `DIRNODIR` bit mask set, \ref wreaddir_cb_opt
- * \param wdir_cb - callback function, see \ref wdir_cb
- * \param void - user data
+ * \param wchar_t: - directory path
+ * \param long: - options, valid `DIRENTRYSIZE`, `DIRNOROOT`, `DIRNODIR` bit mask set: \ref wreaddir_cb_opt
+ * \param wdir_cb: - callback function, see \ref wdir_cb
+ * \param void: - user data
  *
  * \~
  * \b Support:
@@ -1743,8 +1753,8 @@ int        _wreaddir_cb(wchar_t*, long, wdir_cb, void*);
  * \~English
  * \brief Macro to set options value to function \ref _wreaddir_cb
  *
- * \param opt - `long int` options variable
- * \param val - option value, valid `DIRENTRYSIZE`, `DIRNOROOT`, `DIRNODIR`
+ * \param opt: - `long int` options variable
+ * \param val: - option value, valid `DIRENTRYSIZE`, `DIRNOROOT`, `DIRNODIR`
  *
  *
  * \~
