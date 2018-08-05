@@ -812,7 +812,7 @@ Type of file. </td></tr>
   </table>
   </dd>
 </dl>
-<p><b>support:</b> <code>ALL</code> </p>
+<p><b>Support:</b> <code>ALL</code> </p>
 
 </div>
 </div>
@@ -2095,8 +2095,16 @@ Type of file. </td></tr>
 </div><div class="memdoc">
 
 <p>Closes the directory stream. </p>
+<p><br />
+</p>
 <p>The <code>wclosedir()</code> function closes the directory stream. If the function is successfully called, the file descriptor associated with the directory is also closed. The descriptor of the directory stream opened in the past will be unavailable after this call.</p>
-<p><b>support:</b> <code>LINUX</code>, <code>MSVC/MSVS</code>, <code>MinGW</code> - default include </p>
+<p><b>Support:</b> </p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">IBM  </th><th class="markdownTableHeadNone">GNU  </th><th class="markdownTableHeadNone">MinGW  </th><th class="markdownTableHeadNone">MSVC/MSVS   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">?  </td><td class="markdownTableBodyNone">This code  </td><td class="markdownTableBodyNone">x  </td><td class="markdownTableBodyNone">This code   </td></tr>
+</table>
 
 </div>
 </div>
@@ -4007,7 +4015,13 @@ Type of file. </td></tr>
 
 <p>Opens a directory stream and returns a pointer to the stream. The stream is set to the first entry in the directory. </p>
 <p>After a successful call, the file descriptor of the open directory is used only within the implementation and should not be used in the application. The function sets the <code>close-on-exec</code> flag for the file descriptor that points to the directory.</p>
-<p><b>support:</b> <code>LINUX</code>, <code>MSVC/MSVS</code>, <code>MinGW</code> - default include </p>
+<p><b>Support:</b> </p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">IBM  </th><th class="markdownTableHeadNone">GNU  </th><th class="markdownTableHeadNone">MinGW  </th><th class="markdownTableHeadNone">MSVC/MSVS   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">?  </td><td class="markdownTableBodyNone">This code  </td><td class="markdownTableBodyNone">x  </td><td class="markdownTableBodyNone">This code   </td></tr>
+</table>
 
 </div>
 </div>
@@ -4094,7 +4108,13 @@ Type of file. </td></tr>
 
 <p>Reads the directory stream. </p>
 <p>It reads the directory stream, returns a pointer to the <code>wdirent_t</code> structure, which represents the next element in the catalog stream. The function returns <code>NULL</code> when the last record in the directory stream is reached or if an error occurred.</p>
-<p><b>support:</b> <code>LINUX</code>, <code>MSVC/MSVS</code>, <code>MinGW</code> - default include </p>
+<p><b>Support:</b> </p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">IBM  </th><th class="markdownTableHeadNone">GNU  </th><th class="markdownTableHeadNone">MinGW  </th><th class="markdownTableHeadNone">MSVC/MSVS   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">?  </td><td class="markdownTableBodyNone">This code  </td><td class="markdownTableBodyNone">x  </td><td class="markdownTableBodyNone">This code   </td></tr>
+</table>
 
 </div>
 </div>
@@ -4146,8 +4166,14 @@ Type of file. </td></tr>
   </table>
   </dd>
 </dl>
-<p><b>support:</b> <code>ALL</code></p>
-<p><b>table</b> flags compatible:</p>
+<p><b>Support:</b> </p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">IBM  </th><th class="markdownTableHeadNone">GNU  </th><th class="markdownTableHeadNone">MinGW  </th><th class="markdownTableHeadNone">MSVC/MSVS   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">This code  </td><td class="markdownTableBodyNone">This code  </td><td class="markdownTableBodyNone">This code  </td><td class="markdownTableBodyNone">This code   </td></tr>
+</table>
+<p><b>Table</b> flags compatible:</p>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">FLAGS  </th><th class="markdownTableHeadNone">GNU  </th><th class="markdownTableHeadNone">MinGW  </th><th class="markdownTableHeadNone">MSVC/MSVS  </th><th class="markdownTableHeadNone">Description   </th></tr>
@@ -4195,7 +4221,13 @@ Type of file. </td></tr>
 
 <p>Reads the directory stream extended. </p>
 <p>The function <code>wreaddir_r()</code> is a reentrant version. It reads the next entry from the open catalog stream and returns it in the created call buffer pointed to by the second parameter of the function. The pointer to the returned element is placed in the third parameter of the function, if the end of the directory stream is reached, <code>NULL</code> is returned instead of the value.</p>
-<p><b>support:</b> <code>LINUX</code>, <code>MSVC/MSVS</code>, <code>MinGW</code> - default include </p>
+<p><b>Support:</b> </p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">IBM  </th><th class="markdownTableHeadNone">GNU  </th><th class="markdownTableHeadNone">MinGW  </th><th class="markdownTableHeadNone">MSVC/MSVS   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">?  </td><td class="markdownTableBodyNone">This code  </td><td class="markdownTableBodyNone">x  </td><td class="markdownTableBodyNone">This code   </td></tr>
+</table>
 
 </div>
 </div>
@@ -4500,7 +4532,13 @@ Type of file. </td></tr>
 
 <p>Sets the beginning in the directory stream. </p>
 <p>The <code>wrewinddir()</code> function flushes the current position of the stream to the beginning of the directory.</p>
-<p><b>support:</b> <code>LINUX</code>, <code>MSVC/MSVS</code> </p>
+<p><b>Support:</b> </p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">IBM  </th><th class="markdownTableHeadNone">GNU  </th><th class="markdownTableHeadNone">MinGW  </th><th class="markdownTableHeadNone">MSVC/MSVS   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">This code  </td><td class="markdownTableBodyNone">This code  </td><td class="markdownTableBodyNone">x  </td><td class="markdownTableBodyNone">This code   </td></tr>
+</table>
 
 </div>
 </div>
@@ -4532,7 +4570,13 @@ Type of file. </td></tr>
 
 <p>Sets the position in the directory stream. </p>
 <p>The <a class="el" href="wchar2_8h.html#a86ee9bb2e19f47cbcc86d505350dced7">_wseekdir</a> function sets the position in the directory stream from which the next call to <a class="el" href="wchar2_8h.html#aa6585f453ec859183d20623155beb640">_wreaddir</a> will begin. The position argument must be a value that is returned by the previously called <a class="el" href="wchar2_8h.html#a22705b134af83afcefc9033a3230a3e4">_wtelldir</a> function.</p>
-<p><b>support:</b> <code>LINUX</code> </p>
+<p><b>Support:</b> </p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">IBM  </th><th class="markdownTableHeadNone">GNU  </th><th class="markdownTableHeadNone">MinGW  </th><th class="markdownTableHeadNone">MSVC/MSVS   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">?  </td><td class="markdownTableBodyNone">This code  </td><td class="markdownTableBodyNone">-  </td><td class="markdownTableBodyNone">-   </td></tr>
+</table>
 
 </div>
 </div>
@@ -4706,7 +4750,13 @@ Type of file. </td></tr>
 
 <p>Returns the current position of the directory stream. </p>
 <p>If successful, the <code>wtelldir()</code> function returns the current location in the directory stream. In case of an error, <code>-1</code> is returned, and the corresponding value of <code>errno</code> is set.</p>
-<p><b>support:</b> <code>LINUX</code> </p>
+<p><b>Support:</b> </p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">IBM  </th><th class="markdownTableHeadNone">GNU  </th><th class="markdownTableHeadNone">MinGW  </th><th class="markdownTableHeadNone">MSVC/MSVS   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">?  </td><td class="markdownTableBodyNone">This code  </td><td class="markdownTableBodyNone">-  </td><td class="markdownTableBodyNone">-   </td></tr>
+</table>
 
 </div>
 </div>
@@ -5530,7 +5580,7 @@ Allocate memory functions</h2>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Aug 6 2018 02:16:54 for libwchar2 0.0.8 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Aug 6 2018 02:31:10 for libwchar2 0.0.8 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

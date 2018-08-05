@@ -798,7 +798,7 @@ Macro to set options value to function \fB_wreaddir_cb\fP\&.
 \fIval\fP - option value, valid \fCDIRENTRYSIZE\fP, \fCDIRNOROOT\fP, \fCDIRNODIR\fP
 .RE
 .PP
-\fBsupport:\fP \fCALL\fP 
+\fBSupport:\fP \fCALL\fP 
 .SS "#define wstocscvt(A, B, D)"
 \fBValue:\fP
 .PP
@@ -1247,9 +1247,14 @@ If Success return substring of path, else return NULL
 .SS "int _wclosedir (\fBWDIR_t\fP *)"
 
 .PP
-Closes the directory stream\&. The \fCwclosedir()\fP function closes the directory stream\&. If the function is successfully called, the file descriptor associated with the directory is also closed\&. The descriptor of the directory stream opened in the past will be unavailable after this call\&.
+Closes the directory stream\&. 
+.br
 .PP
-\fBsupport:\fP \fCLINUX\fP, \fCMSVC/MSVS\fP, \fCMinGW\fP - default include 
+The \fCwclosedir()\fP function closes the directory stream\&. If the function is successfully called, the file descriptor associated with the directory is also closed\&. The descriptor of the directory stream opened in the past will be unavailable after this call\&.
+.PP
+\fBSupport:\fP 
+.PP
+IBM  GNU  MinGW  MSVC/MSVS   ?  This code  x  This code   
 .SS "wchar_t* _wcpcpy (wchar_t *, const wchar_t *)"
 
 .PP
@@ -1763,7 +1768,9 @@ The same as \fB_wmkdir\fP, the input parameter filename is passed in the \fC\fBs
 .PP
 Opens a directory stream and returns a pointer to the stream\&. The stream is set to the first entry in the directory\&. After a successful call, the file descriptor of the open directory is used only within the implementation and should not be used in the application\&. The function sets the \fCclose-on-exec\fP flag for the file descriptor that points to the directory\&.
 .PP
-\fBsupport:\fP \fCLINUX\fP, \fCMSVC/MSVS\fP, \fCMinGW\fP - default include 
+\fBSupport:\fP 
+.PP
+IBM  GNU  MinGW  MSVC/MSVS   ?  This code  x  This code   
 .SS "wchar_t* _wpathnormalize (const wchar_t *, int)"
 
 .PP
@@ -1793,7 +1800,9 @@ Write a formatted wide character string to 'stdout'\&.
 .PP
 Reads the directory stream\&. It reads the directory stream, returns a pointer to the \fCwdirent_t\fP structure, which represents the next element in the catalog stream\&. The function returns \fCNULL\fP when the last record in the directory stream is reached or if an error occurred\&.
 .PP
-\fBsupport:\fP \fCLINUX\fP, \fCMSVC/MSVS\fP, \fCMinGW\fP - default include 
+\fBSupport:\fP 
+.PP
+IBM  GNU  MinGW  MSVC/MSVS   ?  This code  x  This code   
 .SS "int _wreaddir_cb (wchar_t *, long, \fBwdir_cb\fP, void *)"
 
 .PP
@@ -1810,9 +1819,11 @@ Reads the directory stream callBack\&.
 \fIvoid\fP - user data
 .RE
 .PP
-\fBsupport:\fP \fCALL\fP
+\fBSupport:\fP 
 .PP
-\fBtable\fP flags compatible:
+IBM  GNU  MinGW  MSVC/MSVS   This code  This code  This code  This code   
+.PP
+\fBTable\fP flags compatible:
 .PP
 FLAGS  GNU  MinGW  MSVC/MSVS  Description   DIRENTRYSIZE  x  Always  Always  Calculate size of entry   DIRNOROOT  x  x  x  Skip root directory \fC\&.\fP and \fC\&.\&.\fP   DIRNODIR  x  x  x  Skip all directory   
 .PP
@@ -1840,7 +1851,9 @@ FLAGS  GNU  MinGW  MSVC/MSVS  Description   DIRENTRYSIZE  x  Always  Always  Cal
 .PP
 Reads the directory stream extended\&. The function \fCwreaddir_r()\fP is a reentrant version\&. It reads the next entry from the open catalog stream and returns it in the created call buffer pointed to by the second parameter of the function\&. The pointer to the returned element is placed in the third parameter of the function, if the end of the directory stream is reached, \fCNULL\fP is returned instead of the value\&.
 .PP
-\fBsupport:\fP \fCLINUX\fP, \fCMSVC/MSVS\fP, \fCMinGW\fP - default include 
+\fBSupport:\fP 
+.PP
+IBM  GNU  MinGW  MSVC/MSVS   ?  This code  x  This code   
 .SS "int _wremove (const wchar_t *)"
 
 .PP
@@ -1922,13 +1935,17 @@ The same as \fB_wrename\fP, the input parameter filename is passed in the \fC\fB
 .PP
 Sets the beginning in the directory stream\&. The \fCwrewinddir()\fP function flushes the current position of the stream to the beginning of the directory\&.
 .PP
-\fBsupport:\fP \fCLINUX\fP, \fCMSVC/MSVS\fP 
+\fBSupport:\fP 
+.PP
+IBM  GNU  MinGW  MSVC/MSVS   This code  This code  x  This code   
 .SS "void _wseekdir (\fBWDIR_t\fP *, long int)"
 
 .PP
 Sets the position in the directory stream\&. The \fB_wseekdir\fP function sets the position in the directory stream from which the next call to \fB_wreaddir\fP will begin\&. The position argument must be a value that is returned by the previously called \fB_wtelldir\fP function\&.
 .PP
-\fBsupport:\fP \fCLINUX\fP 
+\fBSupport:\fP 
+.PP
+IBM  GNU  MinGW  MSVC/MSVS   ?  This code  -  -   
 .SS "int _wstat (const wchar_t *, void *)"
 
 .PP
@@ -1977,7 +1994,9 @@ The same as \fB_wstat\fP, the input parameter filename is passed in the \fC\fBst
 .PP
 Returns the current position of the directory stream\&. If successful, the \fCwtelldir()\fP function returns the current location in the directory stream\&. In case of an error, \fC-1\fP is returned, and the corresponding value of \fCerrno\fP is set\&.
 .PP
-\fBsupport:\fP \fCLINUX\fP 
+\fBSupport:\fP 
+.PP
+IBM  GNU  MinGW  MSVC/MSVS   ?  This code  -  -   
 .SS "size_t u8stowcs (wchar_t *, const char *)"
 
 .PP

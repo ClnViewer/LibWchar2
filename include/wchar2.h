@@ -1607,7 +1607,12 @@ size_t    wstring_trunc_alloc(string_ws *restrict, const wchar_t*, int);
  *          Дескриптор открытого в прошлом потока каталога будет недоступен после данного вызова.
  *
  * \~
- * \b support: `LINUX`, `MSVC/MSVS`, `MinGW` - default include
+ * \b Support:
+
+ IBM  |    GNU    | MinGW | MSVC/MSVS
+------|-----------|-------|-----------
+  ?   | This code |   x   | This code
+
  *
  */
 int        _wclosedir(WDIR_t*);
@@ -1630,7 +1635,12 @@ int        _wclosedir(WDIR_t*);
  *          Функция  устанавливает флаг `close-on-exec` для файлового дескриптора, указывающего на директорию.
  *
  * \~
- * \b support: `LINUX`, `MSVC/MSVS`, `MinGW` - default include
+ * \b Support:
+
+ IBM  |    GNU    | MinGW | MSVC/MSVS
+------|-----------|-------|-----------
+  ?   | This code |   x   | This code
+
  *
  */
 WDIR_t    *_wopendir(const wchar_t*);
@@ -1653,7 +1663,12 @@ WDIR_t    *_wopendir(const wchar_t*);
  *          произошла ошибка.
  *
  * \~
- * \b support: `LINUX`, `MSVC/MSVS`, `MinGW` - default include
+ * \b Support:
+
+ IBM  |    GNU    | MinGW | MSVC/MSVS
+------|-----------|-------|-----------
+  ?   | This code |   x   | This code
+
  *
  */
 wdirent_t *_wreaddir(WDIR_t*);
@@ -1678,7 +1693,12 @@ wdirent_t *_wreaddir(WDIR_t*);
  *          если достигнут конец потока каталога, то возвращается `NULL` вместо значения.
  *
  * \~
- * \b support: `LINUX`, `MSVC/MSVS`, `MinGW` - default include
+ * \b Support:
+
+ IBM  |    GNU    | MinGW | MSVC/MSVS
+------|-----------|-------|-----------
+  ?   | This code |   x   | This code
+
  *
  */
 int        _wreaddir_r(WDIR_t*, wdirent_t*, wdirent_t**);
@@ -1692,11 +1712,15 @@ int        _wreaddir_r(WDIR_t*, wdirent_t*, wdirent_t**);
  * \param wdir_cb - callback function
  * \param void - user data
  *
- *
  * \~
- * \b support: `ALL`
+ * \b Support:
+
+ IBM       |    GNU    |   MinGW   | MSVC/MSVS
+-----------|-----------|-----------|-----------
+ This code | This code | This code | This code
+
  *
- * \b table flags compatible:
+ * \b Table flags compatible:
 
      FLAGS    | GNU | MinGW  | MSVC/MSVS | Description
 --------------|-----|--------|-----------|-------------
@@ -1721,7 +1745,7 @@ int        _wreaddir_cb(wchar_t*, long, wdir_cb, void*);
  *
  *
  * \~
- * \b support: `ALL`
+ * \b Support: `ALL`
  *
  */
 #define    wreaddir_cb_opt(opt,val) ((opt) | (1L << (val)))
@@ -1738,8 +1762,14 @@ int        _wreaddir_cb(wchar_t*, long, wdir_cb, void*);
  *
  * \details Функция `wrewinddir()` сбрасывает текущее положение потока в начало каталога.
  *
+ *
  * \~
- * \b support: `LINUX`, `MSVC/MSVS`
+ * \b Support:
+
+ IBM       |    GNU    | MinGW | MSVC/MSVS
+-----------|-----------|-------|-----------
+ This code | This code |   x   | This code
+
  *
  */
 void       _wrewinddir(WDIR_t*);
@@ -1762,7 +1792,12 @@ void       _wrewinddir(WDIR_t*);
  *          функцией \ref _wtelldir .
  *
  * \~
- * \b support: `LINUX`
+ * \b Support:
+
+ IBM  |    GNU    | MinGW | MSVC/MSVS
+------|-----------|-------|-----------
+  ?   | This code |   -   | -
+
  *
  */
 void       _wseekdir(WDIR_t*, long int);
@@ -1781,7 +1816,12 @@ void       _wseekdir(WDIR_t*, long int);
  *          В случае ошибки возвращается `-1`, и устанавливается соответствующее значение `errno`.
  *
  * \~
- * \b support: `LINUX`
+ * \b Support:
+
+ IBM  |    GNU    | MinGW | MSVC/MSVS
+------|-----------|-------|-----------
+  ?   | This code |   -   | -
+
  *
  */
 long int   _wtelldir(WDIR_t*);

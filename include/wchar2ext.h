@@ -124,14 +124,14 @@ typedef struct
 
 typedef struct
 {
-    unsigned int   d_ino;        /**<  \~English Inode number \~Russian íîìåğ ôàéëà */
-    long int       d_off;        /**<  \~English Offset \~Russian òåêóùåå ïîëîæåíèå */
-    unsigned short d_reclen;     /**<  \~English Length of this record \~Russian äëèííà äàííûõ */
-    unsigned char  d_type;       /**<  \~English Type of file \~Russian òèï äàííûõ */
+    unsigned int   d_ino;        /**<  \~English Inode number \~Russian Ğ½Ğ¾Ğ¼ĞµÑ€ Ñ„Ğ°Ğ¹Ğ»Ğ° */
+    long int       d_off;        /**<  \~English Offset \~Russian Ñ‚ĞµĞºÑƒÑ‰ĞµĞµ Ğ¿Ğ¾Ğ»Ğ¾Ğ¶ĞµĞ½Ğ¸Ğµ */
+    unsigned short d_reclen;     /**<  \~English Length of this record \~Russian Ğ´Ğ»Ğ¸Ğ½Ğ½Ğ° Ğ´Ğ°Ğ½Ğ½Ñ‹Ñ… */
+    unsigned char  d_type;       /**<  \~English Type of file \~Russian Ñ‚Ğ¸Ğ¿ Ğ´Ğ°Ğ½Ğ½Ñ‹Ñ… */
 #   if defined(_DIRENT_HAVE_D_NAMLEN)
-    unsigned char  d_namlen;     /**<  \~English Filename length \~Russian äëèííà ïîëÿ èìåíè ôàéëà */
+    unsigned char  d_namlen;     /**<  \~English Filename length \~Russian Ğ´Ğ»Ğ¸Ğ½Ğ½Ğ° Ğ¿Ğ¾Ğ»Ñ Ğ¸Ğ¼ĞµĞ½Ğ¸ Ñ„Ğ°Ğ¹Ğ»Ğ° */
 #   endif
-    wchar_t        d_name[256 + 1];  /**<  \~English Null-terminated filename \~Russian ïîëå èìåíè ôàéëà */
+    wchar_t        d_name[256 + 1];  /**<  \~English Null-terminated filename \~Russian Ğ¿Ğ¾Ğ»Ğµ Ğ¸Ğ¼ĞµĞ½Ğ¸ Ñ„Ğ°Ğ¹Ğ»Ğ° */
 } wdirent_t;
 
 typedef void WDIR_t;
