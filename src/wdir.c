@@ -52,11 +52,11 @@
 
 #endif
 
-static void __dir_default_cb(long cnt, access_e etype, long long size, string_ws *name, void *data)
+static void __dir_default_cb(unsigned int ino, access_e etype, long long size, string_ws *name, void *data)
 {
     (void) data;
-    _fwprintf(stdout, __fwprn("\t\t- cnt [%ld] -> type [%d] size [%lld] -> [%ls][%u]\n"),
-              cnt, etype, size, name->str, name->sz
+    _fwprintf(stdout, __fwprn("\t\t- ino [%ld] -> type [%d] size [%lld] -> [%ls][%u]\n"),
+              ino, etype, size, name->str, name->sz
              );
 }
 
@@ -301,8 +301,6 @@ int _wreaddir_cb(wchar_t *dirpath, long opt, wdir_cb fun, void *data)
 
 #elif !defined(OS_WIN)
 
-#define __DIR_DNAME_SIZE sizeof(((struct dirent*)0)->d_name)
-
 static int __dir_type[] =
 {
     [0]  = ISUNK,
@@ -331,153 +329,14 @@ static long long __dir_entry_size(wchar_t *path, wchar_t *name)
     return (long long)_s.st_size;
 }
 
-static int __check_dirent(void)
-{
-    return (
-               (sizeof(struct dirent) - sizeof(((struct dirent*)0)->d_name)) ==
-               (sizeof(wdirent_t) - sizeof(((wdirent_t*)0)->d_name))
-           );
-}
-
-int _wclosedir(WDIR_t *d)
-{
-    if (!d)
-        return 0;
-    return closedir((DIR*)d);
-}
-
-WDIR_t * _wopendir(const wchar_t *w)
-{
-    if (!__check_dirent())
-    {
-        errno = EFAULT;
-        return NULL;
-    }
-    {
-        wstocscvt(b, w, NULL);
-        return (WDIR_t*) opendir(b);
-    }
-}
-
-wdirent_t * _wreaddir(WDIR_t *d)
-{
-    wdirent_t __AUTO *wde = NULL;
-
-    do
-    {
-        size_t     sz;
-        wchar_t    dname[__DIR_DNAME_SIZE] = {0};
-        wdirent_t *wdo;
-        struct     dirent *de;
-
-        if (!__check_dirent())
-        {
-            errno = EFAULT;
-            break;
-        }
-        if (!d)
-        {
-            errno = EINVAL;
-            break;
-        }
-        if (
-            (!(de = readdir((DIR*)d)))              ||
-            (!(wde = calloc(1, sizeof(wdirent_t)))) ||
-            (!(sz = wstring_cstows(dname, __DIR_DNAME_SIZE, de->d_name, 0)))
-        )
-        {
-            break;
-        }
-
-        memcpy((void*)wde, (void*)de, (sizeof(struct dirent) - __DIR_DNAME_SIZE));
-        _wmemcpy((wchar_t*)&wde->d_name, dname, sz);
-
-        wdo = wde;
-        wde = NULL;
-        return wdo;
-
-    }
-    while (0);
-
-    return NULL;
-}
-
-int _wreaddir_r(WDIR_t *d, wdirent_t *wde, wdirent_t **wdep)
-{
-    if (!__check_dirent())
-    {
-        errno = EFAULT;
-        return EFAULT;
-    }
-    if ((!d) || (!wde))
-    {
-        errno = EINVAL;
-        return EINVAL;
-    }
-    do
-    {
-        int     ret;
-        size_t  sz;
-        wchar_t dname[__DIR_DNAME_SIZE] = {0};
-        struct  dirent de, *dep;
-        errno = 0;
-
-        if ((ret = readdir_r(d, &de, &dep)))
-            return ret;
-
-        if (dep != NULL)
-        {
-            if (!(sz = wstring_cstows(dname, __DIR_DNAME_SIZE, de.d_name, 0)))
-            {
-                errno = EFAULT;
-                break;
-            }
-            memcpy((void*)wde, (void*)&de, (sizeof(struct dirent) - __DIR_DNAME_SIZE));
-            _wmemcpy((wchar_t*)&wde->d_name, dname, sz);
-            if (wdep)
-                *wdep = wde;
-        }
-        else
-        {
-            memset((void*)wde, 0, sizeof(wdirent_t));
-            if (wdep)
-                *wdep = NULL;
-        }
-
-    }
-    while (0);
-
-    return 0;
-}
-
-void _wrewinddir(WDIR_t *d)
-{
-    if (!d)
-        return;
-    rewinddir((DIR*)d);
-}
-
-void _wseekdir(WDIR_t *d, long n)
-{
-    if (!d)
-        return;
-    seekdir((DIR*)d, n);
-}
-
-long int _wtelldir(WDIR_t *d)
-{
-    if (!d)
-        return -1L;
-    return telldir((DIR*)d);
-}
+#include "wdir_gnu.c"
 
 int _wreaddir_cb(wchar_t *dirpath, long opt, wdir_cb fun, void *data)
 {
     int        ret      = 0;
-    long       cnt      = 0L;
     wdirent_t  wentry,
               *we       = NULL;
-    WDIR_t    *dp       = NULL;
+    __WDIR_t  *dir      = NULL;
     fun                 = ((fun) ? fun : __dir_default_cb);
     errno               = 0;
 
@@ -485,11 +344,14 @@ int _wreaddir_cb(wchar_t *dirpath, long opt, wdir_cb fun, void *data)
     {
         memset((void*)&wentry, 0, sizeof(wdirent_t));
 
-        if (!(dp = _wopendir(dirpath)))
+        if (
+            (!(dir = _wopendir(dirpath))) ||
+            (!dir->dp)
+        )
         {
             break;
         }
-        while ((!(ret = _wreaddir_r(dp, &wentry, &we))) && (we != NULL))
+        while ((!(ret = _wreaddir_r(dir, &wentry, &we))) && (we != NULL))
         {
             do
             {
@@ -527,8 +389,7 @@ int _wreaddir_cb(wchar_t *dirpath, long opt, wdir_cb fun, void *data)
                         esz = __dir_entry_size(dirpath, wname.str);
                     }
 
-                    cnt++;
-                    fun(cnt, etype, esz, &wname, data);
+                    fun(dir->d_ino, etype, esz, &wname, data);
                 }
 
             }
@@ -536,7 +397,7 @@ int _wreaddir_cb(wchar_t *dirpath, long opt, wdir_cb fun, void *data)
             memset((void*)&wentry, 0, sizeof(wdirent_t));
         }
 
-        (void) _wclosedir(dp);
+        (void) _wclosedir(dir);
 
         if ((ret) || (we != NULL))
             break;

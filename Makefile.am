@@ -18,6 +18,7 @@ EXTRA_DIST = \
     src/libwcharext.c \
     src/strptime_w32.c \
     src/wdir_msvc.c \
+    src/wdir_gnu.c \
     README.md
 
 EXTRA_HEADERS = \

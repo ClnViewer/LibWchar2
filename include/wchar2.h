@@ -171,17 +171,17 @@ typedef enum
 } access_e;
 
 /*! \~
- *  \brief CallBack for `_wreaddir_cb`
+ *  \brief CallBack for \ref _wreaddir_cb
  *  \param `long` - counter
  *  \param `access_e` - type of entry
  *  \param `long long` - size of entry
  *  \param `string_ws` - entry name (file/directory name)
  *  \param `void` - user data
  */
-typedef void (*wdir_cb)(long, access_e, long long, string_ws*, void*);
+typedef void (*wdir_cb)(unsigned int, access_e, long long, string_ws*, void*);
 
 /*!
- * \brief Library curent version
+ * \brief Library current version
  */
 const char * wchar2version(void);
 
