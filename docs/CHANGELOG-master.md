@@ -11,4 +11,3 @@
 - [#6](https://github.com/ClnViewer/LibWchar2/commit/d4407bbaef5b5441e53920394a2c649ce4bb1f27)  	update docs 2018-08-03 (*03 August 2018 15:25*)
 - [#7](https://github.com/ClnViewer/LibWchar2/commit/671c4efa832430b41406f56270df00bf7adfb1bf)  	update tinyDir tests 2018-08-03 (*03 August 2018 15:03*)
 - [#8](https://github.com/ClnViewer/LibWchar2/commit/5d4d44a0ae30ff188900fbb34a27dfc92bc23438)  	update docs 2018-08-03 (*03 August 2018 09:25*)
-- [#9](https://github.com/ClnViewer/LibWchar2/commit/6aeea68a7da4681efcdf4fc2dc0d7b536c3fac77)  	add patch to TinyDir 2018-08-03 (*03 August 2018 07:23*)

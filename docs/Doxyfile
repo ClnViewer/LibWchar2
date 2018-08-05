@@ -3,7 +3,7 @@ DOXYFILE_ENCODING      = UTF-8
 PROJECT_NAME           = "libwchar2 0.0.8"
 INPUT                  = include/wchar2.h docs/doxman
 OUTPUT_DIRECTORY       = docs
-EXAMPLE_PATH           = ./ docs/doxman
+EXAMPLE_PATH           = ./ ./docs/doxman ./test/
 FILE_PATTERNS         += *.dox *.h
 EXTENSION_MAPPING      = txt=md
 WARN_NO_PARAMDOC       = YES
