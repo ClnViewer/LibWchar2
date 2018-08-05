@@ -24,6 +24,7 @@
 
 #define F_OK 0
 
+//! [Example use waccess errorcode]
 static const char * __access_error(access_e x)
 {
     return (const char *)((x == ISERR) ? "Error check" :
@@ -31,6 +32,7 @@ static const char * __access_error(access_e x)
                            ((x == ISLNK) ? "is a Symbolic link" :
                             ((x == ISDIR) ? "is a Directory" : "Unknown result"))));
 }
+//! [Example use waccess errorcode]
 
 #if defined(_MSC_VER)
 static const char * __get_error(char errstr[], int err)
@@ -51,9 +53,9 @@ int main(int argc, char *argv[])
     size_t sz;
     int ret;
     wchar_t *outw, pathw[] = L"\\this\\path\\to\\file.zip";
-    //! [Example use waccess]
+    //! [Example use waccess declare]
     wchar_t pathmkd[] = L"this\\path\\to\\file";
-    //! [Example use waccess]
+    //! [Example use waccess declare]
     string_ws dst = { NULL, 0U },
               a   = { L"_one_string_", 0U},
               aa  = { L"_two_string_", 0U },
@@ -121,10 +123,10 @@ int main(int argc, char *argv[])
         free(outw);
     }
 
-    //! [Example use waccess]
+    //! [Example use waccess code]
     ret = waccess(pathmkd, F_OK);
     printf("\n\t*(%d) waccess: [%ls] -> [%d][%s]\n", __LINE__, pathmkd, ret, __access_error(ret));
-    //! [Example use waccess]
+    //! [Example use waccess code]
 
     ret = wmkdir(pathmkd, 0);
     printf("\n\t*(%d) wmkdir: [create] [%ls] -> [%d/%d][%s]\n", __LINE__, pathmkd, ret, errno, __get_error(errstr, errno));

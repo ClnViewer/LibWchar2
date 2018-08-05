@@ -1184,8 +1184,25 @@ function returned enum \fBaccess_e\fP result
 \fBExample:\fP 
 .PP
 .nf
-    wchar_t pathmkd[] = L"this\\path\\to\\file";
+static const char * __access_error(access_e x)
+{
+    return (const char *)((x == ISERR) ? "Error check" :
+                          ((x == ISFIL) ? "is a Regular file" :
+                           ((x == ISLNK) ? "is a Symbolic link" :
+                            ((x == ISDIR) ? "is a Directory" : "Unknown result"))));
+}
 
+.fi
+.PP
+.PP
+.nf
+    wchar_t pathmkd[] = L"this\\path\\to\\file";
+.fi
+.PP
+.PP
+.nf
+    ret = waccess(pathmkd, F_OK);
+    printf("\n\t*(%d) waccess: [%ls] -> [%d][%s]\n", __LINE__, pathmkd, ret, __access_error(ret));
 .fi
 .PP
 
@@ -1412,6 +1429,8 @@ Convert a wide-character string representation of time to a time \fCtm\fP struct
 .IP "\(bu" 2
 \fB_wcsptime\fP related \fB_wcsftime\fP
 .PP
+.PP
+GNU  MinGW  MSVC/MSVS   x  This code  This code   
 .PP
 \fBExample:\fP 
 .PP

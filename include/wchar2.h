@@ -877,6 +877,12 @@ size_t    _wcsftime(wchar_t *restrict, size_t sz, const wchar_t *restrict, const
  * - \subpage wcsptime
  * - \ref _wcsptime related \ref _wcsftime
  *
+
+ GNU |   MinGW   | MSVC/MSVS
+-----|-----------|-----------
+  x  | This code | This code
+
+ *
  * \b Example:
  * \snippet ./test/check_wchar2_MSVC.c Example use wcsftime
  *
@@ -1295,7 +1301,9 @@ int       u8wmkdir(const wchar_t*, mode_t);
  * \attention function returned enum \ref access_e result
  *
  * \b Example:
- * \snippet ./test/check_wchar2_MSVC.c Example use waccess
+ * \snippet ./test/check_wchar2_MSVC.c Example use waccess errorcode
+ * \snippet ./test/check_wchar2_MSVC.c Example use waccess declare
+ * \snippet ./test/check_wchar2_MSVC.c Example use waccess code
  *
 */
 access_e  _waccess(const wchar_t*, int);

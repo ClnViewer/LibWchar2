@@ -2001,7 +2001,7 @@ Type of file. </td></tr>
 <li><a class="el" href="waccess.html">waccess manual</a></li>
 </ul>
 <dl class="section attention"><dt>Attention</dt><dd>function returned enum <a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49">access_e</a> result</dd></dl>
-<p><b>Example:</b> </p><div class="fragment"><div class="line">    <span class="keywordtype">wchar_t</span> pathmkd[] = L<span class="stringliteral">&quot;this\\path\\to\\file&quot;</span>;</div></div><!-- fragment -->
+<p><b>Example:</b> </p><div class="fragment"><div class="line"><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span> * __access_error(<a class="code" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49">access_e</a> x)</div><div class="line">{</div><div class="line">    <span class="keywordflow">return</span> (<span class="keyword">const</span> <span class="keywordtype">char</span> *)((x == <a class="code" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49adf34f51a7400b0f698aa0e23f377455a">ISERR</a>) ? <span class="stringliteral">&quot;Error check&quot;</span> :</div><div class="line">                          ((x == <a class="code" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49acdb727b04e3f577e32b7e66e5f9d4ade">ISFIL</a>) ? <span class="stringliteral">&quot;is a Regular file&quot;</span> :</div><div class="line">                           ((x == <a class="code" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49ad1b612ed7f9f99dbf12cd96f6e5773a5">ISLNK</a>) ? <span class="stringliteral">&quot;is a Symbolic link&quot;</span> :</div><div class="line">                            ((x == <a class="code" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49ae3bba0027c803f044a6393b067bdf961">ISDIR</a>) ? <span class="stringliteral">&quot;is a Directory&quot;</span> : <span class="stringliteral">&quot;Unknown result&quot;</span>))));</div><div class="line">}</div></div><!-- fragment --><div class="fragment"><div class="line">    <span class="keywordtype">wchar_t</span> pathmkd[] = L<span class="stringliteral">&quot;this\\path\\to\\file&quot;</span>;</div></div><!-- fragment --><div class="fragment"><div class="line">    ret = waccess(pathmkd, F_OK);</div><div class="line">    printf(<span class="stringliteral">&quot;\n\t*(%d) waccess: [%ls] -&gt; [%d][%s]\n&quot;</span>, __LINE__, pathmkd, ret, __access_error(ret));</div></div><!-- fragment -->
 </div>
 </div>
 <a id="aa1db6df803109089bdbcea71e9b3b687"></a>
@@ -2725,6 +2725,12 @@ Type of file. </td></tr>
 <li><a class="el" href="wcsptime.html">wcsptime manual</a></li>
 <li><a class="el" href="wchar2_8h.html#afa85030a8b68f0acce3cf5117b30594a">_wcsptime</a> related <a class="el" href="wchar2_8h.html#adf6e26da7bd1c30ad18ddaffaba1ae46">_wcsftime</a></li>
 </ul>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">GNU  </th><th class="markdownTableHeadNone">MinGW  </th><th class="markdownTableHeadNone">MSVC/MSVS   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">x  </td><td class="markdownTableBodyNone">This code  </td><td class="markdownTableBodyNone">This code   </td></tr>
+</table>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">        time_t t;</div><div class="line">        <span class="keyword">struct </span>tm *tmi = NULL, tms = {0};</div><div class="line">        <span class="keywordtype">wchar_t</span> buffer [180] = {0};</div><div class="line"></div><div class="line">        t = time(NULL);</div><div class="line"></div><div class="line"><span class="preprocessor">#       if defined(_MSC_VER)</span></div><div class="line">        <span class="keywordflow">if</span> (localtime_s(&amp;tms, &amp;t))</div><div class="line">            <span class="keywordflow">break</span>;</div><div class="line">        tmi = &amp;tms;</div><div class="line"><span class="preprocessor">#       else</span></div><div class="line">        tmi = localtime(&amp;t);</div><div class="line"><span class="preprocessor">#       endif</span></div><div class="line"></div><div class="line">        wcsftime(buffer, 180, L<span class="stringliteral">&quot;%Y-%m-%d %H:%M:%S&quot;</span>, tmi);</div><div class="line">        printf(<span class="stringliteral">&quot;\n\t*(%d) wcsftime -&gt; %ls\n&quot;</span>, __LINE__, buffer);</div><div class="line"></div><div class="line">        wcsptime(buffer, L<span class="stringliteral">&quot;%Y-%m-%d %H:%M:%S&quot;</span>, &amp;tms);</div><div class="line">        t = mktime(&amp;tms);</div><div class="line"></div><div class="line"><span class="preprocessor">#       if defined(_MSC_VER)</span></div><div class="line">        {</div><div class="line">            <span class="keywordtype">char</span> cbuf[256];</div><div class="line">            <span class="keywordflow">if</span> (ctime_s(cbuf, <span class="keyword">sizeof</span>(cbuf), &amp;t))</div><div class="line">                <span class="keywordflow">break</span>;</div><div class="line">            printf(<span class="stringliteral">&quot;\n\t*(%d) wcsptime -&gt; %s\n&quot;</span>, __LINE__, cbuf);</div><div class="line">        }</div><div class="line"><span class="preprocessor">#       else</span></div><div class="line">        printf(<span class="stringliteral">&quot;\n\t*(%d) wcsptime -&gt; %s\n&quot;</span>, __LINE__, ctime(&amp;t));</div><div class="line"><span class="preprocessor">#       endif</span></div></div><!-- fragment -->
 </div>
 </div>
@@ -5518,7 +5524,7 @@ Allocate memory functions</h2>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Aug 6 2018 00:30:28 for libwchar2 0.0.8 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Aug 6 2018 00:42:15 for libwchar2 0.0.8 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>
