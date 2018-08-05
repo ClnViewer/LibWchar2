@@ -1169,7 +1169,7 @@ Check permissions for a file or directory, wide char input\&.
 .PP
 \fBNote:\fP
 .RS 4
-All waccess* function return extended status, see access_e enum value, if error return standart -1
+All waccess* function return extended status, see \fBaccess_e\fP enum value, if error return standart -1
 .RE
 .PP
 .IP "\(bu" 2
@@ -1178,7 +1178,7 @@ All waccess* function return extended status, see access_e enum value, if error 
 .PP
 \fBAttention:\fP
 .RS 4
-function returned enum \fBaccess_e\fP result
+function returned Non-standard \fCenum\fP \fBaccess_e\fP result
 .RE
 .PP
 \fBExample:\fP 
@@ -1353,7 +1353,8 @@ Convert date and time to a formatted wide-character string\&. The original versi
 
 .fi
 .PP
-
+.PP
+IBM  GNU  MinGW  MSVC/MSVS   x  x  This code  This code   
 .SS "size_t _wcslen (const wchar_t *)"
 
 .PP
@@ -1430,7 +1431,7 @@ Convert a wide-character string representation of time to a time \fCtm\fP struct
 \fB_wcsptime\fP related \fB_wcsftime\fP
 .PP
 .PP
-GNU  MinGW  MSVC/MSVS   x  This code  This code   
+IBM  GNU  MinGW  MSVC/MSVS   x  This code  This code  This code   
 .PP
 \fBExample:\fP 
 .PP

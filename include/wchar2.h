@@ -855,6 +855,12 @@ wchar_t   _fputwc(wchar_t, FILE *restrict);
  * \b Example:
  * \snippet ./test/check_wchar2_MSVC.c Example use wcsftime
  *
+
+ IBM  | GNU |   MinGW   | MSVC/MSVS
+------|-----|-----------|-----------
+  x   |  x  | This code | This code
+
+ *
  */
 size_t    _wcsftime(wchar_t *restrict, size_t sz, const wchar_t *restrict, const void *restrict);
 
@@ -878,9 +884,9 @@ size_t    _wcsftime(wchar_t *restrict, size_t sz, const wchar_t *restrict, const
  * - \ref _wcsptime related \ref _wcsftime
  *
 
- GNU |   MinGW   | MSVC/MSVS
------|-----------|-----------
-  x  | This code | This code
+ IBM  |    GNU    |   MinGW   | MSVC/MSVS
+------|-----------|-----------|-----------
+  x   | This code | This code | This code
 
  *
  * \b Example:
@@ -1289,7 +1295,7 @@ int       u8wmkdir(const wchar_t*, mode_t);
 /*!
  * \~
  *  \paragraph Check permissions for a file or directory
- *  \note All waccess* function return extended status, see access_e enum value,
+ *  \note All waccess* function return extended status, see \ref access_e enum value,
  *        if error return standart -1
  *
  * - \subpage waccess
@@ -1298,7 +1304,7 @@ int       u8wmkdir(const wchar_t*, mode_t);
 /*!
  * \~
  * \brief Check permissions for a file or directory, wide char input
- * \attention function returned enum \ref access_e result
+ * \attention function returned Non-standard `enum` \ref access_e result
  *
  * \b Example:
  * \snippet ./test/check_wchar2_MSVC.c Example use waccess errorcode
