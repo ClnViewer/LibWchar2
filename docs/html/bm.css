@@ -20,3 +20,4 @@ dl.attention{border-color: #FF8100;}
 dd {margin-left:0;font-family: monospace;font-size: 16px;}
 li {font-family: monospace;font-size: 18px; padding: 5px 0px 5px 5px;}
 div.textblock div.fragment div.line {min-height: 40px;line-height: 3.0;text-indent: 5px;padding-left: 20px;}
+div.memdoc div.fragment {margin: 10px 0px 10px 25px;}

@@ -1284,7 +1284,44 @@ Convert date and time to a formatted wide-character string\&. The original versi
 .IP "\(bu" 2
 \fBwcsftime manual\fP
 .IP "\(bu" 2
-\fB_wcsptime\fP related \fB_wcsftime\fP 
+\fB_wcsptime\fP related \fB_wcsftime\fP
+.PP
+.PP
+\fBExample:\fP 
+.PP
+.nf
+        time_t t;
+        struct tm *tmi = NULL, tms = {0};
+        wchar_t buffer [180] = {0};
+
+        t = time(NULL);
+
+#       if defined(_MSC_VER)
+        if (localtime_s(&tms, &t))
+            break;
+        tmi = &tms;
+#       else
+        tmi = localtime(&t);
+#       endif
+
+        wcsftime(buffer, 180, L"%Y-%m-%d %H:%M:%S", tmi);
+        printf("\n\t*(%d) wcsftime -> %ls\n", __LINE__, buffer);
+
+        wcsptime(buffer, L"%Y-%m-%d %H:%M:%S", &tms);
+        t = mktime(&tms);
+
+#       if defined(_MSC_VER)
+        {
+            char cbuf[256];
+            if (ctime_s(cbuf, sizeof(cbuf), &t))
+                break;
+            printf("\n\t*(%d) wcsptime -> %s\n", __LINE__, cbuf);
+        }
+#       else
+        printf("\n\t*(%d) wcsptime -> %s\n", __LINE__, ctime(&t));
+#       endif
+
+.fi
 .PP
 
 .SS "size_t _wcslen (const wchar_t *)"
@@ -1708,6 +1745,7 @@ Reads the directory stream callBack\&.
 .PP
 FLAGS  GNU  MinGW  MSVC/MSVS  Description   DIRENTRYSIZE  x  Always  Always  Calculate size of entry   DIRNOROOT  x  x  x  Skip root directory \fC\&.\fP and \fC\&.\&.\fP   DIRNODIR  x  x  x  Skip all directory   
 .PP
+\fBExample:\fP 
 .PP
 .nf
         int ret;
@@ -1722,6 +1760,7 @@ FLAGS  GNU  MinGW  MSVC/MSVS  Description   DIRENTRYSIZE  x  Always  Always  Cal
         printf("\n\tTest _wreaddir_cb:%d\t\t->\n", __LINE__);
         ret = _wreaddir_cb(path, opt, NULL, NULL);
         printf("\n\t*(%d) _wreaddir_cb end -> return:[%d] error:[%d] path:[%ls] -> opt: NONE\n", __LINE__, ret, errno, path);
+
 .fi
 .PP
 
@@ -2157,6 +2196,7 @@ Converting time format string to string, wchar_t and size_t input\&.
 function wstring_timeformat requires to free the returned result
 .RE
 .PP
+\fBExample:\fP 
 .PP
 .nf
         wchar_t *tout = NULL, tstr[] = L"2018-07-24T19:03:18Z";
@@ -2166,6 +2206,7 @@ function wstring_timeformat requires to free the returned result
 
         printf("\n\t*(%d) wstring_timeformat -> [%ls] -> [%ls]\n", __LINE__, tstr, tout);
         free(tout);
+
 .fi
 .PP
 

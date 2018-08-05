@@ -149,6 +149,7 @@ int main(int argc, char *argv[])
 
     do
     {
+        //! [Example use wcsftime]
         time_t t;
         struct tm *tmi = NULL, tms = {0};
         wchar_t buffer [180] = {0};
@@ -179,7 +180,7 @@ int main(int argc, char *argv[])
 #       else
         printf("\n\t*(%d) wcsptime -> %s\n", __LINE__, ctime(&t));
 #       endif
-
+        //! [Example use wcsftime]
     }
     while (0);
 

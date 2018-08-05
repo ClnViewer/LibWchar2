@@ -851,6 +851,10 @@ wchar_t   _fputwc(wchar_t, FILE *restrict);
  * \~
  * - \subpage wcsftime
  * - \ref _wcsptime related \ref _wcsftime
+ *
+ * \b Example:
+ * \snippet ./test/check_wchar2_MSVC.c Example use wcsftime
+ *
  */
 size_t    _wcsftime(wchar_t *restrict, size_t sz, const wchar_t *restrict, const void *restrict);
 
@@ -1495,6 +1499,7 @@ size_t    wstring_wstocs_ws(char [], size_t, const string_ws *restrict);
  * \brief Converting time format string to string, wchar_t and size_t input
  * \attention function wstring_timeformat requires to free the returned result
  *
+ * \b Example:
  * \snippet ./test/check_wchar2_MSVC.c Example use wstring_timeformat
  *
  */
@@ -1655,6 +1660,7 @@ int        _wreaddir_r(WDIR_t*, wdirent_t*, wdirent_t**);
 
 
  *
+ * \b Example:
  * \snippet ./test/check_wchar2_MSVC.c Example use wreaddir_cb
  *
  */
