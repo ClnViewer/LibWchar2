@@ -2383,17 +2383,17 @@ Type of file. </td></tr>
 
 <p>Convert date and time to a formatted wide-character string. </p>
 <p>The original version of the <code>strftime()</code> function is used for the conversion. The <code>wcsftime()</code> function converts the results from wide characters to a multibyte string and back.</p>
-<ul>
-<li><a class="el" href="wcsftime.html">wcsftime manual</a></li>
-<li><a class="el" href="wchar2_8h.html#afa85030a8b68f0acce3cf5117b30594a">_wcsptime</a> related <a class="el" href="wchar2_8h.html#adf6e26da7bd1c30ad18ddaffaba1ae46">_wcsftime</a></li>
-</ul>
-<p><b>Example:</b> </p><div class="fragment"><div class="line">        time_t t;</div><div class="line">        <span class="keyword">struct </span>tm *tmi = NULL, tms = {0};</div><div class="line">        <span class="keywordtype">wchar_t</span> buffer [180] = {0};</div><div class="line"></div><div class="line">        t = time(NULL);</div><div class="line"></div><div class="line"><span class="preprocessor">#       if defined(_MSC_VER)</span></div><div class="line">        <span class="keywordflow">if</span> (localtime_s(&amp;tms, &amp;t))</div><div class="line">            <span class="keywordflow">break</span>;</div><div class="line">        tmi = &amp;tms;</div><div class="line"><span class="preprocessor">#       else</span></div><div class="line">        tmi = localtime(&amp;t);</div><div class="line"><span class="preprocessor">#       endif</span></div><div class="line"></div><div class="line">        wcsftime(buffer, 180, L<span class="stringliteral">&quot;%Y-%m-%d %H:%M:%S&quot;</span>, tmi);</div><div class="line">        printf(<span class="stringliteral">&quot;\n\t*(%d) wcsftime -&gt; %ls\n&quot;</span>, __LINE__, buffer);</div><div class="line"></div><div class="line">        wcsptime(buffer, L<span class="stringliteral">&quot;%Y-%m-%d %H:%M:%S&quot;</span>, &amp;tms);</div><div class="line">        t = mktime(&amp;tms);</div><div class="line"></div><div class="line"><span class="preprocessor">#       if defined(_MSC_VER)</span></div><div class="line">        {</div><div class="line">            <span class="keywordtype">char</span> cbuf[256];</div><div class="line">            <span class="keywordflow">if</span> (ctime_s(cbuf, <span class="keyword">sizeof</span>(cbuf), &amp;t))</div><div class="line">                <span class="keywordflow">break</span>;</div><div class="line">            printf(<span class="stringliteral">&quot;\n\t*(%d) wcsptime -&gt; %s\n&quot;</span>, __LINE__, cbuf);</div><div class="line">        }</div><div class="line"><span class="preprocessor">#       else</span></div><div class="line">        printf(<span class="stringliteral">&quot;\n\t*(%d) wcsptime -&gt; %s\n&quot;</span>, __LINE__, ctime(&amp;t));</div><div class="line"><span class="preprocessor">#       endif</span></div></div><!-- fragment --><table class="markdownTable">
+<table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">IBM  </th><th class="markdownTableHeadNone">GNU  </th><th class="markdownTableHeadNone">MinGW  </th><th class="markdownTableHeadNone">MSVC/MSVS   </th></tr>
 <tr class="markdownTableBody" class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">x  </td><td class="markdownTableBodyNone">x  </td><td class="markdownTableBodyNone">This code  </td><td class="markdownTableBodyNone">This code   </td></tr>
 </table>
-
+<ul>
+<li><a class="el" href="wcsftime.html">wcsftime manual</a></li>
+<li><a class="el" href="wchar2_8h.html#afa85030a8b68f0acce3cf5117b30594a">_wcsptime</a> related <a class="el" href="wchar2_8h.html#adf6e26da7bd1c30ad18ddaffaba1ae46">_wcsftime</a></li>
+</ul>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">        time_t t;</div><div class="line">        <span class="keyword">struct </span>tm *tmi = NULL, tms = {0};</div><div class="line">        <span class="keywordtype">wchar_t</span> buffer [180] = {0};</div><div class="line"></div><div class="line">        t = time(NULL);</div><div class="line"></div><div class="line"><span class="preprocessor">#       if defined(_MSC_VER)</span></div><div class="line">        <span class="keywordflow">if</span> (localtime_s(&amp;tms, &amp;t))</div><div class="line">            <span class="keywordflow">break</span>;</div><div class="line">        tmi = &amp;tms;</div><div class="line"><span class="preprocessor">#       else</span></div><div class="line">        tmi = localtime(&amp;t);</div><div class="line"><span class="preprocessor">#       endif</span></div><div class="line"></div><div class="line">        wcsftime(buffer, 180, L<span class="stringliteral">&quot;%Y-%m-%d %H:%M:%S&quot;</span>, tmi);</div><div class="line">        printf(<span class="stringliteral">&quot;\n\t*(%d) wcsftime -&gt; %ls\n&quot;</span>, __LINE__, buffer);</div><div class="line"></div><div class="line">        wcsptime(buffer, L<span class="stringliteral">&quot;%Y-%m-%d %H:%M:%S&quot;</span>, &amp;tms);</div><div class="line">        t = mktime(&amp;tms);</div><div class="line"></div><div class="line"><span class="preprocessor">#       if defined(_MSC_VER)</span></div><div class="line">        {</div><div class="line">            <span class="keywordtype">char</span> cbuf[256];</div><div class="line">            <span class="keywordflow">if</span> (ctime_s(cbuf, <span class="keyword">sizeof</span>(cbuf), &amp;t))</div><div class="line">                <span class="keywordflow">break</span>;</div><div class="line">            printf(<span class="stringliteral">&quot;\n\t*(%d) wcsptime -&gt; %s\n&quot;</span>, __LINE__, cbuf);</div><div class="line">        }</div><div class="line"><span class="preprocessor">#       else</span></div><div class="line">        printf(<span class="stringliteral">&quot;\n\t*(%d) wcsptime -&gt; %s\n&quot;</span>, __LINE__, ctime(&amp;t));</div><div class="line"><span class="preprocessor">#       endif</span></div></div><!-- fragment -->
 </div>
 </div>
 <a id="aca45b4f92e22f7fad59e2b5c763fde72"></a>
@@ -2727,16 +2727,16 @@ Type of file. </td></tr>
 
 <p>Convert a wide-character string representation of time to a time <code>tm</code> structure. </p>
 <p>The function <code>wcsptime()</code> is equivalent to the function <code>strptime()</code>. The <code>wcsptime()</code> function converts a wide character string into a <code>tm</code> structure format, according to the format specified in the parameters.</p>
-<ul>
-<li><a class="el" href="wcsptime.html">wcsptime manual</a></li>
-<li><a class="el" href="wchar2_8h.html#afa85030a8b68f0acce3cf5117b30594a">_wcsptime</a> related <a class="el" href="wchar2_8h.html#adf6e26da7bd1c30ad18ddaffaba1ae46">_wcsftime</a></li>
-</ul>
 <table class="markdownTable">
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">IBM  </th><th class="markdownTableHeadNone">GNU  </th><th class="markdownTableHeadNone">MinGW  </th><th class="markdownTableHeadNone">MSVC/MSVS   </th></tr>
 <tr class="markdownTableBody" class="markdownTableRowOdd">
 <td class="markdownTableBodyNone">x  </td><td class="markdownTableBodyNone">This code  </td><td class="markdownTableBodyNone">This code  </td><td class="markdownTableBodyNone">This code   </td></tr>
 </table>
+<ul>
+<li><a class="el" href="wcsptime.html">wcsptime manual</a></li>
+<li><a class="el" href="wchar2_8h.html#afa85030a8b68f0acce3cf5117b30594a">_wcsptime</a> related <a class="el" href="wchar2_8h.html#adf6e26da7bd1c30ad18ddaffaba1ae46">_wcsftime</a></li>
+</ul>
 <p><b>Example:</b> </p><div class="fragment"><div class="line">        time_t t;</div><div class="line">        <span class="keyword">struct </span>tm *tmi = NULL, tms = {0};</div><div class="line">        <span class="keywordtype">wchar_t</span> buffer [180] = {0};</div><div class="line"></div><div class="line">        t = time(NULL);</div><div class="line"></div><div class="line"><span class="preprocessor">#       if defined(_MSC_VER)</span></div><div class="line">        <span class="keywordflow">if</span> (localtime_s(&amp;tms, &amp;t))</div><div class="line">            <span class="keywordflow">break</span>;</div><div class="line">        tmi = &amp;tms;</div><div class="line"><span class="preprocessor">#       else</span></div><div class="line">        tmi = localtime(&amp;t);</div><div class="line"><span class="preprocessor">#       endif</span></div><div class="line"></div><div class="line">        wcsftime(buffer, 180, L<span class="stringliteral">&quot;%Y-%m-%d %H:%M:%S&quot;</span>, tmi);</div><div class="line">        printf(<span class="stringliteral">&quot;\n\t*(%d) wcsftime -&gt; %ls\n&quot;</span>, __LINE__, buffer);</div><div class="line"></div><div class="line">        wcsptime(buffer, L<span class="stringliteral">&quot;%Y-%m-%d %H:%M:%S&quot;</span>, &amp;tms);</div><div class="line">        t = mktime(&amp;tms);</div><div class="line"></div><div class="line"><span class="preprocessor">#       if defined(_MSC_VER)</span></div><div class="line">        {</div><div class="line">            <span class="keywordtype">char</span> cbuf[256];</div><div class="line">            <span class="keywordflow">if</span> (ctime_s(cbuf, <span class="keyword">sizeof</span>(cbuf), &amp;t))</div><div class="line">                <span class="keywordflow">break</span>;</div><div class="line">            printf(<span class="stringliteral">&quot;\n\t*(%d) wcsptime -&gt; %s\n&quot;</span>, __LINE__, cbuf);</div><div class="line">        }</div><div class="line"><span class="preprocessor">#       else</span></div><div class="line">        printf(<span class="stringliteral">&quot;\n\t*(%d) wcsptime -&gt; %s\n&quot;</span>, __LINE__, ctime(&amp;t));</div><div class="line"><span class="preprocessor">#       endif</span></div></div><!-- fragment -->
 </div>
 </div>
@@ -5530,7 +5530,7 @@ Allocate memory functions</h2>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Aug 6 2018 02:12:25 for libwchar2 0.0.8 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Aug 6 2018 02:16:54 for libwchar2 0.0.8 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

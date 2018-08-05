@@ -849,17 +849,17 @@ wchar_t   _fputwc(wchar_t, FILE *restrict);
  *          строку и обратно.
  *
  * \~
- * - \subpage wcsftime
- * - \ref _wcsptime related \ref _wcsftime
- *
- * \b Example:
- * \snippet ./test/check_wchar2_MSVC.c Example use wcsftime
- *
 
  IBM  | GNU |   MinGW   | MSVC/MSVS
 ------|-----|-----------|-----------
   x   |  x  | This code | This code
 
+ *
+ * - \subpage wcsftime
+ * - \ref _wcsptime related \ref _wcsftime
+ *
+ * \b Example:
+ * \snippet ./test/check_wchar2_MSVC.c Example use wcsftime
  *
  */
 size_t    _wcsftime(wchar_t *restrict, size_t sz, const wchar_t *restrict, const void *restrict);
@@ -880,14 +880,14 @@ size_t    _wcsftime(wchar_t *restrict, size_t sz, const wchar_t *restrict, const
  *          в соответствии с форматом, указанным в параметрах.
  *
  * \~
- * - \subpage wcsptime
- * - \ref _wcsptime related \ref _wcsftime
- *
 
  IBM  |    GNU    |   MinGW   | MSVC/MSVS
 ------|-----------|-----------|-----------
-  x   | This code | This code | This code
+   x  | This code | This code | This code
 
+ *
+ * - \subpage wcsptime
+ * - \ref _wcsptime related \ref _wcsftime
  *
  * \b Example:
  * \snippet ./test/check_wchar2_MSVC.c Example use wcsftime

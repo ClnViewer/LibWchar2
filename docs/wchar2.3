@@ -1311,6 +1311,8 @@ Wide-character string compare\&.
 .PP
 Convert date and time to a formatted wide-character string\&. The original version of the \fCstrftime()\fP function is used for the conversion\&. The \fCwcsftime()\fP function converts the results from wide characters to a multibyte string and back\&.
 .PP
+IBM  GNU  MinGW  MSVC/MSVS   x  x  This code  This code   
+.PP
 .IP "\(bu" 2
 \fBwcsftime manual\fP
 .IP "\(bu" 2
@@ -1353,8 +1355,7 @@ Convert date and time to a formatted wide-character string\&. The original versi
 
 .fi
 .PP
-.PP
-IBM  GNU  MinGW  MSVC/MSVS   x  x  This code  This code   
+
 .SS "size_t _wcslen (const wchar_t *)"
 
 .PP
@@ -1425,13 +1426,13 @@ Find wide characters in string\&.
 .PP
 Convert a wide-character string representation of time to a time \fCtm\fP structure\&. The function \fCwcsptime()\fP is equivalent to the function \fCstrptime()\fP\&. The \fCwcsptime()\fP function converts a wide character string into a \fCtm\fP structure format, according to the format specified in the parameters\&.
 .PP
+IBM  GNU  MinGW  MSVC/MSVS   x  This code  This code  This code   
+.PP
 .IP "\(bu" 2
 \fBwcsptime manual\fP
 .IP "\(bu" 2
 \fB_wcsptime\fP related \fB_wcsftime\fP
 .PP
-.PP
-IBM  GNU  MinGW  MSVC/MSVS   x  This code  This code  This code   
 .PP
 \fBExample:\fP 
 .PP
