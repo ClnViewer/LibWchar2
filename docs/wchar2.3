@@ -1702,7 +1702,12 @@ Reads the directory stream callBack\&.
 \fI<tt>void</tt>\fP - user data
 .RE
 .PP
-\fBsupport:\fP \fCALL\fP \fBtable\fP flags compatible: 
+\fBsupport:\fP \fCALL\fP
+.PP
+\fBtable\fP flags compatible:
+.PP
+FLAGS  GNU  MinGW  MSVC/MSVS   DIRENTRYSIZE  x  Always  Always   DIRNOROOT  x  x  x   DIRNODIR  x  x  x   
+.PP
 .PP
 .nf
 |--------------|-----|--------|-----------|
@@ -1713,9 +1718,7 @@ Reads the directory stream callBack\&.
 | DIRNOROOT    |  x  |   x    |     x     |
 |--------------|-----|--------|-----------|
 | DIRNODIR     |  x  |   x    |     x     |
-|--------------|-----|--------|-----------|
- * 
-.fi
+|--------------|-----|--------|-----------|.fi
 .PP
  
 .SS "int _wreaddir_r (\fBWDIR_t\fP *, \fBwdirent_t\fP *, \fBwdirent_t\fP **)"

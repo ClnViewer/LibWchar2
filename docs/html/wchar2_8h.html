@@ -4134,7 +4134,19 @@ Type of file. </td></tr>
   </table>
   </dd>
 </dl>
-<p><b>support:</b> <code>ALL</code> <b>table</b> flags compatible: </p><pre class="fragment">|--------------|-----|--------|-----------|
+<p><b>support:</b> <code>ALL</code></p>
+<p><b>table</b> flags compatible:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">FLAGS  </th><th class="markdownTableHeadNone">GNU  </th><th class="markdownTableHeadNone">MinGW  </th><th class="markdownTableHeadNone">MSVC/MSVS   </th></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">DIRENTRYSIZE  </td><td class="markdownTableBodyNone">x  </td><td class="markdownTableBodyNone">Always  </td><td class="markdownTableBodyNone">Always   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowEven">
+<td class="markdownTableBodyNone">DIRNOROOT  </td><td class="markdownTableBodyNone">x  </td><td class="markdownTableBodyNone">x  </td><td class="markdownTableBodyNone">x   </td></tr>
+<tr class="markdownTableBody" class="markdownTableRowOdd">
+<td class="markdownTableBodyNone">DIRNODIR  </td><td class="markdownTableBodyNone">x  </td><td class="markdownTableBodyNone">x  </td><td class="markdownTableBodyNone">x   </td></tr>
+</table>
+<pre class="fragment">|--------------|-----|--------|-----------|
 |     FLAGS    | GNU | MinGW  | MSVC/MSVS |
 |--------------|-----|--------|-----------|
 | DIRENTRYSIZE |  x  | Always |  Always   |
@@ -4142,8 +4154,7 @@ Type of file. </td></tr>
 | DIRNOROOT    |  x  |   x    |     x     |
 |--------------|-----|--------|-----------|
 | DIRNODIR     |  x  |   x    |     x     |
-|--------------|-----|--------|-----------|
- * </pre> 
+|--------------|-----|--------|-----------|</pre> 
 </div>
 </div>
 <a id="a2718ba8ae6813702d12e6f6c7010937c"></a>
@@ -5473,7 +5484,7 @@ Allocate memory functions</h2>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Aug 5 2018 08:56:14 for libwchar2 0.0.8 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Aug 5 2018 09:06:11 for libwchar2 0.0.8 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>
