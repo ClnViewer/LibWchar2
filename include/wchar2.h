@@ -1633,10 +1633,10 @@ int        _wreaddir_r(WDIR_t*, wdirent_t*, wdirent_t**);
  * \~English
  * \brief Reads the directory stream callBack
  *
- * \param `wchar_t` - directory path
- * \param `long int` - options, valid `DIRENTRYSIZE`, `DIRNOROOT`, `DIRNODIR` bit mask set
- * \param `wdir_cb` - callback function
- * \param `void` - user data
+ * \param wchar_t - directory path
+ * \param long - options, valid `DIRENTRYSIZE`, `DIRNOROOT`, `DIRNODIR` bit mask set
+ * \param wdir_cb - callback function
+ * \param void - user data
  *
  *
  * \~
