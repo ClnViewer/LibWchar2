@@ -679,15 +679,15 @@ include/wchar2.h
 .ti -1c
 .RI "size_t \fBwstring_cstows\fP (wchar_t [], size_t, const char *restrict, size_t)"
 .br
-.RI "Converting string, char input, wchar_t array output, to alloc buffer write\&. "
+.RI "Converting string, \fCchar\fP input, \fCwchar_t\fP array output, to allocate buffer write\&. "
 .ti -1c
 .RI "size_t \fBwstring_wstocs\fP (char [], size_t, const wchar_t *restrict, size_t)"
 .br
-.RI "Converting string, struct wchar_t input, char array output, to alloc buffer write\&. "
+.RI "Converting string, \fCwchar_t\fP input, \fCchar\fP array output, to allocate buffer write\&. "
 .ti -1c
 .RI "size_t \fBwstring_wstocs_ws\fP (char [], size_t, const \fBstring_ws\fP *restrict)"
 .br
-.RI "Converting string, struct \fBstring_ws\fP input, char array output, to alloc buffer write\&. "
+.RI "Converting string, structure \fC\fBstring_ws\fP\fP input, \fCchar\fP array output, to allocate buffer write\&. "
 .ti -1c
 .RI "wchar_t * \fBwstring_timeformat\fP (const wchar_t *restrict, size_t, const wchar_t *restrict, const wchar_t *restrict)"
 .br
@@ -1173,7 +1173,20 @@ All waccess* function return extended status, see access_e enum value, if error 
 .RE
 .PP
 .IP "\(bu" 2
-\fBwaccess manual\fP 
+\fBwaccess manual\fP
+.PP
+.PP
+\fBAttention:\fP
+.RS 4
+function returned enum \fBaccess_e\fP result
+.RE
+.PP
+\fBExample:\fP 
+.PP
+.nf
+    wchar_t pathmkd[] = L"this\\path\\to\\file";
+
+.fi
 .PP
 
 .SS "wchar_t* _wbasedir (const wchar_t *, int)"
@@ -1397,7 +1410,44 @@ Convert a wide-character string representation of time to a time \fCtm\fP struct
 .IP "\(bu" 2
 \fBwcsptime manual\fP
 .IP "\(bu" 2
-\fB_wcsptime\fP related \fB_wcsftime\fP 
+\fB_wcsptime\fP related \fB_wcsftime\fP
+.PP
+.PP
+\fBExample:\fP 
+.PP
+.nf
+        time_t t;
+        struct tm *tmi = NULL, tms = {0};
+        wchar_t buffer [180] = {0};
+
+        t = time(NULL);
+
+#       if defined(_MSC_VER)
+        if (localtime_s(&tms, &t))
+            break;
+        tmi = &tms;
+#       else
+        tmi = localtime(&t);
+#       endif
+
+        wcsftime(buffer, 180, L"%Y-%m-%d %H:%M:%S", tmi);
+        printf("\n\t*(%d) wcsftime -> %ls\n", __LINE__, buffer);
+
+        wcsptime(buffer, L"%Y-%m-%d %H:%M:%S", &tms);
+        t = mktime(&tms);
+
+#       if defined(_MSC_VER)
+        {
+            char cbuf[256];
+            if (ctime_s(cbuf, sizeof(cbuf), &t))
+                break;
+            printf("\n\t*(%d) wcsptime -> %s\n", __LINE__, cbuf);
+        }
+#       else
+        printf("\n\t*(%d) wcsptime -> %s\n", __LINE__, ctime(&t));
+#       endif
+
+.fi
 .PP
 
 .SS "wchar_t* _wcsrchr (const wchar_t *, wchar_t)"
@@ -2115,7 +2165,38 @@ function \fC\fBwstring_appends_()\fP\fP requires to free the returned result
 .SS "size_t wstring_cstows (wchar_t[], size_t, const char * restrict, size_t)"
 
 .PP
-Converting string, char input, wchar_t array output, to alloc buffer write\&. 
+Converting string, \fCchar\fP input, \fCwchar_t\fP array output, to allocate buffer write\&. \fBExample:\fP 
+.PP
+.nf
+    const char wtext[] = "write text UTF8 -  просто текст";
+    wchar_t wout[256];
+    char    cout[(sizeof(wout) * 2)];
+
+#   if defined(_MSC_VER)
+    char errstr[256] = {0};
+#   else
+    char *errstr = NULL;
+#   endif
+
+    (void) argc;
+    (void) argv;
+
+    printf("\n\ti sizeof wchar_t [%u]\n", sizeof(wchar_t));
+
+    /* low-level Function test */
+
+    wmemset((void*)&wout, 0, wsizeof(wout));
+    memset((void*)&cout, 0,  sizeof(cout));
+
+    ret = wstring_cstows(wout, wsizeof(wout), (const char*)wtext, 0);
+    printf("\n\t*(%d) wstring_cstows: [%ls][%d]\n", __LINE__, wout, ret);
+
+    ret = wstring_wstocs(cout, sizeof(cout), (const wchar_t*)wout, 0);
+    printf("\n\t*(%d) wstring_wstocs: [%s][%d]\n", __LINE__, cout, ret);
+
+.fi
+.PP
+
 .SS "wchar_t* wstring_cstows_alloc (const char * restrict)"
 
 .PP
@@ -2219,6 +2300,41 @@ Converting time format string to string, \fBstring_ws\fP input\&.
 .RS 4
 function wstring_timeformat_ws requires to free the returned result 
 .RE
+.PP
+
+.SS "size_t wstring_wstocs (char[], size_t, const wchar_t * restrict, size_t)"
+
+.PP
+Converting string, \fCwchar_t\fP input, \fCchar\fP array output, to allocate buffer write\&. \fBExample:\fP 
+.PP
+.nf
+    const char wtext[] = "write text UTF8 -  просто текст";
+    wchar_t wout[256];
+    char    cout[(sizeof(wout) * 2)];
+
+#   if defined(_MSC_VER)
+    char errstr[256] = {0};
+#   else
+    char *errstr = NULL;
+#   endif
+
+    (void) argc;
+    (void) argv;
+
+    printf("\n\ti sizeof wchar_t [%u]\n", sizeof(wchar_t));
+
+    /* low-level Function test */
+
+    wmemset((void*)&wout, 0, wsizeof(wout));
+    memset((void*)&cout, 0,  sizeof(cout));
+
+    ret = wstring_cstows(wout, wsizeof(wout), (const char*)wtext, 0);
+    printf("\n\t*(%d) wstring_cstows: [%ls][%d]\n", __LINE__, wout, ret);
+
+    ret = wstring_wstocs(cout, sizeof(cout), (const wchar_t*)wout, 0);
+    printf("\n\t*(%d) wstring_wstocs: [%s][%d]\n", __LINE__, cout, ret);
+
+.fi
 .PP
 
 .SS "char* wstring_wstocs_alloc (const wchar_t * restrict)"

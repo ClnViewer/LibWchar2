@@ -51,11 +51,14 @@ int main(int argc, char *argv[])
     size_t sz;
     int ret;
     wchar_t *outw, pathw[] = L"\\this\\path\\to\\file.zip";
+    //! [Example use waccess]
     wchar_t pathmkd[] = L"this\\path\\to\\file";
+    //! [Example use waccess]
     string_ws dst = { NULL, 0U },
               a   = { L"_one_string_", 0U},
               aa  = { L"_two_string_", 0U },
               aaa  = { L".", 0U };
+    //! [Example use ws-cs convert]
     const char wtext[] = "write text UTF8 -  просто текст";
     wchar_t wout[256];
     char    cout[(sizeof(wout) * 2)];
@@ -81,6 +84,7 @@ int main(int argc, char *argv[])
 
     ret = wstring_wstocs(cout, sizeof(cout), (const wchar_t*)wout, 0);
     printf("\n\t*(%d) wstring_wstocs: [%s][%d]\n", __LINE__, cout, ret);
+    //! [Example use ws-cs convert]
 
     sz = wstring_appends_(&dst, (wchar_t*)a.str, (wchar_t*)aaa.str, (wchar_t*)aa.str, NULL);
     printf("\n\t*(%d) wstring_appends: [%ls][%u] -> [%u]\n", __LINE__, dst.str, dst.sz, sz);
@@ -117,8 +121,10 @@ int main(int argc, char *argv[])
         free(outw);
     }
 
+    //! [Example use waccess]
     ret = waccess(pathmkd, F_OK);
     printf("\n\t*(%d) waccess: [%ls] -> [%d][%s]\n", __LINE__, pathmkd, ret, __access_error(ret));
+    //! [Example use waccess]
 
     ret = wmkdir(pathmkd, 0);
     printf("\n\t*(%d) wmkdir: [create] [%ls] -> [%d/%d][%s]\n", __LINE__, pathmkd, ret, errno, __get_error(errstr, errno));

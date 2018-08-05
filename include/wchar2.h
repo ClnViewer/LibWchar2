@@ -876,6 +876,10 @@ size_t    _wcsftime(wchar_t *restrict, size_t sz, const wchar_t *restrict, const
  * \~
  * - \subpage wcsptime
  * - \ref _wcsptime related \ref _wcsftime
+ *
+ * \b Example:
+ * \snippet ./test/check_wchar2_MSVC.c Example use wcsftime
+ *
  */
 wchar_t * _wcsptime(const wchar_t*, const wchar_t*, void*);
 
@@ -1285,7 +1289,15 @@ int       u8wmkdir(const wchar_t*, mode_t);
  * - \subpage waccess
  */
 
-/*! \brief Check permissions for a file or directory, wide char input */
+/*!
+ * \~
+ * \brief Check permissions for a file or directory, wide char input
+ * \attention function returned enum \ref access_e result
+ *
+ * \b Example:
+ * \snippet ./test/check_wchar2_MSVC.c Example use waccess
+ *
+*/
 access_e  _waccess(const wchar_t*, int);
 /*! \brief Check permissions for a file or directory, wide char input with size */
 access_e  _waccess_s(const wchar_t*, size_t, int);
@@ -1477,11 +1489,31 @@ size_t    wstring_append_cvt(string_ws*, const char *restrict, size_t);
  *  \paragraph User buffer memory function
  */
 
-/*! \brief Converting string, char input, wchar_t array output, to alloc buffer write */
+/*!
+ * \~
+ * \brief Converting string, `char` input, `wchar_t` array output, to allocate buffer write
+ *
+ * \b Example:
+ * \snippet ./test/check_wchar2_MSVC.c Example use ws-cs convert
+ *
+ */
 size_t    wstring_cstows(wchar_t [], size_t, const char *restrict, size_t);
-/*! \brief Converting string, struct wchar_t input, char array output, to alloc buffer write */
+
+/*!
+ * \~
+ * \brief Converting string, `wchar_t` input, `char` array output, to allocate buffer write
+ *
+ * \b Example:
+ * \snippet ./test/check_wchar2_MSVC.c Example use ws-cs convert
+ *
+ */
 size_t    wstring_wstocs(char [], size_t, const wchar_t *restrict, size_t);
-/*! \brief Converting string, struct string_ws input, char array output, to alloc buffer write */
+
+/*!
+ * \~
+ * \brief Converting string, structure `string_ws` input, `char` array output, to allocate buffer write
+ *
+ */
 size_t    wstring_wstocs_ws(char [], size_t, const string_ws *restrict);
 
 /*!

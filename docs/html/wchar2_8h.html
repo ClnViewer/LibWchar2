@@ -630,15 +630,14 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wc
 <tr class="memdesc:ad1955a431f93440fceb9a493e3f1a48e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Append string: source type <code>char*</code>, lenght input, <code>struct <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a></code> output.  <a href="#ad1955a431f93440fceb9a493e3f1a48e">More...</a><br /></td></tr>
 <tr class="separator:ad1955a431f93440fceb9a493e3f1a48e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33461b356d0fdb60975a873ad8807d4f"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a33461b356d0fdb60975a873ad8807d4f">wstring_cstows</a> (wchar_t [], size_t, const char *restrict, size_t)</td></tr>
-<tr class="memdesc:a33461b356d0fdb60975a873ad8807d4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converting string, char input, wchar_t array output, to alloc buffer write.  <a href="#a33461b356d0fdb60975a873ad8807d4f">More...</a><br /></td></tr>
+<tr class="memdesc:a33461b356d0fdb60975a873ad8807d4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converting string, <code>char</code> input, <code>wchar_t</code> array output, to allocate buffer write.  <a href="#a33461b356d0fdb60975a873ad8807d4f">More...</a><br /></td></tr>
 <tr class="separator:a33461b356d0fdb60975a873ad8807d4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95083af974df5717ec773e5b382c090d"><td class="memItemLeft" align="right" valign="top"><a id="a95083af974df5717ec773e5b382c090d"></a>
-size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a95083af974df5717ec773e5b382c090d">wstring_wstocs</a> (char [], size_t, const wchar_t *restrict, size_t)</td></tr>
-<tr class="memdesc:a95083af974df5717ec773e5b382c090d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converting string, struct wchar_t input, char array output, to alloc buffer write. <br /></td></tr>
+<tr class="memitem:a95083af974df5717ec773e5b382c090d"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a95083af974df5717ec773e5b382c090d">wstring_wstocs</a> (char [], size_t, const wchar_t *restrict, size_t)</td></tr>
+<tr class="memdesc:a95083af974df5717ec773e5b382c090d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converting string, <code>wchar_t</code> input, <code>char</code> array output, to allocate buffer write.  <a href="#a95083af974df5717ec773e5b382c090d">More...</a><br /></td></tr>
 <tr class="separator:a95083af974df5717ec773e5b382c090d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4b86a1508cbb3a71d14cb907f5c9a7d4"><td class="memItemLeft" align="right" valign="top"><a id="a4b86a1508cbb3a71d14cb907f5c9a7d4"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a4b86a1508cbb3a71d14cb907f5c9a7d4">wstring_wstocs_ws</a> (char [], size_t, const <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *restrict)</td></tr>
-<tr class="memdesc:a4b86a1508cbb3a71d14cb907f5c9a7d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converting string, struct <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a> input, char array output, to alloc buffer write. <br /></td></tr>
+<tr class="memdesc:a4b86a1508cbb3a71d14cb907f5c9a7d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converting string, structure <code><a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a></code> input, <code>char</code> array output, to allocate buffer write. <br /></td></tr>
 <tr class="separator:a4b86a1508cbb3a71d14cb907f5c9a7d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1b604b3927115eeb7699fcf2ae96ba06"><td class="memItemLeft" align="right" valign="top">wchar_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a1b604b3927115eeb7699fcf2ae96ba06">wstring_timeformat</a> (const wchar_t *restrict, size_t, const wchar_t *restrict, const wchar_t *restrict)</td></tr>
 <tr class="memdesc:a1b604b3927115eeb7699fcf2ae96ba06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converting time format string to string, wchar_t and size_t input.  <a href="#a1b604b3927115eeb7699fcf2ae96ba06">More...</a><br /></td></tr>
@@ -1999,9 +1998,10 @@ Type of file. </td></tr>
 <p>Check permissions for a file or directory, wide char input. </p>
 <dl class="section note"><dt>Note</dt><dd>All waccess* function return extended status, see access_e enum value, if error return standart -1</dd></dl>
 <ul>
-<li><a class="el" href="waccess.html">waccess manual</a> </li>
+<li><a class="el" href="waccess.html">waccess manual</a></li>
 </ul>
-
+<dl class="section attention"><dt>Attention</dt><dd>function returned enum <a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49">access_e</a> result</dd></dl>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">    <span class="keywordtype">wchar_t</span> pathmkd[] = L<span class="stringliteral">&quot;this\\path\\to\\file&quot;</span>;</div></div><!-- fragment -->
 </div>
 </div>
 <a id="aa1db6df803109089bdbcea71e9b3b687"></a>
@@ -2723,9 +2723,9 @@ Type of file. </td></tr>
 <p>The function <code>wcsptime()</code> is equivalent to the function <code>strptime()</code>. The <code>wcsptime()</code> function converts a wide character string into a <code>tm</code> structure format, according to the format specified in the parameters.</p>
 <ul>
 <li><a class="el" href="wcsptime.html">wcsptime manual</a></li>
-<li><a class="el" href="wchar2_8h.html#afa85030a8b68f0acce3cf5117b30594a">_wcsptime</a> related <a class="el" href="wchar2_8h.html#adf6e26da7bd1c30ad18ddaffaba1ae46">_wcsftime</a> </li>
+<li><a class="el" href="wchar2_8h.html#afa85030a8b68f0acce3cf5117b30594a">_wcsptime</a> related <a class="el" href="wchar2_8h.html#adf6e26da7bd1c30ad18ddaffaba1ae46">_wcsftime</a></li>
 </ul>
-
+<p><b>Example:</b> </p><div class="fragment"><div class="line">        time_t t;</div><div class="line">        <span class="keyword">struct </span>tm *tmi = NULL, tms = {0};</div><div class="line">        <span class="keywordtype">wchar_t</span> buffer [180] = {0};</div><div class="line"></div><div class="line">        t = time(NULL);</div><div class="line"></div><div class="line"><span class="preprocessor">#       if defined(_MSC_VER)</span></div><div class="line">        <span class="keywordflow">if</span> (localtime_s(&amp;tms, &amp;t))</div><div class="line">            <span class="keywordflow">break</span>;</div><div class="line">        tmi = &amp;tms;</div><div class="line"><span class="preprocessor">#       else</span></div><div class="line">        tmi = localtime(&amp;t);</div><div class="line"><span class="preprocessor">#       endif</span></div><div class="line"></div><div class="line">        wcsftime(buffer, 180, L<span class="stringliteral">&quot;%Y-%m-%d %H:%M:%S&quot;</span>, tmi);</div><div class="line">        printf(<span class="stringliteral">&quot;\n\t*(%d) wcsftime -&gt; %ls\n&quot;</span>, __LINE__, buffer);</div><div class="line"></div><div class="line">        wcsptime(buffer, L<span class="stringliteral">&quot;%Y-%m-%d %H:%M:%S&quot;</span>, &amp;tms);</div><div class="line">        t = mktime(&amp;tms);</div><div class="line"></div><div class="line"><span class="preprocessor">#       if defined(_MSC_VER)</span></div><div class="line">        {</div><div class="line">            <span class="keywordtype">char</span> cbuf[256];</div><div class="line">            <span class="keywordflow">if</span> (ctime_s(cbuf, <span class="keyword">sizeof</span>(cbuf), &amp;t))</div><div class="line">                <span class="keywordflow">break</span>;</div><div class="line">            printf(<span class="stringliteral">&quot;\n\t*(%d) wcsptime -&gt; %s\n&quot;</span>, __LINE__, cbuf);</div><div class="line">        }</div><div class="line"><span class="preprocessor">#       else</span></div><div class="line">        printf(<span class="stringliteral">&quot;\n\t*(%d) wcsptime -&gt; %s\n&quot;</span>, __LINE__, ctime(&amp;t));</div><div class="line"><span class="preprocessor">#       endif</span></div></div><!-- fragment -->
 </div>
 </div>
 <a id="a291a262deac61e587bf82c53065a7020"></a>
@@ -5195,8 +5195,8 @@ Type of file. </td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Converting string, char input, wchar_t array output, to alloc buffer write. </p>
-
+<p>Converting string, <code>char</code> input, <code>wchar_t</code> array output, to allocate buffer write. </p>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> wtext[] = <span class="stringliteral">&quot;write text UTF8 -  просто текст&quot;</span>;</div><div class="line">    <span class="keywordtype">wchar_t</span> wout[256];</div><div class="line">    <span class="keywordtype">char</span>    cout[(<span class="keyword">sizeof</span>(wout) * 2)];</div><div class="line"></div><div class="line"><span class="preprocessor">#   if defined(_MSC_VER)</span></div><div class="line">    <span class="keywordtype">char</span> errstr[256] = {0};</div><div class="line"><span class="preprocessor">#   else</span></div><div class="line">    <span class="keywordtype">char</span> *errstr = NULL;</div><div class="line"><span class="preprocessor">#   endif</span></div><div class="line"></div><div class="line">    (void) argc;</div><div class="line">    (void) argv;</div><div class="line"></div><div class="line">    printf(<span class="stringliteral">&quot;\n\ti sizeof wchar_t [%u]\n&quot;</span>, <span class="keyword">sizeof</span>(<span class="keywordtype">wchar_t</span>));</div><div class="line"></div><div class="line">    <span class="comment">/* low-level Function test */</span></div><div class="line"></div><div class="line">    wmemset((<span class="keywordtype">void</span>*)&amp;wout, 0, wsizeof(wout));</div><div class="line">    memset((<span class="keywordtype">void</span>*)&amp;cout, 0,  <span class="keyword">sizeof</span>(cout));</div><div class="line"></div><div class="line">    ret = <a class="code" href="wchar2_8h.html#a33461b356d0fdb60975a873ad8807d4f">wstring_cstows</a>(wout, wsizeof(wout), (<span class="keyword">const</span> <span class="keywordtype">char</span>*)wtext, 0);</div><div class="line">    printf(<span class="stringliteral">&quot;\n\t*(%d) wstring_cstows: [%ls][%d]\n&quot;</span>, __LINE__, wout, ret);</div><div class="line"></div><div class="line">    ret = <a class="code" href="wchar2_8h.html#a95083af974df5717ec773e5b382c090d">wstring_wstocs</a>(cout, <span class="keyword">sizeof</span>(cout), (<span class="keyword">const</span> <span class="keywordtype">wchar_t</span>*)wout, 0);</div><div class="line">    printf(<span class="stringliteral">&quot;\n\t*(%d) wstring_wstocs: [%s][%d]\n&quot;</span>, __LINE__, cout, ret);</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a76a73789ad48f96b235c4d71d487f69b"></a>
@@ -5452,6 +5452,48 @@ Allocate memory functions</h2>
 
 </div>
 </div>
+<a id="a95083af974df5717ec773e5b382c090d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95083af974df5717ec773e5b382c090d">&#9670;&nbsp;</a></span>wstring_wstocs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t wstring_wstocs </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname">[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const wchar_t *&#160;</td>
+          <td class="paramname"><em>restrict</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Converting string, <code>wchar_t</code> input, <code>char</code> array output, to allocate buffer write. </p>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> wtext[] = <span class="stringliteral">&quot;write text UTF8 -  просто текст&quot;</span>;</div><div class="line">    <span class="keywordtype">wchar_t</span> wout[256];</div><div class="line">    <span class="keywordtype">char</span>    cout[(<span class="keyword">sizeof</span>(wout) * 2)];</div><div class="line"></div><div class="line"><span class="preprocessor">#   if defined(_MSC_VER)</span></div><div class="line">    <span class="keywordtype">char</span> errstr[256] = {0};</div><div class="line"><span class="preprocessor">#   else</span></div><div class="line">    <span class="keywordtype">char</span> *errstr = NULL;</div><div class="line"><span class="preprocessor">#   endif</span></div><div class="line"></div><div class="line">    (void) argc;</div><div class="line">    (void) argv;</div><div class="line"></div><div class="line">    printf(<span class="stringliteral">&quot;\n\ti sizeof wchar_t [%u]\n&quot;</span>, <span class="keyword">sizeof</span>(<span class="keywordtype">wchar_t</span>));</div><div class="line"></div><div class="line">    <span class="comment">/* low-level Function test */</span></div><div class="line"></div><div class="line">    wmemset((<span class="keywordtype">void</span>*)&amp;wout, 0, wsizeof(wout));</div><div class="line">    memset((<span class="keywordtype">void</span>*)&amp;cout, 0,  <span class="keyword">sizeof</span>(cout));</div><div class="line"></div><div class="line">    ret = <a class="code" href="wchar2_8h.html#a33461b356d0fdb60975a873ad8807d4f">wstring_cstows</a>(wout, wsizeof(wout), (<span class="keyword">const</span> <span class="keywordtype">char</span>*)wtext, 0);</div><div class="line">    printf(<span class="stringliteral">&quot;\n\t*(%d) wstring_cstows: [%ls][%d]\n&quot;</span>, __LINE__, wout, ret);</div><div class="line"></div><div class="line">    ret = <a class="code" href="wchar2_8h.html#a95083af974df5717ec773e5b382c090d">wstring_wstocs</a>(cout, <span class="keyword">sizeof</span>(cout), (<span class="keyword">const</span> <span class="keywordtype">wchar_t</span>*)wout, 0);</div><div class="line">    printf(<span class="stringliteral">&quot;\n\t*(%d) wstring_wstocs: [%s][%d]\n&quot;</span>, __LINE__, cout, ret);</div></div><!-- fragment -->
+</div>
+</div>
 <a id="a696e9182a1ea804548dd4ed993fc1fd0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a696e9182a1ea804548dd4ed993fc1fd0">&#9670;&nbsp;</a></span>wstring_wstocs_alloc()</h2>
 
@@ -5476,7 +5518,7 @@ Allocate memory functions</h2>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Aug 6 2018 00:10:11 for libwchar2 0.0.8 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Aug 6 2018 00:30:28 for libwchar2 0.0.8 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>
