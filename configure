@@ -15475,6 +15475,670 @@ else
 fi
 
 
+    { $as_echo "$as_me:$LINENO: checking whether C compiler accepts -fsanitize=address" >&5
+$as_echo_n "checking whether C compiler accepts -fsanitize=address... " >&6; }
+if test "${ax_cv_check_cflags___fsanitize_address+set}" = set; then
+  $as_echo_n "(cached) " >&6
+else
+
+  ax_check_save_flags=$CFLAGS
+  CFLAGS="$CFLAGS  -fsanitize=address"
+  cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext
+if { (ac_try="$ac_compile"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
+$as_echo "$ac_try_echo") >&5
+  (eval "$ac_compile") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_c_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest.$ac_objext; then
+  ax_cv_check_cflags___fsanitize_address=yes
+else
+  $as_echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ax_cv_check_cflags___fsanitize_address=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+  CFLAGS=$ax_check_save_flags
+fi
+{ $as_echo "$as_me:$LINENO: result: $ax_cv_check_cflags___fsanitize_address" >&5
+$as_echo "$ax_cv_check_cflags___fsanitize_address" >&6; }
+if test x"$ax_cv_check_cflags___fsanitize_address" = xyes; then
+  if test "${CFLAGS+set}" = set; then
+  case " $CFLAGS " in
+    *" -fsanitize=address "*)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS already contains -fsanitize=address") >&5
+  (: CFLAGS already contains -fsanitize=address) 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      ;;
+    *)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS=\"\$CFLAGS -fsanitize=address\"") >&5
+  (: CFLAGS="$CFLAGS -fsanitize=address") 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      CFLAGS="$CFLAGS -fsanitize=address"
+      ;;
+   esac
+else
+  CFLAGS="-fsanitize=address"
+fi
+
+
+else
+  :
+fi
+
+
+    { $as_echo "$as_me:$LINENO: checking whether C compiler accepts -fsanitize=pointer-compare" >&5
+$as_echo_n "checking whether C compiler accepts -fsanitize=pointer-compare... " >&6; }
+if test "${ax_cv_check_cflags___fsanitize_pointer_compare+set}" = set; then
+  $as_echo_n "(cached) " >&6
+else
+
+  ax_check_save_flags=$CFLAGS
+  CFLAGS="$CFLAGS  -fsanitize=pointer-compare"
+  cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext
+if { (ac_try="$ac_compile"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
+$as_echo "$ac_try_echo") >&5
+  (eval "$ac_compile") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_c_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest.$ac_objext; then
+  ax_cv_check_cflags___fsanitize_pointer_compare=yes
+else
+  $as_echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ax_cv_check_cflags___fsanitize_pointer_compare=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+  CFLAGS=$ax_check_save_flags
+fi
+{ $as_echo "$as_me:$LINENO: result: $ax_cv_check_cflags___fsanitize_pointer_compare" >&5
+$as_echo "$ax_cv_check_cflags___fsanitize_pointer_compare" >&6; }
+if test x"$ax_cv_check_cflags___fsanitize_pointer_compare" = xyes; then
+  if test "${CFLAGS+set}" = set; then
+  case " $CFLAGS " in
+    *" -fsanitize=pointer-compare "*)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS already contains -fsanitize=pointer-compare") >&5
+  (: CFLAGS already contains -fsanitize=pointer-compare) 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      ;;
+    *)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS=\"\$CFLAGS -fsanitize=pointer-compare\"") >&5
+  (: CFLAGS="$CFLAGS -fsanitize=pointer-compare") 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      CFLAGS="$CFLAGS -fsanitize=pointer-compare"
+      ;;
+   esac
+else
+  CFLAGS="-fsanitize=pointer-compare"
+fi
+
+
+else
+  :
+fi
+
+
+    { $as_echo "$as_me:$LINENO: checking whether C compiler accepts -fsanitize=leak" >&5
+$as_echo_n "checking whether C compiler accepts -fsanitize=leak... " >&6; }
+if test "${ax_cv_check_cflags___fsanitize_leak+set}" = set; then
+  $as_echo_n "(cached) " >&6
+else
+
+  ax_check_save_flags=$CFLAGS
+  CFLAGS="$CFLAGS  -fsanitize=leak"
+  cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext
+if { (ac_try="$ac_compile"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
+$as_echo "$ac_try_echo") >&5
+  (eval "$ac_compile") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_c_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest.$ac_objext; then
+  ax_cv_check_cflags___fsanitize_leak=yes
+else
+  $as_echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ax_cv_check_cflags___fsanitize_leak=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+  CFLAGS=$ax_check_save_flags
+fi
+{ $as_echo "$as_me:$LINENO: result: $ax_cv_check_cflags___fsanitize_leak" >&5
+$as_echo "$ax_cv_check_cflags___fsanitize_leak" >&6; }
+if test x"$ax_cv_check_cflags___fsanitize_leak" = xyes; then
+  if test "${CFLAGS+set}" = set; then
+  case " $CFLAGS " in
+    *" -fsanitize=leak "*)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS already contains -fsanitize=leak") >&5
+  (: CFLAGS already contains -fsanitize=leak) 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      ;;
+    *)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS=\"\$CFLAGS -fsanitize=leak\"") >&5
+  (: CFLAGS="$CFLAGS -fsanitize=leak") 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      CFLAGS="$CFLAGS -fsanitize=leak"
+      ;;
+   esac
+else
+  CFLAGS="-fsanitize=leak"
+fi
+
+
+else
+  :
+fi
+
+
+    { $as_echo "$as_me:$LINENO: checking whether C compiler accepts -fsanitize=undefined" >&5
+$as_echo_n "checking whether C compiler accepts -fsanitize=undefined... " >&6; }
+if test "${ax_cv_check_cflags___fsanitize_undefined+set}" = set; then
+  $as_echo_n "(cached) " >&6
+else
+
+  ax_check_save_flags=$CFLAGS
+  CFLAGS="$CFLAGS  -fsanitize=undefined"
+  cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext
+if { (ac_try="$ac_compile"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
+$as_echo "$ac_try_echo") >&5
+  (eval "$ac_compile") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_c_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest.$ac_objext; then
+  ax_cv_check_cflags___fsanitize_undefined=yes
+else
+  $as_echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ax_cv_check_cflags___fsanitize_undefined=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+  CFLAGS=$ax_check_save_flags
+fi
+{ $as_echo "$as_me:$LINENO: result: $ax_cv_check_cflags___fsanitize_undefined" >&5
+$as_echo "$ax_cv_check_cflags___fsanitize_undefined" >&6; }
+if test x"$ax_cv_check_cflags___fsanitize_undefined" = xyes; then
+  if test "${CFLAGS+set}" = set; then
+  case " $CFLAGS " in
+    *" -fsanitize=undefined "*)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS already contains -fsanitize=undefined") >&5
+  (: CFLAGS already contains -fsanitize=undefined) 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      ;;
+    *)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS=\"\$CFLAGS -fsanitize=undefined\"") >&5
+  (: CFLAGS="$CFLAGS -fsanitize=undefined") 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      CFLAGS="$CFLAGS -fsanitize=undefined"
+      ;;
+   esac
+else
+  CFLAGS="-fsanitize=undefined"
+fi
+
+
+else
+  :
+fi
+
+
+    { $as_echo "$as_me:$LINENO: checking whether C compiler accepts -fsanitize=signed-integer-overflow" >&5
+$as_echo_n "checking whether C compiler accepts -fsanitize=signed-integer-overflow... " >&6; }
+if test "${ax_cv_check_cflags___fsanitize_signed_integer_overflow+set}" = set; then
+  $as_echo_n "(cached) " >&6
+else
+
+  ax_check_save_flags=$CFLAGS
+  CFLAGS="$CFLAGS  -fsanitize=signed-integer-overflow"
+  cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext
+if { (ac_try="$ac_compile"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
+$as_echo "$ac_try_echo") >&5
+  (eval "$ac_compile") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_c_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest.$ac_objext; then
+  ax_cv_check_cflags___fsanitize_signed_integer_overflow=yes
+else
+  $as_echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ax_cv_check_cflags___fsanitize_signed_integer_overflow=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+  CFLAGS=$ax_check_save_flags
+fi
+{ $as_echo "$as_me:$LINENO: result: $ax_cv_check_cflags___fsanitize_signed_integer_overflow" >&5
+$as_echo "$ax_cv_check_cflags___fsanitize_signed_integer_overflow" >&6; }
+if test x"$ax_cv_check_cflags___fsanitize_signed_integer_overflow" = xyes; then
+  if test "${CFLAGS+set}" = set; then
+  case " $CFLAGS " in
+    *" -fsanitize=signed-integer-overflow "*)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS already contains -fsanitize=signed-integer-overflow") >&5
+  (: CFLAGS already contains -fsanitize=signed-integer-overflow) 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      ;;
+    *)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS=\"\$CFLAGS -fsanitize=signed-integer-overflow\"") >&5
+  (: CFLAGS="$CFLAGS -fsanitize=signed-integer-overflow") 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      CFLAGS="$CFLAGS -fsanitize=signed-integer-overflow"
+      ;;
+   esac
+else
+  CFLAGS="-fsanitize=signed-integer-overflow"
+fi
+
+
+else
+  :
+fi
+
+
+    { $as_echo "$as_me:$LINENO: checking whether C compiler accepts -fsanitize=enum" >&5
+$as_echo_n "checking whether C compiler accepts -fsanitize=enum... " >&6; }
+if test "${ax_cv_check_cflags___fsanitize_enum+set}" = set; then
+  $as_echo_n "(cached) " >&6
+else
+
+  ax_check_save_flags=$CFLAGS
+  CFLAGS="$CFLAGS  -fsanitize=enum"
+  cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext
+if { (ac_try="$ac_compile"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
+$as_echo "$ac_try_echo") >&5
+  (eval "$ac_compile") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_c_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest.$ac_objext; then
+  ax_cv_check_cflags___fsanitize_enum=yes
+else
+  $as_echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ax_cv_check_cflags___fsanitize_enum=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+  CFLAGS=$ax_check_save_flags
+fi
+{ $as_echo "$as_me:$LINENO: result: $ax_cv_check_cflags___fsanitize_enum" >&5
+$as_echo "$ax_cv_check_cflags___fsanitize_enum" >&6; }
+if test x"$ax_cv_check_cflags___fsanitize_enum" = xyes; then
+  if test "${CFLAGS+set}" = set; then
+  case " $CFLAGS " in
+    *" -fsanitize=enum "*)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS already contains -fsanitize=enum") >&5
+  (: CFLAGS already contains -fsanitize=enum) 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      ;;
+    *)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS=\"\$CFLAGS -fsanitize=enum\"") >&5
+  (: CFLAGS="$CFLAGS -fsanitize=enum") 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      CFLAGS="$CFLAGS -fsanitize=enum"
+      ;;
+   esac
+else
+  CFLAGS="-fsanitize=enum"
+fi
+
+
+else
+  :
+fi
+
+
+    { $as_echo "$as_me:$LINENO: checking whether C compiler accepts -fsanitize=pointer-overflow" >&5
+$as_echo_n "checking whether C compiler accepts -fsanitize=pointer-overflow... " >&6; }
+if test "${ax_cv_check_cflags___fsanitize_pointer_overflow+set}" = set; then
+  $as_echo_n "(cached) " >&6
+else
+
+  ax_check_save_flags=$CFLAGS
+  CFLAGS="$CFLAGS  -fsanitize=pointer-overflow"
+  cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext
+if { (ac_try="$ac_compile"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
+$as_echo "$ac_try_echo") >&5
+  (eval "$ac_compile") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_c_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest.$ac_objext; then
+  ax_cv_check_cflags___fsanitize_pointer_overflow=yes
+else
+  $as_echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ax_cv_check_cflags___fsanitize_pointer_overflow=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+  CFLAGS=$ax_check_save_flags
+fi
+{ $as_echo "$as_me:$LINENO: result: $ax_cv_check_cflags___fsanitize_pointer_overflow" >&5
+$as_echo "$ax_cv_check_cflags___fsanitize_pointer_overflow" >&6; }
+if test x"$ax_cv_check_cflags___fsanitize_pointer_overflow" = xyes; then
+  if test "${CFLAGS+set}" = set; then
+  case " $CFLAGS " in
+    *" -fsanitize=pointer-overflow "*)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS already contains -fsanitize=pointer-overflow") >&5
+  (: CFLAGS already contains -fsanitize=pointer-overflow) 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      ;;
+    *)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS=\"\$CFLAGS -fsanitize=pointer-overflow\"") >&5
+  (: CFLAGS="$CFLAGS -fsanitize=pointer-overflow") 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      CFLAGS="$CFLAGS -fsanitize=pointer-overflow"
+      ;;
+   esac
+else
+  CFLAGS="-fsanitize=pointer-overflow"
+fi
+
+
+else
+  :
+fi
+
+
+    { $as_echo "$as_me:$LINENO: checking whether C compiler accepts -fstack-protector-strong" >&5
+$as_echo_n "checking whether C compiler accepts -fstack-protector-strong... " >&6; }
+if test "${ax_cv_check_cflags___fstack_protector_strong+set}" = set; then
+  $as_echo_n "(cached) " >&6
+else
+
+  ax_check_save_flags=$CFLAGS
+  CFLAGS="$CFLAGS  -fstack-protector-strong"
+  cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext
+if { (ac_try="$ac_compile"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
+$as_echo "$ac_try_echo") >&5
+  (eval "$ac_compile") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_c_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest.$ac_objext; then
+  ax_cv_check_cflags___fstack_protector_strong=yes
+else
+  $as_echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ax_cv_check_cflags___fstack_protector_strong=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+  CFLAGS=$ax_check_save_flags
+fi
+{ $as_echo "$as_me:$LINENO: result: $ax_cv_check_cflags___fstack_protector_strong" >&5
+$as_echo "$ax_cv_check_cflags___fstack_protector_strong" >&6; }
+if test x"$ax_cv_check_cflags___fstack_protector_strong" = xyes; then
+  if test "${CFLAGS+set}" = set; then
+  case " $CFLAGS " in
+    *" -fstack-protector-strong "*)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS already contains -fstack-protector-strong") >&5
+  (: CFLAGS already contains -fstack-protector-strong) 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      ;;
+    *)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS=\"\$CFLAGS -fstack-protector-strong\"") >&5
+  (: CFLAGS="$CFLAGS -fstack-protector-strong") 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      CFLAGS="$CFLAGS -fstack-protector-strong"
+      ;;
+   esac
+else
+  CFLAGS="-fstack-protector-strong"
+fi
+
+
+else
+  :
+fi
+
+
 
 fi
 

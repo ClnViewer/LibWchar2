@@ -1641,6 +1641,18 @@ int        _wreaddir_r(WDIR_t*, wdirent_t*, wdirent_t**);
  *
  * \~
  * \b support: `ALL`
+ * \b table flags compatible:
+ * \verbatim
+|--------------|-----|--------|-----------|
+|     FLAGS    | GNU | MinGW  | MSVC/MSVS |
+|--------------|-----|--------|-----------|
+| DIRENTRYSIZE |  x  | Always |  Always   |
+|--------------|-----|--------|-----------|
+| DIRNOROOT    |  x  |   x    |     x     |
+|--------------|-----|--------|-----------|
+| DIRNODIR     |  x  |   x    |     x     |
+|--------------|-----|--------|-----------|
+ * \endverbatim
  *
  */
 int        _wreaddir_cb(wchar_t*, long, wdir_cb, void*);

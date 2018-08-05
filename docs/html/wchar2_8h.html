@@ -152,9 +152,9 @@ typedef struct <a class="el" href="wchar2_8h.html#struct__wdirent">_wdirent</a>&
 typedef void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a4b416445955b87e37a37b78591c1115f">WDIR_t</a></td></tr>
 <tr class="memdesc:a4b416445955b87e37a37b78591c1115f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Main structure directory traversing, reference to <code>void</code> <br /></td></tr>
 <tr class="separator:a4b416445955b87e37a37b78591c1115f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ea54faf0624f562203a37ff348c2ddc"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a0ea54faf0624f562203a37ff348c2ddc">wdir_cb</a>) (long, <a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49">access_e</a>, long long, <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *, void *)</td></tr>
-<tr class="memdesc:a0ea54faf0624f562203a37ff348c2ddc"><td class="mdescLeft">&#160;</td><td class="mdescRight">CallBack for <code>_wreaddir_cb</code>  <a href="#a0ea54faf0624f562203a37ff348c2ddc">More...</a><br /></td></tr>
-<tr class="separator:a0ea54faf0624f562203a37ff348c2ddc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc3d5b079909816cdbc4b5cba9aaa5ea"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#acc3d5b079909816cdbc4b5cba9aaa5ea">wdir_cb</a>) (unsigned int, <a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49">access_e</a>, long long, <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *, void *)</td></tr>
+<tr class="memdesc:acc3d5b079909816cdbc4b5cba9aaa5ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">CallBack for <a class="el" href="wchar2_8h.html#acdb2f4c389d8aa3d3c4daae594c4d6fe">_wreaddir_cb</a>.  <a href="#acc3d5b079909816cdbc4b5cba9aaa5ea">More...</a><br /></td></tr>
+<tr class="separator:acc3d5b079909816cdbc4b5cba9aaa5ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -184,7 +184,7 @@ Enumerations</h2></td></tr>
 Functions</h2></td></tr>
 <tr class="memitem:a58746df8059dee6ebf9d3453dc62eae1"><td class="memItemLeft" align="right" valign="top"><a id="a58746df8059dee6ebf9d3453dc62eae1"></a>
 const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a58746df8059dee6ebf9d3453dc62eae1">wchar2version</a> (void)</td></tr>
-<tr class="memdesc:a58746df8059dee6ebf9d3453dc62eae1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Library curent version. <br /></td></tr>
+<tr class="memdesc:a58746df8059dee6ebf9d3453dc62eae1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Library current version. <br /></td></tr>
 <tr class="separator:a58746df8059dee6ebf9d3453dc62eae1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5f2cdc8b8cc4d6adab11a1694fbb27b2"><td class="memItemLeft" align="right" valign="top">wchar_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a5f2cdc8b8cc4d6adab11a1694fbb27b2">_towupper</a> (wchar_t)</td></tr>
 <tr class="memdesc:a5f2cdc8b8cc4d6adab11a1694fbb27b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Translate wide characters to uppercase.  <a href="#a5f2cdc8b8cc4d6adab11a1694fbb27b2">More...</a><br /></td></tr>
@@ -669,7 +669,7 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wc
 <tr class="memitem:a2718ba8ae6813702d12e6f6c7010937c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a2718ba8ae6813702d12e6f6c7010937c">_wreaddir_r</a> (<a class="el" href="wchar2_8h.html#a4b416445955b87e37a37b78591c1115f">WDIR_t</a> *, <a class="el" href="wchar2_8h.html#a308d32a6626925c2178f94e68d01f123">wdirent_t</a> *, <a class="el" href="wchar2_8h.html#a308d32a6626925c2178f94e68d01f123">wdirent_t</a> **)</td></tr>
 <tr class="memdesc:a2718ba8ae6813702d12e6f6c7010937c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the directory stream extended.  <a href="#a2718ba8ae6813702d12e6f6c7010937c">More...</a><br /></td></tr>
 <tr class="separator:a2718ba8ae6813702d12e6f6c7010937c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acdb2f4c389d8aa3d3c4daae594c4d6fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#acdb2f4c389d8aa3d3c4daae594c4d6fe">_wreaddir_cb</a> (wchar_t *, long, <a class="el" href="wchar2_8h.html#a0ea54faf0624f562203a37ff348c2ddc">wdir_cb</a>, void *)</td></tr>
+<tr class="memitem:acdb2f4c389d8aa3d3c4daae594c4d6fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#acdb2f4c389d8aa3d3c4daae594c4d6fe">_wreaddir_cb</a> (wchar_t *, long, <a class="el" href="wchar2_8h.html#acc3d5b079909816cdbc4b5cba9aaa5ea">wdir_cb</a>, void *)</td></tr>
 <tr class="memdesc:acdb2f4c389d8aa3d3c4daae594c4d6fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads the directory stream callBack.  <a href="#acdb2f4c389d8aa3d3c4daae594c4d6fe">More...</a><br /></td></tr>
 <tr class="separator:acdb2f4c389d8aa3d3c4daae594c4d6fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31bf58eefa6f368d9cbdabfd78075380"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a31bf58eefa6f368d9cbdabfd78075380">_wrewinddir</a> (<a class="el" href="wchar2_8h.html#a4b416445955b87e37a37b78591c1115f">WDIR_t</a> *)</td></tr>
@@ -938,19 +938,19 @@ Type of file. </td></tr>
 </div>
 </div>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a id="a0ea54faf0624f562203a37ff348c2ddc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ea54faf0624f562203a37ff348c2ddc">&#9670;&nbsp;</a></span>wdir_cb</h2>
+<a id="acc3d5b079909816cdbc4b5cba9aaa5ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acc3d5b079909816cdbc4b5cba9aaa5ea">&#9670;&nbsp;</a></span>wdir_cb</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef void(* wdir_cb) (long, <a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49">access_e</a>, long long, <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *, void *)</td>
+          <td class="memname">typedef void(* wdir_cb) (unsigned int, <a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49">access_e</a>, long long, <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *, void *)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>CallBack for <code>_wreaddir_cb</code> </p>
+<p>CallBack for <a class="el" href="wchar2_8h.html#acdb2f4c389d8aa3d3c4daae594c4d6fe">_wreaddir_cb</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">&lt;tt&gt;long&lt;/tt&gt;</td><td>- counter </td></tr>
@@ -4107,7 +4107,7 @@ Type of file. </td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="wchar2_8h.html#a0ea54faf0624f562203a37ff348c2ddc">wdir_cb</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="wchar2_8h.html#acc3d5b079909816cdbc4b5cba9aaa5ea">wdir_cb</a>&#160;</td>
           <td class="paramname">, </td>
         </tr>
         <tr>
@@ -4134,8 +4134,16 @@ Type of file. </td></tr>
   </table>
   </dd>
 </dl>
-<p><b>support:</b> <code>ALL</code> </p>
-
+<p><b>support:</b> <code>ALL</code> <b>table</b> flags compatible: </p><pre class="fragment">|--------------|-----|--------|-----------|
+|     FLAGS    | GNU | MinGW  | MSVC/MSVS |
+|--------------|-----|--------|-----------|
+| DIRENTRYSIZE |  x  | Always |  Always   |
+|--------------|-----|--------|-----------|
+| DIRNOROOT    |  x  |   x    |     x     |
+|--------------|-----|--------|-----------|
+| DIRNODIR     |  x  |   x    |     x     |
+|--------------|-----|--------|-----------|
+ * </pre> 
 </div>
 </div>
 <a id="a2718ba8ae6813702d12e6f6c7010937c"></a>
@@ -5465,7 +5473,7 @@ Allocate memory functions</h2>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Aug 5 2018 02:52:40 for libwchar2 0.0.8 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Aug 5 2018 08:56:14 for libwchar2 0.0.8 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>

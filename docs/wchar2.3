@@ -93,9 +93,9 @@ include/wchar2.h
 .br
 .RI "Main structure directory traversing, reference to \fCvoid\fP "
 .ti -1c
-.RI "typedef void(* \fBwdir_cb\fP) (long, \fBaccess_e\fP, long long, \fBstring_ws\fP *, void *)"
+.RI "typedef void(* \fBwdir_cb\fP) (unsigned int, \fBaccess_e\fP, long long, \fBstring_ws\fP *, void *)"
 .br
-.RI "CallBack for \fC_wreaddir_cb\fP "
+.RI "CallBack for \fB_wreaddir_cb\fP\&. "
 .in -1c
 .SS "Enumerations"
 
@@ -111,7 +111,7 @@ include/wchar2.h
 .ti -1c
 .RI "const char * \fBwchar2version\fP (void)"
 .br
-.RI "Library curent version\&. "
+.RI "Library current version\&. "
 .ti -1c
 .RI "wchar_t \fB_towupper\fP (wchar_t)"
 .br
@@ -845,10 +845,10 @@ size_t __WEV(sz,__LINE__); errno = 0;                                           
 \fBstring_ws\fP type to char[] this struct defined on top of this file A char[] - array name B string_ws* - source D - function return value if error 
 .SH "Typedef Documentation"
 .PP 
-.SS "typedef void(* wdir_cb) (long, \fBaccess_e\fP, long long, \fBstring_ws\fP *, void *)"
+.SS "typedef void(* wdir_cb) (unsigned int, \fBaccess_e\fP, long long, \fBstring_ws\fP *, void *)"
 
 .PP
-CallBack for \fC_wreaddir_cb\fP 
+CallBack for \fB_wreaddir_cb\fP\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -1702,7 +1702,22 @@ Reads the directory stream callBack\&.
 \fI<tt>void</tt>\fP - user data
 .RE
 .PP
-\fBsupport:\fP \fCALL\fP 
+\fBsupport:\fP \fCALL\fP \fBtable\fP flags compatible: 
+.PP
+.nf
+|--------------|-----|--------|-----------|
+|     FLAGS    | GNU | MinGW  | MSVC/MSVS |
+|--------------|-----|--------|-----------|
+| DIRENTRYSIZE |  x  | Always |  Always   |
+|--------------|-----|--------|-----------|
+| DIRNOROOT    |  x  |   x    |     x     |
+|--------------|-----|--------|-----------|
+| DIRNODIR     |  x  |   x    |     x     |
+|--------------|-----|--------|-----------|
+ * 
+.fi
+.PP
+ 
 .SS "int _wreaddir_r (\fBWDIR_t\fP *, \fBwdirent_t\fP *, \fBwdirent_t\fP **)"
 
 .PP

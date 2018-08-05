@@ -84,6 +84,14 @@ AC_ARG_ENABLE([devel],
 
 AS_IF([test "x$enable_devel" == "xyes"],[
     AX_CHECK_COMPILE_FLAG([-Wextra],[AX_APPEND_FLAG([-Wextra])])
+    AX_CHECK_COMPILE_FLAG([-fsanitize=address],[AX_APPEND_FLAG([-fsanitize=address])])
+    AX_CHECK_COMPILE_FLAG([-fsanitize=pointer-compare],[AX_APPEND_FLAG([-fsanitize=pointer-compare])])
+    AX_CHECK_COMPILE_FLAG([-fsanitize=leak],[AX_APPEND_FLAG([-fsanitize=leak])])
+    AX_CHECK_COMPILE_FLAG([-fsanitize=undefined],[AX_APPEND_FLAG([-fsanitize=undefined])])
+    AX_CHECK_COMPILE_FLAG([-fsanitize=signed-integer-overflow],[AX_APPEND_FLAG([-fsanitize=signed-integer-overflow])])
+    AX_CHECK_COMPILE_FLAG([-fsanitize=enum],[AX_APPEND_FLAG([-fsanitize=enum])])
+    AX_CHECK_COMPILE_FLAG([-fsanitize=pointer-overflow],[AX_APPEND_FLAG([-fsanitize=pointer-overflow])])
+    AX_CHECK_COMPILE_FLAG([-fstack-protector-strong],[AX_APPEND_FLAG([-fstack-protector-strong])])
 ])
 
 AC_ARG_ENABLE([werror],
