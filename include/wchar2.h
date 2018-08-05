@@ -1708,8 +1708,8 @@ int        _wreaddir_r(WDIR_t*, wdirent_t*, wdirent_t**);
  * \brief Reads the directory stream callBack
  *
  * \param wchar_t - directory path
- * \param long - options, valid `DIRENTRYSIZE`, `DIRNOROOT`, `DIRNODIR` bit mask set
- * \param wdir_cb - callback function
+ * \param long - options, valid `DIRENTRYSIZE`, `DIRNOROOT`, `DIRNODIR` bit mask set, \ref wreaddir_cb_opt
+ * \param wdir_cb - callback function, see \ref wdir_cb
  * \param void - user data
  *
  * \~
@@ -1732,6 +1732,9 @@ int        _wreaddir_r(WDIR_t*, wdirent_t*, wdirent_t**);
  *
  * \b Example:
  * \snippet ./test/check_wchar2_MSVC.c Example use wreaddir_cb
+ *
+ * \b Example CallBack:
+ * \snippet ./test/check_wchar2_MSVC.c Example declaration wreaddir CallBack
  *
  */
 int        _wreaddir_cb(wchar_t*, long, wdir_cb, void*);

@@ -1812,9 +1812,9 @@ Reads the directory stream callBack\&.
 .RS 4
 \fIwchar_t\fP - directory path 
 .br
-\fIlong\fP - options, valid \fCDIRENTRYSIZE\fP, \fCDIRNOROOT\fP, \fCDIRNODIR\fP bit mask set 
+\fIlong\fP - options, valid \fCDIRENTRYSIZE\fP, \fCDIRNOROOT\fP, \fCDIRNODIR\fP bit mask set, \fBwreaddir_cb_opt\fP 
 .br
-\fIwdir_cb\fP - callback function 
+\fIwdir_cb\fP - callback function, see \fBwdir_cb\fP 
 .br
 \fIvoid\fP - user data
 .RE
@@ -1842,6 +1842,19 @@ FLAGS  GNU  MinGW  MSVC/MSVS  Description   DIRENTRYSIZE  x  Always  Always  Cal
         printf("\n\tTest _wreaddir_cb:%d\t\t->\n", __LINE__);
         ret = _wreaddir_cb(path, opt, NULL, NULL);
         printf("\n\t*(%d) _wreaddir_cb end -> return:[%d] error:[%d] path:[%ls] -> opt: NONE\n", __LINE__, ret, errno, path);
+
+.fi
+.PP
+ \fBExample\fP CallBack: 
+.PP
+.nf
+static void __dir_default_cb(unsigned int ino, access_e etype, long long size, string_ws *name, void *data)
+{
+    (void) data;
+    _fwprintf(stdout, __fwprn("\t\t- ino [%ld] -> type [%d] size [%lld] -> [%ls][%u]\n"),
+              ino, etype, size, name->str, name->sz
+             );
+}
 
 .fi
 .PP

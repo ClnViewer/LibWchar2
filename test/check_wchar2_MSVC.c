@@ -24,6 +24,18 @@
 
 #define F_OK 0
 
+#if 0
+//! [Example declaration wreaddir CallBack]
+static void __dir_default_cb(unsigned int ino, access_e etype, long long size, string_ws *name, void *data)
+{
+    (void) data;
+    _fwprintf(stdout, __fwprn("\t\t- ino [%ld] -> type [%d] size [%lld] -> [%ls][%u]\n"),
+              ino, etype, size, name->str, name->sz
+             );
+}
+//! [Example declaration wreaddir CallBack]
+#endif
+
 //! [Example use waccess errorcode]
 static const char * __access_error(access_e x)
 {
