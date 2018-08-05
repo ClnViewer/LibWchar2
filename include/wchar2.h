@@ -1644,11 +1644,11 @@ int        _wreaddir_r(WDIR_t*, wdirent_t*, wdirent_t**);
  *
  * \b table flags compatible:
 
-     FLAGS    | GNU | MinGW  | MSVC/MSVS
---------------|-----|--------|-----------
- DIRENTRYSIZE |  x  | Always |  Always
- DIRNOROOT    |  x  |   x    |     x
- DIRNODIR     |  x  |   x    |     x
+     FLAGS    | GNU | MinGW  | MSVC/MSVS | Description
+--------------|-----|--------|-----------|---------------------------------
+ DIRENTRYSIZE |  x  | Always |  Always   | Calculate size of entry
+ DIRNOROOT    |  x  |   x    |     x     | Skip root directory `.` and `..`
+ DIRNODIR     |  x  |   x    |     x     | Skip all directory
 
  *
  */
