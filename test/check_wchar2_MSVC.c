@@ -199,6 +199,7 @@ int main(int argc, char *argv[])
 
     do
     {
+        //! [Example use wreaddir_cb]
         int ret;
         long opt = 0L;
 #       if defined(_MSC_VER)

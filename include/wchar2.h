@@ -1652,6 +1652,8 @@ int        _wreaddir_r(WDIR_t*, wdirent_t*, wdirent_t**);
 
 
  *
+ * @snippet ./test/check_wchar2_MSVC.c Example use wreaddir_cb
+ *
  */
 int        _wreaddir_cb(wchar_t*, long, wdir_cb, void*);
 

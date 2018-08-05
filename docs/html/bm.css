@@ -10,7 +10,7 @@
 .paramname, .params {padding: 5px 15px 0px 15px;}
 .textblock {padding: 5px 0px 10px 0px;}
 .section.return {padding: 10px 0px 5px 15px;}
-table.markdownTable th {border: 1px solid rgba(52, 152, 219, 0.21);}
+table.markdownTable td, table.markdownTable th {border: 1px solid rgba(52, 152, 219, 0.21);}
 th.markdownTableHeadNone {background-color: #E3EBEF; color: #3498DB;}
 dl.warning, dl.attention, dl.note {margin: 15px 0px 15px 12px;padding-left:10px;}
 dl.note {border-color: #FFC107;}
