@@ -185,6 +185,7 @@ int main(int argc, char *argv[])
 
     do
     {
+        //! [Example use wstring_timeformat]
         wchar_t *tout = NULL, tstr[] = L"2018-07-24T19:03:18Z";
 
         if ((tout = wstring_timeformat(tstr, 0, L"%Y-%m-%dT%H:%M:%S%Ez", L"%I:%M%p")) == NULL)
@@ -192,8 +193,8 @@ int main(int argc, char *argv[])
 
         printf("\n\t*(%d) wstring_timeformat -> [%ls] -> [%ls]\n", __LINE__, tstr, tout);
         free(tout);
+        //! [Example use wstring_timeformat]
         tout = NULL;
-
     }
     while (0);
 
@@ -212,6 +213,7 @@ int main(int argc, char *argv[])
         printf("\n\tTest _wreaddir_cb:%d\t\t->\n", __LINE__);
         ret = _wreaddir_cb(path, opt, NULL, NULL);
         printf("\n\t*(%d) _wreaddir_cb end -> return:[%d] error:[%d] path:[%ls] -> opt: NONE\n", __LINE__, ret, errno, path);
+        //! [Example use wreaddir_cb]
     }
     while (0);
 

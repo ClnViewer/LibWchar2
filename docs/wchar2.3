@@ -1,4 +1,4 @@
-.TH "include/wchar2.h" 3 "Sun Aug 5 2018" "libwchar2 0.0.8" \" -*- nroff -*-
+.TH "include/wchar2.h" 3 "Mon Aug 6 2018" "libwchar2 0.0.8" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -1710,6 +1710,18 @@ FLAGS  GNU  MinGW  MSVC/MSVS  Description   DIRENTRYSIZE  x  Always  Always  Cal
 .PP
 .PP
 .nf
+        int ret;
+        long opt = 0L;
+#       if defined(_MSC_VER)
+        wchar_t path[] = L"\&.\&.\\*";
+#       else
+        wchar_t path[] = L"\&.\&./";
+#       endif
+
+        opt = wreaddir_cb_opt(opt, DIRNOROOT);
+        printf("\n\tTest _wreaddir_cb:%d\t\t->\n", __LINE__);
+        ret = _wreaddir_cb(path, opt, NULL, NULL);
+        printf("\n\t*(%d) _wreaddir_cb end -> return:[%d] error:[%d] path:[%ls] -> opt: NONE\n", __LINE__, ret, errno, path);
 .fi
 .PP
 
@@ -2142,8 +2154,19 @@ Converting time format string to string, wchar_t and size_t input\&.
 .PP
 \fBAttention:\fP
 .RS 4
-function wstring_timeformat requires to free the returned result 
+function wstring_timeformat requires to free the returned result
 .RE
+.PP
+.PP
+.nf
+        wchar_t *tout = NULL, tstr[] = L"2018-07-24T19:03:18Z";
+
+        if ((tout = wstring_timeformat(tstr, 0, L"%Y-%m-%dT%H:%M:%S%Ez", L"%I:%M%p")) == NULL)
+            break;
+
+        printf("\n\t*(%d) wstring_timeformat -> [%ls] -> [%ls]\n", __LINE__, tstr, tout);
+        free(tout);
+.fi
 .PP
 
 .SS "wchar_t* wstring_timeformat_ws (const \fBstring_ws\fP * restrict, const wchar_t * restrict, const wchar_t * restrict)"

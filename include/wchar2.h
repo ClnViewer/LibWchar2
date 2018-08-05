@@ -1492,8 +1492,11 @@ size_t    wstring_wstocs_ws(char [], size_t, const string_ws *restrict);
 
 
 /*!
- *  \brief Converting time format string to string, wchar_t and size_t input
- *  \attention function wstring_timeformat requires to free the returned result
+ * \brief Converting time format string to string, wchar_t and size_t input
+ * \attention function wstring_timeformat requires to free the returned result
+ *
+ * \snippet ./test/check_wchar2_MSVC.c Example use wstring_timeformat
+ *
  */
 wchar_t * wstring_timeformat(const wchar_t *restrict, size_t, const wchar_t *restrict, const wchar_t *restrict)
 __attribute__((warn_unused_result));
@@ -1652,7 +1655,7 @@ int        _wreaddir_r(WDIR_t*, wdirent_t*, wdirent_t**);
 
 
  *
- * @snippet ./test/check_wchar2_MSVC.c Example use wreaddir_cb
+ * \snippet ./test/check_wchar2_MSVC.c Example use wreaddir_cb
  *
  */
 int        _wreaddir_cb(wchar_t*, long, wdir_cb, void*);
