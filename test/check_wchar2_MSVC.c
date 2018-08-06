@@ -239,7 +239,7 @@ int main(int argc, char *argv[])
         opt = wreaddir_cb_opt(opt, DIRNOROOT);
         printf("\n\tTest _wreaddir_cb:%d\t\t->\n", __LINE__);
         ret = _wreaddir_cb(path, opt, NULL, NULL);
-        printf("\n\t*(%d) _wreaddir_cb end -> return:[%d] error:[%d] path:[%ls] -> opt: NONE\n", __LINE__, ret, errno, path);
+        printf("\n\t*(%d) _wreaddir_cb end -> return:[%d] error:[%d] path:[%ls] -> opt: DIRNOROOT\n", __LINE__, ret, errno, path);
         //! [Example use wreaddir_cb]
     }
     while (0);
