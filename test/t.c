@@ -90,6 +90,11 @@ int main(int argc, char *argv[])
     wchar_t *w0 = L"Hello word!";
     wchar_t *w1 = L"Hello word!";
     wchar_t *t  = L"/this/path/to/file.zip";
+
+    wchar_t *wfile = L"./test-\x20AC-\x20AC.txt";
+    char    *cfile = NULL;
+    int ret, len, sz2, sz1;
+
     (void) argc;
     (void) argv;
 
@@ -108,7 +113,7 @@ int main(int argc, char *argv[])
     printf( "]\n\t -> [%d/%zu]\n", strlen_w(t), _wcslen(t));
     printf("\t(%d) strerror: [%s]\n", __LINE__, strerror(errno)); errno = 0;
 
-    int sz2, sz1 = (int)_wcslen(wcs1);
+    sz1 = (int)_wcslen(wcs1);
     printf("\t(%d) strerror: [%s]\n", __LINE__, strerror(errno)); errno = 0;
 
 //    char b0[((sz1 + 1) * 2)];
@@ -127,10 +132,9 @@ int main(int argc, char *argv[])
     fwprintf(stdout, L"\t fwprintf \t wcs1: [%S] [%s] [%d/%d]\n", wcs1, c, sz1, sz2);
     printf("\t(%d) strerror: [%s]\n", __LINE__, strerror(errno)); errno = 0;
 
-    wchar_t *wfile = L"./test-\x20AC-\x20AC.txt";
-    char    *cfile = malloc(wcstou8s(NULL, wfile) + 1);
-    int ret = wcstou8s(cfile, wfile),
-        len = strlen(cfile);
+    cfile = malloc(wcstou8s(NULL, wfile) + 1);
+    ret = wcstou8s(cfile, wfile);
+    len = strlen(cfile);
 
     printf("[%s] [%d/%d]\n", cfile, len, ret);
 
@@ -141,7 +145,7 @@ int main(int argc, char *argv[])
     }
     free(cfile);
 
-    fp = wfopen(wfile,__WS("w"));
+    fp = wfopen((wchar_t*)wfile, L"w+");
     if (fp == NULL) { printf( "\tfp is null! [%s]\n", strerror(errno)); } else {
         fprintf(fp, "\t (wfopen)(overwrite) fprintf \t [%ls]\n", wcs1);
         fclose(fp);

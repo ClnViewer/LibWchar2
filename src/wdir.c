@@ -55,7 +55,7 @@
 static void __dir_default_cb(unsigned int ino, access_e etype, long long size, string_ws *name, void *data)
 {
     (void) data;
-    _fwprintf(stdout, __fwprn("\t\t- ino [%ld] -> type [%d] size [%lld] -> [%ls][%u]\n"),
+    _fwprintf(stdout, __fwprn("\t\t- ino [%u] -> type [%d] size [%lld] -> [%ls][%u]\n"),
               ino, etype, size, name->str, name->sz
              );
 }
@@ -335,7 +335,7 @@ int _wreaddir_cb(wchar_t *dirpath, long opt, wdir_cb fun, void *data)
 {
     int        ret      = 0;
     wdirent_t  wentry,
-              *we       = NULL;
+               *we       = NULL;
     __WDIR_t  *dir      = NULL;
     fun                 = ((fun) ? fun : __dir_default_cb);
     errno               = 0;

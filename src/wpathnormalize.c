@@ -50,12 +50,12 @@ wchar_t * _wpathnormalize(const wchar_t *ws, int sz)
 
     _wmemcpy(p, ws, sz);
 
-    for (i = n = 0; i < sz; i++, n++)
+    for (i = n = 0; ((i < sz) && (n < sz)); i++, n++)
     {
         p[n] = ((p[n] == p[i]) ? p[n] : p[i]);
         if (p[i] == __WEV(L,__PSEP))
         {
-            while ((p[i] == __WEV(L,__PSEP)) && (i < sz))
+            while ((i < sz) && (p[i] == __WEV(L,__PSEP)))
             {
                 i++;
             }

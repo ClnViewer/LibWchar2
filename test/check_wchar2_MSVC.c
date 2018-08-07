@@ -29,9 +29,9 @@
 static void __dir_default_cb(unsigned int ino, access_e etype, long long size, string_ws *name, void *data)
 {
     (void) data;
-    _fwprintf(stdout, __fwprn("\t\t- ino [%ld] -> type [%d] size [%lld] -> [%ls][%u]\n"),
-              ino, etype, size, name->str, name->sz
-             );
+    fprintf(stdout, "\t\t- ino [%ld] -> type [%d] size [%lld] -> [%ls][%u]\n",
+            ino, etype, size, name->str, name->sz
+           );
 }
 //! [Example declaration wreaddir CallBack]
 #endif
@@ -86,7 +86,7 @@ int main(int argc, char *argv[])
     (void) argc;
     (void) argv;
 
-    printf("\n\ti sizeof wchar_t [%u]\n", sizeof(wchar_t));
+    printf("\n\t* sizeof wchar_t [%zu]\n", sizeof(wchar_t));
 
     /* low-level Function test */
 
@@ -102,19 +102,19 @@ int main(int argc, char *argv[])
 
     //! [Example use wstring_appends code]
     sz = wstring_appends_(&dst, (wchar_t*)a.str, (wchar_t*)aaa.str, (wchar_t*)aa.str, NULL);
-    printf("\n\t*(%d) wstring_appends: [%ls][%u] -> [%u]\n", __LINE__, dst.str, dst.sz, sz);
+    printf("\n\t*(%d) wstring_appends: [%ls][%zu] -> [%zu]\n", __LINE__, dst.str, dst.sz, sz);
     wstring_free(&dst);
     //! [Example use wstring_appends code]
 
     //! [Example use wstring_append code]
     sz = wstring_append(&dst, (wchar_t*)aa.str, 0);
-    printf("\n\t*(%d) wstring_append: [%ls][%u] -> [%u]\n", __LINE__, dst.str, dst.sz, sz);
+    printf("\n\t*(%d) wstring_append: [%ls][%zu] -> [%zu]\n", __LINE__, dst.str, dst.sz, sz);
     wstring_free(&dst);
     //! [Example use wstring_append code]
 
     //! [Example use wstring_format code]
     sz = wstring_format(&dst, L"%ls%ls%ls", a.str, aaa.str, aa.str);
-    printf("\n\t*(%d) wstring_format: [%ls][%u] -> [%u]\n", __LINE__, dst.str, dst.sz, sz);
+    printf("\n\t*(%d) wstring_format: [%ls][%zu] -> [%zu]\n", __LINE__, dst.str, dst.sz, sz);
     //! [Example use wstring_format code]
 
     printf("\n\t*(%d) wcprint: ", __LINE__);

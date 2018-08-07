@@ -1,4 +1,4 @@
-.TH "include/wchar2.h" 3 "Mon Aug 6 2018" "libwchar2 0.0.8" \" -*- nroff -*-
+.TH "include/wchar2.h" 3 "Tue Aug 7 2018" "libwchar2 0.0.8" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -1851,9 +1851,9 @@ FLAGS  GNU  MinGW  MSVC/MSVS  Description   DIRENTRYSIZE  x  Always  Always  Cal
 static void __dir_default_cb(unsigned int ino, access_e etype, long long size, string_ws *name, void *data)
 {
     (void) data;
-    _fwprintf(stdout, __fwprn("\t\t- ino [%ld] -> type [%d] size [%lld] -> [%ls][%u]\n"),
-              ino, etype, size, name->str, name->sz
-             );
+    fprintf(stdout, "\t\t- ino [%ld] -> type [%d] size [%lld] -> [%ls][%u]\n",
+            ino, etype, size, name->str, name->sz
+           );
 }
 
 .fi
@@ -2192,7 +2192,7 @@ function \fC\fBwstring_append()\fP\fP requires to free the returned result
 .PP
 .nf
     sz = wstring_append(&dst, (wchar_t*)aa\&.str, 0);
-    printf("\n\t*(%d) wstring_append: [%ls][%u] -> [%u]\n", __LINE__, dst\&.str, dst\&.sz, sz);
+    printf("\n\t*(%d) wstring_append: [%ls][%zu] -> [%zu]\n", __LINE__, dst\&.str, dst\&.sz, sz);
     wstring_free(&dst);
 
 .fi
@@ -2254,7 +2254,7 @@ function \fC\fBwstring_appends_()\fP\fP requires to free the returned result
 .PP
 .nf
     sz = wstring_appends_(&dst, (wchar_t*)a\&.str, (wchar_t*)aaa\&.str, (wchar_t*)aa\&.str, NULL);
-    printf("\n\t*(%d) wstring_appends: [%ls][%u] -> [%u]\n", __LINE__, dst\&.str, dst\&.sz, sz);
+    printf("\n\t*(%d) wstring_appends: [%ls][%zu] -> [%zu]\n", __LINE__, dst\&.str, dst\&.sz, sz);
     wstring_free(&dst);
 
 .fi
@@ -2279,7 +2279,7 @@ Converting string, \fCchar\fP input, \fCwchar_t\fP array output, to allocate buf
     (void) argc;
     (void) argv;
 
-    printf("\n\ti sizeof wchar_t [%u]\n", sizeof(wchar_t));
+    printf("\n\t* sizeof wchar_t [%zu]\n", sizeof(wchar_t));
 
     /* low-level Function test */
 
@@ -2345,7 +2345,7 @@ curent status: broken, if out data large 8192 byte! Now, fixing output buffer si
 .PP
 .nf
     sz = wstring_format(&dst, L"%ls%ls%ls", a\&.str, aaa\&.str, aa\&.str);
-    printf("\n\t*(%d) wstring_format: [%ls][%u] -> [%u]\n", __LINE__, dst\&.str, dst\&.sz, sz);
+    printf("\n\t*(%d) wstring_format: [%ls][%zu] -> [%zu]\n", __LINE__, dst\&.str, dst\&.sz, sz);
 
 .fi
 .PP
@@ -2354,10 +2354,6 @@ curent status: broken, if out data large 8192 byte! Now, fixing output buffer si
 
 .PP
 Memory free string, empty and clear struct \fBstring_ws\fP\&. 
-.SH "API use structure string_ws"
-.PP
-.SS "Allocate memory functions"
-
 .SS "int wstring_isempty (const wchar_t *restrict s, int)"
 
 .PP
@@ -2427,7 +2423,7 @@ Converting string, \fCwchar_t\fP input, \fCchar\fP array output, to allocate buf
     (void) argc;
     (void) argv;
 
-    printf("\n\ti sizeof wchar_t [%u]\n", sizeof(wchar_t));
+    printf("\n\t* sizeof wchar_t [%zu]\n", sizeof(wchar_t));
 
     /* low-level Function test */
 

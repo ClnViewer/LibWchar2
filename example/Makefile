@@ -1,6 +1,6 @@
 
 CFLAGS = -std=gnu99 -Wall -Wextra -pedantic
-CFLAGSW2 = -fshort-wchar -DWS_FS_REDEFINE
+CFLAGSW2 = -fshort-wchar -DWS_FS_REDEFINE -I../include
 LDDFLAGSW2 = -L../src/.libs -Wl,-rpath=../src/.libs -lwchar2
 
 all: clean exelibc exewchar2

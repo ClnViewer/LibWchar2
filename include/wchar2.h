@@ -1386,7 +1386,7 @@ char *    u8wpathnormalize(const wchar_t*)
 __attribute__((warn_unused_result));
 
 
-/*!
+/*
  * \~English
  * \section wchar2wstring API use structure string_ws
  *
@@ -1397,10 +1397,10 @@ __attribute__((warn_unused_result));
 
 /*!
  * \~English
- * \subsection wchar2wsalloc Allocate memory functions
+ * \paragraph wchar2wsalloc Allocate memory functions
  *
  * \~Russian
- * \subsection wchar2wsalloc Функции работы с динамической памятью
+ * \paragraph wchar2wsalloc Функции работы с динамической памятью
  *
  * \~
  */

@@ -135,7 +135,7 @@ string_ws wstring_trunc(const wchar_t *ws, int sz)
 size_t wstring_trunc_alloc(string_ws *dst, const wchar_t *ws, int sz)
 {
 #   if !defined(_MSC_VER)
-    wchar_t __AUTO *p = dst->str;
+    wchar_t __AUTO *p = NULL;
 #   endif
 
     if ((!dst) || (!ws))
@@ -143,6 +143,9 @@ size_t wstring_trunc_alloc(string_ws *dst, const wchar_t *ws, int sz)
         errno = EINVAL;
         return 0U;
     }
+#   if !defined(_MSC_VER)
+    p = dst->str;
+#   endif
 
     do
     {
@@ -443,7 +446,7 @@ size_t wstring_append_cvt(string_ws *dst, const char *c, size_t sz)
         wchar_t s[(sz + 1)];
 #   endif
 
-        if ((sz = wstring_cstows(s, (sz + 1), c, sz)) <= 0)
+        if ((sz = wstring_cstows(s, (sz + 1), c, sz)) == 0)
         {
             return 0U;
         }
@@ -530,9 +533,13 @@ wchar_t * wstring_timeformat(const wchar_t *src, size_t sz, const wchar_t *fmtin
 #   define __TMF_OUT_SIZE 250
 
     wchar_t __AUTO *p = NULL, *s = NULL;
-    sz = ((!sz) ? _wcslen(src) : sz);
 
-    if ((!src) || (!sz) || (!fmtin) || (!fmtout))
+    if ((!src) || (!fmtin) || (!fmtout))
+    {
+        errno = EINVAL;
+        return NULL;
+    }
+    if (!(sz = ((!sz) ? _wcslen(src) : sz)))
     {
         errno = EINVAL;
         return NULL;
@@ -623,5 +630,5 @@ void wstring_free(string_ws *dst)
     }
 
     dst->str = NULL;
-    dst->sz  = 0;
+    dst->sz  = 0UL;
 }

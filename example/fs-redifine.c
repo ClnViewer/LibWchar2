@@ -26,7 +26,7 @@
 #include <sys/stat.h>
 
 #if defined(WS_FS_REDEFINE)
-#  include "../include/wchar2.h"
+#  include <wchar2.h>
 #else
 #  include <libgen.h> /* for dirname, basename */
 #  define __WSTR  char
@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
         fpath, bdir, bname, bext
     );
 
-    if (!(fp = fopen(file, "a+"))) {
+    if (!(fp = fopen((__WSTR*)file, __WS("a+")))) {
         fprintf(stdout, "\n\terror open file: [%" __WSTR_FMT "] [%s]\n", file, strerror(errno));
         return 127;
     }

@@ -51,11 +51,16 @@ set(lib_srcs
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wstring_util.c
 )
 
-set( lib_target "libwchar2ext" )
+if(MSVC)
+   set( lib_target "libwchar2ext" )
+else()
+   set( lib_target "wchar2ext" )
+endif()
+
 set( app_target "TestWchar2ext" )
 
 add_library( ${lib_target} STATIC ${lib_srcs} ${lib_hdrs} )
-add_executable( ${app_target} "../test/check_wchar2_MSVC.c" ) 
+add_executable( ${app_target} "../test/check_wchar2_MSVC.c" )
 target_link_libraries( ${app_target} ${lib_target} )
 set_property( DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT ${app_target} )
 set_target_properties(${lib_target} PROPERTIES PUBLIC_HEADER ${inst_hdrs})
