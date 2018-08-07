@@ -25,6 +25,7 @@ libwchar2.pc
 
 !/example/Makefile
 !/example/CMakeLists.txt
+!/example/cmake-build-wreaddir_cb.cmd
 !/example/TinyDir-Wchar2/Makefile
 !/winext/cmake-build-debug.cmd
 !/winext/cmake-build-release.cmd
