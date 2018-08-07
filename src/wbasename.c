@@ -44,10 +44,10 @@
            ) { return (_T *)ws; }                               \
         off += ((issep > 0) ? 1 : 0);                           \
         p = (_T *)ws;                                           \
-        for (i = n = 0; i < off; i++, n++) {                    \
+        for (i = n = 0; ((i < off) && (n < off)); i++, n++) {   \
             p[n] = ((p[n] == p[i]) ? p[n] : p[i]);              \
             if (p[i] == _P) {                                   \
-                while ((p[i] == _P) && (i < off)) { i++; } --i; \
+                while ((i < off) && (p[i] == _P)) { i++; } --i; \
             }                                                   \
         }                                                       \
         if ((!issep) && (p[(n - 1)] == _P)) --n;                \

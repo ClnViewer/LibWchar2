@@ -172,19 +172,27 @@ size_t wstring_trunc_alloc(string_ws *dst, const wchar_t *ws, int sz)
 
 size_t wstring_alloc(string_ws *dst, size_t sz)
 {
+    wchar_t *p = NULL;
+
     if (!dst)
     {
         errno = EINVAL;
         return 0U;
     }
-    dst->str = ((dst->str == NULL) ?
-                calloc(sizeof(wchar_t), (sz + 1)) :
-                realloc(dst->str, ((dst->sz + sz + 1) * sizeof(wchar_t)))
-               );
-    if (dst->str == NULL)
+    p = ((dst->str == NULL) ?
+         calloc(sizeof(wchar_t), (sz + 1)) :
+         realloc(dst->str, ((dst->sz + sz + 1) * sizeof(wchar_t)))
+        );
+    if ((p == NULL) && (dst->str == NULL))
     {
         return 0U;
     }
+    else if (p == NULL)
+    {
+        wstring_free(dst);
+        return 0U;
+    }
+    dst->str = p;
     return (dst->sz + sz);
 }
 
@@ -490,7 +498,11 @@ size_t wstring_format(string_ws *dst, const wchar_t *fmt, ...)
          */
         int sz = 8192;
 #       endif
+
 #       if !defined(_MSC_VER)
+#          if !defined(BUILD_MINGW64)
+        wchar_t *out = NULL;
+#          endif
         p = dst->str;
 #       endif
 
@@ -510,17 +522,18 @@ size_t wstring_format(string_ws *dst, const wchar_t *fmt, ...)
         }
 
         dst->sz  = (size_t) _wcslen(dst->str);
-#       if (!defined(_MSC_VER) && !defined(BUILD_MINGW))
-        if (!(dst->str = realloc(dst->str, ((dst->sz + 1) * sizeof(wchar_t)))))
+#       if (!defined(_MSC_VER) && !defined(BUILD_MINGW64))
+        if (!(out = realloc(dst->str, ((dst->sz + 1) * sizeof(wchar_t)))))
         {
-            dst->sz = 0U;
             break;
         }
+        dst->str = out;
 #       endif
+
+        ret = dst->sz;
 #       if !defined(_MSC_VER)
         p = NULL;
 #       endif
-        ret = dst->sz;
     }
     while (0);
 
@@ -534,12 +547,12 @@ wchar_t * wstring_timeformat(const wchar_t *src, size_t sz, const wchar_t *fmtin
 
     wchar_t __AUTO *p = NULL, *s = NULL;
 
-    if ((!src) || (!fmtin) || (!fmtout))
-    {
-        errno = EINVAL;
-        return NULL;
-    }
-    if (!(sz = ((!sz) ? _wcslen(src) : sz)))
+    if (
+        (!src)    ||
+        (!fmtin)  ||
+        (!fmtout) ||
+        (!(sz = ((!sz) ? _wcslen(src) : sz)))
+    )
     {
         errno = EINVAL;
         return NULL;
@@ -547,14 +560,13 @@ wchar_t * wstring_timeformat(const wchar_t *src, size_t sz, const wchar_t *fmtin
 
     do
     {
-        size_t   osz;
-        wchar_t *out;
-        struct tm tms;
-
 #       if defined(_MSC_VER)
         __try
         {
 #       endif
+            size_t    osz;
+            wchar_t  *out;
+            struct tm tms;
 
             if (
                 ((p = calloc(sizeof(wchar_t), __TMF_OUT_SIZE)) == NULL) ||
@@ -575,13 +587,12 @@ wchar_t * wstring_timeformat(const wchar_t *src, size_t sz, const wchar_t *fmtin
                 break;
             }
 
-            if (!(p = realloc(p, ((osz + 1) * sizeof(wchar_t)))))
+            if (!(out = realloc(p, ((osz + 1) * sizeof(wchar_t)))))
             {
                 break;
             }
 
-            p[osz] = L'\0';
-            out = p;
+            out[osz] = L'\0';
             p = NULL;
 
             return out;

@@ -63,14 +63,13 @@ int _wclosedir(WDIR_t *d)
 
 WDIR_t * _wopendir(const wchar_t *w)
 {
-    __WDIR_t *dir;
-
     if (!__check_dirent())
     {
         errno = EFAULT;
         return NULL;
     }
     {
+        __WDIR_t *dir;
         wstocscvt(b, w, NULL);
         if ((dir = calloc(1, sizeof(__WDIR_t))) == NULL)
             return NULL;
@@ -149,8 +148,6 @@ int _wreaddir_r(WDIR_t *d, wdirent_t *wde, wdirent_t **wdep)
     do
     {
         int     ret;
-        size_t  sz;
-        wchar_t dname[__DIR_DNAME_SIZE] = {0};
         struct  dirent de, *dep;
         errno = 0;
 
@@ -163,6 +160,9 @@ int _wreaddir_r(WDIR_t *d, wdirent_t *wde, wdirent_t **wdep)
 
         if (dep != NULL)
         {
+            size_t  sz;
+            wchar_t dname[__DIR_DNAME_SIZE] = {0};
+
             if (!(sz = wstring_cstows(dname, __DIR_DNAME_SIZE, de.d_name, 0)))
             {
                 errno = EFAULT;

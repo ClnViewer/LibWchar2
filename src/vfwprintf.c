@@ -80,7 +80,10 @@ static void out_init_buffer(FOut* out, wchar_t* buffer, size_t buffer_size) {
 
 static void out(FOut* out, const wchar_t* text, size_t length)
 {
-    if (length <= 0) return;
+    if (!length)
+    {
+        return;
+    }
     if (out->file != NULL)
     {
         wchar_t const *w = text;
@@ -88,8 +91,9 @@ static void out(FOut* out, const wchar_t* text, size_t length)
         {
             _fputwc(*w++, out->file);
         }
-
-    } else {
+    }
+    else
+    {
         // Write into a bounded buffer.
         size_t avail = out->buffer_size - out->buffer_pos;
         if (length > avail) { length = avail; }

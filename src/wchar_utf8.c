@@ -48,17 +48,21 @@ size_t u8stowcs(wchar_t *wcs, const char *u8s)
 
     while ((u8 = *(u8s + rp_u8s++)) != '\0')
     {
-        wchar_t wc = L'\xfffd';
         char b;
         for (b = _u8cmaxlen - 1; b >= 0; b--)
+        {
             if ((_u8bits[(unsigned char)b] & u8) == _u8bits[(unsigned char)b])
+            {
                 break;
+            }
+        }
         if (b >= 0)
         {
             len++;
             if (wcs)
             {
-                wc = (u8 ^ _u8bits[(unsigned char)b]) << b * _u8vallen;
+                // wchar_t wc = L'\xfffd';
+                wchar_t wc = (u8 ^ _u8bits[(unsigned char)b]) << b * _u8vallen;
                 while (b-- > 0)
                 {
                     u8 = *(u8s + rp_u8s++);

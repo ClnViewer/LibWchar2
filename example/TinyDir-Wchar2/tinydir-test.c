@@ -67,13 +67,13 @@ int main(void)
 #   endif
 
 #   if defined(USE_WCHAR2LIB)
-	printf("\n\t* LINUX: Use libwchar2: type wchar_t == %u\n\n", sizeof(wchar_t));
+	printf("\n\t* LINUX: Use libwchar2: type wchar_t == %zu\n\n", sizeof(wchar_t));
 #   else
 	printf("\n\t* LINUX: Use libc: type char\n\n");
 #   endif
 
 #if defined(UNICODE)
-	printf("\n\t* Unicode mode enable: type wchar_t == %u\n\n", sizeof(wchar_t));
+	printf("\n\t* Unicode mode enable: type wchar_t == %zu\n\n", sizeof(wchar_t));
 #else
 	printf("\n\t* Unicode mode disable: type char\n\n");
 #endif

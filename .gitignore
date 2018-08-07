@@ -23,6 +23,8 @@ libwchar2.pc
 /example/fs-redifine.libc
 /example/fs-redifine.wchar2
 
+!/build/LibWchar2CppCheck.cfg
+!/build/LibWchar2Suppressions.txt
 !/example/Makefile
 !/example/CMakeLists.txt
 !/example/cmake-build-wreaddir_cb.cmd
@@ -32,6 +34,8 @@ libwchar2.pc
 
 /docs/mansrc
 /build/doxymd
+
+*..cppcheck
 
 # Prerequisites
 *.d

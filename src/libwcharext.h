@@ -166,6 +166,7 @@ static inline void __attribute__((always_inline)) __wsfree(void *v)
         if (x)
         {
             free(x);
+            // cppcheck-suppress unreadVariable
             x = ((void*)0);
         }
     }

@@ -1,0 +1,5 @@
+//template='{file}:{line},{severity},[{id}],{message}'
+toomanyconfigs
+purgedConfiguration
+unusedFunction
+variableScope

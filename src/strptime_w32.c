@@ -426,9 +426,11 @@ recurse:
             {
                 tm->tm_isdst = 0;
 #ifdef TM_GMTOFF
+// cppcheck-suppress ConfigurationNotChecked
                 tm->TM_GMTOFF = 0;
 #endif
 #ifdef TM_ZONE
+// cppcheck-suppress ConfigurationNotChecked
                 tm->TM_ZONE = gmt;
 #endif
                 bp += 3;
@@ -456,9 +458,11 @@ recurse:
                 {
                     tm->tm_isdst = i;
 #ifdef TM_GMTOFF
+// cppcheck-suppress ConfigurationNotChecked
                     tm->TM_GMTOFF = -(timezone);
 #endif
 #ifdef TM_ZONE
+// cppcheck-suppress ConfigurationNotChecked
                     tm->TM_ZONE = tzname[i];
 #endif
                 }
@@ -501,9 +505,11 @@ recurse:
             case 'Z':
                 tm->tm_isdst = 0;
 #ifdef TM_GMTOFF
+// cppcheck-suppress ConfigurationNotChecked
                 tm->TM_GMTOFF = 0;
 #endif
 #ifdef TM_ZONE
+// cppcheck-suppress ConfigurationNotChecked
                 tm->TM_ZONE = utc;
 #endif
                 continue;
@@ -519,9 +525,11 @@ recurse:
                 if (ep != NULL)
                 {
 #ifdef TM_GMTOFF
+// cppcheck-suppress ConfigurationNotChecked
                     tm->TM_GMTOFF = -5 - i;
 #endif
 #ifdef TM_ZONE
+// cppcheck-suppress ConfigurationNotChecked
                     tm->TM_ZONE = __UNCONST(nast[i]);
 #endif
                     bp = ep;
@@ -532,9 +540,11 @@ recurse:
                 {
                     tm->tm_isdst = 1;
 #ifdef TM_GMTOFF
+// cppcheck-suppress ConfigurationNotChecked
                     tm->TM_GMTOFF = -4 - i;
 #endif
 #ifdef TM_ZONE
+// cppcheck-suppress ConfigurationNotChecked
                     tm->TM_ZONE = __UNCONST(nadt[i]);
 #endif
                     bp = ep;
@@ -547,14 +557,18 @@ recurse:
 #ifdef TM_GMTOFF
                     /* Argh! No 'J'! */
                     if (*bp >= 'A' && *bp <= 'I')
+// cppcheck-suppress ConfigurationNotChecked
                         tm->TM_GMTOFF =
                             ('A' - 1) - (int)*bp;
                     else if (*bp >= 'L' && *bp <= 'M')
+// cppcheck-suppress ConfigurationNotChecked
                         tm->TM_GMTOFF = 'A' - (int)*bp;
                     else if (*bp >= 'N' && *bp <= 'Y')
+// cppcheck-suppress ConfigurationNotChecked
                         tm->TM_GMTOFF = (int)*bp - 'M';
 #endif
 #ifdef TM_ZONE
+// cppcheck-suppress ConfigurationNotChecked
                     tm->TM_ZONE = NULL; /* XXX */
 #endif
                     bp++;
@@ -597,9 +611,11 @@ recurse:
                 offs = -offs;
             tm->tm_isdst = 0;  /* XXX */
 #ifdef TM_GMTOFF
+// cppcheck-suppress ConfigurationNotChecked
             tm->TM_GMTOFF = offs;
 #endif
 #ifdef TM_ZONE
+// cppcheck-suppress ConfigurationNotChecked
             tm->TM_ZONE = NULL;  /* XXX */
 #endif
             continue;
