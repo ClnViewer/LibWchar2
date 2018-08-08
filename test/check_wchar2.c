@@ -98,9 +98,11 @@ static const char *test_status(int x)
     );
 }
 
-#include "check_wchar2_utf8.h"
-#include "test_Lmacro.c"
-#include "check_wchar2_include.c"
+#pragma GCC diagnostic ignored "-Wconversion"
+#   include "check_wchar2_utf8.h"
+#   include "test_Lmacro.c"
+#   include "check_wchar2_include.c"
+#pragma GCC diagnostic warning "-Wconversion"
 
 static Suite *wchar2_suite(void)
 {
