@@ -3,7 +3,7 @@ inspecode:
     options:
       --enable: all
       --inline-suppr:
-      --std: c99
+      --std: c11
       -D: __GNUC__
       -U: _WIN32
       --inline-suppr:
