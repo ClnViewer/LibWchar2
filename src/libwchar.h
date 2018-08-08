@@ -77,14 +77,29 @@
  * vfprintf vfwprintf
  */
 
-#define __ALT_FORM   (1U << ('#' - ' '))
-#define __ZERO_PAD   (1U << ('0' - ' '))
-#define __LEFT_ADJ   (1U << ('-' - ' '))
-#define __PAD_POS    (1U << (' ' - ' '))
-#define __MARK_POS   (1U << ('+' - ' '))
-#define __GROUPED    (1U << ('\'' - ' '))
+#define __M_ALT_FORM(_T)   (_T << ('#' - ' '))
+#define __M_ZERO_PAD(_T)   (_T << ('0' - ' '))
+#define __M_LEFT_ADJ(_T)   (_T << ('-' - ' '))
+#define __M_PAD_POS(_T)    (_T << (' ' - ' '))
+#define __M_MARK_POS(_T)   (_T << ('+' - ' '))
+#define __M_GROUPED(_T)    (_T << ('\'' - ' '))
 
-#define __FLAGMASK (__ALT_FORM | __ZERO_PAD | __LEFT_ADJ | __PAD_POS | __MARK_POS | __GROUPED)
+#define __U_ALT_FORM   __M_ALT_FORM(1U)
+#define __U_ZERO_PAD   __M_ZERO_PAD(1U)
+#define __U_LEFT_ADJ   __M_LEFT_ADJ(1U)
+#define __U_PAD_POS    __M_PAD_POS(1U)
+#define __U_MARK_POS   __M_MARK_POS(1U)
+#define __U_GROUPED    __M_GROUPED(1U)
+
+#define __S_ALT_FORM   __M_ALT_FORM(1)
+#define __S_ZERO_PAD   __M_ZERO_PAD(1)
+#define __S_LEFT_ADJ   __M_LEFT_ADJ(1)
+#define __S_PAD_POS    __M_PAD_POS(1)
+#define __S_MARK_POS   __M_MARK_POS(1)
+#define __S_GROUPED    __M_GROUPED(1)
+
+#define __U_FLAGMASK (__U_ALT_FORM | __U_ZERO_PAD | __U_LEFT_ADJ | __U_PAD_POS | __U_MARK_POS | __U_GROUPED)
+#define __S_FLAGMASK (__S_ALT_FORM | __S_ZERO_PAD | __S_LEFT_ADJ | __S_PAD_POS | __S_MARK_POS | __S_GROUPED)
 
 #if (UINT_MAX == ULONG_MAX)
 #define __LONG_IS_INT

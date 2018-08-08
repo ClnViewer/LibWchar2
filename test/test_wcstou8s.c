@@ -7,10 +7,10 @@
 
 START_TEST(test_wcstou8s)
 {
-    char *cs = malloc(wcstou8s(NULL, wcs1) + 1);
-    int ret = wcstou8s(cs, wcs1),
-        len = strlen(cs),
-        cmp = memcmp((void*)cs1, (void*)cs, len);
+    char  *cs = malloc(wcstou8s(NULL, wcs1) + 1);
+    size_t ret = wcstou8s(cs, wcs1),
+           len = strlen(cs);
+    int    cmp = memcmp((void*)cs1, (void*)cs, len);
     // printf("%s [%d/%d/%d]\n", cs, _wcslen(wcs1), len, cmp);
     free(cs);
     ck_assert_int_eq(ret, len);

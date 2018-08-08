@@ -8,7 +8,8 @@
 START_TEST (test_vfwprintf)
 {
     wchar_t *test;
-    int ret, len;
+    int ret;
+    size_t len;
 
     test = (wchar_t *) malloc(512 * sizeof(wchar_t));
     ret = _swprintf(test, 512, L"%a, \x20AC, %s, %S\n", 3.14, (char*)&"test", L"\x20AC");
@@ -16,9 +17,9 @@ START_TEST (test_vfwprintf)
     len = _wcslen(test);
     // ck_assert_int_eq(ret, len); ? TODO: not equals size
 
-    _fprintf  (stdout,  "\tTest _vfprintf::%d\t-> [%d/%d] = %ls\n",  __LINE__, ret, len, test);
-    _fwprintf (stdout, L"\tTest _vfwprintf::%d\t-> [%d/%d] = %ls\n", __LINE__, ret, len, test);
-    _fwprintf (stdout, L"\tTest _vfwprintf::%d\t-> [%d/%d] = %S\n",  __LINE__, ret, len, test);
+    _fprintf  (stdout,  "\tTest _vfprintf::%d\t-> [%d/%zu] = %ls\n",  __LINE__, ret, len, test);
+    _fwprintf (stdout, L"\tTest _vfwprintf::%d\t-> [%d/%zu] = %ls\n", __LINE__, ret, len, test);
+    _fwprintf (stdout, L"\tTest _vfwprintf::%d\t-> [%d/%zu] = %S\n",  __LINE__, ret, len, test);
 
     free(test);
     ck_assert_msg((&vfwprintf == &_vfwprintf), 0, "vfwprintf NO equals! libc used!");

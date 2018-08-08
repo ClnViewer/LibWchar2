@@ -744,23 +744,23 @@ int       _wcsncmp(const wchar_t*, const wchar_t*, size_t);
 int       _wmemcmp(const wchar_t*, const wchar_t*, size_t);
 
 /*! \brief Write to stream char format variable argument list */
-size_t    _vfprintf(FILE *restrict, const char *restrict, va_list)
+int       _vfprintf(FILE *restrict, const char *restrict, va_list)
 __attribute__((__nonnull__, __format__(__printf__, 2, 0)));
 
 /*! \brief Write formatted data from variable argument list to sized buffer */
-size_t    _vsnprintf(char *restrict, size_t, const char *restrict, va_list)
+int       _vsnprintf(char *restrict, size_t, const char *restrict, va_list)
 __attribute__((__format__(__printf__, 3, 0)));
 
 /*! \brief Write to stream char format variable arguments */
-size_t    _fprintf(FILE *restrict, const char *restrict, ...)
+int       _fprintf(FILE *restrict, const char *restrict, ...)
 __attribute__((__nonnull__, __format__(__printf__, 2, 0)));
 
 /*! \brief Write to stdout char format variable arguments */
-size_t    _printf(const char *restrict fmt, ...)
+int       _printf(const char *restrict fmt, ...)
 __attribute__((__nonnull__, __format__(__printf__, 1, 0)));
 
 /*! \brief Format variable arguments list */
-size_t    _snprintf(char *restrict, size_t, const char *restrict, ...)
+int       _snprintf(char *restrict, size_t, const char *restrict, ...)
 __attribute__((__format__(__printf__, 3, 0)));
 
 /*!
@@ -768,7 +768,7 @@ __attribute__((__format__(__printf__, 3, 0)));
  *
  * - \subpage wprintf
  */
-size_t    _vfwprintf(FILE *restrict, const wchar_t *restrict, va_list)
+int       _vfwprintf(FILE *restrict, const wchar_t *restrict, va_list)
 /* __attribute__((__nonnull__, __format__(__wprintf__, 2, 0))) */ ;
 
 /*!
@@ -776,7 +776,7 @@ size_t    _vfwprintf(FILE *restrict, const wchar_t *restrict, va_list)
  *
  * - \subpage wprintf
  */
-size_t    _vswprintf(wchar_t *restrict, size_t, const wchar_t *restrict, va_list)
+int       _vswprintf(wchar_t *restrict, size_t, const wchar_t *restrict, va_list)
 /* __attribute__((__format__(__wprintf__, 3, 0))) */ ;
 
 /*!
@@ -784,7 +784,7 @@ size_t    _vswprintf(wchar_t *restrict, size_t, const wchar_t *restrict, va_list
  *
  * - \subpage wprintf
  */
-size_t    _fwprintf(FILE *restrict, const wchar_t *restrict, ...)
+int       _fwprintf(FILE *restrict, const wchar_t *restrict, ...)
 /* __attribute__((__nonnull__, __format__(__wprintf__, 2, 0))) */ ;
 
 /*!
@@ -792,7 +792,7 @@ size_t    _fwprintf(FILE *restrict, const wchar_t *restrict, ...)
  *
  * - \subpage wprintf
  */
-size_t    _swprintf(wchar_t *restrict, size_t, const wchar_t *restrict, ...)
+int       _swprintf(wchar_t *restrict, size_t, const wchar_t *restrict, ...)
 /* __attribute__((__format__(__wprintf__, 3, 0))) */ ;
 
 /*!
@@ -805,7 +805,7 @@ size_t    _swprintf(wchar_t *restrict, size_t, const wchar_t *restrict, ...)
  * \~
  * - \subpage wprintf
  */
-size_t    _wprintf(const wchar_t *restrict fmt, ...)
+int       _wprintf(const wchar_t *restrict fmt, ...)
 /* __attribute__((__format__(__wprintf__, 1, 0))) */ ;
 
 /*!
@@ -1372,7 +1372,7 @@ __attribute__((warn_unused_result));
  */
 
 /*! \brief Normalize slash from path, wide char input, int is string size, default 0 */
-wchar_t * _wpathnormalize(const wchar_t*, int)
+wchar_t * _wpathnormalize(const wchar_t*, size_t)
 __attribute__((warn_unused_result));
 /*! \brief Normalize slash from path, struct string_ws input */
 wchar_t * _wpathnormalize_ws(const string_ws*)

@@ -49,7 +49,7 @@ const char * _strptime(const char*, const char*, struct tm*);
 
 wchar_t * _wcsptime(const wchar_t *w, const wchar_t *fmt, void *v)
 {
-    int bsz, fsz;
+    size_t bsz, fsz;
     struct tm *ptm = (struct tm*)v;
 
     if ((!w) || (!fmt) || (!v))

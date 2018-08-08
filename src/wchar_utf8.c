@@ -62,13 +62,15 @@ size_t u8stowcs(wchar_t *wcs, const char *u8s)
             if (wcs)
             {
                 // wchar_t wc = L'\xfffd';
-                wchar_t wc = (u8 ^ _u8bits[(unsigned char)b]) << b * _u8vallen;
+                wchar_t wc = (wchar_t)((u8 ^ _u8bits[(unsigned char)b]) << b * _u8vallen);
                 while (b-- > 0)
                 {
                     u8 = *(u8s + rp_u8s++);
                     if ((_u8bit & u8) == _u8bit)
                     {
-                        wc += (u8 ^ _u8bit) << b * _u8vallen;
+#                       pragma GCC diagnostic ignored "-Wconversion"
+                        wc += (unsigned short)((u8 ^ _u8bit) << b * _u8vallen);
+#                       pragma GCC diagnostic warning "-Wconversion"
                     }
                     else
                     {
@@ -101,7 +103,7 @@ size_t wcstou8s(char *u8s, const wchar_t *wcs)
                 break;
             }
 
-        len += b + 1;
+        len += (size_t)(((b + 1) > 0) ? (size_t)(b + 1) : 0U);
         if (u8s)
         {
             char c = b;
@@ -110,11 +112,11 @@ size_t wcstou8s(char *u8s, const wchar_t *wcs)
 
             while (c-- > 0)
             {
-                *p_u8s =  _u8bit + (wc & L'\x3f');
+                *p_u8s =  (char)(_u8bit + (wc & L'\x3f'));
                 wc >>= 6;
                 p_u8s--;
             }
-            *p_u8s++ |= wc;
+            *p_u8s++ |= (char)wc;
             p_u8s += b;
         }
     }
@@ -127,9 +129,9 @@ int u8sverify(const char *u8s)
 {
     unsigned char prev, cur;
 
-    prev = *u8s;
+    prev = (unsigned char)*u8s;
     u8s++;
-    cur = *u8s;
+    cur = (unsigned char)*u8s;
 
     while (cur != '\0')
     {
@@ -145,7 +147,7 @@ int u8sverify(const char *u8s)
         }
         prev = cur;
         u8s++;
-        cur = *u8s;
+        cur = (unsigned char)*u8s;
     }
     return 1;
 }

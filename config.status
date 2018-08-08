@@ -508,7 +508,7 @@ old_postinstall_cmds='chmod 644 $oldlib~$RANLIB $oldlib'
 old_postuninstall_cmds=''
 old_archive_cmds='$AR $AR_FLAGS $oldlib$oldobjs~$RANLIB $oldlib'
 CC='gcc -std=gnu99'
-CFLAGS='-g -O2 -fshort-wchar -Wall -pedantic -Wstrict-prototypes -Wextra'
+CFLAGS='-g -O2 -fshort-wchar -Wall -pedantic -Wstrict-prototypes -Wconversion -Wsign-conversion -Winit-self -Wunreachable-code -Wno-unknown-pragmas -Wextra'
 compiler='gcc'
 GCC='yes'
 lt_cv_sys_global_symbol_pipe='sed -n -e '\''s/^.*[	 ]\([ABCDGIRSTW][ABCDGIRSTW]*\)[	 ][	 ]*\([_A-Za-z][_A-Za-z0-9]*\)$/\1 \2 \2/p'\'''
@@ -728,7 +728,7 @@ S["am__EXEEXT_TRUE"]="#"
 S["LTLIBOBJS"]=""
 S["LIBOBJS"]=""
 S["YDATE"]="2018"
-S["CRDATE"]="Wed Aug 08 2018"
+S["CRDATE"]="Thu Aug 09 2018"
 S["pkgconfigdir"]="${exec_prefix}/lib/pkgconfig"
 S["COND_BUILD_TEST_FALSE"]="#"
 S["COND_BUILD_TEST_TRUE"]=""
@@ -797,7 +797,7 @@ S["EXEEXT"]=""
 S["ac_ct_CC"]="gcc"
 S["CPPFLAGS"]=""
 S["LDFLAGS"]=""
-S["CFLAGS"]="-g -O2 -fshort-wchar -Wall -pedantic -Wstrict-prototypes -Wextra"
+S["CFLAGS"]="-g -O2 -fshort-wchar -Wall -pedantic -Wstrict-prototypes -Wconversion -Wsign-conversion -Winit-self -Wunreachable-code -Wno-unknown-pragmas -Wextra"
 S["CC"]="gcc -std=gnu99"
 S["target_os"]="linux-gnu"
 S["target_vendor"]="pc"

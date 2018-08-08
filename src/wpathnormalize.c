@@ -33,11 +33,11 @@
 
 #endif
 
-wchar_t * _wpathnormalize(const wchar_t *ws, int sz)
+wchar_t * _wpathnormalize(const wchar_t *ws, size_t sz)
 {
-    int i, n;
+    size_t i, n;
     wchar_t *p;
-    sz = ((sz > 0) ? sz : (int) _wcslen(ws));
+    sz = ((sz > 0) ? sz : _wcslen(ws));
     errno = 0;
 
     if (
@@ -59,7 +59,7 @@ wchar_t * _wpathnormalize(const wchar_t *ws, int sz)
             {
                 i++;
             }
-            --i;
+            if (i) { --i; }
         }
     }
 
@@ -85,7 +85,7 @@ char * u8wpathnormalize(const wchar_t *ws)
         do
         {
             if (
-                ((wo = _wpathnormalize(ws, 0)) == NULL)            ||
+                ((wo = _wpathnormalize(ws, 0U)) == NULL)            ||
                 ((ob = calloc(1, wcstou8s(NULL, wo) + 1)) == NULL) ||
                 (wcstou8s(ob, wo) <= 0)
             )

@@ -48,7 +48,7 @@ size_t _mbrtowc(wchar_t *restrict wc, const char *restrict src, size_t n, mbstat
     if (!s)
     {
         if (c) goto ilseq;
-        return 0;
+        return ((size_t)0);
     }
     else if (!wc)
     {
@@ -56,7 +56,7 @@ size_t _mbrtowc(wchar_t *restrict wc, const char *restrict src, size_t n, mbstat
     }
     if (!n)
     {
-        return -2;
+        return ((size_t)-2);
     }
     if (!c)
     {
@@ -74,22 +74,24 @@ size_t _mbrtowc(wchar_t *restrict wc, const char *restrict src, size_t n, mbstat
     if (n) {
         if (__OOB(c,*s)) goto ilseq;
 loop:
-        c = ((c << 6) | (*s++ - 0x80)); n--;
-        if (!(c & (1U << 31))) {
-            *(unsigned*)st = 0;
-            *wc = c;
-            return N-n;
+        c = ((c << 6) | (*s++ - 0x80U)); n--;
+        if (!(c & (1U << 31)))
+        {
+            *(unsigned*)st = 0U;
+            *wc = (wchar_t)c;
+            return (size_t)(N - n);
         }
-        if (n) {
+        if (n)
+        {
             if ((*s - 0x80U) >= 0x40) goto ilseq;
             goto loop;
         }
     }
 
     *(unsigned*)st = c;
-    return -2;
+    return ((size_t)-2);
 ilseq:
     errno = EILSEQ;
     *(unsigned*)st = 0;
-    return -1;
+    return ((size_t)-1);
 }

@@ -261,27 +261,28 @@ static wchar_t __towcase(wchar_t wc, int lower)
 	if ((lower) && (((unsigned)wc - 0x10a0) < 0x2e))
         {
             if (wc>0x10c5 && wc != 0x10c7 && wc != 0x10cd) { return wc; }
-            else                                           { return (wc + 0x2d00 - 0x10a0); }
+            else                                           { return (wchar_t)(wc + 0x2d00U - 0x10a0U); }
         }
 	if ((!lower) && (((unsigned)wc - 0x2d00) < 0x26))
         {
             if (wc>0x2d25 && wc != 0x2d27 && wc != 0x2d2d) { return wc; }
-            else                                           { return wc + 0x10a0 - 0x2d00; }
+            else                                           { return (wchar_t)(wc + 0x10a0U - 0x2d00U); }
         }
-	for (i=0; casemaps[i].len; i++) {
+	for (i = 0; casemaps[i].len; i++) {
 		int base = casemaps[i].upper + (lmask & casemaps[i].lower);
-		if ((unsigned)wc-base < casemaps[i].len) {
+		if ((unsigned)(wc - base) < (unsigned)casemaps[i].len)
+                {
 			if (casemaps[i].lower == 1)
-				return wc + lower - ((wc-casemaps[i].upper)&1);
-			return wc + lmul*casemaps[i].lower;
+				return (wchar_t)(wc + lower - ((wc - casemaps[i].upper)&1));
+			return (wchar_t)(wc + lmul * casemaps[i].lower);
 		}
 	}
-	for (i=0; pairs[i][1-lower]; i++) {
-		if (pairs[i][1-lower] == wc)
+	for (i = 0; pairs[i][(1 - lower)]; i++) {
+		if (pairs[i][(1 - lower)] == wc)
 			return pairs[i][lower];
 	}
-	if ((unsigned)wc - (0x10428 - 0x28*lower) < 0x28)
-		return wc - 0x28 + 0x50*lower;
+	if ((unsigned)wc - (unsigned)(0x10428 - 0x28 * lower) < 0x28U)
+		return (wchar_t)(wc - 0x28U + 0x50U * (unsigned)lower);
 	return wc;
 }
 

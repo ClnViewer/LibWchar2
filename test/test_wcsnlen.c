@@ -7,13 +7,13 @@
 
 START_TEST(test_wcsnlen)
 {
-    int ret;
+    size_t ret;
 
     ret = _wcslen(wcs1);
-    ck_assert_int_eq(ret, 11);
+    ck_assert_int_eq(ret, 11U);
 
     ret = _wcslen(wcs3);
-    ck_assert_int_eq(ret, 13);
+    ck_assert_int_eq(ret, 13U);
 
     ck_assert_msg((&wcsnlen == &_wcsnlen), 0, "wcsnlen NO equals! libc used!");
 }

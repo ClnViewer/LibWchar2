@@ -49,7 +49,7 @@ size_t _mbsrtowcs(wchar_t *restrict ws, const char **restrict src, size_t wn, mb
 
 	if (!ws) for (;;) {
 		if (*s-1u < 0x7f && (uintptr_t)s%4 == 0) {
-			while (!( ((*(uint16_t*)s) | (*(uint16_t*)s - 0x01010101)) & (0x80808080))) {
+			while (!( ((*(uint16_t*)s) | (*(uint16_t*)s - 0x01010101U)) & (0x80808080U))) {
 				s += 4;
 				wn -= 4;
 			}
@@ -77,7 +77,7 @@ resume0:
 	} else for (;;) {
 		if (!wn) return wn0;
 		if (*s-1u < 0x7f && (uintptr_t)s%4 == 0) {
-			while ((wn >= 4) && !(((*(uint16_t*)s) | (*(uint16_t*)s - 0x01010101)) & (0x80808080))) {
+			while ((wn >= 4) && !(((*(uint16_t*)s) | (*(uint16_t*)s - 0x01010101U)) & (0x80808080U))) {
 				*ws++ = *s++;
 				*ws++ = *s++;
 				*ws++ = *s++;
@@ -94,16 +94,16 @@ resume0:
 		c = bittab[*s++ - __SA];
 resume:
 		if (__OOB(c,*s)) { s--; break; }
-		c = ((c << 6) | (*s++ - 0x80));
+		c = ((c << 6) | (*s++ - 0x80U));
 		if (c&(1U<<31)) {
-			if (*s-0x80u >= 0x40) { s-=2; break; }
-			c = ((c << 6) | (*s++ - 0x80));
+			if (*s-0x80U >= 0x40) { s-=2; break; }
+			c = ((c << 6) | (*s++ - 0x80U));
 			if (c&(1U<<31)) {
-				if (*s-0x80u >= 0x40) { s-=3; break; }
-				c = ((c << 6) | (*s++ - 0x80));
+				if (*s-0x80U >= 0x40) { s-=3; break; }
+				c = ((c << 6) | (*s++ - 0x80U));
 			}
 		}
-		*ws++ = c;
+		*ws++ = (wchar_t)c;
 		wn--;
 		c = 0;
 	}
@@ -113,9 +113,9 @@ resume:
 			*ws = 0;
 			*src = 0;
 		}
-		return wn0-wn;
+		return (wn0 - wn);
 	}
 	errno = EILSEQ;
 	if (ws) *src = (const void *)s;
-	return -1;
+	return (size_t)-1;
 }

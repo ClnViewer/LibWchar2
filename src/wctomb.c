@@ -35,5 +35,7 @@
 int _wctomb(char *s, wchar_t wc)
 {
     if (!s) return 0;
-    return _wcrtomb(s, wc, 0);
+    size_t ret = _wcrtomb(s, wc, 0);
+    if (ret == (size_t)-1) return -1;
+    return (int)ret;
 }

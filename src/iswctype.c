@@ -82,6 +82,6 @@ wctype_t _wctype(const char *s)
 		"space\0" "upper\0" "xdigit";
 	for (i=1, p=names; *p; i++, p+=6)
 		if (*s == *p && !strcmp(s, p))
-			return i;
+			return (wctype_t)i;
 	return 0;
 }

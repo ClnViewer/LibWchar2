@@ -1,6 +1,9 @@
 
 include_HEADERS = \
-    ../include/wchar2.h
+    ../include/wchar2.h \
+    libbuild.h \
+    libwchar.h \
+    vfxprint.h
 
 lib_LTLIBRARIES = libwchar2.la
 libwchar2_la_LDFLAGS = -rpath '$(libdir)'

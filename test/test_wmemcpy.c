@@ -9,7 +9,7 @@ START_TEST(test_wmemcpy)
 {
     wchar_t dst[32] = {0};
     wchar_t *cmp;
-    int ssz = _wcslen(wcs3);
+    size_t ssz = _wcslen(wcs3);
 
     cmp = _wmemcpy(dst, wcs3, ssz);
     ck_assert(cmp != NULL);

@@ -39,9 +39,9 @@
 #include "../include/wchar2.h"
 #include "check_wchar2_utf8.h"
 
-int dm_string_equals_ascii(const char *c, wchar_t *w, int wsz)
+int dm_string_equals_ascii(const char *c, wchar_t *w, size_t wsz)
 {
-    int            cnt  = 0;
+    size_t         cnt  = 0;
     const wchar_t *wchr = w;
     const char    *cchr = c;
 
@@ -93,7 +93,7 @@ int main(int argc, char *argv[])
 
     wchar_t *wfile = L"./test-\x20AC-\x20AC.txt";
     char    *cfile = NULL;
-    int ret, len, sz2, sz1;
+    size_t sz2, sz1;
 
     (void) argc;
     (void) argv;
@@ -113,7 +113,7 @@ int main(int argc, char *argv[])
     printf( "]\n\t -> [%d/%zu]\n", strlen_w(t), _wcslen(t));
     printf("\t(%d) strerror: [%s]\n", __LINE__, strerror(errno)); errno = 0;
 
-    sz1 = (int)_wcslen(wcs1);
+    sz1 = _wcslen(wcs1);
     printf("\t(%d) strerror: [%s]\n", __LINE__, strerror(errno)); errno = 0;
 
 //    char b0[((sz1 + 1) * 2)];
@@ -121,7 +121,7 @@ int main(int argc, char *argv[])
 //    printf( "\t[%s] [%d/%d]\n", b0, sz1, sz2);
 
     sz1 = strlen(c);
-    sz2 = (int)_wcslen(wcs1);
+    sz2 = _wcslen(wcs1);
     printf("\t(%d) strerror: [%s]\n", __LINE__, strerror(errno)); errno = 0;
 
     printf( "\t[%d/%d]\n", sz1, sz2);
@@ -133,10 +133,10 @@ int main(int argc, char *argv[])
     printf("\t(%d) strerror: [%s]\n", __LINE__, strerror(errno)); errno = 0;
 
     cfile = malloc(wcstou8s(NULL, wfile) + 1);
-    ret = wcstou8s(cfile, wfile);
-    len = strlen(cfile);
+    sz1 = wcstou8s(cfile, wfile);
+    sz2 = strlen(cfile);
 
-    printf("[%s] [%d/%d]\n", cfile, len, ret);
+    printf("[%s] [%zu/%zu]\n", cfile, sz2, sz1);
 
     FILE *fp = fopen(cfile, "w");
     if (fp == NULL) { printf( "\tfp is null! [%s]\n", strerror(errno)); } else {

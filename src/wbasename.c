@@ -94,7 +94,7 @@ wchar_t * _wbaseext_ws(const string_ws *ws)
 wchar_t * _wbasedir(const wchar_t *ws, int issep)
 {
     wchar_t *p  = NULL;
-    int      sz = (int) _wcslen(ws);
+    size_t   sz = _wcslen(ws);
 
     if (
         (sz <= 0)  ||
@@ -111,8 +111,8 @@ wchar_t * _wbasedir(const wchar_t *ws, int issep)
 wchar_t * _wbasedir_ws(const string_ws *ws, int issep)
 {
     wchar_t *p  = NULL;
-    int      sz = ws->sz;
-    sz = ((!sz) ? (int) _wcslen(ws->str) : sz);
+    size_t   sz = ws->sz;
+    sz = ((!sz) ? _wcslen(ws->str) : sz);
 
     if (
         (sz <= 0)  ||
@@ -130,7 +130,7 @@ wchar_t * _wbasedir_ws(const string_ws *ws, int issep)
 
 void * _wbasedir_selector(int sel, const void *w, int issep)
 {
-    int         sz  = 0,
+    size_t      sz  = 0,
                 esz = 0;
     void       *p   = NULL;
     const void *pp  = NULL;
@@ -141,7 +141,7 @@ void * _wbasedir_selector(int sel, const void *w, int issep)
     case 4:
     {
         esz = sizeof(wchar_t);
-        sz  = (int) _wcslen((const wchar_t*)w);
+        sz  = _wcslen((const wchar_t*)w);
         pp  = w;
         break;
     }
@@ -149,7 +149,7 @@ void * _wbasedir_selector(int sel, const void *w, int issep)
     {
         esz = sizeof(wchar_t);
         sz  = ((const string_ws*)w)->sz;
-        sz  = ((!sz) ? (int) _wcslen(((const string_ws*)w)->str) : sz);
+        sz  = ((!sz) ? _wcslen(((const string_ws*)w)->str) : sz);
         pp  = (const void*)((const string_ws*)w)->str;
         break;
     }

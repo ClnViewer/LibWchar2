@@ -60,12 +60,12 @@ static int __fputws(const wchar_t *restrict ws, FILE *restrict fp)
 {
     char buf[BUFSIZ];
     int nwritten = 0;
-    int nchars   = _wcslen(ws);
+    int nchars   = (int)_wcslen(ws);
 
     while (nchars > 0) {
 	int   nbytes = 0;
 	char *ptr    = (char*)&buf;
-	while ((nbytes < (BUFSIZ - (MB_LEN_MAX * 2))) && nchars) {
+	while ((nbytes < (BUFSIZ - (MB_LEN_MAX * 2))) && (nchars)) {
 	    int n;
 	    if ((n = _wctomb(ptr, *ws)) < 0)
             {

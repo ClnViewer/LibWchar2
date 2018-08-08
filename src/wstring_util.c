@@ -508,13 +508,13 @@ size_t wstring_format(string_ws *dst, const wchar_t *fmt, ...)
 
         if (
 #           if (defined(_MSC_VER) || defined(BUILD_MINGW64))
-            ((sz = _vswprintf(NULL, 0, fmt, ap)) <= 0)   ||
+            ((sz = _vswprintf(NULL, 0U, fmt, ap)) <= 0)  ||
 #           endif
-            (!wstring_alloc(dst, sz))                    ||
+            (!wstring_alloc(dst, (size_t)sz))            ||
 #           if defined(BUILD_MINGW32)
             (_vswprintf((wchar_t*)(dst->str + dst->sz), fmt, ap) <= 0)
 #           else
-            (_vswprintf((void*)(dst->str + dst->sz), (sz + 1), fmt, ap) <= 0)
+            (_vswprintf((void*)(dst->str + dst->sz), (size_t)(sz + 1), fmt, ap) <= 0)
 #           endif
         )
         {

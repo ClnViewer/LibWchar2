@@ -15,6 +15,7 @@ EXTRA_DIST = \
     package.json \
     test/createtest.sh \
     test/check_wchar2_MSVC.c \
+    src/vfxprint.c \
     src/libwcharext.c \
     src/strptime_w32.c \
     src/wdir_msvc.c \

@@ -47,7 +47,7 @@
 
 size_t _wcsftime(wchar_t *w, size_t sz, const wchar_t *fmt, const void *v)
 {
-    int bsz = ((sz + 1) * sizeof(wchar_t));
+    size_t bsz = ((sz + 1) * sizeof(wchar_t));
     const struct tm *ptm = (const struct tm*)v;
 
     if ((!w) || (!fmt) || (!sz) || (!v))
@@ -61,7 +61,7 @@ size_t _wcsftime(wchar_t *w, size_t sz, const wchar_t *fmt, const void *v)
         char    fb[bsz];
         char    cb[sz];
         size_t  osz = 0U;
-        errno = 0;
+        errno       = 0;
 
         if (
             (!wstring_wstocs(fb, bsz, fmt, 0))    ||

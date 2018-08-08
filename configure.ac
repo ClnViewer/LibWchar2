@@ -78,6 +78,12 @@ AS_IF([test "$BUILD_WC2" == "0"],[
 AX_CHECK_COMPILE_FLAG([-Wall],[AX_APPEND_FLAG([-Wall])])
 AX_CHECK_COMPILE_FLAG([-pedantic],[AX_APPEND_FLAG([-pedantic])])
 AX_CHECK_COMPILE_FLAG([-Wstrict-prototypes],[AX_APPEND_FLAG([-Wstrict-prototypes])])
+AX_CHECK_COMPILE_FLAG([-Wconversion],[AX_APPEND_FLAG([-Wconversion])])
+AX_CHECK_COMPILE_FLAG([-Wsign-conversion],[AX_APPEND_FLAG([-Wsign-conversion])])
+AX_CHECK_COMPILE_FLAG([-Winit-self],[AX_APPEND_FLAG([-Winit-self])])
+AX_CHECK_COMPILE_FLAG([-Wunreachable-code],[AX_APPEND_FLAG([-Wunreachable-code])])
+AX_CHECK_COMPILE_FLAG([-Wno-unknown-pragmas],[AX_APPEND_FLAG([-Wno-unknown-pragmas])])
+
 
 AC_ARG_ENABLE([devel],
     [AS_HELP_STRING([--enable-devel], [enable -Wextra in all Makefiles])])

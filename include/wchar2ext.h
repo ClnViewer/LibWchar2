@@ -210,7 +210,7 @@ int       u8sverify(const char*);
 wchar_t * _wcsptime(const wchar_t*, const wchar_t*, void*);
 
 __CHKRET
-wchar_t * _wpathnormalize(const wchar_t*, int);
+wchar_t * _wpathnormalize(const wchar_t*, size_t);
 __CHKRET
 wchar_t * _wpathnormalize_ws(const string_ws*);
 __CHKRET
