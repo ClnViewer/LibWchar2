@@ -2,9 +2,8 @@ inspecode:
   cppcheck:
     options:
       --enable: all
-      --quiet:
       --inline-suppr:
-      --std=c99:
+      --std: c99
       -I:
         include/
         src/
