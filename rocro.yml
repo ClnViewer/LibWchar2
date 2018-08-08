@@ -5,8 +5,8 @@ inspecode:
       --inline-suppr:
       --std: c99
       -I:
-        include/
-        src/
+        include
+        src
       -D:
         __GNUC__
       -U:
@@ -39,4 +39,4 @@ inspecode:
     options:
       - -analyze-headers
       - -k
-      - --: [make, -C, test, syntax_tests]
+      - --: [./configure, make, -C, test, check]
