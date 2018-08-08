@@ -7,6 +7,7 @@ inspecode:
       --platform: unix32
       -I:
         - include
+        - src
       -D:
         - __GNUC__
         - __SIZEOF_WCHAR_T__=2
@@ -27,11 +28,15 @@ inspecode:
       --max-configs: 20
       #--force:
       --inconclusive:
+    input:
+        src/*.c
+        src/*.h
+        include/*.h
     ignore:
-        - test/*.*
-        - test/**/*.*
-        - examples/*.*
-        - examples/**/*.*
+        test/*.*
+        test/**/*.*
+        examples/*.*
+        examples/**/*.*
     thresholds:
       num-issues:
         #information: 0
@@ -39,10 +44,4 @@ inspecode:
         #performance: 20
         #portability: 20
 
-  scan-build:
-    options:
-      - -analyze-headers
-      - -k
-      - --: ./configure
-      - --: [make, check]
-
+  scan-build: default
