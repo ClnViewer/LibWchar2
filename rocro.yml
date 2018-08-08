@@ -1,0 +1,44 @@
+inspecode:
+  cppcheck:
+    options:
+      --enable: all
+      --quiet:
+      --inline-suppr:
+      --std=c99:
+      -I:
+    include/
+    src/
+      -D:
+        __GNUC__
+      -U:
+        _WIN32
+        __clang__
+        __CYGWIN__
+        __APPLE__
+        _MSC_VER
+      --platform: unix32
+      --inline-suppr:
+      --suppress:
+        toomanyconfigs
+        purgedConfiguration
+        unusedFunction
+        unmatchedSuppression
+        ConfigurationNotChecked
+      --max-configs: 20
+      #--force:
+      --inconclusive:
+    ignore:
+      test/*
+      examples/*
+    thresholds:
+      num-issues:
+        #information: 0
+        style: 0
+        performance: 0
+        portability: 0
+
+  scan-build:
+    options:
+      - -analyze-headers
+      - -k
+      - --: [make, -C, test, syntax_tests]

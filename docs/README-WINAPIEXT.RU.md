@@ -5,6 +5,7 @@
 [![License MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg?style=flat)](https://github.com/ClnViewer/LibWchar2/blob/master/LICENSE)
 [![Build Travis](https://travis-ci.com/ClnViewer/LibWchar2.svg)](https://travis-ci.com/ClnViewer/LibWchar2)
 [![Build Appveyor](https://ci.appveyor.com/api/projects/status/5s47u3irthu3icqo?svg=true)](https://ci.appveyor.com/project/ClnViewer/libwchar2)
+[![Job Status](https://inspecode.rocro.com/badges/github.com/ClnViewer/LibWchar2/status?token=EjhrEOus5kCYzf9OVjBAPrjGFe23VmAQertYJc6gSDM)](https://inspecode.rocro.com/jobs/github.com/ClnViewer/LibWchar2/latest?completed=true)
 
 # LibWchar2 - для Windows API
 ----------

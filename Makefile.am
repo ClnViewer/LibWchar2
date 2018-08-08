@@ -59,7 +59,7 @@ wwwdoxy:
 	@doxygen docs/Doxyfile
 
 cppcheck:
-	@cppcheck --quiet --enable=all --inconclusive --report-progress --force --check-library --library=build/LibWchar2CppCheck.cfg --suppressions-list=build/LibWchar2Suppressions.txt --inline-suppr --std=c99 --platform=unix32 -DHAVE_CONFIG_H -I.. -I./include -I./src -I/usr/include ./src 2>./check-src.cppcheck
+	@cppcheck --quiet --enable=all --inconclusive --report-progress --force --check-library --library=build/LibWchar2CppCheck.cfg --suppressions-list=build/LibWchar2Suppressions.txt --inline-suppr --std=c99 --platform=unix32 -D__GNUC__ -DHAVE_CONFIG_H -I.. -I./include -I./src -I/usr/include ./src 2>./check-src.cppcheck
 
 man: mandoxy doxyclean
 doc: wwwdoxy doxyclean

@@ -540,7 +540,7 @@ int       wcstocscmp(const char*, wchar_t*, size_t); // ASCII range only
  * \brief wcsregexp - Matches a regular expression
  * \param rx: the regular expression
  * \param tx: the text to be matched
- * \param size: a pointer to integer where the matching lenght is stored
+ * \param size: a pointer to integer where the matching length is stored
  *
  * Matches the string tx for the regular expression in rx.
  * On output, the integer pointer by size will contain the number
@@ -1445,7 +1445,7 @@ size_t    wstring_cstows_ws_alloc(string_ws *restrict, const char *restrict);
  *  \param destination: \ref string_ws
  *  \param format:  String type `wchar_t*`.
  *  \param arguments:  Arguments support to `vargs` types, 125 max.
- *  \return lenght of `output` produced.
+ *  \return length of `output` produced.
  *
  *  \attention curent status: broken, if out data large 8192 byte!
  *             Now, fixing output buffer size 8192 byte for *nix version.
@@ -1459,12 +1459,12 @@ size_t    wstring_cstows_ws_alloc(string_ws *restrict, const char *restrict);
 size_t    wstring_format(string_ws*, const wchar_t *restrict, ...);
 
 /*!
- *  \brief Append string: `wchar_t*`, lenght input, `struct string_ws` output
+ *  \brief Append string: `wchar_t*`, length input, `struct string_ws` output
  *
  *  \param destination: \ref string_ws
  *  \param source:  String type `wchar_t*`.
- *  \param lenght:  Lenght of `source` string.
- *  \return lenght of `output` produced.
+ *  \param length:  length of `source` string.
+ *  \return length of `output` produced.
  *
  *  \attention function `wstring_append()` requires to free the returned result
  *
@@ -1479,7 +1479,7 @@ size_t    wstring_append(string_ws*, const wchar_t *restrict, size_t);
  *
  *  \param destination: \ref string_ws
  *  \param arguments:  Strings type `wchar_t*`, 126 max.
- *  \return lenght of `output` produced.
+ *  \return length of `output` produced.
  *
  *  \note Do not use this function directly, first use the `wstring_appends()` macro,
  *        or end the last function's parameters with a value of `NULL`.
@@ -1497,12 +1497,12 @@ size_t    wstring_appends_(string_ws*, ...);
 #define   wstring_appends(A,...) wstring_appends_(A,__VA_ARGS__,NULL)
 
 /*!
- *  \brief Append string: source type `char*`, lenght input, `struct string_ws` output
+ *  \brief Append string: source type `char*`, length input, `struct string_ws` output
  *
  *  \param destination: \ref string_ws
  *  \param source:  String type `char*`.
- *  \param lenght:  Lenght of `source` string.
- *  \return lenght of `output` produced.
+ *  \param length:  length of `source` string.
+ *  \return length of `output` produced.
  *
  *  \attention function `wstring_append_cvt()` requires to free the returned result
  *
@@ -1588,7 +1588,7 @@ int       wstring_isempty(const wchar_t *restrict s, int);
 string_ws wstring_trunc(const wchar_t *ws, int);
 
 /*!
- *  \brief Truncation string, wchar_t input, return pointer to struct string_ws and lenght
+ *  \brief Truncation string, wchar_t input, return pointer to struct string_ws and length
  */
 size_t    wstring_trunc_alloc(string_ws *restrict, const wchar_t*, int);
 
@@ -2117,7 +2117,7 @@ static inline void __attribute__((always_inline)) __wsfree(void *v)
 #define fprintf _fprintf
 #define printf _printf
 
-/*! Tests compability only */
+/*! Tests compatibility only */
 #define _wcprint wcprint
 #define _wcsregexp wcsregexp
 #define _wcstocscmp wcstocscmp

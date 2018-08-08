@@ -2,4 +2,5 @@
 toomanyconfigs
 purgedConfiguration
 unusedFunction
+unmatchedSuppression
 variableScope
