@@ -40,7 +40,7 @@
         _T *p;                                                  \
         if (                                                    \
             (!(p = _F(ws, _P))) ||                              \
-            ((off = (p - ws)) <= 0)                             \
+            ((off = (int)(p - ws)) <= 0)                        \
            ) { return (_T *)ws; }                               \
         off += ((issep > 0) ? 1 : 0);                           \
         p = (_T *)ws;                                           \

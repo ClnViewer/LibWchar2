@@ -37,7 +37,7 @@ size_t _mbrtowc(wchar_t *restrict wc, const char *restrict src, size_t n, mbstat
     static unsigned is = 0U;
     unsigned int c;
     const unsigned char *s = (const void*)src;
-    const unsigned int N = n;
+    const unsigned int N = (unsigned int)n;
 
     if (!st)
     {

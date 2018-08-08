@@ -236,16 +236,16 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 		} while (y);
 
 		if (p && s-buf-2 < p)
-			l = (p+2) + (ebuf-estr);
+			l = (int)((p + 2) + (ebuf - estr));
 		else
-			l = (s-buf) + (ebuf-estr);
+			l = (int)((s - buf) + (ebuf - estr));
 
-		pad(f, ' ', w, pl+l, fl);
+		pad(f, ' ', w, (pl + l), fl);
 		out(f, prefix, pl);
-		pad(f, '0', w, pl+l, fl ^ __S_ZERO_PAD);
-		out(f, buf, s-buf);
-		pad(f, '0', (l - (ebuf - estr) - (s - buf)), 0, 0);
-		out(f, estr, ebuf-estr);
+		pad(f, '0', w, (pl + l), fl ^ __S_ZERO_PAD);
+		out(f, buf, (int)(s - buf));
+		pad(f, '0', (int)(l - (ebuf - estr) - (s - buf)), 0, 0);
+		out(f, estr, (int)(ebuf - estr));
 		pad(f, ' ', w, pl+l, fl ^ __S_LEFT_ADJ);
 		return __MAX(w, pl+l);
 	}
@@ -288,7 +288,7 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 	}
 
 	if (a<z) {
-            for (i = 10, e = (9 * (r - a)); *a >= (uint32_t)i; i*= 10, e++);
+            for (i = 10, e = (int)(9 * (r - a)); *a >= (uint32_t)i; i*= 10, e++);
 	} else { e = 0; }
 
 	/* Perform rounding: j is precision after the radix (possibly neg) */
@@ -340,7 +340,7 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 				{
 				    a = d;
 				}
-				for (i = 10, e = (9 * (r-a)); *a >= (uint32_t)i; i *= 10, e++);
+				for (i = 10, e = (int)(9 * (r-a)); *a >= (uint32_t)i; i *= 10, e++);
 			}
 		}
 		if (z > (d + 1))
@@ -371,11 +371,11 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 			}
 			if ((t | 32)=='f')
 			{
-			    p = __MIN(p,__MAX(0, (9 * (z - r - 1) - j)));
+			    p = (int) __MIN(p,__MAX(0, (9 * (z - r - 1) - j)));
 			}
 			else
 			{
-			    p = __MIN(p,__MAX(0, (9 * (z - r - 1) + e - j)));
+			    p = (int) __MIN(p,__MAX(0, (9 * (z - r - 1) + e - j)));
 			}
 		}
 	}
@@ -387,7 +387,7 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 		while((ebuf - estr) < 2) { *--estr = '0'; }
 		*--estr = (e < 0 ? '-' : '+');
 		*--estr = (char)t;
-		l += ebuf-estr;
+		l += (int)(ebuf - estr);
 	}
 
 	pad(f, ' ', w, pl+l, fl);
@@ -400,7 +400,7 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 			char *s = fmt_u(*d, buf+9);
 			if (d!=a) while (s>buf) *--s='0';
 			else if (s==buf+9) *--s='0';
-			out(f, s, buf+9-s);
+			out(f, s, (int)(buf + 9 - s));
 		}
 		if (p || (fl & __S_ALT_FORM)) out(f, ".", 1);
 		for (; d<z && p>0; d++, p-=9) {
@@ -419,14 +419,14 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 				out(f, s++, 1);
 				if (p>0||(fl & __S_ALT_FORM)) out(f, ".", 1);
 			}
-			out(f, s, __MIN(buf+9-s, p));
-			p -= buf+9-s;
+			out(f, s, (int) __MIN(buf+9-s, p));
+			p -= (int)(buf + 9 - s);
 		}
-		pad(f, '0', p+18, 18, 0);
-		out(f, estr, ebuf-estr);
+		pad(f, '0', (p + 18), 18, 0);
+		out(f, estr, (int)(ebuf - estr));
 	}
 
-	pad(f, ' ', w, pl+l, fl ^ __S_LEFT_ADJ);
+	pad(f, ' ', w, (pl + l), fl ^ __S_LEFT_ADJ);
 
 	return __MAX(w, pl+l);
 }
@@ -463,7 +463,7 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 		/* Handle literal text and %% format specifiers */
 		for (a=s; *s && *s!='%'; s++);
 		for (z=s; s[0]=='%' && s[1]=='%'; z++, s+=2);
-		l = z-a;
+		l = (int)(z - a);
 		if (f) out(f, a, l);
 		if (l) continue;
 
@@ -589,7 +589,7 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 				a = z;
 				break;
 			}
-			p = __MAX(p, z-a + !arg.i);
+			p = (int) __MAX(p, z-a + !arg.i);
 			break;
 		case 'c':
 			*(a = z - (p = 1)) = (char)arg.i;
@@ -605,7 +605,7 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
                         if (p >= 0) {
                           z = memchr(a, 0, (size_t)p);
                           if (!z) z=a+p;
-                          else p=z-a;
+                          else p = (int)(z - a);
                         } else {
                           p = (int)strlen(a);
                           z=a+p;
@@ -651,15 +651,15 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 			continue;
 		}
 
-		if (p < z-a) p = z-a;
-		if (w < pl+p) w = pl+p;
+		if (p < z-a) p = (int)(z - a);
+		if (w < pl+p) w = (pl + p);
 
-		pad(f, ' ', w, pl+p, (int)fl);
+		pad(f, ' ', w, (pl + p), (int)fl);
 		out(f, prefix, pl);
-		pad(f, '0', w, pl+p, (int)(fl ^ __U_ZERO_PAD));
-		pad(f, '0', p, z-a, 0);
-		out(f, a, z-a);
-		pad(f, ' ', w, pl+p, (int)(fl ^ __U_LEFT_ADJ));
+		pad(f, '0', w, (pl + p), (int)(fl ^ __U_ZERO_PAD));
+		pad(f, '0', p, (int)(z - a), 0);
+		out(f, a, (int)(z - a));
+		pad(f, ' ', w, (pl + p), (int)(fl ^ __U_LEFT_ADJ));
 
 		l = w;
 	}

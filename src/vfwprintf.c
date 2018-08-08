@@ -195,7 +195,7 @@ static const char sizeprefix['y'-'a'] = {
 static int wprintf_core(FOut *f, const wchar_t *fmt, va_list *ap, union arg *nl_arg, int *nl_type)
 {
 	wchar_t *a, *z, *s = (wchar_t*)fmt;
-	unsigned l10n=0, litpct, fl;
+	unsigned int l10n = 0, litpct, fl;
 	int w, p;
 	union arg arg;
 	int argpos;
@@ -219,10 +219,10 @@ static int wprintf_core(FOut *f, const wchar_t *fmt, va_list *ap, union arg *nl_
 
 		/* Handle literal text and %% format specifiers */
 		for (a=s; *s && *s!='%'; s++);
-		litpct = _wcsspn(s, L"%")/2; /* Optimize %%%% runs */
+		litpct = (unsigned int) _wcsspn(s, L"%")/2; /* Optimize %%%% runs */
 		z  = s + litpct;
 		s += 2 * litpct;
-		l = z-a;
+		l = (int)(z - a);
 		if (f) out(f, a, (size_t)l);
 		if (l) continue;
 
@@ -319,7 +319,7 @@ static int wprintf_core(FOut *f, const wchar_t *fmt, va_list *ap, union arg *nl_
 			a = arg.p;
 			z = _wmemchr(a, 0, (size_t)p);
 			if (!z)    z = a + p;
-			else       p = z - a;
+			else       p = (int)(z - a);
 			if (w < p) w = p;
 			if (!(fl & __U_LEFT_ADJ)) out_printf(f, "%.*s", (w - p), "");
 			out(f, a, (size_t)p);
