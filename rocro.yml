@@ -6,14 +6,12 @@ inspecode:
       --std: c99
       -Iinclude:
       -Isrc:
-      -D:
-	__GNUC__
-      -U:
-	_WIN32
-	__clang__
-	__CYGWIN__
-	__APPLE__
-	_MSC_VER
+      -D__GNUC__:
+      -U_WIN32:
+      -U__clang__:
+      -U__CYGWIN__:
+      -U__APPLE__:
+      -U_MSC_VER:
       --platform: unix32
       --inline-suppr:
       --suppress: toomanyconfigs
