@@ -33,7 +33,7 @@ inspecode:
         example/*.*
     thresholds:
       num-issues:
-        #information: 0
-        #style: 20
-        #performance: 20
-        #portability: 20
+        information: 300
+        style: 300
+        performance: 300
+        portability: 300
