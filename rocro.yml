@@ -17,12 +17,11 @@ inspecode:
         _MSC_VER
       --platform: unix32
       --inline-suppr:
-      --suppress:
-        toomanyconfigs
-        purgedConfiguration
-        unusedFunction
-        unmatchedSuppression
-        ConfigurationNotChecked
+      --suppress: toomanyconfigs
+      --suppress: purgedConfiguration
+      --suppress: unusedFunction
+      --suppress: unmatchedSuppression
+      --suppress: ConfigurationNotChecked
       --max-configs: 20
       #--force:
       --inconclusive:
