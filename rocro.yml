@@ -4,20 +4,32 @@ inspecode:
       --enable: all
       --inline-suppr:
       --std: c11
-      -D: __GNUC__
-      -U: _WIN32
+      --platform: unix32
+      -I:
+        - include
+      -D:
+        - __GNUC__
+        - __SIZEOF_WCHAR_T__=2
+      -U:
+        - _WIN32
+        - __clang__
+        - __CYGWIN__
+        - __APPLE__
       --inline-suppr:
-      --suppress: toomanyconfigs
-      --suppress: purgedConfiguration
-      --suppress: unusedFunction
-      --suppress: unmatchedSuppression
-      --suppress: ConfigurationNotChecked
+      --suppress:
+        - toomanyconfigs
+        - purgedConfiguration
+        - unusedFunction
+        - unmatchedSuppression
+        - ConfigurationNotChecked
       --max-configs: 20
       #--force:
       --inconclusive:
     ignore:
-      test
-      examples
+        - test/*.*
+        - test/**/*.*
+        - examples/*.*
+        - examples/**/*.*
     thresholds:
       num-issues:
         #information: 0
