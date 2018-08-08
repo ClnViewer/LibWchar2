@@ -1,4 +1,4 @@
-.TH "include/wchar2.h" 3 "Tue Aug 7 2018" "libwchar2 0.0.8" \" -*- nroff -*-
+.TH "include/wchar2.h" 3 "Wed Aug 8 2018" "libwchar2 0.0.8" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -667,7 +667,7 @@ include/wchar2.h
 .ti -1c
 .RI "size_t \fBwstring_append\fP (\fBstring_ws\fP *, const wchar_t *restrict, size_t)"
 .br
-.RI "Append string: \fCwchar_t*\fP, lenght input, \fCstruct \fBstring_ws\fP\fP output\&. "
+.RI "Append string: \fCwchar_t*\fP, length input, \fCstruct \fBstring_ws\fP\fP output\&. "
 .ti -1c
 .RI "size_t \fBwstring_appends_\fP (\fBstring_ws\fP *,\&.\&.\&.)"
 .br
@@ -675,7 +675,7 @@ include/wchar2.h
 .ti -1c
 .RI "size_t \fBwstring_append_cvt\fP (\fBstring_ws\fP *, const char *restrict, size_t)"
 .br
-.RI "Append string: source type \fCchar*\fP, lenght input, \fCstruct \fBstring_ws\fP\fP output\&. "
+.RI "Append string: source type \fCchar*\fP, length input, \fCstruct \fBstring_ws\fP\fP output\&. "
 .ti -1c
 .RI "size_t \fBwstring_cstows\fP (wchar_t [], size_t, const char *restrict, size_t)"
 .br
@@ -707,7 +707,7 @@ include/wchar2.h
 .ti -1c
 .RI "size_t \fBwstring_trunc_alloc\fP (\fBstring_ws\fP *restrict, const wchar_t *, int)"
 .br
-.RI "Truncation string, wchar_t input, return pointer to struct \fBstring_ws\fP and lenght\&. "
+.RI "Truncation string, wchar_t input, return pointer to struct \fBstring_ws\fP and length\&. "
 .ti -1c
 .RI "int \fB_wclosedir\fP (\fBWDIR_t\fP *)"
 .br
@@ -2140,7 +2140,7 @@ wcsregexp - Matches a regular expression Original name: aov-rx - Angel Ortega's 
 .br
 \fItx\fP the text to be matched 
 .br
-\fIsize\fP a pointer to integer where the matching lenght is stored
+\fIsize\fP a pointer to integer where the matching length is stored
 .RE
 .PP
 Matches the string tx for the regular expression in rx\&. On output, the integer pointer by size will contain the number of matched characters (with 0 meaning that no matching was possible)\&. If the end of string mark ($) is used in the regular expression and a match is effective, the ending zero is included in the match\&.
@@ -2167,7 +2167,7 @@ function wcstou8s requires to free the returned result
 .SS "size_t wstring_append (\fBstring_ws\fP *, const wchar_t * restrict, size_t)"
 
 .PP
-Append string: \fCwchar_t*\fP, lenght input, \fCstruct \fBstring_ws\fP\fP output\&. 
+Append string: \fCwchar_t*\fP, length input, \fCstruct \fBstring_ws\fP\fP output\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -2175,12 +2175,12 @@ Append string: \fCwchar_t*\fP, lenght input, \fCstruct \fBstring_ws\fP\fP output
 .br
 \fIsource\fP String type \fCwchar_t*\fP\&. 
 .br
-\fIlenght\fP Lenght of \fCsource\fP string\&. 
+\fIlength\fP length of \fCsource\fP string\&. 
 .RE
 .PP
 \fBReturns:\fP
 .RS 4
-lenght of \fCoutput\fP produced\&.
+length of \fCoutput\fP produced\&.
 .RE
 .PP
 \fBAttention:\fP
@@ -2201,7 +2201,7 @@ function \fC\fBwstring_append()\fP\fP requires to free the returned result
 .SS "size_t wstring_append_cvt (\fBstring_ws\fP *, const char * restrict, size_t)"
 
 .PP
-Append string: source type \fCchar*\fP, lenght input, \fCstruct \fBstring_ws\fP\fP output\&. 
+Append string: source type \fCchar*\fP, length input, \fCstruct \fBstring_ws\fP\fP output\&. 
 .PP
 \fBParameters:\fP
 .RS 4
@@ -2209,12 +2209,12 @@ Append string: source type \fCchar*\fP, lenght input, \fCstruct \fBstring_ws\fP\
 .br
 \fIsource\fP String type \fCchar*\fP\&. 
 .br
-\fIlenght\fP Lenght of \fCsource\fP string\&. 
+\fIlength\fP length of \fCsource\fP string\&. 
 .RE
 .PP
 \fBReturns:\fP
 .RS 4
-lenght of \fCoutput\fP produced\&.
+length of \fCoutput\fP produced\&.
 .RE
 .PP
 \fBAttention:\fP
@@ -2237,7 +2237,7 @@ Append strings, only \fCwchar_t*\fP strings args inputs, \fCstruct \fBstring_ws\
 .PP
 \fBReturns:\fP
 .RS 4
-lenght of \fCoutput\fP produced\&.
+length of \fCoutput\fP produced\&.
 .RE
 .PP
 \fBNote:\fP
@@ -2333,7 +2333,7 @@ Append string, format \fCvargs\fP support input, \fCstruct \fBstring_ws\fP\fP ou
 .PP
 \fBReturns:\fP
 .RS 4
-lenght of \fCoutput\fP produced\&.
+length of \fCoutput\fP produced\&.
 .RE
 .PP
 \fBAttention:\fP

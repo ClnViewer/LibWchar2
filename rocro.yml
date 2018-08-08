@@ -6,8 +6,8 @@ inspecode:
       --inline-suppr:
       --std=c99:
       -I:
-    include/
-    src/
+        include/
+        src/
       -D:
         __GNUC__
       -U:
