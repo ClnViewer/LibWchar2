@@ -32,16 +32,9 @@ inspecode:
         src/*.c
         src/*.h
         include/*.h
-    ignore:
-        test/*.*
-        test/**/*.*
-        examples/*.*
-        examples/**/*.*
     thresholds:
       num-issues:
         #information: 0
         #style: 20
         #performance: 20
         #portability: 20
-
-  scan-build: default
