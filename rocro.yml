@@ -4,17 +4,16 @@ inspecode:
       --enable: all
       --inline-suppr:
       --std: c99
-      -I:
-        include
-        src
+      -Iinclude:
+      -Isrc:
       -D:
-        __GNUC__
+	__GNUC__
       -U:
-        _WIN32
-        __clang__
-        __CYGWIN__
-        __APPLE__
-        _MSC_VER
+	_WIN32
+	__clang__
+	__CYGWIN__
+	__APPLE__
+	_MSC_VER
       --platform: unix32
       --inline-suppr:
       --suppress: toomanyconfigs
@@ -39,4 +38,4 @@ inspecode:
     options:
       - -analyze-headers
       - -k
-      - --: [./configure, make, -C, test, check]
+      - --: [make, check]
