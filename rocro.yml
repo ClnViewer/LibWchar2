@@ -4,15 +4,8 @@ inspecode:
       --enable: all
       --inline-suppr:
       --std: c99
-      -I: include
-      -I: src
       -D: __GNUC__
       -U: _WIN32
-      -U: __clang__
-      -U: __CYGWIN__
-      -U: __APPLE__
-      -U: _MSC_VER
-      --platform: unix32
       --inline-suppr:
       --suppress: toomanyconfigs
       --suppress: purgedConfiguration
@@ -23,8 +16,12 @@ inspecode:
       #--force:
       --inconclusive:
     ignore:
-      test/*
-      examples/*
+      test/*.c
+      test/*.h
+      examples/*.c
+      examples/*.h
+      examples/**/*.c
+      examples/**/*.h
     thresholds:
       num-issues:
         #information: 0
