@@ -4,14 +4,14 @@ inspecode:
       --enable: all
       --inline-suppr:
       --std: c99
-      -Iinclude:
-      -Isrc:
-      -D__GNUC__:
-      -U_WIN32:
-      -U__clang__:
-      -U__CYGWIN__:
-      -U__APPLE__:
-      -U_MSC_VER:
+      -I: include
+      -I: src
+      -D: __GNUC__
+      -U: _WIN32
+      -U: __clang__
+      -U: __CYGWIN__
+      -U: __APPLE__
+      -U: _MSC_VER
       --platform: unix32
       --inline-suppr:
       --suppress: toomanyconfigs
