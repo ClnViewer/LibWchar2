@@ -22,6 +22,8 @@ inspecode:
         - unusedFunction
         - unmatchedSuppression
         - ConfigurationNotChecked
+        - preprocessorErrorDirective
+        - missingIncludeSystem
       --max-configs: 20
       #--force:
       --inconclusive:
@@ -41,4 +43,6 @@ inspecode:
     options:
       - -analyze-headers
       - -k
+      - --: ./configure
       - --: [make, check]
+
