@@ -16,18 +16,14 @@ inspecode:
       #--force:
       --inconclusive:
     ignore:
-      test/*.c
-      test/*.h
-      examples/*.c
-      examples/*.h
-      examples/**/*.c
-      examples/**/*.h
+      test
+      examples
     thresholds:
       num-issues:
         #information: 0
-        style: 0
-        performance: 0
-        portability: 0
+        #style: 20
+        #performance: 20
+        #portability: 20
 
   scan-build:
     options:
