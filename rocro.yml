@@ -28,10 +28,9 @@ inspecode:
       --max-configs: 20
       #--force:
       --inconclusive:
-    input:
-        src/*.c
-        src/*.h
-        include/*.h
+    ignore:
+        test/*.*
+        example/*.*
     thresholds:
       num-issues:
         #information: 0
