@@ -1,4 +1,4 @@
-.TH "include/wchar2.h" 3 "Wed Aug 8 2018" "libwchar2 0.0.8" \" -*- nroff -*-
+.TH "include/wchar2.h" 3 "Thu Aug 9 2018" "libwchar2 0.0.8" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -413,43 +413,43 @@ include/wchar2.h
 .br
 .RI "Compare wide characters in memory\&. "
 .ti -1c
-.RI "size_t \fB_vfprintf\fP (FILE *restrict, const char *restrict, va_list)"
+.RI "int \fB_vfprintf\fP (FILE *restrict, const char *restrict, va_list)"
 .br
 .RI "Write to stream char format variable argument list\&. "
 .ti -1c
-.RI "size_t \fB_vsnprintf\fP (char *restrict, size_t, const char *restrict, va_list)"
+.RI "int \fB_vsnprintf\fP (char *restrict, size_t, const char *restrict, va_list)"
 .br
 .RI "Write formatted data from variable argument list to sized buffer\&. "
 .ti -1c
-.RI "size_t \fB_fprintf\fP (FILE *restrict, const char *restrict,\&.\&.\&.)"
+.RI "int \fB_fprintf\fP (FILE *restrict, const char *restrict,\&.\&.\&.)"
 .br
 .RI "Write to stream char format variable arguments\&. "
 .ti -1c
-.RI "size_t \fB_printf\fP (const char *restrict fmt,\&.\&.\&.)"
+.RI "int \fB_printf\fP (const char *restrict fmt,\&.\&.\&.)"
 .br
 .RI "Write to stdout char format variable arguments\&. "
 .ti -1c
-.RI "size_t \fB_snprintf\fP (char *restrict, size_t, const char *restrict,\&.\&.\&.)"
+.RI "int \fB_snprintf\fP (char *restrict, size_t, const char *restrict,\&.\&.\&.)"
 .br
 .RI "Format variable arguments list\&. "
 .ti -1c
-.RI "size_t \fB_vfwprintf\fP (FILE *restrict, const wchar_t *restrict, va_list)"
+.RI "int \fB_vfwprintf\fP (FILE *restrict, const wchar_t *restrict, va_list)"
 .br
 .RI "Write to stream wide character format variable argument list\&. "
 .ti -1c
-.RI "size_t \fB_vswprintf\fP (wchar_t *restrict, size_t, const wchar_t *restrict, va_list)"
+.RI "int \fB_vswprintf\fP (wchar_t *restrict, size_t, const wchar_t *restrict, va_list)"
 .br
 .RI "Write formatted data from variable argument list to sized buffer\&. "
 .ti -1c
-.RI "size_t \fB_fwprintf\fP (FILE *restrict, const wchar_t *restrict,\&.\&.\&.)"
+.RI "int \fB_fwprintf\fP (FILE *restrict, const wchar_t *restrict,\&.\&.\&.)"
 .br
 .RI "Write to stream wide character format variable arguments\&. "
 .ti -1c
-.RI "size_t \fB_swprintf\fP (wchar_t *restrict, size_t, const wchar_t *restrict,\&.\&.\&.)"
+.RI "int \fB_swprintf\fP (wchar_t *restrict, size_t, const wchar_t *restrict,\&.\&.\&.)"
 .br
 .RI "Write formatted wide character output\&. "
 .ti -1c
-.RI "size_t \fB_wprintf\fP (const wchar_t *restrict fmt,\&.\&.\&.)"
+.RI "int \fB_wprintf\fP (const wchar_t *restrict fmt,\&.\&.\&.)"
 .br
 .RI "Write a formatted wide character string to 'stdout'\&. "
 .ti -1c
@@ -625,7 +625,7 @@ include/wchar2.h
 .br
 .RI "Automatic type selector for wbasedir* functions\&. "
 .ti -1c
-.RI "wchar_t * \fB_wpathnormalize\fP (const wchar_t *, int)"
+.RI "wchar_t * \fB_wpathnormalize\fP (const wchar_t *, size_t)"
 .br
 .RI "Normalize slash from path, wide char input, int is string size, default 0\&. "
 .ti -1c
@@ -938,7 +938,7 @@ Write a wide character string to a file or stream\&.
 \fBfputws\fP 
 .PP
 
-.SS "size_t _fwprintf (FILE * restrict, const wchar_t * restrict,  \&.\&.\&.)"
+.SS "int _fwprintf (FILE * restrict, const wchar_t * restrict,  \&.\&.\&.)"
 
 .PP
 Write to stream wide character format variable arguments\&. 
@@ -1114,7 +1114,7 @@ Minimal multibyte to wide char converter\&.
 \fBmbtowc manual\fP 
 .PP
 
-.SS "size_t _swprintf (wchar_t * restrict, size_t, const wchar_t * restrict,  \&.\&.\&.)"
+.SS "int _swprintf (wchar_t * restrict, size_t, const wchar_t * restrict,  \&.\&.\&.)"
 
 .PP
 Write formatted wide character output\&. 
@@ -1146,7 +1146,7 @@ Translate wide characters to uppercase\&.
 \fBtowupper manual\fP 
 .PP
 
-.SS "size_t _vfwprintf (FILE * restrict, const wchar_t * restrict, va_list)"
+.SS "int _vfwprintf (FILE * restrict, const wchar_t * restrict, va_list)"
 
 .PP
 Write to stream wide character format variable argument list\&. 
@@ -1154,7 +1154,7 @@ Write to stream wide character format variable argument list\&.
 \fBwprintf manual\fP 
 .PP
 
-.SS "size_t _vswprintf (wchar_t * restrict, size_t, const wchar_t * restrict, va_list)"
+.SS "int _vswprintf (wchar_t * restrict, size_t, const wchar_t * restrict, va_list)"
 
 .PP
 Write formatted data from variable argument list to sized buffer\&. 
@@ -1771,7 +1771,7 @@ Opens a directory stream and returns a pointer to the stream\&. The stream is se
 \fBSupport:\fP 
 .PP
 IBM  GNU  MinGW  MSVC/MSVS   ?  This code  x  This code   
-.SS "wchar_t* _wpathnormalize (const wchar_t *, int)"
+.SS "wchar_t* _wpathnormalize (const wchar_t *, size_t)"
 
 .PP
 Normalize slash from path, wide char input, int is string size, default 0\&. 
@@ -1787,7 +1787,7 @@ all functions _wpathnormalize* requires to free the returned result, use type __
 .RE
 .PP
 
-.SS "size_t _wprintf (const wchar_t *restrict fmt,  \&.\&.\&.)"
+.SS "int _wprintf (const wchar_t *restrict fmt,  \&.\&.\&.)"
 
 .PP
 Write a formatted wide character string to 'stdout'\&. 
