@@ -119,6 +119,7 @@ static void out(FILE *f, const char *s, int l)
 #define __BUILD_vfprintf 1
 #include "vfxprint.h"
 #include "vfxprint.c"
+#undef __BUILD_vfprintf
 
 static void pad(Out* f, char c, int w, int l, int fl)
 {

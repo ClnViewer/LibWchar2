@@ -97,7 +97,7 @@ wchar_t * _wbasedir(const wchar_t *ws, int issep)
     size_t   sz = _wcslen(ws);
 
     if (
-        (sz <= 0)  ||
+        (!sz)  ||
         ((p = calloc(sizeof(wchar_t), sz)) == NULL)
     )
     {
@@ -115,7 +115,7 @@ wchar_t * _wbasedir_ws(const string_ws *ws, int issep)
     sz = ((!sz) ? _wcslen(ws->str) : sz);
 
     if (
-        (sz <= 0)  ||
+        (!sz)  ||
         ((p = calloc(sizeof(wchar_t), sz)) == NULL)
     )
     {
@@ -168,7 +168,7 @@ void * _wbasedir_selector(int sel, const void *w, int issep)
     }
 
     if (
-        (sz <= 0)  ||
+        (!sz)  ||
         (!pp)      ||
         ((p = calloc(esz, sz)) == NULL)
     )

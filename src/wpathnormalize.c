@@ -41,7 +41,7 @@ wchar_t * _wpathnormalize(const wchar_t *ws, size_t sz)
     errno = 0;
 
     if (
-        (sz <= 0)  ||
+        (!sz)  ||
         ((p = calloc(sizeof(wchar_t), sz)) == NULL)
     )
     {
