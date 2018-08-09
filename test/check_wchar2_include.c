@@ -1,3 +1,8 @@
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#pragma GCC diagnostic ignored "-Wsign-conversion"
+
 #include "test_btowc.c"
 #include "test_fputwc.c"
 #include "test_fputws.c"
@@ -77,3 +82,4 @@
 #include "test_wstring.c"
 #include "test_wdir.c"
 
+#pragma GCC diagnostic pop

@@ -68,9 +68,13 @@ size_t u8stowcs(wchar_t *wcs, const char *u8s)
                     u8 = *(u8s + rp_u8s++);
                     if ((_u8bit & u8) == _u8bit)
                     {
+#                       if !defined(_MSC_VER)
 #                       pragma GCC diagnostic ignored "-Wconversion"
+#                       endif
                         wc += (unsigned short)((u8 ^ _u8bit) << b * _u8vallen);
+#                       if !defined(_MSC_VER)
 #                       pragma GCC diagnostic warning "-Wconversion"
+#                       endif
                     }
                     else
                     {
