@@ -14,6 +14,7 @@ START_TEST(test_wcstonum)
     unsigned long int ulr;
     unsigned long long int ullr;
 
+// cppcheck-suppress invalidFunctionArg
     lr = wcstol(wstr, NULL, 1);
     ck_assert_int_eq(errno, EINVAL);
     ck_assert(lr == 0L);

@@ -1328,7 +1328,7 @@ IBM  GNU  MinGW  MSVC/MSVS   x  x  This code  This code
 .PP
 .nf
         time_t t;
-        struct tm *tmi = NULL, tms = {0};
+        struct tm *tmi, tms = {0};
         wchar_t buffer [180] = {0};
 
         t = time(NULL);
@@ -1336,8 +1336,10 @@ IBM  GNU  MinGW  MSVC/MSVS   x  x  This code  This code
 #       if defined(_MSC_VER)
         if (localtime_s(&tms, &t))
             break;
+
         tmi = &tms;
 #       else
+        // cppcheck-suppress redundantAssignment
         tmi = localtime(&t);
 #       endif
 
@@ -1443,7 +1445,7 @@ IBM  GNU  MinGW  MSVC/MSVS   x  This code  This code  This code
 .PP
 .nf
         time_t t;
-        struct tm *tmi = NULL, tms = {0};
+        struct tm *tmi, tms = {0};
         wchar_t buffer [180] = {0};
 
         t = time(NULL);
@@ -1451,8 +1453,10 @@ IBM  GNU  MinGW  MSVC/MSVS   x  This code  This code  This code
 #       if defined(_MSC_VER)
         if (localtime_s(&tms, &t))
             break;
+
         tmi = &tms;
 #       else
+        // cppcheck-suppress redundantAssignment
         tmi = localtime(&t);
 #       endif
 
@@ -2253,6 +2257,7 @@ function \fC\fBwstring_appends_()\fP\fP requires to free the returned result
 \fBExample:\fP 
 .PP
 .nf
+    // cppcheck-suppress varFuncNullUB
     sz = wstring_appends_(&dst, (wchar_t*)a\&.str, (wchar_t*)aaa\&.str, (wchar_t*)aa\&.str, NULL);
     printf("\n\t*(%d) wstring_appends: [%ls][%zu] -> [%zu]\n", __LINE__, dst\&.str, dst\&.sz, sz);
     wstring_free(&dst);

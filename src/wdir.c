@@ -66,6 +66,7 @@ static int __dir_entry_path(string_ws *w, wchar_t *path, wchar_t *name)
     wchar_t sep[2]  = { __WEV(L,__PSEP), L'\0' };
     memset((void*)w,  0, sizeof(string_ws));
 
+    // cppcheck-suppress varFuncNullUB
     if (!wstring_appends_(w, path, sep, name, NULL))
         return 0;
 

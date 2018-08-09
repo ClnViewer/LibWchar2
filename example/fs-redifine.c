@@ -47,12 +47,13 @@ int main(int argc, char *argv[])
     __WSTR      *file    = __WS("open-file-name.txt");
     __WSTR      *string  = __WS("A texts is a type of computer program that edits plain text.");
     __WSTR      *bext    = __WS("--NOT SUPPORT LIBWCHAR2 EXTENSION--"),
-                *bname   = NULL;
-    __WSTRFREE  *bdir    = NULL;
+                *bname;
+    __WSTRFREE  *bdir;
 
     bdir   = dirname((__WSTR*)fpath); /* free instance needed, auto free is enabled */
     bname  = basename((__WSTR*)fpath);
 #   if defined(WS_FS_REDEFINE)
+    // cppcheck-suppress redundantAssignment
     bext   = baseext((__WSTR*)fpath);
 #   endif
 

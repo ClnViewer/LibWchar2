@@ -9,7 +9,7 @@ START_TEST (test_wcsrtombs)
 {
     const wchar_t  chars[] = { L'h', L'e', L'l', L'l', L'o', L'\0' };
     wchar_t       *string1 = L"Hello! \x20AC Hello!";
-    const wchar_t *src     = NULL;
+    const wchar_t *src;
     char           bytes[BUFSIZ] = {0};
     size_t         ret;
     errno                  = 0;

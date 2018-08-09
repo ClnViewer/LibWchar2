@@ -113,6 +113,7 @@ int main(int argc, char *argv[])
     printf( "]\n\t -> [%d/%zu]\n", strlen_w(t), _wcslen(t));
     printf("\t(%d) strerror: [%s]\n", __LINE__, strerror(errno)); errno = 0;
 
+// cppcheck-suppress redundantAssignment
     sz1 = _wcslen(wcs1);
     printf("\t(%d) strerror: [%s]\n", __LINE__, strerror(errno)); errno = 0;
 
@@ -120,6 +121,7 @@ int main(int argc, char *argv[])
 //    sz2 = _wcstombs(b0, wcs1, ((sz1 + 1) * 4)); b0[sz2] = '\0';
 //    printf( "\t[%s] [%d/%d]\n", b0, sz1, sz2);
 
+// cppcheck-suppress redundantAssignment
     sz1 = strlen(c);
     sz2 = _wcslen(wcs1);
     printf("\t(%d) strerror: [%s]\n", __LINE__, strerror(errno)); errno = 0;
@@ -132,6 +134,7 @@ int main(int argc, char *argv[])
     fwprintf(stdout, L"\t fwprintf \t wcs1: [%S] [%s] [%d/%d]\n", wcs1, c, sz1, sz2);
     printf("\t(%d) strerror: [%s]\n", __LINE__, strerror(errno)); errno = 0;
 
+// cppcheck-suppress redundantAssignment
     cfile = malloc(wcstou8s(NULL, wfile) + 1);
     sz1 = wcstou8s(cfile, wfile);
     sz2 = strlen(cfile);

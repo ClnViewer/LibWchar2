@@ -101,6 +101,7 @@ int main(int argc, char *argv[])
     //! [Example use ws-cs convert]
 
     //! [Example use wstring_appends code]
+    // cppcheck-suppress varFuncNullUB
     sz = wstring_appends_(&dst, (wchar_t*)a.str, (wchar_t*)aaa.str, (wchar_t*)aa.str, NULL);
     printf("\n\t*(%d) wstring_appends: [%ls][%zu] -> [%zu]\n", __LINE__, dst.str, dst.sz, sz);
     wstring_free(&dst);
@@ -177,7 +178,7 @@ int main(int argc, char *argv[])
     {
         //! [Example use wcsftime]
         time_t t;
-        struct tm *tmi = NULL, tms = {0};
+        struct tm *tmi, tms = {0};
         wchar_t buffer [180] = {0};
 
         t = time(NULL);
@@ -185,8 +186,10 @@ int main(int argc, char *argv[])
 #       if defined(_MSC_VER)
         if (localtime_s(&tms, &t))
             break;
+
         tmi = &tms;
 #       else
+        // cppcheck-suppress redundantAssignment
         tmi = localtime(&t);
 #       endif
 

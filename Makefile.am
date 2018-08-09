@@ -62,6 +62,9 @@ wwwdoxy:
 cppcheck:
 	@cppcheck --quiet --enable=all --inconclusive --report-progress --force --check-library --library=build/LibWchar2CppCheck.cfg --suppressions-list=build/LibWchar2Suppressions.txt --inline-suppr --std=c99 --platform=unix32 -D__GNUC__ -DHAVE_CONFIG_H -I.. -I./include -I./src -I/usr/include ./src 2>./check-src.cppcheck
 
+funlist:
+	@cproto src/*.c -U__SIZEOF_WCHAR_T__ -D__SIZEOF_WCHAR_T__=2 -DHAVE_CONFIG_H -q
+
 man: mandoxy doxyclean
 doc: wwwdoxy doxyclean
 

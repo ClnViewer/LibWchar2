@@ -80,7 +80,7 @@ int __cdecl __MINGW_NOTHROW strncasecmp (const char *, const char *, size_t);
 #define LEGAL_ALT(x)		{ if (alt_format & ~(x)) return NULL; }
 
 static char gmt[] = { "GMT" };
-#ifdef TM_ZONE
+#if defined(TM_ZONE)
 static char utc[] = { "UTC" };
 #endif
 
@@ -425,25 +425,25 @@ recurse:
             if (strncmp((const char *)bp, gmt, 3) == 0)
             {
                 tm->tm_isdst = 0;
-#ifdef TM_GMTOFF
-// cppcheck-suppress ConfigurationNotChecked
+#               if defined(TM_GMTOFF)
+                // cppcheck-suppress ConfigurationNotChecked
                 tm->TM_GMTOFF = 0;
-#endif
-#ifdef TM_ZONE
-// cppcheck-suppress ConfigurationNotChecked
+#               endif
+#               if defined(TM_ZONE)
+                // cppcheck-suppress ConfigurationNotChecked
                 tm->TM_ZONE = gmt;
-#endif
+#               endif
                 bp += 3;
             }
             else
             {
-#if defined(_TM_DEFINED) && defined(_MSC_VER) && !defined(_WIN32_WCE)
-#   if defined(__UNSECURE_MSC_VER)
+#           if defined(_TM_DEFINED) && defined(_MSC_VER) && !defined(_WIN32_WCE)
+#               if defined(__UNSECURE_MSC_VER)
                 _tzset();
                 ep = find_string(bp, &i,
                                  (const char * const *)tzname,
                                  NULL, 2);
-#	else
+#               else
                 size_t ret;
                 char tzbuf[128] = {0};
                 if (_get_tzname(&ret, tzbuf, 128, 0))
@@ -453,21 +453,21 @@ recurse:
                 ep = find_string(bp, &i,
                                  (const char * const *)tzbuf,
                                  NULL, 2);
-#	endif
+#               endif
                 if (ep != NULL)
                 {
                     tm->tm_isdst = i;
-#ifdef TM_GMTOFF
-// cppcheck-suppress ConfigurationNotChecked
+#                   if defined(TM_GMTOFF)
+                    // cppcheck-suppress ConfigurationNotChecked
                     tm->TM_GMTOFF = -(timezone);
-#endif
-#ifdef TM_ZONE
-// cppcheck-suppress ConfigurationNotChecked
+#                   endif
+#                   if defined(TM_ZONE)
+                    // cppcheck-suppress ConfigurationNotChecked
                     tm->TM_ZONE = tzname[i];
-#endif
+#                   endif
                 }
                 bp = ep;
-#endif
+#           endif
             }
             continue;
 
@@ -504,14 +504,14 @@ recurse:
             /*FALLTHROUGH*/
             case 'Z':
                 tm->tm_isdst = 0;
-#ifdef TM_GMTOFF
-// cppcheck-suppress ConfigurationNotChecked
+#               if defined(TM_GMTOFF)
+                // cppcheck-suppress ConfigurationNotChecked
                 tm->TM_GMTOFF = 0;
-#endif
-#ifdef TM_ZONE
-// cppcheck-suppress ConfigurationNotChecked
+#               endif
+#               if defined(TM_ZONE)
+                // cppcheck-suppress ConfigurationNotChecked
                 tm->TM_ZONE = utc;
-#endif
+#               endif
                 continue;
             case '+':
                 neg = 0;
@@ -524,14 +524,14 @@ recurse:
                 ep = find_string(bp, &i, nast, NULL, 4);
                 if (ep != NULL)
                 {
-#ifdef TM_GMTOFF
-// cppcheck-suppress ConfigurationNotChecked
+#                   if defined(TM_GMTOFF)
+                    // cppcheck-suppress ConfigurationNotChecked
                     tm->TM_GMTOFF = -5 - i;
-#endif
-#ifdef TM_ZONE
-// cppcheck-suppress ConfigurationNotChecked
+#                   endif
+#                   if defined(TM_ZONE)
+                    // cppcheck-suppress ConfigurationNotChecked
                     tm->TM_ZONE = __UNCONST(nast[i]);
-#endif
+#                   endif
                     bp = ep;
                     continue;
                 }
@@ -539,14 +539,14 @@ recurse:
                 if (ep != NULL)
                 {
                     tm->tm_isdst = 1;
-#ifdef TM_GMTOFF
-// cppcheck-suppress ConfigurationNotChecked
+#                   if defined(TM_GMTOFF)
+                    // cppcheck-suppress ConfigurationNotChecked
                     tm->TM_GMTOFF = -4 - i;
-#endif
-#ifdef TM_ZONE
-// cppcheck-suppress ConfigurationNotChecked
+#                   endif
+#                   if defined(TM_ZONE)
+                    // cppcheck-suppress ConfigurationNotChecked
                     tm->TM_ZONE = __UNCONST(nadt[i]);
-#endif
+#                   endif
                     bp = ep;
                     continue;
                 }
@@ -554,23 +554,23 @@ recurse:
                 if ((*bp >= 'A' && *bp <= 'I') ||
                         (*bp >= 'L' && *bp <= 'Y'))
                 {
-#ifdef TM_GMTOFF
+#           if defined(TM_GMTOFF)
                     /* Argh! No 'J'! */
                     if (*bp >= 'A' && *bp <= 'I')
-// cppcheck-suppress ConfigurationNotChecked
+            // cppcheck-suppress ConfigurationNotChecked
                         tm->TM_GMTOFF =
                             ('A' - 1) - (int)*bp;
                     else if (*bp >= 'L' && *bp <= 'M')
-// cppcheck-suppress ConfigurationNotChecked
+            // cppcheck-suppress ConfigurationNotChecked
                         tm->TM_GMTOFF = 'A' - (int)*bp;
                     else if (*bp >= 'N' && *bp <= 'Y')
-// cppcheck-suppress ConfigurationNotChecked
+            // cppcheck-suppress ConfigurationNotChecked
                         tm->TM_GMTOFF = (int)*bp - 'M';
-#endif
-#ifdef TM_ZONE
-// cppcheck-suppress ConfigurationNotChecked
+#           endif
+#           if defined(TM_ZONE)
+            // cppcheck-suppress ConfigurationNotChecked
                     tm->TM_ZONE = NULL; /* XXX */
-#endif
+#           endif
                     bp++;
                     continue;
                 }
@@ -610,14 +610,15 @@ recurse:
             if (neg)
                 offs = -offs;
             tm->tm_isdst = 0;  /* XXX */
-#ifdef TM_GMTOFF
-// cppcheck-suppress ConfigurationNotChecked
+
+#           if defined(TM_GMTOFF)
+            // cppcheck-suppress ConfigurationNotChecked
             tm->TM_GMTOFF = offs;
-#endif
-#ifdef TM_ZONE
-// cppcheck-suppress ConfigurationNotChecked
+#           endif
+#           if defined(TM_ZONE)
+            // cppcheck-suppress ConfigurationNotChecked
             tm->TM_ZONE = NULL;  /* XXX */
-#endif
+#           endif
             continue;
 
         /*

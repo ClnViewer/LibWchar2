@@ -27,6 +27,7 @@ START_TEST(test_wstring)
     ck_assert_int_eq(_wcslen(dst.str), 37);
     wstring_free(&dst);
 
+    // cppcheck-suppress varFuncNullUB
     ret = wstring_appends(&dst, src1, src3, src2);
     ck_assert_int_eq(ret, 37);
     _fprintf (stdout,  "\tTest wstring_appends:%d\t-> wide: [%ls][%zu] : [%zu]\n",  __LINE__, dst.str, dst.sz, ret);

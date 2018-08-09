@@ -1,6 +1,7 @@
 inspecode:
   cppcheck:
     options:
+      -q:
       --enable: all
       --inline-suppr:
       --std: c11
