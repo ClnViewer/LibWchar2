@@ -178,8 +178,9 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
             *s;
 
 	pl = 1;
-	if (signbit(y)) {
-		y =- y;
+	if (signbit(y))
+        {
+		y = -y;
 	} else if (fl & __S_MARK_POS) {
 		prefix += 3;
 	} else if (fl & __S_PAD_POS) {
@@ -196,8 +197,8 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 		return __MAX(w, 3 + pl);
 	}
 
-	y = frexpl(y, &e2) * 2;
-	if (y) e2--;
+	y = (frexpl(y, &e2) * 2);
+	if (y > 0) e2--;
 
 	if ((t|32)=='a') {
 		long double round = 8.0;
@@ -232,8 +233,8 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 			int x = (int)y;
 			*s++ = (char)(xdigits[x] | (t & 32));
 			y = (16 * (y - x));
-			if (((s - buf) == 1) && (y || p > 0 || (fl & __S_ALT_FORM))) { *s++ = '.'; }
-		} while (y);
+			if (((s - buf) == 1) && ((y > 0) || p > 0 || (fl & __S_ALT_FORM))) { *s++ = '.'; }
+		} while (y > 0);
 
 		if (p && s-buf-2 < p)
 			l = (int)((p + 2) + (ebuf - estr));
@@ -250,14 +251,14 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 		return __MAX(w, pl+l);
 	}
 	if (p < 0)  { p = 6; }
-	if (y)      { y *= 0x1p28, e2 -= 28; }
+	if (y > 0)  { y *= 0x1p28; e2 -= 28; }
 	if (e2 < 0) { a = r = z = big; }
 	else        { a = r = z = (big + sizeof(big)/sizeof(*big) - LDBL_MANT_DIG - 1); }
 
 	do {
 		*z = (uint32_t)y;
 		y = (1000000000 * (y - *z++));
-	} while (y);
+	} while (y > 0);
 
 	while (e2 > 0) {
 		uint32_t carry=0;
