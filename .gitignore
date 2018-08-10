@@ -23,7 +23,8 @@ libwchar2.pc
 /example/fs-redifine.libc
 /example/fs-redifine.wchar2
 
-!/build/LibWchar2CppCheck.cfg
+!/docs/libchar2.cfg
+!/build/STDCppCheck.cfg
 !/build/LibWchar2Suppressions.txt
 !/example/Makefile
 !/example/CMakeLists.txt
