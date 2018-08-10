@@ -1,4 +1,4 @@
-.TH "include/wchar2.h" 3 "Thu Aug 9 2018" "libwchar2 0.0.9" \" -*- nroff -*-
+.TH "include/wchar2.h" 3 "Fri Aug 10 2018" "libwchar2 0.0.9" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -804,7 +804,7 @@ Macro to set options value to function \fB_wreaddir_cb\fP\&.
 .PP
 .nf
 size_t __WEV(sz,__LINE__); errno = 0;                                                                          \
-    if ((__WEV(sz,__LINE__) = _wcsrtombs(NULL, &(const wchar_t*){B}, 0, 0)) <= 0) {                                \
+    if (!(__WEV(sz,__LINE__) = _wcsrtombs(NULL, &(const wchar_t*){B}, 0, 0))) {                                    \
         errno = EILSEQ; return D;                                                                                  \
     }                                                                                                              \
     char __WEV(A,__LINE__)[(__WEV(sz,__LINE__) + 1)], * A = (char*)&__WEV(A,__LINE__);                             \
@@ -823,7 +823,7 @@ wchar_t* type to char[] A char[] - array name B wchar_t* - source D - function r
 .PP
 .nf
 char __WEV(A,__LINE__)[(C + 1 * sizeof(wchar_t))], * A = (char*)&__WEV(A,__LINE__); errno = 0;                  \
-    if (((C) = _wcsrtombs(__WEV(A,__LINE__), &(const wchar_t*){B}, (C * 2 + 1), 0)) <= 0) {                         \
+    if (!((C) = _wcsrtombs(__WEV(A,__LINE__), &(const wchar_t*){B}, (C * 2 + 1), 0))) {                             \
         errno = EILSEQ; return D;                                                                                   \
     }                                                                                                               \
     __WEV(A,__LINE__)[(C)] = '\0'
@@ -836,7 +836,7 @@ wchar_t* type to char[] with size A char[] - array name B wchar_t* - source C si
 .nf
 size_t __WEV(sz,__LINE__); errno = 0;                                                                           \
     char __WEV(A,__LINE__)[(B->sz + 1 * sizeof(wchar_t))], * A = (char*)&__WEV(A,__LINE__);                         \
-    if ((__WEV(sz,__LINE__) = _wcsrtombs(__WEV(A,__LINE__), &(const wchar_t*){B->str}, (B->sz * 2 + 1), 0)) <= 0) { \
+    if (!(__WEV(sz,__LINE__) = _wcsrtombs(__WEV(A,__LINE__), &(const wchar_t*){B->str}, (B->sz * 2 + 1), 0))) {     \
         errno = EILSEQ; return D;                                                                                   \
     }                                                                                                               \
     __WEV(A,__LINE__)[__WEV(sz,__LINE__)] = '\0'

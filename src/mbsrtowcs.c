@@ -56,7 +56,8 @@ size_t _mbsrtowcs(wchar_t *restrict ws, const char **restrict src, size_t wn, mb
         {
             if (*s-1u < 0x7f && (uintptr_t)s%4 == 0)
             {
-                unsigned short w = (*(unsigned short*)s);
+                unsigned short w;
+                memcpy(&w, s, sizeof(unsigned short));
                 while (!((w | (w - 0x01010101U)) & (0x80808080U)))
                 //while (!( ((*(uint16_t*)s) | (*(uint16_t*)s - 0x01010101U)) & (0x80808080U)))
                 {
