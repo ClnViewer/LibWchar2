@@ -1,5 +1,5 @@
 inspecode:
-  misspell: auto-fix
+  misspell: default
   cppcheck:
     options:
       --enable: all

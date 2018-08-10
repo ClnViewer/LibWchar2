@@ -54,15 +54,14 @@ size_t _mbsrtowcs(wchar_t *restrict ws, const char **restrict src, size_t wn, mb
     {
         for (;;)
         {
-            if (*s-1u < 0x7f && (uintptr_t)s%4 == 0)
+            if (*s-1u < 0x7f && (uintptr_t)s % 2 == 0)
             {
                 unsigned short w;
                 memcpy(&w, s, sizeof(unsigned short));
                 while (!((w | (w - 0x01010101U)) & (0x80808080U)))
-                //while (!( ((*(uint16_t*)s) | (*(uint16_t*)s - 0x01010101U)) & (0x80808080U)))
                 {
-                    s += 4;
-                    wn -= 4;
+                    s += 2;
+                    wn -= 2;
                 }
             }
             if (*s-1u < 0x7f)
@@ -111,13 +110,13 @@ resume0:
                 return wn0;
             if (*s-1u < 0x7f && (uintptr_t)s%4 == 0)
             {
-                while ((wn >= 4) && !(((*(uint16_t*)s) | (*(uint16_t*)s - 0x01010101U)) & (0x80808080U)))
+                unsigned short w;
+                memcpy(&w, s, sizeof(unsigned short));
+                while ((wn >= 2) && !((w | (w - 0x01010101U)) & (0x80808080U)))
                 {
                     *ws++ = *s++;
                     *ws++ = *s++;
-                    *ws++ = *s++;
-                    *ws++ = *s++;
-                    wn -= 4;
+                    wn -= 2;
                 }
             }
             if (*s - 1U < 0x7f)
