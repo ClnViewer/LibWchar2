@@ -25,9 +25,8 @@
 
 #include "libbuild.h"
 
-#if (!defined(OS_WIN) || !defined(BUILD_MSVC))
-#   error "this code compiled ONLY for MSVC/MSVS!"
-#endif
+#if (defined(OS_WIN) && defined(BUILD_MSVC))
+//#   error "this code compiled ONLY for MSVC/MSVS!"
 
 typedef struct
 {
@@ -80,7 +79,7 @@ WDIR_t * wopendir(const wchar_t *w)
 int wclosedir(WDIR_t *v)
 {
     __WDIR_t *dir = (__WDIR_t*)v;
-    if (!v)
+    if (!dir)
     {
         errno = EINVAL;
         return EINVAL;
@@ -180,4 +179,6 @@ void wrewinddir(WDIR_t *v)
         errno = EBADF;
     }
 }
+
+#endif
 

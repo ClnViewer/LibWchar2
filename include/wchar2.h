@@ -1971,7 +1971,7 @@ static inline void __attribute__((always_inline)) __wsfree(void *v)
  */
 #define wstocscvt(A,B,D)                                                                                           \
     size_t __WEV(sz,__LINE__); errno = 0;                                                                          \
-    if ((__WEV(sz,__LINE__) = _wcsrtombs(NULL, &(const wchar_t*){B}, 0, 0)) <= 0) {                                \
+    if (!(__WEV(sz,__LINE__) = _wcsrtombs(NULL, &(const wchar_t*){B}, 0, 0))) {                                    \
         errno = EILSEQ; return D;                                                                                  \
     }                                                                                                              \
     char __WEV(A,__LINE__)[(__WEV(sz,__LINE__) + 1)], * A = (char*)&__WEV(A,__LINE__);                             \
@@ -1989,7 +1989,7 @@ static inline void __attribute__((always_inline)) __wsfree(void *v)
  */
 #define wstocsncvt(A,B,C,D)                                                                                         \
     char __WEV(A,__LINE__)[(C + 1 * sizeof(wchar_t))], * A = (char*)&__WEV(A,__LINE__); errno = 0;                  \
-    if (((C) = _wcsrtombs(__WEV(A,__LINE__), &(const wchar_t*){B}, (C * 2 + 1), 0)) <= 0) {                         \
+    if (!((C) = _wcsrtombs(__WEV(A,__LINE__), &(const wchar_t*){B}, (C * 2 + 1), 0))) {                             \
         errno = EILSEQ; return D;                                                                                   \
     }                                                                                                               \
     __WEV(A,__LINE__)[(C)] = '\0'
@@ -2005,7 +2005,7 @@ static inline void __attribute__((always_inline)) __wsfree(void *v)
 #define wstrtocscvt(A,B,D)                                                                                          \
     size_t __WEV(sz,__LINE__); errno = 0;                                                                           \
     char __WEV(A,__LINE__)[(B->sz + 1 * sizeof(wchar_t))], * A = (char*)&__WEV(A,__LINE__);                         \
-    if ((__WEV(sz,__LINE__) = _wcsrtombs(__WEV(A,__LINE__), &(const wchar_t*){B->str}, (B->sz * 2 + 1), 0)) <= 0) { \
+    if (!(__WEV(sz,__LINE__) = _wcsrtombs(__WEV(A,__LINE__), &(const wchar_t*){B->str}, (B->sz * 2 + 1), 0))) {     \
         errno = EILSEQ; return D;                                                                                   \
     }                                                                                                               \
     __WEV(A,__LINE__)[__WEV(sz,__LINE__)] = '\0'

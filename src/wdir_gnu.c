@@ -25,9 +25,8 @@
 
 #include "libbuild.h"
 
-#if defined(OS_WIN)
-#   error "this code compiled ONLY for *nix platform!"
-#endif
+#if !defined(OS_WIN)
+//#   error "this code compiled ONLY for *nix platform!"
 
 #define __DIR_DNAME_SIZE sizeof(((struct dirent*)0)->d_name)
 
@@ -224,3 +223,5 @@ long int _wtelldir(WDIR_t *d)
     }
     return telldir(dir->dp);
 }
+
+#endif

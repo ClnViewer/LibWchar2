@@ -121,19 +121,24 @@ static int out_printf(FOut* o, const char* format, ...)
 {
     va_list args;
     va_start(args, format);
+
     if (o->file)
     {
-        return vfprintf(o->file, format, args);
-    } else {
-    // TODO(digit): Make this faster.
-    // First, generate formatted byte output.
+        int ret = vfprintf(o->file, format, args);
+        va_end(args);
+        return ret;
+    }
+    else
+    {
+        // TODO(digit): Make this faster.
+        // First, generate formatted byte output.
         size_t   mb_len,
                  wide_len;
         char*    mb_buffer;
         wchar_t* wide_buffer;
 
         if (
-            ((mb_len    = (size_t) _vsnprintf(NULL, 0, format, args)) <= 0) ||
+            (!(mb_len    = (size_t) _vsnprintf(NULL, 0, format, args))) ||
             ((mb_buffer = malloc((mb_len + 1))) == NULL)
            ) { va_end(args); return 0; }
 
@@ -194,13 +199,13 @@ static const char sizeprefix['y'-'a'] = {
 
 static int wprintf_core(FOut *f, const wchar_t *fmt, va_list *ap, union arg *nl_arg, int *nl_type)
 {
-	wchar_t *a, *z, *s = (wchar_t*)fmt;
-	unsigned int l10n = 0, litpct, fl;
+	wchar_t *s = (wchar_t*)fmt;
+	unsigned int l10n = 0;
 	int w, p;
 	union arg arg;
 	int argpos;
 	unsigned st, ps;
-	int cnt=0, l=0;
+	int cnt = 0, l = 0;
 	int i;
 	int t;
 	char *bs;
@@ -208,6 +213,8 @@ static int wprintf_core(FOut *f, const wchar_t *fmt, va_list *ap, union arg *nl_
 	wchar_t wc;
 
 	for (;;) {
+	    wchar_t *a, *z;
+	    unsigned int litpct, fl;
 		/* Update output count, end loop when fmt is exhausted */
 		if (cnt >= 0) {
 			if (l > INT_MAX - cnt) {
@@ -219,7 +226,7 @@ static int wprintf_core(FOut *f, const wchar_t *fmt, va_list *ap, union arg *nl_
 
 		/* Handle literal text and %% format specifiers */
 		for (a=s; *s && *s!='%'; s++);
-		litpct = (unsigned int) _wcsspn(s, L"%")/2; /* Optimize %%%% runs */
+		litpct = (unsigned int) (_wcsspn(s, L"%")/2); /* Optimize %%%% runs */
 		z  = s + litpct;
 		s += 2 * litpct;
 		l = (int)(z - a);

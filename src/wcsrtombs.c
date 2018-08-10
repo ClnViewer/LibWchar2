@@ -35,19 +35,25 @@
 size_t _wcsrtombs(char *restrict s, const wchar_t **restrict ws, size_t n, mbstate_t *restrict st)
 {
     (void) st;
-	const wchar_t *ws2;
 	char buf[2]; // original 4
 	size_t N = n, l;
-	if (!s) {
-		for (n = 0, ws2 = *ws; *ws2; ws2++) {
-			if (*ws2 >= 0x80u) {
-				if (!(l = _wcrtomb(buf, *ws2, 0))) { return (size_t)-1; }
-				n += l;
-			} else { n++; }
-		}
-		return n;
+	if (!s)
+        {
+	    const wchar_t *ws2;
+	    for (n = 0, ws2 = *ws; *ws2; ws2++)
+            {
+	        if (*ws2 >= 0x80u) {
+	            if (!(l = _wcrtomb(buf, *ws2, 0))) { return (size_t)-1; }
+	            n += l;
+	        }
+                else
+                {
+                    n++;
+                }
+	    }
+	    return n;
 	}
-	if ((!n) || (n < 2)) { return (size_t)-1; }
+	if (n < 2) { return (size_t)-1; }
 	while ((n >= 2) && (**ws)) {
 		if (**ws >= 0x80u) {
 			if (!(l = _wcrtomb(s, **ws, 0))) { return (size_t)-1; }
