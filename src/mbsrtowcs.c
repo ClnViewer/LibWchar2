@@ -51,11 +51,14 @@ size_t _mbsrtowcs(wchar_t *restrict ws, const char **restrict src, size_t wn, mb
     }
 
     if (!ws)
+    {
         for (;;)
         {
             if (*s-1u < 0x7f && (uintptr_t)s%4 == 0)
             {
-                while (!( ((*(uint16_t*)s) | (*(uint16_t*)s - 0x01010101U)) & (0x80808080U)))
+                unsigned short w = (*(unsigned short*)s);
+                while (!((w | (w - 0x01010101U)) & (0x80808080U)))
+                //while (!( ((*(uint16_t*)s) | (*(uint16_t*)s - 0x01010101U)) & (0x80808080U)))
                 {
                     s += 4;
                     wn -= 4;
@@ -98,7 +101,9 @@ resume0:
             wn--;
             c = 0;
         }
+    }
     else
+    {
         for (;;)
         {
             if (!wn)
@@ -152,6 +157,7 @@ resume:
             wn--;
             c = 0;
         }
+    }
 
     if (!c && !*s)
     {

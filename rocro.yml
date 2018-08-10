@@ -1,4 +1,5 @@
 inspecode:
+  misspell: auto-fix
   cppcheck:
     options:
       --enable: all
