@@ -266,7 +266,7 @@ static wchar_t *match_here_r(wchar_t *rx, wchar_t *tx, int *size)
  * aov_match - Matches a regular expression
  * @rx: the regular expression
  * @tx: the text to be matched
- * @size: a pointer to integer where the matching lenght is stored
+ * @size: a pointer to integer where the matching length is stored
  *
  * Matches the string @tx for the regular expression in @rx.
  * On output, the integer pointer by @size will contain the number
