@@ -312,6 +312,7 @@ static int wprintf_core(FOut *f, const wchar_t *fmt, va_list *ap, union arg *nl_
 			case HHPRE: *(unsigned char*)arg.p = (unsigned char)cnt; break;
 			case ZTPRE: *(size_t*)arg.p = (size_t)cnt; break;
 			case JPRE: *(uintmax_t*)arg.p = (uintmax_t)cnt; break;
+			default: *(uintmax_t*)arg.p = (uintmax_t)0; break;
 			}
 			continue;
 		case 'c':
@@ -350,6 +351,7 @@ static int wprintf_core(FOut *f, const wchar_t *fmt, va_list *ap, union arg *nl_
 			if ((fl & __U_LEFT_ADJ)) out_printf(f, "%.*s", w-p, "");
 			l=w;
 			continue;
+		default: break;
 		}
 
 		snprintf(charfmt, sizeof charfmt, "%%%s%s%s%s%s*.*%c%c",
@@ -367,6 +369,7 @@ static int wprintf_core(FOut *f, const wchar_t *fmt, va_list *ap, union arg *nl_
 		case 'd': case 'i': case 'o': case 'u': case 'x': case 'p':
 			l = out_printf(f, charfmt, w, p, arg.i);
 			break;
+		default: break;
 		}
 	}
 

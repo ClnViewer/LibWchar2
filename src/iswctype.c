@@ -66,6 +66,7 @@ int _iswctype(wchar_t wc, wctype_t type)
 		return _iswupper(wc);
 	case WCTYPE_XDIGIT:
 		return _iswxdigit(wc);
+	default: return 0;
 	}
 	return 0;
 }

@@ -1844,7 +1844,10 @@ long int   _wtelldir(WDIR_t*);
 /*! \cond NOTINDOC */
 
 /* declaration from stdlib.h */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wredundant-decls"
 void free(void*);
+#pragma GCC diagnostic pop
 
 /*! \endcond */
 

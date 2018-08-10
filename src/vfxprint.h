@@ -73,6 +73,7 @@ static inline void pop_arg(union arg *arg, int type, va_list *ap)
 #endif
         break;  case DBL:    arg->f = (long double)((double)va_arg(*ap, double));
         break;  case LDBL:   arg->f = (long double)va_arg(*ap, long double);
+        break;  default: break;
     }
 }
 

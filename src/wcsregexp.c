@@ -177,6 +177,7 @@ static void match_here(struct rxctl *r, int cnt)
 
                 r->rx++;
                 break;
+            default: break;
             }
         }
 

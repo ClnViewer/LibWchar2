@@ -39,6 +39,11 @@
 #include "../include/wchar2.h"
 #include "check_wchar2_utf8.h"
 
+int dm_string_equals_ascii(const char*, wchar_t*, size_t);
+void printf_w(wchar_t*);
+int strlen_w(wchar_t*);
+size_t __wcslen(const wchar_t*);
+
 int dm_string_equals_ascii(const char *c, wchar_t *w, size_t wsz)
 {
     size_t         cnt  = 0;

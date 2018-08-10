@@ -560,6 +560,7 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 			case HHPRE: *(unsigned char*)arg.p = (unsigned char)cnt; break;
 			case ZTPRE: *(size_t*)arg.p = (size_t)cnt; break;
 			case JPRE: *(uintmax_t*)arg.p = (uintmax_t)cnt; break;
+			default: *(uintmax_t*)arg.p = (uintmax_t)0; break;
 			}
 			continue;
 		case 'p':
@@ -651,6 +652,7 @@ static int printf_core(Out* f, const char *fmt, va_list *ap, union arg *nl_arg, 
 		case 'E': case 'F': case 'G': case 'A':
 			l = fmt_fp(f, arg.f, w, p, (int)fl, t);
 			continue;
+		default: break;
 		}
 
 		if (p < z-a) p = (int)(z - a);

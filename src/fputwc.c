@@ -54,7 +54,7 @@
 #include <stdio.h>
 #include "libwchar.h"
 
-wchar_t __fputwc(wchar_t wc, FILE *fp)
+static wchar_t __fputwc(wchar_t wc, FILE *fp)
 {
 	char buf[MB_LEN_MAX];
 	size_t i, len;
