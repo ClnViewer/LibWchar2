@@ -49,6 +49,11 @@
 #include <errno.h>
 #include <ctype.h>
 #include <sys/stat.h>
+#include <limits.h>
+
+#if defined(HAVE_LIMITS_H)
+#   include <limits.h>
+#endif
 
 /* Some useful macros */
 

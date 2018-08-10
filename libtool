@@ -132,7 +132,7 @@ old_postuninstall_cmds=""
 LTCC="gcc -std=gnu99"
 
 # LTCC compiler flags.
-LTCFLAGS="-g -O2 -fshort-wchar -Wall -pedantic -Wstrict-prototypes -Wstrict-aliasing -Wmissing-declarations -Wmissing-prototypes -Wconversion -Wsign-conversion -Wsign-compare -Winit-self -Wunreachable-code -Wformat -Wpointer-arith -Wreturn-type -Wuninitialized -Wunused-variable -Wno-unknown-pragmas -Wswitch -Wswitch-default -Wswitch-enum -Wredundant-decls -Wextra"
+LTCFLAGS="-g -O2 -fshort-wchar -Wall -pedantic -Wstrict-prototypes -Wmissing-declarations -Wmissing-prototypes -Wconversion -Wsign-conversion -Wunreachable-code -Wpointer-arith -Wswitch-default -Wswitch-enum -Wredundant-decls -Wno-unknown-pragmas -Wcast-align -Wshadow -Wextra -Wundef"
 
 # Take the output of nm and produce a listing of raw symbols and C names.
 global_symbol_pipe="sed -n -e 's/^.*[	 ]\\([ABCDGIRSTW][ABCDGIRSTW]*\\)[	 ][	 ]*\\([_A-Za-z][_A-Za-z0-9]*\\)\$/\\1 \\2 \\2/p'"

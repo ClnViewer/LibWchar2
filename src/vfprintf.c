@@ -185,11 +185,12 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 	} else if (fl & __S_MARK_POS) {
 		prefix += 3;
 	} else if (fl & __S_PAD_POS) {
-		prefix+=6;
-	} else prefix++, pl=0;
+		prefix += 6;
+	} else { prefix++; pl = 0; }
 
-	if (!isfinite(y)) {
-		char *s = ((t & 32)   ? "inf" : "INF");
+	if (!isfinite(y))
+	{
+		s = ((t & 32)   ? "inf" : "INF");
 		if (y != y) { s = ((t & 32) ? "nan" : "NAN"); pl=0; }
 		pad(f, ' ', w, 3 + pl, fl &~ __S_ZERO_PAD);
 		out(f, prefix, pl);
@@ -201,26 +202,29 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 	y = (frexpl(y, &e2) * 2);
 	if (y > 0) e2--;
 
-	if ((t|32)=='a') {
-		long double round = 8.0;
+	if ((t|32)=='a')
+	{
+		long double rnd = 8.0;
 		int re;
 
 		if (t&32) prefix += 9;
 		pl += 2;
 
 		if (p < 0 || p >= (LDBL_MANT_DIG/4 - 1)) re = 0;
-		else re=LDBL_MANT_DIG/4-1-p;
+		else re = (LDBL_MANT_DIG/4-1-p);
 
-		if (re) {
-			while (re--) round*=16;
-			if (*prefix=='-') {
+		if (re)
+		{
+			while (re--) { rnd *= 16; }
+			if (*prefix=='-')
+			{
 				y=-y;
-				y-=round;
-				y+=round;
+				y-=rnd;
+				y+=rnd;
 				y=-y;
 			} else {
-				y+=round;
-				y-=round;
+				y+=rnd;
+				y-=rnd;
 			}
 		}
 
@@ -261,7 +265,8 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 		y = (1000000000 * (y - *z++));
 	} while (y > 0);
 
-	while (e2 > 0) {
+	while (e2 > 0)
+	{
 		uint32_t carry=0;
 		int sh = __MIN(29,e2);
 		for (d=z-1; d>=a; d--) {
@@ -298,7 +303,7 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 	if (j < (9 * (z - r -1))) {
 		uint32_t x;
 		/* We avoid C's broken division of negative numbers */
-		d = r + 1 + ((j+9*LDBL_MAX_EXP)/9 - LDBL_MAX_EXP);
+		d = r + 1 + ((j + 9 * LDBL_MAX_EXP)/9 - LDBL_MAX_EXP);
 		j += 9*LDBL_MAX_EXP;
 		j %= 9;
 		for (i = 10, j++; j < 9; i *= 10, j++);
@@ -306,11 +311,10 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 		/* Are there any significant digits past j? */
 		if (x || ((d + 1) != z))
 		{
-			long double round = __WEV(0x1p,LDBL_MANT_DIG);
-			long double small;
+			long double small, rnd = __WEV(0x1p,LDBL_MANT_DIG);
 			if ((*d / (uint32_t)i) & 1)
 			{
-			    round += 2;
+			    rnd += 2;
 			}
 			if (x < (uint32_t)(i / 2))
 			{
@@ -326,11 +330,11 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 			}
 			if (pl && *prefix=='-')
 			{
-			    round*=-1; small*=-1;
+			    rnd*=-1; small*=-1;
 			}
 			*d -= x;
 			/* Decide whether to round by probing round+small */
-			if ((round + small) != round)
+			if ((rnd + small) != rnd)
 			{
 				*d = (*d + (uint32_t)i);
 				while (*d == 0xFFFF) // == 65535 // Fix? (*d > 999999999)
@@ -399,14 +403,14 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 	if ((t|32)=='f') {
 		if (a>r) a=r;
 		for (d=a; d<=r; d++) {
-			char *s = fmt_u(*d, buf+9);
+			s = fmt_u(*d, buf+9);
 			if (d!=a) while (s>buf) *--s='0';
 			else if (s==buf+9) *--s='0';
 			out(f, s, (int)(buf + 9 - s));
 		}
 		if (p || (fl & __S_ALT_FORM)) out(f, ".", 1);
 		for (; d<z && p>0; d++, p-=9) {
-			char *s = fmt_u(*d, buf+9);
+			s = fmt_u(*d, buf+9);
 			while (s>buf) *--s='0';
 			out(f, s, __MIN(9,p));
 		}
@@ -414,7 +418,7 @@ static int fmt_fp(Out* f, long double y, int w, int p, int fl, int t)
 	} else {
 		if (z<=a) z=a+1;
 		for (d=a; d<z && p>=0; d++) {
-			char *s = fmt_u(*d, buf+9);
+			s = fmt_u(*d, buf+9);
 			if (s==buf+9) *--s='0';
 			if (d!=a) while (s>buf) *--s='0';
 			else {
@@ -683,8 +687,8 @@ int _vfprintf(FILE *restrict f, const char *restrict fmt, va_list ap)
     va_list ap2;
     int ret, nl_type[(__ARGMAX + 1)] = {0};
     union arg nl_arg[__ARGMAX+1];
-    Out out[1];
-    out_init_file(out, f);
+    Out _out[1];
+    out_init_file(_out, f);
 
     va_copy(ap2, ap);
     ret = printf_core(0, fmt, &ap2, nl_arg, nl_type);
@@ -692,7 +696,7 @@ int _vfprintf(FILE *restrict f, const char *restrict fmt, va_list ap)
     if (0 < ret) return -1;
 
     va_copy(ap2, ap);
-    ret = printf_core(out, fmt, &ap2, nl_arg, nl_type);
+    ret = printf_core(_out, fmt, &ap2, nl_arg, nl_type);
     va_end(ap2);
     return ret;
 }
@@ -724,7 +728,7 @@ int _vsnprintf(char *restrict s, size_t n, const char *restrict fmt, va_list ap)
         int ret, nl_type[__ARGMAX+1] = {0};
         union arg nl_arg[__ARGMAX+1];
         char b;
-        Out out[1];
+        Out _out[1];
 
         if (n-1 > INT_MAX-1) {
                 if (n) {
@@ -738,10 +742,10 @@ int _vsnprintf(char *restrict s, size_t n, const char *restrict fmt, va_list ap)
         /* Ensure pointers don't wrap if "infinite" n is passed in */
         t = (size_t)((char*)0 + SIZE_MAX - s - 1);
         if (n > t) n = t;
-        out_init_buffer(out, s, n);
+        out_init_buffer(_out, s, n);
 
         va_copy(ap2, ap);
-        ret = printf_core(out, fmt, &ap2, nl_arg, nl_type);
+        ret = printf_core(_out, fmt, &ap2, nl_arg, nl_type);
         va_end(ap2);
 
         if (ret <= 0)             { s[0] = '\0'; return ret; }

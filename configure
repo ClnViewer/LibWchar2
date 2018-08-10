@@ -15383,89 +15383,6 @@ else
 fi
 
 
-{ $as_echo "$as_me:$LINENO: checking whether C compiler accepts -Wstrict-aliasing" >&5
-$as_echo_n "checking whether C compiler accepts -Wstrict-aliasing... " >&6; }
-if test "${ax_cv_check_cflags___Wstrict_aliasing+set}" = set; then
-  $as_echo_n "(cached) " >&6
-else
-
-  ax_check_save_flags=$CFLAGS
-  CFLAGS="$CFLAGS  -Wstrict-aliasing"
-  cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-
-int
-main ()
-{
-
-  ;
-  return 0;
-}
-_ACEOF
-rm -f conftest.$ac_objext
-if { (ac_try="$ac_compile"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
-$as_echo "$ac_try_echo") >&5
-  (eval "$ac_compile") 2>conftest.er1
-  ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } && {
-	 test -z "$ac_c_werror_flag" ||
-	 test ! -s conftest.err
-       } && test -s conftest.$ac_objext; then
-  ax_cv_check_cflags___Wstrict_aliasing=yes
-else
-  $as_echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-	ax_cv_check_cflags___Wstrict_aliasing=no
-fi
-
-rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
-  CFLAGS=$ax_check_save_flags
-fi
-{ $as_echo "$as_me:$LINENO: result: $ax_cv_check_cflags___Wstrict_aliasing" >&5
-$as_echo "$ax_cv_check_cflags___Wstrict_aliasing" >&6; }
-if test x"$ax_cv_check_cflags___Wstrict_aliasing" = xyes; then
-  if test "${CFLAGS+set}" = set; then
-  case " $CFLAGS " in
-    *" -Wstrict-aliasing "*)
-      { ($as_echo "$as_me:$LINENO: : CFLAGS already contains -Wstrict-aliasing") >&5
-  (: CFLAGS already contains -Wstrict-aliasing) 2>&5
-  ac_status=$?
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }
-      ;;
-    *)
-      { ($as_echo "$as_me:$LINENO: : CFLAGS=\"\$CFLAGS -Wstrict-aliasing\"") >&5
-  (: CFLAGS="$CFLAGS -Wstrict-aliasing") 2>&5
-  ac_status=$?
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }
-      CFLAGS="$CFLAGS -Wstrict-aliasing"
-      ;;
-   esac
-else
-  CFLAGS="-Wstrict-aliasing"
-fi
-
-
-else
-  :
-fi
-
-
 { $as_echo "$as_me:$LINENO: checking whether C compiler accepts -Wmissing-declarations" >&5
 $as_echo_n "checking whether C compiler accepts -Wmissing-declarations... " >&6; }
 if test "${ax_cv_check_cflags___Wmissing_declarations+set}" = set; then
@@ -15798,172 +15715,6 @@ else
 fi
 
 
-{ $as_echo "$as_me:$LINENO: checking whether C compiler accepts -Wsign-compare" >&5
-$as_echo_n "checking whether C compiler accepts -Wsign-compare... " >&6; }
-if test "${ax_cv_check_cflags___Wsign_compare+set}" = set; then
-  $as_echo_n "(cached) " >&6
-else
-
-  ax_check_save_flags=$CFLAGS
-  CFLAGS="$CFLAGS  -Wsign-compare"
-  cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-
-int
-main ()
-{
-
-  ;
-  return 0;
-}
-_ACEOF
-rm -f conftest.$ac_objext
-if { (ac_try="$ac_compile"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
-$as_echo "$ac_try_echo") >&5
-  (eval "$ac_compile") 2>conftest.er1
-  ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } && {
-	 test -z "$ac_c_werror_flag" ||
-	 test ! -s conftest.err
-       } && test -s conftest.$ac_objext; then
-  ax_cv_check_cflags___Wsign_compare=yes
-else
-  $as_echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-	ax_cv_check_cflags___Wsign_compare=no
-fi
-
-rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
-  CFLAGS=$ax_check_save_flags
-fi
-{ $as_echo "$as_me:$LINENO: result: $ax_cv_check_cflags___Wsign_compare" >&5
-$as_echo "$ax_cv_check_cflags___Wsign_compare" >&6; }
-if test x"$ax_cv_check_cflags___Wsign_compare" = xyes; then
-  if test "${CFLAGS+set}" = set; then
-  case " $CFLAGS " in
-    *" -Wsign-compare "*)
-      { ($as_echo "$as_me:$LINENO: : CFLAGS already contains -Wsign-compare") >&5
-  (: CFLAGS already contains -Wsign-compare) 2>&5
-  ac_status=$?
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }
-      ;;
-    *)
-      { ($as_echo "$as_me:$LINENO: : CFLAGS=\"\$CFLAGS -Wsign-compare\"") >&5
-  (: CFLAGS="$CFLAGS -Wsign-compare") 2>&5
-  ac_status=$?
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }
-      CFLAGS="$CFLAGS -Wsign-compare"
-      ;;
-   esac
-else
-  CFLAGS="-Wsign-compare"
-fi
-
-
-else
-  :
-fi
-
-
-{ $as_echo "$as_me:$LINENO: checking whether C compiler accepts -Winit-self" >&5
-$as_echo_n "checking whether C compiler accepts -Winit-self... " >&6; }
-if test "${ax_cv_check_cflags___Winit_self+set}" = set; then
-  $as_echo_n "(cached) " >&6
-else
-
-  ax_check_save_flags=$CFLAGS
-  CFLAGS="$CFLAGS  -Winit-self"
-  cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-
-int
-main ()
-{
-
-  ;
-  return 0;
-}
-_ACEOF
-rm -f conftest.$ac_objext
-if { (ac_try="$ac_compile"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
-$as_echo "$ac_try_echo") >&5
-  (eval "$ac_compile") 2>conftest.er1
-  ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } && {
-	 test -z "$ac_c_werror_flag" ||
-	 test ! -s conftest.err
-       } && test -s conftest.$ac_objext; then
-  ax_cv_check_cflags___Winit_self=yes
-else
-  $as_echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-	ax_cv_check_cflags___Winit_self=no
-fi
-
-rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
-  CFLAGS=$ax_check_save_flags
-fi
-{ $as_echo "$as_me:$LINENO: result: $ax_cv_check_cflags___Winit_self" >&5
-$as_echo "$ax_cv_check_cflags___Winit_self" >&6; }
-if test x"$ax_cv_check_cflags___Winit_self" = xyes; then
-  if test "${CFLAGS+set}" = set; then
-  case " $CFLAGS " in
-    *" -Winit-self "*)
-      { ($as_echo "$as_me:$LINENO: : CFLAGS already contains -Winit-self") >&5
-  (: CFLAGS already contains -Winit-self) 2>&5
-  ac_status=$?
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }
-      ;;
-    *)
-      { ($as_echo "$as_me:$LINENO: : CFLAGS=\"\$CFLAGS -Winit-self\"") >&5
-  (: CFLAGS="$CFLAGS -Winit-self") 2>&5
-  ac_status=$?
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }
-      CFLAGS="$CFLAGS -Winit-self"
-      ;;
-   esac
-else
-  CFLAGS="-Winit-self"
-fi
-
-
-else
-  :
-fi
-
-
 { $as_echo "$as_me:$LINENO: checking whether C compiler accepts -Wunreachable-code" >&5
 $as_echo_n "checking whether C compiler accepts -Wunreachable-code... " >&6; }
 if test "${ax_cv_check_cflags___Wunreachable_code+set}" = set; then
@@ -16047,89 +15798,6 @@ else
 fi
 
 
-{ $as_echo "$as_me:$LINENO: checking whether C compiler accepts -Wformat" >&5
-$as_echo_n "checking whether C compiler accepts -Wformat... " >&6; }
-if test "${ax_cv_check_cflags___Wformat+set}" = set; then
-  $as_echo_n "(cached) " >&6
-else
-
-  ax_check_save_flags=$CFLAGS
-  CFLAGS="$CFLAGS  -Wformat"
-  cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-
-int
-main ()
-{
-
-  ;
-  return 0;
-}
-_ACEOF
-rm -f conftest.$ac_objext
-if { (ac_try="$ac_compile"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
-$as_echo "$ac_try_echo") >&5
-  (eval "$ac_compile") 2>conftest.er1
-  ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } && {
-	 test -z "$ac_c_werror_flag" ||
-	 test ! -s conftest.err
-       } && test -s conftest.$ac_objext; then
-  ax_cv_check_cflags___Wformat=yes
-else
-  $as_echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-	ax_cv_check_cflags___Wformat=no
-fi
-
-rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
-  CFLAGS=$ax_check_save_flags
-fi
-{ $as_echo "$as_me:$LINENO: result: $ax_cv_check_cflags___Wformat" >&5
-$as_echo "$ax_cv_check_cflags___Wformat" >&6; }
-if test x"$ax_cv_check_cflags___Wformat" = xyes; then
-  if test "${CFLAGS+set}" = set; then
-  case " $CFLAGS " in
-    *" -Wformat "*)
-      { ($as_echo "$as_me:$LINENO: : CFLAGS already contains -Wformat") >&5
-  (: CFLAGS already contains -Wformat) 2>&5
-  ac_status=$?
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }
-      ;;
-    *)
-      { ($as_echo "$as_me:$LINENO: : CFLAGS=\"\$CFLAGS -Wformat\"") >&5
-  (: CFLAGS="$CFLAGS -Wformat") 2>&5
-  ac_status=$?
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }
-      CFLAGS="$CFLAGS -Wformat"
-      ;;
-   esac
-else
-  CFLAGS="-Wformat"
-fi
-
-
-else
-  :
-fi
-
-
 { $as_echo "$as_me:$LINENO: checking whether C compiler accepts -Wpointer-arith" >&5
 $as_echo_n "checking whether C compiler accepts -Wpointer-arith... " >&6; }
 if test "${ax_cv_check_cflags___Wpointer_arith+set}" = set; then
@@ -16205,421 +15873,6 @@ if test x"$ax_cv_check_cflags___Wpointer_arith" = xyes; then
    esac
 else
   CFLAGS="-Wpointer-arith"
-fi
-
-
-else
-  :
-fi
-
-
-{ $as_echo "$as_me:$LINENO: checking whether C compiler accepts -Wreturn-type" >&5
-$as_echo_n "checking whether C compiler accepts -Wreturn-type... " >&6; }
-if test "${ax_cv_check_cflags___Wreturn_type+set}" = set; then
-  $as_echo_n "(cached) " >&6
-else
-
-  ax_check_save_flags=$CFLAGS
-  CFLAGS="$CFLAGS  -Wreturn-type"
-  cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-
-int
-main ()
-{
-
-  ;
-  return 0;
-}
-_ACEOF
-rm -f conftest.$ac_objext
-if { (ac_try="$ac_compile"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
-$as_echo "$ac_try_echo") >&5
-  (eval "$ac_compile") 2>conftest.er1
-  ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } && {
-	 test -z "$ac_c_werror_flag" ||
-	 test ! -s conftest.err
-       } && test -s conftest.$ac_objext; then
-  ax_cv_check_cflags___Wreturn_type=yes
-else
-  $as_echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-	ax_cv_check_cflags___Wreturn_type=no
-fi
-
-rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
-  CFLAGS=$ax_check_save_flags
-fi
-{ $as_echo "$as_me:$LINENO: result: $ax_cv_check_cflags___Wreturn_type" >&5
-$as_echo "$ax_cv_check_cflags___Wreturn_type" >&6; }
-if test x"$ax_cv_check_cflags___Wreturn_type" = xyes; then
-  if test "${CFLAGS+set}" = set; then
-  case " $CFLAGS " in
-    *" -Wreturn-type "*)
-      { ($as_echo "$as_me:$LINENO: : CFLAGS already contains -Wreturn-type") >&5
-  (: CFLAGS already contains -Wreturn-type) 2>&5
-  ac_status=$?
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }
-      ;;
-    *)
-      { ($as_echo "$as_me:$LINENO: : CFLAGS=\"\$CFLAGS -Wreturn-type\"") >&5
-  (: CFLAGS="$CFLAGS -Wreturn-type") 2>&5
-  ac_status=$?
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }
-      CFLAGS="$CFLAGS -Wreturn-type"
-      ;;
-   esac
-else
-  CFLAGS="-Wreturn-type"
-fi
-
-
-else
-  :
-fi
-
-
-{ $as_echo "$as_me:$LINENO: checking whether C compiler accepts -Wuninitialized" >&5
-$as_echo_n "checking whether C compiler accepts -Wuninitialized... " >&6; }
-if test "${ax_cv_check_cflags___Wuninitialized+set}" = set; then
-  $as_echo_n "(cached) " >&6
-else
-
-  ax_check_save_flags=$CFLAGS
-  CFLAGS="$CFLAGS  -Wuninitialized"
-  cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-
-int
-main ()
-{
-
-  ;
-  return 0;
-}
-_ACEOF
-rm -f conftest.$ac_objext
-if { (ac_try="$ac_compile"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
-$as_echo "$ac_try_echo") >&5
-  (eval "$ac_compile") 2>conftest.er1
-  ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } && {
-	 test -z "$ac_c_werror_flag" ||
-	 test ! -s conftest.err
-       } && test -s conftest.$ac_objext; then
-  ax_cv_check_cflags___Wuninitialized=yes
-else
-  $as_echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-	ax_cv_check_cflags___Wuninitialized=no
-fi
-
-rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
-  CFLAGS=$ax_check_save_flags
-fi
-{ $as_echo "$as_me:$LINENO: result: $ax_cv_check_cflags___Wuninitialized" >&5
-$as_echo "$ax_cv_check_cflags___Wuninitialized" >&6; }
-if test x"$ax_cv_check_cflags___Wuninitialized" = xyes; then
-  if test "${CFLAGS+set}" = set; then
-  case " $CFLAGS " in
-    *" -Wuninitialized "*)
-      { ($as_echo "$as_me:$LINENO: : CFLAGS already contains -Wuninitialized") >&5
-  (: CFLAGS already contains -Wuninitialized) 2>&5
-  ac_status=$?
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }
-      ;;
-    *)
-      { ($as_echo "$as_me:$LINENO: : CFLAGS=\"\$CFLAGS -Wuninitialized\"") >&5
-  (: CFLAGS="$CFLAGS -Wuninitialized") 2>&5
-  ac_status=$?
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }
-      CFLAGS="$CFLAGS -Wuninitialized"
-      ;;
-   esac
-else
-  CFLAGS="-Wuninitialized"
-fi
-
-
-else
-  :
-fi
-
-
-{ $as_echo "$as_me:$LINENO: checking whether C compiler accepts -Wunused-variable" >&5
-$as_echo_n "checking whether C compiler accepts -Wunused-variable... " >&6; }
-if test "${ax_cv_check_cflags___Wunused_variable+set}" = set; then
-  $as_echo_n "(cached) " >&6
-else
-
-  ax_check_save_flags=$CFLAGS
-  CFLAGS="$CFLAGS  -Wunused-variable"
-  cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-
-int
-main ()
-{
-
-  ;
-  return 0;
-}
-_ACEOF
-rm -f conftest.$ac_objext
-if { (ac_try="$ac_compile"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
-$as_echo "$ac_try_echo") >&5
-  (eval "$ac_compile") 2>conftest.er1
-  ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } && {
-	 test -z "$ac_c_werror_flag" ||
-	 test ! -s conftest.err
-       } && test -s conftest.$ac_objext; then
-  ax_cv_check_cflags___Wunused_variable=yes
-else
-  $as_echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-	ax_cv_check_cflags___Wunused_variable=no
-fi
-
-rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
-  CFLAGS=$ax_check_save_flags
-fi
-{ $as_echo "$as_me:$LINENO: result: $ax_cv_check_cflags___Wunused_variable" >&5
-$as_echo "$ax_cv_check_cflags___Wunused_variable" >&6; }
-if test x"$ax_cv_check_cflags___Wunused_variable" = xyes; then
-  if test "${CFLAGS+set}" = set; then
-  case " $CFLAGS " in
-    *" -Wunused-variable "*)
-      { ($as_echo "$as_me:$LINENO: : CFLAGS already contains -Wunused-variable") >&5
-  (: CFLAGS already contains -Wunused-variable) 2>&5
-  ac_status=$?
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }
-      ;;
-    *)
-      { ($as_echo "$as_me:$LINENO: : CFLAGS=\"\$CFLAGS -Wunused-variable\"") >&5
-  (: CFLAGS="$CFLAGS -Wunused-variable") 2>&5
-  ac_status=$?
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }
-      CFLAGS="$CFLAGS -Wunused-variable"
-      ;;
-   esac
-else
-  CFLAGS="-Wunused-variable"
-fi
-
-
-else
-  :
-fi
-
-
-{ $as_echo "$as_me:$LINENO: checking whether C compiler accepts -Wno-unknown-pragmas" >&5
-$as_echo_n "checking whether C compiler accepts -Wno-unknown-pragmas... " >&6; }
-if test "${ax_cv_check_cflags___Wno_unknown_pragmas+set}" = set; then
-  $as_echo_n "(cached) " >&6
-else
-
-  ax_check_save_flags=$CFLAGS
-  CFLAGS="$CFLAGS  -Wno-unknown-pragmas"
-  cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-
-int
-main ()
-{
-
-  ;
-  return 0;
-}
-_ACEOF
-rm -f conftest.$ac_objext
-if { (ac_try="$ac_compile"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
-$as_echo "$ac_try_echo") >&5
-  (eval "$ac_compile") 2>conftest.er1
-  ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } && {
-	 test -z "$ac_c_werror_flag" ||
-	 test ! -s conftest.err
-       } && test -s conftest.$ac_objext; then
-  ax_cv_check_cflags___Wno_unknown_pragmas=yes
-else
-  $as_echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-	ax_cv_check_cflags___Wno_unknown_pragmas=no
-fi
-
-rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
-  CFLAGS=$ax_check_save_flags
-fi
-{ $as_echo "$as_me:$LINENO: result: $ax_cv_check_cflags___Wno_unknown_pragmas" >&5
-$as_echo "$ax_cv_check_cflags___Wno_unknown_pragmas" >&6; }
-if test x"$ax_cv_check_cflags___Wno_unknown_pragmas" = xyes; then
-  if test "${CFLAGS+set}" = set; then
-  case " $CFLAGS " in
-    *" -Wno-unknown-pragmas "*)
-      { ($as_echo "$as_me:$LINENO: : CFLAGS already contains -Wno-unknown-pragmas") >&5
-  (: CFLAGS already contains -Wno-unknown-pragmas) 2>&5
-  ac_status=$?
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }
-      ;;
-    *)
-      { ($as_echo "$as_me:$LINENO: : CFLAGS=\"\$CFLAGS -Wno-unknown-pragmas\"") >&5
-  (: CFLAGS="$CFLAGS -Wno-unknown-pragmas") 2>&5
-  ac_status=$?
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }
-      CFLAGS="$CFLAGS -Wno-unknown-pragmas"
-      ;;
-   esac
-else
-  CFLAGS="-Wno-unknown-pragmas"
-fi
-
-
-else
-  :
-fi
-
-
-{ $as_echo "$as_me:$LINENO: checking whether C compiler accepts -Wswitch" >&5
-$as_echo_n "checking whether C compiler accepts -Wswitch... " >&6; }
-if test "${ax_cv_check_cflags___Wswitch+set}" = set; then
-  $as_echo_n "(cached) " >&6
-else
-
-  ax_check_save_flags=$CFLAGS
-  CFLAGS="$CFLAGS  -Wswitch"
-  cat >conftest.$ac_ext <<_ACEOF
-/* confdefs.h.  */
-_ACEOF
-cat confdefs.h >>conftest.$ac_ext
-cat >>conftest.$ac_ext <<_ACEOF
-/* end confdefs.h.  */
-
-int
-main ()
-{
-
-  ;
-  return 0;
-}
-_ACEOF
-rm -f conftest.$ac_objext
-if { (ac_try="$ac_compile"
-case "(($ac_try" in
-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
-  *) ac_try_echo=$ac_try;;
-esac
-eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
-$as_echo "$ac_try_echo") >&5
-  (eval "$ac_compile") 2>conftest.er1
-  ac_status=$?
-  grep -v '^ *+' conftest.er1 >conftest.err
-  rm -f conftest.er1
-  cat conftest.err >&5
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); } && {
-	 test -z "$ac_c_werror_flag" ||
-	 test ! -s conftest.err
-       } && test -s conftest.$ac_objext; then
-  ax_cv_check_cflags___Wswitch=yes
-else
-  $as_echo "$as_me: failed program was:" >&5
-sed 's/^/| /' conftest.$ac_ext >&5
-
-	ax_cv_check_cflags___Wswitch=no
-fi
-
-rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
-  CFLAGS=$ax_check_save_flags
-fi
-{ $as_echo "$as_me:$LINENO: result: $ax_cv_check_cflags___Wswitch" >&5
-$as_echo "$ax_cv_check_cflags___Wswitch" >&6; }
-if test x"$ax_cv_check_cflags___Wswitch" = xyes; then
-  if test "${CFLAGS+set}" = set; then
-  case " $CFLAGS " in
-    *" -Wswitch "*)
-      { ($as_echo "$as_me:$LINENO: : CFLAGS already contains -Wswitch") >&5
-  (: CFLAGS already contains -Wswitch) 2>&5
-  ac_status=$?
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }
-      ;;
-    *)
-      { ($as_echo "$as_me:$LINENO: : CFLAGS=\"\$CFLAGS -Wswitch\"") >&5
-  (: CFLAGS="$CFLAGS -Wswitch") 2>&5
-  ac_status=$?
-  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
-  (exit $ac_status); }
-      CFLAGS="$CFLAGS -Wswitch"
-      ;;
-   esac
-else
-  CFLAGS="-Wswitch"
 fi
 
 
@@ -16877,6 +16130,255 @@ else
 fi
 
 
+{ $as_echo "$as_me:$LINENO: checking whether C compiler accepts -Wno-unknown-pragmas" >&5
+$as_echo_n "checking whether C compiler accepts -Wno-unknown-pragmas... " >&6; }
+if test "${ax_cv_check_cflags___Wno_unknown_pragmas+set}" = set; then
+  $as_echo_n "(cached) " >&6
+else
+
+  ax_check_save_flags=$CFLAGS
+  CFLAGS="$CFLAGS  -Wno-unknown-pragmas"
+  cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext
+if { (ac_try="$ac_compile"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
+$as_echo "$ac_try_echo") >&5
+  (eval "$ac_compile") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_c_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest.$ac_objext; then
+  ax_cv_check_cflags___Wno_unknown_pragmas=yes
+else
+  $as_echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ax_cv_check_cflags___Wno_unknown_pragmas=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+  CFLAGS=$ax_check_save_flags
+fi
+{ $as_echo "$as_me:$LINENO: result: $ax_cv_check_cflags___Wno_unknown_pragmas" >&5
+$as_echo "$ax_cv_check_cflags___Wno_unknown_pragmas" >&6; }
+if test x"$ax_cv_check_cflags___Wno_unknown_pragmas" = xyes; then
+  if test "${CFLAGS+set}" = set; then
+  case " $CFLAGS " in
+    *" -Wno-unknown-pragmas "*)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS already contains -Wno-unknown-pragmas") >&5
+  (: CFLAGS already contains -Wno-unknown-pragmas) 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      ;;
+    *)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS=\"\$CFLAGS -Wno-unknown-pragmas\"") >&5
+  (: CFLAGS="$CFLAGS -Wno-unknown-pragmas") 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      CFLAGS="$CFLAGS -Wno-unknown-pragmas"
+      ;;
+   esac
+else
+  CFLAGS="-Wno-unknown-pragmas"
+fi
+
+
+else
+  :
+fi
+
+
+{ $as_echo "$as_me:$LINENO: checking whether C compiler accepts -Wcast-align" >&5
+$as_echo_n "checking whether C compiler accepts -Wcast-align... " >&6; }
+if test "${ax_cv_check_cflags___Wcast_align+set}" = set; then
+  $as_echo_n "(cached) " >&6
+else
+
+  ax_check_save_flags=$CFLAGS
+  CFLAGS="$CFLAGS  -Wcast-align"
+  cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext
+if { (ac_try="$ac_compile"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
+$as_echo "$ac_try_echo") >&5
+  (eval "$ac_compile") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_c_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest.$ac_objext; then
+  ax_cv_check_cflags___Wcast_align=yes
+else
+  $as_echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ax_cv_check_cflags___Wcast_align=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+  CFLAGS=$ax_check_save_flags
+fi
+{ $as_echo "$as_me:$LINENO: result: $ax_cv_check_cflags___Wcast_align" >&5
+$as_echo "$ax_cv_check_cflags___Wcast_align" >&6; }
+if test x"$ax_cv_check_cflags___Wcast_align" = xyes; then
+  if test "${CFLAGS+set}" = set; then
+  case " $CFLAGS " in
+    *" -Wcast-align "*)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS already contains -Wcast-align") >&5
+  (: CFLAGS already contains -Wcast-align) 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      ;;
+    *)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS=\"\$CFLAGS -Wcast-align\"") >&5
+  (: CFLAGS="$CFLAGS -Wcast-align") 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      CFLAGS="$CFLAGS -Wcast-align"
+      ;;
+   esac
+else
+  CFLAGS="-Wcast-align"
+fi
+
+
+else
+  :
+fi
+
+
+{ $as_echo "$as_me:$LINENO: checking whether C compiler accepts -Wshadow" >&5
+$as_echo_n "checking whether C compiler accepts -Wshadow... " >&6; }
+if test "${ax_cv_check_cflags___Wshadow+set}" = set; then
+  $as_echo_n "(cached) " >&6
+else
+
+  ax_check_save_flags=$CFLAGS
+  CFLAGS="$CFLAGS  -Wshadow"
+  cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext
+if { (ac_try="$ac_compile"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
+$as_echo "$ac_try_echo") >&5
+  (eval "$ac_compile") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_c_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest.$ac_objext; then
+  ax_cv_check_cflags___Wshadow=yes
+else
+  $as_echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ax_cv_check_cflags___Wshadow=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+  CFLAGS=$ax_check_save_flags
+fi
+{ $as_echo "$as_me:$LINENO: result: $ax_cv_check_cflags___Wshadow" >&5
+$as_echo "$ax_cv_check_cflags___Wshadow" >&6; }
+if test x"$ax_cv_check_cflags___Wshadow" = xyes; then
+  if test "${CFLAGS+set}" = set; then
+  case " $CFLAGS " in
+    *" -Wshadow "*)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS already contains -Wshadow") >&5
+  (: CFLAGS already contains -Wshadow) 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      ;;
+    *)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS=\"\$CFLAGS -Wshadow\"") >&5
+  (: CFLAGS="$CFLAGS -Wshadow") 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      CFLAGS="$CFLAGS -Wshadow"
+      ;;
+   esac
+else
+  CFLAGS="-Wshadow"
+fi
+
+
+else
+  :
+fi
+
+
 
 # Check whether --enable-devel was given.
 if test "${enable_devel+set}" = set; then
@@ -16961,6 +16463,89 @@ if test x"$ax_cv_check_cflags___Wextra" = xyes; then
    esac
 else
   CFLAGS="-Wextra"
+fi
+
+
+else
+  :
+fi
+
+
+    { $as_echo "$as_me:$LINENO: checking whether C compiler accepts -Wundef" >&5
+$as_echo_n "checking whether C compiler accepts -Wundef... " >&6; }
+if test "${ax_cv_check_cflags___Wundef+set}" = set; then
+  $as_echo_n "(cached) " >&6
+else
+
+  ax_check_save_flags=$CFLAGS
+  CFLAGS="$CFLAGS  -Wundef"
+  cat >conftest.$ac_ext <<_ACEOF
+/* confdefs.h.  */
+_ACEOF
+cat confdefs.h >>conftest.$ac_ext
+cat >>conftest.$ac_ext <<_ACEOF
+/* end confdefs.h.  */
+
+int
+main ()
+{
+
+  ;
+  return 0;
+}
+_ACEOF
+rm -f conftest.$ac_objext
+if { (ac_try="$ac_compile"
+case "(($ac_try" in
+  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+  *) ac_try_echo=$ac_try;;
+esac
+eval ac_try_echo="\"\$as_me:$LINENO: $ac_try_echo\""
+$as_echo "$ac_try_echo") >&5
+  (eval "$ac_compile") 2>conftest.er1
+  ac_status=$?
+  grep -v '^ *+' conftest.er1 >conftest.err
+  rm -f conftest.er1
+  cat conftest.err >&5
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); } && {
+	 test -z "$ac_c_werror_flag" ||
+	 test ! -s conftest.err
+       } && test -s conftest.$ac_objext; then
+  ax_cv_check_cflags___Wundef=yes
+else
+  $as_echo "$as_me: failed program was:" >&5
+sed 's/^/| /' conftest.$ac_ext >&5
+
+	ax_cv_check_cflags___Wundef=no
+fi
+
+rm -f core conftest.err conftest.$ac_objext conftest.$ac_ext
+  CFLAGS=$ax_check_save_flags
+fi
+{ $as_echo "$as_me:$LINENO: result: $ax_cv_check_cflags___Wundef" >&5
+$as_echo "$ax_cv_check_cflags___Wundef" >&6; }
+if test x"$ax_cv_check_cflags___Wundef" = xyes; then
+  if test "${CFLAGS+set}" = set; then
+  case " $CFLAGS " in
+    *" -Wundef "*)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS already contains -Wundef") >&5
+  (: CFLAGS already contains -Wundef) 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      ;;
+    *)
+      { ($as_echo "$as_me:$LINENO: : CFLAGS=\"\$CFLAGS -Wundef\"") >&5
+  (: CFLAGS="$CFLAGS -Wundef") 2>&5
+  ac_status=$?
+  $as_echo "$as_me:$LINENO: \$? = $ac_status" >&5
+  (exit $ac_status); }
+      CFLAGS="$CFLAGS -Wundef"
+      ;;
+   esac
+else
+  CFLAGS="-Wundef"
 fi
 
 

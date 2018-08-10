@@ -78,53 +78,53 @@ static void out_init_buffer(FOut* out, wchar_t* buffer, size_t buffer_size) {
   out->buffer_size = buffer_size;
 }
 
-static void out(FOut* out, const wchar_t* text, size_t length)
+static void out(FOut* _out, const wchar_t* text, size_t length)
 {
     if (!length)
     {
         return;
     }
-    if (out->file != NULL)
+    if (_out->file != NULL)
     {
         wchar_t const *w = text;
         while (length--)
         {
-            _fputwc(*w++, out->file);
+            _fputwc(*w++, _out->file);
         }
     }
     else
     {
         // Write into a bounded buffer.
-        size_t avail = out->buffer_size - out->buffer_pos;
+        size_t avail = _out->buffer_size - _out->buffer_pos;
         if (length > avail) { length = avail; }
-        memcpy((char*)(out->buffer + out->buffer_pos),
+        memcpy((char*)(_out->buffer + _out->buffer_pos),
             (const char*)text,
             (length * sizeof(wchar_t))
         );
-        out->buffer_pos += length;
+        _out->buffer_pos += length;
     }
 }
 
-static void out_putwc(wchar_t wc, FOut* out)
+static void out_putwc(wchar_t wc, FOut* _out)
 {
-    if (out->file)
+    if (_out->file)
     {
-        _fputwc(wc, out->file);
+        _fputwc(wc, _out->file);
     }
-    else if (out->buffer_pos < out->buffer_size)
+    else if (_out->buffer_pos < _out->buffer_size)
     {
-        out->buffer[out->buffer_pos++] = wc;
+        _out->buffer[_out->buffer_pos++] = wc;
     }
 }
 
-static int out_printf(FOut* o, const char* format, ...)
+static int out_printf(FOut* _out, const char* format, ...)
 {
     va_list args;
     va_start(args, format);
 
-    if (o->file)
+    if (_out->file)
     {
-        int ret = vfprintf(o->file, format, args);
+        int ret = vfprintf(_out->file, format, args);
         va_end(args);
         return ret;
     }
@@ -155,7 +155,7 @@ static int out_printf(FOut* o, const char* format, ...)
         (void) _mbstowcs(wide_buffer, mb_buffer, mb_len);
 
         // Add to buffer.
-        out(o, wide_buffer, wide_len);
+        out(_out, wide_buffer, wide_len);
         // finished
         free(wide_buffer);
         free(mb_buffer);
@@ -166,19 +166,19 @@ static int out_printf(FOut* o, const char* format, ...)
     va_end(args);
 }
 
-static int out_error(FOut* out)
+static int out_error(FOut* _out)
 {
-    if (out->file != NULL)
+    if (_out->file != NULL)
     {
-        return ferror(out->file);
+        return ferror(_out->file);
     }
     return 0;
 }
 
-static int out_overflow(FOut* out)
+static int out_overflow(FOut* _out)
 {
-    if (out->file != NULL) { return feof(out->file); }
-    return (out->buffer_pos >= out->buffer_size);
+    if (_out->file != NULL) { return feof(_out->file); }
+    return (_out->buffer_pos >= _out->buffer_size);
 }
 
 #include "vfxprint.h"
@@ -388,8 +388,8 @@ int _vfwprintf(FILE *restrict f, const wchar_t *restrict fmt, va_list ap)
     va_list ap2;
     int ret, nl_type[__ARGMAX] = {0};
     union arg nl_arg[__ARGMAX];
-    FOut out[1];
-    out_init_file(out, f);
+    FOut _out[1];
+    out_init_file(_out, f);
     va_copy(ap2, ap);
 
     // Check for error in format string before writing anything to file.
@@ -397,7 +397,7 @@ int _vfwprintf(FILE *restrict f, const wchar_t *restrict fmt, va_list ap)
         va_end(ap2);
         return -1;
     }
-    ret = wprintf_core(out, fmt, &ap2, nl_arg, nl_type);
+    ret = wprintf_core(_out, fmt, &ap2, nl_arg, nl_type);
     va_end(ap2);
     return ret;
 }
@@ -427,7 +427,7 @@ int _vswprintf(wchar_t *restrict s, size_t l, const wchar_t *restrict fmt, va_li
     va_list ap2;
     int ret, nl_type[__ARGMAX] = {0};
     union arg nl_arg[__ARGMAX];
-    FOut out[1];
+    FOut _out[1];
 
     va_copy(ap2, ap);
 
@@ -437,11 +437,11 @@ int _vswprintf(wchar_t *restrict s, size_t l, const wchar_t *restrict fmt, va_li
         va_end(ap2);
         return ret;
     }
-    out_init_buffer(out, s, l);
-    ret = wprintf_core(out, fmt, &ap2, nl_arg, nl_type);
+    out_init_buffer(_out, s, l);
+    ret = wprintf_core(_out, fmt, &ap2, nl_arg, nl_type);
     va_end(ap2);
 
-    if (out_overflow(out)) return -1;
+    if (out_overflow(_out)) return -1;
     return ret;
 }
 

@@ -153,7 +153,7 @@ string_ws* | const string_ws* ||
 
 ### Test & Testing
 
-- By checking your code with analysis programs, you make it more reliable, if you use [cppcheck](https://ru.wikipedia.org/wiki/Cppcheck), you may need an [XML file](https://github.com/ClnViewer/LibWchar2/blob/master/docs/libchar2.cfg) describing library functions, for a more accurate analysis of your code.  
+- By checking your code with analysis programs, you make it more reliable, if you use [cppcheck](https://ru.wikipedia.org/wiki/Cppcheck), you may need an [XML file](https://github.com/ClnViewer/LibWchar2/blob/master/docs/libchar2.cfg) describing library functions, for a more accurate analysis of your code. An example [project](https://github.com/ClnViewer/LibWchar2/blob/master/docs/libchar2.cppcheck) for use with this library. 
 - If you have the time and the desire or the opportunity to help make the library better, you can take part in writing tests for library functions.
 This way you will take part in the testing.
 
