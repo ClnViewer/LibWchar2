@@ -1,4 +1,3 @@
-
 /*
     MIT License
 
@@ -34,8 +33,14 @@ int wcstocscmp(const char *c, wchar_t *w, size_t wsz)
 
     while(*cchr)
     {
-        if (cnt == wsz) { return 0; }
-        if (wchr[cnt++] != *cchr++) { return 1; }
+        if (cnt == wsz)
+        {
+            return 0;
+        }
+        if (wchr[cnt++] != *cchr++)
+        {
+            return 1;
+        }
     }
     return 0;
 }

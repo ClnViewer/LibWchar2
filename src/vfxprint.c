@@ -1,4 +1,3 @@
-
 static const unsigned char states[]['z'-'A'+1] = {
     { /* 0: bare types */
         S('d') = INT, S('i') = INT,

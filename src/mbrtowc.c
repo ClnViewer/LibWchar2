@@ -1,4 +1,3 @@
-
 /*
     MIT License
 
@@ -47,7 +46,8 @@ size_t _mbrtowc(wchar_t *restrict wc, const char *restrict src, size_t n, mbstat
 
     if (!s)
     {
-        if (c) goto ilseq;
+        if (c)
+            goto ilseq;
         return ((size_t)0);
     }
     else if (!wc)
@@ -71,10 +71,13 @@ size_t _mbrtowc(wchar_t *restrict wc, const char *restrict src, size_t n, mbstat
         c = bittab[(*s++ - __SA)];
         n--;
     }
-    if (n) {
-        if (__OOB(c,*s)) goto ilseq;
+    if (n)
+    {
+        if (__OOB(c,*s))
+            goto ilseq;
 loop:
-        c = ((c << 6) | (*s++ - 0x80U)); n--;
+        c = ((c << 6) | (*s++ - 0x80U));
+        n--;
         if (!(c & (1U << 31)))
         {
             *(unsigned*)st = 0U;
@@ -83,7 +86,8 @@ loop:
         }
         if (n)
         {
-            if ((*s - 0x80U) >= 0x40) goto ilseq;
+            if ((*s - 0x80U) >= 0x40)
+                goto ilseq;
             goto loop;
         }
     }

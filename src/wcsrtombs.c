@@ -1,4 +1,3 @@
-
 /*
     MIT License
 
@@ -35,50 +34,75 @@
 size_t _wcsrtombs(char *restrict s, const wchar_t **restrict ws, size_t n, mbstate_t *restrict st)
 {
     (void) st;
-	char buf[2]; // original 4
-	size_t N = n, l;
-	if (!s)
+    char buf[2]; // original 4
+    size_t N = n, l;
+    if (!s)
+    {
+        const wchar_t *ws2;
+        for (n = 0, ws2 = *ws; *ws2; ws2++)
         {
-	    const wchar_t *ws2;
-	    for (n = 0, ws2 = *ws; *ws2; ws2++)
+            if (*ws2 >= 0x80u)
             {
-	        if (*ws2 >= 0x80u) {
-	            if (!(l = _wcrtomb(buf, *ws2, 0))) { return (size_t)-1; }
-	            n += l;
-	        }
-                else
+                if (!(l = _wcrtomb(buf, *ws2, 0)))
                 {
-                    n++;
+                    return (size_t)-1;
                 }
-	    }
-	    return n;
-	}
-	if (n < 2) { return (size_t)-1; }
-	while ((n >= 2) && (**ws)) {
-		if (**ws >= 0x80u) {
-			if (!(l = _wcrtomb(s, **ws, 0))) { return (size_t)-1; }
-			s += l;
-			n -= l;
-		} else {
-			*s++ = (char)**ws;
-			n--;
-		}
-		(*ws)++;
-	}
-	while (n && **ws) {
-		if (**ws >= 0x80u) {
-			if (!(l = _wcrtomb(buf, **ws, 0))) { return (size_t)-1; }
-			if (l > n)                         { return (N - n); }
-			_wcrtomb(s, **ws, 0);
-			s += l;
-			n -= l;
-		} else {
-			*s++ = (char)**ws;
-			n--;
-		}
-		(*ws)++;
-	}
-	if (n) *s = 0;
-	*ws = 0;
-	return (N - n);
+                n += l;
+            }
+            else
+            {
+                n++;
+            }
+        }
+        return n;
+    }
+    if (n < 2)
+    {
+        return (size_t)-1;
+    }
+    while ((n >= 2) && (**ws))
+    {
+        if (**ws >= 0x80u)
+        {
+            if (!(l = _wcrtomb(s, **ws, 0)))
+            {
+                return (size_t)-1;
+            }
+            s += l;
+            n -= l;
+        }
+        else
+        {
+            *s++ = (char)**ws;
+            n--;
+        }
+        (*ws)++;
+    }
+    while (n && **ws)
+    {
+        if (**ws >= 0x80u)
+        {
+            if (!(l = _wcrtomb(buf, **ws, 0)))
+            {
+                return (size_t)-1;
+            }
+            if (l > n)
+            {
+                return (N - n);
+            }
+            _wcrtomb(s, **ws, 0);
+            s += l;
+            n -= l;
+        }
+        else
+        {
+            *s++ = (char)**ws;
+            n--;
+        }
+        (*ws)++;
+    }
+    if (n)
+        *s = 0;
+    *ws = 0;
+    return (N - n);
 }

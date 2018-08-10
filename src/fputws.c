@@ -1,4 +1,3 @@
-
 /*
     MIT License
 
@@ -62,26 +61,29 @@ static int __fputws(const wchar_t *restrict ws, FILE *restrict fp)
     int nwritten = 0;
     int nchars   = (int)_wcslen(ws);
 
-    while (nchars > 0) {
-	int   nbytes = 0;
-	char *ptr    = (char*)&buf;
-	while ((nbytes < (BUFSIZ - (MB_LEN_MAX * 2))) && (nchars)) {
-	    int n;
-	    if ((n = _wctomb(ptr, *ws)) < 0)
+    while (nchars > 0)
+    {
+        int   nbytes = 0;
+        char *ptr    = (char*)&buf;
+        while ((nbytes < (BUFSIZ - (MB_LEN_MAX * 2))) && (nchars))
+        {
+            int n;
+            if ((n = _wctomb(ptr, *ws)) < 0)
             {
                 errno = EILSEQ;
                 return 0;
-	    }
-	    ws++;
-	    ptr    += n;
-	    nbytes += n;
-	    nchars--;
-	}
-	*ptr = '\0';
-	if (fputs(buf, fp) < nbytes) {
-	    return 0;
-	}
-	nwritten += nbytes;
+            }
+            ws++;
+            ptr    += n;
+            nbytes += n;
+            nchars--;
+        }
+        *ptr = '\0';
+        if (fputs(buf, fp) < nbytes)
+        {
+            return 0;
+        }
+        nwritten += nbytes;
     }
     return (nwritten);
 }

@@ -1,4 +1,3 @@
-
 /*
     MIT License
 
@@ -27,8 +26,10 @@
 #include "libwchar.h"
 
 // Returns 1 if 'wc' is in the 'delim' string, 0 otherwise.
-static int __wc_indelim(wchar_t wc, const wchar_t* delim) {
-    while (*delim) {
+static int __wc_indelim(wchar_t wc, const wchar_t* delim)
+{
+    while (*delim)
+    {
         if (wc == *delim)
             return 1;
         delim++;
@@ -36,9 +37,11 @@ static int __wc_indelim(wchar_t wc, const wchar_t* delim) {
     return 0;
 }
 
-wchar_t *_wcpcpy(wchar_t *to, const wchar_t *from) {
+wchar_t *_wcpcpy(wchar_t *to, const wchar_t *from)
+{
     size_t n = 0;
-    for (;;) {
+    for (;;)
+    {
         wchar_t wc = from[n];
         to[n] = wc;
         if (wc == L'\0')
@@ -48,24 +51,29 @@ wchar_t *_wcpcpy(wchar_t *to, const wchar_t *from) {
     return to + n;
 }
 
-wchar_t *_wcpncpy(wchar_t *dst, const wchar_t *src, size_t n) {
+wchar_t *_wcpncpy(wchar_t *dst, const wchar_t *src, size_t n)
+{
     size_t i;
-    for (i = 0; i < n; ++i) {
+    for (i = 0; i < n; ++i)
+    {
         wchar_t wc = src[i];
         dst[i] = wc;
         if (wc == L'\0')
             break;
     }
-    while (i < n) {
+    while (i < n)
+    {
         dst[i] = L'\0';
         ++i;
     }
     return &dst[n-1];
 }
 
-int _wcscasecmp(const wchar_t *s1, const wchar_t *s2) {
+int _wcscasecmp(const wchar_t *s1, const wchar_t *s2)
+{
     size_t n = 0;
-    for (;;) {
+    for (;;)
+    {
         wchar_t wc1 = _towlower(s1[n]);
         wchar_t wc2 = _towlower(s2[n]);
         if (wc1 != wc2)
@@ -76,13 +84,15 @@ int _wcscasecmp(const wchar_t *s1, const wchar_t *s2) {
     }
 }
 
-wchar_t *_wcscat(wchar_t *s1, const wchar_t *s2) {
+wchar_t *_wcscat(wchar_t *s1, const wchar_t *s2)
+{
     size_t n = 0;
     while (s1[n] != L'\0')
         n++;
 
     size_t i = 0;
-    for (;;) {
+    for (;;)
+    {
         wchar_t wc = s2[i];
         s1[n+i] = wc;
         if (wc == L'\0')
@@ -92,7 +102,8 @@ wchar_t *_wcscat(wchar_t *s1, const wchar_t *s2) {
     return s1;
 }
 
-size_t _wcslcat(wchar_t *dst, const wchar_t *src, size_t siz) {
+size_t _wcslcat(wchar_t *dst, const wchar_t *src, size_t siz)
+{
     // Sanity check simplifies code below
     if (siz == 0)
         return 0;
@@ -100,10 +111,10 @@ size_t _wcslcat(wchar_t *dst, const wchar_t *src, size_t siz) {
     // Skip dst characters.
     size_t n = 0;
     while (n < siz && dst[n] != L'\0')
-      n++;
+        n++;
 
     if (n == siz)
-      return n + _wcslen(src);
+        return n + _wcslen(src);
 
     // Copy as much source characters as they fit into siz-1 bytes.
     size_t i;
@@ -120,7 +131,8 @@ size_t _wcslcat(wchar_t *dst, const wchar_t *src, size_t siz) {
     return n+i;
 }
 
-size_t _wcslcpy(wchar_t *dst, const wchar_t *src, size_t siz) {
+size_t _wcslcpy(wchar_t *dst, const wchar_t *src, size_t siz)
+{
     size_t i;
 
     // Copy all non-zero bytes that fit into siz-1 destination bytes
@@ -137,9 +149,11 @@ size_t _wcslcpy(wchar_t *dst, const wchar_t *src, size_t siz) {
     return i;
 }
 
-size_t _wcslen(const wchar_t *s) {
+size_t _wcslen(const wchar_t *s)
+{
     size_t n = 0;
-    for (;;) {
+    for (;;)
+    {
         wchar_t wc = s[n];
         if (wc == L'\0')
             return n;
@@ -147,9 +161,11 @@ size_t _wcslen(const wchar_t *s) {
     }
 }
 
-int _wcsncasecmp(const wchar_t *s1, const wchar_t *s2, size_t n) {
+int _wcsncasecmp(const wchar_t *s1, const wchar_t *s2, size_t n)
+{
     size_t i;
-    for (i = 0; i < n; ++i) {
+    for (i = 0; i < n; ++i)
+    {
         wchar_t wc1 = _towlower(s1[i]);
         wchar_t wc2 = _towlower(s2[i]);
         if (wc1 != wc2)
@@ -158,14 +174,16 @@ int _wcsncasecmp(const wchar_t *s1, const wchar_t *s2, size_t n) {
     return 0;
 }
 
-wchar_t *_wcsncat(wchar_t *s1, const wchar_t *s2, size_t n) {
+wchar_t *_wcsncat(wchar_t *s1, const wchar_t *s2, size_t n)
+{
     size_t start = 0;
     while (s1[start] != L'\0')
         start++;
 
     // Append s2.
     size_t i;
-    for (i = 0; i < n; ++i) {
+    for (i = 0; i < n; ++i)
+    {
         wchar_t wc = s2[i];
         s1[start + i] = wc;
         if (wc == L'\0')
@@ -178,22 +196,27 @@ int _wcscmp(const wchar_t *s1, const wchar_t *s2)
 {
     wchar_t c1, c2;
 
-    if ((!s1) || (!s2)) return -1;
+    if ((!s1) || (!s2))
+        return -1;
 
     do
     {
         c1 = *s1++;
         c2 = *s2++;
-        if (c2 == L'\0') return c1 - c2;
+        if (c2 == L'\0')
+            return c1 - c2;
 
-    } while (c1 == c2);
+    }
+    while (c1 == c2);
 
     return c1 < c2 ? -1 : 1;
 }
 
-int _wcsncmp(const wchar_t *s1, const wchar_t *s2, size_t n) {
+int _wcsncmp(const wchar_t *s1, const wchar_t *s2, size_t n)
+{
     size_t i;
-    for (i = 0; i < n; ++i) {
+    for (i = 0; i < n; ++i)
+    {
         wchar_t wc = s1[i];
         if (wc != s2[i])
             return (wc > s2[i]) ? +1 : -1;
@@ -203,10 +226,12 @@ int _wcsncmp(const wchar_t *s1, const wchar_t *s2, size_t n) {
     return 0;
 }
 
-wchar_t *_wcsncpy(wchar_t *dst, const wchar_t *src, size_t n) {
+wchar_t *_wcsncpy(wchar_t *dst, const wchar_t *src, size_t n)
+{
     // Copy initial characters.
     size_t i;
-    for (i = 0; i < n; ++i) {
+    for (i = 0; i < n; ++i)
+    {
         wchar_t wc = src[i];
         if (wc == L'\0')
             break;
@@ -219,18 +244,22 @@ wchar_t *_wcsncpy(wchar_t *dst, const wchar_t *src, size_t n) {
     return dst;
 }
 
-size_t _wcsnlen(const wchar_t *s, size_t maxlen) {
+size_t _wcsnlen(const wchar_t *s, size_t maxlen)
+{
     size_t n;
-    for (n = 0; n < maxlen; ++n) {
+    for (n = 0; n < maxlen; ++n)
+    {
         if (s[n] == L'\0')
             break;
     }
     return n;
 }
 
-wchar_t *_wcspbrk(const wchar_t *s, const wchar_t *set) {
+wchar_t *_wcspbrk(const wchar_t *s, const wchar_t *set)
+{
     size_t n = 0;
-    for (;;) {
+    for (;;)
+    {
         wchar_t wc = s[n];
         if (!wc)
             return NULL;
@@ -240,22 +269,26 @@ wchar_t *_wcspbrk(const wchar_t *s, const wchar_t *set) {
     }
 }
 
-wchar_t *_wcschr(const wchar_t *s, wchar_t c) {
-  size_t n = 0;
-  for (;;) {
-    wchar_t wc = s[n];
-    if (wc == c)
-      return (wchar_t*)s + n;
-    if (wc == L'\0')
-      return NULL;
-    n++;
-  }
+wchar_t *_wcschr(const wchar_t *s, wchar_t c)
+{
+    size_t n = 0;
+    for (;;)
+    {
+        wchar_t wc = s[n];
+        if (wc == c)
+            return (wchar_t*)s + n;
+        if (wc == L'\0')
+            return NULL;
+        n++;
+    }
 }
 
-wchar_t *_wcsrchr(const wchar_t *s, wchar_t c) {
+wchar_t *_wcsrchr(const wchar_t *s, wchar_t c)
+{
     size_t n = 0;
     wchar_t* last = NULL;
-    for (;;) {
+    for (;;)
+    {
         wchar_t wc = s[n];
         if (wc == c)
             last = (wchar_t*)s + n;
@@ -266,9 +299,11 @@ wchar_t *_wcsrchr(const wchar_t *s, wchar_t c) {
     return last;
 }
 
-size_t _wcsspn(const wchar_t *s, const wchar_t *set) {
+size_t _wcsspn(const wchar_t *s, const wchar_t *set)
+{
     size_t n = 0;
-    for (;;) {
+    for (;;)
+    {
         wchar_t wc = s[n];
         if (wc == L'\0')
             break;
@@ -279,7 +314,8 @@ size_t _wcsspn(const wchar_t *s, const wchar_t *set) {
     return n;
 }
 
-wchar_t *_wcsstr(const wchar_t *s, const wchar_t *find) {
+wchar_t *_wcsstr(const wchar_t *s, const wchar_t *find)
+{
 
     unsigned int i;
     wchar_t *p = (wchar_t*)s;
@@ -293,7 +329,8 @@ wchar_t *_wcsstr(const wchar_t *s, const wchar_t *find) {
 
     size_t flen = _wcslen(find);
 
-    for (i = 0; i < flen; i++) {
+    for (i = 0; i < flen; i++)
+    {
         if ((p = _wcschr(p, find[i])) == NULL)
             return NULL;
 
@@ -305,8 +342,10 @@ wchar_t *_wcsstr(const wchar_t *s, const wchar_t *find) {
     return NULL;
 }
 
-wchar_t *_wcstok(wchar_t *s, const wchar_t *delim, wchar_t **last) {
-    if (s == NULL) {
+wchar_t *_wcstok(wchar_t *s, const wchar_t *delim, wchar_t **last)
+{
+    if (s == NULL)
+    {
         s = *last;
         if (s == NULL)
             return NULL;
@@ -315,16 +354,19 @@ wchar_t *_wcstok(wchar_t *s, const wchar_t *delim, wchar_t **last) {
     // Skip leading delimiters first.
     size_t i = 0;
     wchar_t wc;
-    for (;;) {
+    for (;;)
+    {
         wc = s[i];
-        if (wc && __wc_indelim(wc, delim)) {
+        if (wc && __wc_indelim(wc, delim))
+        {
             i++;
             continue;
         }
         break;
     }
 
-    if (!wc) {
+    if (!wc)
+    {
         // Nothing left.
         *last = NULL;
         return NULL;
@@ -333,36 +375,45 @@ wchar_t *_wcstok(wchar_t *s, const wchar_t *delim, wchar_t **last) {
     size_t tok_start = i;
 
     // Skip non delimiters now.
-    for (;;) {
+    for (;;)
+    {
         wc = s[i];
-        if (wc && !__wc_indelim(wc, delim)) {
+        if (wc && !__wc_indelim(wc, delim))
+        {
             i++;
             continue;
         }
         break;
     }
 
-    if (!wc) {
+    if (!wc)
+    {
         *last = NULL;
-    } else {
+    }
+    else
+    {
         s[i] = L'\0';
         *last = &s[i+1];
     }
     return &s[tok_start];
 }
 
-wchar_t *_wmemchr(const wchar_t *s, wchar_t c, size_t n) {
+wchar_t *_wmemchr(const wchar_t *s, wchar_t c, size_t n)
+{
     size_t i;
-    for (i = 0; i < n; ++i) {
+    for (i = 0; i < n; ++i)
+    {
         if (s[i] == c)
             return (wchar_t*)&s[i];
     }
     return NULL;
 }
 
-int _wmemcmp(const wchar_t *s1, const wchar_t *s2, size_t n) {
+int _wmemcmp(const wchar_t *s1, const wchar_t *s2, size_t n)
+{
     size_t i;
-    for (i = 0; i < n; ++i) {
+    for (i = 0; i < n; ++i)
+    {
         if (s1[i] == s2[i])
             continue;
         if (s1[i] > s2[i])
@@ -373,20 +424,24 @@ int _wmemcmp(const wchar_t *s1, const wchar_t *s2, size_t n) {
     return 0;
 }
 
-wchar_t *_wmemcpy(wchar_t *d, const wchar_t *s, size_t n) {
+wchar_t *_wmemcpy(wchar_t *d, const wchar_t *s, size_t n)
+{
     return (wchar_t *)memcpy((char*)d,
                              (const char*)s,
                              n * sizeof(wchar_t));
 }
 
-wchar_t *_wmemmove(wchar_t* d, const wchar_t* s, size_t n) {
+wchar_t *_wmemmove(wchar_t* d, const wchar_t* s, size_t n)
+{
     return (wchar_t* )memmove((char*)d,
                               (const char*)s,
                               n * sizeof(wchar_t));
 }
 
-wchar_t *_wmemset(wchar_t* s, wchar_t c, size_t n) {
+wchar_t *_wmemset(wchar_t* s, wchar_t c, size_t n)
+{
     size_t i;
-    for (i = 0; i < n; i++) s[i] = c;
+    for (i = 0; i < n; i++)
+        s[i] = c;
     return s;
 }

@@ -557,18 +557,18 @@ recurse:
 #           if defined(TM_GMTOFF)
                     /* Argh! No 'J'! */
                     if (*bp >= 'A' && *bp <= 'I')
-            // cppcheck-suppress ConfigurationNotChecked
+                        // cppcheck-suppress ConfigurationNotChecked
                         tm->TM_GMTOFF =
                             ('A' - 1) - (int)*bp;
                     else if (*bp >= 'L' && *bp <= 'M')
-            // cppcheck-suppress ConfigurationNotChecked
+                        // cppcheck-suppress ConfigurationNotChecked
                         tm->TM_GMTOFF = 'A' - (int)*bp;
                     else if (*bp >= 'N' && *bp <= 'Y')
-            // cppcheck-suppress ConfigurationNotChecked
+                        // cppcheck-suppress ConfigurationNotChecked
                         tm->TM_GMTOFF = (int)*bp - 'M';
 #           endif
 #           if defined(TM_ZONE)
-            // cppcheck-suppress ConfigurationNotChecked
+                    // cppcheck-suppress ConfigurationNotChecked
                     tm->TM_ZONE = NULL; /* XXX */
 #           endif
                     bp++;

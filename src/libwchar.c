@@ -1,4 +1,3 @@
-
 /*
     MIT License
 
@@ -24,21 +23,21 @@
     SOFTWARE.
  */
 
- /* Original code:
-  * This code was written by Rich Felker in 2010; no copyright is claimed.
-  * This code is in the public domain. Attribution is appreciated but
-  * unnecessary.
-  */
+/* Original code:
+ * This code was written by Rich Felker in 2010; no copyright is claimed.
+ * This code is in the public domain. Attribution is appreciated but
+ * unnecessary.
+ */
 
 #define __WCHAR_INTERNAL_LIB 1
 #include "libwchar.h"
 
 #if defined(PACKAGE_STRING)
-    char libinfo[]
+char libinfo[]
 #  if (defined(__APPLE__) || defined(__OSX__) || defined(__MACH__))
-    __attribute__((section("__SEGMENT,__LIBINFO")))
+__attribute__((section("__SEGMENT,__LIBINFO")))
 #  else
-    __attribute__ ((section ("LIBINFO")))
+__attribute__ ((section ("LIBINFO")))
 #  endif
     = PACKAGE_STRING " compiled on " __DATE__ " at " __TIME__;
 #endif
@@ -58,8 +57,9 @@
              | ( R(0x80,0xc0) >> 12 ) \
              | x )
 
-const uint32_t bittab[] = {
-                  C(0x2),C(0x3),C(0x4),C(0x5),C(0x6),C(0x7),
+const uint32_t bittab[] =
+{
+    C(0x2),C(0x3),C(0x4),C(0x5),C(0x6),C(0x7),
     C(0x8),C(0x9),C(0xa),C(0xb),C(0xc),C(0xd),C(0xe),C(0xf),
     D(0x0),D(0x1),D(0x2),D(0x3),D(0x4),D(0x5),D(0x6),D(0x7),
     D(0x8),D(0x9),D(0xa),D(0xb),D(0xc),D(0xd),D(0xe),D(0xf),

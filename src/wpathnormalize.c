@@ -59,7 +59,10 @@ wchar_t * _wpathnormalize(const wchar_t *ws, size_t sz)
             {
                 i++;
             }
-            if (i) { --i; }
+            if (i)
+            {
+                --i;
+            }
         }
     }
 

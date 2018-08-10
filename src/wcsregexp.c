@@ -1,4 +1,3 @@
-
 /*
     MIT License
 
@@ -52,14 +51,17 @@
 
 static wchar_t *in_set(wchar_t *rx, wchar_t c, int *found)
 {
-    if (*rx && *rx != L']') {
-        if (rx[1] == L'-') {
+    if (*rx && *rx != L']')
+    {
+        if (rx[1] == L'-')
+        {
             if (c >= *rx && c <= rx[2])
                 *found = 1;
 
             rx = in_set(rx + 3, c, found);
         }
-        else {
+        else
+        {
             if (*rx == c)
                 *found = 1;
 
@@ -74,10 +76,12 @@ static wchar_t *skip_past(wchar_t *rx, wchar_t c);
 
 static wchar_t *skip_to(wchar_t *rx, wchar_t c)
 {
-    if (*rx) {
+    if (*rx)
+    {
         rx++;
 
-        while (*rx && *rx != L'$' && *rx != L')' && *rx != c) {
+        while (*rx && *rx != L'$' && *rx != L')' && *rx != c)
+        {
             if (*rx == L'(')
                 rx = skip_past(rx, L')');
             else
@@ -92,7 +96,8 @@ static wchar_t *skip_to(wchar_t *rx, wchar_t c)
 static wchar_t *skip_past(wchar_t *rx, wchar_t c)
 {
     rx = skip_to(rx, c);
-    if (*rx == c) rx++;
+    if (*rx == c)
+        rx++;
 
     return rx;
 }
@@ -102,7 +107,8 @@ static wchar_t *parse_int(wchar_t *rx, int *v)
 {
     *v = 0;
 
-    while (*rx >= L'0' && *rx <= L'9') {
+    while (*rx >= L'0' && *rx <= L'9')
+    {
         *v = (*v * 10) + (*rx - L'0');
         rx++;
     }
@@ -111,7 +117,8 @@ static wchar_t *parse_int(wchar_t *rx, int *v)
 }
 
 
-struct rxctl {
+struct rxctl
+{
     wchar_t *rx;
     wchar_t *tx;
     int     m;
@@ -121,23 +128,26 @@ static wchar_t *match_here_r(wchar_t *rx, wchar_t *tx, int *size);
 
 static void match_here(struct rxctl *r, int cnt)
 {
-    if (*r->rx != L'\0' && *r->rx != L'|' && *r->rx != L')') {
+    if (*r->rx != L'\0' && *r->rx != L'|' && *r->rx != L')')
+    {
         int it = 0;
         int min = 1, max = 1;
         wchar_t *orx = r->rx;
 
-        if (*r->rx == L'(') {
+        if (*r->rx == L'(')
+        {
             r->rx = match_here_r(
-                r->rx + 1, &r->tx[r->m], &it);      /* subregex */
+                        r->rx + 1, &r->tx[r->m], &it);      /* subregex */
 
             if (*r->rx == L'|')
                 r->rx = skip_to(r->rx, L')');
         }
-        else
-        if (*r->rx == L'[') {
+        else if (*r->rx == L'[')
+        {
             int f = 0;
 
-            if (r->rx[1] == L'^') {
+            if (r->rx[1] == L'^')
+            {
                 r->rx = in_set(r->rx + 2, r->tx[r->m], &f);
                 f = !f;
             }
@@ -147,29 +157,41 @@ static void match_here(struct rxctl *r, int cnt)
             if (f)
                 it++;                               /* matched set */
         }
-        else
-        if (r->tx[r->m] == L'\0') {
+        else if (r->tx[r->m] == L'\0')
+        {
             if (*r->rx == L'$')
                 it++;                               /* matched $ */
         }
-        else
-        if (*r->rx == L'.')
+        else if (*r->rx == L'.')
             it++;                                   /* matched . */
-        else
-        if (*r->rx == L'\\' && *++r->rx == r->tx[r->m])
+        else if (*r->rx == L'\\' && *++r->rx == r->tx[r->m])
             it++;                                   /* matched escaped */
-        else
-        if (*r->rx == r->tx[r->m])
+        else if (*r->rx == r->tx[r->m])
             it++;                                   /* exact match */
 
-        if (*r->rx) {
+        if (*r->rx)
+        {
             r->rx++;                                /* parse quantifier */
 
-            switch (*r->rx) {
-            case L'?':  min = 0; max = 1; r->rx++; break;
-            case L'*':  min = 0; max = 0x7fffffff; r->rx++; break;
-            case L'+':  min = 1; max = 0x7fffffff; r->rx++; break;
-            case L'{':  r->rx = parse_int(r->rx + 1, &min);
+            switch (*r->rx)
+            {
+            case L'?':
+                min = 0;
+                max = 1;
+                r->rx++;
+                break;
+            case L'*':
+                min = 0;
+                max = 0x7fffffff;
+                r->rx++;
+                break;
+            case L'+':
+                min = 1;
+                max = 0x7fffffff;
+                r->rx++;
+                break;
+            case L'{':
+                r->rx = parse_int(r->rx + 1, &min);
                 if (*r->rx == L',')
                     r->rx = parse_int(r->rx + 1, &max);
                 else
@@ -177,16 +199,19 @@ static void match_here(struct rxctl *r, int cnt)
 
                 r->rx++;
                 break;
-            default: break;
+            default:
+                break;
             }
         }
 
-        if (min == 0) {
+        if (min == 0)
+        {
             int m;
 
             match_here_r(r->rx, &r->tx[r->m], &m);  /* min == 0 restart */
 
-            if (m) {
+            if (m)
+            {
                 r->m += m;                          /* match from here */
                 return;
             }
@@ -194,20 +219,24 @@ static void match_here(struct rxctl *r, int cnt)
 
         r->m += it;
 
-        if (it > 0) {
+        if (it > 0)
+        {
             cnt++;
 
             if (cnt == max)
                 match_here(r, 0);                   /* restart */
-            else {
+            else
+            {
                 r->rx = orx;
                 match_here(r, cnt);                 /* try repetition */
             }
         }
-        else {
+        else
+        {
             if (cnt >= min)
                 match_here(r, 0);                   /* enough prev. cnt */
-            else {
+            else
+            {
                 r->m  = 0;
                 r->rx = skip_past(r->rx, L'|');
                 match_here(r, 0);                   /* nonmatch retry */
@@ -254,11 +283,13 @@ wchar_t * wcsregexp(wchar_t *restrict rx, wchar_t *restrict tx, int *size)
     {
         rx += 1;
     }
-    do {
+    do
+    {
 
         match_here_r(rx, tx, size);
 
-    } while (!*size && *tx++);
+    }
+    while (!*size && *tx++);
 
     return tx;
 }

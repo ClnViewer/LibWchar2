@@ -1,4 +1,3 @@
-
 /*
     MIT License
 
@@ -26,7 +25,8 @@
 
 #include "libwchar.h"
 
-static const unsigned char table[] = {
+static const unsigned char table[] =
+{
 #include "table-punct.h"
 };
 

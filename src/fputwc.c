@@ -56,31 +56,32 @@
 
 static wchar_t __fputwc(wchar_t wc, FILE *fp)
 {
-	char buf[MB_LEN_MAX];
-	size_t i, len;
+    char buf[MB_LEN_MAX];
+    size_t i, len;
 
-	if ((MB_CUR_MAX == 1) && (wc > 0) && (wc <= UCHAR_MAX))
-	{
-		/*
-		 * Assume single-byte locale with no special encoding.
-		 * A more careful test would be to check
-		 * _CurrentRuneLocale->encoding.
-		 */
-		*buf = (char)wc;
-		len = 1;
-	}
-	else
-	{
-		if ((len = _wcrtomb(buf, wc, 0)) == (size_t)-1) {
-			return L'\0';
-		}
-	}
+    if ((MB_CUR_MAX == 1) && (wc > 0) && (wc <= UCHAR_MAX))
+    {
+        /*
+         * Assume single-byte locale with no special encoding.
+         * A more careful test would be to check
+         * _CurrentRuneLocale->encoding.
+         */
+        *buf = (char)wc;
+        len = 1;
+    }
+    else
+    {
+        if ((len = _wcrtomb(buf, wc, 0)) == (size_t)-1)
+        {
+            return L'\0';
+        }
+    }
 
-	for (i = 0; i < len; i++)
-		if (fputc((unsigned char)buf[i], fp) == 0)
-			return L'\0';
+    for (i = 0; i < len; i++)
+        if (fputc((unsigned char)buf[i], fp) == 0)
+            return L'\0';
 
-	return ((wchar_t)wc);
+    return ((wchar_t)wc);
 }
 
 wchar_t _fputwc(wchar_t wc, FILE *fp)
