@@ -92,7 +92,7 @@ The source code of the test can be found in the file [`test/check_wchar2_MSVC.c`
 
 ### Archive nuget
 
-- The latest MSVC build in the format [nuget archive](https://github.com/ClnViewer/LibWchar2/blob/master/docs/nuget/LibWchar2ext.nupkg?raw=true).
+- The latest MSVC build in the format [nuget archive](https://github.com/ClnViewer/LibWchar2/tree/master/docs/nuget).
 
 ### Example use
 

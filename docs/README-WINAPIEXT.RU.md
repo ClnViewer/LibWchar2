@@ -94,7 +94,7 @@
 
 ### Архив nuget
 
-- последняя сборка MSVC в формате [nuget архива](https://github.com/ClnViewer/LibWchar2/blob/master/docs/nuget/LibWchar2ext.nupkg?raw=true).
+- последняя сборка MSVC в формате [nuget архива](https://github.com/ClnViewer/LibWchar2/tree/master/docs/nuget).
 
 ### Пример использования
 
