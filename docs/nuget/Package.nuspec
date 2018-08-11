@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>LibWchar2ext</id>
+    <version>0.0.9</version>
+    <authors>PS</authors>
+    <owners>PS</owners>
+    <licenseUrl>https://github.com/ClnViewer/LibWchar2/blob/master/docs/README-WINAPIEXT.md</licenseUrl>
+    <projectUrl>https://github.com/ClnViewer/LibWchar2</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A wrapper library for compatibility with projects written for the Windows API, where wchar_t size == 2 bytes on *nix platforms. Replaces libc, glibc functions using the wchar_t type.</description>
+    <releaseNotes>See original source from github.com</releaseNotes>
+    <copyright>Copyright 2018</copyright>
+    <tags>wchar-support library linux c-language c-library c-extension  native</tags>
+    <references>
+      <reference file="libwchar2ext.lib"/>
+      <reference file="wchar2ext.h"/>
+    </references>
+  </metadata>
+  <files>
+    <file src="Package.target" target="build\native\LibWchar2ext.target"/>
+    <file src="Package.target" target="build\LibWchar2ext.target"/>
+    <file src="Release\libwchar2ext.lib" target="lib\native\x32"/>
+    <file src="..\..\include\wchar2ext.h" target="lib\native\include\wchar2ext.h"/>
+  </files>
+</package>
