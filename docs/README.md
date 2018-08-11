@@ -153,7 +153,7 @@ string_ws* | const string_ws* ||
 
 ### Test & Testing
 
-- By checking your code with analysis programs, you make it more reliable, if you use [cppcheck](https://en.wikipedia.org/wiki/Cppcheck) you may be useful [configuration files](https://clnviewer.github.io/LibWchar2/docs/README-CPPCHECK.md) with a description of library functions for the  `cppcheck` analysis.
+- By checking your code with analysis programs, you make it more reliable, if you use [cppcheck](https://en.wikipedia.org/wiki/Cppcheck) you may be useful [configuration files](https://github.com/ClnViewer/LibWchar2/blob/master/docs/README-CPPCHECK.md) with a description of library functions for the  `cppcheck` analysis.
 - If you have the time and the desire or the opportunity to help make the library better, you can take part in writing tests for library functions.
 This way you will take part in the testing.
 
