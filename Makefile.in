@@ -864,9 +864,13 @@ nuget:
 	@if [[ -f build/NuGet.exe && -f docs/nuget/libwchar2ext.lib ]] ; then \
 		rm -f docs/nuget/*.nupkg ; \
 		cp -f docs/nuget/Package.nuspec ./ ; \
+		cd winext/build ; \
+		./mingw-cross-build.sh ; \
+		cd ../../ ; \
 		mono build/NuGet.exe pack Package.nuspec -OutputDirectory docs/nuget -Prop Configuration=Release;Platform=AnyCPU ; \
 		rm -f ./Package.nuspec ; \
 		rm -f docs/nuget/libwchar2ext.lib ; \
+		rm -f docs/nuget/libwchar2ext-mingw*.a ; \
 	fi
 
 man: mandoxy doxyclean

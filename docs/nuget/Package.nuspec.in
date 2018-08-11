@@ -45,6 +45,8 @@
     <file src="docs/nuget/Package.target" target="build/native/libwchar2ext.target"/>
     <file src="docs/nuget/Package.target" target="build/libwchar2ext.target"/>
     <file src="docs/nuget/libwchar2ext.lib" target="lib/native/x32/libwchar2ext.lib"/>
+    <file src="docs/nuget/libwchar2ext-mingw32.a" target="lib/native/mingw/x32/libwchar2ext.a"/>
+    <file src="docs/nuget/libwchar2ext-mingw64.a" target="lib/native/mingw/x64/libwchar2ext.a"/>
     <file src="include/wchar2ext.h" target="lib/native/include/wchar2ext.h"/>
   </files>
 </package>

@@ -10,7 +10,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A wrapper library for compatibility with projects written for the Windows API, where wchar_t size == 2 bytes on *nix platforms. Replaces libc, glibc functions using the wchar_t type.</description>
     <releaseNotes>Library extensions based on LibWchar2 for Windows API platforms</releaseNotes>
-    <copyright>Copyright Sat Aug 11 2018</copyright>
+    <copyright>Copyright Sun Aug 12 2018</copyright>
     <tags>wchar-support library linux c-language c-library c-extension native</tags>
     <references>
       <reference file="libwchar2ext.lib"/>
@@ -45,6 +45,8 @@
     <file src="docs/nuget/Package.target" target="build/native/libwchar2ext.target"/>
     <file src="docs/nuget/Package.target" target="build/libwchar2ext.target"/>
     <file src="docs/nuget/libwchar2ext.lib" target="lib/native/x32/libwchar2ext.lib"/>
+    <file src="docs/nuget/libwchar2ext-mingw32.a" target="lib/native/mingw/x32/libwchar2ext.a"/>
+    <file src="docs/nuget/libwchar2ext-mingw64.a" target="lib/native/mingw/x64/libwchar2ext.a"/>
     <file src="include/wchar2ext.h" target="lib/native/include/wchar2ext.h"/>
   </files>
 </package>

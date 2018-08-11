@@ -1,3 +1,8 @@
+
+#if defined(__LINUXTOWIN)
+#   define __USE_MINGW_ANSI_STDIO 1
+#endif
+
 #include <stdio.h>
 #include <conio.h>
 #include <stdlib.h>

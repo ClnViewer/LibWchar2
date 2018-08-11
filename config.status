@@ -508,7 +508,7 @@ old_postinstall_cmds='chmod 644 $oldlib~$RANLIB $oldlib'
 old_postuninstall_cmds=''
 old_archive_cmds='$AR $AR_FLAGS $oldlib$oldobjs~$RANLIB $oldlib'
 CC='gcc -std=gnu99'
-CFLAGS='-g -O2 -fshort-wchar -Wall -pedantic -Wstrict-prototypes -Wmissing-declarations -Wmissing-prototypes -Wconversion -Wsign-conversion -Wunreachable-code -Wpointer-arith -Wswitch-default -Wswitch-enum -Wredundant-decls -Wno-unknown-pragmas -Wcast-align -Wshadow -Wextra -Wundef'
+CFLAGS='-g -O2 -fshort-wchar -Wall -pedantic -Wstrict-prototypes -Wmissing-declarations -Wmissing-prototypes -Wconversion -Wsign-conversion -Wunreachable-code -Wpointer-arith -Wswitch-default -Wswitch-enum -Wredundant-decls -Wno-unknown-pragmas -Wcast-align -Wshadow -Wextra -Wundef -Wformat-extra-args'
 compiler='gcc'
 GCC='yes'
 lt_cv_sys_global_symbol_pipe='sed -n -e '\''s/^.*[	 ]\([ABCDGIRSTW][ABCDGIRSTW]*\)[	 ][	 ]*\([_A-Za-z][_A-Za-z0-9]*\)$/\1 \2 \2/p'\'''
@@ -729,7 +729,7 @@ S["am__EXEEXT_TRUE"]="#"
 S["LTLIBOBJS"]=""
 S["LIBOBJS"]=""
 S["YDATE"]="2018"
-S["CRDATE"]="Sat Aug 11 2018"
+S["CRDATE"]="Sun Aug 12 2018"
 S["pkgconfigdir"]="${exec_prefix}/lib/pkgconfig"
 S["COND_BUILD_TEST_FALSE"]="#"
 S["COND_BUILD_TEST_TRUE"]=""
@@ -799,7 +799,7 @@ S["ac_ct_CC"]="gcc"
 S["CPPFLAGS"]=""
 S["LDFLAGS"]=""
 S["CFLAGS"]="-g -O2 -fshort-wchar -Wall -pedantic -Wstrict-prototypes -Wmissing-declarations -Wmissing-prototypes -Wconversion -Wsign-conversion -Wunreachable-co"\
-"de -Wpointer-arith -Wswitch-default -Wswitch-enum -Wredundant-decls -Wno-unknown-pragmas -Wcast-align -Wshadow -Wextra -Wundef"
+"de -Wpointer-arith -Wswitch-default -Wswitch-enum -Wredundant-decls -Wno-unknown-pragmas -Wcast-align -Wshadow -Wextra -Wundef -Wformat-extra-args"
 S["CC"]="gcc -std=gnu99"
 S["target_os"]="linux-gnu"
 S["target_vendor"]="pc"

@@ -94,7 +94,7 @@
 
 ### Архив nuget
 
-- последняя сборка MSVC в формате [nuget архива](https://github.com/ClnViewer/LibWchar2/tree/master/docs/nuget).
+- последняя сборка `MSVC32`, `MinGW32`, `MinGW64` в формате [nuget архива](https://github.com/ClnViewer/LibWchar2/tree/master/docs/nuget).
 
 ### Пример использования
 

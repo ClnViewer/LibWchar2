@@ -507,11 +507,11 @@ size_t wstring_format(string_ws *dst, const wchar_t *fmt, ...)
 #       endif
 
         if (
-#           if (defined(_MSC_VER) || defined(BUILD_MINGW64))
+#           if (defined(_MSC_VER) || defined(BUILD_MINGW64) || defined(__LINUXTOWIN))
             ((sz = _vswprintf(NULL, 0U, fmt, ap)) <= 0)  ||
 #           endif
             (!wstring_alloc(dst, (size_t)sz))            ||
-#           if defined(BUILD_MINGW32)
+#           if (defined(BUILD_MINGW32) && !defined(__LINUXTOWIN))
             (_vswprintf((wchar_t*)(dst->str + dst->sz), fmt, ap) <= 0)
 #           else
             (_vswprintf((void*)(dst->str + dst->sz), (size_t)(sz + 1), fmt, ap) <= 0)

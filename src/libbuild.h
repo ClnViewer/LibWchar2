@@ -28,6 +28,7 @@
 
 #if ( \
         defined(_WIN32) || defined(__WIN32__) || defined(_Windows) || \
+        defined(__WINNT) || defined(__WINNT__) || defined(WINNT) || \
         defined(_WIN64) || defined(__WIN64__) || \
         defined(__CYGWIN__) || defined(__MINGW32__) || defined(__MINGW64__))
 

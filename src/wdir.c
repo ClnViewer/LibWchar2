@@ -26,6 +26,11 @@
 #include "libbuild.h"
 
 #if defined(OS_WIN)
+
+#   if defined(__LINUXTOWIN)
+#      define __USE_MINGW_ANSI_STDIO 1
+#   endif
+
 #   include <stdio.h>
 #   include <sys/stat.h>
 #   include "libwcharext.h"

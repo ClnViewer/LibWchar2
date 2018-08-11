@@ -25,7 +25,7 @@ include_directories(
 )
 
 set(inst_hdrs
-	${CMAKE_CURRENT_SOURCE_DIR}/../include/wchar2ext.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/../include/wchar2ext.h
 )
 
 set(lib_hdrs
@@ -41,6 +41,7 @@ set(lib_srcs
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wchar_utf8.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wcprint.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wcsptime.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src/wcsregexp.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wfopen.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wmkdir.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wpathnormalize.c
@@ -76,27 +77,27 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR
 
      CHECK_C_COMPILER_FLAG("-std=c11" COMPILER_SUPPORTS_C11)
      if(COMPILER_SUPPORTS_C11)
-       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c11")
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c11")
      endif()
 
      CHECK_C_COMPILER_FLAG("-Wstrict-prototypes" COMPILER_SUPPORTS_CWSP)
      if(COMPILER_SUPPORTS_CWSP)
-       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wstrict-prototypes")
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wstrict-prototypes")
      endif()
 
      CHECK_C_COMPILER_FLAG("-Wall" COMPILER_SUPPORTS_CWALL)
      if(COMPILER_SUPPORTS_CWALL)
-       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
      endif()
 
      CHECK_C_COMPILER_FLAG("-Wextra" COMPILER_SUPPORTS_CWETRA)
      if(COMPILER_SUPPORTS_CWETRA)
-       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wextra")
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wextra")
      endif()
 
      CHECK_C_COMPILER_FLAG("-pedantic" COMPILER_SUPPORTS_CPEDANT)
      if(COMPILER_SUPPORTS_CPEDANT)
-       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pedantic")
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -pedantic")
      endif()
 
 endif()
@@ -108,7 +109,7 @@ if(MSVC)
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /DOS_WIN_EXCEPTION_CONSOLE=1")
     endif()
     if(OS_WIN_FOPEN_MIXED_CHAR)
-       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /DOS_WIN_FOPEN_MIXED_CHAR=1")
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /DOS_WIN_FOPEN_MIXED_CHAR=1")
     endif()
 endif()
 
@@ -122,7 +123,10 @@ if(WIN32)
 # Postfix of DLLs:
     set(LIB_DEBUG_POSTFIX d)
     if(OS_WIN_FOPEN_MIXED_CHAR AND NOT MSVC)
-       set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DOS_WIN_FOPEN_MIXED_CHAR")
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DOS_WIN_FOPEN_MIXED_CHAR")
+    endif()
+    if(__LINUXTOWIN)
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D__LINUXTOWIN")
     endif()
 else()
 # Postfix of so's:

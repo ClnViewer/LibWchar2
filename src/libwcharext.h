@@ -87,7 +87,7 @@
 #      define _mbstowcs mbstowcs
 #      define _wcscmp wcscmp
 
-#      if defined(BUILD_MINGW32)
+#      if (defined(BUILD_MINGW32) && !defined(__LINUXTOWIN))
 int vswprintf(wchar_t*, const wchar_t*, va_list);
 #      endif
 

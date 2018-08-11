@@ -47,7 +47,15 @@
     http://triptico.com or https://github.com/angelortega/aov-rx
 */
 
-#include "libwchar.h"
+#include "libbuild.h"
+
+#if defined(OS_WIN)
+#   include "libwcharext.h"
+
+#else
+#   include "libwchar.h"
+
+#endif
 
 static wchar_t *in_set(wchar_t *rx, wchar_t c, int *found)
 {

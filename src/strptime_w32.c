@@ -4,9 +4,9 @@
     Copyright (c) 2018 PS
     GitHub: https://github.com/ClnViewer/LibWchar2
 
-	Origin: https://github.com/tnodir/luasys/blob/master/src/win32/strptime.c
-	Author: Nodir Temirkhodjaev, <nodir.temir@gmail.com>
-	See Copyright to origin next.
+        Origin: https://github.com/tnodir/luasys/blob/master/src/win32/strptime.c
+        Author: Nodir Temirkhodjaev, <nodir.temir@gmail.com>
+        See Copyright to origin next.
 
     Permission is hereby granted, free of charge, to any person obtaining a copy
     of this software and associated documentation files (the "Software"), to deal
@@ -66,7 +66,7 @@
 #   define strcasecmp _stricmp
 #endif
 
-#if defined(BUILD_MINGW32)
+#if (defined(BUILD_MINGW32) && !defined(__LINUXTOWIN))
 int __cdecl __MINGW_NOTHROW strcasecmp (const char*, const char *);
 int __cdecl __MINGW_NOTHROW strncasecmp (const char *, const char *, size_t);
 #endif
@@ -75,9 +75,9 @@ int __cdecl __MINGW_NOTHROW strncasecmp (const char *, const char *, size_t);
  * We do not implement alternate representations. However, we always
  * check whether a given modifier is allowed for a certain conversion.
  */
-#define ALT_E			0x01
-#define ALT_O			0x02
-#define LEGAL_ALT(x)		{ if (alt_format & ~(x)) return NULL; }
+#define ALT_E        0x01
+#define ALT_O        0x02
+#define LEGAL_ALT(x) { if (alt_format & ~(x)) return NULL; }
 
 static char gmt[] = { "GMT" };
 #if defined(TM_ZONE)
