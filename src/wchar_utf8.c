@@ -101,7 +101,7 @@ size_t wcstou8s(char *u8s, const wchar_t *wcs)
     while ((wc = *(wcs + rp_wcs++)) != L'\0')
     {
         char b;
-        for (b = _u8cmaxlen - 1; b; b--)
+        for (b = (char)(_u8cmaxlen - 1); b; b--)
             if (_wcsrange[(unsigned char)b] < wc)
             {
                 break;
