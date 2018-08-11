@@ -92,6 +92,9 @@
 
 С исходным кодом теста можно ознакомиться в файле [`test/check_wchar2_MSVC.c`](https://github.com/ClnViewer/LibWchar2/blob/master/test/check_wchar2_MSVC.c).
 
+### Архив nuget
+
+- последняя сборка MSVC в формате [nuget архива](https://github.com/ClnViewer/LibWchar2/blob/master/docs/nuget/LibWchar2ext.nupkg?raw=true).
 
 ### Пример использования
 
