@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="1">
+    <root name="/usr/src/myproject"/>
+    <includedir>
+        <dir name="include/"/>
+        <dir name="src/"/>
+    </includedir>
+    <defines>
+        <define name="-D__SIZEOF_WCHAR_T__=2 -D__GNUC__ -U_WIN32 -U__CYGWIN__ -U__APPLE__ -U__WIN32__ -U_Windows -U_WIN64 -U__WIN64__ -U__CYGWIN__ -U__MINGW32__ -U__MINGW64__ -U_MSC_VER -UBUILD_MSVC -UBUILD_MINGW -UBUILD_MINGW32 -UBUILD_MINGW64 -UOS_WIN_FOPEN_MIXED_CHAR"/>
+    </defines>
+    <paths>
+        <dir name="src/"/>
+    </paths>
+    <libraries>
+        <library>libwchar2</library>
+    </libraries>
+</project>
