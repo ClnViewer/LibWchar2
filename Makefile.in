@@ -40,7 +40,8 @@ DIST_COMMON = $(am__configure_deps) $(srcdir)/Makefile.am \
 	$(srcdir)/Makefile.in $(srcdir)/config.h.in \
 	$(srcdir)/libwchar2.pc.in $(srcdir)/package.json.in \
 	$(top_srcdir)/configure $(top_srcdir)/docs/Doxyfile.in \
-	$(top_srcdir)/docs/man-license.dox.in build/compile \
+	$(top_srcdir)/docs/man-license.dox.in \
+	$(top_srcdir)/docs/nuget/Package.nuspec.in build/compile \
 	build/config.guess build/config.sub build/depcomp \
 	build/install-sh build/ltmain.sh build/missing
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -59,8 +60,8 @@ am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \
  configure.lineno config.status.lineno
 mkinstalldirs = $(install_sh) -d
 CONFIG_HEADER = config.h
-CONFIG_CLEAN_FILES = docs/Doxyfile docs/man-license.dox libwchar2.pc \
-	package.json
+CONFIG_CLEAN_FILES = docs/Doxyfile docs/man-license.dox \
+	docs/nuget/Package.nuspec libwchar2.pc package.json
 CONFIG_CLEAN_VPATH_FILES =
 depcomp =
 am__depfiles_maybe =
@@ -364,6 +365,8 @@ distclean-hdr:
 docs/Doxyfile: $(top_builddir)/config.status $(top_srcdir)/docs/Doxyfile.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 docs/man-license.dox: $(top_builddir)/config.status $(top_srcdir)/docs/man-license.dox.in
+	cd $(top_builddir) && $(SHELL) ./config.status $@
+docs/nuget/Package.nuspec: $(top_builddir)/config.status $(top_srcdir)/docs/nuget/Package.nuspec.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
 libwchar2.pc: $(top_builddir)/config.status $(srcdir)/libwchar2.pc.in
 	cd $(top_builddir) && $(SHELL) ./config.status $@
@@ -856,6 +859,15 @@ cppcheck:
 
 funlist:
 	@cproto src/*.c -U__SIZEOF_WCHAR_T__ -D__SIZEOF_WCHAR_T__=2 -DHAVE_CONFIG_H -q
+
+nuget:
+	@if [[ -f build/NuGet.exe && -f docs/nuget/libwchar2ext.lib ]] ; then \
+		rm -f docs/nuget/*.nupkg ; \
+		cp -f docs/nuget/Package.nuspec ./ ; \
+		mono build/NuGet.exe pack Package.nuspec -OutputDirectory docs/nuget -Prop Configuration=Release;Platform=AnyCPU ; \
+		rm -f ./Package.nuspec ; \
+		rm -f docs/nuget/libwchar2ext.lib ; \
+	fi
 
 man: mandoxy doxyclean
 doc: wwwdoxy doxyclean

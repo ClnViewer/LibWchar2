@@ -154,6 +154,7 @@ AC_CONFIG_FILES([
     src/Makefile
     docs/Doxyfile
     docs/man-license.dox
+    docs/nuget/Package.nuspec
     libwchar2.pc
     package.json
 ])

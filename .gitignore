@@ -34,7 +34,10 @@ libwchar2.pc
 !/winext/cmake-build-release.cmd
 
 /docs/mansrc
+/docs/nuget/Package.nuspec
+/docs/nuget/libwchar2ext.lib
 /build/doxymd
+/build/NuGet.exe
 
 *..cppcheck
 

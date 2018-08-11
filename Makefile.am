@@ -65,6 +65,15 @@ cppcheck:
 funlist:
 	@cproto src/*.c -U__SIZEOF_WCHAR_T__ -D__SIZEOF_WCHAR_T__=2 -DHAVE_CONFIG_H -q
 
+nuget:
+	@if [[ -f build/NuGet.exe && -f docs/nuget/libwchar2ext.lib ]] ; then \
+		rm -f docs/nuget/*.nupkg ; \
+		cp -f docs/nuget/Package.nuspec ./ ; \
+		mono build/NuGet.exe pack Package.nuspec -OutputDirectory docs/nuget -Prop Configuration=Release;Platform=AnyCPU ; \
+		rm -f ./Package.nuspec ; \
+		rm -f docs/nuget/libwchar2ext.lib ; \
+	fi
+
 man: mandoxy doxyclean
 doc: wwwdoxy doxyclean
 

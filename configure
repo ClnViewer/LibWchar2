@@ -17476,7 +17476,7 @@ YDATE="$yeardate"
 
 
 
-ac_config_files="$ac_config_files Makefile test/Makefile src/Makefile docs/Doxyfile docs/man-license.dox libwchar2.pc package.json"
+ac_config_files="$ac_config_files Makefile test/Makefile src/Makefile docs/Doxyfile docs/man-license.dox docs/nuget/Package.nuspec libwchar2.pc package.json"
 
 cat >confcache <<\_ACEOF
 # This file is a shell script that caches the results of configure
@@ -18382,6 +18382,7 @@ do
     "src/Makefile") CONFIG_FILES="$CONFIG_FILES src/Makefile" ;;
     "docs/Doxyfile") CONFIG_FILES="$CONFIG_FILES docs/Doxyfile" ;;
     "docs/man-license.dox") CONFIG_FILES="$CONFIG_FILES docs/man-license.dox" ;;
+    "docs/nuget/Package.nuspec") CONFIG_FILES="$CONFIG_FILES docs/nuget/Package.nuspec" ;;
     "libwchar2.pc") CONFIG_FILES="$CONFIG_FILES libwchar2.pc" ;;
     "package.json") CONFIG_FILES="$CONFIG_FILES package.json" ;;
 
