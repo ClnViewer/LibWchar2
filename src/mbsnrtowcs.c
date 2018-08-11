@@ -33,23 +33,27 @@
 
 size_t _mbsnrtowcs(wchar_t *restrict wcs, const char **restrict src, size_t n, size_t wn, mbstate_t *restrict st)
 {
-    size_t l, cnt=0, n2;
+    size_t l, cnt = 0, n2;
     wchar_t *ws, wbuf[256];
     const char *s = *src;
 
     if (!wcs)
-        ws = wbuf, wn = sizeof wbuf / sizeof *wbuf;
+    {
+        ws = wbuf, wn = (sizeof(wbuf) / sizeof(*wbuf));
+    }
     else
+    {
         ws = wcs;
+    }
 
-    /* making sure output buffer size is at most n/4 will ensure
+    /* making sure output buffer size is at most n/2 will ensure
      * that mbsrtowcs never reads more than n input bytes. thus
      * we can use mbsrtowcs as long as it's practical.. */
 
-    while ( s && wn && ( ((n2=n/4) >= wn) || (n2 > 32) ) )
+    while ( s && wn && ( ((n2 = (n / 2)) >= wn) || (n2 > 16) ) )
     {
-        if (n2>=wn)
-            n2=wn;
+        if (n2 >= wn)
+            n2 = wn;
         n -= n2;
         l = _mbsrtowcs(ws, &s, n2, st);
         if (!(l+1))
@@ -66,12 +70,13 @@ size_t _mbsnrtowcs(wchar_t *restrict wcs, const char **restrict src, size_t n, s
         cnt += l;
     }
     if (s)
+    {
         while (wn && n)
         {
             l = _mbrtowc(ws, s, n, st);
-            if (l+2<=2)
+            if ((l + 2) <= 2)
             {
-                if (!(l+1))
+                if (!(l + 1))
                 {
                     cnt = l;
                     break;
@@ -92,7 +97,10 @@ size_t _mbsnrtowcs(wchar_t *restrict wcs, const char **restrict src, size_t n, s
             wn--;
             cnt++;
         }
+    }
     if (wcs)
+    {
         *src = s;
+    }
     return cnt;
 }
