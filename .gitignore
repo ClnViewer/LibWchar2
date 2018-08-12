@@ -32,10 +32,13 @@ libwchar2.pc
 !/example/TinyDir-Wchar2/Makefile
 !/winext/cmake-build-debug.cmd
 !/winext/cmake-build-release.cmd
+!/winext/build/mingw-cross-build-debug.sh
+!/winext/build/mingw-cross-build.sh
 
 /docs/mansrc
 /docs/nuget/Package.nuspec
-/docs/nuget/libwchar2ext.lib
+/docs/nuget/*.lib
+/docs/nuget/*.a
 /build/doxymd
 /build/NuGet.exe
 

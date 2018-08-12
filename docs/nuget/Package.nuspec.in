@@ -29,6 +29,7 @@
     <file src="src/wchar_utf8.c" target="content/src/wchar_utf8.c"/>
     <file src="src/wcprint.c" target="content/src/wcprint.c"/>
     <file src="src/wcsptime.c" target="content/src/wcsptime.c"/>
+    <file src="src/wcsregexp.c" target="content/src/wcsregexp.c"/>
     <file src="src/wfopen.c" target="content/src/wfopen.c"/>
     <file src="src/wmkdir.c" target="content/src/wmkdir.c"/>
     <file src="src/wpathnormalize.c" target="content/src/wpathnormalize.c"/>
