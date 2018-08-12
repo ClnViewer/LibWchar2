@@ -207,6 +207,7 @@ size_t    u8stowcs(wchar_t*, const char*);
 size_t    wcstou8s(char*, const wchar_t*);
 int       u8sverify(const char*);
 
+wchar_t * wcsregexp(wchar_t *restrict, wchar_t *restrict, int*);
 wchar_t * _wcsptime(const wchar_t*, const wchar_t*, void*);
 
 __CHKRET
