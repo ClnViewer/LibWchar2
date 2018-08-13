@@ -66,7 +66,7 @@
 #   define strcasecmp _stricmp
 #endif
 
-#if (defined(BUILD_MINGW32) && !defined(__LINUXTOWIN))
+#if (defined(BUILD_MINGW32) && !defined(__CROSS_COMPILE_TIME__))
 int __cdecl __MINGW_NOTHROW strcasecmp (const char*, const char *);
 int __cdecl __MINGW_NOTHROW strncasecmp (const char *, const char *, size_t);
 #endif

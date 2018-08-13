@@ -33,7 +33,7 @@ typedef unsigned short mode_t;
 #   elif defined(BUILD_MINGW)
 #      include <stdlib.h>
 #      include <sys/stat.h>
-#      if !defined(__LINUXTOWIN)
+#      if !defined(__CROSS_COMPILE_TIME__)
        int _wmkdir(const wchar_t*);
 #      endif
 #   endif

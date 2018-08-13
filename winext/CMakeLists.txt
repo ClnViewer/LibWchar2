@@ -8,6 +8,17 @@ project(libwchar2ext)
 enable_language(C)
 enable_testing()
 
+find_program(BUILD_OS_NAME
+  uname
+  /bin
+  /usr/bin
+  /usr/local/bin
+  /sbin
+)
+mark_as_advanced(
+  BUILD_OS_NAME
+)
+
 set( CMAKE_COLOR_MAKEFILE ON )
 set( CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "Configs" FORCE )
 set( CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_SOURCE_DIR}/lib CACHE PATH "Cmake prefix" FORCE )
@@ -125,12 +136,18 @@ if(WIN32)
     if(OS_WIN_FOPEN_MIXED_CHAR AND NOT MSVC)
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DOS_WIN_FOPEN_MIXED_CHAR")
     endif()
-    if(__LINUXTOWIN)
-        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D__LINUXTOWIN")
+    if(__CROSS_COMPILE_TIME__)
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D__CROSS_COMPILE_TIME__")
     endif()
 else()
-# Postfix of so's:
     set(LIB_DEBUG_POSTFIX)
+endif()
+
+if(${BUILD_OS_NAME} STREQUAL "BUILD_OS_NAME-NOTFOUND")
+    message("-- No cross-compile mode")
+else()
+    message("-- Cross-compile UNIX platform to Win")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -D__CROSS_COMPILE_TIME__")
 endif()
 
 if(ENABLE_SOLUTION_FOLDERS)

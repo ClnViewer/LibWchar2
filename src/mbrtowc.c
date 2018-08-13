@@ -87,7 +87,9 @@ loop:
         if (n)
         {
             if ((*s - 0x80U) >= 0x40)
+            {
                 goto ilseq;
+            }
             goto loop;
         }
     }

@@ -27,7 +27,7 @@
 
 #if defined(OS_WIN)
 
-#   if defined(__LINUXTOWIN)
+#   if defined(__CROSS_COMPILE_TIME__)
 #      define __USE_MINGW_ANSI_STDIO 1
 #   endif
 
