@@ -56,6 +56,8 @@
 #   endif
 #endif
 
+#define __STDC_ISO_10646__ 1
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
