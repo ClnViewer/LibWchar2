@@ -346,7 +346,7 @@ size_t wstring_append(string_ws *dst, const wchar_t *s, size_t sz)
 
     dst->sz          += sz;
     dst->str[dst->sz] = L'\0';
-    return dst->sz;
+    return sz;
 }
 
 size_t wstring_appends_(string_ws *dst, ...)
@@ -419,7 +419,7 @@ size_t wstring_appends_(string_ws *dst, ...)
         }
 
         dst->str[dst->sz] = L'\0';
-        return dst->sz;
+        return sz;
 
     }
     while (0);
@@ -512,9 +512,9 @@ size_t wstring_format(string_ws *dst, const wchar_t *fmt, ...)
 #           endif
             (!wstring_alloc(dst, (size_t)sz))            ||
 #           if (defined(BUILD_MINGW32) && !defined(__CROSS_COMPILE_TIME__))
-            (_vswprintf((wchar_t*)(dst->str + dst->sz), fmt, ap) <= 0)
+            ((sz = _vswprintf((wchar_t*)(dst->str + dst->sz), fmt, ap)) <= 0)
 #           else
-            (_vswprintf((void*)(dst->str + dst->sz), (size_t)(sz + 1), fmt, ap) <= 0)
+            ((sz = _vswprintf((void*)(dst->str + dst->sz), (size_t)(sz + 1), fmt, ap)) <= 0)
 #           endif
         )
         {
@@ -530,7 +530,7 @@ size_t wstring_format(string_ws *dst, const wchar_t *fmt, ...)
         dst->str = out;
 #       endif
 
-        ret = dst->sz;
+        ret = (size_t)sz;
 #       if !defined(_MSC_VER)
         p = NULL;
 #       endif

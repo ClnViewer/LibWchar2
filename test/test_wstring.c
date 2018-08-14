@@ -18,9 +18,9 @@ START_TEST(test_wstring)
     ret = wstring_append(&dst, src1, 0);
     ck_assert_int_eq(ret, 17);
     ret = wstring_append(&dst, src3, 0);
-    ck_assert_int_eq(ret, 18);
+    ck_assert_int_eq(ret, 1);
     ret = wstring_append(&dst, src2, _wcslen(src2));
-    ck_assert_int_eq(ret, 37);
+    ck_assert_int_eq(ret, 19);
 
     _fprintf (stdout,  "\tTest wstring_append:%d\t-> wide: [%ls][%zu] : [%zu]\n",  __LINE__, dst.str, dst.sz, ret);
     ck_assert(_wcscmp(dst.str, endw) == 0);
@@ -42,7 +42,7 @@ START_TEST(test_wstring)
 
     tout = wstring_timeformat(tstr, 0, L"%Y-%m-%dT%H:%M:%S%Ez", L"%I:%M%p");
     ck_assert(tout != NULL);
-    _fprintf (stdout,  "\tTest wstring_time:%d\t-> wide: [%ls] <-> [%ls]\n", __LINE__, tstr, tout);
+    _fprintf (stdout,  "\tTest wstring_timefmt:%d\t-> wide: [%ls] <-> [%ls]\n", __LINE__, tstr, tout);
     ck_assert(_wcscmp(tout, tres) == 0);
     free(tout);
 }
