@@ -34,14 +34,16 @@
 #   include "../config.h"
 #endif
 
-#define __STDC_ISO_10646__ 1
-
 #if !defined(HAVE_WCHAR_H)
 #   error "<wchar.h> not defined, run ./configure again, abort.."
 #endif
 
 #if !defined(HAVE_WCTYPE_H)
 #   error "<wctype.h> not defined, run ./configure again, abort.."
+#endif
+
+#if !defined(__STDC_ISO_10646__)
+#   define __STDC_ISO_10646__ 201103L
 #endif
 
 #include <inttypes.h>

@@ -277,7 +277,7 @@ int       _iswpunct(wchar_t);
 int       _iswprint(wchar_t);
 
 /*!
- * \brief Ttest for lowercase wide character
+ * \brief Test for lowercase wide character
  *
  * - \subpage iswlower
  */

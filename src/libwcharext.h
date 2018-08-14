@@ -56,7 +56,9 @@
 #   endif
 #endif
 
-#define __STDC_ISO_10646__ 1
+#if !defined(__STDC_ISO_10646__)
+#   define __STDC_ISO_10646__ 201103L
+#endif
 
 #include <stdio.h>
 #include <stdlib.h>
