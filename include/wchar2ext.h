@@ -166,6 +166,15 @@ typedef enum
  */
 typedef void (*wdir_cb)(unsigned int, access_e, long long, string_ws*, void*);
 
+/*! \~
+ *  \brief CallBack for \ref wstring_split_cb
+ *  \param wchar_t: - splitting part from string
+ *  \param size_t: - Length of string part
+ *  \param long: - counter
+ *  \param void: - user data
+ */
+typedef void (*split_cb)(wchar_t*, size_t, long, void*);
+
 /*!
  * \brief Library current version
  */
@@ -182,6 +191,8 @@ size_t    wstring_appends_(string_ws*, ...);
 #define   wstring_appends(A,...) wstring_appends_(A,__VA_ARGS__,NULL)
 size_t    wstring_append(string_ws*, const wchar_t *restrict, size_t);
 size_t    wstring_format(string_ws*, const wchar_t *restrict, ...);
+
+long      wstring_split_cb(const string_ws*, wchar_t, split_cb, void*);
 
 string_ws wstring_trunc(const wchar_t *ws, int);
 size_t    wstring_trunc_alloc(string_ws *restrict, const wchar_t*, int);

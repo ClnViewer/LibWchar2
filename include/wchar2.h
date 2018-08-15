@@ -180,6 +180,15 @@ typedef enum
  */
 typedef void (*wdir_cb)(unsigned int, access_e, long long, string_ws*, void*);
 
+/*! \~
+ *  \brief CallBack for \ref wstring_split_cb
+ *  \param wchar_t: - splitting part from string
+ *  \param size_t: - Length of string part
+ *  \param long: - counter
+ *  \param void: - user data
+ */
+typedef void (*split_cb)(wchar_t*, size_t, long, void*);
+
 /*!
  * \brief Library current version
  */
@@ -1568,6 +1577,13 @@ __attribute__((warn_unused_result));
  */
 wchar_t * wstring_timeformat_ws(const string_ws *restrict, const wchar_t *restrict, const wchar_t *restrict)
 __attribute__((warn_unused_result));
+
+/*!
+ *  \brief Split string_ws string, from wchar_t  characters and call \ref split_cb to result data
+ *  \return number of splits
+ */
+long      wstring_split_cb(const string_ws*, wchar_t, split_cb, void*);
+
 
 /*!
  * \~English

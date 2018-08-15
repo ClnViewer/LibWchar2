@@ -521,9 +521,9 @@ size_t wstring_format(string_ws *dst, const wchar_t *fmt, ...)
             break;
         }
 
-        dst->sz  = (size_t) _wcslen(dst->str);
+        dst->sz  = _wcslen(dst->str);
 #       if (!defined(_MSC_VER) && !defined(BUILD_MINGW64))
-        if (!(out = realloc(dst->str, ((dst->sz + 1) * sizeof(wchar_t)))))
+        if (!(out = realloc(dst->str, ((dst->sz + 2) * sizeof(wchar_t)))))
         {
             break;
         }
@@ -627,6 +627,49 @@ wchar_t * wstring_timeformat_ws(const string_ws *src, const wchar_t *fmtin, cons
         return NULL;
     }
     return wstring_timeformat(src->str, src->sz, fmtin, fmtout);
+}
+
+long wstring_split_cb(const string_ws *src, wchar_t wc, split_cb fun, void *data)
+{
+    long ret = 0L;
+    wchar_t *c, *cc;
+    size_t   i, n, ssz;
+
+    if (
+        (!fun)       ||
+        (!src)       ||
+        (!src->str)  ||
+        (!(ssz = ((!src->sz) ? _wcslen(src->str) : src->sz)))
+    )
+    {
+        errno = EINVAL;
+        return ret;
+    }
+
+    for (i = 0, n = 0, cc = (wchar_t*)src->str; i < ssz; i++)
+    {
+        if (cc[i] == wc)
+        {
+            size_t sz;
+            if (!n)
+            {
+                sz  = i;
+                c   = (wchar_t*)src->str;
+                n   = (i + 1);
+            }
+            else
+            {
+                sz  = (i - n);
+                c   = ((wchar_t*)src->str + n);
+                n   = (i + 1);
+            }
+            fun(c, sz, ++ret, data);
+        }
+    }
+    if (n < i)
+        fun((cc + n), (ssz - n), ++ret, data);
+
+    return ret;
 }
 
 void wstring_free(string_ws *dst)
