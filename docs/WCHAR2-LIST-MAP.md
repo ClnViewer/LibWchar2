@@ -155,7 +155,7 @@
 - function `int` [_wmkdir](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#acf1d30c5bcf1bb610032eb22d4c97c7f)  `(const wchar_t *, mode_t)` 
 - function `int` [_wmkdir_s](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a19244541026a99536a7eb251be6afe81)  `(const wchar_t *, size_t, mode_t)` 
 - function `int` [_wmkdir_ws](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a84ba545f55734722bbd5b7a72eaf71e2)  `(const string_ws *, mode_t)` 
-- function `int` [_wmkdir_sel][ector](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a4c99c9a3c2ce7d42059752514db9a570)  `(int, const void *, size_t, mode_t)` 
+- function `int` [_wmkdir_selector](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a4c99c9a3c2ce7d42059752514db9a570)  `(int, const void *, size_t, mode_t)` 
 - function `int` [u8wmkdir](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a5078390fceefa42d2f51080d636b20cb)  `(const wchar_t *, mode_t)` 
 - function `access_e` [_waccess](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a09d17ff6785883e54ee005fee65f0c64)  `(const wchar_t *, int)` 
 - function `access_e` [_waccess_s](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a5d4107c830d5415070afd70248a8a09e)  `(const wchar_t *, size_t, int)` 
@@ -266,7 +266,7 @@
 - page [wcstoimax](https://clnviewer.github.io/LibWchar2/docs/html/wcstoimax.html) : *wcstoimax manual*  
 - page [wcstok](https://clnviewer.github.io/LibWchar2/docs/html/wcstok.html) : *wcstok manual*  
 - page [wcstol](https://clnviewer.github.io/LibWchar2/docs/html/wcstol.html) : *wcstol manual*  
-- page [wcstol][d](https://clnviewer.github.io/LibWchar2/docs/html/wcstold.html) : *wcstold manual*  
+- page [wcstold](https://clnviewer.github.io/LibWchar2/docs/html/wcstold.html) : *wcstold manual*  
 - page [wcstoll](https://clnviewer.github.io/LibWchar2/docs/html/wcstoll.html) : *wcstoll manual*  
 - page [wcstombs](https://clnviewer.github.io/LibWchar2/docs/html/wcstombs.html) : *wcstombs manual*  
 - page [wcstoul](https://clnviewer.github.io/LibWchar2/docs/html/wcstoul.html) : *wcstoul manual*  
