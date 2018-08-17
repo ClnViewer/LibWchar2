@@ -9,285 +9,286 @@
 # Project reference list map
 <a name="indexpage"></a>
 
-## File [wchar2.h](html/wchar2.html)
 
-- define `#define` [USED_WCHAR2LIB](html/wchar2.html#ac889184e446b772d52c85cb037742444)   
-- define `#define` [__WS](html/wchar2.html#a40ff1ee5db10dfcfbd0b7475b108c586)  `(x)` 
-- define `#define` [__WSTR](html/wchar2.html#a9f774fe1f3dc0ffc0ddd9f20b8b005f4)   
-- define `#define` [__WSTRFREE](html/wchar2.html#a5773ae2b10bea60efa4b3849be370b57)   
-- define `#define` [__WSTR_FMT](html/wchar2.html#ad9994480bdc2b86cf0d6dd3fbefd5cd7)   
-- define `#define` [__WCHR_FMT](html/wchar2.html#ac5abc31f2021f1e5db0d6175cfa6bb92)   
-- define `#define` [__WCSZ](html/wchar2.html#a33b0160c4a515fa6dd94f5f55072c964)  `(x)` 
-- define `#define` [wstring_appends](html/wchar2.html#af8d4aaae7e0bf61359c5428c485c938b)  `(A,...)` 
-- define `#define` [wreaddir_cb_opt](html/wchar2.html#ad44fc148cdc0f6e0c7456eb4b0f418e3)  `(opt, val)` 
-- define `#define` [wstocscvt](html/wchar2.html#a68e9217a61693973cf4301a4f8761150)  `(A, B, D)` 
-- define `#define` [wstocsncvt](html/wchar2.html#a1ce3ebd71971a1caf706e820ee243c90)  `(A, B, C, D)` 
-- define `#define` [wstrtocscvt](html/wchar2.html#a674a7950e9f83d924109688e15565e93)  `(A, B, D)` 
-- typedef `struct _wdirent` [wdirent_t](html/wchar2.html#a308d32a6626925c2178f94e68d01f123)   
-- typedef `void` [WDIR_t](html/wchar2.html#a4b416445955b87e37a37b78591c1115f)   
-- typedef `void(*` [wdir_cb](html/wchar2.html#acc3d5b079909816cdbc4b5cba9aaa5ea)  `)(unsigned int, access_e, long long, string_ws *, void *)` 
-- typedef `void(*` [split_cb](html/wchar2.html#a6c028275670bab542d0d0d323b06f316)  `)(wchar_t *, size_t, long, void *)` 
-- enumeration [access_e](html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49)   
-- enumvalue [ISERR](html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49adf34f51a7400b0f698aa0e23f377455a)   
-- enumvalue [ISUNK](html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49a8d7172513c0d9ba08f59fe9765fd8fed)   
-- enumvalue [ISFIL](html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49acdb727b04e3f577e32b7e66e5f9d4ade)   
-- enumvalue [ISLNK](html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49ad1b612ed7f9f99dbf12cd96f6e5773a5)   
-- enumvalue [ISDIR](html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49ae3bba0027c803f044a6393b067bdf961)   
-- enumvalue [ISCHR](html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49a69f62365d236284c9779084d4738513e)   
-- enumvalue [ISBLK](html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49a751fafaac26235204fdc59fcadce35a2)   
-- enumvalue [ISSOCK](html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49af799a4c27fd85645cab31a0a8cb3e557)   
-- enumvalue [ISFIFO](html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49a9d63c44c5730a51778f3d17360620e68)   
-- enumvalue [ISWHT](html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49a1b55bb0df7990bb8eb9d2f4248c27baa)   
-- enumvalue [DIRNODIR](html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49ab58ccbd11e33ee6b8ca6442fd8c797a1)   
-- enumvalue [DIRNOROOT](html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49a748de6bbb36734e22b2fcd980b2104e1)   
-- enumvalue [DIRENTRYSIZE](html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49a7df00b612f047c04248f23a99423e9e5)   
-- function `const char *` [wchar2version](html/wchar2.html#a58746df8059dee6ebf9d3453dc62eae1)  `(void)` 
-- function `wchar_t` [_towupper](html/wchar2.html#a5f2cdc8b8cc4d6adab11a1694fbb27b2)  `(wchar_t)` 
-- function `wchar_t` [_towlower](html/wchar2.html#ad83835e2de9566d29de0b1426e38c1ed)  `(wchar_t)` 
-- function `wchar_t` [_towctrans](html/wchar2.html#ab2ccc7aa747dd96658efb394e12d702d)  `(wchar_t, wctrans_t)` 
-- function `wctype_t` [_wctype](html/wchar2.html#a7b48459b85a7c01c8f52ac6b1d7fc51c)  `(const char *)` 
-- function `wctrans_t` [_wctrans](html/wchar2.html#ae3498faa097d26d5871de3990d3de033)  `(const char *)` 
-- function `int` [_wcwidth](html/wchar2.html#af65ce85d72838b279cdf2175e12eada7)  `(wchar_t)` 
-- function `int` [_wcswidth](html/wchar2.html#a4944e363baac85986c682a5bf9c82103)  `(const wchar_t *, size_t)` 
-- function `int` [_iswctype](html/wchar2.html#ae48cced79d2149ae5ed85d33720f49c0)  `(wchar_t, wctype_t)` 
-- function `int` [_iswxdigit](html/wchar2.html#a1823ed050a5877d6b89f95505bf83c46)  `(wchar_t)` 
-- function `int` [_iswupper](html/wchar2.html#aae572416a5de4cc89662560f6b640be3)  `(wchar_t)` 
-- function `int` [_iswspace](html/wchar2.html#ab2177283762ab1a9f8e3b762fa7d4159)  `(wchar_t)` 
-- function `int` [_iswpunct](html/wchar2.html#ae9f404f253bbe2b0e73eeadbfa3cd6ad)  `(wchar_t)` 
-- function `int` [_iswprint](html/wchar2.html#a41340240fed14c4faac7e861477f0d45)  `(wchar_t)` 
-- function `int` [_iswlower](html/wchar2.html#a18d2d4f10f22a2ad36f30557d05e2cc1)  `(wchar_t)` 
-- function `int` [_iswgraph](html/wchar2.html#aa047f133fa5a6cb6263df92cdd433e3e)  `(wchar_t)` 
-- function `int` [_iswdigit](html/wchar2.html#aa65fc6b05270002ff07ce976ea7e0662)  `(wchar_t)` 
-- function `int` [_iswcntrl](html/wchar2.html#ab2e781cd75f0c6f7a64cbf33c0b57455)  `(wchar_t)` 
-- function `int` [_iswblank](html/wchar2.html#a0299393a9d35ee3dd391bc3ccbc3bbb6)  `(wchar_t)` 
-- function `int` [_iswalpha](html/wchar2.html#af5eec009a635fe20585e5ace95060ee8)  `(wchar_t)` 
-- function `int` [_iswalnum](html/wchar2.html#a1eab03168b383d77ae47add071bef6fc)  `(wchar_t)` 
-- function `double` [_wcstod](html/wchar2.html#aadbc60134b5dc9dacf7fb852210223a8)  `(const wchar_t *, wchar_t **)` 
-- function `float` [_wcstof](html/wchar2.html#a0908fb8d3d307d745627c5c4197e0dec)  `(const wchar_t *, wchar_t **)` 
-- function `long double` [_wcstold](html/wchar2.html#abb49faa3c1561bfd82acaa87db66ab50)  `(const wchar_t *, wchar_t **)` 
-- function `long int` [_wcstol](html/wchar2.html#a875e4c86222f1a7dcad372feeda9f7ae)  `(const wchar_t *, wchar_t **, int)` 
-- function `long long int` [_wcstoll](html/wchar2.html#ac5061a9e8f923730a226242f264922f7)  `(const wchar_t *, wchar_t **, int)` 
-- function `unsigned long int` [_wcstoul](html/wchar2.html#aa47d12517b89378893494b4f6875f682)  `(const wchar_t *, wchar_t **, int)` 
-- function `unsigned long long int` [_wcstoull](html/wchar2.html#ae4da639f483fdb1e7d847ada1b516d40)  `(const wchar_t *, wchar_t **, int)` 
-- function `intmax_t` [_wcstoimax](html/wchar2.html#aed0b50bc3953d76a508cabdd21ef848d)  `(const wchar_t *, wchar_t **, int)` 
-- function `uintmax_t` [_wcstoumax](html/wchar2.html#ad62fef390f028773eee85b358baa72cf)  `(const wchar_t *, wchar_t **, int)` 
-- function `size_t` [_wcstombs](html/wchar2.html#aeb987a1757f4f04c925e8ed0e4b5209f)  `(char *restrict, const wchar_t *restrict, size_t)` 
-- function `size_t` [_wcstombs_s](html/wchar2.html#abdd075d1b5795308fa2a488ee2f30bf8)  `(char *restrict, const wchar_t *restrict, size_t)` 
-- function `size_t` [_wcsrtombs](html/wchar2.html#a010691a2fdd9b63850bf63f65d287424)  `(char *restrict, const wchar_t **restrict, size_t, mbstate_t *restrict)` 
-- function `size_t` [_wcrtomb](html/wchar2.html#ae7885dce83f16b5f166d5593516192c1)  `(char *restrict, wchar_t, mbstate_t *restrict)` 
-- function `size_t` [_mbstowcs](html/wchar2.html#a1fca701ca73a6980be09b96a9fb7a755)  `(wchar_t *restrict, const char *restrict, size_t)` 
-- function `size_t` [_mbsrtowcs](html/wchar2.html#a04de252b8020717a291122eddd63fba1)  `(wchar_t *restrict, const char **restrict, size_t, mbstate_t *restrict)` 
-- function `size_t` [_wcsnrtombs](html/wchar2.html#a59c37ee59261667044fa56b178db962a)  `(char *restrict, const wchar_t **restrict, size_t, size_t, mbstate_t *restrict)` 
-- function `size_t` [_mbsnrtowcs](html/wchar2.html#a4cd1f6fc4643ba7a47ef08efa5537143)  `(wchar_t *restrict, const char **restrict, size_t, size_t, mbstate_t *restrict)` 
-- function `size_t` [_mbrtowc](html/wchar2.html#acdbc49ee2e74ddff6f806926532258ee)  `(wchar_t *restrict, const char *restrict src, size_t, mbstate_t *restrict)` 
-- function `size_t` [_mbrlen](html/wchar2.html#a1ecfba3eaf6b3cda490643afcc9bc893)  `(const char *restrict, size_t, mbstate_t *restrict)` 
-- function `int` [_mblen](html/wchar2.html#ac4360f74a6d0a6faeaf057e2610f858a)  `(const char *, size_t)` 
-- function `int` [_mbsinit](html/wchar2.html#a3b0cea3cdd7f9bbeb741b6f5c62a51a9)  `(const mbstate_t *)` 
-- function `int` [_mbtowc](html/wchar2.html#ac935ff06c97a15b1cf6a5b849f2c9461)  `(wchar_t *restrict, const char *restrict, size_t)` 
-- function `int` [_wctomb](html/wchar2.html#a380429cb6cf58b9495b59ecbb6ce8b2b)  `(char *, wchar_t)` 
-- function `int` [_wctob](html/wchar2.html#a6dfd1fe7d2aae18495de3f8b8fe6936b)  `(wchar_t)` 
-- function `wchar_t` [_btowc](html/wchar2.html#ae07c315c570b721621e4c2fd987c963c)  `(int)` 
-- function `void` [wcprint](html/wchar2.html#ae3cbd2aee452472d1b04a4a4817ee4a0)  `(wchar_t *)` 
-- function `int` [wcstocscmp](html/wchar2.html#a796fc46df7a28111338f7f8c7fe25788)  `(const char *, wchar_t *, size_t)` 
-- function `wchar_t *` [wcsregexp](html/wchar2.html#a000f12520ab4f2027d068c804797d488)  `(wchar_t *restrict, wchar_t *restrict, int *)` 
-- function `size_t` [u8stowcs](html/wchar2.html#ae94a562566dbe283cabb43d34f0ba08a)  `(wchar_t *, const char *)` 
-- function `size_t` [wcstou8s](html/wchar2.html#a59ca46dae06e5f4952fed90a47893c27)  `(char *, const wchar_t *)` 
-- function `int` [u8sverify](html/wchar2.html#a0f3a207d66dff9f6d0a3187b22931407)  `(const ch``ar *)` 
-- function `wchar_t *` [_wcpcpy](html/wchar2.html#ad3963738dbd73f0d8b73a9b0471e489f)  `(wchar_t *, const wchar_t *)` 
-- function `wchar_t *` [_wcpncpy](html/wchar2.html#aa347c9bf56a021534ce385b093c7d9c7)  `(wchar_t *, const wchar_t *, size_t)` 
-- function `wchar_t *` [_wcscat](html/wchar2.html#a4d9842734e7c33bf7c1a99dc5adf3750)  `(wchar_t *, const wchar_t *)` 
-- function `wchar_t *` [_wcsncat](html/wchar2.html#a1416b36e857d1a703191f83dd379e718)  `(wchar_t *, const wchar_t *, size_t)` 
-- function `wchar_t *` [_wcsncpy](html/wchar2.html#a378c7bc3136e9d1a6ff6126ed0370559)  `(wchar_t *, const wchar_t *, size_t)` 
-- function `wchar_t *` [_wcspbrk](html/wchar2.html#afb73d862802b7015e3f7a995e2da3fc7)  `(const wchar_t *, const wchar_t *)` 
-- function `wchar_t *` [_wcschr](html/wchar2.html#a61711642ef74b869dc2fd40669b1c985)  `(const wchar_t *, wchar_t)` 
-- function `wchar_t *` [_wcsrchr](html/wchar2.html#a291a262deac61e587bf82c53065a7020)  `(const wchar_t *, wchar_t)` 
-- function `wchar_t *` [_wcsstr](html/wchar2.html#a456664d3957bde1c2514e37aac9c6e27)  `(const wchar_t *, const wchar_t *)` 
-- function `wchar_t *` [_wcstok](html/wchar2.html#a6b175fb336e549adc339a3d7fe6c7a05)  `(wchar_t *, const wchar_t *, wchar_t **)` 
-- function `wchar_t *` [_wmemchr](html/wchar2.html#a58ddebd1517a4688e36327f3fc46d008)  `(const wchar_t *, wchar_t, size_t)` 
-- function `wchar_t *` [_wmemcpy](html/wchar2.html#ada3ca75da9d922443f31f332be78ed5b)  `(wchar_t *, const wchar_t *, size_t)` 
-- function `wchar_t *` [_wmemmove](html/wchar2.html#a613636b65707d944e998516d841def00)  `(wchar_t *, const wchar_t *, size_t)` 
-- function `wchar_t *` [_wmemset](html/wchar2.html#aa6b0a9965fa6e86a60e49817e52435b5)  `(wchar_t *, wchar_t, size_t)` 
-- function `size_t` [_wcslcat](html/wchar2.html#a1abf8f900eb10eb42bd1e2b0758bacd2)  `(wchar_t *, const wchar_t *, size_t)` 
-- function `size_t` [_wcslcpy](html/wchar2.html#ad0f68f716cb62e53889a73f1300e2d23)  `(wchar_t *, const wchar_t *, size_t)` 
-- function `size_t` [_wcslen](html/wchar2.html#aca45b4f92e22f7fad59e2b5c763fde72)  `(const wchar_t *)` 
-- function `size_t` [_wcsnlen](html/wchar2.html#addc8f544a09842cbf92241ff89049082)  `(const wchar_t *, size_t)` 
-- function `size_t` [_wcsspn](html/wchar2.html#a9357bf9f9c5dc57d85600196a079f16b)  `(const wchar_t *, const wchar_t *)` 
-- function `int` [_wcscasecmp](html/wchar2.html#a10d7a8e030f0e99adb4326273bc273cf)  `(const wchar_t *, const wchar_t *)` 
-- function `int` [_wcsncasecmp](html/wchar2.html#a92b07669cfbe7bd322db86d05c61ec3d)  `(const wchar_t *, const wchar_t *, size_t)` 
-- function `int` [_wcscmp](html/wchar2.html#a0edf23fd311ebf73b7c0539abcea90aa)  `(const wchar_t *, const wchar_t *)` 
-- function `int` [_wcsncmp](html/wchar2.html#a7708c1e7da0f893a3594681331082cb2)  `(const wchar_t *, const wchar_t *, size_t)` 
-- function `int` [_wmemcmp](html/wchar2.html#a34b4a688b145fc8af8d7dcab430f513e)  `(const wchar_t *, const wchar_t *, size_t)` 
-- function `int` [_vfprintf](html/wchar2.html#ab7f07376a87d4fbbdb218ad97208fa10)  `(FILE *restrict, const char *restrict, va_list)` 
-- function `int` [_vsnprintf](html/wchar2.html#aaa6ce4e58313344640a3e9c0d415ec22)  `(char *restrict, size_t, const char *restrict, va_list)` 
-- function `int` [_fprintf](html/wchar2.html#ad1f8e0cd1573f38c40fb39faf3161362)  `(FILE *restrict, const char *restrict,...)` 
-- function `int` [_printf](html/wchar2.html#af521b12c2ec59e7cb0941acf03e51ece)  `(const char *restrict fmt,...)` 
-- function `int` [_snprintf](html/wchar2.html#ac4f3d5f0d39fde224b78fce14852452a)  `(char *restrict, size_t, const char *restrict,...)` 
-- function `int` [_vfwprintf](html/wchar2.html#aef0f6b4a31f3449e241ba4996d355f81)  `(FILE *restrict, const wchar_t *restrict, va_list)` 
-- function `int` [_vswprintf](html/wchar2.html#a11cf32b6a81ef099a4980dfa34f01631)  `(wchar_t *restrict, size_t, const wchar_t *restrict, va_list)` 
-- function `int` [_fwprintf](html/wchar2.html#a6472d3ef7eb3a7a550661da341226eca)  `(FILE *restrict, const wchar_t *restrict,...)` 
-- function `int` [_swprintf](html/wchar2.html#acdb2e81e480d074862186c7bd968821a)  `(wchar_t *restrict, size_t, const wchar_t *restrict,...)` 
-- function `int` [_wprintf](html/wchar2.html#a18ea6884322764924a6a9432fb95e140)  `(const wchar_t *restrict fmt,...)` 
-- function `int` [_fputws](html/wchar2.html#ab172ad2666668356bc07388be6905797)  `(const wchar_t *restrict, FILE *restrict)` 
-- function `wchar_t` [_fputwc](html/wchar2.html#a5d61519b0500f248176077d842c21576)  `(wchar_t, FILE *restrict)` 
-- function `size_t` [_wcsftime](html/wchar2.html#adf6e26da7bd1c30ad18ddaffaba1ae46)  `(wchar_t *restrict, size_t sz, const wchar_t *restrict, const void *restrict)` 
-- function `wchar_t *` [_wcsptime](html/wchar2.html#afa85030a8b68f0acce3cf5117b30594a)  `(const wchar_t *, const wchar_t *, void *)` 
-- function `FILE *` [_wfopen](html/wchar2.html#abc7c3067c70b376b9ae51976442427f6)  `(const wchar_t *, const wchar_t *)` 
-- function `FILE *` [_wfopen_s](html/wchar2.html#a04d0252bb7956b2d300bdef5e425ebc7)  `(const wchar_t *, size_t, const wchar_t *)` 
-- function `FILE *` [_wfopen_ws](html/wchar2.html#adb3ffaef63d01b11f917537d567c9643)  `(const string_ws *, const wchar_t *)` 
-- function `FILE *` [_wfopen_selector](html/wchar2.html#a4183bbfcc5877c9257098eed76c00245)  `(int, const void *, size_t, const void *)` 
-- function `FILE *` [u8wfopen](html/wchar2.html#a0a0616a33fd410ab523d044b676c9e76)  `(const wchar_t *, const wchar_t *)` 
-- function `int` [_wstat](html/wchar2.html#a9e446ab85419147c23e6d24892108be7)  `(const wchar_t *, void *)` 
-- function `int` [_wstat_s](html/wchar2.html#ae98d71312bff8d15a755d45f67546e6f)  `(const wchar_t *, size_t, void *)` 
-- function `int` [_wstat_ws](html/wchar2.html#a05941dfb89a4f9a08d4491743fed6431)  `(const string_ws *, void *)` 
-- function `int` [_wstat_selector](html/wchar2.html#afc25d00a5aa55cc7a013171681d6e8b1)  `(int, const void *, size_t, const void *)` 
-- function `int` [u8wstat](html/wchar2.html#a0aebfaa71308604cf26968873f2e6fc3)  `(const wchar_t *, void *)` 
-- function `int` [_wrename](html/wchar2.html#a894561bb3b4c319164bff726cbad5ddf)  `(const wchar_t *, const wchar_t *)` 
-- function `int` [_wrename_s](html/wchar2.html#a81bed8663953257db49072b9f9a05c52)  `(const wchar_t *, size_t, const wchar_t *, size_t)` 
-- function `int` [_wrename_ws](html/wchar2.html#aca49f426821e020d3d8c0ef23b5a2d47)  `(const string_ws *, const string_ws *)` 
-- function `int` [_wrename_selector](html/wchar2.html#a7257479f9dd1a791bde1f6a87a336f64)  `(int, const void *, size_t, const void *, size_t)` 
-- function `int` [u8wrename](html/wchar2.html#a2e96a6c46300a30a0b052c44a191a15e)  `(const wchar_t *, const wchar_t *)` 
-- function `int` [_wremove](html/wchar2.html#acee6e22080b370e0e83da7d814c9f06d)  `(const wchar_t *)` 
-- function `int` [_wremove_s](html/wchar2.html#a7019c9aedb7132f831eb256b9af0ea8c)  `(const wchar_t *, size_t)` 
-- function `int` [_wremove_ws](html/wchar2.html#a27e24ebe600320fdd7a882349942ece7)  `(const string_ws *)` 
-- function `int` [_wremove_selector](html/wchar2.html#a6d744672078f686c9e15dd0710178239)  `(int, const void *, size_t)` 
-- function `int` [u8wremove](html/wchar2.html#ad8dcd1716a3a33693b64d1af4cd4c15a)  `(const wchar_t *)` 
-- function `int` [_wmkdir](html/wchar2.html#acf1d30c5bcf1bb610032eb22d4c97c7f)  `(const wchar_t *, mode_t)` 
-- function `int` [_wmkdir_s](html/wchar2.html#a19244541026a99536a7eb251be6afe81)  `(const wchar_t *, size_t, mode_t)` 
-- function `int` [_wmkdir_ws](html/wchar2.html#a84ba545f55734722bbd5b7a72eaf71e2)  `(const string_ws *, mode_t)` 
-- function `int` [_wmkdir_sel][ector](html/wchar2.html#a4c99c9a3c2ce7d42059752514db9a570)  `(int, const void *, size_t, mode_t)` 
-- function `int` [u8wmkdir](html/wchar2.html#a5078390fceefa42d2f51080d636b20cb)  `(const wchar_t *, mode_t)` 
-- function `access_e` [_waccess](html/wchar2.html#a09d17ff6785883e54ee005fee65f0c64)  `(const wchar_t *, int)` 
-- function `access_e` [_waccess_s](html/wchar2.html#a5d4107c830d5415070afd70248a8a09e)  `(const wchar_t *, size_t, int)` 
-- function `access_e` [_waccess_ws](html/wchar2.html#ac3c9a99d4e382288735b4ae1664c3d82)  `(const string_ws *, int)` 
-- function `access_e` [_waccess_selector](html/wchar2.html#a1f273350d886e01b323c97b0bfa46890)  `(int, const void *, size_t, int)` 
-- function `access_e` [u8waccess](html/wchar2.html#a155238aa5ff7757120bc1218563bb71d)  `(const wchar_t *, int)` 
-- function `wchar_t *` [_wbasename](html/wchar2.html#a05829428086d73354e2a9c8c4ef049c8)  `(const wchar_t *)` 
-- function `wchar_t *` [_wbasename_ws](html/wchar2.html#ab7237407d167b80e7e8abcba9252e9d8)  `(const string_ws *)` 
-- function `void *` [_wbasename_selector](html/wchar2.html#a0e45c34172b65372262d9bd84c3372b8)  `(int, const void *)` 
-- function `wchar_t *` [_wbaseext](html/wchar2.html#a637fec5f88499274af6bb2e9839b8a21)  `(const wchar_t *)` 
-- function `wchar_t *` [_wbaseext_ws](html/wchar2.html#ad40951127bab9c6c17ee6b262cef4241)  `(const string_ws *)` 
-- function `void *` [_wbaseext_selector](html/wchar2.html#ad7cc03bb372b19c77a38d832e70a5045)  `(int, const void *)` 
-- function `wchar_t *` [_wbasedir](html/wchar2.html#aa1db6df803109089bdbcea71e9b3b687)  `(const wchar_t *, int)` 
-- function `wchar_t *` [_wbasedir_ws](html/wchar2.html#aad5bde6a51901ba7b635fe7a4365c485)  `(const string_ws *, int)` 
-- function `void *` [_wbasedir_selector](html/wchar2.html#a3729337c84d59d1d36818c7fb7c21f23)  `(int, const void *, int)` 
-- function `wchar_t *` [_wpathnormalize](html/wchar2.html#a696221b53fd6f10cd0843a75322c7327)  `(const wchar_t *, size_t)` 
-- function `wchar_t *` [_wpathnormalize_ws](html/wchar2.html#a0d2e161b6a586b0735483e42f162d41f)  `(const string_ws *)` 
-- function `char *` [u8wpathnormalize](html/wchar2.html#a03890d8977a21209211136beb3f314f1)  `(const wchar_t *)` 
-- function `void` [wstring_free](html/wchar2.html#a3e10e87e540176b77eb3c73db0d36612)  `(string_ws *restrict)` 
-- function `size_t` [wstring_alloc](html/wchar2.html#acd6b6cdd93d0a1f844d54572468f80ce)  `(string_ws *restrict, size_t)` 
-- function `char *` [wstring_wstocs_alloc](html/wchar2.html#a696e9182a1ea804548dd4ed993fc1fd0)  `(const wchar_t *restrict)` 
-- function `char *` [wstring_swstocs_alloc](html/wchar2.html#a65673d494af05df3881f1caf0a61c3a0)  `(const string_ws *restrict)` 
-- function `wchar_t *` [wstring_cstows_alloc](html/wchar2.html#a76a73789ad48f96b235c4d71d487f69b)  `(const char *restrict)` 
-- function `size_t` [wstring_cstows_ws_alloc](html/wchar2.html#a0c00b41da0a45de14278e75a773690b8)  `(string_ws *restrict, const char *restrict)` 
-- function `size_t` [wstring_format](html/wchar2.html#a2b63c9c6081ebff0bfa7d862ebd1a87b)  `(string_ws *, const wchar_t *restrict,...)` 
-- function `size_t` [wstring_append](html/wchar2.html#a6ea51e2ed496d7622890d90021d78ed3)  `(string_ws *, const wchar_t *restrict, size_t)` 
-- function `size_t` [wstring_appends_](html/wchar2.html#ac1bca3b3e0201e5a928fc06f83df994e)  `(string_ws *,...)` 
-- function `size_t` [wstring_append_cvt](html/wchar2.html#ad1955a431f93440fceb9a493e3f1a48e)  `(string_ws *, const char *restrict, size_t)` 
-- function `size_t` [wstring_cstows](html/wchar2.html#a33461b356d0fdb60975a873ad8807d4f)  `(wchar_t [], size_t, const char *restrict, size_t)` 
-- function `s` `ize_t` [wstring_wstocs](html/wchar2.html#a95083af974df5717ec773e5b382c090d)  `(char [], size_t, const wchar_t *restrict, size_t)` 
-- function `size_t` [wstring_wstocs_ws](html/wchar2.html#a4b86a1508cbb3a71d14cb907f5c9a7d4)  `(char [], size_t, const string_ws *restrict)` 
-- function `wchar_t *` [wstring_timeformat](html/wchar2.html#a1b604b3927115eeb7699fcf2ae96ba06)  `(const wchar_t *restrict, size_t, const wchar_t *restrict, const wchar_t *restrict)` 
-- function `wchar_t *` [wstring_timeformat_ws](html/wchar2.html#a95b45f97084f630e96921e8b7efad2a0)  `(const string_ws *restrict, const wchar_t *restrict, const wchar_t *restrict)` 
-- function `long` [wstring_split_cb](html/wchar2.html#aeda4a82e376ab45641aeda7a1d7b00dc)  `(const string_ws *, wchar_t, split_cb, void *)` 
-- function `int` [wstring_isempty](html/wchar2.html#a31488123da3cd7e2e3cb4eb0a03509c9)  `(const wchar_t *restrict s, int)` 
-- function `string_ws` [wstring_trunc](html/wchar2.html#a741c3f78c098a2f1b1bcfabff95bb318)  `(const wchar_t *ws, int)` 
-- function `size_t` [wstring_trunc_alloc](html/wchar2.html#af93b37ba9262b389b26d833265c2d97d)  `(string_ws *restrict, const wchar_t *, int)` 
-- function `int` [_wclosedir](html/wchar2.html#a3f1b96094a2839fa5bd5da2139b0fdce)  `(WDIR_t *)` 
-- function `WDIR_t *` [_wopendir](html/wchar2.html#a4c273d497b5b80546bf1d88be30ab23a)  `(const wchar_t *)` 
-- function `wdirent_t *` [_wreaddir](html/wchar2.html#aa6585f453ec859183d20623155beb640)  `(WDIR_t *)` 
-- function `int` [_wreaddir_r](html/wchar2.html#a2718ba8ae6813702d12e6f6c7010937c)  `(WDIR_t *, wdirent_t *, wdirent_t **)` 
-- function `int` [_wreaddir_cb](html/wchar2.html#acdb2f4c389d8aa3d3c4daae594c4d6fe)  `(wchar_t *, long, wdir_cb, void *)` 
-- function `void` [_wrewinddir](html/wchar2.html#a31bf58eefa6f368d9cbdabfd78075380)  `(WDIR_t *)` 
-- function `void` [_wseekdir](html/wchar2.html#a86ee9bb2e19f47cbcc86d505350dced7)  `(W``DIR_t *, long int)` 
-- function `long int` [_wtelldir](html/wchar2.html#a22705b134af83afcefc9033a3230a3e4)  `(WDIR_t *)` 
-- struct [_wdirent](html/wchar2.html#struct__wdirent)  
-- variable `unsigned int` [d_ino](html/wchar2.html#a6b780f568c9ab5bc752ce291b4d6b3e6)   
-- variable `long int` [d_off](html/wchar2.html#ad7eb8c7c96fb3e02f7c065440cdf4de8)   
-- variable `unsigned short` [d_reclen](html/wchar2.html#aff7f360608e576cd18cf11f2caf13ef3)   
-- variable `unsigned char` [d_type](html/wchar2.html#a42f9348a1018f1c746f048ca92a1a08f)   
-- variable `wchar_t` [d_name](html/wchar2.html#ab177dbf002ff62e80fdd4bb8260102ca)  `[256]` 
-- struct [string_ws](html/wchar2.html#structstring__ws)  
-- variable `wchar_t *` [str](html/wchar2.html#a8793a62e7b6e30b1c8b5edb70723a904)   
-- variable `size_t` [sz](html/wchar2.html#a849e57ba7292b680efe2cb4343b823a8)   
-- page [btowc](html/btowc.html) : *btowc manual*  
-- page [iswalnum](html/iswalnum.html) : *iswalnum manual*  
-- page [iswalpha](html/iswalpha.html) : *iswalpha manual*  
-- page [iswblank](html/iswblank.html) : *iswblank manual*  
-- page [iswcntrl](html/iswcntrl.html) : *iswcntrl manual*  
-- page [iswctype](html/iswctype.html) : *iswctype manual*  
-- page [iswdigit](html/iswdigit.html) : *iswdigit manual*  
-- page [iswgraph](html/iswgraph.html) : *iswgraph manual*  
-- page [iswlower](html/iswlower.html) : *iswlower manual*  
-- page [iswprint](html/iswprint.html) : *iswprint manual*  
-- page [iswpunct](html/iswpunct.html) : *iswpunct manual*  
-- page [iswspace](html/iswspace.html) : *iswspace manual*  
-- page [iswupper](html/iswupper.html) : *iswupper manual*  
-- page [iswxdigit](html/iswxdigit.html) : *iswxdigit manual*  
-- page [mblen](html/mblen.html) : *mblen manual*  
-- page [mbrlen](html/mbrlen.html) : *mbrlen manual*  
-- page [mbrtowc](html/mbrtowc.html) : *mbrtowc manual*  
-- page [mbsinit](html/mbsinit.html) : *mbsinit manual*  
-- page [mbsnrtowcs](html/mbsnrtowcs.html) : *mbsnrtowcs manual*  
-- page [mbsrtowcs](html/mbsrtowcs.html) : *mbsrtowcs manual*  
-- page [mbstowcs](html/mbstowcs.html) : *mbstowcs manual*  
-- page [mbtowc](html/mbtowc.html) : *mbtowc manual*  
-- page [mlicense](html/mlicense.html) : *GNU glibc-2 manual License*  
-- page [towctrans](html/towctrans.html) : *towctrans manual*  
-- page [towlower](html/towlower.html) : *towlower manual*  
-- page [towupper](html/towupper.html) : *towupper manual*  
-- page [waccess](html/waccess.html) : *waccess manual*  
-- page [wcpcpy](html/wcpcpy.html) : *wcpcpy manual*  
-- page [wcpncpy](html/wcpncpy.html) : *wcpncpy manual*  
-- page [wcrtomb](html/wcrtomb.html) : *wcrtomb manual*  
-- page [wcscasecmp](html/wcscasecmp.html) : *wcscasecmp manual*  
-- page [wcscat](html/wcscat.html) : *wcscat manual*  
-- page [wcschr](html/wcschr.html) : *wcschr manual*  
-- page [wcscmp](html/wcscmp.html) : *wcscmp manual*  
-- page [wcscpy](html/wcscpy.html) : *wcscpy manual*  
-- page [wcscspn](html/wcscspn.html) : *wcscspn manual*  
-- page [wcsdup](html/wcsdup.html) : *wcsdup manual*  
-- page [wcsftime](html/wcsftime.html) : *wcsftime manual*  
-- page [wcslen](html/wcslen.html) : *wcslen manual*  
-- page [wcsncasecmp](html/wcsncasecmp.html) : *wcsncasecmp manual*  
-- page [wcsncat](html/wcsncat.html) : *wcsncat manual*  
-- page [wcsncmp](html/wcsncmp.html) : *wcsncmp manual*  
-- page [wcsncpy](html/wcsncpy.html) : *wcsncpy manual*  
-- page [wcsnlen](html/wcsnlen.html) : *wcsnlen manual*  
-- page [wcsnrtombs](html/wcsnrtombs.html) : *wcsnrtombs manual*  
-- page [wcspbrk](html/wcspbrk.html) : *wcspbrk manual*  
-- page [wcsptime](html/wcsptime.html) : *wcsptime manual*  
-- page [wcsrchr](html/wcsrchr.html) : *wcsrchr manual*  
-- page [wcsrtombs](html/wcsrtombs.html) : *wcsrtombs manual*  
-- page [wcsspn](html/wcsspn.html) : *wcsspn manual*  
-- page [wcsstr](html/wcsstr.html) : *wcsstr manual*  
-- page [wcstod](html/wcstod.html) : *wcstod manual*  
-- page [wcstof](html/wcstof.html) : *wcstof manual*  
-- page [wcstoimax](html/wcstoimax.html) : *wcstoimax manual*  
-- page [wcstok](html/wcstok.html) : *wcstok manual*  
-- page [wcstol](html/wcstol.html) : *wcstol manual*  
-- page [wcstol][d](html/wcstold.html) : *wcstold manual*  
-- page [wcstoll](html/wcstoll.html) : *wcstoll manual*  
-- page [wcstombs](html/wcstombs.html) : *wcstombs manual*  
-- page [wcstoul](html/wcstoul.html) : *wcstoul manual*  
-- page [wcstoull](html/wcstoull.html) : *wcstoull manual*  
-- page [wcstoumax](html/wcstoumax.html) : *wcstoumax manual*  
-- page [wcswidth](html/wcswidth.html) : *wcswidth manual*  
-- page [wctob](html/wctob.html) : *wctob manual*  
-- page [wctomb](html/wctomb.html) : *wctomb manual*  
-- page [wctype](html/wctype.html) : *wctype manual*  
-- page [wcwidth](html/wcwidth.html) : *wcwidth manual*  
-- page [wfopen](html/wfopen.html) : *wfopen manual*  
-- page [wmemchr](html/wmemchr.html) : *wmemchr manual*  
-- page [wmemcmp](html/wmemcmp.html) : *wmemcmp manual*  
-- page [wmemcpy](html/wmemcpy.html) : *wmemcpy manual*  
-- page [wmemmove](html/wmemmove.html) : *wmemmove manual*  
-- page [wmemset](html/wmemset.html) : *wmemset manual*  
-- page [wmkdir](html/wmkdir.html) : *wmkdir manual*  
-- page [wprintf](html/wprintf.html) : *wprintf manual*  
-- page [wremove](html/wremove.html) : *wremove manual*  
-- page [wrename](html/wrename.html) : *wrename manual*  
-- page [wstat](html/wstat.html) : *wstat manual*  
-- page [index](html/index.html) : *LibWchar2*  
+## File [wchar2.h](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html)
+
+- define `#define` [USED_WCHAR2LIB](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ac889184e446b772d52c85cb037742444)   
+- define `#define` [__WS](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a40ff1ee5db10dfcfbd0b7475b108c586)  `(x)` 
+- define `#define` [__WSTR](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a9f774fe1f3dc0ffc0ddd9f20b8b005f4)   
+- define `#define` [__WSTRFREE](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a5773ae2b10bea60efa4b3849be370b57)   
+- define `#define` [__WSTR_FMT](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ad9994480bdc2b86cf0d6dd3fbefd5cd7)   
+- define `#define` [__WCHR_FMT](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ac5abc31f2021f1e5db0d6175cfa6bb92)   
+- define `#define` [__WCSZ](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a33b0160c4a515fa6dd94f5f55072c964)  `(x)` 
+- define `#define` [wstring_appends](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#af8d4aaae7e0bf61359c5428c485c938b)  `(A,...)` 
+- define `#define` [wreaddir_cb_opt](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ad44fc148cdc0f6e0c7456eb4b0f418e3)  `(opt, val)` 
+- define `#define` [wstocscvt](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a68e9217a61693973cf4301a4f8761150)  `(A, B, D)` 
+- define `#define` [wstocsncvt](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a1ce3ebd71971a1caf706e820ee243c90)  `(A, B, C, D)` 
+- define `#define` [wstrtocscvt](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a674a7950e9f83d924109688e15565e93)  `(A, B, D)` 
+- typedef `struct _wdirent` [wdirent_t](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a308d32a6626925c2178f94e68d01f123)   
+- typedef `void` [WDIR_t](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a4b416445955b87e37a37b78591c1115f)   
+- typedef `void(*` [wdir_cb](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#acc3d5b079909816cdbc4b5cba9aaa5ea)  `)(unsigned int, access_e, long long, string_ws *, void *)` 
+- typedef `void(*` [split_cb](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a6c028275670bab542d0d0d323b06f316)  `)(wchar_t *, size_t, long, void *)` 
+- enumeration [access_e](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49)   
+- enumvalue [ISERR](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49adf34f51a7400b0f698aa0e23f377455a)   
+- enumvalue [ISUNK](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49a8d7172513c0d9ba08f59fe9765fd8fed)   
+- enumvalue [ISFIL](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49acdb727b04e3f577e32b7e66e5f9d4ade)   
+- enumvalue [ISLNK](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49ad1b612ed7f9f99dbf12cd96f6e5773a5)   
+- enumvalue [ISDIR](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49ae3bba0027c803f044a6393b067bdf961)   
+- enumvalue [ISCHR](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49a69f62365d236284c9779084d4738513e)   
+- enumvalue [ISBLK](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49a751fafaac26235204fdc59fcadce35a2)   
+- enumvalue [ISSOCK](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49af799a4c27fd85645cab31a0a8cb3e557)   
+- enumvalue [ISFIFO](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49a9d63c44c5730a51778f3d17360620e68)   
+- enumvalue [ISWHT](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49a1b55bb0df7990bb8eb9d2f4248c27baa)   
+- enumvalue [DIRNODIR](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49ab58ccbd11e33ee6b8ca6442fd8c797a1)   
+- enumvalue [DIRNOROOT](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49a748de6bbb36734e22b2fcd980b2104e1)   
+- enumvalue [DIRENTRYSIZE](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a85e87ac46824cfc9cd00480974e2ca49a7df00b612f047c04248f23a99423e9e5)   
+- function `const char *` [wchar2version](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a58746df8059dee6ebf9d3453dc62eae1)  `(void)` 
+- function `wchar_t` [_towupper](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a5f2cdc8b8cc4d6adab11a1694fbb27b2)  `(wchar_t)` 
+- function `wchar_t` [_towlower](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ad83835e2de9566d29de0b1426e38c1ed)  `(wchar_t)` 
+- function `wchar_t` [_towctrans](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ab2ccc7aa747dd96658efb394e12d702d)  `(wchar_t, wctrans_t)` 
+- function `wctype_t` [_wctype](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a7b48459b85a7c01c8f52ac6b1d7fc51c)  `(const char *)` 
+- function `wctrans_t` [_wctrans](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ae3498faa097d26d5871de3990d3de033)  `(const char *)` 
+- function `int` [_wcwidth](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#af65ce85d72838b279cdf2175e12eada7)  `(wchar_t)` 
+- function `int` [_wcswidth](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a4944e363baac85986c682a5bf9c82103)  `(const wchar_t *, size_t)` 
+- function `int` [_iswctype](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ae48cced79d2149ae5ed85d33720f49c0)  `(wchar_t, wctype_t)` 
+- function `int` [_iswxdigit](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a1823ed050a5877d6b89f95505bf83c46)  `(wchar_t)` 
+- function `int` [_iswupper](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#aae572416a5de4cc89662560f6b640be3)  `(wchar_t)` 
+- function `int` [_iswspace](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ab2177283762ab1a9f8e3b762fa7d4159)  `(wchar_t)` 
+- function `int` [_iswpunct](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ae9f404f253bbe2b0e73eeadbfa3cd6ad)  `(wchar_t)` 
+- function `int` [_iswprint](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a41340240fed14c4faac7e861477f0d45)  `(wchar_t)` 
+- function `int` [_iswlower](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a18d2d4f10f22a2ad36f30557d05e2cc1)  `(wchar_t)` 
+- function `int` [_iswgraph](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#aa047f133fa5a6cb6263df92cdd433e3e)  `(wchar_t)` 
+- function `int` [_iswdigit](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#aa65fc6b05270002ff07ce976ea7e0662)  `(wchar_t)` 
+- function `int` [_iswcntrl](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ab2e781cd75f0c6f7a64cbf33c0b57455)  `(wchar_t)` 
+- function `int` [_iswblank](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a0299393a9d35ee3dd391bc3ccbc3bbb6)  `(wchar_t)` 
+- function `int` [_iswalpha](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#af5eec009a635fe20585e5ace95060ee8)  `(wchar_t)` 
+- function `int` [_iswalnum](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a1eab03168b383d77ae47add071bef6fc)  `(wchar_t)` 
+- function `double` [_wcstod](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#aadbc60134b5dc9dacf7fb852210223a8)  `(const wchar_t *, wchar_t **)` 
+- function `float` [_wcstof](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a0908fb8d3d307d745627c5c4197e0dec)  `(const wchar_t *, wchar_t **)` 
+- function `long double` [_wcstold](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#abb49faa3c1561bfd82acaa87db66ab50)  `(const wchar_t *, wchar_t **)` 
+- function `long int` [_wcstol](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a875e4c86222f1a7dcad372feeda9f7ae)  `(const wchar_t *, wchar_t **, int)` 
+- function `long long int` [_wcstoll](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ac5061a9e8f923730a226242f264922f7)  `(const wchar_t *, wchar_t **, int)` 
+- function `unsigned long int` [_wcstoul](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#aa47d12517b89378893494b4f6875f682)  `(const wchar_t *, wchar_t **, int)` 
+- function `unsigned long long int` [_wcstoull](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ae4da639f483fdb1e7d847ada1b516d40)  `(const wchar_t *, wchar_t **, int)` 
+- function `intmax_t` [_wcstoimax](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#aed0b50bc3953d76a508cabdd21ef848d)  `(const wchar_t *, wchar_t **, int)` 
+- function `uintmax_t` [_wcstoumax](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ad62fef390f028773eee85b358baa72cf)  `(const wchar_t *, wchar_t **, int)` 
+- function `size_t` [_wcstombs](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#aeb987a1757f4f04c925e8ed0e4b5209f)  `(char *restrict, const wchar_t *restrict, size_t)` 
+- function `size_t` [_wcstombs_s](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#abdd075d1b5795308fa2a488ee2f30bf8)  `(char *restrict, const wchar_t *restrict, size_t)` 
+- function `size_t` [_wcsrtombs](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a010691a2fdd9b63850bf63f65d287424)  `(char *restrict, const wchar_t **restrict, size_t, mbstate_t *restrict)` 
+- function `size_t` [_wcrtomb](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ae7885dce83f16b5f166d5593516192c1)  `(char *restrict, wchar_t, mbstate_t *restrict)` 
+- function `size_t` [_mbstowcs](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a1fca701ca73a6980be09b96a9fb7a755)  `(wchar_t *restrict, const char *restrict, size_t)` 
+- function `size_t` [_mbsrtowcs](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a04de252b8020717a291122eddd63fba1)  `(wchar_t *restrict, const char **restrict, size_t, mbstate_t *restrict)` 
+- function `size_t` [_wcsnrtombs](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a59c37ee59261667044fa56b178db962a)  `(char *restrict, const wchar_t **restrict, size_t, size_t, mbstate_t *restrict)` 
+- function `size_t` [_mbsnrtowcs](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a4cd1f6fc4643ba7a47ef08efa5537143)  `(wchar_t *restrict, const char **restrict, size_t, size_t, mbstate_t *restrict)` 
+- function `size_t` [_mbrtowc](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#acdbc49ee2e74ddff6f806926532258ee)  `(wchar_t *restrict, const char *restrict src, size_t, mbstate_t *restrict)` 
+- function `size_t` [_mbrlen](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a1ecfba3eaf6b3cda490643afcc9bc893)  `(const char *restrict, size_t, mbstate_t *restrict)` 
+- function `int` [_mblen](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ac4360f74a6d0a6faeaf057e2610f858a)  `(const char *, size_t)` 
+- function `int` [_mbsinit](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a3b0cea3cdd7f9bbeb741b6f5c62a51a9)  `(const mbstate_t *)` 
+- function `int` [_mbtowc](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ac935ff06c97a15b1cf6a5b849f2c9461)  `(wchar_t *restrict, const char *restrict, size_t)` 
+- function `int` [_wctomb](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a380429cb6cf58b9495b59ecbb6ce8b2b)  `(char *, wchar_t)` 
+- function `int` [_wctob](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a6dfd1fe7d2aae18495de3f8b8fe6936b)  `(wchar_t)` 
+- function `wchar_t` [_btowc](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ae07c315c570b721621e4c2fd987c963c)  `(int)` 
+- function `void` [wcprint](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ae3cbd2aee452472d1b04a4a4817ee4a0)  `(wchar_t *)` 
+- function `int` [wcstocscmp](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a796fc46df7a28111338f7f8c7fe25788)  `(const char *, wchar_t *, size_t)` 
+- function `wchar_t *` [wcsregexp](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a000f12520ab4f2027d068c804797d488)  `(wchar_t *restrict, wchar_t *restrict, int *)` 
+- function `size_t` [u8stowcs](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ae94a562566dbe283cabb43d34f0ba08a)  `(wchar_t *, const char *)` 
+- function `size_t` [wcstou8s](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a59ca46dae06e5f4952fed90a47893c27)  `(char *, const wchar_t *)` 
+- function `int` [u8sverify](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a0f3a207d66dff9f6d0a3187b22931407)  `(const ch``ar *)` 
+- function `wchar_t *` [_wcpcpy](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ad3963738dbd73f0d8b73a9b0471e489f)  `(wchar_t *, const wchar_t *)` 
+- function `wchar_t *` [_wcpncpy](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#aa347c9bf56a021534ce385b093c7d9c7)  `(wchar_t *, const wchar_t *, size_t)` 
+- function `wchar_t *` [_wcscat](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a4d9842734e7c33bf7c1a99dc5adf3750)  `(wchar_t *, const wchar_t *)` 
+- function `wchar_t *` [_wcsncat](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a1416b36e857d1a703191f83dd379e718)  `(wchar_t *, const wchar_t *, size_t)` 
+- function `wchar_t *` [_wcsncpy](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a378c7bc3136e9d1a6ff6126ed0370559)  `(wchar_t *, const wchar_t *, size_t)` 
+- function `wchar_t *` [_wcspbrk](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#afb73d862802b7015e3f7a995e2da3fc7)  `(const wchar_t *, const wchar_t *)` 
+- function `wchar_t *` [_wcschr](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a61711642ef74b869dc2fd40669b1c985)  `(const wchar_t *, wchar_t)` 
+- function `wchar_t *` [_wcsrchr](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a291a262deac61e587bf82c53065a7020)  `(const wchar_t *, wchar_t)` 
+- function `wchar_t *` [_wcsstr](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a456664d3957bde1c2514e37aac9c6e27)  `(const wchar_t *, const wchar_t *)` 
+- function `wchar_t *` [_wcstok](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a6b175fb336e549adc339a3d7fe6c7a05)  `(wchar_t *, const wchar_t *, wchar_t **)` 
+- function `wchar_t *` [_wmemchr](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a58ddebd1517a4688e36327f3fc46d008)  `(const wchar_t *, wchar_t, size_t)` 
+- function `wchar_t *` [_wmemcpy](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ada3ca75da9d922443f31f332be78ed5b)  `(wchar_t *, const wchar_t *, size_t)` 
+- function `wchar_t *` [_wmemmove](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a613636b65707d944e998516d841def00)  `(wchar_t *, const wchar_t *, size_t)` 
+- function `wchar_t *` [_wmemset](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#aa6b0a9965fa6e86a60e49817e52435b5)  `(wchar_t *, wchar_t, size_t)` 
+- function `size_t` [_wcslcat](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a1abf8f900eb10eb42bd1e2b0758bacd2)  `(wchar_t *, const wchar_t *, size_t)` 
+- function `size_t` [_wcslcpy](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ad0f68f716cb62e53889a73f1300e2d23)  `(wchar_t *, const wchar_t *, size_t)` 
+- function `size_t` [_wcslen](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#aca45b4f92e22f7fad59e2b5c763fde72)  `(const wchar_t *)` 
+- function `size_t` [_wcsnlen](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#addc8f544a09842cbf92241ff89049082)  `(const wchar_t *, size_t)` 
+- function `size_t` [_wcsspn](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a9357bf9f9c5dc57d85600196a079f16b)  `(const wchar_t *, const wchar_t *)` 
+- function `int` [_wcscasecmp](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a10d7a8e030f0e99adb4326273bc273cf)  `(const wchar_t *, const wchar_t *)` 
+- function `int` [_wcsncasecmp](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a92b07669cfbe7bd322db86d05c61ec3d)  `(const wchar_t *, const wchar_t *, size_t)` 
+- function `int` [_wcscmp](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a0edf23fd311ebf73b7c0539abcea90aa)  `(const wchar_t *, const wchar_t *)` 
+- function `int` [_wcsncmp](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a7708c1e7da0f893a3594681331082cb2)  `(const wchar_t *, const wchar_t *, size_t)` 
+- function `int` [_wmemcmp](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a34b4a688b145fc8af8d7dcab430f513e)  `(const wchar_t *, const wchar_t *, size_t)` 
+- function `int` [_vfprintf](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ab7f07376a87d4fbbdb218ad97208fa10)  `(FILE *restrict, const char *restrict, va_list)` 
+- function `int` [_vsnprintf](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#aaa6ce4e58313344640a3e9c0d415ec22)  `(char *restrict, size_t, const char *restrict, va_list)` 
+- function `int` [_fprintf](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ad1f8e0cd1573f38c40fb39faf3161362)  `(FILE *restrict, const char *restrict,...)` 
+- function `int` [_printf](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#af521b12c2ec59e7cb0941acf03e51ece)  `(const char *restrict fmt,...)` 
+- function `int` [_snprintf](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ac4f3d5f0d39fde224b78fce14852452a)  `(char *restrict, size_t, const char *restrict,...)` 
+- function `int` [_vfwprintf](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#aef0f6b4a31f3449e241ba4996d355f81)  `(FILE *restrict, const wchar_t *restrict, va_list)` 
+- function `int` [_vswprintf](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a11cf32b6a81ef099a4980dfa34f01631)  `(wchar_t *restrict, size_t, const wchar_t *restrict, va_list)` 
+- function `int` [_fwprintf](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a6472d3ef7eb3a7a550661da341226eca)  `(FILE *restrict, const wchar_t *restrict,...)` 
+- function `int` [_swprintf](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#acdb2e81e480d074862186c7bd968821a)  `(wchar_t *restrict, size_t, const wchar_t *restrict,...)` 
+- function `int` [_wprintf](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a18ea6884322764924a6a9432fb95e140)  `(const wchar_t *restrict fmt,...)` 
+- function `int` [_fputws](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ab172ad2666668356bc07388be6905797)  `(const wchar_t *restrict, FILE *restrict)` 
+- function `wchar_t` [_fputwc](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a5d61519b0500f248176077d842c21576)  `(wchar_t, FILE *restrict)` 
+- function `size_t` [_wcsftime](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#adf6e26da7bd1c30ad18ddaffaba1ae46)  `(wchar_t *restrict, size_t sz, const wchar_t *restrict, const void *restrict)` 
+- function `wchar_t *` [_wcsptime](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#afa85030a8b68f0acce3cf5117b30594a)  `(const wchar_t *, const wchar_t *, void *)` 
+- function `FILE *` [_wfopen](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#abc7c3067c70b376b9ae51976442427f6)  `(const wchar_t *, const wchar_t *)` 
+- function `FILE *` [_wfopen_s](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a04d0252bb7956b2d300bdef5e425ebc7)  `(const wchar_t *, size_t, const wchar_t *)` 
+- function `FILE *` [_wfopen_ws](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#adb3ffaef63d01b11f917537d567c9643)  `(const string_ws *, const wchar_t *)` 
+- function `FILE *` [_wfopen_selector](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a4183bbfcc5877c9257098eed76c00245)  `(int, const void *, size_t, const void *)` 
+- function `FILE *` [u8wfopen](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a0a0616a33fd410ab523d044b676c9e76)  `(const wchar_t *, const wchar_t *)` 
+- function `int` [_wstat](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a9e446ab85419147c23e6d24892108be7)  `(const wchar_t *, void *)` 
+- function `int` [_wstat_s](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ae98d71312bff8d15a755d45f67546e6f)  `(const wchar_t *, size_t, void *)` 
+- function `int` [_wstat_ws](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a05941dfb89a4f9a08d4491743fed6431)  `(const string_ws *, void *)` 
+- function `int` [_wstat_selector](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#afc25d00a5aa55cc7a013171681d6e8b1)  `(int, const void *, size_t, const void *)` 
+- function `int` [u8wstat](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a0aebfaa71308604cf26968873f2e6fc3)  `(const wchar_t *, void *)` 
+- function `int` [_wrename](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a894561bb3b4c319164bff726cbad5ddf)  `(const wchar_t *, const wchar_t *)` 
+- function `int` [_wrename_s](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a81bed8663953257db49072b9f9a05c52)  `(const wchar_t *, size_t, const wchar_t *, size_t)` 
+- function `int` [_wrename_ws](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#aca49f426821e020d3d8c0ef23b5a2d47)  `(const string_ws *, const string_ws *)` 
+- function `int` [_wrename_selector](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a7257479f9dd1a791bde1f6a87a336f64)  `(int, const void *, size_t, const void *, size_t)` 
+- function `int` [u8wrename](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a2e96a6c46300a30a0b052c44a191a15e)  `(const wchar_t *, const wchar_t *)` 
+- function `int` [_wremove](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#acee6e22080b370e0e83da7d814c9f06d)  `(const wchar_t *)` 
+- function `int` [_wremove_s](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a7019c9aedb7132f831eb256b9af0ea8c)  `(const wchar_t *, size_t)` 
+- function `int` [_wremove_ws](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a27e24ebe600320fdd7a882349942ece7)  `(const string_ws *)` 
+- function `int` [_wremove_selector](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a6d744672078f686c9e15dd0710178239)  `(int, const void *, size_t)` 
+- function `int` [u8wremove](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ad8dcd1716a3a33693b64d1af4cd4c15a)  `(const wchar_t *)` 
+- function `int` [_wmkdir](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#acf1d30c5bcf1bb610032eb22d4c97c7f)  `(const wchar_t *, mode_t)` 
+- function `int` [_wmkdir_s](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a19244541026a99536a7eb251be6afe81)  `(const wchar_t *, size_t, mode_t)` 
+- function `int` [_wmkdir_ws](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a84ba545f55734722bbd5b7a72eaf71e2)  `(const string_ws *, mode_t)` 
+- function `int` [_wmkdir_sel][ector](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a4c99c9a3c2ce7d42059752514db9a570)  `(int, const void *, size_t, mode_t)` 
+- function `int` [u8wmkdir](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a5078390fceefa42d2f51080d636b20cb)  `(const wchar_t *, mode_t)` 
+- function `access_e` [_waccess](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a09d17ff6785883e54ee005fee65f0c64)  `(const wchar_t *, int)` 
+- function `access_e` [_waccess_s](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a5d4107c830d5415070afd70248a8a09e)  `(const wchar_t *, size_t, int)` 
+- function `access_e` [_waccess_ws](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ac3c9a99d4e382288735b4ae1664c3d82)  `(const string_ws *, int)` 
+- function `access_e` [_waccess_selector](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a1f273350d886e01b323c97b0bfa46890)  `(int, const void *, size_t, int)` 
+- function `access_e` [u8waccess](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a155238aa5ff7757120bc1218563bb71d)  `(const wchar_t *, int)` 
+- function `wchar_t *` [_wbasename](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a05829428086d73354e2a9c8c4ef049c8)  `(const wchar_t *)` 
+- function `wchar_t *` [_wbasename_ws](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ab7237407d167b80e7e8abcba9252e9d8)  `(const string_ws *)` 
+- function `void *` [_wbasename_selector](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a0e45c34172b65372262d9bd84c3372b8)  `(int, const void *)` 
+- function `wchar_t *` [_wbaseext](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a637fec5f88499274af6bb2e9839b8a21)  `(const wchar_t *)` 
+- function `wchar_t *` [_wbaseext_ws](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ad40951127bab9c6c17ee6b262cef4241)  `(const string_ws *)` 
+- function `void *` [_wbaseext_selector](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ad7cc03bb372b19c77a38d832e70a5045)  `(int, const void *)` 
+- function `wchar_t *` [_wbasedir](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#aa1db6df803109089bdbcea71e9b3b687)  `(const wchar_t *, int)` 
+- function `wchar_t *` [_wbasedir_ws](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#aad5bde6a51901ba7b635fe7a4365c485)  `(const string_ws *, int)` 
+- function `void *` [_wbasedir_selector](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a3729337c84d59d1d36818c7fb7c21f23)  `(int, const void *, int)` 
+- function `wchar_t *` [_wpathnormalize](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a696221b53fd6f10cd0843a75322c7327)  `(const wchar_t *, size_t)` 
+- function `wchar_t *` [_wpathnormalize_ws](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a0d2e161b6a586b0735483e42f162d41f)  `(const string_ws *)` 
+- function `char *` [u8wpathnormalize](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a03890d8977a21209211136beb3f314f1)  `(const wchar_t *)` 
+- function `void` [wstring_free](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a3e10e87e540176b77eb3c73db0d36612)  `(string_ws *restrict)` 
+- function `size_t` [wstring_alloc](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#acd6b6cdd93d0a1f844d54572468f80ce)  `(string_ws *restrict, size_t)` 
+- function `char *` [wstring_wstocs_alloc](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a696e9182a1ea804548dd4ed993fc1fd0)  `(const wchar_t *restrict)` 
+- function `char *` [wstring_swstocs_alloc](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a65673d494af05df3881f1caf0a61c3a0)  `(const string_ws *restrict)` 
+- function `wchar_t *` [wstring_cstows_alloc](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a76a73789ad48f96b235c4d71d487f69b)  `(const char *restrict)` 
+- function `size_t` [wstring_cstows_ws_alloc](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a0c00b41da0a45de14278e75a773690b8)  `(string_ws *restrict, const char *restrict)` 
+- function `size_t` [wstring_format](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a2b63c9c6081ebff0bfa7d862ebd1a87b)  `(string_ws *, const wchar_t *restrict,...)` 
+- function `size_t` [wstring_append](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a6ea51e2ed496d7622890d90021d78ed3)  `(string_ws *, const wchar_t *restrict, size_t)` 
+- function `size_t` [wstring_appends_](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ac1bca3b3e0201e5a928fc06f83df994e)  `(string_ws *,...)` 
+- function `size_t` [wstring_append_cvt](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ad1955a431f93440fceb9a493e3f1a48e)  `(string_ws *, const char *restrict, size_t)` 
+- function `size_t` [wstring_cstows](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a33461b356d0fdb60975a873ad8807d4f)  `(wchar_t [], size_t, const char *restrict, size_t)` 
+- function `s` `ize_t` [wstring_wstocs](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a95083af974df5717ec773e5b382c090d)  `(char [], size_t, const wchar_t *restrict, size_t)` 
+- function `size_t` [wstring_wstocs_ws](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a4b86a1508cbb3a71d14cb907f5c9a7d4)  `(char [], size_t, const string_ws *restrict)` 
+- function `wchar_t *` [wstring_timeformat](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a1b604b3927115eeb7699fcf2ae96ba06)  `(const wchar_t *restrict, size_t, const wchar_t *restrict, const wchar_t *restrict)` 
+- function `wchar_t *` [wstring_timeformat_ws](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a95b45f97084f630e96921e8b7efad2a0)  `(const string_ws *restrict, const wchar_t *restrict, const wchar_t *restrict)` 
+- function `long` [wstring_split_cb](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#aeda4a82e376ab45641aeda7a1d7b00dc)  `(const string_ws *, wchar_t, split_cb, void *)` 
+- function `int` [wstring_isempty](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a31488123da3cd7e2e3cb4eb0a03509c9)  `(const wchar_t *restrict s, int)` 
+- function `string_ws` [wstring_trunc](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a741c3f78c098a2f1b1bcfabff95bb318)  `(const wchar_t *ws, int)` 
+- function `size_t` [wstring_trunc_alloc](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#af93b37ba9262b389b26d833265c2d97d)  `(string_ws *restrict, const wchar_t *, int)` 
+- function `int` [_wclosedir](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a3f1b96094a2839fa5bd5da2139b0fdce)  `(WDIR_t *)` 
+- function `WDIR_t *` [_wopendir](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a4c273d497b5b80546bf1d88be30ab23a)  `(const wchar_t *)` 
+- function `wdirent_t *` [_wreaddir](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#aa6585f453ec859183d20623155beb640)  `(WDIR_t *)` 
+- function `int` [_wreaddir_r](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a2718ba8ae6813702d12e6f6c7010937c)  `(WDIR_t *, wdirent_t *, wdirent_t **)` 
+- function `int` [_wreaddir_cb](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#acdb2f4c389d8aa3d3c4daae594c4d6fe)  `(wchar_t *, long, wdir_cb, void *)` 
+- function `void` [_wrewinddir](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a31bf58eefa6f368d9cbdabfd78075380)  `(WDIR_t *)` 
+- function `void` [_wseekdir](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a86ee9bb2e19f47cbcc86d505350dced7)  `(W``DIR_t *, long int)` 
+- function `long int` [_wtelldir](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a22705b134af83afcefc9033a3230a3e4)  `(WDIR_t *)` 
+- struct [_wdirent](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#struct__wdirent)  
+- variable `unsigned int` [d_ino](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a6b780f568c9ab5bc752ce291b4d6b3e6)   
+- variable `long int` [d_off](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ad7eb8c7c96fb3e02f7c065440cdf4de8)   
+- variable `unsigned short` [d_reclen](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#aff7f360608e576cd18cf11f2caf13ef3)   
+- variable `unsigned char` [d_type](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a42f9348a1018f1c746f048ca92a1a08f)   
+- variable `wchar_t` [d_name](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#ab177dbf002ff62e80fdd4bb8260102ca)  `[256]` 
+- struct [string_ws](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#structstring__ws)  
+- variable `wchar_t *` [str](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a8793a62e7b6e30b1c8b5edb70723a904)   
+- variable `size_t` [sz](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html#a849e57ba7292b680efe2cb4343b823a8)   
+- page [btowc](https://clnviewer.github.io/LibWchar2/docs/html/btowc.html) : *btowc manual*  
+- page [iswalnum](https://clnviewer.github.io/LibWchar2/docs/html/iswalnum.html) : *iswalnum manual*  
+- page [iswalpha](https://clnviewer.github.io/LibWchar2/docs/html/iswalpha.html) : *iswalpha manual*  
+- page [iswblank](https://clnviewer.github.io/LibWchar2/docs/html/iswblank.html) : *iswblank manual*  
+- page [iswcntrl](https://clnviewer.github.io/LibWchar2/docs/html/iswcntrl.html) : *iswcntrl manual*  
+- page [iswctype](https://clnviewer.github.io/LibWchar2/docs/html/iswctype.html) : *iswctype manual*  
+- page [iswdigit](https://clnviewer.github.io/LibWchar2/docs/html/iswdigit.html) : *iswdigit manual*  
+- page [iswgraph](https://clnviewer.github.io/LibWchar2/docs/html/iswgraph.html) : *iswgraph manual*  
+- page [iswlower](https://clnviewer.github.io/LibWchar2/docs/html/iswlower.html) : *iswlower manual*  
+- page [iswprint](https://clnviewer.github.io/LibWchar2/docs/html/iswprint.html) : *iswprint manual*  
+- page [iswpunct](https://clnviewer.github.io/LibWchar2/docs/html/iswpunct.html) : *iswpunct manual*  
+- page [iswspace](https://clnviewer.github.io/LibWchar2/docs/html/iswspace.html) : *iswspace manual*  
+- page [iswupper](https://clnviewer.github.io/LibWchar2/docs/html/iswupper.html) : *iswupper manual*  
+- page [iswxdigit](https://clnviewer.github.io/LibWchar2/docs/html/iswxdigit.html) : *iswxdigit manual*  
+- page [mblen](https://clnviewer.github.io/LibWchar2/docs/html/mblen.html) : *mblen manual*  
+- page [mbrlen](https://clnviewer.github.io/LibWchar2/docs/html/mbrlen.html) : *mbrlen manual*  
+- page [mbrtowc](https://clnviewer.github.io/LibWchar2/docs/html/mbrtowc.html) : *mbrtowc manual*  
+- page [mbsinit](https://clnviewer.github.io/LibWchar2/docs/html/mbsinit.html) : *mbsinit manual*  
+- page [mbsnrtowcs](https://clnviewer.github.io/LibWchar2/docs/html/mbsnrtowcs.html) : *mbsnrtowcs manual*  
+- page [mbsrtowcs](https://clnviewer.github.io/LibWchar2/docs/html/mbsrtowcs.html) : *mbsrtowcs manual*  
+- page [mbstowcs](https://clnviewer.github.io/LibWchar2/docs/html/mbstowcs.html) : *mbstowcs manual*  
+- page [mbtowc](https://clnviewer.github.io/LibWchar2/docs/html/mbtowc.html) : *mbtowc manual*  
+- page [mlicense](https://clnviewer.github.io/LibWchar2/docs/html/mlicense.html) : *GNU glibc-2 manual License*  
+- page [towctrans](https://clnviewer.github.io/LibWchar2/docs/html/towctrans.html) : *towctrans manual*  
+- page [towlower](https://clnviewer.github.io/LibWchar2/docs/html/towlower.html) : *towlower manual*  
+- page [towupper](https://clnviewer.github.io/LibWchar2/docs/html/towupper.html) : *towupper manual*  
+- page [waccess](https://clnviewer.github.io/LibWchar2/docs/html/waccess.html) : *waccess manual*  
+- page [wcpcpy](https://clnviewer.github.io/LibWchar2/docs/html/wcpcpy.html) : *wcpcpy manual*  
+- page [wcpncpy](https://clnviewer.github.io/LibWchar2/docs/html/wcpncpy.html) : *wcpncpy manual*  
+- page [wcrtomb](https://clnviewer.github.io/LibWchar2/docs/html/wcrtomb.html) : *wcrtomb manual*  
+- page [wcscasecmp](https://clnviewer.github.io/LibWchar2/docs/html/wcscasecmp.html) : *wcscasecmp manual*  
+- page [wcscat](https://clnviewer.github.io/LibWchar2/docs/html/wcscat.html) : *wcscat manual*  
+- page [wcschr](https://clnviewer.github.io/LibWchar2/docs/html/wcschr.html) : *wcschr manual*  
+- page [wcscmp](https://clnviewer.github.io/LibWchar2/docs/html/wcscmp.html) : *wcscmp manual*  
+- page [wcscpy](https://clnviewer.github.io/LibWchar2/docs/html/wcscpy.html) : *wcscpy manual*  
+- page [wcscspn](https://clnviewer.github.io/LibWchar2/docs/html/wcscspn.html) : *wcscspn manual*  
+- page [wcsdup](https://clnviewer.github.io/LibWchar2/docs/html/wcsdup.html) : *wcsdup manual*  
+- page [wcsftime](https://clnviewer.github.io/LibWchar2/docs/html/wcsftime.html) : *wcsftime manual*  
+- page [wcslen](https://clnviewer.github.io/LibWchar2/docs/html/wcslen.html) : *wcslen manual*  
+- page [wcsncasecmp](https://clnviewer.github.io/LibWchar2/docs/html/wcsncasecmp.html) : *wcsncasecmp manual*  
+- page [wcsncat](https://clnviewer.github.io/LibWchar2/docs/html/wcsncat.html) : *wcsncat manual*  
+- page [wcsncmp](https://clnviewer.github.io/LibWchar2/docs/html/wcsncmp.html) : *wcsncmp manual*  
+- page [wcsncpy](https://clnviewer.github.io/LibWchar2/docs/html/wcsncpy.html) : *wcsncpy manual*  
+- page [wcsnlen](https://clnviewer.github.io/LibWchar2/docs/html/wcsnlen.html) : *wcsnlen manual*  
+- page [wcsnrtombs](https://clnviewer.github.io/LibWchar2/docs/html/wcsnrtombs.html) : *wcsnrtombs manual*  
+- page [wcspbrk](https://clnviewer.github.io/LibWchar2/docs/html/wcspbrk.html) : *wcspbrk manual*  
+- page [wcsptime](https://clnviewer.github.io/LibWchar2/docs/html/wcsptime.html) : *wcsptime manual*  
+- page [wcsrchr](https://clnviewer.github.io/LibWchar2/docs/html/wcsrchr.html) : *wcsrchr manual*  
+- page [wcsrtombs](https://clnviewer.github.io/LibWchar2/docs/html/wcsrtombs.html) : *wcsrtombs manual*  
+- page [wcsspn](https://clnviewer.github.io/LibWchar2/docs/html/wcsspn.html) : *wcsspn manual*  
+- page [wcsstr](https://clnviewer.github.io/LibWchar2/docs/html/wcsstr.html) : *wcsstr manual*  
+- page [wcstod](https://clnviewer.github.io/LibWchar2/docs/html/wcstod.html) : *wcstod manual*  
+- page [wcstof](https://clnviewer.github.io/LibWchar2/docs/html/wcstof.html) : *wcstof manual*  
+- page [wcstoimax](https://clnviewer.github.io/LibWchar2/docs/html/wcstoimax.html) : *wcstoimax manual*  
+- page [wcstok](https://clnviewer.github.io/LibWchar2/docs/html/wcstok.html) : *wcstok manual*  
+- page [wcstol](https://clnviewer.github.io/LibWchar2/docs/html/wcstol.html) : *wcstol manual*  
+- page [wcstol][d](https://clnviewer.github.io/LibWchar2/docs/html/wcstold.html) : *wcstold manual*  
+- page [wcstoll](https://clnviewer.github.io/LibWchar2/docs/html/wcstoll.html) : *wcstoll manual*  
+- page [wcstombs](https://clnviewer.github.io/LibWchar2/docs/html/wcstombs.html) : *wcstombs manual*  
+- page [wcstoul](https://clnviewer.github.io/LibWchar2/docs/html/wcstoul.html) : *wcstoul manual*  
+- page [wcstoull](https://clnviewer.github.io/LibWchar2/docs/html/wcstoull.html) : *wcstoull manual*  
+- page [wcstoumax](https://clnviewer.github.io/LibWchar2/docs/html/wcstoumax.html) : *wcstoumax manual*  
+- page [wcswidth](https://clnviewer.github.io/LibWchar2/docs/html/wcswidth.html) : *wcswidth manual*  
+- page [wctob](https://clnviewer.github.io/LibWchar2/docs/html/wctob.html) : *wctob manual*  
+- page [wctomb](https://clnviewer.github.io/LibWchar2/docs/html/wctomb.html) : *wctomb manual*  
+- page [wctype](https://clnviewer.github.io/LibWchar2/docs/html/wctype.html) : *wctype manual*  
+- page [wcwidth](https://clnviewer.github.io/LibWchar2/docs/html/wcwidth.html) : *wcwidth manual*  
+- page [wfopen](https://clnviewer.github.io/LibWchar2/docs/html/wfopen.html) : *wfopen manual*  
+- page [wmemchr](https://clnviewer.github.io/LibWchar2/docs/html/wmemchr.html) : *wmemchr manual*  
+- page [wmemcmp](https://clnviewer.github.io/LibWchar2/docs/html/wmemcmp.html) : *wmemcmp manual*  
+- page [wmemcpy](https://clnviewer.github.io/LibWchar2/docs/html/wmemcpy.html) : *wmemcpy manual*  
+- page [wmemmove](https://clnviewer.github.io/LibWchar2/docs/html/wmemmove.html) : *wmemmove manual*  
+- page [wmemset](https://clnviewer.github.io/LibWchar2/docs/html/wmemset.html) : *wmemset manual*  
+- page [wmkdir](https://clnviewer.github.io/LibWchar2/docs/html/wmkdir.html) : *wmkdir manual*  
+- page [wprintf](https://clnviewer.github.io/LibWchar2/docs/html/wprintf.html) : *wprintf manual*  
+- page [wremove](https://clnviewer.github.io/LibWchar2/docs/html/wremove.html) : *wremove manual*  
+- page [wrename](https://clnviewer.github.io/LibWchar2/docs/html/wrename.html) : *wrename manual*  
+- page [wstat](https://clnviewer.github.io/LibWchar2/docs/html/wstat.html) : *wstat manual*  
+- page [index](https://clnviewer.github.io/LibWchar2/docs/html/index.html) : *LibWchar2*  
 
 
 ## License
