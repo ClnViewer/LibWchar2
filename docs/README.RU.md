@@ -39,9 +39,13 @@ CC | key
 - Тестировалась под `Linux`, на других *nix платформах поведение не гарантированно.  
 - Не предусмотрена для сборки в среде `Windows API`, по причине отсутствия необходимости в ней на этой платформе.  
 - В библиотеку включены как основные функции из библиотек `libc`, `glibc` по работе с типом `wchar_t`, так и сторонние наработки и прочие расширения.
-- Доступна дополнительная [библиотека расширений](https://github.com/ClnViewer/LibWchar2/blob/master/docs/README-WINAPIEXT.RU.md) на базе LibWchar2 для Windows API платформ.
-- **Внимание**, не все функции протестированы должным образом, если вы поможете с тестами и поиском несоответствий это сделает библиотеку лучше и надежнее.
+- Доступна дополнительная [библиотека расширений](https://github.com/ClnViewer/LibWchar2/blob/master/docs/README-WINAPIEXT.RU.md) на базе `LibWchar2` для `Windows API` платформ.
+- В наличии [файлы настроек](https://github.com/ClnViewer/LibWchar2/blob/master/docs/cppcheck/libwchar2.cfg) анализатора кода `cppcheck` для тестирования программ использующих эту библиотеку.
+- **Внимание**, не все [функции](https://github.com/ClnViewer/LibWchar2/blob/master/docs/WCHAR2-LIST-MAP.md) протестированы должным образом, если вы поможете с тестами и поиском несоответствий это сделает библиотеку лучше и надежнее.
 
+
+
+- Список функций:      [документация](https://github.com/ClnViewer/LibWchar2/blob/master/docs/WCHAR2-LIST-MAP.md)
 
 ### Стандарт ISO/IEC 9899:2011 + stddef.h
 
@@ -107,7 +111,7 @@ CC | key
 
 - Файл заголовков:     [wchar2.h](https://github.com/ClnViewer/LibWchar2/blob/master/include/wchar2.h)  
 - OnLine документация: [libwchar2](https://clnviewer.github.io/LibWchar2/docs/html/wchar2.html)  
-- Список функций:      [документация (man)](https://github.com/ClnViewer/LibWchar2/blob/master/docs/wchar2.3)  
+- Список функций:      [документация](https://github.com/ClnViewer/LibWchar2/blob/master/docs/WCHAR2-LIST-MAP.md), [man](https://github.com/ClnViewer/LibWchar2/blob/master/docs/wchar2.3)  
 - Текущее состояние: [Журнал изменений](https://github.com/ClnViewer/LibWchar2/blob/master/docs/CHANGELOG-master.md)
 
 Для использования библиотеки в проекте подключите заголовок последним, после всех системных заголовков, при этом `wchar.h` и `wctype.h` можно не указывать, они уже включены.

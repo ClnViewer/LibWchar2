@@ -96,8 +96,8 @@ typedef long long int intmax_t;
 #define __WS(x) __WS_(x) /**< static string to wide type macro */
 #define __WSTR wchar_t   /**< definition wchar_t string macro */
 #define __WSTRFREE __attribute__((cleanup(__wsfree))) __WSTR /**< auto free wchar_t string macro */
-#define __WSTR_FMT  "ls" /**< print format wchar_t string macro */
-#define __WCHAR_FMT "lc" /**< print format wchar_t char macro */
+#define __WSTR_FMT "ls" /**< print format wchar_t string macro */
+#define __WCHR_FMT "lc" /**< print format wchar_t char macro */
 #define __WCSZ(x) ((x->sz + 1) * sizeof(wchar_t)) /**< determine size string_ws macro */
 
 /*! \cond NOTINDOC */

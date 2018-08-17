@@ -1,4 +1,4 @@
-.TH "include/wchar2.h" 3 "Tue Aug 14 2018" "libwchar2 0.0.9" \" -*- nroff -*-
+.TH "include/wchar2.h" 3 "Fri Aug 17 2018" "libwchar2 0.0.9" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -47,7 +47,7 @@ include/wchar2.h
 .br
 .RI "print format wchar_t string macro "
 .ti -1c
-.RI "#define \fB__WCHAR_FMT\fP   'lc'"
+.RI "#define \fB__WCHR_FMT\fP   'lc'"
 .br
 .RI "print format wchar_t char macro "
 .ti -1c
@@ -96,6 +96,10 @@ include/wchar2.h
 .RI "typedef void(* \fBwdir_cb\fP) (unsigned int, \fBaccess_e\fP, long long, \fBstring_ws\fP *, void *)"
 .br
 .RI "CallBack for \fB_wreaddir_cb\fP\&. "
+.ti -1c
+.RI "typedef void(* \fBsplit_cb\fP) (wchar_t *, size_t, long, void *)"
+.br
+.RI "CallBack for \fBwstring_split_cb\fP\&. "
 .in -1c
 .SS "Enumerations"
 
@@ -697,6 +701,10 @@ include/wchar2.h
 .br
 .RI "Converting time format string to string, \fBstring_ws\fP input\&. "
 .ti -1c
+.RI "long \fBwstring_split_cb\fP (const \fBstring_ws\fP *, wchar_t, \fBsplit_cb\fP, void *)"
+.br
+.RI "Split \fBstring_ws\fP string, from wchar_t characters and call \fBsplit_cb\fP to result data\&. "
+.ti -1c
 .RI "int \fBwstring_isempty\fP (const wchar_t *restrict s, int)"
 .br
 .RI "Check wchar_t input string is empty, bool return\&. "
@@ -845,6 +853,23 @@ size_t __WEV(sz,__LINE__); errno = 0;                                           
 \fBstring_ws\fP type to char[] this struct defined on top of this file A char[] - array name B string_ws* - source D - function return value if error 
 .SH "Typedef Documentation"
 .PP 
+.SS "typedef void(* split_cb) (wchar_t *, size_t, long, void *)"
+
+.PP
+CallBack for \fBwstring_split_cb\fP\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwchar_t\fP - splitting part from string 
+.br
+\fIsize_t\fP - Length of string part 
+.br
+\fIlong\fP - counter 
+.br
+\fIvoid\fP - user data 
+.RE
+.PP
+
 .SS "typedef void(* wdir_cb) (unsigned int, \fBaccess_e\fP, long long, \fBstring_ws\fP *, void *)"
 
 .PP
@@ -2363,6 +2388,17 @@ Memory free string, empty and clear struct \fBstring_ws\fP\&.
 
 .PP
 Check wchar_t input string is empty, bool return\&. 
+.SS "long wstring_split_cb (const \fBstring_ws\fP *, wchar_t, \fBsplit_cb\fP, void *)"
+
+.PP
+Split \fBstring_ws\fP string, from wchar_t characters and call \fBsplit_cb\fP to result data\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+number of splits 
+.RE
+.PP
+
 .SS "char* wstring_swstocs_alloc (const \fBstring_ws\fP * restrict)"
 
 .PP

@@ -111,10 +111,10 @@ Macros</h2></td></tr>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#ad9994480bdc2b86cf0d6dd3fbefd5cd7">__WSTR_FMT</a>&#160;&#160;&#160;&quot;ls&quot;</td></tr>
 <tr class="memdesc:ad9994480bdc2b86cf0d6dd3fbefd5cd7"><td class="mdescLeft">&#160;</td><td class="mdescRight">print format wchar_t string macro <br /></td></tr>
 <tr class="separator:ad9994480bdc2b86cf0d6dd3fbefd5cd7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3bbb07ed75ba430c21fc0b891f3bace9"><td class="memItemLeft" align="right" valign="top"><a id="a3bbb07ed75ba430c21fc0b891f3bace9"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a3bbb07ed75ba430c21fc0b891f3bace9">__WCHAR_FMT</a>&#160;&#160;&#160;&quot;lc&quot;</td></tr>
-<tr class="memdesc:a3bbb07ed75ba430c21fc0b891f3bace9"><td class="mdescLeft">&#160;</td><td class="mdescRight">print format wchar_t char macro <br /></td></tr>
-<tr class="separator:a3bbb07ed75ba430c21fc0b891f3bace9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac5abc31f2021f1e5db0d6175cfa6bb92"><td class="memItemLeft" align="right" valign="top"><a id="ac5abc31f2021f1e5db0d6175cfa6bb92"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#ac5abc31f2021f1e5db0d6175cfa6bb92">__WCHR_FMT</a>&#160;&#160;&#160;&quot;lc&quot;</td></tr>
+<tr class="memdesc:ac5abc31f2021f1e5db0d6175cfa6bb92"><td class="mdescLeft">&#160;</td><td class="mdescRight">print format wchar_t char macro <br /></td></tr>
+<tr class="separator:ac5abc31f2021f1e5db0d6175cfa6bb92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33b0160c4a515fa6dd94f5f55072c964"><td class="memItemLeft" align="right" valign="top"><a id="a33b0160c4a515fa6dd94f5f55072c964"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a33b0160c4a515fa6dd94f5f55072c964">__WCSZ</a>(x)&#160;&#160;&#160;((x-&gt;sz + 1) * sizeof(wchar_t))</td></tr>
 <tr class="memdesc:a33b0160c4a515fa6dd94f5f55072c964"><td class="mdescLeft">&#160;</td><td class="mdescRight">determine size <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a> macro <br /></td></tr>
@@ -155,6 +155,9 @@ typedef void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr class="memitem:acc3d5b079909816cdbc4b5cba9aaa5ea"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#acc3d5b079909816cdbc4b5cba9aaa5ea">wdir_cb</a>) (unsigned int, <a class="el" href="wchar2_8h.html#a85e87ac46824cfc9cd00480974e2ca49">access_e</a>, long long, <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *, void *)</td></tr>
 <tr class="memdesc:acc3d5b079909816cdbc4b5cba9aaa5ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">CallBack for <a class="el" href="wchar2_8h.html#acdb2f4c389d8aa3d3c4daae594c4d6fe">_wreaddir_cb</a>.  <a href="#acc3d5b079909816cdbc4b5cba9aaa5ea">More...</a><br /></td></tr>
 <tr class="separator:acc3d5b079909816cdbc4b5cba9aaa5ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c028275670bab542d0d0d323b06f316"><td class="memItemLeft" align="right" valign="top">typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a6c028275670bab542d0d0d323b06f316">split_cb</a>) (wchar_t *, size_t, long, void *)</td></tr>
+<tr class="memdesc:a6c028275670bab542d0d0d323b06f316"><td class="mdescLeft">&#160;</td><td class="mdescRight">CallBack for <a class="el" href="wchar2_8h.html#aeda4a82e376ab45641aeda7a1d7b00dc">wstring_split_cb</a>.  <a href="#a6c028275670bab542d0d0d323b06f316">More...</a><br /></td></tr>
+<tr class="separator:a6c028275670bab542d0d0d323b06f316"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -644,6 +647,9 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wc
 <tr class="memitem:a95b45f97084f630e96921e8b7efad2a0"><td class="memItemLeft" align="right" valign="top">wchar_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a95b45f97084f630e96921e8b7efad2a0">wstring_timeformat_ws</a> (const <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *restrict, const wchar_t *restrict, const wchar_t *restrict)</td></tr>
 <tr class="memdesc:a95b45f97084f630e96921e8b7efad2a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converting time format string to string, <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a> input.  <a href="#a95b45f97084f630e96921e8b7efad2a0">More...</a><br /></td></tr>
 <tr class="separator:a95b45f97084f630e96921e8b7efad2a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeda4a82e376ab45641aeda7a1d7b00dc"><td class="memItemLeft" align="right" valign="top">long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#aeda4a82e376ab45641aeda7a1d7b00dc">wstring_split_cb</a> (const <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *, wchar_t, <a class="el" href="wchar2_8h.html#a6c028275670bab542d0d0d323b06f316">split_cb</a>, void *)</td></tr>
+<tr class="memdesc:aeda4a82e376ab45641aeda7a1d7b00dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Split <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a> string, from wchar_t characters and call <a class="el" href="wchar2_8h.html#a6c028275670bab542d0d0d323b06f316">split_cb</a> to result data.  <a href="#aeda4a82e376ab45641aeda7a1d7b00dc">More...</a><br /></td></tr>
+<tr class="separator:aeda4a82e376ab45641aeda7a1d7b00dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31488123da3cd7e2e3cb4eb0a03509c9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a31488123da3cd7e2e3cb4eb0a03509c9">wstring_isempty</a> (const wchar_t *restrict s, int)</td></tr>
 <tr class="memdesc:a31488123da3cd7e2e3cb4eb0a03509c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check wchar_t input string is empty, bool return.  <a href="#a31488123da3cd7e2e3cb4eb0a03509c9">More...</a><br /></td></tr>
 <tr class="separator:a31488123da3cd7e2e3cb4eb0a03509c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -936,6 +942,31 @@ Type of file. </td></tr>
 </div>
 </div>
 <h2 class="groupheader">Typedef Documentation</h2>
+<a id="a6c028275670bab542d0d0d323b06f316"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c028275670bab542d0d0d323b06f316">&#9670;&nbsp;</a></span>split_cb</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef void(* split_cb) (wchar_t *, size_t, long, void *)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>CallBack for <a class="el" href="wchar2_8h.html#aeda4a82e376ab45641aeda7a1d7b00dc">wstring_split_cb</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wchar_t</td><td>- splitting part from string </td></tr>
+    <tr><td class="paramname">size_t</td><td>- Length of string part </td></tr>
+    <tr><td class="paramname">long</td><td>- counter </td></tr>
+    <tr><td class="paramname">void</td><td>- user data </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="acc3d5b079909816cdbc4b5cba9aaa5ea"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#acc3d5b079909816cdbc4b5cba9aaa5ea">&#9670;&nbsp;</a></span>wdir_cb</h2>
 
@@ -5449,6 +5480,49 @@ Type of file. </td></tr>
 
 </div>
 </div>
+<a id="aeda4a82e376ab45641aeda7a1d7b00dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeda4a82e376ab45641aeda7a1d7b00dc">&#9670;&nbsp;</a></span>wstring_split_cb()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">long wstring_split_cb </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="wchar2_8h.html#structstring__ws">string_ws</a> *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">wchar_t&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="wchar2_8h.html#a6c028275670bab542d0d0d323b06f316">split_cb</a>&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Split <a class="el" href="wchar2_8h.html#structstring__ws" title="Base wide string structure. ">string_ws</a> string, from wchar_t characters and call <a class="el" href="wchar2_8h.html#a6c028275670bab542d0d0d323b06f316">split_cb</a> to result data. </p>
+<dl class="section return"><dt>Returns</dt><dd>number of splits </dd></dl>
+
+</div>
+</div>
 <a id="a65673d494af05df3881f1caf0a61c3a0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a65673d494af05df3881f1caf0a61c3a0">&#9670;&nbsp;</a></span>wstring_swstocs_alloc()</h2>
 
@@ -5616,7 +5690,7 @@ Type of file. </td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 14 2018 18:37:03 for libwchar2 0.0.9 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Aug 17 2018 16:09:30 for libwchar2 0.0.9 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>
