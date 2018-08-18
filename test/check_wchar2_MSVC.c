@@ -22,6 +22,7 @@
 #if defined(_MSC_VER)
 #   pragma comment( user, "Compiled on " __DATE__ " at " __TIME__ )
 // #pragma comment(lib, "libwchar2ext.lib")
+#   pragma execution_character_set("utf-8")
 #endif
 
 #define F_OK 0
@@ -44,24 +45,31 @@ typedef BOOL (WINAPI *SETCURRENTCONSOLEFONTEX)(HANDLE, BOOL, PCONSOLE_FONT_INFOE
 
 static void ExChangeUTFConsoleFont(void)
 {
+    HMODULE StdOut, hmod;
     SETCURRENTCONSOLEFONTEX SetCurrentConsoleFontEx;
-    HMODULE hmod = GetModuleHandle("KERNEL32.DLL");
-    if (!(SetCurrentConsoleFontEx = (SETCURRENTCONSOLEFONTEX)GetProcAddress(hmod, "SetCurrentConsoleFontEx")))
+    CONSOLE_FONT_INFOEX font;
+
+    hmod = GetModuleHandle("KERNEL32.DLL");
+    SetCurrentConsoleFontEx = (SETCURRENTCONSOLEFONTEX)GetProcAddress(hmod, "SetCurrentConsoleFontEx");
+    if (!SetCurrentConsoleFontEx)
     {
-        printf("\n\t*(%d) SetCurrentConsoleFontEx error\n", __LINE__);
+        printf("\n\t* SetCurrentConsoleFontEx GetProcAddress error\n");
         return;
     }
 
-    CONSOLE_FONT_INFOEX font;
-    ZeroMemory(&font, sizeof(CONSOLE_FONT_INFOEX));
-    font.cbSize = sizeof(CONSOLE_FONT_INFOEX);
-    wcscpy(font.FaceName, L"Lucida Console");
-    font.dwFontSize.X = 10;
-    font.dwFontSize.Y = 16;
+    StdOut = GetStdHandle(STD_OUTPUT_HANDLE);
 
-    if (!SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), 0, &font))
+    memset(&font, 0, sizeof(CONSOLE_FONT_INFOEX));
+    font.cbSize = sizeof(CONSOLE_FONT_INFOEX);
+    font.FontFamily   = FF_DONTCARE;
+    font.dwFontSize.X = 0;
+    font.dwFontSize.Y = 14;
+    font.FontWeight   = 400;
+    wcscpy(font.FaceName, L"Lucida Console");
+
+    if (SetCurrentConsoleFontEx(StdOut, FALSE, &font))
     {
-        printf("\n\t*(%d) SetCurrentConsoleFontEx error\n", __LINE__);
+        printf("\n\t* SetCurrentConsoleFontEx error\n");
     }
 }
 #else

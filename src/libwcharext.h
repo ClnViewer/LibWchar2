@@ -77,11 +77,11 @@
 #   define _wcsrchr wcsrchr
 #   define _vswprintf vswprintf
 #   define _wcsftime wcsftime
-#   define _mbsrtowcs mbsrtowcs
 
 #   if defined(_MSC_VER)
 #      define _wcstombs __wcstombs_s
 #      define _mbstowcs __mbstowcs_s
+#      define _mbsrtowcs __mbsrtowcs_s
 
 #      pragma warning(disable : 4127)
 #      pragma warning(disable : 4706)
@@ -91,6 +91,7 @@
 #      define _wcstombs wcstombs
 #      define _mbstowcs mbstowcs
 #      define _wcscmp wcscmp
+#      define _mbsrtowcs mbsrtowcs
 
 #      if (defined(BUILD_MINGW32) && !defined(__CROSS_COMPILE_TIME__))
 int vswprintf(wchar_t*, const wchar_t*, va_list);
@@ -148,17 +149,24 @@ int    __seh_except_(unsigned int, unsigned int, const char*, const char*);
 
 static inline size_t __wcstombs_s(char *out, const wchar_t *src, size_t sz)
 {
-    size_t  ssz;
-    if (wcstombs_s(&ssz, out, sz, src, (sz - 1)) != 0)
+    size_t  ret;
+    if (wcstombs_s(&ret, out, sz, src, (sz - 1)) != 0)
         return 0U;
-    return ssz;
+    return ret;
 }
 static inline size_t __mbstowcs_s(wchar_t *out, const char *src, size_t sz)
 {
-    size_t  ssz;
-    if (mbstowcs_s(&ssz, out, sz, src, (sz - 1)) != 0)
+    size_t  ret;
+    if (mbstowcs_s(&ret, out, sz, src, (sz - 1)) != 0)
         return 0U;
-    return ssz;
+    return ret;
+}
+static inline size_t __mbsrtowcs_s(wchar_t *out, const char **src, size_t sz, mbstate_t *ps)
+{
+    size_t  ret;
+    if (mbsrtowcs_s(&ret, out, sz, src, (sz - 1), ps) != 0)
+        return 0U;
+    return ret;
 }
 
 /*

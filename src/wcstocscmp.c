@@ -45,14 +45,20 @@ int wcstocscmp(const char *c, wchar_t *w, size_t wsz)
     while(*cchr)
     {
         size_t   len;
-        wchar_t  wc;
+        wchar_t  wc[2];
+#       if defined(_MSC_VER)
+        size_t   ssz = 2U;
+#       else
+        size_t   ssz = 1U;
+#       endif
+
 
         if (cnt == wsz)
         {
             return 0;
         }
         errno = 0;
-        len = _mbsrtowcs(&wc, &cchr, 1U, (void*)&state);
+        len = _mbsrtowcs(wc, &cchr, ssz, &state);
         if ((len == (size_t)-1) || (len == (size_t)-2) || (errno == EILSEQ))
         {
             return -1;
@@ -64,7 +70,7 @@ int wcstocscmp(const char *c, wchar_t *w, size_t wsz)
 #       if !defined(OS_WIN)
         cchr += (int)len;
 #       endif
-        if (wchr[cnt++] != wc)
+        if (wchr[cnt++] != wc[0])
         {
             return 1;
         }
