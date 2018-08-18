@@ -22,7 +22,7 @@
 #if defined(_MSC_VER)
 #   pragma comment( user, "Compiled on " __DATE__ " at " __TIME__ )
 // #pragma comment(lib, "libwchar2ext.lib")
-#   pragma execution_character_set("utf-8")
+// #pragma execution_character_set("utf-8")
 #endif
 
 #define F_OK 0

@@ -44,12 +44,12 @@ int wcstocscmp(const char *c, wchar_t *w, size_t wsz)
 
     while(*cchr)
     {
-        size_t   len;
+        size_t   len, ssz;
         wchar_t  wc[2];
 #       if defined(_MSC_VER)
-        size_t   ssz = 2U;
+        ssz = 2U;
 #       else
-        size_t   ssz = 1U;
+        ssz = 1U;
 #       endif
 
 
@@ -72,7 +72,7 @@ int wcstocscmp(const char *c, wchar_t *w, size_t wsz)
 #       endif
         if (wchr[cnt++] != wc[0])
         {
-            return 1;
+            return (int)cnt;
         }
     }
     return 0;
