@@ -53,6 +53,7 @@ set(lib_srcs
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wcprint.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wcsptime.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wcsregexp.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src/wcstocscmp.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wfopen.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wmkdir.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wpathnormalize.c

@@ -23,7 +23,15 @@
     SOFTWARE.
  */
 
-#include "libwchar.h"
+#include "libbuild.h"
+
+#if defined(OS_WIN)
+#   include "libwcharext.h"
+
+#else
+#   include "libwchar.h"
+
+#endif
 
 int wcstocscmp(const char *c, wchar_t *w, size_t wsz)
 {
@@ -31,13 +39,32 @@ int wcstocscmp(const char *c, wchar_t *w, size_t wsz)
     const wchar_t *wchr = w;
     const char    *cchr = c;
 
+    mbstate_t state;
+    memset((void*)&state, 0, sizeof(mbstate_t));
+
     while(*cchr)
     {
+        size_t   len;
+        wchar_t  wc;
+
         if (cnt == wsz)
         {
             return 0;
         }
-        if (wchr[cnt++] != *cchr++)
+        errno = 0;
+        len = _mbsrtowcs(&wc, &cchr, 1U, (void*)&state);
+        if ((len == (size_t)-1) || (len == (size_t)-2) || (errno == EILSEQ))
+        {
+            return -1;
+        }
+        else if (!len)
+        {
+            return 0;
+        }
+#       if !defined(OS_WIN)
+        cchr += (int)len;
+#       endif
+        if (wchr[cnt++] != wc)
         {
             return 1;
         }

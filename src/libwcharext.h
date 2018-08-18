@@ -160,8 +160,11 @@ static inline size_t __mbstowcs_s(wchar_t *out, const char *src, size_t sz)
     return ssz;
 }
 
-#elif defined(BUILD_MINGW) || defined(__GNUC__) || defined(__clang__)
+/*
+    Update:
+    defined in wchar2ext.h
 
+#elif defined(BUILD_MINGW) || defined(__GNUC__) || defined(__clang__)
 static inline void __attribute__((always_inline)) __wsfree(void *v)
 {
     if (v)
@@ -175,6 +178,7 @@ static inline void __attribute__((always_inline)) __wsfree(void *v)
         }
     }
 }
+*/
 
 #endif
 

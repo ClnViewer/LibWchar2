@@ -40,7 +40,7 @@ CC | key
 - Не предусмотрена для сборки в среде `Windows API`, по причине отсутствия необходимости в ней на этой платформе.  
 - В библиотеку включены как основные функции из библиотек `libc`, `glibc` по работе с типом `wchar_t`, так и сторонние наработки и прочие расширения.
 - Доступна дополнительная [библиотека расширений](https://github.com/ClnViewer/LibWchar2/blob/master/docs/README-WINAPIEXT.RU.md) на базе `LibWchar2` для `Windows API` платформ.
-- В наличии [файлы настроек](https://github.com/ClnViewer/LibWchar2/blob/master/docs/cppcheck/libwchar2.cfg) анализатора кода `cppcheck` для тестирования программ использующих эту библиотеку.
+- В наличии [файлы настроек](https://github.com/ClnViewer/LibWchar2/blob/master/docs/cppcheck/libwchar2.cfg) анализатора кода [`cppcheck`](https://github.com/ClnViewer/LibWchar2/blob/master/docs/README-CPPCHECK.RU.md) для тестирования программ использующих эту библиотеку.
 - **Внимание**, не все [функции](https://github.com/ClnViewer/LibWchar2/blob/master/docs/WCHAR2-LIST-MAP.md) протестированы должным образом, если вы поможете с тестами и поиском несоответствий это сделает библиотеку лучше и надежнее.
 
 

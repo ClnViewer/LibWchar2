@@ -38,7 +38,7 @@ CC  | key
 - It is not intended for assembly in the `Windows API` environment, because it is not needed on this platform.
 - The library includes both the main functions from the `libc`, `glibc` libraries, for working with the `wchar_t` type, and third-party developments and other extensions.
 - An additional [library of extensions](https://github.com/ClnViewer/LibWchar2/blob/master/docs/README-WINAPIEXT.md) based on `LibWchar2` for `Windows API` platforms is available.
-- There are [files](https://github.com/ClnViewer/LibWchar2/blob/master/docs/cppcheck/libwchar2.cfg) for the `cppcheck` code analyzer settings for testing programs using this library.
+- There are [files](https://github.com/ClnViewer/LibWchar2/blob/master/docs/cppcheck/libwchar2.cfg) for the [`cppcheck`](https://github.com/ClnViewer/LibWchar2/blob/master/docs/README-CPPCHECK.md) code analyzer settings for testing programs using this library.
 - **Attention**, not all [functions](https://github.com/ClnViewer/LibWchar2/blob/master/docs/WCHAR2-LIST-MAP.md) are properly tested, if you help with tests and search for inconsistencies, this will make the library better and more reliable.
  
 ### Standart ISO/IEC 9899:2011 + stddef.h

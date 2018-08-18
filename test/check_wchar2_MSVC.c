@@ -1,4 +1,3 @@
-
 #if defined(__CROSS_COMPILE_TIME__)
 #   define __USE_MINGW_ANSI_STDIO 1
 #endif
@@ -10,11 +9,9 @@
 #include <time.h>
 #include <errno.h>
 #include <string.h>
+#include <locale.h>
 #include <wchar.h>
-
-// devel include mode
-// #include "../libwcha2-extension/src/libbuild.h"
-// #include "../libwcha2-extension/src/libwcharext.h"
+#include <windows.h>
 
 #if !defined(WCHAR2EXT_MSVC_ORIGIN)
 #   undef WCHAR2EXT_MSVC_ORIGIN
@@ -28,6 +25,48 @@
 #endif
 
 #define F_OK 0
+
+#if 0
+
+/* Set "Lucida Console" utf8 support font to console */
+
+typedef struct _CONSOLE_FONT_INFOEX
+{
+    ULONG cbSize;
+    DWORD nFont;
+    COORD dwFontSize;
+    UINT  FontFamily;
+    UINT  FontWeight;
+    WCHAR FaceName[LF_FACESIZE];
+} CONSOLE_FONT_INFOEX, *PCONSOLE_FONT_INFOEX;
+
+typedef BOOL (WINAPI *SETCURRENTCONSOLEFONTEX)(HANDLE, BOOL, PCONSOLE_FONT_INFOEX);
+
+static void ExChangeUTFConsoleFont(void)
+{
+    SETCURRENTCONSOLEFONTEX SetCurrentConsoleFontEx;
+    HMODULE hmod = GetModuleHandle("KERNEL32.DLL");
+    if (!(SetCurrentConsoleFontEx = (SETCURRENTCONSOLEFONTEX)GetProcAddress(hmod, "SetCurrentConsoleFontEx")))
+    {
+        printf("\n\t*(%d) SetCurrentConsoleFontEx error\n", __LINE__);
+        return;
+    }
+
+    CONSOLE_FONT_INFOEX font;
+    ZeroMemory(&font, sizeof(CONSOLE_FONT_INFOEX));
+    font.cbSize = sizeof(CONSOLE_FONT_INFOEX);
+    wcscpy(font.FaceName, L"Lucida Console");
+    font.dwFontSize.X = 10;
+    font.dwFontSize.Y = 16;
+
+    if (!SetCurrentConsoleFontEx(GetStdHandle(STD_OUTPUT_HANDLE), 0, &font))
+    {
+        printf("\n\t*(%d) SetCurrentConsoleFontEx error\n", __LINE__);
+    }
+}
+#else
+#   define ExChangeUTFConsoleFont()
+#endif
 
 #if 0
 //! [Example declaration wreaddir CallBack]
@@ -77,6 +116,8 @@ int main(int argc, char *argv[])
               a   = { L"_one_string_", 0U},
               aa  = { L"_two_string_", 0U },
               aaa  = { L".", 0U };
+    const char *c = "_one_string_",
+                *cc = "_two_string_";
     //! [Example use ws-cs convert]
     const char wtext[] = "write text UTF8 -  просто текст";
     wchar_t wout[256];
@@ -91,12 +132,31 @@ int main(int argc, char *argv[])
     (void) argc;
     (void) argv;
 
+    /* Console variant set to UTF8 */
+    /*
+        setlocale(LC_ALL, ".OCP");
+        SetConsoleCP(CP_UTF8);
+        SetConsoleOutputCP(CP_UTF8);
+        system("chcp 65001 > nul");
+    */
+
+    ExChangeUTFConsoleFont();
+
     printf("\n\t* sizeof wchar_t [%zu]\n", sizeof(wchar_t));
 
     /* low-level Function test */
 
     wmemset((void*)&wout, 0, wsizeof(wout));
     memset((void*)&cout, 0,  sizeof(cout));
+
+    ret = wcstocscmp(c, a.str, wcslen(a.str));
+    printf("\n\t*(%d) wcstocscmp: [%ls][%d]\n", __LINE__, a.str, ret);
+
+    ret = wcstocscmp(cc, aa.str, wcslen(aa.str));
+    printf("\n\t*(%d) wcstocscmp: [%ls][%d]\n", __LINE__, aa.str, ret);
+
+    ret = wcstocscmp(c, aa.str, wcslen(aa.str));
+    printf("\n\t*(%d) wcstocscmp: [%s] -> [%ls][%d]\n", __LINE__, c, aa.str, ret);
 
     ret = wstring_cstows(wout, wsizeof(wout), (const char*)wtext, 0);
     printf("\n\t*(%d) wstring_cstows: [%ls][%d]\n", __LINE__, wout, ret);
@@ -152,13 +212,13 @@ int main(int argc, char *argv[])
     printf("\n\t*(%d) waccess: [%ls] -> [%d][%s]\n", __LINE__, pathmkd, ret, __access_error(ret));
     //! [Example use waccess code]
 
-    ret = wmkdir(pathmkd, 0);
+    ret = wmkdir(pathmkd);
     printf("\n\t*(%d) wmkdir: [create] [%ls] -> [%d/%d][%s]\n", __LINE__, pathmkd, ret, errno, __get_error(errstr, errno));
 
     ret = waccess(pathmkd, F_OK);
     printf("\n\t*(%d) waccess: [%ls] -> [%d][%s]\n", __LINE__, pathmkd, ret, __access_error(ret));
 
-    ret = wmkdir(pathmkd, 0);
+    ret = wmkdir(pathmkd);
     printf("\n\t*(%d) wmkdir: [exist]  [%ls] -> [%d/%d][%s]\n", __LINE__, pathmkd, ret, errno, __get_error(errstr, errno));
 
     do

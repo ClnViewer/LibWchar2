@@ -1,4 +1,4 @@
-.TH "include/wchar2.h" 3 "Fri Aug 17 2018" "libwchar2 0.0.9" \" -*- nroff -*-
+.TH "include/wchar2.h" 3 "Sat Aug 18 2018" "libwchar2 0.0.9" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -2309,12 +2309,31 @@ Converting string, \fCchar\fP input, \fCwchar_t\fP array output, to allocate buf
     (void) argc;
     (void) argv;
 
+    /* Console variant set to UTF8 */
+    /*
+        setlocale(LC_ALL, "\&.OCP");
+        SetConsoleCP(CP_UTF8);
+        SetConsoleOutputCP(CP_UTF8);
+        system("chcp 65001 > nul");
+    */
+
+    ExChangeUTFConsoleFont();
+
     printf("\n\t* sizeof wchar_t [%zu]\n", sizeof(wchar_t));
 
     /* low-level Function test */
 
     wmemset((void*)&wout, 0, wsizeof(wout));
     memset((void*)&cout, 0,  sizeof(cout));
+
+    ret = wcstocscmp(c, a\&.str, wcslen(a\&.str));
+    printf("\n\t*(%d) wcstocscmp: [%ls][%d]\n", __LINE__, a\&.str, ret);
+
+    ret = wcstocscmp(cc, aa\&.str, wcslen(aa\&.str));
+    printf("\n\t*(%d) wcstocscmp: [%ls][%d]\n", __LINE__, aa\&.str, ret);
+
+    ret = wcstocscmp(c, aa\&.str, wcslen(aa\&.str));
+    printf("\n\t*(%d) wcstocscmp: [%s] -> [%ls][%d]\n", __LINE__, c, aa\&.str, ret);
 
     ret = wstring_cstows(wout, wsizeof(wout), (const char*)wtext, 0);
     printf("\n\t*(%d) wstring_cstows: [%ls][%d]\n", __LINE__, wout, ret);
@@ -2464,12 +2483,31 @@ Converting string, \fCwchar_t\fP input, \fCchar\fP array output, to allocate buf
     (void) argc;
     (void) argv;
 
+    /* Console variant set to UTF8 */
+    /*
+        setlocale(LC_ALL, "\&.OCP");
+        SetConsoleCP(CP_UTF8);
+        SetConsoleOutputCP(CP_UTF8);
+        system("chcp 65001 > nul");
+    */
+
+    ExChangeUTFConsoleFont();
+
     printf("\n\t* sizeof wchar_t [%zu]\n", sizeof(wchar_t));
 
     /* low-level Function test */
 
     wmemset((void*)&wout, 0, wsizeof(wout));
     memset((void*)&cout, 0,  sizeof(cout));
+
+    ret = wcstocscmp(c, a\&.str, wcslen(a\&.str));
+    printf("\n\t*(%d) wcstocscmp: [%ls][%d]\n", __LINE__, a\&.str, ret);
+
+    ret = wcstocscmp(cc, aa\&.str, wcslen(aa\&.str));
+    printf("\n\t*(%d) wcstocscmp: [%ls][%d]\n", __LINE__, aa\&.str, ret);
+
+    ret = wcstocscmp(c, aa\&.str, wcslen(aa\&.str));
+    printf("\n\t*(%d) wcstocscmp: [%s] -> [%ls][%d]\n", __LINE__, c, aa\&.str, ret);
 
     ret = wstring_cstows(wout, wsizeof(wout), (const char*)wtext, 0);
     printf("\n\t*(%d) wstring_cstows: [%ls][%d]\n", __LINE__, wout, ret);

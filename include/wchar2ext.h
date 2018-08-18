@@ -220,6 +220,7 @@ int       u8sverify(const char*);
 
 wchar_t * wcsregexp(wchar_t *restrict, wchar_t *restrict, int*);
 wchar_t * _wcsptime(const wchar_t*, const wchar_t*, void*);
+int       wcstocscmp(const char*, wchar_t*, size_t); // ASCII range only
 
 __CHKRET
 wchar_t * _wpathnormalize(const wchar_t*, size_t);
@@ -300,6 +301,22 @@ void        wrewinddir(WDIR_t*);
 
 /*! \cond NOTINDOC */
 
+#if (defined(__MINGW32__) || defined(__MINGW64__) || defined(__GNUC__) || defined(__clang__))
+static inline void __attribute__((always_inline)) __wsfree(void *v)
+{
+    if (v)
+    {
+        void *x = *(void**)v;
+        if (x)
+        {
+            free(x);
+            // cppcheck-suppress unreadVariable
+            x = ((void*)0);
+        }
+    }
+}
+#endif
+
 #if !defined(WCHAR2EXT_MSVC_ORIGIN)
 
 #define wstring_appends(A,...) wstring_appends_(A,__VA_ARGS__,NULL)
@@ -315,7 +332,7 @@ void        wrewinddir(WDIR_t*);
 #define wremove_s _wremove_s
 #define wremove_ws _wremove_ws
 
-#define wmkdir(A,B) _wmkdir_s(A,0,0)
+#define wmkdir(A) _wmkdir_s(A,0,0U)
 #define wmkdir_s _wmkdir_s
 #define wmkdir_ws _wmkdir_ws
 
