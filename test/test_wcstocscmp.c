@@ -25,7 +25,7 @@ START_TEST(test_wcstocscmp)
 
     ret = wcstocscmp(c, src2, wcslen(src2));
     _fprintf (stdout,  "\tTest wcstocscmp:%d\t-> [%s] -> [%ls][%d]\n",  __LINE__, c, src2, ret);
-    ck_assert_int_eq(ret, 1);
+    ck_assert_int_eq(ret, 8);
 
     ck_assert(errno != EILSEQ);
 
