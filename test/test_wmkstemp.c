@@ -16,6 +16,6 @@ START_TEST(test_wmkstemp)
         __LINE__, mkstemplate, ret, errno, strerror(errno)
     );
     close(ret);
-    wremove(mkstemplate);
+    _wremove(mkstemplate);
 }
 END_TEST
