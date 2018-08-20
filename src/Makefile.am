@@ -22,6 +22,7 @@ libwchar2_la_SOURCES = \
     waccess.c \
     wbasename.c \
     wpathnormalize.c \
+    wmkstemp.c \
     btowc.c \
     mblen.c \
     mbrlen.c \

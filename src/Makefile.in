@@ -85,28 +85,29 @@ am_libwchar2_la_OBJECTS = libwchar2_la-libwchar.lo \
 	libwchar2_la-wremove.lo libwchar2_la-wrename.lo \
 	libwchar2_la-wstat.lo libwchar2_la-waccess.lo \
 	libwchar2_la-wbasename.lo libwchar2_la-wpathnormalize.lo \
-	libwchar2_la-btowc.lo libwchar2_la-mblen.lo \
-	libwchar2_la-mbrlen.lo libwchar2_la-mbrtowc.lo \
-	libwchar2_la-mbsinit.lo libwchar2_la-mbsnrtowcs.lo \
-	libwchar2_la-mbsrtowcs.lo libwchar2_la-mbstowcs.lo \
-	libwchar2_la-mbtowc.lo libwchar2_la-wcrtomb.lo \
-	libwchar2_la-wcsnrtombs.lo libwchar2_la-wcsrtombs.lo \
-	libwchar2_la-wcstombs.lo libwchar2_la-wctob.lo \
-	libwchar2_la-wctomb.lo libwchar2_la-wcprint.lo \
-	libwchar2_la-wcstocscmp.lo libwchar2_la-wcsregexp.lo \
-	libwchar2_la-wcsftime.lo libwchar2_la-wcsptime.lo \
-	libwchar2_la-vfprintf.lo libwchar2_la-vfwprintf.lo \
-	libwchar2_la-iswalnum.lo libwchar2_la-iswalpha.lo \
-	libwchar2_la-iswblank.lo libwchar2_la-iswcntrl.lo \
-	libwchar2_la-iswctype.lo libwchar2_la-iswdigit.lo \
-	libwchar2_la-iswgraph.lo libwchar2_la-iswlower.lo \
-	libwchar2_la-iswprint.lo libwchar2_la-iswpunct.lo \
-	libwchar2_la-iswspace.lo libwchar2_la-iswupper.lo \
-	libwchar2_la-iswxdigit.lo libwchar2_la-towctrans.lo \
-	libwchar2_la-wcswidth.lo libwchar2_la-wctrans.lo \
-	libwchar2_la-wcwidth.lo libwchar2_la-wdir.lo \
-	libwchar2_la-wchar_utf8.lo libwchar2_la-wchar_util.lo \
-	libwchar2_la-wchar_tonum_util.lo libwchar2_la-wstring_util.lo
+	libwchar2_la-wmkstemp.lo libwchar2_la-btowc.lo \
+	libwchar2_la-mblen.lo libwchar2_la-mbrlen.lo \
+	libwchar2_la-mbrtowc.lo libwchar2_la-mbsinit.lo \
+	libwchar2_la-mbsnrtowcs.lo libwchar2_la-mbsrtowcs.lo \
+	libwchar2_la-mbstowcs.lo libwchar2_la-mbtowc.lo \
+	libwchar2_la-wcrtomb.lo libwchar2_la-wcsnrtombs.lo \
+	libwchar2_la-wcsrtombs.lo libwchar2_la-wcstombs.lo \
+	libwchar2_la-wctob.lo libwchar2_la-wctomb.lo \
+	libwchar2_la-wcprint.lo libwchar2_la-wcstocscmp.lo \
+	libwchar2_la-wcsregexp.lo libwchar2_la-wcsftime.lo \
+	libwchar2_la-wcsptime.lo libwchar2_la-vfprintf.lo \
+	libwchar2_la-vfwprintf.lo libwchar2_la-iswalnum.lo \
+	libwchar2_la-iswalpha.lo libwchar2_la-iswblank.lo \
+	libwchar2_la-iswcntrl.lo libwchar2_la-iswctype.lo \
+	libwchar2_la-iswdigit.lo libwchar2_la-iswgraph.lo \
+	libwchar2_la-iswlower.lo libwchar2_la-iswprint.lo \
+	libwchar2_la-iswpunct.lo libwchar2_la-iswspace.lo \
+	libwchar2_la-iswupper.lo libwchar2_la-iswxdigit.lo \
+	libwchar2_la-towctrans.lo libwchar2_la-wcswidth.lo \
+	libwchar2_la-wctrans.lo libwchar2_la-wcwidth.lo \
+	libwchar2_la-wdir.lo libwchar2_la-wchar_utf8.lo \
+	libwchar2_la-wchar_util.lo libwchar2_la-wchar_tonum_util.lo \
+	libwchar2_la-wstring_util.lo
 libwchar2_la_OBJECTS = $(am_libwchar2_la_OBJECTS)
 AM_V_lt = $(am__v_lt_$(V))
 am__v_lt_ = $(am__v_lt_$(AM_DEFAULT_VERBOSITY))
@@ -292,6 +293,7 @@ libwchar2_la_SOURCES = \
     waccess.c \
     wbasename.c \
     wpathnormalize.c \
+    wmkstemp.c \
     btowc.c \
     mblen.c \
     mbrlen.c \
@@ -461,6 +463,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wdir.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wfopen.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wmkdir.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wmkstemp.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wpathnormalize.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wremove.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libwchar2_la-wrename.Plo@am__quote@
@@ -581,6 +584,14 @@ libwchar2_la-wpathnormalize.lo: wpathnormalize.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='wpathnormalize.c' object='libwchar2_la-wpathnormalize.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libwchar2_la_CPPFLAGS) $(CPPFLAGS) $(libwchar2_la_CFLAGS) $(CFLAGS) -c -o libwchar2_la-wpathnormalize.lo `test -f 'wpathnormalize.c' || echo '$(srcdir)/'`wpathnormalize.c
+
+libwchar2_la-wmkstemp.lo: wmkstemp.c
+@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libwchar2_la_CPPFLAGS) $(CPPFLAGS) $(libwchar2_la_CFLAGS) $(CFLAGS) -MT libwchar2_la-wmkstemp.lo -MD -MP -MF $(DEPDIR)/libwchar2_la-wmkstemp.Tpo -c -o libwchar2_la-wmkstemp.lo `test -f 'wmkstemp.c' || echo '$(srcdir)/'`wmkstemp.c
+@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libwchar2_la-wmkstemp.Tpo $(DEPDIR)/libwchar2_la-wmkstemp.Plo
+@am__fastdepCC_FALSE@	$(AM_V_CC) @AM_BACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='wmkstemp.c' object='libwchar2_la-wmkstemp.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libwchar2_la_CPPFLAGS) $(CPPFLAGS) $(libwchar2_la_CFLAGS) $(CFLAGS) -c -o libwchar2_la-wmkstemp.lo `test -f 'wmkstemp.c' || echo '$(srcdir)/'`wmkstemp.c
 
 libwchar2_la-btowc.lo: btowc.c
 @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libwchar2_la_CPPFLAGS) $(CPPFLAGS) $(libwchar2_la_CFLAGS) $(CFLAGS) -MT libwchar2_la-btowc.lo -MD -MP -MF $(DEPDIR)/libwchar2_la-btowc.Tpo -c -o libwchar2_la-btowc.lo `test -f 'btowc.c' || echo '$(srcdir)/'`btowc.c

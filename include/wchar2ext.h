@@ -248,6 +248,7 @@ access_e  u8waccess(const wchar_t*, int);
 int       _wstat_s_(const wchar_t*, size_t, void*);
 int       _wstat_ws(const string_ws*, void*);
 int       u8wstat(const wchar_t*, void*);
+int       wmkstemp(wchar_t *);
 
 #if defined(OS_WIN_FOPEN_MIXED_CHAR)
 __CHKRET

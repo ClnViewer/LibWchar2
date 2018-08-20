@@ -10,6 +10,13 @@
 #include <errno.h>
 #include <string.h>
 #include <locale.h>
+#if defined(_MSC_VER)
+#   include <io.h>
+#   define __close _close
+#else
+#   define __close close
+#endif
+#include <fcntl.h>
 #include <wchar.h>
 #include <windows.h>
 
@@ -320,6 +327,20 @@ int main(int argc, char *argv[])
     }
     while (0);
 
+    do
+    {
+        //! [Example use wmkstemp]
+        wchar_t mkstemplate[] = L"my-tmpfileXXXXXX";
+        ret = wmkstemp(mkstemplate);
+        printf("\n\t*(%d) wmkstemp -> [%ls] open fd -> [%d]\n", __LINE__, mkstemplate, ret);
+        if (ret > 0)
+        {
+            __close(ret);
+            wremove(mkstemplate);
+        }
+        //! [Example use wmkstemp]
+    }
+    while (0);
 
     (void) getchar();
     return 0;

@@ -57,6 +57,7 @@ set(lib_srcs
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wfopen.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wmkdir.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wpathnormalize.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src/wmkstemp.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wremove.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wrename.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wstat.c

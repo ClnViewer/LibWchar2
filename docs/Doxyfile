@@ -1,6 +1,6 @@
 
 DOXYFILE_ENCODING      = UTF-8
-PROJECT_NAME           = "libwchar2 0.0.9"
+PROJECT_NAME           = "libwchar2 0.0.10"
 INPUT                  = include/wchar2.h docs/doxman
 OUTPUT_DIRECTORY       = docs
 EXAMPLE_PATH           = ./ docs/doxman

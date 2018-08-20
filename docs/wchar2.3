@@ -1,4 +1,4 @@
-.TH "include/wchar2.h" 3 "Sat Aug 18 2018" "libwchar2 0.0.9" \" -*- nroff -*-
+.TH "include/wchar2.h" 3 "Mon Aug 20 2018" "libwchar2 0.0.10" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -748,6 +748,10 @@ include/wchar2.h
 .RI "long int \fB_wtelldir\fP (\fBWDIR_t\fP *)"
 .br
 .RI "Returns the current position of the directory stream\&. "
+.ti -1c
+.RI "int \fBwmkstemp\fP (wchar_t *)"
+.br
+.RI "Create a unique file name based on template, actually creates the file and returns its file descriptor\&. The name of the created file is stored in template\&. "
 .in -1c
 .SH "Data Structure Documentation"
 .PP 
@@ -2193,6 +2197,31 @@ function wcstou8s requires to free the returned result
 .RE
 .PP
 
+.SS "int wmkstemp (wchar_t *)"
+
+.PP
+Create a unique file name based on template, actually creates the file and returns its file descriptor\&. The name of the created file is stored in template\&. The \fC\fBwmkstemp()\fP\fP function generates a unique temporary filename from template, creates and opens the file, and returns an open file descriptor for the file\&. The name of the created file is stored in template\&. 
+.PP
+\fBReturns:\fP
+.RS 4
+Is error, return \fC-1\fP and set \fCerrno\fP to \fCEEXIST\fP, \fCEINVAL\fP or \fCEFAULT\fP\&.
+.RE
+.PP
+\fBExample:\fP 
+.PP
+.nf
+        wchar_t mkstemplate[] = L"my-tmpfileXXXXXX";
+        ret = wmkstemp(mkstemplate);
+        printf("\n\t*(%d) wmkstemp -> [%ls] open fd -> [%d]\n", __LINE__, mkstemplate, ret);
+        if (ret > 0)
+        {
+            __close(ret);
+            wremove(mkstemplate);
+        }
+
+.fi
+.PP
+
 .SS "size_t wstring_append (\fBstring_ws\fP *, const wchar_t * restrict, size_t)"
 
 .PP
@@ -2531,4 +2560,4 @@ function wstring_wstocs_alloc requires to free the returned result
 
 .SH "Author"
 .PP 
-Generated automatically by Doxygen for libwchar2 0\&.0\&.9 from the source code\&.
+Generated automatically by Doxygen for libwchar2 0\&.0\&.10 from the source code\&.

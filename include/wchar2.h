@@ -1855,6 +1855,23 @@ void       _wseekdir(WDIR_t*, long int);
  */
 long int   _wtelldir(WDIR_t*);
 
+/*!
+ * \~
+ * \brief Create a unique file name based on template, actually creates the file and returns its file descriptor.
+ *        The name of the created file is stored in template.
+ *
+ * \details The `wmkstemp()` function generates a unique temporary filename from
+ *          template, creates and opens the file, and returns an open file
+ *          descriptor for the file.
+ *          The name of the created file is stored in template.
+ * \return  Is error, return `-1` and set `errno` to `EEXIST`, `EINVAL` or `EFAULT`.
+ *
+ * \b Example:
+ * \snippet ./test/check_wchar2_MSVC.c Example use wmkstemp
+ *
+ */
+int        wmkstemp(wchar_t *);
+
 
 /*! \~ */
 /*! \cond NOTINDOC */

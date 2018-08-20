@@ -76,4 +76,5 @@
 	tcase_add_test(t, test_wstring);
 	tcase_add_test(t, test_wcstonum);
 	tcase_add_test(t, test_wdir);
+	tcase_add_test(t, test_wmkstemp);
 

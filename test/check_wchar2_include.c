@@ -81,5 +81,6 @@
 #include "test_wcstonum.c"
 #include "test_wstring.c"
 #include "test_wdir.c"
+#include "test_wmkstemp.c"
 
 #pragma GCC diagnostic pop

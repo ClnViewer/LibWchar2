@@ -57,6 +57,7 @@ var searchData=
   ['wmemmove_20manual',['wmemmove manual',['../wmemmove.html',1,'']]],
   ['wmemset_20manual',['wmemset manual',['../wmemset.html',1,'']]],
   ['wmkdir_20manual',['wmkdir manual',['../wmkdir.html',1,'']]],
+  ['wmkstemp',['wmkstemp',['../wchar2_8h.html#ae372cabdbd923b1d436b344fad9dde82',1,'wchar2.h']]],
   ['wprintf_20manual',['wprintf manual',['../wprintf.html',1,'']]],
   ['wreaddir_5fcb_5fopt',['wreaddir_cb_opt',['../wchar2_8h.html#ad44fc148cdc0f6e0c7456eb4b0f418e3',1,'wchar2.h']]],
   ['wremove_20manual',['wremove manual',['../wremove.html',1,'']]],

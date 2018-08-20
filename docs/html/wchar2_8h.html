@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.14"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>libwchar2 0.0.9: include/wchar2.h File Reference</title>
+<title>libwchar2 0.0.10: include/wchar2.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">libwchar2 0.0.9
+   <div id="projectname">libwchar2 0.0.10
    </div>
   </td>
  </tr>
@@ -685,6 +685,9 @@ size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wc
 <tr class="memitem:a22705b134af83afcefc9033a3230a3e4"><td class="memItemLeft" align="right" valign="top">long int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#a22705b134af83afcefc9033a3230a3e4">_wtelldir</a> (<a class="el" href="wchar2_8h.html#a4b416445955b87e37a37b78591c1115f">WDIR_t</a> *)</td></tr>
 <tr class="memdesc:a22705b134af83afcefc9033a3230a3e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the current position of the directory stream.  <a href="#a22705b134af83afcefc9033a3230a3e4">More...</a><br /></td></tr>
 <tr class="separator:a22705b134af83afcefc9033a3230a3e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae372cabdbd923b1d436b344fad9dde82"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="wchar2_8h.html#ae372cabdbd923b1d436b344fad9dde82">wmkstemp</a> (wchar_t *)</td></tr>
+<tr class="memdesc:ae372cabdbd923b1d436b344fad9dde82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a unique file name based on template, actually creates the file and returns its file descriptor. The name of the created file is stored in template.  <a href="#ae372cabdbd923b1d436b344fad9dde82">More...</a><br /></td></tr>
+<tr class="separator:ae372cabdbd923b1d436b344fad9dde82"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <hr/><h2 class="groupheader">Data Structure Documentation</h2>
 <a name="structstring__ws" id="structstring__ws"></a>
@@ -5158,6 +5161,27 @@ Type of file. </td></tr>
 
 </div>
 </div>
+<a id="ae372cabdbd923b1d436b344fad9dde82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae372cabdbd923b1d436b344fad9dde82">&#9670;&nbsp;</a></span>wmkstemp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int wmkstemp </td>
+          <td>(</td>
+          <td class="paramtype">wchar_t *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create a unique file name based on template, actually creates the file and returns its file descriptor. The name of the created file is stored in template. </p>
+<p>The <code><a class="el" href="wchar2_8h.html#ae372cabdbd923b1d436b344fad9dde82" title="Create a unique file name based on template, actually creates the file and returns its file descripto...">wmkstemp()</a></code> function generates a unique temporary filename from template, creates and opens the file, and returns an open file descriptor for the file. The name of the created file is stored in template. </p><dl class="section return"><dt>Returns</dt><dd>Is error, return <code>-1</code> and set <code>errno</code> to <code>EEXIST</code>, <code>EINVAL</code> or <code>EFAULT</code>.</dd></dl>
+<p><b>Example:</b> </p><div class="fragment"><div class="line">        <span class="keywordtype">wchar_t</span> mkstemplate[] = L<span class="stringliteral">&quot;my-tmpfileXXXXXX&quot;</span>;</div><div class="line">        ret = <a class="code" href="wchar2_8h.html#ae372cabdbd923b1d436b344fad9dde82">wmkstemp</a>(mkstemplate);</div><div class="line">        printf(<span class="stringliteral">&quot;\n\t*(%d) wmkstemp -&gt; [%ls] open fd -&gt; [%d]\n&quot;</span>, __LINE__, mkstemplate, ret);</div><div class="line">        <span class="keywordflow">if</span> (ret &gt; 0)</div><div class="line">        {</div><div class="line">            __close(ret);</div><div class="line">            wremove(mkstemplate);</div><div class="line">        }</div></div><!-- fragment -->
+</div>
+</div>
 <a id="a6ea51e2ed496d7622890d90021d78ed3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6ea51e2ed496d7622890d90021d78ed3">&#9670;&nbsp;</a></span>wstring_append()</h2>
 
@@ -5690,7 +5714,7 @@ Type of file. </td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Aug 18 2018 19:18:03 for libwchar2 0.0.9 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Aug 20 2018 10:26:17 for libwchar2 0.0.10 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.14
 </small></address>
