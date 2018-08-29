@@ -78,6 +78,7 @@
 #   define _vswprintf vswprintf
 #   define _wcsftime wcsftime
 #   define _wcscmp wcscmp
+#   define _wctomb wctomb
 
 #   if defined(_MSC_VER)
 #      define _wcstombs __wcstombs_s

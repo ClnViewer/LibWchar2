@@ -12,7 +12,7 @@ START_TEST(test_wmkstemp)
 
     ret = wmkstemp(mkstemplate);
     ck_assert(ret != -1);
-    _fprintf (stdout,  "\tTest wmkstemp:%d\t\t-> wide: [%ls] fd: [%d] [%d]:[%s]\n",
+    _fprintf (stdout,  "\tTest wmkstemp:%d\t-> wide: [%ls] fd: [%d] [%d]:[%s]\n",
         __LINE__, mkstemplate, ret, errno, strerror(errno)
     );
     close(ret);

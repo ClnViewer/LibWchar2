@@ -10,7 +10,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A wrapper library for compatibility with projects written for the Windows API, where wchar_t size == 2 bytes on *nix platforms. Replaces libc, glibc functions using the wchar_t type.</description>
     <releaseNotes>Library extensions based on LibWchar2 for Windows API platforms</releaseNotes>
-    <copyright>Copyright Mon Aug 20 2018</copyright>
+    <copyright>Copyright Wed Aug 29 2018</copyright>
     <tags>wchar-support library linux c-language c-library c-extension native</tags>
     <references>
       <reference file="libwchar2ext.lib"/>
@@ -31,9 +31,9 @@
     <file src="src/wcsptime.c" target="content/src/wcsptime.c"/>
     <file src="src/wcsregexp.c" target="content/src/wcsregexp.c"/>
     <file src="src/wcstocscmp.c" target="content/src/wcstocscmp.c"/>
-    <file src="src/wmkstemp.c" target="content/src/wmkstemp.c"/>
     <file src="src/wfopen.c" target="content/src/wfopen.c"/>
     <file src="src/wmkdir.c" target="content/src/wmkdir.c"/>
+    <file src="src/wmkstemp.c" target="content/src/wmkstemp.c"/>
     <file src="src/wpathnormalize.c" target="content/src/wpathnormalize.c"/>
     <file src="src/wremove.c" target="content/src/wremove.c"/>
     <file src="src/wrename.c" target="content/src/wrename.c"/>
@@ -43,6 +43,7 @@
     <file src="src/wdir_msvc.c" target="content/src/wdir_msvc.c"/>
     <file src="src/wcsptime.c" target="content/src/wcsptime.c"/>
     <file src="src/wstring_util.c" target="content/src/wstring_util.c"/>
+    <file src="src/strptime_w32.c" target="content/src/strptime_w32.c"/>
     <file src="test/check_wchar2_MSVC.c" target="content/test/check_wchar2_MSVC.c"/>
     <file src="docs/nuget/Package.target" target="build/native/x32/libwchar2ext.target"/>
     <file src="docs/nuget/Package.target" target="build/native/libwchar2ext.target"/>

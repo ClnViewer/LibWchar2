@@ -88,9 +88,19 @@ endif()
 if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR
     "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
 
-     CHECK_C_COMPILER_FLAG("-std=c11" COMPILER_SUPPORTS_C11)
-     if(COMPILER_SUPPORTS_C11)
-        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c11")
+     CHECK_C_COMPILER_FLAG("-std=c17" COMPILER_SUPPORTS_C17)
+     if(COMPILER_SUPPORTS_C17)
+        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c17")
+     else()
+        CHECK_C_COMPILER_FLAG("-std=c11" COMPILER_SUPPORTS_C11)
+        if(COMPILER_SUPPORTS_C11)
+           set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c11")
+        else()
+           CHECK_C_COMPILER_FLAG("-std=gnu99" COMPILER_SUPPORTS_C99)
+           if(COMPILER_SUPPORTS_C99)
+              set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99")
+           endif()
+        endif()
      endif()
 
      CHECK_C_COMPILER_FLAG("-Wstrict-prototypes" COMPILER_SUPPORTS_CWSP)
@@ -103,8 +113,8 @@ if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
      endif()
 
-     CHECK_C_COMPILER_FLAG("-Wextra" COMPILER_SUPPORTS_CWETRA)
-     if(COMPILER_SUPPORTS_CWETRA)
+     CHECK_C_COMPILER_FLAG("-Wextra" COMPILER_SUPPORTS_CWEXTRA)
+     if(COMPILER_SUPPORTS_CWEXTRA)
         set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wextra")
      endif()
 

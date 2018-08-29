@@ -42,21 +42,36 @@ int fileno(FILE *stream);
 
 #endif
 
-#if (defined(BUILD_MINGW) || !defined(OS_WIN))
-#   define  __wwrite(A) if (write(fd, (void*)&(A), sizeof(wchar_t)) <= 0) { break; }
-#elif defined(_MSC_VER)
-#   define  __wwrite(A) putwchar(A)
+#if defined(MB_CUR_MAX)
+#   define  WBSZ MB_CUR_MAX
+#else
+#   define  WBSZ (sizeof(wchar_t) * 4U)
 #endif
 
 void wcprint(wchar_t *w)
 {
     wchar_t *p = w;
 #   if (defined(BUILD_MINGW) || !defined(OS_WIN))
-    int fd = fileno(stdout);
+    char wbuf[WBSZ];
+    int  fd = fileno(stdout);
 #   endif
+
+    if (!p)
+    {
+        errno = EINVAL;
+        return;
+    }
 
     while(*p)
     {
-        __wwrite(*p++);
+#       if defined(_MSC_VER)
+        putwchar(*p++);
+#       elif (defined(BUILD_MINGW) || !defined(OS_WIN))
+        int len = _wctomb(wbuf,*p++);
+        if ((len < 1) || (write(fd, (void*)wbuf, (unsigned)len) <= 0)) { break; }
+#       else
+        errno = ENOSYS;
+        break;
+#       endif
     }
 }

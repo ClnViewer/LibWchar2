@@ -1,6 +1,7 @@
 Makefile
 /commit.sh
 /bootstrap.sh
+/_svn-*.sh
 logfile.out
 config.log
 configure.orig
@@ -8,10 +9,13 @@ config.h
 stamp-h1
 .libs
 .deps
+.svn
+.ignoresvn
 autom4te.cache
 /autom4te.cache
 gmon.out
 libwchar2.pc
+_svn-*.sh
 *~
 "test/test-\342\202\254-\342\202\254.txt"
 /test/test-*.txt
@@ -42,7 +46,7 @@ libwchar2.pc
 /build/doxymd
 /build/NuGet.exe
 
-*..cppcheck
+*.cppcheck
 
 # Prerequisites
 *.d

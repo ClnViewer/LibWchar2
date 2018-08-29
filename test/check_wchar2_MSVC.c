@@ -154,10 +154,32 @@ int main(int argc, char *argv[])
         SetConsoleOutputCP(CP_UTF8);
         system("chcp 65001 > nul");
     */
+#   if (defined(__MINGW32__) || defined(__MINGW64__))
+    setlocale(LC_ALL, ".OCP");
+    SetConsoleCP(CP_UTF8);
+    SetConsoleOutputCP(CP_UTF8);
+#   endif
 
     ExChangeUTFConsoleFont();
 
     printf("\n\t* sizeof wchar_t [%zu]\n", sizeof(wchar_t));
+
+#   if (defined(__MINGW32__) || defined(__MINGW64__))
+    /*
+        Not needed test for MSVC/MVCS, function wcprint() used putwchar() default.
+        UTF-8 characters (d080 - d3bf) RU: https://www.utf8-chartable.de/unicode-utf8-table.pl?start=1024
+        UTF-8 characters (00 - c3bf)  ENG: https://www.utf8-chartable.de/unicode-utf8-table.pl
+    */
+    wchar_t wc_prn_hex[] =
+    {
+        0x041A, 0x041E, 0x0428, 0x041A, 0x0410, 0x20, 0x00A9, 0x00AE, 0x0
+    };
+    printf("\n\t*(%d) wcprint: ", __LINE__);
+    wcprint(L"Test UTF8 console: ");
+    wcprint(L"Это просто UTF8 ТЕКСТ - длинный :)");
+    printf("\n\t*(%d) wcprint HEX: ", __LINE__);
+    wcprint(wc_prn_hex);
+#   endif
 
     /* low-level Function test */
 
@@ -165,7 +187,7 @@ int main(int argc, char *argv[])
     memset((void*)&cout, 0,  sizeof(cout));
 
     ret = wcstocscmp(c, a.str, wcslen(a.str));
-    printf("\n\t*(%d) wcstocscmp: [%ls][%d]\n", __LINE__, a.str, ret);
+    printf("\n\n\t*(%d) wcstocscmp: [%ls][%d]\n", __LINE__, a.str, ret);
 
     ret = wcstocscmp(cc, aa.str, wcslen(aa.str));
     printf("\n\t*(%d) wcstocscmp: [%ls][%d]\n", __LINE__, aa.str, ret);
