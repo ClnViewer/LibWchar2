@@ -7,6 +7,11 @@
 [![Build Appveyor](https://ci.appveyor.com/api/projects/status/5s47u3irthu3icqo?svg=true)](https://ci.appveyor.com/project/ClnViewer/libwchar2)
 [![Job Status](https://inspecode.rocro.com/badges/github.com/ClnViewer/LibWchar2/status?token=EjhrEOus5kCYzf9OVjBAPrjGFe23VmAQertYJc6gSDM)](https://inspecode.rocro.com/jobs/github.com/ClnViewer/LibWchar2/latest?completed=true)
 
+
+[![Repo size](https://img.shields.io/github/repo-size/ClnViewer/LibWchar2.svg?style=flat)](https://github.com/ClnViewer/LibWchar2)
+[![Code size](https://img.shields.io/github/code-size/ClnViewer/LibWchar2.svg?style=flat)](https://github.com/ClnViewer/LibWchar2)
+
+
 # LibWchar2
 ----------
 
