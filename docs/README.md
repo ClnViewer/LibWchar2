@@ -9,7 +9,7 @@
 
 
 [![Repo size](https://img.shields.io/github/repo-size/ClnViewer/LibWchar2.svg?style=flat)](https://github.com/ClnViewer/LibWchar2)
-[![Code size](https://img.shields.io/github/code-size/ClnViewer/LibWchar2.svg?style=flat)](https://github.com/ClnViewer/LibWchar2)
+[![Code size](https://img.shields.io/github/languages/code-size/ClnViewer/LibWchar2.svg?style=flat)](https://github.com/ClnViewer/LibWchar2)
 
 
 # LibWchar2
