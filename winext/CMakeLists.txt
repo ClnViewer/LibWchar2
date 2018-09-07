@@ -41,6 +41,7 @@ set(inst_hdrs
 
 set(lib_hdrs
     ${CMAKE_CURRENT_SOURCE_DIR}/../include/wchar2ext.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/../include/string_s.h
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/libbuild.h
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/libwcharext.h
 )
@@ -63,6 +64,7 @@ set(lib_srcs
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wstat.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wdir.c
     ${CMAKE_CURRENT_SOURCE_DIR}/../src/wstring_util.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../src/string_s.c
 )
 
 if(MSVC)

@@ -88,6 +88,7 @@
 #      pragma warning(disable : 4127)
 #      pragma warning(disable : 4706)
 #      define __AUTO(x)
+#      define __attribute__(x)
 
 #   else
 #      define _wcstombs wcstombs

@@ -29,7 +29,7 @@
 #if defined(OS_WIN)
 #   include "libwcharext.h"
 const char * _strptime(const char*, const char*, struct tm*);
-#   include "strptime_w32.c"
+//#   include "strptime_w32.c"
 #   define strptime _strptime
 
 #else
@@ -89,7 +89,7 @@ string_s string_trunc(const char *s, int sz)
 {
     int            osz = 0;
     const char     *c   = s,
-                   *cc  = NULL;
+                    *cc  = NULL;
     string_s ss = { NULL, 0U };
 
     do
@@ -325,10 +325,19 @@ size_t string_format(string_s *dst, const char *fmt, ...)
             free(dst->str);
         }
         if (
+#           if defined(_MSC_VER)
+            // cppcheck-suppress nullPointer
+            ((sz = vsnprintf_s(NULL, 0U, 0U, fmt, ap)) <= 0)  ||
+#           else
             // cppcheck-suppress nullPointer
             ((sz = vsnprintf(NULL, 0U, fmt, ap)) <= 0)  ||
+#           endif
             (!string_alloc(dst, (size_t)sz))            ||
+#           if defined(_MSC_VER)
+            ((sz = vsnprintf_s(dst->str, (size_t)(sz + 1), sz, fmt, ap)) <= 0)
+#           else
             ((sz = vsnprintf(dst->str, (size_t)(sz + 1), fmt, ap)) <= 0)
+#           endif
         )
         {
             break;

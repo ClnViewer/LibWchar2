@@ -34,7 +34,7 @@ typedef unsigned short mode_t;
 #      include <stdlib.h>
 #      include <sys/stat.h>
 #      if !defined(__CROSS_COMPILE_TIME__)
-       int _wmkdir(const wchar_t*);
+int _wmkdir(const wchar_t*);
 #      endif
 #   endif
 

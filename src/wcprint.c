@@ -68,7 +68,10 @@ void wcprint(wchar_t *w)
         putwchar(*p++);
 #       elif (defined(BUILD_MINGW) || !defined(OS_WIN))
         int len = _wctomb(wbuf,*p++);
-        if ((len < 1) || (write(fd, (void*)wbuf, (unsigned)len) <= 0)) { break; }
+        if ((len < 1) || (write(fd, (void*)wbuf, (unsigned)len) <= 0))
+        {
+            break;
+        }
 #       else
         errno = ENOSYS;
         break;
