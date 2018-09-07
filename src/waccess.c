@@ -140,7 +140,7 @@ access_e _waccess_ws(const string_ws *ws, int m)
 
 access_e u8waccess(const wchar_t *w, int m)
 {
-    char __AUTO *b  = NULL;
+    char __AUTO(__autofree) *b  = NULL;
 
 #   if defined(_MSC_VER)
     __try
@@ -261,7 +261,7 @@ static access_e __access(const char *s, int m)
 
 access_e u8waccess(const wchar_t *ws, int m)
 {
-    char __AUTO *b = NULL;
+    char __AUTO(__autofree) *b = NULL;
 
     if (
         ((b = calloc(1, wcstou8s(NULL, ws) + 1)) == NULL) ||

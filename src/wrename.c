@@ -37,8 +37,8 @@
 
 int u8wrename(const wchar_t *o, const wchar_t *n)
 {
-    char __AUTO *ob = NULL;
-    char __AUTO *nb = NULL;
+    char __AUTO(__autofree) *ob = NULL;
+    char __AUTO(__autofree) *nb = NULL;
 
 #   if defined(_MSC_VER)
     __try

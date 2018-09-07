@@ -26,37 +26,37 @@ START_TEST(test_wbasename)
     outwfree = _wbasedir(pathw, 0);
     _fprintf (stdout,  "\tTest _wbasedir::%d\t-> wide: [%ls]\n",  __LINE__, outwfree);
     ck_assert(_wcscmp(outwfree, L"/this/path/to") == 0);
-    if (outwfree) { __wsfree(&outwfree); }
+    if (outwfree) { __autofree(&outwfree); }
 
     outwfree = _wbasedir(pathw, 1);
     _fprintf (stdout,  "\tTest _wbasedir::%d\t-> wide: [%ls] + separator\n",  __LINE__, outwfree);
     ck_assert(_wcscmp(outwfree, L"/this/path/to/") == 0);
-    if (outwfree) { __wsfree(&outwfree); }
+    if (outwfree) { __autofree(&outwfree); }
 
     outwfree = wbasedir_ws(&wss, 1);
     _fprintf (stdout,  "\tTest wbasedir_ws:%d\t-> wide: [%ls] - manual (string_ws)\n",  __LINE__, outwfree);
     ck_assert(_wcscmp(outwfree, L"/this/path/to/") == 0);
-    if (outwfree) { __wsfree(&outwfree); }
+    if (outwfree) { __autofree(&outwfree); }
 
     outwfree = wbasedir((wchar_t*)&pathw, 1);
     _fprintf (stdout,  "\tTest  wbasedir::%d\t-> wide: [%ls] - auto (wchar_t[])\n",  __LINE__, outwfree);
     ck_assert(_wcscmp(outwfree, L"/this/path/to/") == 0);
-    if (outwfree) { __wsfree(&outwfree); }
+    if (outwfree) { __autofree(&outwfree); }
 
     outwfree = wbasedir((string_ws*)&wss, 1);
     _fprintf (stdout,  "\tTest  wbasedir::%d\t-> wide: [%ls] - auto (string_ws)\n",  __LINE__, outwfree);
     ck_assert(_wcscmp(outwfree, L"/this/path/to/") == 0);
-    if (outwfree) { __wsfree(&outwfree); }
+    if (outwfree) { __autofree(&outwfree); }
 
     outwfree = wbasedir((wchar_t*)&pathw, 1);
     _fprintf (stdout,  "\tTest  wbasedir::%d\t-> wide: [%ls] - auto (wchar_t)\n",  __LINE__, outwfree);
     ck_assert(_wcscmp(outwfree, L"/this/path/to/") == 0);
-    if (outwfree) { __wsfree(&outwfree); }
+    if (outwfree) { __autofree(&outwfree); }
 
     outc = (char*) wbasedir((char*)&pathc, 1);
     _fprintf (stdout,  "\tTest  wbasedir::%d\t-> char: [%s] - auto (char)\n",  __LINE__, outc);
     ck_assert_str_eq(outc, "/this/path/to/");
-    if (outc) { __wsfree(&outc); }
+    if (outc) { __autofree(&outc); }
 
     outw = (wchar_t*) _wbasename_selector(1, (void*)pathw);
     _fprintf (stdout,  "\tTest _wbasename:%d\t-> wide: [%ls] - manual (wchar_t[])\n",  __LINE__, outw);

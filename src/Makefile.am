@@ -1,6 +1,7 @@
 
 include_HEADERS = \
     ../include/wchar2.h \
+    ../include/string_s.h \
     libbuild.h \
     libwchar.h \
     vfxprint.h
@@ -66,4 +67,5 @@ libwchar2_la_SOURCES = \
     wchar_utf8.c \
     wchar_util.c \
     wchar_tonum_util.c\
-    wstring_util.c
+    wstring_util.c \
+    string_s.c

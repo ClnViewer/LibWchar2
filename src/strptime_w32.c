@@ -61,28 +61,31 @@
 #include <string.h>
 #include <time.h>
 
-#if defined(_MSC_VER)
-#   define strncasecmp _strnicmp
-#   define strcasecmp _stricmp
-#endif
+#   if defined(_MSC_VER)
+#      define strncasecmp _strnicmp
+#      define strcasecmp _stricmp
+#   endif
 
-#if (defined(BUILD_MINGW32) && !defined(__CROSS_COMPILE_TIME__))
+#   if (defined(BUILD_MINGW32) && !defined(__CROSS_COMPILE_TIME__))
 int __cdecl __MINGW_NOTHROW strcasecmp (const char*, const char *);
 int __cdecl __MINGW_NOTHROW strncasecmp (const char *, const char *, size_t);
-#endif
+#   endif
+
+const char * _strptime(const char*, const char*, struct tm*);
 
 /*
  * We do not implement alternate representations. However, we always
  * check whether a given modifier is allowed for a certain conversion.
  */
-#define ALT_E        0x01
-#define ALT_O        0x02
-#define LEGAL_ALT(x) { if (alt_format & ~(x)) return NULL; }
+#   define ALT_E        0x01
+#   define ALT_O        0x02
+#   define LEGAL_ALT(x) { if (alt_format & ~(x)) return NULL; }
+#   define TM_YEAR_BASE 1900
 
 static char gmt[] = { "GMT" };
-#if defined(TM_ZONE)
+#   if defined(TM_ZONE)
 static char utc[] = { "UTC" };
-#endif
+#   endif
 
 /* RFC-822/RFC-2822 */
 static const char * const nast[5] =
@@ -93,8 +96,6 @@ static const char * const nadt[5] =
 {
     "EDT", "CDT", "MDT", "PDT", "\0\0\0"
 };
-
-#define TM_YEAR_BASE		1900
 
 static const char *day[7] =
 {
@@ -122,8 +123,7 @@ static const char *am_pm[2] =
 
 
 static const unsigned char *
-conv_num (const unsigned char *buf, int *dest,
-          unsigned int llim, unsigned int ulim)
+conv_num(const unsigned char *buf, int *dest, unsigned int llim, unsigned int ulim)
 {
     unsigned int result = 0;
     unsigned char ch;
@@ -138,7 +138,7 @@ conv_num (const unsigned char *buf, int *dest,
     do
     {
         result *= 10;
-        result += ch - '0';
+        result += (unsigned)(ch - '0');
         rulim /= 10;
         ch = *++buf;
     }
@@ -147,12 +147,12 @@ conv_num (const unsigned char *buf, int *dest,
     if (result < llim || result > ulim)
         return NULL;
 
-    *dest = result;
+    *dest = (int)result;
     return buf;
 }
 
 static const unsigned char *
-find_string (const unsigned char *bp, int *tgt, const char * const *n1, const char * const *n2, int c)
+find_string(const unsigned char *bp, int *tgt, const char * const *n1, const char * const *n2, int c)
 {
     int i;
     unsigned int len;
@@ -175,16 +175,16 @@ find_string (const unsigned char *bp, int *tgt, const char * const *n1, const ch
     return NULL;
 }
 
-const char * _strptime (const char *buf, const char *fmt, struct tm *tm)
+const char * _strptime(const char *buf, const char *fmt, struct tm *tm)
 {
     unsigned char c;
     const unsigned char *bp, *ep;
     int alt_format, i, split_year = 0, neg = 0, offs;
     const char *new_fmt;
 
-    bp = (const unsigned char *)buf;
+    bp = (const unsigned char*)buf;
 
-    while (bp != NULL && (c = *fmt++) != '\0')
+    while (bp != NULL && (c = (unsigned char)*fmt++) != '\0')
     {
         /* Clear 'alternate' modifier prior to new conversion. */
         alt_format = 0;
@@ -203,7 +203,7 @@ const char * _strptime (const char *buf, const char *fmt, struct tm *tm)
 
 
 again:
-        switch (c = *fmt++)
+        switch (c = (unsigned char)*fmt++)
         {
         case '%':  /* "%%" is converted to "%". */
 literal:
@@ -637,6 +637,5 @@ recurse:
         }
     }
 
-    return ((const char *)bp);
+    return ((char *)bp);
 }
-

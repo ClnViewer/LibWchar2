@@ -49,7 +49,7 @@ typedef unsigned short mode_t;
 
 static int __mkdirwp(const wchar_t *w)
 {
-    wchar_t __AUTO *p = NULL;
+    wchar_t __AUTO(__autofree) *p = NULL;
     errno = 0;
 
     if (!w)
@@ -149,7 +149,7 @@ int u8wmkdir(const wchar_t *w, mode_t m)
 
 static int __mkdirp(const char *s, mode_t m)
 {
-    char __AUTO *p = NULL;
+    char __AUTO(__autofree) *p = NULL;
     errno = 0;
 
     if (!s)
@@ -196,7 +196,7 @@ static int __mkdirp(const char *s, mode_t m)
 
 int u8wmkdir(const wchar_t *wc, mode_t m)
 {
-    char __AUTO *b = NULL;
+    char __AUTO(__autofree) *b = NULL;
 
     if (
         ((b = calloc(1, wcstou8s(NULL, wc) + 1)) == NULL) ||

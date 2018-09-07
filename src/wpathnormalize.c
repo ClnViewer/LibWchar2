@@ -78,7 +78,7 @@ wchar_t * _wpathnormalize_ws(const string_ws *ws)
 char * u8wpathnormalize(const wchar_t *ws)
 {
     char *ob  = NULL;
-    wchar_t __AUTO *wo = NULL;
+    wchar_t __AUTO(__autofree) *wo = NULL;
 
 #   if defined(_MSC_VER)
     __try

@@ -128,7 +128,7 @@
 extern const uint32_t bittab[];
 #endif
 
-#define __AUTO __attribute__((cleanup(__wsfree)))
+#define __AUTO(x) __attribute__((cleanup(x)))
 
 #include "../include/wchar2.h"
 

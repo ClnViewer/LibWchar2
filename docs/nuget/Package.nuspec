@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>libwchar2ext</id>
-    <version>0.0.10</version>
+    <version>0.0.11</version>
     <authors>PS</authors>
     <owners>PS</owners>
     <licenseUrl>https://github.com/ClnViewer/LibWchar2/blob/master/LICENSE</licenseUrl>
@@ -10,7 +10,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>A wrapper library for compatibility with projects written for the Windows API, where wchar_t size == 2 bytes on *nix platforms. Replaces libc, glibc functions using the wchar_t type.</description>
     <releaseNotes>Library extensions based on LibWchar2 for Windows API platforms</releaseNotes>
-    <copyright>Copyright Wed Aug 29 2018</copyright>
+    <copyright>Copyright Fri Sep 07 2018</copyright>
     <tags>wchar-support library linux c-language c-library c-extension native</tags>
     <references>
       <reference file="libwchar2ext.lib"/>

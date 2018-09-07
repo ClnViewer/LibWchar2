@@ -42,7 +42,7 @@
 
 int u8wstat(const wchar_t *wc, void *v)
 {
-    char __AUTO *b = NULL;
+    char __AUTO(__autofree) *b = NULL;
     struct __sstat *st = (struct __sstat*)v;
     errno = 0;
 

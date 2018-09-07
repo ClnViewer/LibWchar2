@@ -107,7 +107,7 @@ FILE * _wfopen_ws(const string_ws *ws, const char *m)
 
 FILE * u8wfopen(const wchar_t *w, const char *m)
 {
-    char __AUTO *b = NULL;
+    char __AUTO(__autofree) *b = NULL;
 
 #   if defined(_MSC_VER)
     __try
@@ -137,7 +137,7 @@ FILE * u8wfopen(const wchar_t *w, const char *m)
 
 FILE * u8wfopen(const wchar_t *w, const wchar_t *m)
 {
-    char __AUTO *b = NULL;
+    char __AUTO(__autofree) *b = NULL;
     char         t[256] = {0};
 
 #   if defined(_MSC_VER)
@@ -205,7 +205,7 @@ FILE * _wfopen_ws(const string_ws *ws, const wchar_t *m)
 
 FILE * u8wfopen(const wchar_t *w, const wchar_t *m)
 {
-    char __AUTO *b = NULL;
+    char __AUTO(__autofree) *b = NULL;
     size_t msz = _wcslen(m);
 
     if (!msz)

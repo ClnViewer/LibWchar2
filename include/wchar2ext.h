@@ -180,7 +180,6 @@ typedef void (*split_cb)(wchar_t*, size_t, long, void*);
  */
 const char * wchar2version(void);
 
-void      wstring_free(string_ws *restrict);
 void      wcprint(wchar_t *restrict);
 void      wstring_free(string_ws *restrict);
 int       wstring_isempty(const wchar_t *restrict s, int);
@@ -194,7 +193,7 @@ size_t    wstring_format(string_ws*, const wchar_t *restrict, ...);
 
 long      wstring_split_cb(const string_ws*, wchar_t, split_cb, void*);
 
-string_ws wstring_trunc(const wchar_t *ws, int);
+string_ws wstring_trunc(const wchar_t*, int);
 size_t    wstring_trunc_alloc(string_ws *restrict, const wchar_t*, int);
 
 __CHKRET
@@ -303,7 +302,7 @@ void        wrewinddir(WDIR_t*);
 /*! \cond NOTINDOC */
 
 #if (defined(__MINGW32__) || defined(__MINGW64__) || defined(__GNUC__) || defined(__clang__))
-static inline void __attribute__((always_inline)) __wsfree(void *v)
+static inline void __attribute__((always_inline)) __autofree(void *v)
 {
     if (v)
     {

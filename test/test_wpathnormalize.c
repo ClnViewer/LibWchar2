@@ -13,7 +13,7 @@ START_TEST(test_wpathnormalize)
     outwfree = _wpathnormalize(pathw, 0);
     _fprintf (stdout,  "\tTest wpathnormalize:%d\t-> wide: [%ls]\n",  __LINE__, outwfree);
     ck_assert(_wcscmp(outwfree, L"/this/path/to/file.zip") == 0);
-    if (outwfree) { __wsfree(&outwfree); }
+    if (outwfree) { __autofree(&outwfree); }
 
 }
 END_TEST

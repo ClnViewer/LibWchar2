@@ -37,7 +37,7 @@
 
 int u8wremove(const wchar_t *wc)
 {
-    char __AUTO *b = NULL;
+    char __AUTO(__autofree) *b = NULL;
 
 #   if defined(_MSC_VER)
     __try

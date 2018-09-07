@@ -37,7 +37,7 @@
 
 #include <time.h>
 
-const unsigned char c_strip[0x100] =
+const unsigned char wc_strip[0x100] =
 {
     1,0,0,0,0,0,0,0,0,1,1,0,0,1,0,0,
     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -70,7 +70,7 @@ int wstring_isempty(const wchar_t *s, int sz)
 
     while(sz--)
     {
-        if ((*c > 0x100) || ((*c < 0x100) && (!c_strip[*c])))
+        if ((*c > 0x100) || ((*c < 0x100) && (!wc_strip[*c])))
         {
             return 1;
         }
@@ -98,7 +98,7 @@ string_ws wstring_trunc(const wchar_t *ws, int sz)
 
         while(osz < sz)
         {
-            if ((*c < 0x100) && (!c_strip[*c]))
+            if ((*c < 0x100) && (!wc_strip[*c]))
             {
                 break;
             }
@@ -115,7 +115,7 @@ string_ws wstring_trunc(const wchar_t *ws, int sz)
 
         while(osz < sz)
         {
-            if ((*cc < 0x100) && (!c_strip[*cc]))
+            if ((*cc < 0x100) && (!wc_strip[*cc]))
             {
                 break;
             }
@@ -135,7 +135,7 @@ string_ws wstring_trunc(const wchar_t *ws, int sz)
 size_t wstring_trunc_alloc(string_ws *dst, const wchar_t *ws, int sz)
 {
 #   if !defined(_MSC_VER)
-    wchar_t __AUTO *p = NULL;
+    wchar_t __AUTO(__autofree) *p = NULL;
 #   endif
 
     if ((!dst) || (!ws))
@@ -198,7 +198,7 @@ size_t wstring_alloc(string_ws *dst, size_t sz)
 
 char * wstring_wstocs_alloc(const wchar_t *src)
 {
-    char __AUTO *p = NULL;
+    char __AUTO(__autofree) *p = NULL;
     char  *dst;
     size_t ssz;
 
@@ -236,7 +236,7 @@ char * wstring_swstocs_alloc(const string_ws *src)
 size_t wstring_cstows_ws_alloc(string_ws *ws, const char *src)
 {
 #   if !defined(_MSC_VER)
-    wchar_t __AUTO *p = NULL;
+    wchar_t __AUTO(__autofree) *p = NULL;
 #   endif
 
     if ((!ws) || (!src))
@@ -474,7 +474,7 @@ size_t wstring_format(string_ws *dst, const wchar_t *fmt, ...)
 {
     size_t  ret = 0U;
 #   if !defined(_MSC_VER)
-    wchar_t __AUTO *p = NULL;
+    wchar_t __AUTO(__autofree) *p = NULL;
 #   endif
     va_list ap;
 
@@ -545,7 +545,7 @@ wchar_t * wstring_timeformat(const wchar_t *src, size_t sz, const wchar_t *fmtin
 {
 #   define __TMF_OUT_SIZE 250
 
-    wchar_t __AUTO *p = NULL, *s = NULL;
+    wchar_t __AUTO(__autofree) *p = NULL, *s = NULL;
 
     if (
         (!src)    ||

@@ -87,7 +87,7 @@
 
 #      pragma warning(disable : 4127)
 #      pragma warning(disable : 4706)
-#      define __AUTO
+#      define __AUTO(x)
 
 #   else
 #      define _wcstombs wcstombs
@@ -100,9 +100,9 @@ int vswprintf(wchar_t*, const wchar_t*, va_list);
 #      endif
 
 #      if defined(BUILD_MINGW)
-#         define __AUTO __attribute__((cleanup(__wsfree)))
+#         define __AUTO(x) __attribute__((cleanup(x)))
 #      else
-#         define __AUTO
+#         define __AUTO(x)
 #      endif
 
 #   endif
@@ -116,7 +116,7 @@ int vswprintf(wchar_t*, const wchar_t*, va_list);
 #   define _wcstombs wcstombs
 #   define _mbstowcs mbstowcs
 #   define _wcsrchr wcsrchr
-#   define __AUTO __attribute__((cleanup(__wsfree)))
+#   define __AUTO(x) __attribute__((cleanup(x)))
 
 #endif
 
@@ -170,26 +170,6 @@ static inline size_t __mbsrtowcs_s(wchar_t *out, const char **src, size_t sz, mb
         return 0U;
     return ret;
 }
-
-/*
-    Update:
-    defined in wchar2ext.h
-
-#elif defined(BUILD_MINGW) || defined(__GNUC__) || defined(__clang__)
-static inline void __attribute__((always_inline)) __wsfree(void *v)
-{
-    if (v)
-    {
-        void *x = *(void**)v;
-        if (x)
-        {
-            free(x);
-            // cppcheck-suppress unreadVariable
-            x = ((void*)0);
-        }
-    }
-}
-*/
 
 #endif
 
