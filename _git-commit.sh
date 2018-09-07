@@ -20,6 +20,8 @@ git commit -m "${TXTCOMMIT}"
 git push -u origin master --tags
 git status
 
+chown -R admin:admin .
+
 exit
 
 SUBMODULE
