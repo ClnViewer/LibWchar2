@@ -15,6 +15,7 @@ autom4te.cache
 /autom4te.cache
 gmon.out
 libwchar2.pc
+_git-*.sh
 _svn-*.sh
 *~
 "test/test-\342\202\254-\342\202\254.txt"
